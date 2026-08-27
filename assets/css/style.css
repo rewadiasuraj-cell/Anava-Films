@@ -2,8 +2,6 @@
    ANAVA FILMS — Master Design System & Style Definitions (Production Quality)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700&display=swap');
-
 :root {
   --bg-dark: #08090b;
   --bg-card: #12141a;

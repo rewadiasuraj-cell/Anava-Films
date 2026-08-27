@@ -785,10 +785,31 @@ function initLogoIntroTrigger() {
 }
 
 /* --------------------------------------------------------------------------
-   11. Hover-to-Play Video Thumbnails
+   11. Ultra-Performant Lazy Video Thumbnails (Zero Initial Bandwidth Waste)
    -------------------------------------------------------------------------- */
 function initVideoThumbnails() {
   const cards = document.querySelectorAll('.work-card, .work-thumb-wrapper');
+  
+  if (!cards.length) return;
+
+  // IntersectionObserver to only load video stream when cards approach viewport
+  let videoObserver;
+  if ('IntersectionObserver' in window) {
+    videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target.querySelector('video');
+        if (!video) return;
+
+        if (entry.isIntersecting) {
+          // Card is visible or near viewport: set preload to metadata so initial frame displays
+          if (video.preload === 'none') {
+            video.preload = 'metadata';
+          }
+        }
+      });
+    }, { rootMargin: '200px 0px', threshold: 0.01 });
+  }
+
   cards.forEach(card => {
     const video = card.querySelector('video');
     if (!video) return;
@@ -796,15 +817,26 @@ function initVideoThumbnails() {
     video.muted = true;
     video.playsInline = true;
     video.loop = true;
+    video.preload = 'none'; // Prevent heavy downloading until needed
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
 
+    if (videoObserver) {
+      videoObserver.observe(card);
+    }
+
     card.addEventListener('mouseenter', () => {
-      video.play().catch(() => {});
-    });
+      if (video.preload === 'none') {
+        video.preload = 'auto';
+      }
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {});
+      }
+    }, { passive: true });
 
     card.addEventListener('mouseleave', () => {
       video.pause();
-    });
+    }, { passive: true });
   });
 }

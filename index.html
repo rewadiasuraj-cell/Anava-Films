@@ -4,31 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ANAVA FILMS — Give us a thought. We’ll give you ideas to shoot.</title>
-  <meta name="description" content="Anava Films is a creative production house built to take an idea from thought to screen. We work across creative direction, ideation, scripting, production, direction, and post-production.">
+  <meta name="description" content="Anava Films is an agency-cum-production house built to take a thought all the way to the final frame. Creative direction, ideation, scripting, production, direction and post-production.">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- Opening Cinematic Signature Intro / Loader -->
-  <div id="cinematic-intro" role="dialog" aria-label="Intro Loader">
-    <canvas id="vfx-intro-canvas"></canvas>
-    <div id="intro-word-container">
-      <div id="intro-word-stage" class="intro-word-stage">
-        <div id="intro-word-text" class="intro-word">A THOUGHT</div>
+  <!-- 01. Opening Clapboard Intro Animation (Session-based, 3-4s max, skippable) -->
+  <div id="cinematic-intro" role="dialog" aria-label="Intro Animation">
+    <div class="clapboard-wrapper">
+      <div class="clapboard">
+        <!-- Top Clapper Arm (Animated Claps Shut) -->
+        <div class="clapper-top"></div>
+        
+        <!-- Slate Body -->
+        <div class="clapper-body">
+          <div class="clapper-header-row">
+            <div class="clapper-title">ANAVA FILMS</div>
+            <div class="clapper-take">TAKE 01</div>
+          </div>
+          
+          <div class="clapper-scene-box">
+            <div class="clapper-scene-num">SCENE 01</div>
+            <div class="clapper-scene-text">LET’S MAKE SOMETHING</div>
+          </div>
+
+          <div class="clapper-footer-row">
+            <span>DIR: <strong>JACKSON</strong></span>
+            <span>PROD: <strong>ANJAN</strong></span>
+            <span>ROLL: <strong>24FPS</strong></span>
+          </div>
+        </div>
       </div>
-      
-      <div id="intro-logo-stage" class="intro-logo-stage hidden">
-        <div class="intro-logo-wrapper">
-          <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS" class="intro-logo-img">
-        </div>
-        <div class="intro-tagline-gold">
-          Give us a thought — We’ll give you ideas to shoot
-        </div>
+
+      <!-- Wordmark Stage Reveal -->
+      <div class="intro-wordmark">
+        <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS" class="intro-wordmark-img">
+        <div class="intro-wordmark-tagline">GIVE US A THOUGHT — WE’LL GIVE YOU IDEAS TO SHOOT</div>
       </div>
     </div>
 
     <button id="skip-intro-btn" class="skip-intro-btn" aria-label="Skip Intro Animation">
-      SKIP INTRO
+      SKIP INTRO ✕
     </button>
   </div>
 
@@ -44,24 +60,24 @@
       <!-- 2. CENTER ZONE: NAVIGATION -->
       <nav class="main-nav">
         <ul class="nav-links">
-          <li><a href="index.html" class="nav-link active">Home</a></li>
-          <li><a href="work.html" class="nav-link">Work</a></li>
-          <li><a href="what-we-do.html" class="nav-link">What We Do</a></li>
-          <li><a href="process.html" class="nav-link">Process</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li class="mobile-cta-item"><a href="contact.html" class="btn-primary mobile-nav-cta">LET’S MAKE SOMETHING</a></li>
+          <li><a href="index.html" class="nav-link active">HOME</a></li>
+          <li><a href="work.html" class="nav-link">WORK</a></li>
+          <li><a href="what-we-do.html" class="nav-link">WHAT WE DO</a></li>
+          <li><a href="process.html" class="nav-link">PROCESS</a></li>
+          <li><a href="about.html" class="nav-link">ABOUT</a></li>
+          <li><a href="testimonials.html" class="nav-link">TESTIMONIALS</a></li>
+          <li><a href="contact.html" class="nav-link">CONTACT</a></li>
+          <li class="mobile-cta-item"><a href="contact.html" class="btn-primary mobile-nav-cta">LET’S TALK</a></li>
         </ul>
       </nav>
 
-      <!-- 3. RIGHT ZONE: TOGGLE + CTA -->
+      <!-- 3. RIGHT ZONE: TOGGLE + PERSISTENT CTA -->
       <div class="header-actions">
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Light/Dark Mode">
           <svg class="sun-icon" viewBox="0 0 24 24" style="display: none;"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
           <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12.3 2c.43 0 .77.35.7.78-.4 2.53.33 5.15 2 7.02 1.67 1.87 4.25 2.7 6.8 2.45.43-.04.78.3.73.74-.63 5.09-4.97 9.01-10.23 9.01C6.3 22 2 17.7 2 11.7 2 6.36 6.13 2.1 11.52 2.01c.26 0 .52.01.78.02z"/></svg>
         </button>
-        <a href="contact.html" class="btn-primary btn-header-cta">LET’S MAKE SOMETHING</a>
+        <a href="contact.html" class="btn-primary btn-header-cta">LET’S TALK</a>
         <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -71,7 +87,8 @@
     </div>
   </header>
 
-  <!-- Main Hero Section -->
+
+  <!-- 02. HERO SECTION -->
   <section class="home-hero-section">
     <div class="hero-overlay"></div>
 
@@ -82,12 +99,13 @@
         </div>
 
         <h1 class="hero-tagline-hero">
-          GIVE US A THOUGHT<br>
-          WE’LL GIVE YOU <span class="silver-text text-serif">IDEAS TO SHOOT</span>
+          GIVE US A THOUGHT.<br>
+          WE’LL GIVE YOU<br>
+          <span class="silver-text text-serif">IDEAS TO SHOOT.</span>
         </h1>
 
         <p class="hero-description">
-          Anava Films is a creative production house built to take an idea from thought to screen. We work across creative direction, ideation, scripting, production, direction and post-production, helping brands turn briefs into films, campaigns and content that people actually want to watch.
+          Anava Films is an agency-cum-production house built to take a thought all the way to the final frame. We work across creative direction, ideation, scripting, production, direction and post-production helping brands turn briefs into ideas, and ideas into films, campaigns and content.
         </p>
 
         <div class="hero-cta-group">
@@ -98,69 +116,81 @@
     </div>
   </section>
 
-  <!-- Manifesto / Core Philosophy Section -->
-  <section class="section-padding border-top-divider">
-    <div class="container">
-      <div class="manifesto-banner">
-        <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">OUR PHILOSOPHY</span>
-        <h2 class="section-title" style="margin: 0.8rem 0 1.2rem;">
-          WE DON’T JUST PRODUCE.<br>
-          <span class="text-gold">WE THINK. WE CREATE. WE SHOOT. WE DELIVER.</span>
-        </h2>
-        <p class="subtitle" style="margin-bottom: 2rem;">
-          A brief rarely arrives as a finished idea. Sometimes it’s a product. Sometimes it’s a problem. Sometimes it’s just one sentence from a client. That’s where we come in. We take that thought, find the story inside it, build the concept, bring it to life and take care of everything that happens before, during and after the shoot.
-        </p>
-        <p class="text-serif" style="font-size: 1.3rem; color: var(--accent-gold);">
-          "From the first thought to the final frame — we’ve got it covered."
-        </p>
 
-        <div class="pillars-grid">
-          <div class="pillar-card">
-            <div class="pillar-num">01 / THINK</div>
-            <div class="pillar-title">WE THINK</div>
+  <!-- 03. SHOWREEL SECTION (NEW) -->
+  <section class="showreel-section border-top-divider">
+    <div class="showreel-container">
+      <video id="showreel-player" class="showreel-video" src="assets/media/vertical-films/ORRY & KFC.mp4" autoplay muted loop playsinline preload="auto"></video>
+      
+      <div class="showreel-overlay">
+        <div class="showreel-badge">
+          <span class="live-dot"></span>
+          <span>ANAVA SHOWREEL 2026</span>
+        </div>
+
+        <div class="showreel-bottom-bar">
+          <div class="showreel-meta">
+            <div class="showreel-meta-title">ANAVA FILMS</div>
+            <div class="showreel-meta-sub">Creative Direction · Direction · Production</div>
           </div>
-          <div class="pillar-card">
-            <div class="pillar-num">02 / CREATE</div>
-            <div class="pillar-title">WE CREATE</div>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-num">03 / SHOOT</div>
-            <div class="pillar-title">WE SHOOT</div>
-          </div>
-          <div class="pillar-card">
-            <div class="pillar-num">04 / DELIVER</div>
-            <div class="pillar-title">WE DELIVER</div>
-          </div>
+          
+          <button id="showreel-sound-toggle" class="showreel-sound-toggle" aria-label="Toggle Sound">
+            <span>🔊</span> UNMUTE SHOWREEL
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Featured Selected Work Section -->
+
+  <!-- 04. THINKERS WHO MAKE SECTION (NEW) -->
+  <section class="thinkers-section border-top-divider">
+    <div class="container">
+      <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+        <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em;">OUR PHILOSOPHY</span>
+        <h2 class="display-title" style="margin: 0.8rem 0 1.2rem;">THINKERS WHO MAKE.</h2>
+        <p class="subtitle" style="margin: 0 auto 2rem; font-size: 1.15rem; line-height: 1.75;">
+          Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn't get lost between the people who think them and the people who make them. So we bring both sides together. You bring the thought. We build the idea, make the film and deliver the final product.
+        </p>
+
+        <!-- Large THINK -> MAKE -> FINISH Typographic Element -->
+        <div class="thinkers-flow-banner">
+          <div class="thinkers-node active-gold">THINK</div>
+          <div class="thinkers-arrow">→</div>
+          <div class="thinkers-node">MAKE</div>
+          <div class="thinkers-arrow">→</div>
+          <div class="thinkers-node active-gold">FINISH</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 05. SELECTED WORK SECTION -->
   <section class="section-padding border-top-divider">
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem;">
         <div>
-          <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">OUR WORK</span>
-          <h2 class="section-title" style="margin-top: 0.4rem;">IDEAS WE HAVE <span class="silver-text">BROUGHT TO LIFE</span></h2>
-          <p class="subtitle">From digital films and TVCs to performance content, catalogue shoots and social-first campaigns.</p>
+          <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">PORTFOLIO</span>
+          <h2 class="section-title" style="margin-top: 0.4rem;">SELECTED <span class="silver-text">WORK</span></h2>
+          <p class="subtitle">Commercial TVCs, viral vertical reels, brand narratives and performance campaigns.</p>
         </div>
-        <a href="work.html" class="btn-outline">EXPLORE ALL WORK →</a>
+        <a href="work.html" class="btn-outline">VIEW ALL WORK →</a>
       </div>
 
-      <div class="work-grid">
+      <div class="work-grid" style="margin-top: 3rem;">
 
-        <!-- Work Card 1: Lenskart Hustler TVC -->
+        <!-- Project 1: Hustler -->
         <div class="work-card" data-open-case="lenskart-hustler">
           <div class="work-thumb-wrapper">
-            <video src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" class="work-thumb-img" autoplay muted loop playsinline preload="auto"></video>
+            <video src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
             <div class="work-play-overlay">
               <div class="play-icon-btn">▶</div>
             </div>
           </div>
           <div class="work-card-info">
-            <div class="work-category-tag">LENSKART / HUSTLR • COMMERCIAL TVC</div>
-            <h3 class="work-card-title">Hustlr — Keep Hustling</h3>
+            <div class="work-category-tag">LENSKART • COMMERCIAL TVC</div>
+            <h3 class="work-card-title">Hustler — Keep Hustling</h3>
             <p class="work-card-desc">High-octane commercial ad film built around energy, attitude, and momentum.</p>
             <div class="role-badges">
               <span class="role-badge">Creative Direction</span>
@@ -171,10 +201,10 @@
           </div>
         </div>
 
-        <!-- Work Card 2: John Jacobs -->
+        <!-- Project 2: John Jacobs -->
         <div class="work-card" data-open-case="john-jacobs">
           <div class="work-thumb-wrapper">
-            <video src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" class="work-thumb-img" autoplay muted loop playsinline preload="auto"></video>
+            <video src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
             <div class="work-play-overlay">
               <div class="play-icon-btn">▶</div>
             </div>
@@ -192,10 +222,10 @@
           </div>
         </div>
 
-        <!-- Work Card 3: Karan Johar & Kusha Kapila -->
+        <!-- Project 3: Karan Johar & Kusha Kapila -->
         <div class="work-card" data-open-case="karan-johar-kusha">
           <div class="work-thumb-wrapper">
-            <video src="assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4" class="work-thumb-img" autoplay muted loop playsinline preload="auto"></video>
+            <video src="assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
             <div class="work-play-overlay">
               <div class="play-icon-btn">▶</div>
             </div>
@@ -212,10 +242,10 @@
           </div>
         </div>
 
-        <!-- Work Card 4: Orry & KFC -->
+        <!-- Project 4: Orry & KFC -->
         <div class="work-card" data-open-case="orry-kfc">
           <div class="work-thumb-wrapper">
-            <video src="assets/media/vertical-films/ORRY & KFC.mp4" class="work-thumb-img" autoplay muted loop playsinline preload="auto"></video>
+            <video src="assets/media/vertical-films/ORRY & KFC.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
             <div class="work-play-overlay">
               <div class="play-icon-btn">▶</div>
             </div>
@@ -236,112 +266,191 @@
     </div>
   </section>
 
-  <!-- One Brief Many Possibilities -->
+
+  <!-- 06. WHAT WE DO TEASER (THINK → MAKE → FINISH) -->
   <section class="section-padding border-top-divider" style="background: var(--bg-card);">
     <div class="container">
-      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">OUR APPROACH</span>
-        <h2 class="section-title" style="margin: 0.8rem 0 1.5rem;">ONE BRIEF. MANY POSSIBILITIES</h2>
-        <p class="subtitle" style="margin: 0 auto 2rem;">
-          A good idea doesn’t always look like an advertisement on paper. It could become a film, a performance ad, a social series, a product story, a visual campaign, or something nobody has thought of yet. That’s why we don’t begin with a production plan. <strong>We begin with the thought.</strong>
-        </p>
-        <a href="process.html" class="btn-primary">EXPLORE THE LIFE OF AN IDEA →</a>
+      <div style="text-align: center; max-width: 800px; margin: 0 auto 3.5rem;">
+        <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">CAPABILITIES</span>
+        <h2 class="display-title" style="margin-top: 0.4rem;">WHAT WE DO</h2>
+        <p class="subtitle">We divide our capabilities into three powerhouse pillars across the lifecycle of an idea.</p>
+      </div>
+
+      <div class="tmf-grid">
+        <!-- THINK -->
+        <div class="tmf-bucket">
+          <div class="tmf-header">
+            <h3 class="tmf-title text-gold">THINK</h3>
+            <div class="tmf-num">01 / CONCEPT</div>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem;">Creative Direction, Ideation & Concept Development, Scripting, Creative Consulting.</p>
+          <a href="what-we-do.html" class="text-gold" style="font-weight: 700; font-size: 0.85rem;">EXPLORE THINK →</a>
+        </div>
+
+        <!-- MAKE -->
+        <div class="tmf-bucket">
+          <div class="tmf-header">
+            <h3 class="tmf-title text-gold">MAKE</h3>
+            <div class="tmf-num">02 / SHOOT</div>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem;">Production, Direction, Casting (Domestic & International), Art Direction & Production Design.</p>
+          <a href="what-we-do.html" class="text-gold" style="font-weight: 700; font-size: 0.85rem;">EXPLORE MAKE →</a>
+        </div>
+
+        <!-- FINISH -->
+        <div class="tmf-bucket">
+          <div class="tmf-header">
+            <h3 class="tmf-title text-gold">FINISH</h3>
+            <div class="tmf-num">03 / POST</div>
+          </div>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem;">Offline Editing, Music & Sound, High-End Colour Grading (Prime Focus, Nube), VFX & Mastering.</p>
+          <a href="what-we-do.html" class="text-gold" style="font-weight: 700; font-size: 0.85rem;">EXPLORE FINISH →</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Founders & Leadership: THE PEOPLE BEHIND ANAVA -->
+
+  <!-- 07. FROM THOUGHT TO SCREEN (PROCESS TEASER) -->
   <section class="section-padding border-top-divider">
+    <div class="container" style="text-align: center; max-width: 850px;">
+      <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">OUR WORKFLOW</span>
+      <h2 class="display-title" style="margin: 0.6rem 0 1.2rem;">FROM THOUGHT TO SCREEN</h2>
+      <p class="subtitle" style="margin: 0 auto 2.5rem;">
+        01 The Thought → 02 The Idea → 03 The Deck → 04 Pre-Production → 05 The Shoot → 06 Post → 07 Delivery. A thought goes in. A film comes out.
+      </p>
+      <a href="process.html" class="btn-primary">EXPLORE THE FULL 7-STEP PROCESS →</a>
+    </div>
+  </section>
+
+
+  <!-- 08. ABOUT JACKSON & ANJAN (TEASER) -->
+  <section class="section-padding border-top-divider" style="background: var(--bg-card);">
     <div class="container">
       <div style="margin-bottom: 3.5rem;">
         <span class="contact-badge-label">LEADERSHIP</span>
         <h2 class="display-title" style="margin-top: 0.4rem;">THE PEOPLE BEHIND ANAVA</h2>
-        <p class="subtitle">Creative vision paired with structured production execution.</p>
+        <p class="subtitle">We don't believe in the gap between the people who think and the people who make.</p>
       </div>
 
       <div class="leadership-grid">
-        <!-- Card 1: Jackson Khatri -->
+        <!-- Jackson Khatri -->
         <div class="leadership-card">
           <div class="leadership-card-header">
             <div class="leadership-photo-thumb">
               <img src="assets/images/hustler.jpg" alt="Jackson Khatri - Founder & Creative Director">
             </div>
             <div>
-              <div class="leadership-tag">FOUNDER • CREATIVE DIRECTOR • PRODUCER • DIRECTOR</div>
+              <div class="leadership-tag">FOUNDER · CREATIVE DIRECTOR · PRODUCER · DIRECTOR</div>
               <h3 class="leadership-name">JACKSON KHATRI</h3>
             </div>
           </div>
-          
           <div class="leadership-bio">
             <p>
-              Jackson’s journey began with a <strong>B.Sc. in Animation & Multimedia</strong>, developing an early understanding of visual storytelling, frame composition, and bringing ideas to life frame by frame.
-            </p>
-            <p>
-              Working across assistant direction, post-production, scripting, producing and directing, he formed one core belief:
-            </p>
-            <blockquote class="leadership-quote text-serif">
-              "A great production starts much before the camera starts rolling."
-            </blockquote>
-            <p>
-              That core belief became Anava Films — turning client briefs into visual stories worth making.
+              Jackson’s background in <strong>Animation & Multimedia</strong> grounded him in visual composition, frame design, and pacing. Working across direction, producing, and post, he built Anava to connect pure creative ideation with high-standard execution.
             </p>
           </div>
         </div>
 
-        <!-- Card 2: Anjan Khatri -->
+        <!-- Anjan Khatri -->
         <div class="leadership-card">
           <div class="leadership-card-header">
             <div class="leadership-photo-thumb">
-              <img src="assets/images/john_jacobs.jpg" alt="Anjan Khatri - Executive Producer">
+              <img src="assets/images/john_jacobs.jpg" alt="Anjan Khatri - Producer">
             </div>
             <div>
-              <div class="leadership-tag">EXECUTIVE PRODUCER • PRODUCTION HEAD</div>
+              <div class="leadership-tag">PRODUCER · PRODUCTION HEAD</div>
               <h3 class="leadership-name">ANJAN KHATRI</h3>
             </div>
           </div>
-
           <div class="leadership-bio">
             <p>
-              As Anava grew, Jackson’s brother <strong>Anjan Khatri</strong> joined the company as Executive Producer to strengthen the production muscle of the business.
-            </p>
-            <p>
-              Anjan turns ambitious creative decks into streamlined, high-efficiency shoots — managing budgets, logistics, and crew coordination like a well-oiled clock.
-            </p>
-            <blockquote class="leadership-quote text-serif">
-              "Turning creative vision into seamless, stress-free production execution."
-            </blockquote>
-            <p>
-              Together, Jackson and Anjan bring creative direction and production muscle under one roof.
+              Joined as <strong>Producer</strong> to fortify Anava’s production muscle. Anjan manages complex logistical puzzles, budgets, crew coordination, and studio setups to guarantee that ambitious creative decks translate seamlessly into real shoots.
             </p>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Ready With A Thought CTA -->
-  <section class="section-padding border-top-divider" style="background: radial-gradient(circle at 50% 50%, rgba(212,175,55,0.12) 0%, transparent 70%);">
+
+  <!-- 09. TESTIMONIALS (TEASER) -->
+  <section class="section-padding border-top-divider">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3rem;">
+        <div>
+          <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">COLLABORATORS</span>
+          <h2 class="section-title" style="margin-top: 0.4rem;">WHAT BRANDS <span class="silver-text">SAY</span></h2>
+          <p class="subtitle">Real feedback from clients, line producers, directors and crew.</p>
+        </div>
+        <a href="testimonials.html" class="btn-outline">VIEW ALL TESTIMONIALS →</a>
+      </div>
+
+      <div class="work-grid">
+        <div class="work-card" data-open-case="testimonial-lenskart-1">
+          <div class="work-thumb-wrapper">
+            <video src="assets/media/testimonials/LENSKART TESTIMONIAL FILM.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
+            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
+          </div>
+          <div class="work-card-info">
+            <div class="work-category-tag">LENSKART • VIDEO TESTIMONIAL</div>
+            <h3 class="work-card-title">What Lenskart leadership says about partnering with Anava</h3>
+            <p class="work-card-desc">"How Jackson and Anjan turn a one-line thought into a complete shoot deck."</p>
+          </div>
+        </div>
+
+        <div class="work-card" data-open-case="wow-brand-content">
+          <div class="work-thumb-wrapper">
+            <video src="assets/media/testimonials/WOW TESTIMONIAL .mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
+            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
+          </div>
+          <div class="work-card-info">
+            <div class="work-category-tag">WOW SKIN SCIENCE • VIDEO TESTIMONIAL</div>
+            <h3 class="work-card-title">Directing with clarity and speed before roll camera</h3>
+            <p class="work-card-desc">"The level of preparation before shoot day makes directing seamless."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 10. LOCATIONS SECTION (NEW) -->
+  <section class="locations-section border-top-divider">
+    <div class="container">
+      <div class="locations-badge">STUDIO HUBS</div>
+      <h2 class="locations-cities">MUMBAI <span class="city-dot">·</span> DELHI</h2>
+      <p class="locations-supporting">
+        Based in Mumbai & Delhi. Working wherever the idea takes us.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- 11. FINAL CTA (GOT A THOUGHT?) -->
+  <section class="section-padding border-top-divider" style="background: radial-gradient(circle at 50% 50%, rgba(245,183,25,0.12) 0%, transparent 70%);">
     <div class="container" style="text-align: center; max-width: 900px;">
-      <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">READY WITH A THOUGHT?</span>
-      <h2 class="display-title" style="margin: 1rem 0;">LET’S MAKE SOMETHING</h2>
-      <p class="subtitle" style="margin: 0 auto 2.5rem;">
-        You don’t need a finished brief. You don’t need a script. You don’t even need to know exactly what the film should look like. Just give us the thought. We’ll bring the ideas.
+      <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em;">READY TO CREATE?</span>
+      <h2 class="display-title" style="margin: 1rem 0;">GOT A THOUGHT?</h2>
+      <p class="subtitle" style="margin: 0 auto 2.5rem; font-size: 1.15rem; line-height: 1.7;">
+        You don't need a finished brief. You don't need a script. You don't even need to know exactly what the film should look like. Just give us the thought. We'll bring the ideas.
       </p>
       <div style="display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;">
-        <a href="contact.html" class="btn-primary">START A CONVERSATION</a>
+        <a href="contact.html" class="btn-primary">LET’S MAKE IT.</a>
         <a href="mailto:office@anavafilm.com" class="btn-outline">EMAIL: office@anavafilm.com</a>
       </div>
     </div>
   </section>
 
-  <!-- Case Study Modal Backdrop -->
+
+  <!-- Case Study / Project Modal Component -->
   <div id="case-modal" class="modal-backdrop">
     <div class="modal-content">
-      <button id="modal-close-btn" class="modal-close-btn">&times;</button>
+      <button id="modal-close-btn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
       <div id="modal-dynamic-body"></div>
     </div>
   </div>
+
 
   <!-- Master Footer -->
   <footer class="main-footer">
@@ -352,7 +461,7 @@
             <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS Logo" style="height: 38px; width: auto; display: block; margin-left: 0; margin-bottom: 1.2rem;">
           </div>
           <p class="footer-desc">
-            A creative production house taking ideas from thought to screen. Creative direction, ideation, scripting, production, direction, and post-production.
+            ANAVA FILMS — Give us a thought. We’ll give you ideas to shoot.
           </p>
         </div>
 
@@ -380,7 +489,9 @@
             <div class="footer-col-title">CONNECT</div>
             <ul class="footer-links">
               <li><a href="mailto:office@anavafilm.com" class="footer-link">office@anavafilm.com</a></li>
-              <li><span class="footer-link">Mumbai • New Delhi</span></li>
+              <li><a href="tel:+919876543210" class="footer-link">+91 (Contact Office)</a></li>
+              <li><a href="https://instagram.com" target="_blank" rel="noopener" class="footer-link">Instagram</a></li>
+              <li><a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-link">LinkedIn</a></li>
             </ul>
           </div>
         </div>
@@ -388,7 +499,7 @@
 
       <div class="footer-bottom">
         <div>&copy; 2026 ANAVA FILMS. All rights reserved.</div>
-        <div>Give us a thought. We’ll give you ideas to shoot.</div>
+        <div>ANAVA FILMS — Give us a thought. We’ll give you ideas to shoot.</div>
       </div>
     </div>
   </footer>

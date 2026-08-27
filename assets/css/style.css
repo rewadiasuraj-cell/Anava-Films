@@ -52,7 +52,13 @@ html[data-theme="light"] .main-header.scrolled {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
 }
 
-/* 2. Logo Visibility (Converts white brand logo to crisp dark typography in light mode) */
+/* 2. Logo Visibility (Default: Crisp Pure White in Dark Mode, Crisp Pure Black in Light Mode) */
+.brand-logo-img,
+.footer-logo img,
+.intro-wordmark-img {
+  filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
+}
+
 html[data-theme="light"] .brand-logo-img,
 html[data-theme="light"] .footer-logo img,
 html[data-theme="light"] .intro-wordmark-img {
@@ -1094,30 +1100,17 @@ html[data-theme="light"] .text-metallic {
 }
 
 .brand-logo-img {
-  height: 22px;
+  height: 24px;
   width: auto;
   max-width: 180px;
   object-fit: contain;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
-  animation: logoMinimalGlowPulse 4s ease-in-out infinite alternate;
+  filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
 }
 
 .brand-logo:hover .brand-logo-img {
   transform: scale(1.03);
-  filter: drop-shadow(0 0 10px rgba(245, 183, 25, 0.45));
-}
-
-@keyframes logoMinimalGlowPulse {
-  0% {
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
-  }
-  50% {
-    filter: drop-shadow(0 0 8px rgba(245, 183, 25, 0.35));
-  }
-  100% {
-    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.2));
-  }
+  filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(245, 183, 25, 0.7));
 }
 
 .main-nav {

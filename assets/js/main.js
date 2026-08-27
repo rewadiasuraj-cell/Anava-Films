@@ -39,16 +39,6 @@ function initThemeToggle() {
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   updateThemeIcons(theme);
-
-  // Auto-swap logo src for pristine sharpness in both themes
-  const logos = document.querySelectorAll('.brand-logo-img, .footer-logo img, .intro-wordmark-img');
-  logos.forEach(logo => {
-    if (theme === 'light') {
-      logo.src = 'assets/images/anava_logo_black.png';
-    } else {
-      logo.src = 'assets/images/anava_official_logo.png';
-    }
-  });
 }
 
 function updateThemeIcons(theme) {

@@ -23,19 +23,32 @@ function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
   const savedTheme = localStorage.getItem('anava-theme') || 'dark';
 
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  updateThemeIcons(savedTheme);
+  applyTheme(savedTheme);
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
-      document.documentElement.setAttribute('data-theme', newTheme);
+      applyTheme(newTheme);
       localStorage.setItem('anava-theme', newTheme);
-      updateThemeIcons(newTheme);
     });
   }
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  updateThemeIcons(theme);
+
+  // Auto-swap logo src for pristine sharpness in both themes
+  const logos = document.querySelectorAll('.brand-logo-img, .footer-logo img, .intro-wordmark-img');
+  logos.forEach(logo => {
+    if (theme === 'light') {
+      logo.src = 'assets/images/anava_logo_black.png';
+    } else {
+      logo.src = 'assets/images/anava_official_logo.png';
+    }
+  });
 }
 
 function updateThemeIcons(theme) {

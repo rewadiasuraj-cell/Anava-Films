@@ -26,6 +26,224 @@
 }
 
 /* ==========================================================================
+   LIGHT MODE DESIGN SYSTEM & CONTRAST PALETTE
+   ========================================================================== */
+html[data-theme="light"] {
+  --bg-dark: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --text-main: #090d16;
+  --text-muted: #475569;
+  --text-dim: #64748b;
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-active: rgba(245, 183, 25, 0.8);
+}
+
+/* 1. Header & Navigation in Light Mode */
+html[data-theme="light"] .main-header {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+html[data-theme="light"] .main-header.scrolled {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(0, 0, 0, 0.14);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* 2. Logo Visibility (Converts white brand logo to crisp dark typography in light mode) */
+html[data-theme="light"] .brand-logo-img,
+html[data-theme="light"] .footer-logo img,
+html[data-theme="light"] .intro-wordmark-img {
+  filter: brightness(0);
+}
+
+/* 3. Navigation Links in Light Mode */
+html[data-theme="light"] .nav-link {
+  color: #334155;
+}
+
+html[data-theme="light"] .nav-link:hover,
+html[data-theme="light"] .nav-link.active {
+  color: #000000;
+}
+
+html[data-theme="light"] .nav-link::after {
+  background: #f5b719;
+}
+
+/* 4. Theme Toggle Button in Light Mode */
+html[data-theme="light"] .theme-toggle-btn {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #0f172a;
+}
+
+html[data-theme="light"] .theme-toggle-btn:hover {
+  background: rgba(245, 183, 25, 0.2);
+  border-color: #f5b719;
+}
+
+/* 5. Mobile Menu in Light Mode */
+html[data-theme="light"] .hamburger-bar {
+  background-color: #0f172a;
+}
+
+html[data-theme="light"] .main-nav.mobile-active {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* 6. Buttons & Badges in Light Mode */
+html[data-theme="light"] .btn-outline {
+  border-color: rgba(0, 0, 0, 0.25);
+  color: #0f172a;
+}
+
+html[data-theme="light"] .btn-outline:hover {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+}
+
+html[data-theme="light"] .hero-badge {
+  background: rgba(245, 183, 25, 0.18);
+  border: 1px solid rgba(245, 183, 25, 0.45);
+  color: #92400e;
+}
+
+/* 7. Work Cards & Filters in Light Mode */
+html[data-theme="light"] .work-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="light"] .work-card-title {
+  color: #090d16;
+}
+
+html[data-theme="light"] .work-category-tag {
+  color: #92400e;
+}
+
+html[data-theme="light"] .role-badge {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #334155;
+}
+
+html[data-theme="light"] .secondary-filter-container {
+  background: #f1f5f9;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="light"] .sub-filter-btn {
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #475569;
+}
+
+/* 8. Sections & Components in Light Mode */
+html[data-theme="light"] .thinkers-section {
+  background: #f1f5f9;
+}
+
+html[data-theme="light"] .thinkers-flow-banner {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+html[data-theme="light"] .thinkers-node {
+  color: #090d16;
+}
+
+html[data-theme="light"] .tmf-bucket {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="light"] .tmf-item-title {
+  color: #090d16;
+}
+
+html[data-theme="light"] .leadership-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="light"] .leadership-name {
+  color: #090d16;
+}
+
+html[data-theme="light"] .testimonial-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="light"] .testimonial-quote {
+  color: #1e293b;
+}
+
+html[data-theme="light"] .author-name {
+  color: #090d16;
+}
+
+html[data-theme="light"] .contact-info-card,
+html[data-theme="light"] .contact-form-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="light"] .form-control {
+  background: #f8fafc;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #090d16;
+}
+
+html[data-theme="light"] .form-control:focus {
+  background: #ffffff;
+  border-color: #f5b719;
+}
+
+html[data-theme="light"] .contact-email-link,
+html[data-theme="light"] .contact-meta-value {
+  color: #090d16;
+}
+
+html[data-theme="light"] .step-number-box {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+html[data-theme="light"] .step-number,
+html[data-theme="light"] .step-title {
+  color: #090d16;
+}
+
+html[data-theme="light"] .locations-cities {
+  color: #090d16;
+}
+
+html[data-theme="light"] .modal-content {
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.15);
+  color: #090d16;
+}
+
+html[data-theme="light"] .modal-close-btn {
+  color: #090d16;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================================
    CLAPBOARD INTRO ANIMATION (Item 2)
    ========================================================================== */
 #cinematic-intro {

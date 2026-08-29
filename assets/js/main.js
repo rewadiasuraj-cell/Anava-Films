@@ -736,41 +736,46 @@ function initTestimonialTabs() {
 }
 
 /* --------------------------------------------------------------------------
-   9. Contact Form & Feedback Simulation
+   9. Contact Form — mailto: Handoff
    -------------------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById('anava-contact-form');
   const feedbackEl = document.getElementById('form-feedback');
+  const CONTACT_EMAIL = 'office@anavafilm.com';
 
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
+    const name = document.getElementById('client-name').value.trim();
+    const email = document.getElementById('client-email').value.trim();
+    const projectTypeEl = document.getElementById('project-type');
+    const projectType = projectTypeEl.options[projectTypeEl.selectedIndex].text;
+    const message = document.getElementById('thought-message').value.trim();
 
-    submitBtn.innerHTML = `<span>Sending Thought...</span>`;
-    submitBtn.disabled = true;
+    const subject = `New Thought from ${name} — ${projectType}`;
+    const body =
+      `Name / Brand: ${name}\n` +
+      `Email: ${email}\n` +
+      `Project Type: ${projectType}\n\n` +
+      `Thought:\n${message}`;
 
-    setTimeout(() => {
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-      form.reset();
+    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
 
-      if (feedbackEl) {
-        feedbackEl.style.display = 'block';
-        feedbackEl.innerHTML = `
-          <div style="background: rgba(245, 183, 25, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
-            ✨ <strong>Thought Received!</strong> We’ll review your thought and get back to you with ideas to shoot within 24 hours.
-          </div>
-        `;
+    if (feedbackEl) {
+      feedbackEl.style.display = 'block';
+      feedbackEl.innerHTML = `
+        <div style="background: rgba(245, 183, 25, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
+          ✨ <strong>Almost there!</strong> Your email app should now be open with your thought pre-filled — just hit send. If nothing opened, email us directly at <a href="mailto:${CONTACT_EMAIL}" style="color: var(--accent-gold);">${CONTACT_EMAIL}</a>.
+        </div>
+      `;
 
-        setTimeout(() => {
-          feedbackEl.style.display = 'none';
-        }, 8000);
-      }
-    }, 1000);
+      setTimeout(() => {
+        feedbackEl.style.display = 'none';
+      }, 10000);
+    }
   });
 }
 

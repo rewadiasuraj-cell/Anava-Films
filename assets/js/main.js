@@ -423,8 +423,10 @@ const projectsData = {
     subcategories: ['catalogue', 'performance', 'product'],
     format: 'Photoshoots / Performance Ads / Catalogue',
     roles: ['Creative Direction', 'Production', 'Art Direction'],
-    thumbVideo: 'assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 05.mp4',
-    videoSrc: 'assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 05.mp4',
+    images: Array.from({ length: 61 }, (_, i) => ({
+      thumb: `assets/images/aqualens/thumbs/aqualens-${String(i + 1).padStart(2, '0')}.jpg`,
+      full: `assets/images/aqualens/aqualens-${String(i + 1).padStart(2, '0')}.jpg`
+    })),
     shortDesc: 'High-clarity catalogue and performance ad suite for daily contact lenses.',
     thought: 'Contact lenses need to look fresh, hydrating, and effortless all day long.',
     idea: 'Water-ripple aesthetics with bright, refreshing micro-lighting on eye models.',
@@ -622,11 +624,46 @@ function initModals() {
   function renderProjectModal(data) {
     if (!modalContainer) return;
 
-    const isDirectVideo = data.videoSrc && (data.videoSrc.endsWith('.mp4') || data.videoSrc.endsWith('.mov') || data.videoSrc.endsWith('.webm'));
+    const isPhotoGallery = Array.isArray(data.images) && data.images.length > 0;
 
-    const videoPlayerHtml = isDirectVideo 
-      ? `<video src="${data.videoSrc}" controls autoplay playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000; border-radius: 12px;"></video>`
-      : `<iframe src="${data.videoSrc}" style="width: 100%; height: 100%; border: none;" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+    let mediaBlockHtml;
+    if (isPhotoGallery) {
+      const galleryItemsHtml = data.images.map(img => `
+        <a href="${img.full}" target="_blank" rel="noopener" style="display: block; aspect-ratio: 3/4; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-light);">
+          <img src="${img.thumb}" loading="lazy" alt="${data.title} photoshoot" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+        </a>
+      `).join('');
+
+      mediaBlockHtml = `
+        <div style="margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+            <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;">THE PHOTOSHOOT</h4>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">${data.images.length} photos · click to view full size</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.6rem; max-height: 480px; overflow-y: auto; padding-right: 0.4rem;">
+            ${galleryItemsHtml}
+          </div>
+        </div>
+      `;
+    } else {
+      const isDirectVideo = data.videoSrc && (data.videoSrc.endsWith('.mp4') || data.videoSrc.endsWith('.mov') || data.videoSrc.endsWith('.webm'));
+
+      const videoPlayerHtml = isDirectVideo
+        ? `<video src="${data.videoSrc}" controls autoplay playsinline style="width: 100%; height: 100%; object-fit: contain; background: #000; border-radius: 12px;"></video>`
+        : `<iframe src="${data.videoSrc}" style="width: 100%; height: 100%; border: none;" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+
+      mediaBlockHtml = `
+        <div style="margin-bottom: 2.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+            <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;">THE FINAL FILM</h4>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">HD Playback</span>
+          </div>
+          <div style="position: relative; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-light); box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
+            ${videoPlayerHtml}
+          </div>
+        </div>
+      `;
+    }
 
     modalContainer.innerHTML = `
       <div style="margin-bottom: 1.5rem;">
@@ -652,16 +689,8 @@ function initModals() {
         </div>
       </div>
 
-      <!-- 4 CONTENT BLOCKS: THE FINAL FILM (Prominent Top), THE THOUGHT, THE IDEA, THE MAKING -->
-      <div style="margin-bottom: 2.5rem;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
-          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;">THE FINAL FILM</h4>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">HD Playback</span>
-        </div>
-        <div style="position: relative; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-light); box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
-          ${videoPlayerHtml}
-        </div>
-      </div>
+      <!-- 4 CONTENT BLOCKS: MEDIA (Prominent Top), THE THOUGHT, THE IDEA, THE MAKING -->
+      ${mediaBlockHtml}
 
       <div style="display: grid; gap: 1.8rem; border-top: 1px solid var(--border-light); padding-top: 2rem;">
         <div>

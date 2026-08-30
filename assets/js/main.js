@@ -16,22 +16,42 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialTabs();
 });
 
+// Reveal the page's theme-change transitions only after first paint, so
+// loading the page never itself triggers a fade (see the no-flash boot
+// script in <head>, which sets data-theme before this file even runs).
+window.addEventListener('load', () => {
+  document.documentElement.classList.remove('preload');
+});
+
 /* --------------------------------------------------------------------------
    0. Dual Theme Toggle System (Dark / Light Mode)
    -------------------------------------------------------------------------- */
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
-  const savedTheme = localStorage.getItem('anava-theme') || 'dark';
 
-  applyTheme(savedTheme);
+  // The no-flash boot script (inline in <head>) has already set data-theme
+  // before this script ran — just sync the icon/aria state to it here.
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  updateThemeIcons(currentTheme);
+  updateThemeToggleA11y(toggleBtn, currentTheme);
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      const activeTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = activeTheme === 'light' ? 'dark' : 'light';
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      applyTheme(newTheme);
-      localStorage.setItem('anava-theme', newTheme);
+      const applyAndPersist = () => {
+        applyTheme(newTheme);
+        localStorage.setItem('anava-theme', newTheme);
+        updateThemeToggleA11y(toggleBtn, newTheme);
+      };
+
+      if (!prefersReducedMotion && document.startViewTransition) {
+        document.startViewTransition(applyAndPersist);
+      } else {
+        applyAndPersist();
+      }
     });
   }
 }
@@ -48,12 +68,19 @@ function updateThemeIcons(theme) {
   const moonIcon = toggleBtn.querySelector('.moon-icon');
 
   if (theme === 'light') {
-    if (sunIcon) sunIcon.style.display = 'block';
-    if (moonIcon) moonIcon.style.display = 'none';
+    if (sunIcon) sunIcon.classList.remove('icon-hidden');
+    if (moonIcon) moonIcon.classList.add('icon-hidden');
   } else {
-    if (sunIcon) sunIcon.style.display = 'none';
-    if (moonIcon) moonIcon.style.display = 'block';
+    if (sunIcon) sunIcon.classList.add('icon-hidden');
+    if (moonIcon) moonIcon.classList.remove('icon-hidden');
   }
+}
+
+function updateThemeToggleA11y(toggleBtn, theme) {
+  if (!toggleBtn) return;
+  const switchingTo = theme === 'light' ? 'dark' : 'light';
+  toggleBtn.setAttribute('aria-label', `Switch to ${switchingTo} mode`);
+  toggleBtn.setAttribute('aria-pressed', String(theme === 'light'));
 }
 
 /* --------------------------------------------------------------------------
@@ -629,7 +656,7 @@ function initModals() {
     let mediaBlockHtml;
     if (isPhotoGallery) {
       const galleryItemsHtml = data.images.map(img => `
-        <a href="${img.full}" target="_blank" rel="noopener" style="display: block; aspect-ratio: 3/4; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-light);">
+        <a href="${img.full}" target="_blank" rel="noopener" style="display: block; aspect-ratio: 3/4; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-subtle);">
           <img src="${img.thumb}" loading="lazy" alt="${data.title} photoshoot" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
         </a>
       `).join('');
@@ -637,7 +664,7 @@ function initModals() {
       mediaBlockHtml = `
         <div style="margin-bottom: 1.5rem;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
-            <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;">THE PHOTOSHOOT</h4>
+            <h4 style="color: var(--accent); font-family: var(--font-display); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;">THE PHOTOSHOOT</h4>
             <span style="font-size: 0.75rem; color: var(--text-muted);">${data.images.length} photos · click to view full size</span>
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.6rem; max-height: 480px; overflow-y: auto; padding-right: 0.4rem;">
@@ -655,10 +682,10 @@ function initModals() {
       mediaBlockHtml = `
         <div style="margin-bottom: 2.5rem;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
-            <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;">THE FINAL FILM</h4>
+            <h4 style="color: var(--accent); font-family: var(--font-display); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;">THE FINAL FILM</h4>
             <span style="font-size: 0.75rem; color: var(--text-muted);">HD Playback</span>
           </div>
-          <div style="position: relative; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-light); box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
+          <div style="position: relative; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-subtle); box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
             ${videoPlayerHtml}
           </div>
         </div>
@@ -667,24 +694,24 @@ function initModals() {
 
     modalContainer.innerHTML = `
       <div style="margin-bottom: 1.5rem;">
-        <span style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">${data.format}</span>
+        <span style="color: var(--accent); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">${data.format}</span>
         <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; margin-top: 0.4rem; line-height: 1.2;">${data.title}</h2>
       </div>
 
       <!-- Meta Row: CLIENT / FORMAT / ANAVA'S ROLE -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); padding: 1rem 1.4rem; border-radius: 8px; margin-bottom: 2rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.2rem; background: var(--bg-base); border: 1px solid var(--border-subtle); padding: 1rem 1.4rem; border-radius: 8px; margin-bottom: 2rem;">
         <div>
           <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">CLIENT</div>
-          <div style="font-size: 1rem; font-weight: 700; color: #fff; margin-top: 0.2rem;">${data.client}</div>
+          <div style="font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-top: 0.2rem;">${data.client}</div>
         </div>
         <div>
           <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">FORMAT</div>
-          <div style="font-size: 0.95rem; font-weight: 600; color: var(--accent-gold); margin-top: 0.2rem;">${data.format}</div>
+          <div style="font-size: 0.95rem; font-weight: 600; color: var(--accent); margin-top: 0.2rem;">${data.format}</div>
         </div>
         <div style="grid-column: 1 / -1;">
           <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem;">ANAVA’S ROLE</div>
           <div class="role-badges" style="margin-top: 0;">
-            ${data.roles.map(r => `<span class="role-badge" style="background: rgba(245, 183, 25, 0.15); color: var(--accent-gold); border-color: rgba(245, 183, 25, 0.35); font-size: 0.75rem;">${r}</span>`).join('')}
+            ${data.roles.map(r => `<span class="role-badge" style="background: rgba(245, 183, 25, 0.15); color: var(--accent); border-color: rgba(245, 183, 25, 0.35); font-size: 0.75rem;">${r}</span>`).join('')}
           </div>
         </div>
       </div>
@@ -692,19 +719,19 @@ function initModals() {
       <!-- 4 CONTENT BLOCKS: MEDIA (Prominent Top), THE THOUGHT, THE IDEA, THE MAKING -->
       ${mediaBlockHtml}
 
-      <div style="display: grid; gap: 1.8rem; border-top: 1px solid var(--border-light); padding-top: 2rem;">
+      <div style="display: grid; gap: 1.8rem; border-top: 1px solid var(--border-subtle); padding-top: 2rem;">
         <div>
-          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">THE THOUGHT (CLIENT BRIEF)</h4>
+          <h4 style="color: var(--accent); font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">THE THOUGHT (CLIENT BRIEF)</h4>
           <p style="color: var(--text-muted); line-height: 1.65; margin-top: 0.4rem; font-size: 0.95rem;">${data.thought}</p>
         </div>
 
         <div>
-          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">THE IDEA (ANAVA'S CONCEPT)</h4>
+          <h4 style="color: var(--accent); font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">THE IDEA (ANAVA'S CONCEPT)</h4>
           <p style="color: var(--text-muted); line-height: 1.65; margin-top: 0.4rem; font-size: 0.95rem;">${data.idea}</p>
         </div>
 
         <div>
-          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">THE MAKING (EXECUTION)</h4>
+          <h4 style="color: var(--accent); font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">THE MAKING (EXECUTION)</h4>
           <p style="color: var(--text-muted); line-height: 1.65; margin-top: 0.4rem; font-size: 0.95rem;">${data.making}</p>
         </div>
       </div>
@@ -796,8 +823,8 @@ function initContactForm() {
     if (feedbackEl) {
       feedbackEl.style.display = 'block';
       feedbackEl.innerHTML = `
-        <div style="background: rgba(245, 183, 25, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
-          ✨ <strong>Almost there!</strong> Your email app should now be open with your thought pre-filled — just hit send. If nothing opened, email us directly at <a href="mailto:${CONTACT_EMAIL}" style="color: var(--accent-gold);">${CONTACT_EMAIL}</a>.
+        <div style="background: rgba(245, 183, 25, 0.15); border: 1px solid var(--accent); padding: 1.2rem; border-radius: 8px; color: var(--text-primary); font-size: 0.95rem; margin-top: 1rem;">
+          ✨ <strong>Almost there!</strong> Your email app should now be open with your thought pre-filled — just hit send. If nothing opened, email us directly at <a href="mailto:${CONTACT_EMAIL}" style="color: var(--accent);">${CONTACT_EMAIL}</a>.
         </div>
       `;
 

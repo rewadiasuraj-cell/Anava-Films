@@ -2,18 +2,12 @@
    ANAVA FILMS — Master Design System & Style Definitions (Production Quality)
    ========================================================================== */
 
+/* ==========================================================================
+   THEME TOKEN SYSTEM — Light / Dark, switched via [data-theme] on <html>.
+   Non-color tokens (fonts, radii, layout) live only in :root — they never
+   change between themes.
+   ========================================================================== */
 :root {
-  --bg-dark: #08090b;
-  --bg-card: #12141a;
-  --bg-card-hover: #1a1d26;
-  --accent-gold: #f5b719;
-  --accent-gold-hover: #ffc425;
-  --accent-gold-glow: rgba(245, 183, 25, 0.35);
-  --text-main: #ffffff;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --border-light: rgba(255, 255, 255, 0.12);
-  --border-active: rgba(245, 183, 25, 0.6);
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -23,36 +17,123 @@
   --radius-md: 16px;
   --radius-lg: 24px;
   --transition-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --theme-transition-duration: 450ms;
+  --theme-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Fallback palette (dark) — overridden below by an explicit [data-theme]
+     as soon as the no-flash boot script runs, before first paint. */
+  --bg-base: #0A0A0A;
+  --bg-elevated: #141414;
+  --bg-elevated-hover: #1D1D1D;
+  --nav-bg: rgba(20, 20, 20, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --accent: #F5B81C;
+  --accent-hover: #FFC940;
+  --accent-glow: rgba(245, 184, 28, 0.35);
+  --text-primary: #FFFFFF;
+  --text-secondary: #B4B4B4;
+  --text-muted: #7A7A7A;
+  --border-subtle: rgba(255, 255, 255, 0.10);
+  --border-accent: rgba(245, 184, 28, 0.6);
+  --btn-outline-border: rgba(255, 255, 255, 0.25);
+  --btn-outline-text: #FFFFFF;
+  --overlay-scrim: linear-gradient(90deg, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.7) 45%, rgba(10,10,10,0.25) 100%);
+  --hero-vignette: radial-gradient(circle at 50% 40%, transparent 40%, rgba(0,0,0,0.55) 100%);
+  --cta-glow: 0 0 40px rgba(245, 184, 28, 0.25);
 }
 
 /* ==========================================================================
-   LIGHT MODE DESIGN SYSTEM & CONTRAST PALETTE
+   LIGHT THEME
    ========================================================================== */
 html[data-theme="light"] {
-  --bg-dark: #f8fafc;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
-  --text-main: #090d16;
-  --text-muted: #475569;
-  --text-dim: #64748b;
-  --border-light: rgba(0, 0, 0, 0.1);
-  --border-active: rgba(245, 183, 25, 0.8);
+  --bg-base: #F2F1EE;
+  --bg-elevated: #FFFFFF;
+  --bg-elevated-hover: #EAE8E3;
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --nav-border: rgba(0, 0, 0, 0.06);
+  --accent: #F5B81C;
+  --accent-hover: #E0A20F;
+  --accent-glow: rgba(245, 184, 28, 0.30);
+  --text-primary: #131313;
+  --text-secondary: #4A4A4A;
+  --text-muted: #8A8A8A;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-accent: rgba(245, 184, 28, 0.7);
+  --btn-outline-border: rgba(19, 19, 19, 0.25);
+  --btn-outline-text: #131313;
+  --overlay-scrim: linear-gradient(90deg, rgba(242,241,238,0.95) 0%, rgba(242,241,238,0.6) 45%, transparent 75%);
+  --hero-vignette: none;
+  --cta-glow: 0 0 0 rgba(0, 0, 0, 0);
 }
 
-/* 1. Header & Navigation in Light Mode */
-html[data-theme="light"] .main-header {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+/* ==========================================================================
+   DARK THEME (explicit — same values as the :root fallback, restated so the
+   toggle can move to either state deterministically)
+   ========================================================================== */
+html[data-theme="dark"] {
+  --bg-base: #0A0A0A;
+  --bg-elevated: #141414;
+  --bg-elevated-hover: #1D1D1D;
+  --nav-bg: rgba(20, 20, 20, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --accent: #F5B81C;
+  --accent-hover: #FFC940;
+  --accent-glow: rgba(245, 184, 28, 0.35);
+  --text-primary: #FFFFFF;
+  --text-secondary: #B4B4B4;
+  --text-muted: #7A7A7A;
+  --border-subtle: rgba(255, 255, 255, 0.10);
+  --border-accent: rgba(245, 184, 28, 0.6);
+  --btn-outline-border: rgba(255, 255, 255, 0.25);
+  --btn-outline-text: #FFFFFF;
+  --overlay-scrim: linear-gradient(90deg, rgba(10,10,10,0.96) 0%, rgba(10,10,10,0.7) 45%, rgba(10,10,10,0.25) 100%);
+  --hero-vignette: radial-gradient(circle at 50% 40%, transparent 40%, rgba(0,0,0,0.55) 100%);
+  --cta-glow: 0 0 40px rgba(245, 184, 28, 0.25);
 }
 
-html[data-theme="light"] .main-header.scrolled {
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(0, 0, 0, 0.14);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+/* Themed properties fade on toggle; kept OFF of `*` so layout/scroll
+   performance is untouched. Disabled entirely for reduced-motion, and
+   suppressed on first paint via .preload (removed on window.load). */
+body, .main-header, .work-card, .leadership-card, .testimonial-card,
+.tmf-bucket, .contact-info-card, .contact-form-card, .form-control,
+.btn-outline, .btn-primary, .footer-link, .nav-link, .role-badge,
+.filter-btn, .sub-filter-btn, .work-category-tag, .modal-content,
+.process-step, .step-number-box, svg, path {
+  transition: background-color var(--theme-transition-duration) var(--theme-transition-easing),
+              color var(--theme-transition-duration) var(--theme-transition-easing),
+              border-color var(--theme-transition-duration) var(--theme-transition-easing),
+              fill var(--theme-transition-duration) var(--theme-transition-easing),
+              stroke var(--theme-transition-duration) var(--theme-transition-easing);
 }
 
-/* 2. Logo Visibility (Default: Crisp Pure White in Dark Mode, Crisp Pure Black in Light Mode) */
+html.preload,
+html.preload * {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body, .main-header, .work-card, .leadership-card, .testimonial-card,
+  .tmf-bucket, .contact-info-card, .contact-form-card, .form-control,
+  .btn-outline, .btn-primary, .footer-link, .nav-link, .role-badge,
+  .filter-btn, .sub-filter-btn, .work-category-tag, .modal-content,
+  .process-step, .step-number-box, svg, path,
+  .theme-toggle-btn .sun-icon, .theme-toggle-btn .moon-icon,
+  .hero-photo-light, .hero-photo-dark {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* View Transitions API cross-dissolve (progressive enhancement — browsers
+   without support just get the CSS fades above). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 450ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Logo filter is a CSS filter transform, not a color — genuinely needs an
+   explicit value per theme. */
 .brand-logo-img,
 .footer-logo img,
 .intro-wordmark-img {
@@ -65,188 +146,13 @@ html[data-theme="light"] .intro-wordmark-img {
   filter: brightness(0);
 }
 
-/* 3. Navigation Links in Light Mode */
-html[data-theme="light"] .nav-link {
-  color: #334155;
-}
-
-html[data-theme="light"] .nav-link:hover,
-html[data-theme="light"] .nav-link.active {
-  color: #000000;
-}
-
-html[data-theme="light"] .nav-link::after {
-  background: #f5b719;
-}
-
-/* 4. Theme Toggle Button in Light Mode */
-html[data-theme="light"] .theme-toggle-btn {
-  background: rgba(0, 0, 0, 0.06);
-  border-color: rgba(0, 0, 0, 0.15);
-  color: #0f172a;
-}
-
-html[data-theme="light"] .theme-toggle-btn:hover {
-  background: rgba(245, 183, 25, 0.2);
-  border-color: #f5b719;
-}
-
-/* 5. Mobile Menu in Light Mode */
-html[data-theme="light"] .hamburger-bar {
-  background-color: #0f172a;
-}
-
-html[data-theme="light"] .main-nav.mobile-active {
-  background: rgba(255, 255, 255, 0.98);
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-}
-
-/* 6. Buttons & Badges in Light Mode */
-html[data-theme="light"] .btn-outline {
-  border-color: rgba(0, 0, 0, 0.25);
-  color: #0f172a;
-}
-
-html[data-theme="light"] .btn-outline:hover {
-  background: #0f172a;
-  color: #ffffff;
-  border-color: #0f172a;
-}
-
-html[data-theme="light"] .hero-badge {
-  background: rgba(245, 183, 25, 0.18);
-  border: 1px solid rgba(245, 183, 25, 0.45);
-  color: #92400e;
-}
-
-/* 7. Work Cards & Filters in Light Mode */
-html[data-theme="light"] .work-card {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
-
-html[data-theme="light"] .work-card-title {
-  color: #090d16;
-}
-
+/* Amber "hero-badge" / "work-category-tag" family reads as a warm label in
+   both themes, but needs a darker text tone on the lighter chip background
+   to hold contrast — kept as one small explicit pairing rather than a token,
+   since it's a single fixed decorative combination, not a themed surface. */
+html[data-theme="light"] .hero-badge,
 html[data-theme="light"] .work-category-tag {
-  color: #92400e;
-}
-
-html[data-theme="light"] .role-badge {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.1);
-  color: #334155;
-}
-
-html[data-theme="light"] .secondary-filter-container {
-  background: #f1f5f9;
-  border-color: rgba(0, 0, 0, 0.08);
-}
-
-html[data-theme="light"] .sub-filter-btn {
-  border-color: rgba(0, 0, 0, 0.15);
-  color: #475569;
-}
-
-/* 8. Sections & Components in Light Mode */
-html[data-theme="light"] .thinkers-section {
-  background: #f1f5f9;
-}
-
-html[data-theme="light"] .thinkers-flow-banner {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-}
-
-html[data-theme="light"] .thinkers-node {
-  color: #090d16;
-}
-
-html[data-theme="light"] .tmf-bucket {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-}
-
-html[data-theme="light"] .tmf-item-title {
-  color: #090d16;
-}
-
-html[data-theme="light"] .leadership-card {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-}
-
-html[data-theme="light"] .leadership-name {
-  color: #090d16;
-}
-
-html[data-theme="light"] .testimonial-card {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-}
-
-html[data-theme="light"] .testimonial-quote {
-  color: #1e293b;
-}
-
-html[data-theme="light"] .author-name {
-  color: #090d16;
-}
-
-html[data-theme="light"] .contact-info-card,
-html[data-theme="light"] .contact-form-card {
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
-}
-
-html[data-theme="light"] .form-control {
-  background: #f8fafc;
-  border-color: rgba(0, 0, 0, 0.15);
-  color: #090d16;
-}
-
-html[data-theme="light"] .form-control:focus {
-  background: #ffffff;
-  border-color: #f5b719;
-}
-
-html[data-theme="light"] .contact-email-link,
-html[data-theme="light"] .contact-meta-value {
-  color: #090d16;
-}
-
-html[data-theme="light"] .step-number-box {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-}
-
-html[data-theme="light"] .step-number,
-html[data-theme="light"] .step-title {
-  color: #090d16;
-}
-
-html[data-theme="light"] .locations-cities {
-  color: #090d16;
-}
-
-html[data-theme="light"] .modal-content {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.15);
-  color: #090d16;
-}
-
-html[data-theme="light"] .modal-close-btn {
-  color: #090d16;
-  background: rgba(0, 0, 0, 0.06);
+  color: #8A5A00;
 }
 
 /* ==========================================================================
@@ -507,7 +413,7 @@ html[data-theme="light"] .modal-close-btn {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: var(--accent-gold);
+  color: var(--accent);
 }
 
 .showreel-badge .live-dot {
@@ -544,7 +450,7 @@ html[data-theme="light"] .modal-close-btn {
 
 .showreel-meta-sub {
   font-size: 0.9rem;
-  color: var(--accent-gold);
+  color: var(--accent);
   font-weight: 600;
   letter-spacing: 0.1em;
   margin-top: 0.2rem;
@@ -568,9 +474,9 @@ html[data-theme="light"] .modal-close-btn {
 }
 
 .showreel-sound-toggle:hover {
-  background: var(--accent-gold);
+  background: var(--accent);
   color: #000;
-  border-color: var(--accent-gold);
+  border-color: var(--accent);
 }
 
 /* ==========================================================================
@@ -578,7 +484,7 @@ html[data-theme="light"] .modal-close-btn {
    ========================================================================== */
 .thinkers-section {
   padding: 6rem 0;
-  background: var(--bg-card);
+  background: var(--bg-elevated);
   position: relative;
   overflow: hidden;
 }
@@ -592,7 +498,7 @@ html[data-theme="light"] .modal-close-btn {
   margin: 3.5rem 0 1rem;
   padding: 1.8rem 1.5rem;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
 }
 
@@ -601,19 +507,19 @@ html[data-theme="light"] .modal-close-btn {
   font-size: clamp(1.6rem, 3.5vw, 2.6rem);
   font-weight: 900;
   letter-spacing: 0.08em;
-  color: #ffffff;
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
 .thinkers-node.active-gold {
-  color: var(--accent-gold);
+  color: var(--accent);
 }
 
 .thinkers-arrow {
   font-size: clamp(1.5rem, 3vw, 2.4rem);
-  color: var(--accent-gold);
+  color: var(--accent);
   opacity: 0.8;
   user-select: none;
   animation: arrowPulse 2s ease-in-out infinite;
@@ -629,7 +535,7 @@ html[data-theme="light"] .modal-close-btn {
    ========================================================================== */
 .locations-section {
   padding: 5rem 0;
-  background: var(--bg-dark);
+  background: var(--bg-base);
   text-align: center;
   position: relative;
 }
@@ -640,7 +546,7 @@ html[data-theme="light"] .modal-close-btn {
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--accent-gold);
+  color: var(--accent);
   margin-bottom: 0.8rem;
 }
 
@@ -650,19 +556,19 @@ html[data-theme="light"] .modal-close-btn {
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--text-main);
+  color: var(--text-primary);
   line-height: 1.1;
   margin-bottom: 1rem;
 }
 
 .locations-cities .city-dot {
-  color: var(--accent-gold);
+  color: var(--accent);
   margin: 0 0.5rem;
 }
 
 .locations-supporting {
   font-size: 1.15rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -674,8 +580,8 @@ html[data-theme="light"] .modal-close-btn {
   display: none;
   margin-top: 1.2rem;
   padding: 0.8rem 1.2rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-light);
+  background: var(--bg-elevated-hover);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
   align-items: center;
   gap: 0.8rem;
@@ -692,13 +598,13 @@ html[data-theme="light"] .modal-close-btn {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent-gold);
+  color: var(--accent);
 }
 
 .sub-filter-btn {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: var(--text-muted);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
   padding: 0.4rem 0.95rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -709,9 +615,9 @@ html[data-theme="light"] .modal-close-btn {
 
 .sub-filter-btn:hover,
 .sub-filter-btn.active {
-  background: var(--accent-gold);
+  background: var(--accent);
   color: #000;
-  border-color: var(--accent-gold);
+  border-color: var(--accent);
 }
 
 @keyframes fadeInDown {
@@ -731,8 +637,8 @@ html {
 }
 
 body {
-  background-color: var(--bg-dark);
-  color: var(--text-main);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
   overflow-x: hidden;
@@ -762,7 +668,7 @@ img, video {
 }
 
 .border-top-divider {
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-subtle);
 }
 
 /* Typography */
@@ -782,7 +688,7 @@ img, video {
   line-height: 1.15;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 /* Reusable Metallic / Chrome Accent Text System */
@@ -855,12 +761,12 @@ html[data-theme="light"] .text-metallic {
 }
 
 .text-gold {
-  color: var(--accent-gold);
+  color: var(--accent);
 }
 
 .subtitle {
   font-size: clamp(1rem, 1.3vw, 1.2rem);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   max-width: 680px;
   margin-top: 1.2rem;
 }
@@ -1008,7 +914,7 @@ html[data-theme="light"] .text-metallic {
   font-style: italic;
   font-weight: 600;
   font-size: clamp(0.95rem, 1.8vw, 1.25rem);
-  color: var(--accent-gold);
+  color: var(--accent);
   text-align: center;
   letter-spacing: 0.05em;
   opacity: 0;
@@ -1031,9 +937,9 @@ html[data-theme="light"] .text-metallic {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-subtle);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding: 0.6rem 1.6rem;
@@ -1045,7 +951,7 @@ html[data-theme="light"] .text-metallic {
 
 .skip-intro-btn:hover {
   color: #ffffff;
-  border-color: var(--accent-gold);
+  border-color: var(--accent);
   background: rgba(245, 183, 25, 0.15);
   box-shadow: 0 0 15px rgba(245, 183, 25, 0.25);
 }
@@ -1063,20 +969,20 @@ html[data-theme="light"] .text-metallic {
   max-width: 1320px;
   height: 68px;
   z-index: 1000;
-  background: rgba(12, 13, 16, 0.72);
+  background: var(--nav-bg);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--nav-border);
   border-radius: 999px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35), inset 0 1px 0 var(--border-subtle);
   transition: background 0.3s var(--transition-smooth), border-color 0.3s, box-shadow 0.3s;
 }
 
 .main-header.scrolled {
   top: 1.2rem;
-  background: rgba(8, 9, 11, 0.88);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: var(--nav-bg);
+  border-color: var(--nav-border);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 var(--border-subtle);
 }
 
 .header-container {
@@ -1143,14 +1049,14 @@ html[data-theme="light"] .text-metallic {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   white-space: nowrap;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--text-secondary);
   position: relative;
   padding: 0.4rem 0;
   transition: color 250ms ease;
 }
 
 .nav-link:hover, .nav-link.active {
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .nav-link::after {
@@ -1160,7 +1066,7 @@ html[data-theme="light"] .text-metallic {
   left: 0;
   width: 0%;
   height: 3px;
-  background: var(--accent-gold);
+  background: var(--accent);
   border-radius: 2px;
   transition: width 250ms ease;
 }
@@ -1170,35 +1076,53 @@ html[data-theme="light"] .text-metallic {
 }
 
 .theme-toggle-btn {
+  position: relative;
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: var(--border-subtle);
+  border: 1px solid var(--border-subtle);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: var(--text-main);
+  color: var(--text-primary);
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
 .theme-toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: var(--accent-glow);
+  border-color: var(--accent);
   transform: scale(1.06);
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .theme-toggle-btn svg {
   width: 18px;
   height: 18px;
   fill: currentColor;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  opacity: 1;
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1), transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-toggle-btn svg.icon-hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5) rotate(90deg);
+  pointer-events: none;
 }
 
 .btn-header-cta {
-  background: #f5b719;
+  background: var(--accent);
   color: #000000;
   font-family: var(--font-body);
   font-weight: 800;
@@ -1215,7 +1139,7 @@ html[data-theme="light"] .text-metallic {
 }
 
 .btn-header-cta:hover {
-  background: #ffc425;
+  background: var(--accent-hover);
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 8px 25px rgba(245, 183, 25, 0.6);
   color: #000000;
@@ -1226,7 +1150,7 @@ html[data-theme="light"] .text-metallic {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: var(--accent-gold);
+  background: var(--accent);
   color: #000000;
   font-family: var(--font-display);
   font-weight: 800;
@@ -1235,18 +1159,18 @@ html[data-theme="light"] .text-metallic {
   letter-spacing: 0.1em;
   padding: 0.85rem 1.8rem;
   border-radius: 50px;
-  border: 1px solid var(--accent-gold);
+  border: 1px solid var(--accent);
   cursor: pointer;
   transition: all 0.3s var(--transition-smooth);
-  box-shadow: 0 4px 20px var(--accent-gold-glow);
+  box-shadow: 0 4px 20px var(--accent-glow), var(--cta-glow);
 }
 
 .btn-primary:hover {
-  background: #ffffff;
-  border-color: #ffffff;
-  color: #000000;
+  background: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg-base);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 30px var(--border-subtle);
 }
 
 .btn-outline {
@@ -1254,7 +1178,7 @@ html[data-theme="light"] .text-metallic {
   align-items: center;
   gap: 0.6rem;
   background: transparent;
-  color: var(--text-main);
+  color: var(--btn-outline-text);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.85rem;
@@ -1262,14 +1186,14 @@ html[data-theme="light"] .text-metallic {
   letter-spacing: 0.1em;
   padding: 0.85rem 1.8rem;
   border-radius: 50px;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--btn-outline-border);
   cursor: pointer;
   transition: all 0.3s var(--transition-smooth);
 }
 
 .btn-outline:hover {
-  border-color: var(--accent-gold);
-  color: var(--accent-gold);
+  border-color: var(--accent);
+  color: var(--accent);
   background: rgba(245, 183, 25, 0.08);
 }
 
@@ -1287,18 +1211,18 @@ html[data-theme="light"] .text-metallic {
   letter-spacing: 0.08em;
   padding: 0.65rem 1.5rem;
   border-radius: 50px;
-  background: var(--bg-card);
-  color: var(--text-main);
-  border: 1px solid var(--border-light);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .filter-btn.active, .filter-btn:hover {
-  background: var(--accent-gold);
+  background: var(--accent);
   color: #000000;
-  border-color: var(--accent-gold);
-  box-shadow: 0 4px 18px var(--accent-gold-glow);
+  border-color: var(--accent);
+  box-shadow: 0 4px 18px var(--accent-glow);
   font-weight: 800;
 }
 
@@ -1317,9 +1241,43 @@ html[data-theme="light"] .text-metallic {
   align-items: center;
   padding-top: 140px;
   padding-bottom: 4rem;
-  background-image: linear-gradient(180deg, rgba(8, 9, 11, 0.75) 0%, rgba(8, 9, 11, 0.95) 100%), url('../images/hero_bg.jpg');
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+/* Two hero photos (bright studio shot for light, moody low-key shot for
+   dark) are stacked and cross-faded via opacity — never swap `src`, so the
+   change never flashes empty. */
+.hero-photo-stack {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+
+html[data-theme="light"] .hero-photo-light {
+  opacity: 1;
+}
+
+html[data-theme="dark"] .hero-photo-dark {
+  opacity: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: var(--overlay-scrim), var(--hero-vignette);
+  pointer-events: none;
 }
 
 .hero-content {
@@ -1334,7 +1292,7 @@ html[data-theme="light"] .text-metallic {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--accent-gold);
+  color: var(--accent);
   background: rgba(245, 183, 25, 0.1);
   border: 1px solid rgba(245, 183, 25, 0.3);
   padding: 0.4rem 1.2rem;
@@ -1351,12 +1309,12 @@ html[data-theme="light"] .text-metallic {
   text-transform: uppercase;
   max-width: 900px;
   margin-bottom: 1.5rem;
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 .hero-description {
   font-size: clamp(1rem, 1.3vw, 1.15rem);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   max-width: 680px;
   line-height: 1.7;
 }
@@ -1376,8 +1334,8 @@ html[data-theme="light"] .text-metallic {
 }
 
 .pillar-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   padding: 2rem 1.5rem;
   border-radius: var(--radius-md);
   text-align: center;
@@ -1385,14 +1343,14 @@ html[data-theme="light"] .text-metallic {
 }
 
 .pillar-card:hover {
-  border-color: var(--border-active);
+  border-color: var(--border-accent);
   transform: translateY(-5px);
 }
 
 .pillar-num {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--accent-gold);
+  color: var(--accent);
   letter-spacing: 0.1em;
   margin-bottom: 0.6rem;
 }
@@ -1402,7 +1360,7 @@ html[data-theme="light"] .text-metallic {
   font-size: 1.2rem;
   font-weight: 800;
   letter-spacing: 0.05em;
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 /* Point 4: Work Grid & Cards (Always Visible Content) */
@@ -1413,10 +1371,10 @@ html[data-theme="light"] .text-metallic {
 }
 
 .work-card {
-  background: var(--bg-card);
+  background: var(--bg-elevated);
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-subtle);
   transition: all 0.4s var(--transition-smooth);
   cursor: pointer;
   display: flex;
@@ -1425,7 +1383,7 @@ html[data-theme="light"] .text-metallic {
 
 .work-card:hover {
   transform: translateY(-8px);
-  border-color: var(--border-active);
+  border-color: var(--border-accent);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 183, 25, 0.15);
 }
 
@@ -1465,13 +1423,13 @@ html[data-theme="light"] .text-metallic {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: var(--accent-gold);
+  background: var(--accent);
   color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  box-shadow: 0 0 25px var(--accent-gold-glow);
+  box-shadow: 0 0 25px var(--accent-glow);
   transform: scale(0.85);
   transition: transform 0.3s var(--transition-smooth);
 }
@@ -1486,7 +1444,7 @@ html[data-theme="light"] .text-metallic {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  background: var(--bg-card);
+  background: var(--bg-elevated);
 }
 
 .work-category-tag {
@@ -1494,7 +1452,7 @@ html[data-theme="light"] .text-metallic {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--accent-gold);
+  color: var(--accent);
   margin-bottom: 0.6rem;
 }
 
@@ -1504,12 +1462,12 @@ html[data-theme="light"] .text-metallic {
   font-weight: 800;
   line-height: 1.3;
   margin-bottom: 0.6rem;
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 .work-card-desc {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 1.2rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -1531,10 +1489,10 @@ html[data-theme="light"] .text-metallic {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   background: rgba(245, 183, 25, 0.08);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   padding: 0.25rem 0.65rem;
   border-radius: 4px;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-subtle);
 }
 
 /* Think Make Finish 3-Column Grid */
@@ -1545,8 +1503,8 @@ html[data-theme="light"] .text-metallic {
 }
 
 .tmf-bucket {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   display: flex;
@@ -1557,7 +1515,7 @@ html[data-theme="light"] .text-metallic {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-subtle);
   padding-bottom: 1.2rem;
   margin-bottom: 1.8rem;
 }
@@ -1567,13 +1525,13 @@ html[data-theme="light"] .text-metallic {
   font-size: 2rem;
   font-weight: 900;
   letter-spacing: 0.05em;
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 .tmf-num {
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--accent-gold);
+  color: var(--accent);
   letter-spacing: 0.1em;
 }
 
@@ -1591,7 +1549,7 @@ html[data-theme="light"] .text-metallic {
 }
 
 .tmf-item-icon {
-  color: var(--accent-gold);
+  color: var(--accent);
   font-size: 0.8rem;
   margin-top: 0.2rem;
 }
@@ -1600,12 +1558,12 @@ html[data-theme="light"] .text-metallic {
   font-weight: 700;
   font-size: 0.95rem;
   margin-bottom: 0.2rem;
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 .tmf-item-desc {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 
@@ -1614,8 +1572,8 @@ html[data-theme="light"] .text-metallic {
   display: grid;
   grid-template-columns: 90px 1fr;
   gap: 2rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   padding: 2.2rem;
   border-radius: var(--radius-md);
   margin-bottom: 1.8rem;
@@ -1627,7 +1585,7 @@ html[data-theme="light"] .text-metallic {
   height: 85px;
   border-radius: 14px;
   background: rgba(245, 183, 25, 0.12);
-  border: 2px solid var(--accent-gold);
+  border: 2px solid var(--accent);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1635,7 +1593,7 @@ html[data-theme="light"] .text-metallic {
   font-family: var(--font-display);
   font-size: 1.8rem;
   font-weight: 900;
-  color: var(--accent-gold);
+  color: var(--accent);
   line-height: 1;
   flex-shrink: 0;
 }
@@ -1651,13 +1609,13 @@ html[data-theme="light"] .text-metallic {
   font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 800;
-  color: var(--text-main);
+  color: var(--text-primary);
   margin-bottom: 0.6rem;
 }
 
 .process-step-desc {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
@@ -1666,8 +1624,8 @@ html[data-theme="light"] .text-metallic {
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 2.5rem;
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   padding: 2.5rem;
   border-radius: var(--radius-lg);
   margin-bottom: 2rem;
@@ -1678,7 +1636,7 @@ html[data-theme="light"] .text-metallic {
   aspect-ratio: 4/5;
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-subtle);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
@@ -1697,8 +1655,8 @@ html[data-theme="light"] .text-metallic {
 }
 
 .contact-info-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 3rem 2.5rem;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
@@ -1707,8 +1665,8 @@ html[data-theme="light"] .text-metallic {
 }
 
 .contact-form-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 3rem 2.5rem;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
@@ -1719,7 +1677,7 @@ html[data-theme="light"] .text-metallic {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--accent-gold);
+  color: var(--accent);
   margin-bottom: 0.8rem;
 }
 
@@ -1727,20 +1685,20 @@ html[data-theme="light"] .text-metallic {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 4vw, 3rem);
   font-weight: 900;
-  color: var(--text-main);
+  color: var(--text-primary);
   letter-spacing: 0.01em;
   margin-bottom: 1.2rem;
 }
 
 .contact-subtitle-desc {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.65;
   margin-bottom: 2rem;
 }
 
 .contact-meta-divider {
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-subtle);
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -1752,32 +1710,32 @@ html[data-theme="light"] .text-metallic {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--accent-gold);
+  color: var(--accent);
   margin-bottom: 0.3rem;
 }
 
 .contact-email-link {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--text-primary);
   text-decoration: underline;
   transition: color 0.2s;
 }
 
 .contact-email-link:hover {
-  color: var(--accent-gold);
+  color: var(--accent);
 }
 
 .contact-meta-value {
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 .contact-philosophy-quote {
   font-size: 1.05rem;
   font-style: italic;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.5;
 }
 
@@ -1791,7 +1749,7 @@ html[data-theme="light"] .text-metallic {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   margin-bottom: 0.6rem;
 }
 
@@ -1801,20 +1759,20 @@ html[data-theme="light"] .text-metallic {
   font-family: var(--font-body);
   font-size: 0.95rem;
   border-radius: 10px;
-  background: rgba(8, 9, 11, 0.7);
-  color: var(--text-main);
-  border: 1px solid var(--border-light);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
   transition: all 0.3s ease;
   outline: none;
 }
 
 .form-control::placeholder {
-  color: var(--text-dim);
+  color: var(--text-muted);
 }
 
 .form-control:focus {
-  border-color: var(--accent-gold);
-  box-shadow: 0 0 20px var(--accent-gold-glow);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 select.form-control {
@@ -1832,8 +1790,8 @@ textarea.form-control {
 
 /* Master Footer */
 .main-footer {
-  background: var(--bg-dark);
-  border-top: 1px solid var(--border-light);
+  background: var(--bg-base);
+  border-top: 1px solid var(--border-subtle);
   padding: 5rem 0 3rem;
 }
 
@@ -1868,7 +1826,7 @@ textarea.form-control {
 
 .footer-desc {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   max-width: 380px;
 }
 
@@ -1883,7 +1841,7 @@ textarea.form-control {
   font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.1em;
-  color: var(--accent-gold);
+  color: var(--accent);
   margin-bottom: 1.2rem;
 }
 
@@ -1896,12 +1854,12 @@ textarea.form-control {
 
 .footer-link {
   font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   transition: color 0.2s;
 }
 
 .footer-link:hover {
-  color: var(--accent-gold);
+  color: var(--accent);
 }
 
 /* Leadership Cards Grid (The People Behind Anava — Premium Design) */
@@ -1918,8 +1876,8 @@ textarea.form-control {
 }
 
 .leadership-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 2.8rem 2.4rem;
   display: flex;
@@ -1929,7 +1887,7 @@ textarea.form-control {
 }
 
 .leadership-card:hover {
-  border-color: var(--border-active);
+  border-color: var(--border-accent);
   transform: translateY(-6px);
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 25px rgba(245, 183, 25, 0.15);
 }
@@ -1940,7 +1898,7 @@ textarea.form-control {
   gap: 1.5rem;
   margin-bottom: 1.8rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .leadership-photo-thumb {
@@ -1948,9 +1906,9 @@ textarea.form-control {
   height: 75px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid var(--accent-gold);
+  border: 2px solid var(--accent);
   flex-shrink: 0;
-  box-shadow: 0 0 20px var(--accent-gold-glow);
+  box-shadow: 0 0 20px var(--accent-glow);
 }
 
 .leadership-photo-thumb img {
@@ -1964,7 +1922,7 @@ textarea.form-control {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--accent-gold);
+  color: var(--accent);
   margin-bottom: 0.4rem;
 }
 
@@ -1972,14 +1930,14 @@ textarea.form-control {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 2.5vw, 2.1rem);
   font-weight: 900;
-  color: var(--text-main);
+  color: var(--text-primary);
   letter-spacing: 0.02em;
   line-height: 1.15;
 }
 
 .leadership-bio {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.7;
   display: flex;
   flex-direction: column;
@@ -1987,13 +1945,13 @@ textarea.form-control {
 }
 
 .leadership-bio strong {
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 .leadership-quote {
   font-size: 1.05rem;
-  color: var(--accent-gold);
-  border-left: 3px solid var(--accent-gold);
+  color: var(--accent);
+  border-left: 3px solid var(--accent);
   padding-left: 1.2rem;
   margin: 0.6rem 0;
   line-height: 1.5;
@@ -2012,8 +1970,8 @@ textarea.form-control {
   height: 104px;
   object-fit: cover;
   border-radius: 6px;
-  border: 3px solid var(--bg-card);
-  outline: 1px solid var(--border-light);
+  border: 3px solid var(--bg-elevated);
+  outline: 1px solid var(--border-subtle);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
@@ -2029,7 +1987,7 @@ textarea.form-control {
 .journey-photo-caption {
   font-size: 0.8rem;
   font-style: italic;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }
 
 /* Testimonials Grid (Why Brands & Collaborators Choose Anava — Screenshot 2) */
@@ -2041,8 +1999,8 @@ textarea.form-control {
 }
 
 .testimonial-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   display: flex;
@@ -2053,14 +2011,14 @@ textarea.form-control {
 }
 
 .testimonial-card:hover {
-  border-color: var(--border-active);
+  border-color: var(--border-accent);
   transform: translateY(-4px);
 }
 
 .testimonial-quote {
   font-size: 1rem;
   font-style: italic;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: 1.65;
   margin-bottom: 2.5rem;
 }
@@ -2069,7 +2027,7 @@ textarea.form-control {
   display: flex;
   align-items: center;
   gap: 1rem;
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-subtle);
   padding-top: 1.5rem;
 }
 
@@ -2078,8 +2036,8 @@ textarea.form-control {
   height: 48px;
   border-radius: 50%;
   background: rgba(245, 183, 25, 0.12);
-  border: 1.5px solid var(--accent-gold);
-  color: var(--accent-gold);
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
   font-family: var(--font-display);
   font-size: 0.9rem;
   font-weight: 800;
@@ -2093,22 +2051,22 @@ textarea.form-control {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--text-main);
+  color: var(--text-primary);
 }
 
 .author-role {
   font-size: 0.8rem;
-  color: var(--text-dim);
+  color: var(--text-muted);
   margin-top: 0.1rem;
 }
 
 .footer-bottom {
-  border-top: 1px solid var(--border-light);
+  border-top: 1px solid var(--border-subtle);
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
   font-size: 0.85rem;
-  color: var(--text-dim);
+  color: var(--text-muted);
 }
 
 /* Modals */
@@ -2132,16 +2090,18 @@ textarea.form-control {
   pointer-events: auto;
 }
 
-.modal-container {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+.modal-content {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
+  padding: 2.5rem;
   width: 100%;
   max-width: 900px;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+  color: var(--text-primary);
 }
 
 .modal-close-btn {
@@ -2151,9 +2111,9 @@ textarea.form-control {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--border-subtle);
   border: none;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 1.2rem;
   cursor: pointer;
   z-index: 10;
@@ -2164,132 +2124,8 @@ textarea.form-control {
 }
 
 .modal-close-btn:hover {
-  background: var(--accent-gold);
+  background: var(--accent);
   color: #000;
-}
-
-/* --------------------------------------------------------------------------
-   Point 1: Dual Theme System & Flawless Light Mode WCAG AA Contrast Fixes
-   -------------------------------------------------------------------------- */
-html[data-theme="light"] {
-  --bg-dark: #f8fafc;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-dim: #64748b;
-  --border-light: rgba(15, 23, 42, 0.14);
-  --border-active: rgba(212, 175, 55, 0.8);
-}
-
-html[data-theme="light"] body {
-  background: var(--bg-dark);
-  color: var(--text-main);
-}
-
-html[data-theme="light"] .main-header {
-  position: fixed;
-  top: 1.2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(94%, 1320px);
-  height: 68px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 100px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-}
-
-html[data-theme="light"] .main-header.scrolled {
-  top: 1.2rem;
-  background: rgba(255, 255, 255, 0.96);
-  border-color: rgba(0, 0, 0, 0.16);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
-}
-
-html[data-theme="light"] .theme-toggle-btn {
-  background: rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 0, 0, 0.14);
-  color: #0f172a;
-}
-
-html[data-theme="light"] .nav-link {
-  color: #334155;
-}
-
-html[data-theme="light"] .nav-link:hover,
-html[data-theme="light"] .nav-link.active {
-  color: #0f172a;
-}
-
-html[data-theme="light"] .silver-text {
-  background: linear-gradient(180deg, #0f172a 0%, #334155 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Point 2: Outline CTA contrast fix in Light Theme */
-html[data-theme="light"] .btn-outline {
-  color: #0f172a;
-  border: 2px solid rgba(15, 23, 42, 0.25);
-  background: rgba(15, 23, 42, 0.04);
-}
-
-html[data-theme="light"] .btn-outline:hover {
-  background: var(--accent-gold);
-  border-color: var(--accent-gold);
-  color: #000000;
-}
-
-/* Point 3: Filter pills in Light Theme */
-html[data-theme="light"] .filter-btn {
-  background: #ffffff;
-  color: #0f172a;
-  border: 1px solid rgba(15, 23, 42, 0.18);
-}
-
-html[data-theme="light"] .filter-btn.active,
-html[data-theme="light"] .filter-btn:hover {
-  background: var(--accent-gold);
-  color: #000000;
-  border-color: var(--accent-gold);
-}
-
-/* Point 9: Form inputs in Light Theme */
-html[data-theme="light"] .form-control {
-  background: #ffffff;
-  color: #0f172a;
-  border: 1px solid rgba(15, 23, 42, 0.2);
-}
-
-html[data-theme="light"] .form-control::placeholder {
-  color: #64748b;
-}
-
-html[data-theme="light"] .main-footer {
-  background: #f8fafc;
-  border-top-color: rgba(15, 23, 42, 0.12);
-}
-
-html[data-theme="light"] .footer-link,
-html[data-theme="light"] .footer-desc {
-  color: #475569;
-}
-
-html[data-theme="light"] .footer-bottom {
-  border-top-color: rgba(15, 23, 42, 0.12);
-  color: #64748b;
-}
-
-html[data-theme="light"] .brand-logo-img,
-html[data-theme="light"] .footer-logo img {
-  filter: invert(1) drop-shadow(0 0 2px rgba(0,0,0,0.1));
-}
-
-html[data-theme="light"] .home-hero-section {
-  background-image: linear-gradient(180deg, rgba(248, 250, 252, 0.88) 0%, rgba(248, 250, 252, 0.98) 100%), url('../images/hero_bg.jpg');
 }
 
 /* Single-Pass VFX Logo Sheen Animation (Fixed Display & Sizing) */
@@ -2436,7 +2272,7 @@ body.no-scroll {
     height: 38px;
     padding: 9px 8px;
     background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--border-subtle);
     border-radius: 8px;
     cursor: pointer;
     z-index: 10001;
@@ -2446,7 +2282,7 @@ body.no-scroll {
   .hamburger-bar {
     width: 100%;
     height: 2px;
-    background-color: var(--text-main);
+    background-color: var(--text-primary);
     border-radius: 2px;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: center;
@@ -2475,7 +2311,7 @@ body.no-scroll {
     background: rgba(12, 14, 19, 0.96);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border-left: 1px solid var(--border-light);
+    border-left: 1px solid var(--border-subtle);
     padding: 5.5rem 1.8rem 2.5rem;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
     z-index: 9999;
@@ -2511,15 +2347,15 @@ body.no-scroll {
     padding: 0.8rem 1rem;
     font-size: 1.15rem;
     font-weight: 600;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     border-radius: var(--radius-sm);
     transition: all 0.2s ease;
   }
 
   .nav-link.active,
   .nav-link:hover {
-    color: var(--text-main);
-    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    background: var(--bg-elevated-hover);
   }
 
   .mobile-cta-item {
@@ -2527,7 +2363,7 @@ body.no-scroll {
     width: 100%;
     margin-top: 1.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid var(--border-light);
+    border-top: 1px solid var(--border-subtle);
   }
 
   .mobile-nav-cta {

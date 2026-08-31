@@ -219,7 +219,7 @@ function initShowreel() {
 /* --------------------------------------------------------------------------
    5. CMS / Centralized Data Model for All Projects
    -------------------------------------------------------------------------- */
-const projectsData = {
+window.projectsData = {
   'lenskart-hustler': {
     id: 'lenskart-hustler',
     title: 'Hustler — Keep Hustling',
@@ -603,7 +603,7 @@ function initModals() {
 
     e.preventDefault();
     const caseId = trigger.getAttribute('data-open-case');
-    const data = projectsData[caseId] || {
+    const data = (window.projectsData && window.projectsData[caseId]) || {
       title: trigger.getAttribute('data-title') || 'Featured Project',
       client: 'Anava Client',
       format: 'Brand Film / Commercial',
@@ -791,7 +791,7 @@ function initLogoIntroTrigger() {
    11. Ultra-Performant Lazy Video Thumbnails (Zero Initial Bandwidth Waste)
    -------------------------------------------------------------------------- */
 function initVideoThumbnails() {
-  const cards = document.querySelectorAll('.work-card, .work-thumb-wrapper');
+  const cards = document.querySelectorAll('.work-card, .work-thumb-wrapper, .collab-card');
   
   if (!cards.length) return;
 

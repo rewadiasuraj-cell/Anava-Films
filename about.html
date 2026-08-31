@@ -53,89 +53,209 @@
     </div>
   </header>
 
-  <!-- Hero Header -->
-  <section class="hero-section" style="min-height: 52vh; padding-top: calc(var(--header-height) + 4rem);">
-    <div class="container">
-      <div class="hero-content">
-        <span class="hero-badge">OUR IDENTITY & ETHOS</span>
-        <h1 class="display-title">WE ARE NOT JUST A <br><span class="silver-text">PRODUCTION HOUSE.</span></h1>
-        <p class="subtitle" style="max-width: 960px; margin-top: 1.5rem; line-height: 1.8; font-size: 1.15rem;">
-          A production house usually gets an idea and figures out how to make it. At Anava, we like to get involved a little earlier. Sometimes the client comes to us with a complete brief. Sometimes it's a problem. Sometimes it's a product. And sometimes it's just a thought. We take that thought, challenge it, shape it and turn it into an idea worth making. Then we make it. From creative direction and ideation to scripting, casting, production, direction and post-production, we bring the creative and executional sides of the process together. That's why we see Anava as an agency-cum-production house. We don't believe in the gap between the people who think and the people who make. At Anava, the people who think are also close to the people who make.
-        </p>
+  <!-- Hero Header / OUR IDENTITY & ETHOS -->
+  <section class="about-hero-section">
+    <div class="about-hero-overlay"></div>
+    <div class="about-watermark-text">ABOUT</div>
 
-        <!-- Callout Stat Line -->
-        <div style="margin-top: 2.5rem; padding: 1.2rem 1.8rem; background: rgba(245, 183, 25, 0.08); border-left: 3px solid var(--accent-gold); border-radius: 0 8px 8px 0; max-width: 850px;">
-          <p style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #fff; letter-spacing: 0.02em;">
+    <div class="container">
+      <div class="about-hero-content">
+        <span class="hero-badge">OUR IDENTITY & ETHOS</span>
+        
+        <h1 class="about-hero-title">
+          WE ARE NOT JUST A <br>
+          <span class="about-title-accent">PRODUCTION HOUSE.</span>
+        </h1>
+
+        <div class="about-hero-body">
+          <p>A production house usually gets an idea and figures out how to make it. At Anava, we like to get involved a little earlier. Sometimes the client comes to us with a complete brief. Sometimes it's a problem. Sometimes it's a product. And sometimes it's just a thought.</p>
+          <p>We take that thought, challenge it, shape it and turn it into an idea worth making.</p>
+          <p>Then we make it. From creative direction and ideation to scripting, casting, production, direction and post-production, we bring the creative and executional sides of the process together.</p>
+          <p>That's why we see Anava as an agency-cum-production house.</p>
+          <p>We don't believe in the gap between the people who think and the people who make.</p>
+          <p>At Anava, the people who think are also close to the people who make.</p>
+        </div>
+
+        <!-- Quote Callout -->
+        <div class="about-quote-box">
+          <div class="about-quote-icon">“</div>
+          <p class="about-quote-text">
             "Fewer layers. Faster thinking. Better communication. Ideas that are actually made to work on screen."
           </p>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="about-stats-grid">
+        <div class="about-stat-item">
+          <div class="about-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
+          </div>
+          <div>
+            <div class="about-stat-number">50+</div>
+            <div class="about-stat-label">Projects Delivered</div>
+          </div>
+        </div>
+
+        <div class="about-stat-item">
+          <div class="about-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H9l2 4H8L6 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+          </div>
+          <div>
+            <div class="about-stat-number">8+</div>
+            <div class="about-stat-label">Years of Experience</div>
+          </div>
+        </div>
+
+        <div class="about-stat-item">
+          <div class="about-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <div>
+            <div class="about-stat-number">30+</div>
+            <div class="about-stat-label">Creative Professionals</div>
+          </div>
+        </div>
+
+        <div class="about-stat-item">
+          <div class="about-stat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          </div>
+          <div>
+            <div class="about-stat-sub">Across</div>
+            <div class="about-stat-number">India</div>
+            <div class="about-stat-label">Clients & Collaborations</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ethos Bottom Banner -->
+      <div class="about-ethos-banner">
+        <div class="about-ethos-card">
+          <div class="about-ethos-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/></svg>
+          </div>
+          <div>
+            <h4 class="about-ethos-title">Think Deep</h4>
+            <p class="about-ethos-desc">We challenge ideas to find what's worth making.</p>
+          </div>
+        </div>
+
+        <div class="about-ethos-card">
+          <div class="about-ethos-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h4 class="about-ethos-title">Work Together</h4>
+            <p class="about-ethos-desc">Thinkers and makers under one roof.</p>
+          </div>
+        </div>
+
+        <div class="about-ethos-card">
+          <div class="about-ethos-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <div>
+            <h4 class="about-ethos-title">Make It Real</h4>
+            <p class="about-ethos-desc">From thought to screen, we own the journey.</p>
+          </div>
+        </div>
+
+        <div class="about-ethos-card">
+          <div class="about-ethos-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div>
+            <h4 class="about-ethos-title">Keep It Simple</h4>
+            <p class="about-ethos-desc">Fewer layers. Faster decisions. Stronger outcomes.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Leadership Section: THE PEOPLE BEHIND ANAVA -->
-  <section class="section-padding border-top-divider">
+  <section class="section-padding border-top-divider people-leadership-section">
     <div class="container">
-      <div style="margin-bottom: 3.5rem;">
-        <span class="contact-badge-label">LEADERSHIP</span>
-        <h2 class="display-title" style="margin-top: 0.4rem;">THE PEOPLE BEHIND ANAVA</h2>
-        <p class="subtitle">Creative vision paired with structured production execution.</p>
+      <div class="people-header-row">
+        <div>
+          <span class="people-badge-label">LEADERSHIP</span>
+          <h2 class="people-display-title">
+            THE PEOPLE<br>
+            <span class="people-title-highlight">BEHIND ANAVA</span>
+          </h2>
+        </div>
+        <div class="people-header-sub">
+          <span class="people-sub-line"></span>
+          <p>Creative vision paired with structured production execution.</p>
+        </div>
       </div>
 
-      <div class="leadership-grid">
-        <!-- Card 1: Jackson Khatri -->
-        <div class="leadership-card">
-          <div class="leadership-card-header">
-            <div class="leadership-photo-thumb">
-              <img src="assets/images/hustler.jpg" alt="Jackson Khatri - Founder & Creative Director">
-            </div>
-            <div>
-              <div class="leadership-tag">FOUNDER · CREATIVE DIRECTOR · PRODUCER · DIRECTOR</div>
-              <h3 class="leadership-name">JACKSON KHATRI</h3>
-            </div>
+      <div class="people-leadership-list">
+        <!-- Row 1: Jackson Khatri -->
+        <div class="people-leader-row">
+          <div class="people-photo-card">
+            <img src="assets/images/jackson_khatri.jpg" alt="Jackson Khatri - Founder & Creative Director" style="object-position: center 60%;">
           </div>
-          
-          <div class="leadership-bio">
-            <p>
-              Jackson’s journey began with a <strong>B.Sc. in Animation & Multimedia</strong>, developing a deep understanding of visual storytelling, framing, pacing, and crafting worlds frame by frame.
-            </p>
-            <p>
-              Working across assistant direction, scripting, producing, and directing, he identified a recurring fracture in the industry: great ideas getting lost in translation between agency thinkers and on-set makers.
-            </p>
-            <blockquote class="leadership-quote text-serif">
-              "A great production starts much before the camera starts rolling."
-            </blockquote>
-            <p>
-              That vision shaped Anava Films into an agency-cum-production house — taking a thought and personally steering it to the final frame.
-            </p>
+
+          <div class="people-info-col">
+            <div class="people-role-header">
+              <div class="people-avatar-circle">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <span class="people-role-tag">FOUNDER · CREATIVE DIRECTOR · PRODUCER · DIRECTOR</span>
+            </div>
+
+            <h3 class="people-leader-name">JACKSON KHATRI</h3>
+
+            <div class="people-leader-bio">
+              <p>
+                Jackson’s journey began with a <strong>B.Sc. in Animation & Multimedia</strong>, developing a deep understanding of visual storytelling, framing, pacing, and crafting worlds frame by frame.
+              </p>
+              <p>
+                Working across assistant direction, scripting, producing, and directing, he identified a recurring fracture in the industry: great ideas getting lost in translation between agency thinkers and on-set makers.
+              </p>
+              <blockquote class="people-quote-box">
+                “A GREAT PRODUCTION STARTS MUCH BEFORE THE CAMERA STARTS ROLLING.”
+              </blockquote>
+            </div>
           </div>
         </div>
 
-        <!-- Card 2: Anjan Khatri -->
-        <div class="leadership-card">
-          <div class="leadership-card-header">
-            <div class="leadership-photo-thumb">
-              <img src="assets/images/john_jacobs.jpg" alt="Anjan Khatri - Producer">
-            </div>
-            <div>
-              <div class="leadership-tag">PRODUCER · PRODUCTION HEAD</div>
-              <h3 class="leadership-name">ANJAN KHATRI</h3>
-            </div>
+        <!-- Row 2: Anjan Khatri -->
+        <div class="people-leader-row">
+          <div class="people-photo-card">
+            <img src="assets/images/anjan_khatri.jpg" alt="Anjan Khatri - Producer & Production Head" style="object-position: top center;">
           </div>
 
-          <div class="leadership-bio">
-            <p>
-              As Anava expanded, Jackson’s brother <strong>Anjan Khatri</strong> joined the team as Producer to fortify the production and execution backbone of the company.
-            </p>
-            <p>
-              Anjan oversees the complete physical execution machinery — managing complex multi-location shoots, crew assemblies, budgeting, and high-efficiency logistical timelines.
-            </p>
-            <blockquote class="leadership-quote text-serif">
-              "Turning creative vision into seamless, stress-free production execution."
-            </blockquote>
-            <p>
-              Together, Jackson and Anjan ensure that client ideas are both creatively groundbreaking and executively flawless.
-            </p>
+          <div class="people-info-col">
+            <div class="people-role-header">
+              <div class="people-avatar-circle">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <span class="people-role-tag">PRODUCER · PRODUCTION HEAD</span>
+            </div>
+
+            <h3 class="people-leader-name">ANJAN KHATRI</h3>
+
+            <div class="people-leader-bio">
+              <p>
+                As Anava expanded, Jackson’s brother <strong>Anjan Khatri</strong> joined the team as Producer to fortify the production and execution backbone of the company.
+              </p>
+              <p>
+                Anjan oversees the complete physical execution machinery — managing complex multi-location shoots, crew assemblies, budgeting, and high-efficiency logistical timelines.
+              </p>
+              <blockquote class="people-quote-box">
+                “TURNING CREATIVE VISION INTO SEAMLESS, STRESS-FREE PRODUCTION EXECUTION.”
+              </blockquote>
+              <p class="people-summary-note">
+                Together, Jackson and Anjan ensure that client ideas are both creatively groundbreaking and executively flawless.
+              </p>
+            </div>
           </div>
         </div>
       </div>

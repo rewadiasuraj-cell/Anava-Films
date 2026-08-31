@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TESTIMONIALS — WHAT OUR COLLABORATORS SAY — ANAVA FILMS</title>
-  <meta name="description" content="Hear real experiences from Clients, Line Producers, Assistant Directors, Directors, Editors, and Cinematographers who collaborated with Anava Films.">
+  <meta name="description" content="Hear real experiences from Clients, Line Producers, Assistant Directors, Directors, Editors, and Cinematographers who collaborate with Anava Films.">
   <!-- Performance Optimization: Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +43,7 @@
           <svg class="sun-icon" viewBox="0 0 24 24" style="display: none;"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
           <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12.3 2c.43 0 .77.35.7.78-.4 2.53.33 5.15 2 7.02 1.67 1.87 4.25 2.7 6.8 2.45.43-.04.78.3.73.74-.63 5.09-4.97 9.01-10.23 9.01C6.3 22 2 17.7 2 11.7 2 6.36 6.13 2.1 11.52 2.01c.26 0 .52.01.78.02z"/></svg>
         </button>
-        <a href="contact.html" class="btn-primary btn-header-cta">LET’S TALK</a>
+        <a href="contact.html" class="btn-primary btn-header-cta">LET’S TALK ↗</a>
         <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -53,76 +53,216 @@
     </div>
   </header>
 
-  <!-- Hero Header -->
-  <section class="hero-section" style="min-height: 48vh; padding-top: calc(var(--header-height) + 4rem);">
+  <!-- Hero Header Section with Director Chair Backdrop -->
+  <section class="collab-hero-section">
+    <div class="collab-hero-overlay"></div>
     <div class="container">
-      <div class="hero-content">
+      <div class="collab-hero-content">
         <span class="hero-badge">COLLABORATOR EXPERIENCES</span>
-        <h1 class="display-title">WHAT OUR COLLABORATORS <span class="silver-text">SAY</span></h1>
-        <p class="subtitle">
+        <h1 class="collab-main-title">
+          WHAT OUR<br>
+          COLLABORATORS <span class="collab-title-accent">SAY</span>
+        </h1>
+        <p class="collab-subtitle">
           Great work is created through deep trust. Hear from clients, line producers, assistant directors, directors, editors, and cinematographers who collaborate with Anava.
         </p>
 
-        <!-- Respondent Group Tabs: Clients | Line Producers | Assistant Directors | Directors | Editors | Cinematographers -->
-        <div style="display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 2rem;">
-          <button class="testimonial-group-tab btn-primary active" data-group="all">ALL COLLABORATORS</button>
-          <button class="testimonial-group-tab btn-outline" data-group="clients">CLIENTS</button>
-          <button class="testimonial-group-tab btn-outline" data-group="line-producers">LINE PRODUCERS</button>
-          <button class="testimonial-group-tab btn-outline" data-group="assistant-directors">ASSISTANT DIRECTORS</button>
-          <button class="testimonial-group-tab btn-outline" data-group="directors">DIRECTORS</button>
-          <button class="testimonial-group-tab btn-outline" data-group="editors">EDITORS</button>
-          <button class="testimonial-group-tab btn-outline" data-group="cinematographers">CINEMATOGRAPHERS</button>
+        <!-- Respondent Category Filter Tabs -->
+        <div class="collab-tabs-row">
+          <button class="collab-tab-btn testimonial-group-tab active" data-group="all">ALL COLLABORATORS</button>
+          <button class="collab-tab-btn testimonial-group-tab" data-group="clients">CLIENTS</button>
+          <button class="collab-tab-btn testimonial-group-tab" data-group="line-producers">LINE PRODUCERS</button>
+          <button class="collab-tab-btn testimonial-group-tab" data-group="assistant-directors">ASSISTANT DIRECTORS</button>
+          <button class="collab-tab-btn testimonial-group-tab" data-group="directors">DIRECTORS</button>
+          <button class="collab-tab-btn testimonial-group-tab" data-group="editors">EDITORS</button>
+          <button class="collab-tab-btn testimonial-group-tab" data-group="cinematographers">CINEMATOGRAPHERS</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Video Testimonials Section -->
-  <section class="section-padding border-top-divider">
+  <!-- 3-Column Original Video Testimonial Cards Grid -->
+  <section class="section-padding" style="padding-top: 3.5rem;">
     <div class="container">
-      <div>
-        <span class="text-gold" style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">FEATURED VIDEO TESTIMONIALS</span>
-        <h2 class="section-title" style="margin-top: 0.4rem;">VOICES FROM THE SET & BOARDROOM</h2>
-      </div>
+      <div class="collab-cards-grid">
 
-      <div class="work-grid" style="margin-top: 3rem;">
-        
-        <!-- Video 1: Lenskart Testimonial -->
-        <div class="work-card testimonial-respondent-card" data-respondent-group="clients" data-open-case="testimonial-lenskart-1">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/testimonials/LENSKART TESTIMONIAL FILM.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
+        <!-- Video Card 1: Lenskart Team -->
+        <div class="collab-card testimonial-respondent-card" data-respondent-group="clients" data-open-case="testimonial-lenskart-1">
+          <div class="collab-card-left">
+            <div class="collab-media-frame">
+              <video src="assets/media/testimonials/LENSKART TESTIMONIAL FILM.mp4" class="collab-thumb-video" muted loop playsinline preload="metadata"></video>
+              <div class="collab-play-badge"><div class="play-icon-sm">▶</div></div>
+            </div>
           </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">CLIENT • LENSKART LEADERSHIP</div>
-            <h3 class="work-card-title">Giving Anava a brief and receiving a complete shoot deck</h3>
-            <p class="work-card-desc">"How Jackson and Anjan turn a one-line thought into a complete shoot deck without losing the brand soul."</p>
+          <div class="collab-card-right">
+            <div>
+              <div class="collab-quote-mark">“</div>
+              <p class="collab-quote-text">
+                Giving Anava a brief and receiving a complete shoot deck without losing the brand's soul – that's rare and priceless.
+              </p>
+            </div>
+            <div>
+              <div class="collab-author-divider"></div>
+              <div class="collab-author-row">
+                <div class="collab-author-avatar">
+                  <img src="assets/images/anava_official_logo.png" alt="Lenskart Logo">
+                </div>
+                <div class="collab-author-meta">
+                  <h4 class="collab-author-name">LENSKART TEAM</h4>
+                  <p class="collab-author-role">Client · Lenskart Leadership</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Video 2: WOW Skin Science Testimonial -->
-        <div class="work-card testimonial-respondent-card" data-respondent-group="clients" data-open-case="wow-brand-content">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/testimonials/WOW TESTIMONIAL .mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
+        <!-- Video Card 2: WOW Skin Science -->
+        <div class="collab-card testimonial-respondent-card" data-respondent-group="clients" data-open-case="wow-brand-content">
+          <div class="collab-card-left">
+            <div class="collab-media-frame">
+              <video src="assets/media/testimonials/WOW TESTIMONIAL .mp4" class="collab-thumb-video" muted loop playsinline preload="metadata"></video>
+              <div class="collab-play-badge"><div class="play-icon-sm">▶</div></div>
+            </div>
           </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">CLIENT • WOW SKIN SCIENCE</div>
-            <h3 class="work-card-title">Production house reliability and creative clarity</h3>
-            <p class="work-card-desc">"The speed of ideation and attention to visual detail makes campaign delivery seamless."</p>
+          <div class="collab-card-right">
+            <div>
+              <div class="collab-quote-mark">“</div>
+              <p class="collab-quote-text">
+                Production house reliability and creative clarity makes campaign delivery seamless.
+              </p>
+            </div>
+            <div>
+              <div class="collab-author-divider"></div>
+              <div class="collab-author-row">
+                <div class="collab-author-avatar">
+                  <img src="assets/images/anava_official_logo.png" alt="WOW Skin Science Logo">
+                </div>
+                <div class="collab-author-meta">
+                  <h4 class="collab-author-name">WOW SKIN SCIENCE</h4>
+                  <p class="collab-author-role">Client</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Video 3: Partner Testimonial -->
-        <div class="work-card testimonial-respondent-card" data-respondent-group="directors" data-open-case="testimonial-lenskart-1">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/testimonials/LENSKART TESTIMONIAL  (1).mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
+        <!-- Video Card 3: Director / Collaborator -->
+        <div class="collab-card testimonial-respondent-card" data-respondent-group="directors" data-open-case="testimonial-lenskart-1">
+          <div class="collab-card-left">
+            <div class="collab-media-frame">
+              <video src="assets/media/testimonials/LENSKART TESTIMONIAL  (1).mp4" class="collab-thumb-video" muted loop playsinline preload="metadata"></video>
+              <div class="collab-play-badge"><div class="play-icon-sm">▶</div></div>
+            </div>
           </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">DIRECTOR / COLLABORATOR</div>
-            <h3 class="work-card-title">Structured on-set direction and creative flow</h3>
-            <p class="work-card-desc">"Organized logistics meets uncompromising creative standards on shoot day."</p>
+          <div class="collab-card-right">
+            <div>
+              <div class="collab-quote-mark">“</div>
+              <p class="collab-quote-text">
+                Structured on-set direction and creative flow. Organized logistics meets uncompromising creative standards.
+              </p>
+            </div>
+            <div>
+              <div class="collab-author-divider"></div>
+              <div class="collab-author-row">
+                <div class="collab-author-avatar">
+                  <img src="assets/images/anava_official_logo.png" alt="Collaborator Avatar">
+                </div>
+                <div class="collab-author-meta">
+                  <h4 class="collab-author-name">COLLABORATOR</h4>
+                  <p class="collab-author-role">Director</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 4: Line Producer -->
+        <div class="collab-card testimonial-respondent-card" data-respondent-group="line-producers" data-open-case="testimonial-lenskart-1">
+          <div class="collab-card-left">
+            <div class="collab-media-frame">
+              <video src="assets/media/testimonials/LENSKART TESTIMONIAL  (2).mp4" class="collab-thumb-video" muted loop playsinline preload="metadata"></video>
+              <div class="collab-play-badge"><div class="play-icon-sm">▶</div></div>
+            </div>
+          </div>
+          <div class="collab-card-right">
+            <div>
+              <div class="collab-quote-mark">“</div>
+              <p class="collab-quote-text">
+                Anjan understands production numbers and logistics without ever compromising the director's visual vision.
+              </p>
+            </div>
+            <div>
+              <div class="collab-author-divider"></div>
+              <div class="collab-author-row">
+                <div class="collab-author-avatar">
+                  <img src="assets/images/anava_official_logo.png" alt="Line Producer Avatar">
+                </div>
+                <div class="collab-author-meta">
+                  <h4 class="collab-author-name">PRODUCTION TEAM</h4>
+                  <p class="collab-author-role">Line Producer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 5: Assistant Director -->
+        <div class="collab-card testimonial-respondent-card" data-respondent-group="assistant-directors" data-open-case="testimonial-lenskart-1">
+          <div class="collab-card-left">
+            <div class="collab-media-frame">
+              <video src="assets/media/testimonials/LENSKART TESTIMONIAL  (3).mp4" class="collab-thumb-video" muted loop playsinline preload="metadata"></video>
+              <div class="collab-play-badge"><div class="play-icon-sm">▶</div></div>
+            </div>
+          </div>
+          <div class="collab-card-right">
+            <div>
+              <div class="collab-quote-mark">“</div>
+              <p class="collab-quote-text">
+                Clear shot lists, zero confusion on floor, and absolute respect for creative time. That's why we love working with Jackson.
+              </p>
+            </div>
+            <div>
+              <div class="collab-author-divider"></div>
+              <div class="collab-author-row">
+                <div class="collab-author-avatar">
+                  <img src="assets/images/anava_official_logo.png" alt="Assistant Director Avatar">
+                </div>
+                <div class="collab-author-meta">
+                  <h4 class="collab-author-name">DIRECTION TEAM</h4>
+                  <p class="collab-author-role">Assistant Director</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Card 6: Cinematographer -->
+        <div class="collab-card testimonial-respondent-card" data-respondent-group="cinematographers" data-open-case="testimonial-lenskart-1">
+          <div class="collab-card-left">
+            <div class="collab-media-frame">
+              <video src="assets/media/testimonials/LENSKART TESTIMONIAL .mp4" class="collab-thumb-video" muted loop playsinline preload="metadata"></video>
+              <div class="collab-play-badge"><div class="play-icon-sm">▶</div></div>
+            </div>
+          </div>
+          <div class="collab-card-right">
+            <div>
+              <div class="collab-quote-mark">“</div>
+              <p class="collab-quote-text">
+                From camera package selection to lighting setups, Anava gives DOPs the creative freedom and equipment backing needed for excellence.
+              </p>
+            </div>
+            <div>
+              <div class="collab-author-divider"></div>
+              <div class="collab-author-row">
+                <div class="collab-author-avatar">
+                  <img src="assets/images/anava_official_logo.png" alt="Cinematographer Avatar">
+                </div>
+                <div class="collab-author-meta">
+                  <h4 class="collab-author-name">CAMERA DEPT</h4>
+                  <p class="collab-author-role">Cinematographer / DOP</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -130,111 +270,77 @@
     </div>
   </section>
 
-  <!-- Grouped Written Testimonials Grid -->
+  <!-- Bottom Stats Counter Bar -->
+  <section class="collab-stats-section">
+    <div class="container">
+      <div class="collab-stats-bar">
+        <div class="stat-item">
+          <div class="stat-icon-wrapper">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+              <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+            </svg>
+          </div>
+          <div class="stat-text-meta">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Happy Collaborators</div>
+          </div>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item">
+          <div class="stat-icon-wrapper">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+              <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H9l2 4H8L6 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/>
+            </svg>
+          </div>
+          <div class="stat-text-meta">
+            <div class="stat-number">250+</div>
+            <div class="stat-label">Projects Delivered</div>
+          </div>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item">
+          <div class="stat-icon-wrapper">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </div>
+          <div class="stat-text-meta">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Years of Trust</div>
+          </div>
+        </div>
+
+        <div class="stat-divider"></div>
+
+        <div class="stat-item">
+          <div class="stat-icon-wrapper">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+            </svg>
+          </div>
+          <div class="stat-text-meta">
+            <div class="stat-number">4.9/5</div>
+            <div class="stat-label">Average Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
   <section class="section-padding border-top-divider" style="background: var(--bg-card);">
-    <div class="container">
-      <div>
-        <span class="text-gold" style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">EXPERIENCES BY ROLE</span>
-        <h2 class="section-title" style="margin-top: 0.4rem;">WHY COLLABORATORS CHOOSE ANAVA</h2>
-      </div>
-
-      <div class="testimonials-grid" style="margin-top: 3rem;">
-
-        <!-- Client Quote -->
-        <div class="testimonial-card testimonial-respondent-card" data-respondent-group="clients">
-          <div class="testimonial-quote">
-            "What did Anava bring beyond production? They found the core story inside a very confusing initial brief. Most production houses just ask for a script; Anava brought us the script, the director deck, and the final film."
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">LK</div>
-            <div>
-              <div class="author-name">Marketing Lead</div>
-              <div class="author-role">Client — Lenskart / Hustler Campaign</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Line Producer Quote -->
-        <div class="testimonial-card testimonial-respondent-card" data-respondent-group="line-producers">
-          <div class="testimonial-quote">
-            "Anjan understands production numbers and logistics without ever compromising the director's visual vision. Shoots run on time, call sheets are strict, and crew coordination is flawless."
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">LP</div>
-            <div>
-              <div class="author-name">Senior Line Producer</div>
-              <div class="author-role">Commercial TVC & Multi-City Shoots</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Assistant Director Quote -->
-        <div class="testimonial-card testimonial-respondent-card" data-respondent-group="assistant-directors">
-          <div class="testimonial-quote">
-            "Working on an Anava set is a masterclass in preparation. The pre-production decks are so thoroughly designed that every department head knows their exact cues before the first camera roll."
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">AD</div>
-            <div>
-              <div class="author-name">1st Assistant Director</div>
-              <div class="author-role">Commercial & Celebrity Campaigns</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Director Quote -->
-        <div class="testimonial-card testimonial-respondent-card" data-respondent-group="directors">
-          <div class="testimonial-quote">
-            "Jackson’s background in animation and multimedia gives him an intuitive feel for edit transitions, pacing, and camera movement. It removes all guesswork on set."
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">DR</div>
-            <div>
-              <div class="author-name">Commercial Director</div>
-              <div class="author-role">Brand & Narrative Films</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Editor Quote -->
-        <div class="testimonial-card testimonial-respondent-card" data-respondent-group="editors">
-          <div class="testimonial-quote">
-            "The footage we receive from Anava shoots is organized, intentional, and shot for the cut. There is no endless coverage bloat — just precise, beautiful visual storytelling."
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">ED</div>
-            <div>
-              <div class="author-name">Lead Offline Editor</div>
-              <div class="author-role">Splice & Post Collaborator</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cinematographer Quote -->
-        <div class="testimonial-card testimonial-respondent-card" data-respondent-group="cinematographers">
-          <div class="testimonial-quote">
-            "Anava lets DoPs create genuine cinematic mood. Lighting design and framing are treated as central emotional characters in the film, not just technical checkboxes."
-          </div>
-          <div class="testimonial-author">
-            <div class="author-avatar">DP</div>
-            <div>
-              <div class="author-name">Director of Photography</div>
-              <div class="author-role">Anamorphic & Prime Optics Specialist</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <div class="container" style="text-align: center; max-width: 800px;">
+      <h2 class="section-title">WANT TO COLLABORATE WITH ANAVA?</h2>
+      <p class="subtitle" style="margin: 0.8rem auto 2rem;">
+        Give us a thought. We’ll give you ideas to shoot.
+      </p>
+      <a href="contact.html" class="btn-primary">LET’S TALK ↗</a>
     </div>
   </section>
-
-  <!-- Reusable Individual Project Modal -->
-  <div id="case-modal" class="modal-backdrop">
-    <div class="modal-content">
-      <button id="modal-close-btn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
-      <div id="modal-dynamic-body"></div>
-    </div>
-  </div>
 
   <!-- Master Footer -->
   <footer class="main-footer">
@@ -250,44 +356,54 @@
         </div>
 
         <div class="footer-nav">
-          <div>
+          <div class="footer-col">
             <div class="footer-col-title">NAVIGATION</div>
             <ul class="footer-links">
               <li><a href="index.html" class="footer-link">Home</a></li>
               <li><a href="work.html" class="footer-link">Work</a></li>
               <li><a href="what-we-do.html" class="footer-link">What We Do</a></li>
               <li><a href="process.html" class="footer-link">Process</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="footer-col-title">COMPANY</div>
-            <ul class="footer-links">
-              <li><a href="about.html" class="footer-link">About Us</a></li>
+              <li><a href="about.html" class="footer-link">About</a></li>
               <li><a href="testimonials.html" class="footer-link">Testimonials</a></li>
-              <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+              <li><a href="contact.html" class="footer-link">Contact</a></li>
             </ul>
           </div>
 
-          <div>
-            <div class="footer-col-title">CONNECT</div>
+          <div class="footer-col">
+            <div class="footer-col-title">LOCATIONS</div>
             <ul class="footer-links">
-              <li><a href="mailto:office@anavafilm.com" class="footer-link">office@anavafilm.com</a></li>
-              <li><a href="tel:+919876543210" class="footer-link">+91 (Contact Office)</a></li>
-              <li><a href="https://instagram.com" target="_blank" rel="noopener" class="footer-link">Instagram</a></li>
-              <li><a href="https://linkedin.com" target="_blank" rel="noopener" class="footer-link">LinkedIn</a></li>
+              <li><span class="footer-link">Mumbai, India</span></li>
+              <li><span class="footer-link">Delhi, India</span></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <div class="footer-col-title">CONTACT</div>
+            <ul class="footer-links">
+              <li><a href="mailto:contact@anavafilms.com" class="footer-link">contact@anavafilms.com</a></li>
+              <li><a href="tel:+919876543210" class="footer-link">+91 98765 43210</a></li>
             </ul>
           </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 ANAVA FILMS. All rights reserved.</div>
-        <div>ANAVA FILMS — Give us a thought. We’ll give you ideas to shoot.</div>
+        <div>© 2026 ANAVA FILMS. All Rights Reserved.</div>
+        <div class="footer-tagline-small">GIVE US A THOUGHT — WE’LL GIVE YOU IDEAS TO SHOOT</div>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <!-- Modal Container for Case Studies / Video Testimonials -->
+  <div id="case-study-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close-btn" id="modal-close" aria-label="Close modal">✕</button>
+      <div class="modal-body" id="modal-body-content">
+        <!-- Dynamic Content Injected via JS -->
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

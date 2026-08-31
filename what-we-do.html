@@ -43,7 +43,7 @@
           <svg class="sun-icon" viewBox="0 0 24 24" style="display: none;"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
           <svg class="moon-icon" viewBox="0 0 24 24"><path d="M12.3 2c.43 0 .77.35.7.78-.4 2.53.33 5.15 2 7.02 1.67 1.87 4.25 2.7 6.8 2.45.43-.04.78.3.73.74-.63 5.09-4.97 9.01-10.23 9.01C6.3 22 2 17.7 2 11.7 2 6.36 6.13 2.1 11.52 2.01c.26 0 .52.01.78.02z"/></svg>
         </button>
-        <a href="contact.html" class="btn-primary btn-header-cta">LET’S TALK</a>
+        <a href="contact.html" class="btn-primary btn-header-cta">LET’S TALK ↗</a>
         <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -53,134 +53,199 @@
     </div>
   </header>
 
-  <!-- Hero Header -->
-  <section class="hero-section" style="min-height: 48vh; padding-top: calc(var(--header-height) + 4rem);">
+  <!-- Hero Header Section with Director Chair Visual -->
+  <section class="wwd-hero-section">
+    <div class="wwd-hero-overlay"></div>
     <div class="container">
-      <div class="hero-content">
+      <div class="wwd-hero-content">
         <span class="hero-badge">OUR END-TO-END MODEL</span>
-        <h1 class="display-title">THINK · MAKE · <span class="silver-text">FINISH</span></h1>
-        <p class="subtitle">
+        <h1 class="wwd-main-title">
+          THINK · MAKE · <span class="wwd-title-accent">FINISH</span>
+        </h1>
+        <p class="wwd-subtitle">
           Instead of disjointed vendor handoffs, we bring the creative and executional sides of filmmaking under one roof. Here is what we do across each stage.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Three Pillar Grid -->
-  <section class="section-padding border-top-divider">
+  <!-- 3 Pillar Cards Section -->
+  <section class="section-padding" style="padding-top: 3.5rem;">
     <div class="container">
-      
-      <div class="tmf-grid">
+      <div class="wwd-pillars-grid">
 
-        <!-- Pillar 1: THINK -->
-        <div class="tmf-bucket">
-          <div class="tmf-header">
-            <h2 class="tmf-title text-gold">THINK</h2>
-            <div class="tmf-num">01 / CONCEPT</div>
+        <!-- Pillar 01: THINK -->
+        <div class="wwd-pillar-card">
+          <div class="wwd-pillar-header">
+            <span class="wwd-pillar-num">01</span>
+            <h2 class="wwd-pillar-name">THINK</h2>
+            <span class="wwd-pillar-sublabel">/ CONCEPT</span>
           </div>
-          <ul class="tmf-list">
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+          <ul class="wwd-services-list">
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Creative Direction</div>
-                <div class="tmf-item-desc">Finding the distinct visual voice, tone, and storytelling hook that positions the brand above category noise.</div>
+                <h4 class="wwd-service-title">Creative Direction</h4>
+                <p class="wwd-service-desc">Finding the distinct visual voice, tone, and storytelling hook that positions the brand above category noise.</p>
               </div>
             </li>
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Ideation & Concept Development</div>
-                <div class="tmf-item-desc">Turning raw thoughts, problems or products into sharp, memorable, and shootable concepts.</div>
+                <h4 class="wwd-service-title">Ideation & Concept Development</h4>
+                <p class="wwd-service-desc">Turning raw thoughts, problems or products into sharp, memorable, and shootable concepts.</p>
               </div>
             </li>
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Scripting</div>
-                <div class="tmf-item-desc">Crafting dialog, voiceover, shot treatments, and director decks that give the idea its exact rhythm and emotion.</div>
+                <h4 class="wwd-service-title">Scripting</h4>
+                <p class="wwd-service-desc">Crafting dialog, voiceover, shot treatments, and director decks that give the idea its exact rhythm and emotion.</p>
               </div>
             </li>
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Creative Consulting</div>
-                <div class="tmf-item-desc">Brands can approach us even before they have a production brief. We help define what the idea could be before deciding how it should be made.</div>
+                <h4 class="wwd-service-title">Creative Consulting</h4>
+                <p class="wwd-service-desc">Brands can approach us even before they have a production brief. We help define what the idea could be before deciding how it should be made.</p>
               </div>
             </li>
           </ul>
         </div>
 
-        <!-- Pillar 2: MAKE -->
-        <div class="tmf-bucket">
-          <div class="tmf-header">
-            <h2 class="tmf-title text-gold">MAKE</h2>
-            <div class="tmf-num">02 / SHOOT</div>
+        <!-- Pillar 02: MAKE -->
+        <div class="wwd-pillar-card">
+          <div class="wwd-pillar-header">
+            <span class="wwd-pillar-num">02</span>
+            <h2 class="wwd-pillar-name">MAKE</h2>
+            <span class="wwd-pillar-sublabel">/ SHOOT</span>
           </div>
-          <ul class="tmf-list">
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+          <ul class="wwd-services-list">
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Production</div>
-                <div class="tmf-item-desc">End-to-end shoot management, scheduling, equipment, budgeting, crew assembly, and smooth on-set execution.</div>
+                <h4 class="wwd-service-title">Production</h4>
+                <p class="wwd-service-desc">End-to-end shoot management, scheduling, equipment, budgeting, crew assembly, and smooth on-set execution.</p>
               </div>
             </li>
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Direction</div>
-                <div class="tmf-item-desc">Translating the creative deck into striking camera movements, pacing, and authentic on-screen performances.</div>
+                <h4 class="wwd-service-title">Direction</h4>
+                <p class="wwd-service-desc">Translating the creative deck into striking camera movements, pacing, and authentic on-screen performances.</p>
               </div>
             </li>
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Casting</div>
-                <div class="tmf-item-desc">Our network has expanded beyond domestic talent, allowing us to work with international talent when the story, brand or campaign requires it.</div>
+                <h4 class="wwd-service-title">Casting</h4>
+                <p class="wwd-service-desc">Our network has expanded beyond domestic talent, allowing us to work with international talent when the story, brand or campaign requires it.</p>
               </div>
             </li>
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Art Direction</div>
-                <div class="tmf-item-desc">We build the visual world around the idea — from production design and props to styling, colour, set details and the smallest elements within the frame.</div>
+                <h4 class="wwd-service-title">Art Direction</h4>
+                <p class="wwd-service-desc">We build the visual world around the idea — from production design and props to styling, colour, set details and the smallest elements within the frame.</p>
               </div>
             </li>
           </ul>
         </div>
 
-        <!-- Pillar 3: FINISH -->
-        <div class="tmf-bucket">
-          <div class="tmf-header">
-            <h2 class="tmf-title text-gold">FINISH</h2>
-            <div class="tmf-num">03 / POST</div>
+        <!-- Pillar 03: FINISH -->
+        <div class="wwd-pillar-card">
+          <div class="wwd-pillar-header">
+            <span class="wwd-pillar-num">03</span>
+            <h2 class="wwd-pillar-name">FINISH</h2>
+            <span class="wwd-pillar-sublabel">/ POST</span>
           </div>
-          <ul class="tmf-list">
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+          <ul class="wwd-services-list">
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M20 3H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h6l-2 3v1h8v-1l-2-3h6c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 12H4V5h16v10z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Offline Editing</div>
-                <div class="tmf-item-desc">Narrative rhythm, cut pacing, and structural storytelling that hooks attention and maintains momentum.</div>
+                <h4 class="wwd-service-title">Offline Editing</h4>
+                <p class="wwd-service-desc">Narrative rhythm, cut pacing, and structural storytelling that hooks attention and maintains momentum.</p>
               </div>
             </li>
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Music & Sound</div>
-                <div class="tmf-item-desc">Custom sonic identities, bespoke scores, foley, voiceover mastering, and cinematic sound design.</div>
+                <h4 class="wwd-service-title">Music & Sound</h4>
+                <p class="wwd-service-desc">Custom sonic identities, bespoke scores, foley, voiceover mastering, and cinematic sound design.</p>
               </div>
             </li>
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.2 19.54 10.55 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">Colour Grading & Online</div>
-                <div class="tmf-item-desc">For high-end grading and online finishing, we collaborate with leading post-production partners including Prime Focus, Famous, Splice Studios, and Nube (Grading Studio). The post-production partner can vary depending on the project's creative and technical requirements.</div>
+                <h4 class="wwd-service-title">Colour Grading & Online</h4>
+                <p class="wwd-service-desc">For high-end grading and online finishing, we collaborate with leading post-production partners including Prime Focus, Famous, Splice Studios, and Nube (Grading Studio).</p>
               </div>
             </li>
-            <li class="tmf-item">
-              <div class="tmf-item-icon">✦</div>
+
+            <li class="wwd-service-item">
+              <div class="wwd-service-icon-box">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61z"/>
+                </svg>
+              </div>
               <div>
-                <div class="tmf-item-title">VFX & Mastering</div>
-                <div class="tmf-item-desc">With a foundation in Animation & Multimedia, Anava has developed relationships with a strong network of VFX and animation artists across disciplines — Compositing, Cleanup, Animation, VFX, Motion work, Finishing. We then take the final film through mastering and deliver it in the formats required across platforms.</div>
+                <h4 class="wwd-service-title">VFX & Mastering</h4>
+                <p class="wwd-service-desc">With a foundation in Animation & Multimedia, Anava has developed relationships with a strong network of VFX and animation artists across disciplines — Compositing, Cleanup, Animation, VFX, Motion work, Finishing.</p>
               </div>
             </li>
           </ul>
@@ -188,17 +253,16 @@
 
       </div>
 
-    </div>
-  </section>
+      <!-- Bottom CTA Banner Card -->
+      <div class="wwd-cta-card">
+        <img src="assets/images/hero_studio_bg.jpg" alt="Camera Operator Silhouette" class="wwd-cta-image">
+        <div class="wwd-cta-content">
+          <h2 class="wwd-cta-title">HAVE A BRIEF IN MIND?</h2>
+          <p class="wwd-cta-subtitle">Whether you need creative consulting or a full-scale commercial shoot, we are ready.</p>
+          <a href="contact.html" class="btn-primary">LET’S TALK ↗</a>
+        </div>
+      </div>
 
-  <!-- CTA Banner -->
-  <section class="section-padding border-top-divider" style="background: var(--bg-card);">
-    <div class="container" style="text-align: center; max-width: 800px;">
-      <h2 class="section-title">HAVE A BRIEF IN MIND?</h2>
-      <p class="subtitle" style="margin: 0.8rem auto 2rem;">
-        Whether you need creative consulting or a full-scale commercial shoot, we are ready.
-      </p>
-      <a href="contact.html" class="btn-primary">LET’S TALK →</a>
     </div>
   </section>
 
@@ -216,17 +280,20 @@
         </div>
 
         <div class="footer-nav">
-          <div>
+          <div class="footer-col">
             <div class="footer-col-title">NAVIGATION</div>
             <ul class="footer-links">
               <li><a href="index.html" class="footer-link">Home</a></li>
               <li><a href="work.html" class="footer-link">Work</a></li>
               <li><a href="what-we-do.html" class="footer-link">What We Do</a></li>
               <li><a href="process.html" class="footer-link">Process</a></li>
+              <li><a href="about.html" class="footer-link">About</a></li>
+              <li><a href="testimonials.html" class="footer-link">Testimonials</a></li>
+              <li><a href="contact.html" class="footer-link">Contact</a></li>
             </ul>
           </div>
 
-          <div>
+          <div class="footer-col">
             <div class="footer-col-title">COMPANY</div>
             <ul class="footer-links">
               <li><a href="about.html" class="footer-link">About Us</a></li>
@@ -235,7 +302,7 @@
             </ul>
           </div>
 
-          <div>
+          <div class="footer-col">
             <div class="footer-col-title">CONNECT</div>
             <ul class="footer-links">
               <li><a href="mailto:office@anavafilm.com" class="footer-link">office@anavafilm.com</a></li>
@@ -248,12 +315,11 @@
       </div>
 
       <div class="footer-bottom">
-        <div>&copy; 2026 ANAVA FILMS. All rights reserved.</div>
-        <div>ANAVA FILMS — Give us a thought. We’ll give you ideas to shoot.</div>
+        <div>© 2026 ANAVA FILMS. All Rights Reserved.</div>
+        <div class="footer-tagline-small">GIVE US A THOUGHT — WE’LL GIVE YOU IDEAS TO SHOOT</div>
       </div>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
 </body>
 </html>

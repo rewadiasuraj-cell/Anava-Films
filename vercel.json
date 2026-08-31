@@ -1,4 +1,5 @@
 {
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "rewrites": [
     { "source": "/work", "destination": "/work.html" },

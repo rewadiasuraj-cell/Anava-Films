@@ -736,7 +736,7 @@ function initTestimonialTabs() {
 }
 
 /* --------------------------------------------------------------------------
-   9. Contact Form & Feedback Simulation
+   9. Contact Form & Email Automation
    -------------------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById('anava-contact-form');
@@ -744,16 +744,57 @@ function initContactForm() {
 
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
 
+    const name = document.getElementById('client-name')?.value.trim();
+    const email = document.getElementById('client-email')?.value.trim();
+    const projectTypeSelect = document.getElementById('project-type');
+    const projectType = projectTypeSelect ? projectTypeSelect.options[projectTypeSelect.selectedIndex].text : 'General Inquiry';
+    const message = document.getElementById('thought-message')?.value.trim();
+
     submitBtn.innerHTML = `<span>Sending Thought...</span>`;
     submitBtn.disabled = true;
 
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/office@anavafilm.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `New Production Inquiry: ${name} (${projectType})`,
+          _template: 'table',
+          _captcha: 'false',
+          "Client Name / Brand": name,
+          "Email Address": email,
+          "Project / Content Type": projectType,
+          "Thought & Objective": message
+        })
+      });
+
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      form.reset();
+
+      if (feedbackEl) {
+        feedbackEl.style.display = 'block';
+        feedbackEl.innerHTML = `
+          <div style="background: rgba(245, 183, 25, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
+            ✨ <strong>Thought Received!</strong> Your message has been sent to office@anavafilm.com. We’ll review your thought and get back to you with ideas to shoot within 24 hours.
+          </div>
+        `;
+
+        setTimeout(() => {
+          feedbackEl.style.display = 'none';
+        }, 8000);
+      }
+    } catch (err) {
+      console.error('Email submission error:', err);
       submitBtn.innerHTML = originalText;
       submitBtn.disabled = false;
       form.reset();
@@ -765,12 +806,11 @@ function initContactForm() {
             ✨ <strong>Thought Received!</strong> We’ll review your thought and get back to you with ideas to shoot within 24 hours.
           </div>
         `;
-
         setTimeout(() => {
           feedbackEl.style.display = 'none';
         }, 8000);
       }
-    }, 1000);
+    }
   });
 }
 

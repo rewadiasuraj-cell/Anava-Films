@@ -152,11 +152,6 @@ function initClapboardIntro() {
   }
 
   if (skipBtn) skipBtn.addEventListener('click', dismissIntro);
-  introEl.addEventListener('click', (e) => {
-    if (e.target !== skipBtn && !skipBtn.contains(e.target)) {
-      dismissIntro();
-    }
-  });
 
   const words = ['A THOUGHT', 'AN IDEA', 'A DECK', 'A SHOOT'];
 
@@ -168,9 +163,10 @@ function initClapboardIntro() {
       titleTextEl.classList.remove('visible');
       titleTextEl.classList.add('fade-out');
       setTimeout(() => {
+        if (isDismissed) return;
         titleTextEl.style.display = 'none';
         if (wordmarkEl) {
-          wordmarkEl.style.display = 'block';
+          wordmarkEl.style.display = 'flex';
           wordmarkEl.offsetHeight; // trigger reflow
           wordmarkEl.classList.add('visible');
         }
@@ -179,7 +175,7 @@ function initClapboardIntro() {
       // Auto dismiss after logo displays cleanly
       safeTimeout(() => {
         dismissIntro();
-      }, 1800);
+      }, 2000);
       return;
     }
 
@@ -188,22 +184,23 @@ function initClapboardIntro() {
     titleTextEl.classList.add('fade-out');
 
     setTimeout(() => {
+      if (isDismissed) return;
       titleTextEl.textContent = words[index];
       titleTextEl.classList.remove('fade-out');
       titleTextEl.offsetHeight; // trigger reflow
       titleTextEl.classList.add('visible');
-    }, 200);
+    }, 250);
 
-    // Schedule next word after 700ms
+    // Schedule next word after 950ms
     safeTimeout(() => {
       showWord(index + 1);
-    }, 720);
+    }, 950);
   }
 
   // Start sequence
   safeTimeout(() => {
     showWord(0);
-  }, 100);
+  }, 150);
 }
 
 /* --------------------------------------------------------------------------

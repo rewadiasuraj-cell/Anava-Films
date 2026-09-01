@@ -944,7 +944,7 @@ function initVideoThumbnails() {
       video.pause();
     }, { passive: true });
   });
-});
+}
 
 /* Interactive Tab Switching for WHAT WE DO Dashboard */
 window.switchWwdTab = function(tabName) {

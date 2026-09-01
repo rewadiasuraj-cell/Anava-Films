@@ -1,8 +1,4 @@
-/* ==========================================================================
-   ANAVA FILMS — Master JavaScript Engine & Content Model
-   ========================================================================== */
-
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   initThemeToggle();
   initMobileMenu();
   initClapboardIntro();
@@ -14,60 +10,24 @@ document.addEventListener('DOMContentLoaded', () => {
   initLogoIntroTrigger();
   initVideoThumbnails();
   initTestimonialTabs();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 /* --------------------------------------------------------------------------
-   0. Dual Theme Toggle System (Dark / Light Mode)
+   0. Dark Theme Enforcer
    -------------------------------------------------------------------------- */
 function initThemeToggle() {
-  const toggleBtn = document.getElementById('theme-toggle');
-  const savedTheme = localStorage.getItem('anava-theme') || 'dark';
-
-  applyTheme(savedTheme);
-
-  if (toggleBtn) {
-    let lastToggleTime = 0;
-
-    const handleToggle = (e) => {
-      const now = Date.now();
-      if (now - lastToggleTime < 300) return;
-      lastToggleTime = now;
-
-      if (e) e.stopPropagation();
-
-      const currentTheme = document.documentElement.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-      applyTheme(newTheme);
-      localStorage.setItem('anava-theme', newTheme);
-    };
-
-    toggleBtn.addEventListener('click', handleToggle);
-    toggleBtn.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      handleToggle(e);
-    }, { passive: false });
-  }
+  localStorage.removeItem('anava-theme');
+  document.documentElement.setAttribute('data-theme', 'dark');
 }
 
 function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  updateThemeIcons(theme);
-}
-
-function updateThemeIcons(theme) {
-  const toggleBtn = document.getElementById('theme-toggle');
-  if (!toggleBtn) return;
-  const sunIcon = toggleBtn.querySelector('.sun-icon');
-  const moonIcon = toggleBtn.querySelector('.moon-icon');
-
-  if (theme === 'light') {
-    if (sunIcon) sunIcon.style.display = 'block';
-    if (moonIcon) moonIcon.style.display = 'none';
-  } else {
-    if (sunIcon) sunIcon.style.display = 'none';
-    if (moonIcon) moonIcon.style.display = 'block';
-  }
+  document.documentElement.setAttribute('data-theme', 'dark');
 }
 
 /* --------------------------------------------------------------------------
@@ -80,13 +40,7 @@ function initMobileMenu() {
 
   if (!menuBtn || !nav) return;
 
-  let lastTouchTime = 0;
-
-  function handleMenuToggle(e) {
-    const now = Date.now();
-    if (now - lastTouchTime < 300) return;
-    lastTouchTime = now;
-
+  function toggleMenu(e) {
     if (e) {
       e.stopPropagation();
     }
@@ -108,11 +62,7 @@ function initMobileMenu() {
     document.body.classList.remove('no-scroll');
   }
 
-  menuBtn.addEventListener('click', handleMenuToggle);
-  menuBtn.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    handleMenuToggle(e);
-  }, { passive: false });
+  menuBtn.addEventListener('click', toggleMenu);
 
   const navLinks = nav.querySelectorAll('.nav-link, .mobile-nav-cta, a');
   navLinks.forEach(link => {

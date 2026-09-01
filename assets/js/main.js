@@ -886,18 +886,31 @@ function initVideoThumbnails() {
     video.muted = true;
     video.playsInline = true;
     video.loop = true;
-    video.preload = 'none'; // Prevent heavy downloading until needed
+    video.preload = 'metadata'; // Load initial frame for poster thumbnail
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
+
+    const setFrame = () => {
+      try {
+        if (video.paused && (!video.currentTime || video.currentTime < 0.2)) {
+          video.currentTime = 1.0;
+        }
+      } catch (e) {}
+    };
+
+    if (video.readyState >= 2) {
+      setFrame();
+    } else {
+      video.addEventListener('loadeddata', setFrame, { once: true });
+      video.addEventListener('loadedmetadata', setFrame, { once: true });
+    }
 
     if (videoObserver) {
       videoObserver.observe(card);
     }
 
     card.addEventListener('mouseenter', () => {
-      if (video.preload === 'none') {
-        video.preload = 'auto';
-      }
+      video.preload = 'auto';
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {});

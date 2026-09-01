@@ -535,12 +535,12 @@ window.projectsData = {
    6. Work Page Primary & Secondary Filtering (Client-side, no reload)
    -------------------------------------------------------------------------- */
 function initWorkFilters() {
-  const primaryFilterBtns = document.querySelectorAll('.filter-btn');
-  const secondaryContainer = document.getElementById('vertical-sub-filters');
-  const subFilterBtns = document.querySelectorAll('.sub-filter-btn');
-  const workItems = document.querySelectorAll('.work-card');
+  const primaryTabBtns = document.querySelectorAll('.work-tab-btn, .filter-btn');
+  const dropdownToggleBtn = document.getElementById('vertical-dropdown-btn');
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
+  const workItems = document.querySelectorAll('.work-card-item, .work-card');
 
-  if (!primaryFilterBtns.length) return;
+  if (!workItems.length) return;
 
   let currentPrimary = 'all';
   let currentSecondary = 'all';
@@ -558,56 +558,58 @@ function initWorkFilters() {
       }
 
       if (matchPrimary && matchSecondary) {
-        item.style.display = 'block';
-        setTimeout(() => {
-          item.style.opacity = '1';
-          item.style.transform = 'translateY(0)';
-        }, 30);
+        item.style.display = item.classList.contains('work-card-item') ? 'flex' : 'block';
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)';
       } else {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(16px)';
-        setTimeout(() => {
-          item.style.display = 'none';
-        }, 250);
+        item.style.display = 'none';
       }
     });
   }
 
-  primaryFilterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      primaryFilterBtns.forEach(b => {
-        b.classList.remove('active', 'btn-primary');
-        b.classList.add('btn-outline');
-      });
-      btn.classList.remove('btn-outline');
-      btn.classList.add('active', 'btn-primary');
-
-      currentPrimary = btn.getAttribute('data-filter');
-      currentSecondary = 'all'; // reset secondary
-
-      // Reset secondary buttons
-      subFilterBtns.forEach(sb => sb.classList.remove('active'));
-      const allSub = document.querySelector('.sub-filter-btn[data-subfilter="all"]');
-      if (allSub) allSub.classList.add('active');
-
-      if (currentPrimary === 'vertical') {
-        if (secondaryContainer) secondaryContainer.classList.add('visible');
-      } else {
-        if (secondaryContainer) secondaryContainer.classList.remove('visible');
+  primaryTabBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      if (btn.classList.contains('dropdown-toggle-btn')) {
+        // Toggle dropdown on mobile/click
+        const menu = document.getElementById('vertical-dropdown-menu');
+        if (menu) menu.classList.toggle('show');
       }
 
+      primaryTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      currentPrimary = btn.getAttribute('data-filter') || 'all';
+      if (currentPrimary !== 'vertical') {
+        currentSecondary = 'all';
+        dropdownItems.forEach(di => di.classList.remove('active'));
+        const allSubBtn = document.querySelector('.dropdown-item[data-subfilter="all"]');
+        if (allSubBtn) allSubBtn.classList.add('active');
+      }
       applyFilters();
     });
   });
 
-  subFilterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      subFilterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentSecondary = btn.getAttribute('data-subfilter');
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const sub = item.getAttribute('data-subfilter');
+
+      dropdownItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+
+      primaryTabBtns.forEach(b => b.classList.remove('active'));
+      if (dropdownToggleBtn) dropdownToggleBtn.classList.add('active');
+
+      const menu = document.getElementById('vertical-dropdown-menu');
+      if (menu) menu.classList.remove('show');
+
+      currentPrimary = 'vertical';
+      currentSecondary = sub;
       applyFilters();
     });
   });
+
+  applyFilters();
 }
 
 /* --------------------------------------------------------------------------

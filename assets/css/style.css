@@ -4726,3 +4726,235 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   color: #f5b719;
   transform: translateY(-2px);
 }
+
+/* --------------------------------------------------------------------------
+   Work Page - Curated Grid Layout (Matching Mockup)
+   -------------------------------------------------------------------------- */
+.work-filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  flex-wrap: wrap;
+}
+
+.work-tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 0.4rem 0 0.8rem;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.work-tab-btn:hover,
+.work-tab-btn.active {
+  color: #ffffff;
+}
+
+.work-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #f5b719;
+  box-shadow: 0 0 10px rgba(245, 183, 25, 0.6);
+}
+
+/* Filter Dropdown for VERTICAL */
+.filter-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  background: rgba(12, 14, 20, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 0.6rem;
+  min-width: 190px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+}
+
+.filter-dropdown-wrapper:hover .filter-dropdown-menu,
+.filter-dropdown-menu.show {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.dropdown-item {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: left;
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item.active {
+  color: #ffffff;
+  background: rgba(245, 183, 25, 0.15);
+}
+
+/* Work Cards Grid */
+.curated-work-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+@media (max-width: 1100px) {
+  .curated-work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .curated-work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-filter-tabs {
+    gap: 1.2rem;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 0.5rem;
+  }
+}
+
+.work-card-item {
+  background: rgba(18, 20, 26, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-card-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(245, 183, 25, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 183, 25, 0.15);
+}
+
+.work-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #000000;
+  overflow: hidden;
+}
+
+.work-card-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-card-item:hover .work-card-video {
+  transform: scale(1.06);
+}
+
+.work-brand-logo-tag {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  padding: 0.3rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.brand-logo-text {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  font-family: var(--font-display);
+}
+
+.work-card-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.work-card-item:hover .work-card-play-btn {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: rgba(245, 183, 25, 0.95);
+  border-color: #f5b719;
+  color: #000000;
+}
+
+.work-card-meta {
+  padding: 1.1rem 1rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.work-card-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+
+.work-card-subcat {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.work-card-slogan {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #f5b719;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: auto;
+}

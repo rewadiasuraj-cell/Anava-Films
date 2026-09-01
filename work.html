@@ -49,316 +49,334 @@
     </div>
   </header>
 
-  <!-- Work Page Header Section -->
-  <section class="hero-section" style="min-height: 48vh; padding-top: calc(var(--header-height) + 4rem);">
+  <!-- Hero & Filter Header Section -->
+  <section class="hero-section" style="min-height: auto; padding-top: calc(var(--header-height) + 3rem); padding-bottom: 2.5rem; background: var(--bg-dark);">
     <div class="container">
-      <div class="hero-content">
-        <span class="hero-badge">SELECTED REPERTOIRE</span>
-        <h1 class="display-title">OUR <span class="silver-text">WORK</span></h1>
-        <p class="subtitle">
-          From commercial TVCs and brand narratives to high-converting performance content, vertical social series, podcasts, and catalogue shoots.
-        </p>
-
-        <!-- Primary Category Filter Tabs: ALL | TVCS | TESTIMONIALS | PODCASTS | VERTICAL | PHOTOSHOOTS -->
-        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2.2rem;">
-          <button class="filter-btn btn-primary active" data-filter="all">ALL</button>
-          <button class="filter-btn btn-outline" data-filter="tvc">TVCS</button>
-          <button class="filter-btn btn-outline" data-filter="testimonials">TESTIMONIALS</button>
-          <button class="filter-btn btn-outline" data-filter="podcasts">PODCASTS</button>
-          <button class="filter-btn btn-outline" data-filter="vertical">VERTICAL</button>
-          <button class="filter-btn btn-outline" data-filter="photoshoots">PHOTOSHOOTS</button>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
+        <div>
+          <span style="color: #f5b719; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em;">OUR WORK</span>
+          <h1 class="display-title" style="font-size: clamp(2.5rem, 5.5vw, 4.8rem); line-height: 1.05; font-weight: 900; margin-top: 0.5rem;">
+            CURATED WORK.<br>
+            <span style="color: #f5b719;">REAL IMPACT.</span>
+          </h1>
         </div>
+        <div style="max-width: 440px; margin-bottom: 0.5rem;">
+          <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; font-weight: 500;">
+            A selection of films, content and campaigns we've created for brands across industries.
+          </p>
+        </div>
+      </div>
 
-        <!-- Secondary Filter for VERTICAL: Performance Ads | Catalogue Shoots | Social Content | Product Content -->
-        <div id="vertical-sub-filters" class="secondary-filter-container">
-          <span class="secondary-filter-label">Filter Vertical:</span>
-          <button class="sub-filter-btn active" data-subfilter="all">All Vertical</button>
-          <button class="sub-filter-btn" data-subfilter="performance">Performance Ads</button>
-          <button class="sub-filter-btn" data-subfilter="catalogue">Catalogue Shoots</button>
-          <button class="sub-filter-btn" data-subfilter="social">Social Content</button>
-          <button class="sub-filter-btn" data-subfilter="product">Product Content</button>
+      <!-- Category Filter Bar with Dropdown for Vertical -->
+      <div style="margin-top: 3.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 0.8rem;">
+        <div class="work-filter-tabs">
+          <button class="work-tab-btn active" data-filter="all">ALL</button>
+          <button class="work-tab-btn" data-filter="tvc">TVCS</button>
+          <button class="work-tab-btn" data-filter="testimonials">TESTIMONIALS</button>
+          <button class="work-tab-btn" data-filter="podcasts">PODCASTS</button>
+          
+          <!-- Dropdown Tab for VERTICAL -->
+          <div class="filter-dropdown-wrapper">
+            <button class="work-tab-btn dropdown-toggle-btn" data-filter="vertical" id="vertical-dropdown-btn">
+              VERTICAL <span style="font-size: 0.75rem; margin-left: 3px;">▾</span>
+            </button>
+            <div class="filter-dropdown-menu" id="vertical-dropdown-menu">
+              <button class="dropdown-item active" data-subfilter="all">All Vertical</button>
+              <button class="dropdown-item" data-subfilter="performance">Performance Ads</button>
+              <button class="dropdown-item" data-subfilter="catalogue">Catalogue Shoots</button>
+              <button class="dropdown-item" data-subfilter="social">Social Content</button>
+              <button class="dropdown-item" data-subfilter="product">Product Content</button>
+            </div>
+          </div>
+
+          <button class="work-tab-btn" data-filter="photoshoots">PHOTOSHOOTS</button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Work Grid Section -->
-  <section class="section-padding border-top-divider">
+  <!-- Curated Work Grid Section -->
+  <section class="section-padding" style="padding-top: 2.5rem; padding-bottom: 5rem; background: var(--bg-dark);">
     <div class="container">
-      <div class="work-grid">
+      <div class="curated-work-grid">
 
-        <!-- 1. TVC: Hustler -->
-        <div class="work-card" data-category="tvc" data-subcategories="social,performance" data-open-case="lenskart-hustler">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">LENSKART • COMMERCIAL TVC</div>
-            <h3 class="work-card-title">Hustler — Keep Hustling</h3>
-            <p class="work-card-desc">High-octane commercial ad film built around energy, attitude, and momentum.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Ideation</span>
-              <span class="role-badge">Production</span>
-              <span class="role-badge">Direction</span>
+        <!-- 1. Hustler -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,performance" data-open-case="lenskart-hustler">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">∞ lenskart</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">HUSTLER</h3>
+            <div class="work-card-subcat">Digital TVC</div>
+            <div class="work-card-slogan">KEEP HUSTLING</div>
           </div>
         </div>
 
-        <!-- 2. TVC: John Jacobs -->
-        <div class="work-card" data-category="tvc" data-subcategories="social" data-open-case="john-jacobs">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">JOHN JACOBS EYEWEAR • BRAND FILM / TVC</div>
-            <h3 class="work-card-title">John Jacobs — An Eye for Love</h3>
-            <p class="work-card-desc">Atmospheric romantic commercial focusing on visual chemistry and subtle eye contact.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Scripting</span>
-              <span class="role-badge">Production</span>
-              <span class="role-badge">Direction</span>
+        <!-- 2. John Jacobs -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social" data-open-case="john-jacobs">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">JOHN JACOBS</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">JOHN JACOBS</h3>
+            <div class="work-card-subcat">Valentine's Day Film</div>
+            <div class="work-card-slogan">AN EYE FOR LOVE</div>
           </div>
         </div>
 
-        <!-- 3. Vertical: Karan Johar & Kusha Kapila -->
-        <div class="work-card" data-category="vertical" data-subcategories="social,product" data-open-case="karan-johar-kusha">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">LENSKART • CELEBRITY REEL / SOCIAL CONTENT</div>
-            <h3 class="work-card-title">Karan Johar & Kusha Kapila x Lenskart</h3>
-            <p class="work-card-desc">Witty celebrity dialogue film engineered for high-converting social media feeds.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Celebrity Direction</span>
-              <span class="role-badge">Production</span>
+        <!-- 3. Catalogue Shoots -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="performance,catalogue" data-open-case="lenskart-inf-03">
+          <div class="work-card-media">
+            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 03.mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">∞ lenskart</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">CATALOGUE SHOOTS</h3>
+            <div class="work-card-subcat">Lenskart Collections</div>
+            <div class="work-card-slogan">STYLE. EVERY ANGLE.</div>
           </div>
         </div>
 
-        <!-- 4. Vertical: Orry & KFC -->
-        <div class="work-card" data-category="vertical" data-subcategories="social,performance" data-open-case="orry-kfc">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/vertical-films/ORRY & KFC.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">KFC INDIA • VIRAL REEL / PERFORMANCE ADS</div>
-            <h3 class="work-card-title">Orry & KFC Commercial</h3>
-            <p class="work-card-desc">Pop-culture viral commercial featuring internet icon Orry with energetic food styling.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Production</span>
-              <span class="role-badge">Post-Production</span>
+        <!-- 4. Performance Ads -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="performance,catalogue" data-open-case="lenskart-inf-05">
+          <div class="work-card-media">
+            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 05.mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">∞ lenskart</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">PERFORMANCE ADS</h3>
+            <div class="work-card-subcat">Performance Campaigns</div>
+            <div class="work-card-slogan">SEE MORE. DO MORE.</div>
           </div>
         </div>
 
-        <!-- 5. Vertical: KFC x Jitesh Sharma -->
-        <div class="work-card" data-category="vertical" data-subcategories="social,performance" data-open-case="kfc-jitesh">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/vertical-films/KFC X JITESH SHARMA ( RCB).mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">KFC / RCB • SPORTS COMMERCIAL</div>
-            <h3 class="work-card-title">KFC x Jitesh Sharma (RCB)</h3>
-            <p class="work-card-desc">Fast-paced player commercial fusing sports energy with craveable KFC crunch.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Production</span>
-              <span class="role-badge">Direction</span>
+        <!-- 5. WOW Skin Science -->
+        <div class="work-card-item" data-category="testimonials" data-subcategories="product,social" data-open-case="wow-brand-content">
+          <div class="work-card-media">
+            <video src="assets/media/testimonials/WOW TESTIMONIAL .mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">WOW™ SKIN SCIENCE</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">WOW SKIN SCIENCE</h3>
+            <div class="work-card-subcat">Digital / Brand Content</div>
+            <div class="work-card-slogan">NATURE. SCIENCE. YOU.</div>
           </div>
         </div>
 
-        <!-- 6. Vertical: Thumbs Up x Zaid Darbar -->
-        <div class="work-card" data-category="vertical" data-subcategories="social" data-open-case="thumbsup-zaid">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/vertical-films/THUMBS UP X ZAID DARBAR FILM.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">THUMBS UP • ACTION & SOCIAL CONTENT</div>
-            <h3 class="work-card-title">Thumbs Up x Zaid Darbar</h3>
-            <p class="work-card-desc">High-intensity stunt and motion sequence featuring Zaid Darbar.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Choreography</span>
-              <span class="role-badge">Production</span>
+        <!-- 6. Indus Valley -->
+        <div class="work-card-item" data-category="photoshoots" data-subcategories="catalogue,product" data-open-case="indus-valley-brand">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">Indus Valley</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">INDUS VALLEY</h3>
+            <div class="work-card-subcat">Hair Colour Brand Content</div>
+            <div class="work-card-slogan">COLOURS OF NATURE</div>
           </div>
         </div>
 
-        <!-- 7. Vertical Performance: Lenskart Influencers #03 -->
-        <div class="work-card" data-category="vertical" data-subcategories="performance,catalogue" data-open-case="lenskart-inf-03">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 03.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">LENSKART • PERFORMANCE ADS / CATALOGUE</div>
-            <h3 class="work-card-title">Lenskart Influencers Campaign #03</h3>
-            <p class="work-card-desc">Close-up fashion influencer styling tailored for performance marketing conversion.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Production</span>
-              <span class="role-badge">Post-Production</span>
+        <!-- 7. Aqualens -->
+        <div class="work-card-item" data-category="photoshoots" data-subcategories="catalogue,performance,product" data-open-case="aqualens-campaign">
+          <div class="work-card-media">
+            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 05.mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">aqualens</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">AQUALENS</h3>
+            <div class="work-card-subcat">Photoshoots · Catalogue · Performance</div>
+            <div class="work-card-slogan">CLARITY THAT DEFINES YOU</div>
           </div>
         </div>
 
-        <!-- 8. Vertical Performance: Lenskart Influencers #05 -->
-        <div class="work-card" data-category="vertical" data-subcategories="performance,catalogue" data-open-case="lenskart-inf-05">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 05.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">LENSKART • PERFORMANCE ADS / CATALOGUE</div>
-            <h3 class="work-card-title">Lenskart Influencers Campaign #05</h3>
-            <p class="work-card-desc">Dynamic model transitions highlighting frame shapes and lens reflections.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Production</span>
-              <span class="role-badge">Post-Production</span>
+        <!-- 8. FiKN -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="performance,social" data-open-case="fikn-performance">
+          <div class="work-card-media">
+            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 03.mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">FiKN</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">FIKN</h3>
+            <div class="work-card-subcat">Performance Advertising</div>
+            <div class="work-card-slogan">FUEL YOUR BEST</div>
           </div>
         </div>
 
-        <!-- 9. Vertical Performance: FIKN -->
-        <div class="work-card" data-category="vertical" data-subcategories="performance,social" data-open-case="fikn-performance">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 03.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">FIKN • PERFORMANCE ADS</div>
-            <h3 class="work-card-title">FIKN — High-Conversion Ad Suite</h3>
-            <p class="work-card-desc">Direct-response video ads structured with 3-second hooks and strong conversion CTAs.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Scripting</span>
-              <span class="role-badge">Production</span>
+        <!-- 9. Karan Johar & Kusha Kapila -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="social,product" data-open-case="karan-johar-kusha">
+          <div class="work-card-media">
+            <video src="assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">∞ lenskart</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">KARAN & KUSHA</h3>
+            <div class="work-card-subcat">Celebrity Reel / Social Content</div>
+            <div class="work-card-slogan">STAR POWER. REEL IMPACT.</div>
           </div>
         </div>
 
-        <!-- 10. Photoshoots / Catalogue: Aqualens -->
-        <div class="work-card" data-category="photoshoots" data-subcategories="catalogue,performance,product" data-open-case="aqualens-campaign">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 05.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">AQUALENS • PHOTOSHOOTS / CATALOGUE</div>
-            <h3 class="work-card-title">Aqualens — Comfort in Every Blink</h3>
-            <p class="work-card-desc">High-clarity catalogue visuals and performance ad suite for daily contact lenses.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Production</span>
-              <span class="role-badge">Art Direction</span>
+        <!-- 10. Orry & KFC Commercial -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="social,performance" data-open-case="orry-kfc">
+          <div class="work-card-media">
+            <video src="assets/media/vertical-films/ORRY & KFC.mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">KFC INDIA</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">ORRY & KFC</h3>
+            <div class="work-card-subcat">Viral Reel / Performance</div>
+            <div class="work-card-slogan">SO GOOD. VIRAL IMPACT.</div>
           </div>
         </div>
 
-        <!-- 11. Photoshoots: Indus Valley -->
-        <div class="work-card" data-category="photoshoots" data-subcategories="catalogue,product" data-open-case="indus-valley-brand">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">INDUS VALLEY • PHOTOSHOOTS / BRAND CONTENT</div>
-            <h3 class="work-card-title">Indus Valley — Organic Campaign</h3>
-            <p class="work-card-desc">Editorial product shoot and campaign assets highlighting bio-organic personal care.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Art Direction</span>
-              <span class="role-badge">Production</span>
+        <!-- 11. KFC x Jitesh Sharma -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="social,performance" data-open-case="kfc-jitesh">
+          <div class="work-card-media">
+            <video src="assets/media/vertical-films/KFC X JITESH SHARMA ( RCB).mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">KFC x RCB</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">JITESH SHARMA</h3>
+            <div class="work-card-subcat">Sports Commercial</div>
+            <div class="work-card-slogan">POWER & CRUNCH</div>
           </div>
         </div>
 
-        <!-- 12. Testimonials / Brand Content: WOW Skin Science -->
-        <div class="work-card" data-category="testimonials" data-subcategories="product,social" data-open-case="wow-brand-content">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/testimonials/WOW TESTIMONIAL .mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">WOW SKIN SCIENCE • BRAND CONTENT / TESTIMONIAL</div>
-            <h3 class="work-card-title">WOW Skin Science — Botanical Stories</h3>
-            <p class="work-card-desc">Organic personal care narrative highlighting botanical formulation and authentic skin stories.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Production</span>
-              <span class="role-badge">Direction</span>
+        <!-- 12. Thumbs Up x Zaid Darbar -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="social" data-open-case="thumbsup-zaid">
+          <div class="work-card-media">
+            <video src="assets/media/vertical-films/THUMBS UP X ZAID DARBAR FILM.mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">THUMS UP</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">ZAID DARBAR</h3>
+            <div class="work-card-subcat">Action & Social Film</div>
+            <div class="work-card-slogan">TASTE THE THUNDER</div>
           </div>
         </div>
 
-        <!-- 13. Testimonials: Lenskart Partner -->
-        <div class="work-card" data-category="testimonials" data-subcategories="social" data-open-case="testimonial-lenskart-1">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/testimonials/LENSKART TESTIMONIAL FILM.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">LENSKART • BRAND TESTIMONIAL</div>
-            <h3 class="work-card-title">Lenskart Partner Testimonial</h3>
-            <p class="work-card-desc">Authentic brand storytelling from the client’s perspective.</p>
-            <div class="role-badges">
-              <span class="role-badge">Interview Production</span>
-              <span class="role-badge">Direction</span>
-              <span class="role-badge">Editing</span>
+        <!-- 13. Lenskart Partner Testimonial -->
+        <div class="work-card-item" data-category="testimonials" data-subcategories="social" data-open-case="testimonial-lenskart-1">
+          <div class="work-card-media">
+            <video src="assets/media/testimonials/LENSKART TESTIMONIAL FILM.mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">∞ lenskart</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">PARTNER TESTIMONIAL</h3>
+            <div class="work-card-subcat">Lenskart Leadership Story</div>
+            <div class="work-card-slogan">TRUSTED PARTNERSHIP</div>
           </div>
         </div>
 
-        <!-- 14. Podcasts: SimplAI -->
-        <div class="work-card" data-category="podcasts" data-subcategories="social" data-open-case="podcast-simplai">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/podcast/podcast -- simplAI.mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">SIMPLAI • STUDIO PODCAST</div>
-            <h3 class="work-card-title">SimplAI — Tech & AI Podcast Series</h3>
-            <p class="work-card-desc">Multi-angle studio broadcast with acoustic treatment and dynamic switching.</p>
-            <div class="role-badges">
-              <span class="role-badge">Studio Setup</span>
-              <span class="role-badge">Multi-Cam Production</span>
-              <span class="role-badge">Audio Mastering</span>
+        <!-- 14. SimplAI Podcast -->
+        <div class="work-card-item" data-category="podcasts" data-subcategories="social" data-open-case="podcast-simplai">
+          <div class="work-card-media">
+            <video src="assets/media/podcast/podcast -- simplAI.mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">simplAI</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">SIMPLAI PODCAST</h3>
+            <div class="work-card-subcat">Studio Tech Broadcast</div>
+            <div class="work-card-slogan">IDEAS UNLEASHED</div>
           </div>
         </div>
 
-        <!-- 15. TVC: Music Video Space -->
-        <div class="work-card" data-category="tvc" data-subcategories="social" data-open-case="music-video-space">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/music-video/SONG -- MUSIC VIDEO .mp4" class="work-thumb-img" muted loop playsinline preload="metadata"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">ANAVA / MUSIC FILM • NARRATIVE</div>
-            <h3 class="work-card-title">I Need My Space — Music Video</h3>
-            <p class="work-card-desc">Moody visual narrative blending neon shadows, slow motion, and silhouette framing.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Production</span>
-              <span class="role-badge">Direction</span>
+        <!-- 15. Music Video Space -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social" data-open-case="music-video-space">
+          <div class="work-card-media">
+            <video src="assets/media/music-video/SONG -- MUSIC VIDEO .mp4" class="work-card-video" muted loop playsinline preload="metadata"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">ANAVA MUSIC</span>
             </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+          </div>
+          <div class="work-card-meta">
+            <h3 class="work-card-name">I NEED MY SPACE</h3>
+            <div class="work-card-subcat">Narrative Music Film</div>
+            <div class="work-card-slogan">CINEMATIC FREEDOM</div>
           </div>
         </div>
 
+      </div>
+
+      <!-- Load More Button -->
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <button id="load-more-btn" style="background: transparent; border: 1px solid #f5b719; color: #f5b719; font-weight: 800; padding: 0.9rem 2.2rem; letter-spacing: 0.08em; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+          LOAD MORE WORK +
+        </button>
       </div>
     </div>
   </section>

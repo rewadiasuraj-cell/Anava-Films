@@ -66,9 +66,14 @@ function initMobileMenu() {
 
   if (!menuBtn || !nav) return;
 
-  function toggleMenu(e) {
+  let lastTouchTime = 0;
+
+  function handleMenuToggle(e) {
+    const now = Date.now();
+    if (now - lastTouchTime < 300) return;
+    lastTouchTime = now;
+
     if (e) {
-      e.preventDefault();
       e.stopPropagation();
     }
     const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
@@ -89,7 +94,11 @@ function initMobileMenu() {
     document.body.classList.remove('no-scroll');
   }
 
-  menuBtn.addEventListener('click', toggleMenu);
+  menuBtn.addEventListener('click', handleMenuToggle);
+  menuBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    handleMenuToggle(e);
+  }, { passive: false });
 
   const navLinks = nav.querySelectorAll('.nav-link, .mobile-nav-cta, a');
   navLinks.forEach(link => {

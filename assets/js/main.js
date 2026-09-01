@@ -870,13 +870,24 @@ function initVideoThumbnails() {
         if (!video) return;
 
         if (entry.isIntersecting) {
-          // Card is visible or near viewport: set preload to metadata so initial frame displays
-          if (video.preload === 'none') {
-            video.preload = 'metadata';
+          video.preload = 'auto';
+          const ensureFrame = () => {
+            try {
+              if (video.paused && (!video.currentTime || video.currentTime < 0.5)) {
+                video.currentTime = 2.5;
+              }
+            } catch (e) {}
+          };
+          if (video.readyState >= 2) {
+            ensureFrame();
+          } else {
+            video.addEventListener('loadeddata', ensureFrame, { once: true });
+            video.addEventListener('loadedmetadata', ensureFrame, { once: true });
+            try { video.load(); } catch (e) {}
           }
         }
       });
-    }, { rootMargin: '200px 0px', threshold: 0.01 });
+    }, { rootMargin: '300px 0px', threshold: 0.01 });
   }
 
   cards.forEach(card => {
@@ -886,14 +897,14 @@ function initVideoThumbnails() {
     video.muted = true;
     video.playsInline = true;
     video.loop = true;
-    video.preload = 'metadata'; // Load initial frame for poster thumbnail
+    video.preload = 'auto';
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
 
     const setFrame = () => {
       try {
-        if (video.paused && (!video.currentTime || video.currentTime < 0.2)) {
-          video.currentTime = 1.0;
+        if (video.paused && (!video.currentTime || video.currentTime < 0.5)) {
+          video.currentTime = 2.5;
         }
       } catch (e) {}
     };

@@ -66,44 +66,45 @@ function initMobileMenu() {
 
   if (!menuBtn || !nav) return;
 
-  menuBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
+  function toggleMenu(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-    menuBtn.setAttribute('aria-expanded', !isExpanded);
-    menuBtn.classList.toggle('active');
-    nav.classList.toggle('mobile-active');
-    if (header) header.classList.toggle('mobile-menu-open');
-    document.body.classList.toggle('no-scroll', !isExpanded);
-  });
+    const nextState = !isExpanded;
 
-  const navLinks = nav.querySelectorAll('.nav-link, .mobile-nav-cta');
+    menuBtn.setAttribute('aria-expanded', nextState ? 'true' : 'false');
+    menuBtn.classList.toggle('active', nextState);
+    nav.classList.toggle('mobile-active', nextState);
+    if (header) header.classList.toggle('mobile-menu-open', nextState);
+    document.body.classList.toggle('no-scroll', nextState);
+  }
+
+  function closeMenu() {
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.classList.remove('active');
+    nav.classList.remove('mobile-active');
+    if (header) header.classList.remove('mobile-menu-open');
+    document.body.classList.remove('no-scroll');
+  }
+
+  menuBtn.addEventListener('click', toggleMenu);
+
+  const navLinks = nav.querySelectorAll('.nav-link, .mobile-nav-cta, a');
   navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menuBtn.setAttribute('aria-expanded', 'false');
-      menuBtn.classList.remove('active');
-      nav.classList.remove('mobile-active');
-      if (header) header.classList.remove('mobile-menu-open');
-      document.body.classList.remove('no-scroll');
-    });
+    link.addEventListener('click', closeMenu);
   });
 
   document.addEventListener('click', (e) => {
     if (nav.classList.contains('mobile-active') && !nav.contains(e.target) && !menuBtn.contains(e.target)) {
-      menuBtn.setAttribute('aria-expanded', 'false');
-      menuBtn.classList.remove('active');
-      nav.classList.remove('mobile-active');
-      if (header) header.classList.remove('mobile-menu-open');
-      document.body.classList.remove('no-scroll');
+      closeMenu();
     }
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav.classList.contains('mobile-active')) {
-      menuBtn.setAttribute('aria-expanded', 'false');
-      menuBtn.classList.remove('active');
-      nav.classList.remove('mobile-active');
-      if (header) header.classList.remove('mobile-menu-open');
-      document.body.classList.remove('no-scroll');
+      closeMenu();
     }
   });
 }
@@ -127,7 +128,8 @@ function initClapboardIntro() {
   }
 
   const skipBtn = document.getElementById('skip-intro-btn');
-  const wordmarkEl = document.querySelector('.intro-wordmark');
+  const titleTextEl = document.getElementById('cinematic-title-text');
+  const wordmarkEl = document.getElementById('cinematic-wordmark');
   let isDismissed = false;
   const activeTimeouts = [];
 
@@ -146,20 +148,62 @@ function initClapboardIntro() {
     introEl.classList.add('dismissed');
     setTimeout(() => {
       introEl.style.display = 'none';
-    }, 600);
+    }, 650);
   }
 
   if (skipBtn) skipBtn.addEventListener('click', dismissIntro);
-  introEl.addEventListener('click', dismissIntro);
+  introEl.addEventListener('click', (e) => {
+    if (e.target !== skipBtn && !skipBtn.contains(e.target)) {
+      dismissIntro();
+    }
+  });
 
-  // Clapboard sequence: Claps shut at 0.5s -> reveals wordmark at 1.4s -> dismisses at 3.4s
-  safeTimeout(() => {
-    if (wordmarkEl) wordmarkEl.classList.add('visible');
-  }, 1400);
+  const words = ['A THOUGHT', 'AN IDEA', 'A DECK', 'A SHOOT'];
 
+  function showWord(index) {
+    if (!titleTextEl || isDismissed) return;
+
+    if (index >= words.length) {
+      // Transition from title text to Logo Reveal
+      titleTextEl.classList.remove('visible');
+      titleTextEl.classList.add('fade-out');
+      setTimeout(() => {
+        titleTextEl.style.display = 'none';
+        if (wordmarkEl) {
+          wordmarkEl.style.display = 'block';
+          wordmarkEl.offsetHeight; // trigger reflow
+          wordmarkEl.classList.add('visible');
+        }
+      }, 350);
+
+      // Auto dismiss after logo displays cleanly
+      safeTimeout(() => {
+        dismissIntro();
+      }, 1800);
+      return;
+    }
+
+    // Fade out previous word
+    titleTextEl.classList.remove('visible');
+    titleTextEl.classList.add('fade-out');
+
+    setTimeout(() => {
+      titleTextEl.textContent = words[index];
+      titleTextEl.classList.remove('fade-out');
+      titleTextEl.offsetHeight; // trigger reflow
+      titleTextEl.classList.add('visible');
+    }, 200);
+
+    // Schedule next word after 700ms
+    safeTimeout(() => {
+      showWord(index + 1);
+    }, 720);
+  }
+
+  // Start sequence
   safeTimeout(() => {
-    dismissIntro();
-  }, 3400);
+    showWord(0);
+  }, 100);
 }
 
 /* --------------------------------------------------------------------------

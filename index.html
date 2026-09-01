@@ -15,42 +15,19 @@
 </head>
 <body>
 
-  <!-- 01. Opening Clapboard Intro Animation (Session-based, 3-4s max, skippable) -->
+  <!-- 01. Opening Full-Screen Cinematic Title Intro Animation -->
   <div id="cinematic-intro" role="dialog" aria-label="Intro Animation">
-    <div class="clapboard-wrapper">
-      <div class="clapboard">
-        <!-- Top Clapper Arm (Animated Claps Shut) -->
-        <div class="clapper-top"></div>
-        
-        <!-- Slate Body -->
-        <div class="clapper-body">
-          <div class="clapper-header-row">
-            <div class="clapper-title">ANAVA FILMS</div>
-            <div class="clapper-take">TAKE 01</div>
-          </div>
-          
-          <div class="clapper-scene-box">
-            <div class="clapper-scene-num">SCENE 01</div>
-            <div class="clapper-scene-text">LET’S MAKE SOMETHING</div>
-          </div>
+    <div class="cinematic-bg-glow"></div>
 
-          <div class="clapper-footer-row">
-            <span>DIR: <strong>JACKSON</strong></span>
-            <span>PROD: <strong>ANJAN</strong></span>
-            <span>ROLL: <strong>24FPS</strong></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Wordmark Stage Reveal -->
-      <div class="intro-wordmark">
+    <div class="cinematic-title-container">
+      <div id="cinematic-title-text" class="cinematic-title-text">A THOUGHT</div>
+      <div id="cinematic-wordmark" class="intro-wordmark" style="display: none;">
         <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS" class="intro-wordmark-img">
-        <div class="intro-wordmark-tagline">GIVE US A THOUGHT — WE’LL GIVE YOU IDEAS TO SHOOT</div>
       </div>
     </div>
 
     <button id="skip-intro-btn" class="skip-intro-btn" aria-label="Skip Intro Animation">
-      SKIP INTRO ✕
+      SKIP INTRO
     </button>
   </div>
 

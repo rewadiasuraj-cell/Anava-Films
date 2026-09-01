@@ -897,31 +897,35 @@ function initVideoThumbnails() {
     video.muted = true;
     video.playsInline = true;
     video.loop = true;
-    video.preload = 'auto';
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
 
-    const primeVideoFrame = () => {
-      if (video.dataset.primed) return;
-      video.dataset.primed = 'true';
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          setTimeout(() => {
-            if (!card.matches(':hover')) {
-              video.pause();
-              try { video.currentTime = 2.5; } catch (e) {}
-            }
-          }, 250);
-        }).catch(() => {});
-      }
-    };
-
-    if (video.readyState >= 2) {
-      primeVideoFrame();
+    if (video.hasAttribute('poster')) {
+      video.preload = 'none';
     } else {
-      video.addEventListener('loadeddata', primeVideoFrame, { once: true });
-      video.addEventListener('canplay', primeVideoFrame, { once: true });
+      video.preload = 'auto';
+      const primeVideoFrame = () => {
+        if (video.dataset.primed) return;
+        video.dataset.primed = 'true';
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            setTimeout(() => {
+              if (!card.matches(':hover')) {
+                video.pause();
+                try { video.currentTime = 2.5; } catch (e) {}
+              }
+            }, 250);
+          }).catch(() => {});
+        }
+      };
+
+      if (video.readyState >= 2) {
+        primeVideoFrame();
+      } else {
+        video.addEventListener('loadeddata', primeVideoFrame, { once: true });
+        video.addEventListener('canplay', primeVideoFrame, { once: true });
+      }
     }
 
     if (videoObserver) {

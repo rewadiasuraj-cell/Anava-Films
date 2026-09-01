@@ -901,19 +901,27 @@ function initVideoThumbnails() {
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
 
-    const setFrame = () => {
-      try {
-        if (video.paused && (!video.currentTime || video.currentTime < 0.5)) {
-          video.currentTime = 2.5;
-        }
-      } catch (e) {}
+    const primeVideoFrame = () => {
+      if (video.dataset.primed) return;
+      video.dataset.primed = 'true';
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          setTimeout(() => {
+            if (!card.matches(':hover')) {
+              video.pause();
+              try { video.currentTime = 2.5; } catch (e) {}
+            }
+          }, 250);
+        }).catch(() => {});
+      }
     };
 
     if (video.readyState >= 2) {
-      setFrame();
+      primeVideoFrame();
     } else {
-      video.addEventListener('loadeddata', setFrame, { once: true });
-      video.addEventListener('loadedmetadata', setFrame, { once: true });
+      video.addEventListener('loadeddata', primeVideoFrame, { once: true });
+      video.addEventListener('canplay', primeVideoFrame, { once: true });
     }
 
     if (videoObserver) {

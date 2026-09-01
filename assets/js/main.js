@@ -26,13 +26,27 @@ function initThemeToggle() {
   applyTheme(savedTheme);
 
   if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
+    let lastToggleTime = 0;
+
+    const handleToggle = (e) => {
+      const now = Date.now();
+      if (now - lastToggleTime < 300) return;
+      lastToggleTime = now;
+
+      if (e) e.stopPropagation();
+
       const currentTheme = document.documentElement.getAttribute('data-theme');
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
       applyTheme(newTheme);
       localStorage.setItem('anava-theme', newTheme);
-    });
+    };
+
+    toggleBtn.addEventListener('click', handleToggle);
+    toggleBtn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      handleToggle(e);
+    }, { passive: false });
   }
 }
 

@@ -49,216 +49,310 @@
     </div>
   </header>
 
-  <!-- Hero Header Section with Director Chair Visual -->
-  <section class="wwd-hero-section">
-    <div class="wwd-hero-overlay"></div>
+  <!-- Main Dashboard Section matching Reference Image Layout -->
+  <section class="wwd-dashboard-section">
     <div class="container">
-      <div class="wwd-hero-content">
-        <span class="hero-badge">OUR END-TO-END MODEL</span>
-        <h1 class="wwd-main-title">
-          THINK · MAKE · <span class="wwd-title-accent">FINISH</span>
-        </h1>
-        <p class="wwd-subtitle">
-          Instead of disjointed vendor handoffs, we bring the creative and executional sides of filmmaking under one roof. Here is what we do across each stage.
-        </p>
-      </div>
-    </div>
-  </section>
+      <div class="wwd-layout-grid">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside class="wwd-sidebar">
+          <a href="what-we-do.html" class="wwd-back-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            BACK TO WHAT WE DO
+          </a>
 
-  <!-- 3 Pillar Cards Section -->
-  <section class="section-padding" style="padding-top: 3.5rem;">
-    <div class="container">
-      <div class="wwd-pillars-grid">
-
-        <!-- Pillar 01: THINK -->
-        <div class="wwd-pillar-card">
-          <div class="wwd-pillar-header">
-            <span class="wwd-pillar-num">01</span>
-            <h2 class="wwd-pillar-name">THINK</h2>
-            <span class="wwd-pillar-sublabel">/ CONCEPT</span>
+          <div class="wwd-sidebar-hero">
+            <h1 class="wwd-hero-three-lines">
+              <span class="line-white">THINK.</span>
+              <span class="line-white">MAKE.</span>
+              <span class="line-gold">FINISH.</span>
+            </h1>
+            <p class="wwd-hero-tagline">
+              <span class="text-white">The thought is clear.</span><br>
+              <span class="text-gold">Now we make it real.</span>
+            </p>
           </div>
 
-          <ul class="wwd-services-list">
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                </svg>
-              </div>
-              <div>
-                <h4 class="wwd-service-title">Creative Direction</h4>
-                <p class="wwd-service-desc">Finding the distinct visual voice, tone, and storytelling hook that positions the brand above category noise.</p>
-              </div>
-            </li>
+          <div class="wwd-sidebar-divider"></div>
 
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z"/>
-                </svg>
+          <!-- Stepper Tab Buttons -->
+          <div class="wwd-stepper-nav">
+            
+            <!-- Pillar 1: THINK -->
+            <button class="wwd-step-tab" data-target="think-tab" onclick="switchWwdTab('think')">
+              <div class="step-tab-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>
               </div>
-              <div>
-                <h4 class="wwd-service-title">Ideation & Concept Development</h4>
-                <p class="wwd-service-desc">Turning raw thoughts, problems or products into sharp, memorable, and shootable concepts.</p>
+              <div class="step-tab-text">
+                <h3 class="tab-title">THINK</h3>
+                <p class="tab-sub">We find the idea.</p>
               </div>
-            </li>
+            </button>
+            
+            <div class="step-tab-connector"></div>
 
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-                </svg>
+            <!-- Pillar 2: MAKE -->
+            <button class="wwd-step-tab" data-target="make-tab" onclick="switchWwdTab('make')">
+              <div class="step-tab-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8H4z"/><path d="m4 11 3.5-7h4L8 11"/><path d="m11.5 11 3.5-7h4l-3.5 7"/></svg>
               </div>
-              <div>
-                <h4 class="wwd-service-title">Scripting</h4>
-                <p class="wwd-service-desc">Crafting dialog, voiceover, shot treatments, and director decks that give the idea its exact rhythm and emotion.</p>
+              <div class="step-tab-text">
+                <h3 class="tab-title">MAKE</h3>
+                <p class="tab-sub">We bring it to life.</p>
               </div>
-            </li>
+            </button>
 
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-                </svg>
-              </div>
-              <div>
-                <h4 class="wwd-service-title">Creative Consulting</h4>
-                <p class="wwd-service-desc">Brands can approach us even before they have a production brief. We help define what the idea could be before deciding how it should be made.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
+            <div class="step-tab-connector"></div>
 
-        <!-- Pillar 02: MAKE -->
-        <div class="wwd-pillar-card">
-          <div class="wwd-pillar-header">
-            <span class="wwd-pillar-num">02</span>
-            <h2 class="wwd-pillar-name">MAKE</h2>
-            <span class="wwd-pillar-sublabel">/ SHOOT</span>
+            <!-- Pillar 3: FINISH -->
+            <button class="wwd-step-tab active" data-target="finish-tab" onclick="switchWwdTab('finish')">
+              <div class="step-tab-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <div class="step-tab-text">
+                <h3 class="tab-title">FINISH</h3>
+                <p class="tab-sub">We deliver impact.</p>
+              </div>
+            </button>
+
+          </div>
+        </aside>
+
+        <!-- RIGHT MAIN CONTENT PANEL -->
+        <main class="wwd-main-panel">
+          
+          <!-- ================= PANEL 3: FINISH (ACTIVE BY DEFAULT) ================= -->
+          <div id="finish-tab" class="wwd-pillar-panel active">
+            
+            <!-- Panel Header -->
+            <div class="panel-header-row">
+              <div class="panel-header-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <div class="panel-header-text">
+                <h2 class="panel-header-title">FINISH</h2>
+                <p class="panel-header-subtitle">
+                  <span class="sub-white">This is where everything comes together.</span><br>
+                  <span class="sub-gold">We perfect it. We polish it. We deliver it.</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Features Card Container -->
+            <div class="panel-features-card">
+              
+              <!-- Feature 01: OFFLINE EDITING -->
+              <div class="feature-row-item">
+                <div class="feature-media">
+                  <img src="assets/images/what-we-do/offline_editing.jpg" alt="Offline Editing" class="feature-thumb-img">
+                </div>
+                <div class="feature-content">
+                  <div class="feature-header">
+                    <div class="feature-small-icon">
+                      <!-- Scissors Icon -->
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                    </div>
+                    <h3 class="feature-title">OFFLINE EDITING</h3>
+                  </div>
+                  <p class="feature-desc">
+                    Where the shoot becomes a story.<br>
+                    We shape performances, pacing, structure and rhythm to create the final narrative.
+                  </p>
+                </div>
+                <div class="feature-watermark">01</div>
+              </div>
+
+              <!-- Feature 02: MUSIC & SOUND -->
+              <div class="feature-row-item">
+                <div class="feature-media">
+                  <img src="assets/images/what-we-do/music_sound.jpg" alt="Music & Sound" class="feature-thumb-img">
+                </div>
+                <div class="feature-content">
+                  <div class="feature-header">
+                    <div class="feature-small-icon">
+                      <!-- Waveform Icon -->
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5v14M22 9v6M7 5v14M2 9v6"/></svg>
+                    </div>
+                    <h3 class="feature-title">MUSIC & SOUND</h3>
+                  </div>
+                  <p class="feature-desc">
+                    Music, sound design, ambience and audio finishing that give the film its emotion and energy.
+                  </p>
+                </div>
+                <div class="feature-watermark">02</div>
+              </div>
+
+              <!-- Feature 03: COLOUR GRADING & ONLINE -->
+              <div class="feature-row-item">
+                <div class="feature-media">
+                  <img src="assets/images/what-we-do/colour_grading.jpg" alt="Colour Grading" class="feature-thumb-img">
+                </div>
+                <div class="feature-content">
+                  <div class="feature-header">
+                    <div class="feature-small-icon">
+                      <!-- Color Wheel Icon -->
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 1 0 7 7"/></svg>
+                    </div>
+                    <h3 class="feature-title">COLOUR GRADING & ONLINE</h3>
+                  </div>
+                  <p class="feature-desc">
+                    For high-end grading and online finishing, we collaborate with leading post-production partners including:
+                  </p>
+                  <div class="feature-partners-grid">
+                    <ul class="partner-bullet-list">
+                      <li>Prime Focus</li>
+                      <li>Splice Studios</li>
+                    </ul>
+                    <ul class="partner-bullet-list">
+                      <li>Famous</li>
+                      <li>Nube (Grading Studio)</li>
+                    </ul>
+                  </div>
+                  <p class="feature-note">
+                    The post-production partner can vary depending on the project's creative and technical requirements.
+                  </p>
+                </div>
+                <div class="feature-watermark">03</div>
+              </div>
+
+              <!-- Feature 04: VFX & MASTERING -->
+              <div class="feature-row-item">
+                <div class="feature-media">
+                  <img src="assets/images/what-we-do/vfx_mastering.jpg" alt="VFX & Mastering" class="feature-thumb-img">
+                </div>
+                <div class="feature-content">
+                  <div class="feature-header">
+                    <div class="feature-small-icon text-badge">VFX</div>
+                    <h3 class="feature-title">VFX & MASTERING</h3>
+                  </div>
+                  <p class="feature-desc">
+                    With a foundation in Animation & Multimedia, Anava has developed relationships with a strong network of VFX and animation artists across disciplines, including:
+                  </p>
+                  <div class="feature-tags-inline">
+                    <span class="vfx-tag">• Compositing</span>
+                    <span class="vfx-tag">• Cleanup</span>
+                    <span class="vfx-tag">• Animation</span>
+                    <span class="vfx-tag">• VFX</span>
+                    <span class="vfx-tag">• Motion work</span>
+                    <span class="vfx-tag">• Finishing</span>
+                  </div>
+                  <p class="feature-note">
+                    We then take the final film through mastering and deliver it in the formats required across platforms.
+                  </p>
+                </div>
+                <div class="feature-watermark">04</div>
+              </div>
+
+            </div>
           </div>
 
-          <ul class="wwd-services-list">
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
-                </svg>
+          <!-- ================= PANEL 1: THINK ================= -->
+          <div id="think-tab" class="wwd-pillar-panel">
+            <div class="panel-header-row">
+              <div class="panel-header-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>
               </div>
-              <div>
-                <h4 class="wwd-service-title">Production</h4>
-                <p class="wwd-service-desc">End-to-end shoot management, scheduling, equipment, budgeting, crew assembly, and smooth on-set execution.</p>
+              <div class="panel-header-text">
+                <h2 class="panel-header-title">THINK</h2>
+                <p class="panel-header-subtitle">
+                  <span class="sub-white">Where raw ideas turn into shootable stories.</span><br>
+                  <span class="sub-gold">We ideate. We write. We direct vision.</span>
+                </p>
               </div>
-            </li>
+            </div>
 
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
-                </svg>
+            <div class="panel-features-card">
+              
+              <div class="feature-row-item">
+                <div class="feature-media">
+                  <img src="assets/images/what-we-do/think_hero.jpg" alt="Creative Direction" class="feature-thumb-img">
+                </div>
+                <div class="feature-content">
+                  <div class="feature-header">
+                    <div class="feature-small-icon">✦</div>
+                    <h3 class="feature-title">CREATIVE DIRECTION & IDEATION</h3>
+                  </div>
+                  <p class="feature-desc">
+                    Finding the distinct visual voice, tone, and storytelling hook that positions the brand above category noise. Turning raw thoughts or briefs into sharp visual concepts.
+                  </p>
+                </div>
+                <div class="feature-watermark">01</div>
               </div>
-              <div>
-                <h4 class="wwd-service-title">Direction</h4>
-                <p class="wwd-service-desc">Translating the creative deck into striking camera movements, pacing, and authentic on-screen performances.</p>
-              </div>
-            </li>
 
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
+              <div class="feature-row-item">
+                <div class="feature-media">
+                  <img src="assets/images/process/process_step_3.jpg" alt="Scripting & Decks" class="feature-thumb-img">
+                </div>
+                <div class="feature-content">
+                  <div class="feature-header">
+                    <div class="feature-small-icon">✎</div>
+                    <h3 class="feature-title">SCRIPTING & DIRECTOR DECKS</h3>
+                  </div>
+                  <p class="feature-desc">
+                    Crafting dialogue, voiceover, moodboards, treatment decks, and shot treatments that define the exact rhythm, emotion, and visual world before setting foot on set.
+                  </p>
+                </div>
+                <div class="feature-watermark">02</div>
               </div>
-              <div>
-                <h4 class="wwd-service-title">Casting</h4>
-                <p class="wwd-service-desc">Our network has expanded beyond domestic talent, allowing us to work with international talent when the story, brand or campaign requires it.</p>
-              </div>
-            </li>
 
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/>
-                </svg>
-              </div>
-              <div>
-                <h4 class="wwd-service-title">Art Direction</h4>
-                <p class="wwd-service-desc">We build the visual world around the idea — from production design and props to styling, colour, set details and the smallest elements within the frame.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Pillar 03: FINISH -->
-        <div class="wwd-pillar-card">
-          <div class="wwd-pillar-header">
-            <span class="wwd-pillar-num">03</span>
-            <h2 class="wwd-pillar-name">FINISH</h2>
-            <span class="wwd-pillar-sublabel">/ POST</span>
+            </div>
           </div>
 
-          <ul class="wwd-services-list">
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20 3H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h6l-2 3v1h8v-1l-2-3h6c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 12H4V5h16v10z"/>
-                </svg>
+          <!-- ================= PANEL 2: MAKE ================= -->
+          <div id="make-tab" class="wwd-pillar-panel">
+            <div class="panel-header-row">
+              <div class="panel-header-icon-badge">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8H4z"/><path d="m4 11 3.5-7h4L8 11"/><path d="m11.5 11 3.5-7h4l-3.5 7"/></svg>
               </div>
-              <div>
-                <h4 class="wwd-service-title">Offline Editing</h4>
-                <p class="wwd-service-desc">Narrative rhythm, cut pacing, and structural storytelling that hooks attention and maintains momentum.</p>
+              <div class="panel-header-text">
+                <h2 class="panel-header-title">MAKE</h2>
+                <p class="panel-header-subtitle">
+                  <span class="sub-white">Where the deck becomes living reality.</span><br>
+                  <span class="sub-gold">We shoot. We direct. We produce.</span>
+                </p>
               </div>
-            </li>
+            </div>
 
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-                </svg>
+            <div class="panel-features-card">
+              
+              <div class="feature-row-item">
+                <div class="feature-media">
+                  <img src="assets/images/what-we-do/make_hero.jpg" alt="Production & Direction" class="feature-thumb-img">
+                </div>
+                <div class="feature-content">
+                  <div class="feature-header">
+                    <div class="feature-small-icon">🎥</div>
+                    <h3 class="feature-title">PRODUCTION & DIRECTION</h3>
+                  </div>
+                  <p class="feature-desc">
+                    End-to-end shoot management, scheduling, camera equipment, budgeting, crew assembly, and translating director decks into striking camera movements and authentic performances.
+                  </p>
+                </div>
+                <div class="feature-watermark">01</div>
               </div>
-              <div>
-                <h4 class="wwd-service-title">Music & Sound</h4>
-                <p class="wwd-service-desc">Custom sonic identities, bespoke scores, foley, voiceover mastering, and cinematic sound design.</p>
-              </div>
-            </li>
 
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.2 19.54 10.55 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/>
-                </svg>
+              <div class="feature-row-item">
+                <div class="feature-media">
+                  <img src="assets/images/process/process_step_4.jpg" alt="International Casting & Art Direction" class="feature-thumb-img">
+                </div>
+                <div class="feature-content">
+                  <div class="feature-header">
+                    <div class="feature-small-icon">★</div>
+                    <h3 class="feature-title">INTERNATIONAL CASTING & ART DIRECTION</h3>
+                  </div>
+                  <p class="feature-desc">
+                    Working with international talent, production design, props, styling, set building, and fine-tuning every single element inside the frame.
+                  </p>
+                </div>
+                <div class="feature-watermark">02</div>
               </div>
-              <div>
-                <h4 class="wwd-service-title">Colour Grading & Online</h4>
-                <p class="wwd-service-desc">For high-end grading and online finishing, we collaborate with leading post-production partners including Prime Focus, Famous, Splice Studios, and Nube (Grading Studio).</p>
-              </div>
-            </li>
 
-            <li class="wwd-service-item">
-              <div class="wwd-service-icon-box">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2L9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61z"/>
-                </svg>
-              </div>
-              <div>
-                <h4 class="wwd-service-title">VFX & Mastering</h4>
-                <p class="wwd-service-desc">With a foundation in Animation & Multimedia, Anava has developed relationships with a strong network of VFX and animation artists across disciplines — Compositing, Cleanup, Animation, VFX, Motion work, Finishing.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
+            </div>
+          </div>
+
+        </main>
 
       </div>
-
-      <!-- Bottom CTA Banner Card -->
-      <div class="wwd-cta-card">
-        <img src="assets/images/hero_studio_bg.jpg" alt="Camera Operator Silhouette" class="wwd-cta-image">
-        <div class="wwd-cta-content">
-          <h2 class="wwd-cta-title">HAVE A BRIEF IN MIND?</h2>
-          <p class="wwd-cta-subtitle">Whether you need creative consulting or a full-scale commercial shoot, we are ready.</p>
-          <a href="contact.html" class="btn-primary">LET’S TALK ↗</a>
-        </div>
-      </div>
-
     </div>
   </section>
 

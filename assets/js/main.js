@@ -944,4 +944,37 @@ function initVideoThumbnails() {
       video.pause();
     }, { passive: true });
   });
-}
+});
+
+/* Interactive Tab Switching for WHAT WE DO Dashboard */
+window.switchWwdTab = function(tabName) {
+  const tabs = document.querySelectorAll('.wwd-step-tab');
+  const panels = document.querySelectorAll('.wwd-pillar-panel');
+  
+  tabs.forEach(tab => {
+    if (tab.getAttribute('data-target') === tabName + '-tab') {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  panels.forEach(panel => {
+    if (panel.id === tabName + '-tab') {
+      panel.classList.add('active');
+    } else {
+      panel.classList.remove('active');
+    }
+  });
+
+  const heroLines = document.querySelector('.wwd-hero-three-lines');
+  if (heroLines) {
+    if (tabName === 'think') {
+      heroLines.innerHTML = '<span class="line-gold">THINK.</span><span class="line-white">MAKE.</span><span class="line-white">FINISH.</span>';
+    } else if (tabName === 'make') {
+      heroLines.innerHTML = '<span class="line-white">THINK.</span><span class="line-gold">MAKE.</span><span class="line-white">FINISH.</span>';
+    } else {
+      heroLines.innerHTML = '<span class="line-white">THINK.</span><span class="line-white">MAKE.</span><span class="line-gold">FINISH.</span>';
+    }
+  }
+};

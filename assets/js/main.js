@@ -70,8 +70,10 @@ function initMobileMenu() {
   });
 
   document.addEventListener('click', (e) => {
-    if (nav.classList.contains('mobile-active') && !nav.contains(e.target) && !menuBtn.contains(e.target)) {
-      closeMenu();
+    if (nav.classList.contains('mobile-active')) {
+      if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
+        closeMenu();
+      }
     }
   });
 

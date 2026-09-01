@@ -2405,6 +2405,12 @@ body.no-scroll {
     z-index: 10000 !important;
   }
 
+  .main-header.mobile-menu-open {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    overflow: visible !important;
+  }
+
   .header-container {
     padding: 0 !important;
     width: 100% !important;
@@ -2481,7 +2487,8 @@ body.no-scroll {
 
   /* Mobile/Tablet Glassmorphism Drawer Overlay */
   .main-nav {
-    display: none !important;
+    display: flex !important;
+    flex-direction: column !important;
     position: fixed !important;
     top: 76px !important;
     left: 50% !important;

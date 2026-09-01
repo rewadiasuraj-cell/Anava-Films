@@ -31,55 +31,63 @@ function applyTheme(theme) {
 }
 
 /* --------------------------------------------------------------------------
-   1. Mobile Navigation Drawer Toggle
+   1. Mobile Navigation Drawer Toggle (Global & Unbreakable)
    -------------------------------------------------------------------------- */
-function initMobileMenu() {
+window.toggleMobileMenu = function(e) {
+  if (e) {
+    if (e.stopPropagation) e.stopPropagation();
+  }
   const menuBtn = document.getElementById('mobile-menu-btn');
   const nav = document.querySelector('.main-nav');
   const header = document.querySelector('.main-header');
 
   if (!menuBtn || !nav) return;
 
-  function toggleMenu(e) {
-    if (e) {
-      e.stopPropagation();
-    }
-    const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-    const nextState = !isExpanded;
+  const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+  const nextState = !isExpanded;
 
-    menuBtn.setAttribute('aria-expanded', nextState ? 'true' : 'false');
-    menuBtn.classList.toggle('active', nextState);
-    nav.classList.toggle('mobile-active', nextState);
-    if (header) header.classList.toggle('mobile-menu-open', nextState);
-    document.body.classList.toggle('no-scroll', nextState);
-  }
+  menuBtn.setAttribute('aria-expanded', nextState ? 'true' : 'false');
+  menuBtn.classList.toggle('active', nextState);
+  nav.classList.toggle('mobile-active', nextState);
+  if (header) header.classList.toggle('mobile-menu-open', nextState);
+  document.body.classList.toggle('no-scroll', nextState);
+};
 
-  function closeMenu() {
+window.closeMobileMenu = function() {
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const nav = document.querySelector('.main-nav');
+  const header = document.querySelector('.main-header');
+
+  if (menuBtn) {
     menuBtn.setAttribute('aria-expanded', 'false');
     menuBtn.classList.remove('active');
-    nav.classList.remove('mobile-active');
-    if (header) header.classList.remove('mobile-menu-open');
-    document.body.classList.remove('no-scroll');
   }
+  if (nav) nav.classList.remove('mobile-active');
+  if (header) header.classList.remove('mobile-menu-open');
+  document.body.classList.remove('no-scroll');
+};
 
-  menuBtn.addEventListener('click', toggleMenu);
+function initMobileMenu() {
+  const nav = document.querySelector('.main-nav');
+  if (!nav) return;
 
   const navLinks = nav.querySelectorAll('.nav-link, .mobile-nav-cta, a');
   navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener('click', window.closeMobileMenu);
   });
 
   document.addEventListener('click', (e) => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
     if (nav.classList.contains('mobile-active')) {
-      if (!nav.contains(e.target) && !menuBtn.contains(e.target)) {
-        closeMenu();
+      if (!nav.contains(e.target) && menuBtn && !menuBtn.contains(e.target)) {
+        window.closeMobileMenu();
       }
     }
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav.classList.contains('mobile-active')) {
-      closeMenu();
+      window.closeMobileMenu();
     }
   });
 }

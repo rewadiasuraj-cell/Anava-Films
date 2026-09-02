@@ -5873,30 +5873,24 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .tstm-cards-track {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1.1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
   width: 100%;
-  overflow-x: auto;
-  scroll-behavior: smooth;
   padding: 0.5rem 0.2rem 1.5rem;
-  scrollbar-width: none;
-}
-.tstm-cards-track::-webkit-scrollbar {
-  display: none;
 }
 
 /* Individual Vertical Reel Card */
 .tstm-card {
   background: #0c0e13;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
-  min-width: 180px;
+  width: 100%;
 }
 
 .tstm-card:hover {
@@ -5908,7 +5902,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .tstm-card-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 9/13;
+  aspect-ratio: 16 / 10.5;
   background: #000;
   overflow: hidden;
 }
@@ -5930,8 +5924,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: #f5b719;
   color: #000000;
@@ -5950,7 +5944,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 }
 
 .tstm-card-body {
-  padding: 1.2rem 1.1rem;
+  padding: 1.5rem 1.4rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -5960,37 +5954,33 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .tstm-quote-mark {
   color: #f5b719;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-family: Georgia, serif;
   font-weight: bold;
   line-height: 1;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .tstm-quote-text {
   color: #cbd5e1;
-  font-size: 0.82rem;
-  line-height: 1.48;
-  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-bottom: 1.4rem;
   font-weight: 400;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .tstm-author-row {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 0.85rem;
+  padding-top: 1rem;
   margin-top: auto;
 }
 
 .tstm-author-icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   border: 1.5px solid #f5b719;
   background: rgba(245, 183, 25, 0.12);
@@ -5998,7 +5988,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: bold;
   flex-shrink: 0;
 }
@@ -6010,12 +6000,13 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .tstm-author-name {
   color: #f5b719;
   font-family: var(--font-display);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   margin: 0;
   line-height: 1.2;
+}
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;

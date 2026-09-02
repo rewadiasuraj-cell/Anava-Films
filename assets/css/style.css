@@ -298,133 +298,24 @@ html[data-theme="light"] .modal-close-btn {
   max-width: 1200px;
 }
 
-/* Horizontal Anamorphic Light Flare Beam */
-.intro-anamorphic-beam {
-  position: absolute;
-  top: 52%;
-  left: 4%;
-  right: 4%;
-  height: 1px;
-  transform: translateY(-50%);
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(245, 195, 80, 0.15) 15%,
-    rgba(255, 240, 180, 0.85) 50%,
-    rgba(245, 195, 80, 0.15) 85%,
-    transparent 100%
-  );
-  box-shadow: 0 0 12px 1.5px rgba(245, 183, 25, 0.45), 0 0 25px 4px rgba(255, 235, 170, 0.25);
-  pointer-events: none;
-  z-index: 3;
-  opacity: 0.95;
-  animation: beamGleam 3s ease-in-out infinite alternate;
-}
-
-@keyframes beamGleam {
-  0% { opacity: 0.7; transform: translateY(-50%) scaleY(0.85); }
-  100% { opacity: 1; transform: translateY(-50%) scaleY(1.3); }
-}
-
-/* Left Starburst Glint (On bottom left edge of first letter 'A') */
-.intro-glint-left {
-  position: absolute;
-  top: 55%;
-  left: 23%;
-  width: 6px;
-  height: 6px;
-  background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 16px 6px #ffffff, 0 0 35px 12px rgba(245, 195, 80, 0.95), 0 0 60px 22px rgba(245, 183, 25, 0.5);
-  pointer-events: none;
-  z-index: 6;
-  animation: glintPulse 2.4s ease-in-out infinite;
-}
-
-.intro-glint-left::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -22px;
-  right: -22px;
-  height: 1.5px;
-  background: #ffffff;
-  transform: translateY(-50%);
-  box-shadow: 0 0 8px #ffffff;
-}
-
-.intro-glint-left::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -22px;
-  bottom: -22px;
-  width: 1.5px;
-  background: #ffffff;
-  transform: translateX(-50%);
-  box-shadow: 0 0 8px #ffffff;
-}
-
-/* Right Starburst Glint (On top right edge of last letter) */
-.intro-glint-right {
-  position: absolute;
-  top: 44%;
-  right: 23%;
-  width: 5px;
-  height: 5px;
-  background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 14px 5px #ffffff, 0 0 30px 10px rgba(245, 195, 80, 0.9);
-  pointer-events: none;
-  z-index: 6;
-  animation: glintPulse 2.4s ease-in-out infinite 0.7s;
-}
-
-.intro-glint-right::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -18px;
-  right: -18px;
-  height: 1px;
-  background: #ffffff;
-  transform: translateY(-50%);
-}
-
-.intro-glint-right::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -18px;
-  bottom: -18px;
-  width: 1px;
-  background: #ffffff;
-  transform: translateX(-50%);
-}
-
-@keyframes glintPulse {
-  0%, 100% { opacity: 0.6; transform: scale(0.85); }
-  50% { opacity: 1; transform: scale(1.35); }
-}
-
-/* 3D Chiseled Metallic Bevel Typography (100% Match to Reference Images) */
+/* High-Class 3D Chiseled Metallic Typography (Pure Specular Reflection, No Fake Graphic Overlays) */
 .cinematic-title-text {
   position: relative;
   font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
-  font-size: clamp(2.3rem, 6.2vw, 4.6rem);
-  font-weight: 700;
+  font-size: clamp(2.2rem, 5.8vw, 4.4rem);
+  font-weight: 600;
   letter-spacing: 0.38em;
   text-transform: uppercase;
   z-index: 2;
   
-  /* 3D Metallic Champagne Gold Linear Bevel Gradient */
+  /* Multi-Tone 3D Metallic Champagne Gold Gradient Fill */
   background: linear-gradient(
     180deg,
     #ffffff 0%,
-    #fff7d6 18%,
-    #e2b53e 42%,
-    #8f640a 65%,
-    #fcebb8 85%,
+    #fcf3d9 16%,
+    #e2b744 38%,
+    #8c620c 60%,
+    #fcedc2 82%,
     #694700 100%
   );
   background-size: 100% 200%;
@@ -432,25 +323,27 @@ html[data-theme="light"] .modal-close-btn {
   -webkit-text-fill-color: transparent;
   
   /* Chiseled Metallic Bevel Edge & Drop Shadows */
-  -webkit-text-stroke: 1px rgba(255, 240, 180, 0.25);
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(226, 181, 62, 0.45));
+  -webkit-text-stroke: 0.8px rgba(255, 240, 180, 0.3);
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(226, 183, 68, 0.38));
+  
+  /* Continuous Smooth Specular Metallic Light Sweep Animation */
+  animation: metallicLightSweep 3.5s ease-in-out infinite alternate;
   
   opacity: 0;
-  transform: scale(0.97) translateY(4px);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(4px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   padding-left: 0.38em;
   display: inline-block;
 }
 
-@keyframes metallicSilverSweep {
+@keyframes metallicLightSweep {
   0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
+    background-position: 0% 0%;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 15px rgba(226, 183, 68, 0.25));
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 100%;
+    filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(226, 183, 68, 0.55));
   }
 }
 

@@ -6078,29 +6078,93 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* ==========================================================================
+   MOBILE-ONLY HORIZONTAL LEFT-RIGHT SWIPE SLIDER (SLIDING LEFT RIGHT)
+   ========================================================================== */
 @media (max-width: 768px) {
   .tstm-header-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+
+  /* Testimonials Track: Smooth Touch Drag Horizontal Reel Slider on Mobile */
   .tstm-cards-track {
-    grid-template-columns: repeat(1.5, 1fr);
-    overflow-x: auto;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 1.2rem !important;
+    padding: 0.5rem 0.2rem 1.8rem !important;
+    scrollbar-width: none;
   }
-  .tstm-metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 1.5rem;
-    gap: 1.5rem;
-  }
-  .tstm-arrow-btn {
+  
+  .tstm-cards-track::-webkit-scrollbar {
     display: none;
   }
-}
-@media (max-width: 480px) {
-  .tstm-cards-track {
-    grid-template-columns: repeat(1.15, 1fr);
+
+  .tstm-card {
+    flex: 0 0 84% !important;
+    width: 84% !important;
+    min-width: 84% !important;
+    max-width: 84% !important;
+    scroll-snap-align: start !important;
+    border-radius: 18px !important;
   }
-  .tstm-metrics-grid {
-    grid-template-columns: 1fr;
+
+  .tstm-card-media {
+    aspect-ratio: 1 / 1.08 !important;
+  }
+
+  .tstm-quote-text {
+    font-size: 0.88rem !important;
+    line-height: 1.5 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  /* Collaborators Section Teaser Cards Slider on Mobile */
+  .collab-cards-grid,
+  .section-padding .work-grid {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    grid-template-columns: none !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 1.2rem !important;
+    padding-bottom: 1.2rem !important;
+    scrollbar-width: none;
+  }
+
+  .collab-cards-grid::-webkit-scrollbar,
+  .section-padding .work-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .collab-cards-grid .work-card,
+  .section-padding .work-grid .work-card,
+  .collab-card {
+    flex: 0 0 84% !important;
+    width: 84% !important;
+    min-width: 84% !important;
+    scroll-snap-align: start !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tstm-card,
+  .collab-cards-grid .work-card,
+  .section-padding .work-grid .work-card,
+  .collab-card {
+    flex: 0 0 86% !important;
+    width: 86% !important;
+    min-width: 86% !important;
   }
 }

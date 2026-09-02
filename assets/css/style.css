@@ -280,12 +280,12 @@ html[data-theme="light"] .modal-close-btn {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 750px;
-  height: 750px;
-  background: radial-gradient(circle, rgba(245, 183, 25, 0.18) 0%, rgba(200, 140, 10, 0.06) 40%, transparent 70%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(180, 140, 40, 0.16) 0%, rgba(120, 90, 20, 0.04) 45%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(60px);
+  filter: blur(70px);
 }
 
 .cinematic-title-container {
@@ -299,55 +299,190 @@ html[data-theme="light"] .modal-close-btn {
   max-width: 1200px;
 }
 
+/* Horizontal Anamorphic Light Streak Beam (Matching Reference Mockups) */
+.anamorphic-streak {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(245, 195, 80, 0.2) 15%,
+    rgba(255, 240, 180, 0.85) 50%,
+    rgba(245, 195, 80, 0.2) 85%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px 1px rgba(245, 183, 25, 0.5), 0 0 20px 3px rgba(255, 235, 170, 0.3);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.9;
+  animation: streakGleam 3s ease-in-out infinite alternate;
+}
+
+@keyframes streakGleam {
+  0% { opacity: 0.65; transform: translateY(-50%) scaleY(0.8); }
+  100% { opacity: 1; transform: translateY(-50%) scaleY(1.3); }
+}
+
+/* Left Starburst Glint (On bottom left edge of first letter) */
+.glint-left {
+  position: absolute;
+  top: 54%;
+  left: 24%;
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 16px 6px #ffffff, 0 0 35px 12px rgba(245, 195, 80, 0.95), 0 0 60px 20px rgba(245, 183, 25, 0.5);
+  pointer-events: none;
+  z-index: 5;
+  animation: glintPulse 2.5s ease-in-out infinite;
+}
+
+.glint-left::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  right: -20px;
+  height: 1.5px;
+  background: #ffffff;
+  transform: translateY(-50%);
+  box-shadow: 0 0 8px #ffffff;
+}
+
+.glint-left::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  bottom: -20px;
+  width: 1.5px;
+  background: #ffffff;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px #ffffff;
+}
+
+/* Right Starburst Glint (On top right edge of last letter) */
+.glint-right {
+  position: absolute;
+  top: 45%;
+  right: 24%;
+  width: 5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 14px 5px #ffffff, 0 0 30px 10px rgba(245, 195, 80, 0.9);
+  pointer-events: none;
+  z-index: 5;
+  animation: glintPulse 2.5s ease-in-out infinite 0.7s;
+}
+
+.glint-right::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -16px;
+  right: -16px;
+  height: 1px;
+  background: #ffffff;
+  transform: translateY(-50%);
+}
+
+.glint-right::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -16px;
+  bottom: -16px;
+  width: 1px;
+  background: #ffffff;
+  transform: translateX(-50%);
+}
+
+@keyframes glintPulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.35); }
+}
+
+/* 3D Metallic Gold Title Text (Exact Match with Reference Mockups) */
 .cinematic-title-text {
   position: relative;
-  font-family: 'Outfit', var(--font-display), 'Inter', sans-serif;
-  font-size: clamp(2.6rem, 7vw, 5.6rem);
+  font-family: 'Playfair Display', 'Outfit', var(--font-display), Georgia, serif;
+  font-size: clamp(2.4rem, 6.5vw, 4.8rem);
   font-weight: 800;
-  letter-spacing: 0.36em;
+  letter-spacing: 0.38em;
   text-transform: uppercase;
+  z-index: 2;
   
-  /* Metallic Gold Multi-Tone Linear Gradient Fill */
+  /* 3D Bevelled Metallic Gold Gradient Fill */
   background: linear-gradient(
-    135deg,
+    180deg,
     #ffffff 0%,
-    #fff6cc 18%,
-    #f5b719 38%,
-    #d1950c 58%,
-    #fff8d6 78%,
-    #a37407 100%
+    #fff7d6 18%,
+    #f5c53b 42%,
+    #b0800b 68%,
+    #fff3b3 88%,
+    #7a5600 100%
   );
-  background-size: 200% auto;
+  background-size: 100% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* 3D Gold Glow & Drop Shadows matching reference mockup */
-  filter: drop-shadow(0 0 25px rgba(245, 183, 25, 0.6)) drop-shadow(0 8px 25px rgba(0, 0, 0, 0.95));
-  
-  /* Sweeping Metallic Shine Animation */
-  animation: metallicGoldSweep 4s ease-in-out infinite;
+  /* 3D Shadow & Bevel Effect */
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 18px rgba(245, 183, 25, 0.35));
   
   opacity: 0;
-  transform: scale(0.96) translateY(6px);
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  padding-left: 0.36em;
+  transform: scale(0.97) translateY(4px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-left: 0.38em;
   display: inline-block;
 }
 
-/* Glowing Lens Flare Sparkle Glint on Text Edge */
-.cinematic-title-text::after {
-  content: '';
+.cinematic-title-text.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: blur(0px);
+}
+
+.cinematic-title-text.fade-out {
+  opacity: 0;
+  transform: scale(1.04) translateY(-4px);
+  filter: blur(6px);
+}
+
+/* Skip Intro Button Pill matching reference screenshot */
+.skip-intro-btn {
   position: absolute;
-  top: 48%;
-  left: 28%;
-  width: 14px;
-  height: 14px;
-  background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 18px 8px #ffffff, 0 0 35px 14px rgba(245, 183, 25, 0.95);
-  opacity: 0.85;
-  pointer-events: none;
-  animation: lensGlint 2.8s ease-in-out infinite;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #a1a1aa;
+  padding: 0.45rem 1.4rem;
+  border-radius: 30px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.skip-intro-btn:hover {
+  background: rgba(245, 183, 25, 0.2);
+  border-color: rgba(245, 183, 25, 0.7);
+  color: #ffffff;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 6px 25px rgba(245, 183, 25, 0.3);
 }
 
 @keyframes metallicGoldSweep {

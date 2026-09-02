@@ -6429,3 +6429,315 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
     font-size: 0.68rem;
   }
 }
+
+/* ==========================================================================
+   REDESIGNED WHAT WE DO SECTION (MATCHING REFERENCE MOCKUP)
+   ========================================================================== */
+
+.wwd-section {
+  padding: 5rem 0;
+  background: #050608;
+}
+
+.wwd-header {
+  margin-bottom: 2.5rem;
+}
+
+.wwd-badge {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #f5b719;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.wwd-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.8rem;
+  text-transform: uppercase;
+}
+
+.wwd-title-white {
+  color: #ffffff;
+}
+
+.wwd-title-gold {
+  color: #f5b719;
+}
+
+.wwd-subtitle {
+  color: #94a3b8;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 540px;
+  margin: 0;
+}
+
+.wwd-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+/* Individual Feature Card */
+.wwd-card {
+  position: relative;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0b0d12;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wwd-card:hover {
+  border-color: rgba(245, 183, 25, 0.45);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(245, 183, 25, 0.15);
+  transform: translateY(-4px);
+}
+
+.wwd-card-bg-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background-size: cover;
+  background-position: center right;
+  z-index: 1;
+}
+
+.wwd-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #0b0d12 0%, #0b0d12 40%, rgba(11, 13, 18, 0.85) 65%, rgba(11, 13, 18, 0.3) 100%);
+  z-index: 2;
+}
+
+.wwd-card-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding: 1.8rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.wwd-card-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  max-width: 520px;
+}
+
+.wwd-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.wwd-card-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.wwd-card-step {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #f5b719;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.wwd-card-name {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 0.6rem;
+  line-height: 1.1;
+}
+
+.wwd-card-desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+}
+
+.wwd-card-link {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #f5b719;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.wwd-card-link:hover {
+  color: #ffffff;
+}
+
+.wwd-arrow-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 183, 25, 0.5);
+  background: rgba(0, 0, 0, 0.4);
+  color: #f5b719;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+.wwd-card:hover .wwd-arrow-circle {
+  background: #f5b719;
+  color: #000000;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(245, 183, 25, 0.4);
+}
+
+/* Bottom CTA Card */
+.wwd-cta-card {
+  background: #0b0d12;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 1.4rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.wwd-cta-left {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.wwd-cta-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(245, 183, 25, 0.1);
+  border: 1.5px solid rgba(245, 183, 25, 0.3);
+  color: #f5b719;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.wwd-cta-tag {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #f5b719;
+  text-transform: uppercase;
+}
+
+.wwd-cta-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0.2rem 0 0.1rem;
+}
+
+.wwd-cta-sub {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.wwd-cta-chat-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #f5b719;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(245, 183, 25, 0.35);
+  flex-shrink: 0;
+}
+
+.wwd-cta-chat-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .wwd-card-content {
+    padding: 1.4rem 1.2rem;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .wwd-card-left {
+    gap: 0.9rem;
+  }
+  .wwd-icon-box {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  .wwd-card-name {
+    font-size: 1.5rem;
+  }
+  .wwd-card-desc {
+    font-size: 0.85rem;
+  }
+  .wwd-card-bg-image {
+    width: 75%;
+  }
+  .wwd-card-overlay {
+    background: linear-gradient(90deg, #0b0d12 0%, #0b0d12 50%, rgba(11, 13, 18, 0.8) 75%, rgba(11, 13, 18, 0.3) 100%);
+  }
+  .wwd-cta-card {
+    padding: 1.2rem;
+  }
+  .wwd-cta-icon-circle {
+    width: 40px;
+    height: 40px;
+  }
+  .wwd-cta-title {
+    font-size: 1.1rem;
+  }
+}

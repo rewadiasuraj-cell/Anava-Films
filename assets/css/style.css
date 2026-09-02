@@ -275,18 +275,17 @@ html[data-theme="light"] .modal-close-btn {
   transform: scale(1.03);
   pointer-events: none;
 }
-
 .cinematic-bg-glow {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 650px;
-  height: 650px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(245, 183, 25, 0.02) 40%, transparent 70%);
+  width: 750px;
+  height: 750px;
+  background: radial-gradient(circle, rgba(245, 183, 25, 0.18) 0%, rgba(200, 140, 10, 0.06) 40%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(50px);
+  filter: blur(60px);
 }
 
 .cinematic-title-container {
@@ -301,21 +300,77 @@ html[data-theme="light"] .modal-close-btn {
 }
 
 .cinematic-title-text {
-  font-family: var(--font-display), 'Outfit', 'Inter', sans-serif;
-  font-size: clamp(2.4rem, 6.5vw, 5.2rem);
+  position: relative;
+  font-family: 'Outfit', var(--font-display), 'Inter', sans-serif;
+  font-size: clamp(2.6rem, 7vw, 5.6rem);
   font-weight: 800;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
-  color: #ffffff;
-  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+  
+  /* Metallic Gold Multi-Tone Linear Gradient Fill */
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #fff6cc 18%,
+    #f5b719 38%,
+    #d1950c 58%,
+    #fff8d6 78%,
+    #a37407 100%
+  );
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 50px rgba(255, 255, 255, 0.25);
+  
+  /* 3D Gold Glow & Drop Shadows matching reference mockup */
+  filter: drop-shadow(0 0 25px rgba(245, 183, 25, 0.6)) drop-shadow(0 8px 25px rgba(0, 0, 0, 0.95));
+  
+  /* Sweeping Metallic Shine Animation */
+  animation: metallicGoldSweep 4s ease-in-out infinite;
+  
   opacity: 0;
   transform: scale(0.96) translateY(6px);
-  filter: blur(6px);
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  padding-left: 0.26em;
+  padding-left: 0.36em;
+  display: inline-block;
+}
+
+/* Glowing Lens Flare Sparkle Glint on Text Edge */
+.cinematic-title-text::after {
+  content: '';
+  position: absolute;
+  top: 48%;
+  left: 28%;
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 18px 8px #ffffff, 0 0 35px 14px rgba(245, 183, 25, 0.95);
+  opacity: 0.85;
+  pointer-events: none;
+  animation: lensGlint 2.8s ease-in-out infinite;
+}
+
+@keyframes metallicGoldSweep {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes lensGlint {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
 }
 
 .cinematic-title-text.visible {

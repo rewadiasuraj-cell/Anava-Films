@@ -10,6 +10,7 @@ function initApp() {
   initLogoIntroTrigger();
   initVideoThumbnails();
   initTestimonialTabs();
+  initTstmSlider();
 }
 
 if (document.readyState === 'loading') {
@@ -865,7 +866,7 @@ function initLogoIntroTrigger() {
    11. Automatic In-Thumbnail Video Autoplay (Continuous Smooth Video Previews)
    -------------------------------------------------------------------------- */
 function initVideoThumbnails() {
-  const videoElements = document.querySelectorAll('.work-card video, .work-thumb-wrapper video, .collab-card video, .work-card-item video, .work-card-media video, .work-card-video, .work-thumb-img');
+  const videoElements = document.querySelectorAll('.work-card video, .work-thumb-wrapper video, .collab-card video, .work-card-item video, .work-card-media video, .work-card-video, .work-thumb-img, .tstm-card video, .tstm-card-video');
   
   if (!videoElements.length) return;
 
@@ -956,3 +957,22 @@ window.switchWwdTab = function(tabName) {
     }
   }
 };
+
+/* Testimonials Carousel Slider Arrow Controls */
+function initTstmSlider() {
+  const prevBtn = document.getElementById('tstm-prev');
+  const nextBtn = document.getElementById('tstm-next');
+  const track = document.getElementById('tstm-track');
+  if (!track) return;
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -340, behavior: 'smooth' });
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: 340, behavior: 'smooth' });
+    });
+  }
+}

@@ -854,95 +854,65 @@ function initLogoIntroTrigger() {
 }
 
 /* --------------------------------------------------------------------------
-   11. Ultra-Performant Lazy Video Thumbnails (Zero Initial Bandwidth Waste)
+   11. Automatic In-Thumbnail Video Autoplay (Continuous Smooth Video Previews)
    -------------------------------------------------------------------------- */
 function initVideoThumbnails() {
-  const cards = document.querySelectorAll('.work-card, .work-thumb-wrapper, .collab-card');
+  const videoElements = document.querySelectorAll('.work-card video, .work-thumb-wrapper video, .collab-card video, .work-card-item video, .work-card-media video, .work-card-video, .work-thumb-img');
   
-  if (!cards.length) return;
+  if (!videoElements.length) return;
 
-  // IntersectionObserver to only load video stream when cards approach viewport
-  let videoObserver;
-  if ('IntersectionObserver' in window) {
-    videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const video = entry.target.querySelector('video');
-        if (!video) return;
-
-        if (entry.isIntersecting) {
-          video.preload = 'auto';
-          const ensureFrame = () => {
-            try {
-              if (video.paused && (!video.currentTime || video.currentTime < 0.5)) {
-                video.currentTime = 2.5;
-              }
-            } catch (e) {}
-          };
-          if (video.readyState >= 2) {
-            ensureFrame();
-          } else {
-            video.addEventListener('loadeddata', ensureFrame, { once: true });
-            video.addEventListener('loadedmetadata', ensureFrame, { once: true });
-            try { video.load(); } catch (e) {}
-          }
-        }
-      });
-    }, { rootMargin: '300px 0px', threshold: 0.01 });
-  }
-
-  cards.forEach(card => {
-    const video = card.querySelector('video');
-    if (!video) return;
-
+  const playVideo = (video) => {
     video.muted = true;
     video.playsInline = true;
     video.loop = true;
     video.setAttribute('muted', '');
     video.setAttribute('playsinline', '');
+    video.setAttribute('autoplay', '');
 
-    if (video.hasAttribute('poster')) {
-      video.preload = 'none';
-    } else {
-      video.preload = 'auto';
-      const primeVideoFrame = () => {
-        if (video.dataset.primed) return;
-        video.dataset.primed = 'true';
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            setTimeout(() => {
-              if (!card.matches(':hover')) {
-                video.pause();
-                try { video.currentTime = 2.5; } catch (e) {}
-              }
-            }, 250);
-          }).catch(() => {});
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Handle initial browser autoplay policies gracefully
+      });
+    }
+  };
+
+  // IntersectionObserver to play visible videos & pause offscreen ones for performance
+  if ('IntersectionObserver' in window) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target.tagName === 'VIDEO' ? entry.target : entry.target.querySelector('video');
+        if (!video) return;
+
+        if (entry.isIntersecting) {
+          video.preload = 'auto';
+          playVideo(video);
+        } else {
+          video.pause();
         }
-      };
+      });
+    }, { rootMargin: '200px 0px', threshold: 0.01 });
 
-      if (video.readyState >= 2) {
-        primeVideoFrame();
-      } else {
-        video.addEventListener('loadeddata', primeVideoFrame, { once: true });
-        video.addEventListener('canplay', primeVideoFrame, { once: true });
+    videoElements.forEach(video => {
+      const parent = video.closest('.work-card-item, .work-card, .collab-card, .work-thumb-wrapper') || video;
+      videoObserver.observe(parent);
+      playVideo(video);
+    });
+  } else {
+    videoElements.forEach(video => playVideo(video));
+  }
+
+  // Fallback triggers for first user interaction if blocked by restrictive autoplay policies
+  const tryAutoplayAll = () => {
+    videoElements.forEach(video => {
+      if (video.paused) {
+        playVideo(video);
       }
-    }
+    });
+  };
 
-    if (videoObserver) {
-      videoObserver.observe(card);
-    }
-
-    card.addEventListener('mouseenter', () => {
-      video.preload = 'auto';
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {});
-      }
-    }, { passive: true });
-
-    card.addEventListener('mouseleave', () => {
-      video.pause();
-    }, { passive: true });
+  ['click', 'touchstart', 'scroll', 'mousemove'].forEach(evt => {
+    window.addEventListener(evt, tryAutoplayAll, { once: true, passive: true });
   });
 }
 

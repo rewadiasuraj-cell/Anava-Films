@@ -298,33 +298,32 @@ html[data-theme="light"] .modal-close-btn {
   max-width: 1200px;
 }
 
-/* High-Class 3D Chiseled Metallic Typography (Pure Specular Reflection, No Fake Graphic Overlays) */
+/* Refined Lightweight Metallic Typography (Thin, Non-Bold Specular Metallic Finish) */
 .cinematic-title-text {
   position: relative;
   font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
-  font-size: clamp(2.2rem, 5.8vw, 4.4rem);
-  font-weight: 600;
-  letter-spacing: 0.38em;
+  font-size: clamp(2rem, 5.2vw, 4.2rem);
+  font-weight: 400;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
   z-index: 2;
   
-  /* Multi-Tone 3D Metallic Champagne Gold Gradient Fill */
+  /* Multi-Tone Metallic Champagne Gold Gradient Fill */
   background: linear-gradient(
     180deg,
     #ffffff 0%,
-    #fcf3d9 16%,
-    #e2b744 38%,
-    #8c620c 60%,
-    #fcedc2 82%,
+    #fcf3d9 18%,
+    #e2b744 42%,
+    #8c620c 65%,
+    #fcedc2 85%,
     #694700 100%
   );
   background-size: 100% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* Chiseled Metallic Bevel Edge & Drop Shadows */
-  -webkit-text-stroke: 0.8px rgba(255, 240, 180, 0.3);
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(226, 183, 68, 0.38));
+  /* Soft Specular Metallic Glow & Drop Shadow */
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(226, 183, 68, 0.35));
   
   /* Continuous Smooth Specular Metallic Light Sweep Animation */
   animation: metallicLightSweep 3.5s ease-in-out infinite alternate;
@@ -332,7 +331,7 @@ html[data-theme="light"] .modal-close-btn {
   opacity: 0;
   transform: translateY(4px);
   transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  padding-left: 0.38em;
+  padding-left: 0.42em;
   display: inline-block;
 }
 

@@ -210,11 +210,17 @@ function initHeaderScroll() {
    -------------------------------------------------------------------------- */
 function initShowreel() {
   const showreelVideo = document.getElementById('showreel-player');
+  const showreelBg = document.querySelector('.showreel-video-bg');
   const soundToggle = document.getElementById('showreel-sound-toggle');
   if (!showreelVideo) return;
 
   showreelVideo.muted = true;
   showreelVideo.playsInline = true;
+
+  if (showreelBg) {
+    showreelBg.muted = true;
+    showreelBg.playsInline = true;
+  }
 
   // IntersectionObserver to play when in viewport
   if ('IntersectionObserver' in window) {
@@ -222,8 +228,10 @@ function initShowreel() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           showreelVideo.play().catch(() => {});
+          if (showreelBg) showreelBg.play().catch(() => {});
         } else {
           showreelVideo.pause();
+          if (showreelBg) showreelBg.pause();
         }
       });
     }, { threshold: 0.25 });

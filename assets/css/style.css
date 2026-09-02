@@ -4860,6 +4860,39 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   box-shadow: 0 22px 45px rgba(0, 0, 0, 0.8), 0 0 25px rgba(245, 183, 25, 0.2);
 }
 
+.showreel-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  max-height: 80vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.showreel-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  filter: blur(35px) brightness(0.35);
+  transform: scale(1.15);
+  pointer-events: none;
+}
+
+.showreel-video {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 .work-card-media {
   position: relative;
   width: 100%;

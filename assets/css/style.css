@@ -251,14 +251,13 @@ html[data-theme="light"] .modal-close-btn {
 
 /* ==========================================================================
    FULL-SCREEN CINEMATIC TITLE INTRO ANIMATION
-   ========================================================================== */
-#cinematic-intro {
+   ========================================================================== */#cinematic-intro {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #060709;
+  background-color: #000000;
   z-index: 99999;
   display: flex;
   flex-direction: column;
@@ -266,26 +265,27 @@ html[data-theme="light"] .modal-close-btn {
   align-items: center;
   overflow: hidden;
   opacity: 1;
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
 }
 
 #cinematic-intro.dismissed {
   opacity: 0;
-  transform: scale(1.03);
+  transform: scale(1.02);
   pointer-events: none;
 }
+
 .cinematic-bg-glow {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(180, 140, 40, 0.16) 0%, rgba(120, 90, 20, 0.04) 45%, transparent 70%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, rgba(245, 183, 25, 0.012) 50%, transparent 80%);
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(70px);
+  filter: blur(80px);
 }
 
 .cinematic-title-container {
@@ -294,198 +294,49 @@ html[data-theme="light"] .modal-close-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 220px;
-  width: 92%;
+  min-height: 200px;
+  width: 90%;
   max-width: 1200px;
 }
 
-/* Horizontal Anamorphic Light Streak Beam (Matching Reference Mockups) */
-.anamorphic-streak {
-  position: absolute;
-  top: 50%;
-  left: 5%;
-  right: 5%;
-  height: 1px;
-  transform: translateY(-50%);
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(245, 195, 80, 0.2) 15%,
-    rgba(255, 240, 180, 0.85) 50%,
-    rgba(245, 195, 80, 0.2) 85%,
-    transparent 100%
-  );
-  box-shadow: 0 0 10px 1px rgba(245, 183, 25, 0.5), 0 0 20px 3px rgba(255, 235, 170, 0.3);
-  pointer-events: none;
-  z-index: 3;
-  opacity: 0.9;
-  animation: streakGleam 3s ease-in-out infinite alternate;
-}
-
-@keyframes streakGleam {
-  0% { opacity: 0.65; transform: translateY(-50%) scaleY(0.8); }
-  100% { opacity: 1; transform: translateY(-50%) scaleY(1.3); }
-}
-
-/* Left Starburst Glint (On bottom left edge of first letter) */
-.glint-left {
-  position: absolute;
-  top: 54%;
-  left: 24%;
-  width: 6px;
-  height: 6px;
-  background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 16px 6px #ffffff, 0 0 35px 12px rgba(245, 195, 80, 0.95), 0 0 60px 20px rgba(245, 183, 25, 0.5);
-  pointer-events: none;
-  z-index: 5;
-  animation: glintPulse 2.5s ease-in-out infinite;
-}
-
-.glint-left::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -20px;
-  right: -20px;
-  height: 1.5px;
-  background: #ffffff;
-  transform: translateY(-50%);
-  box-shadow: 0 0 8px #ffffff;
-}
-
-.glint-left::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -20px;
-  bottom: -20px;
-  width: 1.5px;
-  background: #ffffff;
-  transform: translateX(-50%);
-  box-shadow: 0 0 8px #ffffff;
-}
-
-/* Right Starburst Glint (On top right edge of last letter) */
-.glint-right {
-  position: absolute;
-  top: 45%;
-  right: 24%;
-  width: 5px;
-  height: 5px;
-  background: #ffffff;
-  border-radius: 50%;
-  box-shadow: 0 0 14px 5px #ffffff, 0 0 30px 10px rgba(245, 195, 80, 0.9);
-  pointer-events: none;
-  z-index: 5;
-  animation: glintPulse 2.5s ease-in-out infinite 0.7s;
-}
-
-.glint-right::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -16px;
-  right: -16px;
-  height: 1px;
-  background: #ffffff;
-  transform: translateY(-50%);
-}
-
-.glint-right::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -16px;
-  bottom: -16px;
-  width: 1px;
-  background: #ffffff;
-  transform: translateX(-50%);
-}
-
-@keyframes glintPulse {
-  0%, 100% { opacity: 0.5; transform: scale(0.85); }
-  50% { opacity: 1; transform: scale(1.35); }
-}
-
-/* 3D Metallic Gold Title Text (Exact Match with Reference Mockups) */
+/* Very Thin Lightweight Metallic Silver/Chrome Typography */
 .cinematic-title-text {
   position: relative;
-  font-family: 'Playfair Display', 'Outfit', var(--font-display), Georgia, serif;
-  font-size: clamp(2.4rem, 6.5vw, 4.8rem);
-  font-weight: 800;
-  letter-spacing: 0.38em;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(2rem, 5.2vw, 4.2rem);
+  font-weight: 200;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
   z-index: 2;
   
-  /* 3D Bevelled Metallic Gold Gradient Fill */
+  /* Metallic Silver/Chrome Multi-Tone Gradient Fill */
   background: linear-gradient(
-    180deg,
+    135deg,
     #ffffff 0%,
-    #fff7d6 18%,
-    #f5c53b 42%,
-    #b0800b 68%,
-    #fff3b3 88%,
-    #7a5600 100%
+    #f8fafc 20%,
+    #cbd5e1 45%,
+    #94a3b8 70%,
+    #f1f5f9 88%,
+    #64748b 100%
   );
-  background-size: 100% 200%;
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* 3D Shadow & Bevel Effect */
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 18px rgba(245, 183, 25, 0.35));
+  /* Subtle Bevel Shadow & Metallic Glow */
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 15px rgba(255, 255, 255, 0.18));
+  
+  /* Soft Warm-White Metallic Light Sweep */
+  animation: metallicSilverSweep 3s ease-in-out infinite;
   
   opacity: 0;
-  transform: scale(0.97) translateY(4px);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  padding-left: 0.38em;
+  transform: translateY(4px);
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  padding-left: 0.42em;
   display: inline-block;
 }
 
-.cinematic-title-text.visible {
-  opacity: 1;
-  transform: scale(1) translateY(0);
-  filter: blur(0px);
-}
-
-.cinematic-title-text.fade-out {
-  opacity: 0;
-  transform: scale(1.04) translateY(-4px);
-  filter: blur(6px);
-}
-
-/* Skip Intro Button Pill matching reference screenshot */
-.skip-intro-btn {
-  position: absolute;
-  bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #a1a1aa;
-  padding: 0.45rem 1.4rem;
-  border-radius: 30px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  cursor: pointer;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all 0.25s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-  z-index: 10;
-}
-
-.skip-intro-btn:hover {
-  background: rgba(245, 183, 25, 0.2);
-  border-color: rgba(245, 183, 25, 0.7);
-  color: #ffffff;
-  transform: translateX(-50%) translateY(-2px);
-  box-shadow: 0 6px 25px rgba(245, 183, 25, 0.3);
-}
-
-@keyframes metallicGoldSweep {
+@keyframes metallicSilverSweep {
   0% {
     background-position: 0% 50%;
   }
@@ -497,33 +348,22 @@ html[data-theme="light"] .modal-close-btn {
   }
 }
 
-@keyframes lensGlint {
-  0%, 100% {
-    opacity: 0.2;
-    transform: scale(0.6);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.5);
-  }
-}
-
 .cinematic-title-text.visible {
   opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: translateY(0);
   filter: blur(0px);
 }
 
 .cinematic-title-text.fade-out {
   opacity: 0;
-  transform: scale(1.05) translateY(-6px);
-  filter: blur(8px);
+  transform: translateY(-4px);
+  filter: blur(6px);
 }
 
-/* Wordmark stage inside cinematic intro */
+/* Stage 05 — Wordmark Container & Logo Streak Wrapper */
 .intro-wordmark {
   opacity: 0;
-  transform: scale(0.92);
+  transform: scale(0.96);
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   filter: blur(6px);
   text-align: center;
@@ -535,21 +375,62 @@ html[data-theme="light"] .modal-close-btn {
   filter: blur(0px);
 }
 
+.logo-streak-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  padding: 10px 20px;
+}
+
+/* Original Logo Display — Proportions, Structure & Typography Preserved Exactly */
 .intro-wordmark-img {
-  height: clamp(38px, 5.5vw, 58px);
+  height: clamp(40px, 6vw, 64px);
   width: auto;
   display: block;
   margin: 0 auto;
-  filter: brightness(0) invert(1) drop-shadow(0 0 24px rgba(255, 255, 255, 0.6));
+  filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.25));
 }
 
-/* Bottom Skip Button Pill */
+/* Narrow Light Streak Travelling Left to Right Across Original Logo */
+.logo-light-streak {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0.05) 80%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.logo-light-streak.animate-streak {
+  opacity: 1;
+  animation: logoStreakSweep 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+}
+
+@keyframes logoStreakSweep {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* Minimal "SKIP INTRO" Pill Button */
 .skip-intro-btn {
   position: absolute;
-  bottom: 3rem;
+  bottom: 2.8rem;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #cbd5e1;
   padding: 0.55rem 1.6rem;

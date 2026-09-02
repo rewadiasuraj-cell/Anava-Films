@@ -143,27 +143,38 @@ function initClapboardIntro() {
     if (!titleTextEl || isDismissed) return;
 
     if (index >= words.length) {
-      // Transition from title text to Logo Reveal
+      // 04 — A SHOOT fades out
       titleTextEl.classList.remove('visible');
       titleTextEl.classList.add('fade-out');
-      setTimeout(() => {
+
+      // Cinematic pause: 0.5 sec (500ms)
+      safeTimeout(() => {
         if (isDismissed) return;
         titleTextEl.style.display = 'none';
+
+        // Stage 05 — Reveal Original ANAVA FILMS Logo
         if (wordmarkEl) {
           wordmarkEl.style.display = 'flex';
           wordmarkEl.offsetHeight; // trigger reflow
           wordmarkEl.classList.add('visible');
+          
+          // Trigger narrow light streak animation across logo
+          const streakEl = wordmarkEl.querySelector('.logo-light-streak');
+          if (streakEl) {
+            streakEl.classList.add('animate-streak');
+          }
         }
-      }, 350);
 
-      // Auto dismiss after logo displays cleanly
-      safeTimeout(() => {
-        dismissIntro();
-      }, 2000);
+        // Auto dismiss seamlessly into homepage after 2.0s logo reveal
+        safeTimeout(() => {
+          dismissIntro();
+        }, 2000);
+
+      }, 500); // 0.5s cinematic pause
       return;
     }
 
-    // Fade out previous word
+    // Fade out previous phrase
     titleTextEl.classList.remove('visible');
     titleTextEl.classList.add('fade-out');
 
@@ -173,18 +184,18 @@ function initClapboardIntro() {
       titleTextEl.classList.remove('fade-out');
       titleTextEl.offsetHeight; // trigger reflow
       titleTextEl.classList.add('visible');
-    }, 250);
+    }, 200);
 
-    // Schedule next word after 950ms
+    // Each phrase visible for 1.2 sec (1200ms)
     safeTimeout(() => {
       showWord(index + 1);
-    }, 950);
+    }, 1200);
   }
 
   // Start sequence
   safeTimeout(() => {
     showWord(0);
-  }, 150);
+  }, 100);
 }
 
 /* --------------------------------------------------------------------------

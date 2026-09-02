@@ -274,17 +274,19 @@ html[data-theme="light"] .modal-close-btn {
   transform: scale(1.02);
   pointer-events: none;
 }
+
+/* Subtle Silver Atmospheric Vignette Glow */
 .cinematic-bg-glow {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 750px;
-  height: 750px;
-  background: radial-gradient(circle, rgba(190, 150, 45, 0.16) 0%, rgba(130, 95, 20, 0.035) 45%, transparent 70%);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, rgba(203, 213, 225, 0.015) 60%, #050505 100%);
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(70px);
+  filter: blur(80px);
 }
 
 .cinematic-title-container {
@@ -298,7 +300,7 @@ html[data-theme="light"] .modal-close-btn {
   max-width: 1200px;
 }
 
-/* Premium Silver + Champagne Gold Metallic Typography */
+/* Pure Metallic Silver/Chrome Typography */
 .cinematic-title-text {
   position: relative;
   font-family: 'Inter', 'Helvetica Neue', 'Neue Haas Grotesk', sans-serif;
@@ -308,25 +310,25 @@ html[data-theme="light"] .modal-close-btn {
   text-transform: uppercase;
   z-index: 2;
   
-  /* Silver/Chrome Base with Subtle Champagne Gold Reflection Gradient */
+  /* Pure Silver / Chrome Multi-Tone Specular Gradient */
   background: linear-gradient(
     115deg,
-    #77756f 0%,
-    #d8d5cc 22%,
-    #f7f5ec 38%,
-    #f2d58a 52%,
-    #c8a96b 64%,
-    #d8d5cc 80%,
-    #77756f 100%
+    #475569 0%,
+    #94a3b8 20%,
+    #cbd5e1 38%,
+    #ffffff 52%,
+    #e2e8f0 70%,
+    #cbd5e1 85%,
+    #475569 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   
-  /* Soft Metallic Depth & Fine Edge Highlight */
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 12px rgba(247, 245, 236, 0.18));
+  /* Soft Silver Depth & Fine Specular Glow */
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
   
-  /* Metallic Light Reflection Sweep */
+  /* Silver Metallic Light Reflection Sweep */
   animation: metallicReflectSweep 3.2s ease-in-out infinite alternate;
   
   opacity: 0;
@@ -339,11 +341,11 @@ html[data-theme="light"] .modal-close-btn {
 @keyframes metallicReflectSweep {
   0% {
     background-position: 0% 50%;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 8px rgba(247, 245, 236, 0.12));
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 8px rgba(255, 255, 255, 0.15));
   }
   100% {
     background-position: 100% 50%;
-    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 16px rgba(242, 213, 138, 0.28));
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.35));
   }
 }
 
@@ -355,8 +357,8 @@ html[data-theme="light"] .modal-close-btn {
 
 .cinematic-title-text.fade-out {
   opacity: 0;
-  transform: translateY(-4px);
-  filter: blur(6px);
+  transform: translateY(-3px);
+  filter: blur(5px);
 }
 
 /* Stage 05 — Wordmark Container & Logo Streak Wrapper */
@@ -383,19 +385,19 @@ html[data-theme="light"] .modal-close-btn {
 
 /* Original Logo Display — Proportions, Structure & Typography Preserved Exactly */
 .intro-wordmark-img {
-  height: clamp(40px, 6vw, 64px);
+  height: clamp(38px, 5.5vw, 60px);
   width: auto;
   display: block;
   margin: 0 auto;
-  filter: brightness(0) invert(1) drop-shadow(0 0 20px rgba(255, 255, 255, 0.25));
+  filter: brightness(0) invert(1) drop-shadow(0 0 16px rgba(255, 255, 255, 0.25));
 }
 
-/* Narrow Light Streak Travelling Left to Right Across Original Logo */
+/* Narrow Silver Light Streak Travelling Left to Right Across Original Logo */
 .logo-light-streak {
   position: absolute;
   top: 0;
   left: -100%;
-  width: 60%;
+  width: 50%;
   height: 100%;
   background: linear-gradient(
     90deg,
@@ -405,14 +407,14 @@ html[data-theme="light"] .modal-close-btn {
     rgba(255, 255, 255, 0.05) 80%,
     transparent 100%
   );
-  transform: skewX(-25deg);
+  transform: skewX(-20deg);
   pointer-events: none;
   opacity: 0;
 }
 
 .logo-light-streak.animate-streak {
   opacity: 1;
-  animation: logoStreakSweep 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+  animation: logoStreakSweep 1.3s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
 }
 
 @keyframes logoStreakSweep {
@@ -424,30 +426,31 @@ html[data-theme="light"] .modal-close-btn {
   }
 }
 
-/* Minimal "SKIP INTRO" Pill Button */
+/* Subtle Silver "SKIP INTRO" Pill Button */
 .skip-intro-btn {
   position: absolute;
   bottom: 2.8rem;
   left: 50%;
   transform: translateX(-50%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #cbd5e1;
-  padding: 0.55rem 1.6rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #94a3b8;
+  padding: 0.45rem 1.4rem;
   border-radius: 30px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   cursor: pointer;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   transition: all 0.25s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  z-index: 10;
 }
 
 .skip-intro-btn:hover {
-  background: rgba(245, 183, 25, 0.18);
-  border-color: rgba(245, 183, 25, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
   color: #ffffff;
   transform: translateX(-50%) translateY(-2px);
 }

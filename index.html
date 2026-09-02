@@ -105,8 +105,8 @@
   </section>
 
 
-  <!-- 03. SHOWREEL SECTION (NEW) -->
-  <section class="showreel-section border-top-divider">
+  <!-- 03. SHOWREEL SECTION (REDESIGNED MATCHING MOCKUP) -->
+  <section class="showreel-section border-top-divider" id="showreel">
     <div class="showreel-container">
       <video class="showreel-video-bg" src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" autoplay muted loop playsinline preload="auto"></video>
       <video id="showreel-player" class="showreel-video" src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" autoplay muted loop playsinline preload="auto"></video>
@@ -115,6 +115,14 @@
         <div class="showreel-badge">
           <span class="live-dot"></span>
           <span>ANAVA SHOWREEL 2026</span>
+        </div>
+
+        <div class="showreel-play-center-btn">
+          <div class="showreel-play-circle">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="showreel-play-label">PLAY SHOWREEL</div>
+          <div class="showreel-play-time">01:45</div>
         </div>
 
         <div class="showreel-bottom-bar">
@@ -132,24 +140,69 @@
   </section>
 
 
-  <!-- 04. THINKERS WHO MAKE SECTION (NEW) -->
+  <!-- 04. THINKERS WHO MAKE / OUR PHILOSOPHY SECTION (REDESIGNED MATCHING MOCKUP) -->
   <section class="thinkers-section border-top-divider">
     <div class="container">
-      <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-        <span class="text-gold" style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em;">OUR PHILOSOPHY</span>
-        <h2 class="display-title" style="margin: 0.8rem 0 1.2rem;">THINKERS WHO MAKE.</h2>
-        <p class="subtitle" style="margin: 0 auto 2rem; font-size: 1.15rem; line-height: 1.75;">
-          Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn't get lost between the people who think them and the people who make them. So we bring both sides together. You bring the thought. We build the idea, make the film and deliver the final product.
+      <div class="philosophy-wrapper">
+        <span class="philo-badge">OUR PHILOSOPHY</span>
+        <div class="philo-accent-line"></div>
+        
+        <h2 class="philo-display-title">
+          <span class="philo-title-white">THINKERS</span>
+          <span class="philo-title-gold">WHO MAKE.</span>
+        </h2>
+        
+        <p class="philo-desc-top">
+          Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn't get lost between the people who think them and the people who make them.
         </p>
 
-        <!-- Large THINK -> MAKE -> FINISH Typographic Element -->
-        <div class="thinkers-flow-banner">
-          <div class="thinkers-node active-gold">THINK</div>
-          <div class="thinkers-arrow">→</div>
-          <div class="thinkers-node">MAKE</div>
-          <div class="thinkers-arrow">→</div>
-          <div class="thinkers-node active-gold">FINISH</div>
+        <p class="philo-desc-bold">
+          So we bring both sides together. You bring the thought. We build the idea, make the film and deliver the final product.
+        </p>
+
+        <!-- 3-Step Process Card Container (THINK -> MAKE -> DELIVER) -->
+        <div class="philo-process-card">
+          <div class="philo-step-item">
+            <div class="philo-step-icon">💡</div>
+            <div class="philo-step-name">THINK</div>
+            <div class="philo-step-sub">The thought, the spark.</div>
+          </div>
+
+          <div class="philo-step-arrow">→</div>
+
+          <div class="philo-step-item">
+            <div class="philo-step-icon">🎬</div>
+            <div class="philo-step-name">MAKE</div>
+            <div class="philo-step-sub">The craft, the process.</div>
+          </div>
+
+          <div class="philo-step-arrow">→</div>
+
+          <div class="philo-step-item">
+            <div class="philo-step-icon">📺</div>
+            <div class="philo-step-name">DELIVER</div>
+            <div class="philo-step-sub">The film, the impact.</div>
+          </div>
         </div>
+
+        <!-- Yellow CTA Button -->
+        <a href="#showreel" class="philo-cta-btn">
+          <span>WATCH THE SHOWREEL 2026</span>
+          <span class="cta-arrow">→</span>
+        </a>
+
+        <!-- Social Proof Bar -->
+        <div class="philo-social-proof">
+          <div class="philo-avatar-stack">
+            <img src="assets/images/process_hero.jpg?v=3.2" alt="Avatar 1" class="philo-avatar">
+            <img src="assets/images/process_step05_make.jpg?v=3.2" alt="Avatar 2" class="philo-avatar">
+            <img src="assets/images/process_step04_prep.jpg?v=3.2" alt="Avatar 3" class="philo-avatar">
+            <img src="assets/images/make_hero.jpg?v=3.2" alt="Avatar 4" class="philo-avatar">
+            <img src="assets/images/finish_colour_grading.jpg?v=3.2" alt="Avatar 5" class="philo-avatar">
+          </div>
+          <span class="philo-proof-text">Trusted by visionary brands and creative teams.</span>
+        </div>
+
       </div>
     </div>
   </section>

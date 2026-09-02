@@ -6168,3 +6168,264 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
     min-width: 86% !important;
   }
 }
+
+/* ==========================================================================
+   REDESIGNED SHOWREEL & PHILOSOPHY SECTION (MATCHING REFERENCE MOCKUP)
+   ========================================================================== */
+
+/* Showreel Play Center Controls */
+.showreel-play-center-btn {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.showreel-play-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid #f5b719;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  color: #f5b719;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(245, 183, 25, 0.2);
+}
+
+.showreel-play-center-btn:hover .showreel-play-circle {
+  background: #f5b719;
+  color: #000000;
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(245, 183, 25, 0.5);
+}
+
+.showreel-play-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+
+.showreel-play-time {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Philosophy Section Wrapper */
+.philosophy-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.philo-badge {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #f5b719;
+  text-transform: uppercase;
+  display: block;
+}
+
+.philo-accent-line {
+  width: 30px;
+  height: 2px;
+  background: #f5b719;
+  margin: 0.6rem auto 1.5rem;
+  border-radius: 2px;
+}
+
+.philo-display-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+  text-transform: uppercase;
+}
+
+.philo-title-white {
+  color: #ffffff;
+  display: block;
+}
+
+.philo-title-gold {
+  color: #f5b719;
+  display: block;
+}
+
+.philo-desc-top {
+  color: #cbd5e1;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+
+.philo-desc-bold {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.6;
+  margin-bottom: 2.2rem;
+}
+
+/* 3-Step Process Glass Card */
+.philo-process-card {
+  background: #0d0f14;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 1.5rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.philo-step-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.philo-step-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.philo-step-name {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #f5b719;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+.philo-step-sub {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  line-height: 1.3;
+}
+
+.philo-step-arrow {
+  color: rgba(245, 183, 25, 0.5);
+  font-size: 1.1rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* CTA Yellow Button */
+.philo-cta-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 1.1rem 2rem;
+  background: #f5b719;
+  color: #000000;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 35px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(245, 183, 25, 0.35);
+  margin-bottom: 2rem;
+}
+
+.philo-cta-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 255, 255, 0.4);
+}
+
+.cta-arrow {
+  font-size: 1.1rem;
+}
+
+/* Social Proof Row */
+.philo-social-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.philo-avatar-stack {
+  display: flex;
+  align-items: center;
+}
+
+.philo-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #08090b;
+  object-fit: cover;
+  margin-left: -10px;
+}
+.philo-avatar:first-child {
+  margin-left: 0;
+}
+
+.philo-proof-text {
+  font-size: 0.78rem;
+  color: #94a3b8;
+}
+
+/* Mobile specific styling for Showreel frame & Philosophy card */
+@media (max-width: 768px) {
+  .showreel-container {
+    border-radius: 20px;
+    margin: 0 1rem;
+    width: calc(100% - 2rem);
+    aspect-ratio: 16 / 10;
+  }
+  .showreel-play-center-btn {
+    right: 1.2rem;
+    bottom: 1.2rem;
+  }
+  .showreel-play-circle {
+    width: 44px;
+    height: 44px;
+  }
+  .philo-process-card {
+    padding: 1.2rem 0.6rem;
+    gap: 0.2rem;
+  }
+  .philo-step-sub {
+    font-size: 0.68rem;
+  }
+}

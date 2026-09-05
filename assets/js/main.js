@@ -916,7 +916,7 @@ function initContactForm() {
     submitBtn.disabled = true;
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/office@anavafilm.com', {
+      const response = await fetch('https://formsubmit.co/ajax/office@anavafilms.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -941,7 +941,7 @@ function initContactForm() {
         feedbackEl.style.display = 'block';
         feedbackEl.innerHTML = `
           <div style="background: rgba(245, 183, 25, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
-            ✨ <strong>Thought Received!</strong> Your message has been sent to office@anavafilm.com. We’ll review your thought and get back to you with ideas to shoot within 24 hours.
+            ✨ <strong>Thought Received!</strong> Your message has been sent to office@anavafilms.com. We’ll review your thought and get back to you with ideas to shoot within 24 hours.
           </div>
         `;
 

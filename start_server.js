@@ -24,9 +24,21 @@ const mimeTypes = {
 
 const server = http.createServer((req, res) => {
   let rawUrl = req.url.split('?')[0];
+  let queryString = req.url.includes('?') ? '?' + req.url.split('?')[1] : '';
   let reqUrl = decodeURIComponent(rawUrl);
-  if (reqUrl === '/') reqUrl = '/index.html';
-  if (!path.extname(reqUrl)) reqUrl += '.html';
+
+  // If user requests .html file directly, 301 redirect to clean URL without .html
+  if (reqUrl.endsWith('.html') && reqUrl !== '/index.html') {
+    const cleanPath = reqUrl.slice(0, -5);
+    res.writeHead(301, { Location: cleanPath + queryString });
+    return res.end();
+  }
+
+  if (reqUrl === '/' || reqUrl === '/index' || reqUrl === '/index.html') {
+    reqUrl = '/index.html';
+  } else if (!path.extname(reqUrl)) {
+    reqUrl += '.html';
+  }
 
   const filePath = path.join(__dirname, reqUrl);
   const ext = path.extname(filePath).toLowerCase();
@@ -34,15 +46,8 @@ const server = http.createServer((req, res) => {
   fs.readFile(filePath, (err, content) => {
     if (err) {
       if (err.code === 'ENOENT') {
-        if (ext === '.html') {
-          fs.readFile(path.join(__dirname, 'index.html'), (err2, indexContent) => {
-            res.writeHead(200, { 'Content-Type': 'text/html' });
-            res.end(indexContent, 'utf-8');
-          });
-        } else {
-          res.writeHead(404, { 'Content-Type': 'text/plain' });
-          res.end(`404 Not Found: ${reqUrl}`);
-        }
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        res.end('<h1>404 Page Not Found</h1><p><a href="/">Return to Home</a></p>');
       } else {
         res.writeHead(500);
         res.end(`Server Error: ${err.code}`);

@@ -1,4 +1,4 @@
-# ANAVA FILMS — GoDaddy cPanel Production .htaccess Configuration
+# ANAVA FILMS — Hostinger Production .htaccess Configuration
 
 RewriteEngine On
 
@@ -6,9 +6,18 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# Hide .html extension for clean URLs
+# Redirect /index or /index.html to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index(\.html)?\ HTTP/
+RewriteRule ^index(\.html)?$ / [R=301,L]
+
+# Redirect any *.html request to clean URL without .html (e.g. /work.html -> /work)
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html\ HTTP/
+RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
+
+# Internal rewrite for clean extensionless URLs (e.g. /work -> work.html)
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^([^/]+)/?$ $1.html [L]
 
 # Enable GZIP Compression

@@ -7046,3 +7046,289 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   }
 }
 
+/* ==========================================================================
+   CINEMATIC FILM STUDIO CTA BANNER
+   ========================================================================== */
+.cinematic-cta-section {
+  position: relative;
+  background-color: #090a0c;
+  padding: 8rem 1.5rem 6.5rem;
+  overflow: hidden;
+  color: #ffffff;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cinematic-cta-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.4;
+  filter: contrast(1.15) brightness(0.85);
+  pointer-events: none;
+  transition: transform 10s ease, opacity 1.2s ease;
+}
+
+.cinematic-cta-section:hover .cinematic-cta-bg {
+  transform: scale(1.02);
+}
+
+.cinematic-cta-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(9, 10, 12, 0.55) 0%, rgba(9, 10, 12, 0.95) 75%, #090a0c 100%),
+    linear-gradient(to bottom, #090a0c 0%, transparent 25%, transparent 75%, #090a0c 100%);
+  pointer-events: none;
+}
+
+.cinematic-cta-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: clamp(8rem, 24vw, 26rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.018);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.cinematic-cta-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1150px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Eyebrow */
+.cinematic-cta-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.eyebrow-line {
+  display: inline-block;
+  width: 36px;
+  height: 1.5px;
+  background: #f5b719;
+  opacity: 0.85;
+}
+
+.eyebrow-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: #f5b719;
+  text-transform: uppercase;
+}
+
+/* Headline & Framing Brackets */
+.cinematic-cta-headline-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 1.8rem 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cinematic-bracket {
+  position: absolute;
+  width: 28px;
+  height: 100%;
+  top: 0;
+  border: 2px solid #f5b719;
+  pointer-events: none;
+  box-shadow: 0 0 15px rgba(245, 183, 25, 0.15);
+}
+
+.bracket-left {
+  left: 0;
+  border-right: none;
+}
+
+.bracket-right {
+  right: 0;
+  border-left: none;
+}
+
+.cinematic-cta-title {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(2.2rem, 5.5vw, 4.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-title-line.line-white {
+  color: #ffffff;
+}
+
+.cta-title-line.line-gold {
+  color: #f5b719;
+  text-shadow: 0 0 35px rgba(245, 183, 25, 0.3);
+}
+
+/* Subtext */
+.cinematic-cta-subtext {
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  color: #a1a1aa;
+  margin: 0 0 2.8rem 0;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  max-width: 650px;
+}
+
+/* Pill Gold CTA Button */
+.btn-cinematic-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: #f5b719;
+  color: #090a0c;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1.15rem 3rem;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 0 30px rgba(245, 183, 25, 0.4);
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-cinematic-pill:hover {
+  transform: translateY(-3px);
+  background: #ffc42e;
+  box-shadow: 0 0 45px rgba(245, 183, 25, 0.68), 0 8px 25px rgba(0, 0, 0, 0.5);
+  color: #000000;
+}
+
+.btn-pill-arrow {
+  transition: transform 0.3s ease;
+}
+
+.btn-cinematic-pill:hover .btn-pill-arrow {
+  transform: translateX(5px);
+}
+
+/* Bottom Micro Line */
+.cinematic-cta-infoline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 4.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(0.68rem, 1vw, 0.8rem);
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  flex-wrap: wrap;
+}
+
+.info-sep {
+  color: rgba(245, 183, 25, 0.5);
+}
+
+/* Cinematic Reveal Animations */
+.cinematic-cta-eyebrow,
+.cinematic-cta-headline-wrapper,
+.cinematic-cta-subtext,
+.cinematic-cta-action,
+.cinematic-cta-infoline {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cinematic-cta-section.is-visible .cinematic-cta-eyebrow {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
+}
+
+.cinematic-cta-section.is-visible .cinematic-cta-headline-wrapper {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.25s;
+}
+
+.cinematic-cta-section.is-visible .cinematic-cta-subtext {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.cinematic-cta-section.is-visible .cinematic-cta-action {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.55s;
+}
+
+.cinematic-cta-section.is-visible .cinematic-cta-infoline {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.7s;
+}
+
+/* Responsive Scaling */
+@media (max-width: 768px) {
+  .cinematic-cta-section {
+    padding: 5rem 1.2rem 4rem;
+  }
+  .cinematic-cta-headline-wrapper {
+    padding: 1.2rem 1.4rem;
+    width: 100%;
+  }
+  .cinematic-bracket {
+    width: 14px;
+  }
+  .cinematic-cta-title {
+    font-size: clamp(1.7rem, 7.5vw, 2.5rem);
+  }
+  .btn-cinematic-pill {
+    padding: 1rem 2.2rem;
+    font-size: 0.9rem;
+  }
+  .cinematic-cta-infoline {
+    gap: 0.8rem;
+    margin-top: 3rem;
+  }
+  .info-sep {
+    display: none;
+  }
+  .cinematic-cta-infoline span {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+  }
+}
+
+

@@ -1097,3 +1097,19 @@ function initTstmSlider() {
     });
   }
 }
+
+/* Cinematic Studio CTA Observer */
+document.addEventListener('DOMContentLoaded', () => {
+  const ctaSections = document.querySelectorAll('.cinematic-cta-section');
+  if (ctaSections.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    ctaSections.forEach(sec => observer.observe(sec));
+  }
+});

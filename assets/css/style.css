@@ -6918,8 +6918,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 /* Studio Sequence Phrase Typography & Metallic Finish */
 .intro-phrase-text {
   font-family: 'Outfit', 'Cinzel', 'Inter', var(--font-display), sans-serif;
-  font-size: clamp(2.2rem, 5.5vw, 5.2rem);
+  font-size: clamp(1.6rem, 7.5vw, 5.2rem);
   font-weight: 800;
+  white-space: nowrap;
   background: linear-gradient(135deg, 
     #ffffff 0%, 
     #cbd5e1 20%, 
@@ -6933,7 +6934,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   background-position: 0% 50%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  letter-spacing: 0.28em;
+  letter-spacing: clamp(0.12em, 2vw, 0.28em);
   text-transform: uppercase;
   text-align: center;
   opacity: 0;
@@ -6995,11 +6996,12 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .intro-tagline-gold {
   font-family: 'Playfair Display', 'Cinzel', serif;
   font-style: italic;
-  font-size: clamp(1rem, 2.2vw, 1.8rem);
+  font-size: clamp(0.72rem, 3.2vw, 1.8rem);
   font-weight: 500;
   color: #f5b719;
   letter-spacing: 0.04em;
   text-transform: none;
+  white-space: nowrap;
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -7017,7 +7019,46 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   transform: translateY(0);
 }
 
-/* Skip Intro Button */
+/* Mobile responsive layout fixes */
+@media (max-width: 768px) {
+  .intro-stage-container {
+    width: 96%;
+    padding: 1rem 0.5rem;
+  }
+  .intro-phrase-text {
+    white-space: nowrap;
+    font-size: clamp(1.4rem, 7vw, 2.8rem);
+    letter-spacing: 0.12em;
+  }
+  .intro-logo-wrapper {
+    margin-bottom: 0.8rem;
+  }
+  .intro-logo-img {
+    max-width: clamp(220px, 80vw, 420px);
+  }
+  .intro-tagline-gold {
+    white-space: nowrap;
+    font-size: clamp(0.68rem, 3.1vw, 1.2rem);
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-stage-container {
+    width: 98%;
+    padding: 0.5rem;
+  }
+  .intro-phrase-text {
+    white-space: nowrap;
+    font-size: clamp(1.25rem, 6.8vw, 2.2rem);
+    letter-spacing: 0.08em;
+  }
+  .intro-tagline-gold {
+    white-space: nowrap;
+    font-size: clamp(0.6rem, 3.0vw, 0.95rem);
+    letter-spacing: 0.01em;
+  }
+}
 .skip-intro-btn {
   position: absolute;
   bottom: 2.5rem;

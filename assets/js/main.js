@@ -1098,10 +1098,10 @@ function initTstmSlider() {
   }
 }
 
-/* Cinematic Studio CTA Observer */
+/* Cinematic Studio CTA & Philosophy Observer */
 document.addEventListener('DOMContentLoaded', () => {
-  const ctaSections = document.querySelectorAll('.cinematic-cta-section');
-  if (ctaSections.length > 0) {
+  const animatedSections = document.querySelectorAll('.cinematic-cta-section, .thinkers-section');
+  if (animatedSections.length > 0) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1110,6 +1110,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, { threshold: 0.15 });
 
-    ctaSections.forEach(sec => observer.observe(sec));
+    animatedSections.forEach(sec => observer.observe(sec));
   }
 });

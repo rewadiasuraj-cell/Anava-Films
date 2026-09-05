@@ -6822,3 +6822,235 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
     font-size: 1.1rem;
   }
 }
+
+/* ==========================================================================
+   2026 PREMIUM CINEMATIC INTRO ANIMATION (12-16s SEQUENCE)
+   ========================================================================== */
+
+#cinematic-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #020203;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1), filter 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: opacity, filter;
+  pointer-events: auto;
+}
+
+#cinematic-intro.dissolving {
+  opacity: 0;
+  filter: brightness(1.3) contrast(1.1);
+  pointer-events: none;
+}
+
+/* Galaxy Stardust Particles Canvas */
+.intro-particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Atmospheric Film Grain Overlay */
+.intro-grain-overlay {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
+              url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+  animation: grainShift 8s steps(10) infinite;
+}
+
+@keyframes grainShift {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-3%, -2%); }
+  30% { transform: translate(2%, 3%); }
+  50% { transform: translate(-2%, 1%); }
+  70% { transform: translate(3%, -1%); }
+  90% { transform: translate(-1%, 2%); }
+}
+
+/* Background Soft Luxury Glow */
+.cinematic-bg-glow {
+  position: absolute;
+  width: 70vw;
+  height: 70vh;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 183, 25, 0.05) 0%, rgba(255, 255, 255, 0.015) 40%, transparent 75%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 2s ease;
+}
+
+/* Stage Container (Responsive 16:9 cinematic framing) */
+.intro-stage-container {
+  position: relative;
+  z-index: 3;
+  width: 90%;
+  max-width: 1200px;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Studio Sequence Phrase Typography & Metallic Finish */
+.intro-phrase-text {
+  font-family: 'Outfit', 'Cinzel', 'Inter', var(--font-display), sans-serif;
+  font-size: clamp(2.2rem, 5.5vw, 5.2rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, 
+    #ffffff 0%, 
+    #cbd5e1 20%, 
+    #64748b 38%, 
+    #ffffff 50%, 
+    #94a3b8 65%, 
+    #e2e8f0 82%, 
+    #475569 100%
+  );
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-align: center;
+  opacity: 0;
+  filter: blur(12px) brightness(1.6) drop-shadow(0 4px 15px rgba(0, 0, 0, 0.9));
+  transform: scale(0.97);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, filter, transform, background-position;
+}
+
+.intro-phrase-text.visible {
+  opacity: 1;
+  filter: blur(0px) brightness(1) drop-shadow(0 2px 20px rgba(255, 255, 255, 0.2));
+  transform: scale(1);
+  animation: metallicShimmer 2.0s ease-in-out infinite alternate;
+}
+
+@keyframes metallicShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.intro-phrase-text.fade-out {
+  opacity: 0;
+  filter: blur(8px) brightness(0.6);
+  transform: scale(1.02);
+  transition: opacity 0.25s ease-out, filter 0.25s ease-out, transform 0.25s ease-out;
+}
+
+/* Stage 5 Logo Reveal — Clean Pure White Minimalist Reveal */
+.intro-logo-wrapper {
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom: 1.2rem;
+}
+
+.intro-logo-wrapper.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.intro-logo-img {
+  max-width: clamp(280px, 55vw, 680px);
+  height: auto;
+  display: block;
+  /* Clean 100% Pure White rendering without any glow or reflection effects */
+  filter: brightness(0) invert(1);
+}
+
+/* Gold Italic Tagline Matching Reference Screenshot */
+.intro-tagline-gold {
+  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.2vw, 1.8rem);
+  font-weight: 500;
+  color: #f5b719;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  text-shadow: 0 0 15px rgba(245, 183, 25, 0.3);
+  margin: 0;
+}
+
+.intro-tagline-gold.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-tagline.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skip Intro Button */
+.skip-intro-btn {
+  position: absolute;
+  bottom: 2.5rem;
+  right: 3rem;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.65);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  padding: 0.65rem 1.4rem;
+  border-radius: 30px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.skip-intro-btn:hover {
+  background: rgba(245, 183, 25, 0.15);
+  border-color: rgba(245, 183, 25, 0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(245, 183, 25, 0.2);
+}
+
+@media (max-width: 768px) {
+  .skip-intro-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.68rem;
+    padding: 0.5rem 1.1rem;
+  }
+}
+

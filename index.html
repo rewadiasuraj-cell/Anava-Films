@@ -15,24 +15,24 @@
 </head>
 <body>
 
-  <!-- 01. Opening Full-Screen Cinematic Title Intro Animation -->
+  <!-- 01. Opening Full-Screen Studio Cinematic Intro Animation -->
   <div id="cinematic-intro" role="dialog" aria-label="Intro Animation">
+    <canvas id="intro-particles-canvas" class="intro-particles-canvas"></canvas>
+    <div class="intro-grain-overlay"></div>
     <div class="cinematic-bg-glow"></div>
 
-    <div class="cinematic-title-container">
-      <div id="cinematic-title-text" class="cinematic-title-text">A THOUGHT</div>
-      
-      <div id="cinematic-wordmark" class="intro-wordmark" style="display: none;">
-        <div class="logo-streak-wrapper">
-          <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS" class="intro-wordmark-img">
-          <div class="logo-light-streak"></div>
-        </div>
-      </div>
+    <!-- Phrase Sequence Stage (A THOUGHT -> AN IDEA -> A DECK -> A SHOOT -> A FILM) -->
+    <div id="intro-phrase-stage" class="intro-stage-container">
+      <div id="intro-phrase-text" class="intro-phrase-text">A THOUGHT</div>
     </div>
 
-    <button id="skip-intro-btn" class="skip-intro-btn" aria-label="Skip Intro Animation">
-      SKIP INTRO
-    </button>
+    <!-- Final Logo Reveal Stage -->
+    <div id="intro-logo-stage" class="intro-stage-container" style="display: none;">
+      <div class="intro-logo-wrapper">
+        <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS" class="intro-logo-img">
+      </div>
+      <p class="intro-tagline-gold" id="intro-tagline">Give us a thought &mdash; We’ll give you ideas to shoot</p>
+    </div>
   </div>
 
 

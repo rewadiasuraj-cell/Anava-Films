@@ -23,25 +23,31 @@ const mimeTypes = {
 };
 
 const server = http.createServer((req, res) => {
-  let reqUrl = decodeURIComponent(req.url.split('?')[0]);
+  let rawUrl = req.url.split('?')[0];
+  let reqUrl = decodeURIComponent(rawUrl);
   if (reqUrl === '/') reqUrl = '/index.html';
   if (!path.extname(reqUrl)) reqUrl += '.html';
 
   const filePath = path.join(__dirname, reqUrl);
+  const ext = path.extname(filePath).toLowerCase();
 
   fs.readFile(filePath, (err, content) => {
     if (err) {
       if (err.code === 'ENOENT') {
-        fs.readFile(path.join(__dirname, 'index.html'), (err2, indexContent) => {
-          res.writeHead(200, { 'Content-Type': 'text/html' });
-          res.end(indexContent, 'utf-8');
-        });
+        if (ext === '.html') {
+          fs.readFile(path.join(__dirname, 'index.html'), (err2, indexContent) => {
+            res.writeHead(200, { 'Content-Type': 'text/html' });
+            res.end(indexContent, 'utf-8');
+          });
+        } else {
+          res.writeHead(404, { 'Content-Type': 'text/plain' });
+          res.end(`404 Not Found: ${reqUrl}`);
+        }
       } else {
         res.writeHead(500);
         res.end(`Server Error: ${err.code}`);
       }
     } else {
-      const ext = path.extname(filePath).toLowerCase();
       const contentType = mimeTypes[ext] || 'application/octet-stream';
       res.writeHead(200, { 'Content-Type': contentType });
       res.end(content);

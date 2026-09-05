@@ -94,6 +94,80 @@ function initMobileMenu() {
 }
 
 /* --------------------------------------------------------------------------
+   1.5 Galaxy Stardust Background Particles Renderer
+   -------------------------------------------------------------------------- */
+function initGalaxyParticles(introEl) {
+  const canvas = document.getElementById('intro-particles-canvas');
+  if (!canvas) return null;
+
+  const ctx = canvas.getContext('2d');
+  let animationFrameId = null;
+  let width = (canvas.width = introEl.clientWidth || window.innerWidth);
+  let height = (canvas.height = introEl.clientHeight || window.innerHeight);
+
+  const numParticles = Math.min(85, Math.max(40, Math.floor((width * height) / 12000)));
+  const particles = [];
+
+  for (let i = 0; i < numParticles; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: Math.random() * 1.5 + 0.4,
+      baseAlpha: Math.random() * 0.55 + 0.15,
+      vx: (Math.random() - 0.5) * 0.22,
+      vy: -(Math.random() * 0.35 + 0.12),
+      pulseSpeed: Math.random() * 0.025 + 0.01,
+      angle: Math.random() * Math.PI * 2
+    });
+  }
+
+  function handleResize() {
+    if (!canvas || !introEl) return;
+    width = canvas.width = introEl.clientWidth || window.innerWidth;
+    height = canvas.height = introEl.clientHeight || window.innerHeight;
+  }
+
+  window.addEventListener('resize', handleResize);
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.angle += p.pulseSpeed;
+
+      // Wrap particle coordinates continuously
+      if (p.x < 0) p.x = width;
+      if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height;
+      if (p.y > height) p.y = 0;
+
+      // Pulsing alpha for galaxy star twinkle
+      const currentAlpha = p.baseAlpha + Math.sin(p.angle) * 0.18;
+      const safeAlpha = Math.max(0.05, Math.min(0.9, currentAlpha));
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${safeAlpha})`;
+      ctx.shadowBlur = p.radius > 1.2 ? 6 : 2;
+      ctx.shadowColor = 'rgba(255, 255, 255, 0.7)';
+      ctx.fill();
+    }
+
+    animationFrameId = requestAnimationFrame(render);
+  }
+
+  render();
+
+  return function stopParticles() {
+    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    window.removeEventListener('resize', handleResize);
+  };
+}
+
+/* --------------------------------------------------------------------------
    2. Cinematic Clapboard Intro Animation (Session-based, 3-4s max, skippable)
    -------------------------------------------------------------------------- */
 function initClapboardIntro() {
@@ -111,9 +185,17 @@ function initClapboardIntro() {
     return;
   }
 
+  const stopParticles = initGalaxyParticles(introEl);
+
   const skipBtn = document.getElementById('skip-intro-btn');
-  const titleTextEl = document.getElementById('cinematic-title-text');
-  const wordmarkEl = document.getElementById('cinematic-wordmark');
+  const phraseStage = document.getElementById('intro-phrase-stage');
+  const phraseText = document.getElementById('intro-phrase-text');
+
+  const logoStage = document.getElementById('intro-logo-stage');
+  const logoWrapper = document.querySelector('.intro-logo-wrapper');
+  const logoSweep = document.getElementById('intro-logo-sweep');
+  const tagline = document.getElementById('intro-tagline');
+
   let isDismissed = false;
   const activeTimeouts = [];
 
@@ -127,75 +209,83 @@ function initClapboardIntro() {
     if (isDismissed) return;
     isDismissed = true;
     activeTimeouts.forEach(id => clearTimeout(id));
+    if (typeof stopParticles === 'function') stopParticles();
 
     sessionStorage.setItem('anava_intro_played', 'true');
-    introEl.classList.add('dismissed');
+    introEl.classList.add('dissolving');
     setTimeout(() => {
       introEl.style.display = 'none';
-    }, 650);
+    }, 700);
   }
 
   if (skipBtn) skipBtn.addEventListener('click', dismissIntro);
 
-  const words = ['A THOUGHT', 'AN IDEA', 'A DECK', 'A SHOOT'];
+  // Studio Title Sequence (8.0s Total Duration)
+  const phrases = [
+    { text: 'A THOUGHT', duration: 750 },
+    { text: 'AN IDEA', duration: 750 },
+    { text: 'A DECK', duration: 750 },
+    { text: 'A SHOOT', duration: 750 },
+    { text: 'A FILM', duration: 1100 } // Climax hold
+  ];
 
-  function showWord(index) {
-    if (!titleTextEl || isDismissed) return;
+  function runPhraseSequence(index) {
+    if (isDismissed || !phraseText) return;
 
-    if (index >= words.length) {
-      // 04 — A SHOOT fades out
-      titleTextEl.classList.remove('visible');
-      titleTextEl.classList.add('fade-out');
+    if (index >= phrases.length) {
+      // Transition from last phrase ("A FILM") into Logo Reveal Stage
+      if (phraseStage) phraseStage.style.display = 'none';
 
-      // Cinematic pause: 0.5 sec (500ms)
-      safeTimeout(() => {
-        if (isDismissed) return;
-        titleTextEl.style.display = 'none';
-
-        // Stage 05 — Reveal Original ANAVA FILMS Logo
-        if (wordmarkEl) {
-          wordmarkEl.style.display = 'flex';
-          wordmarkEl.offsetHeight; // trigger reflow
-          wordmarkEl.classList.add('visible');
-          
-          // Trigger narrow light streak animation across logo
-          const streakEl = wordmarkEl.querySelector('.logo-light-streak');
-          if (streakEl) {
-            streakEl.classList.add('animate-streak');
-          }
+      if (logoStage) {
+        logoStage.style.display = 'flex';
+        if (logoWrapper) {
+          logoWrapper.offsetHeight; // reflow
+          logoWrapper.classList.add('visible');
         }
 
-        // Auto dismiss seamlessly into homepage after 2.0s logo reveal
+        // Subliminal light sweep across logo
+        safeTimeout(() => {
+          if (isDismissed || !logoSweep) return;
+          logoSweep.classList.add('animate-sweep');
+        }, 250);
+
+        // Tagline reveal
+        safeTimeout(() => {
+          if (isDismissed || !tagline) return;
+          tagline.classList.add('visible');
+        }, 500);
+
+        // Final smooth dissolve into site hero after 1.85s logo reveal
         safeTimeout(() => {
           dismissIntro();
-        }, 2000);
-
-      }, 500); // 0.5s cinematic pause
+        }, 1850);
+      }
       return;
     }
 
-    // Fade out previous phrase
-    titleTextEl.classList.remove('visible');
-    titleTextEl.classList.add('fade-out');
+    const currentItem = phrases[index];
+    phraseText.textContent = currentItem.text;
+    phraseText.classList.remove('fade-out');
+    phraseText.offsetHeight; // reflow
+    phraseText.classList.add('visible');
 
-    setTimeout(() => {
-      if (isDismissed) return;
-      titleTextEl.textContent = words[index];
-      titleTextEl.classList.remove('fade-out');
-      titleTextEl.offsetHeight; // trigger reflow
-      titleTextEl.classList.add('visible');
-    }, 200);
-
-    // Each phrase visible for 1.2 sec (1200ms)
+    // Hold current phrase, then optical focus pull & exposure fade out
     safeTimeout(() => {
-      showWord(index + 1);
-    }, 1200);
+      if (isDismissed) return;
+      phraseText.classList.remove('visible');
+      phraseText.classList.add('fade-out');
+
+      // Next phrase transition after optical focus out (300ms)
+      safeTimeout(() => {
+        runPhraseSequence(index + 1);
+      }, 300);
+    }, currentItem.duration);
   }
 
-  // Start sequence
+  // Start sequence at t=250ms
   safeTimeout(() => {
-    showWord(0);
-  }, 100);
+    runPhraseSequence(0);
+  }, 250);
 }
 
 /* --------------------------------------------------------------------------

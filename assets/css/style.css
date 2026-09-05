@@ -7337,9 +7337,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .cinematic-cta-title {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(2.2rem, 5.5vw, 4.8rem);
-  line-height: 1.08;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.9rem, 4.6vw, 4.0rem);
+  line-height: 1.25;
   text-transform: uppercase;
   margin: 0;
   display: flex;
@@ -7349,10 +7348,12 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .cta-title-line.line-white {
   color: #ffffff;
+  letter-spacing: 0.07em;
 }
 
 .cta-title-line.line-gold {
   color: #f5b719;
+  letter-spacing: 0.09em;
   text-shadow: 0 0 35px rgba(245, 183, 25, 0.3);
 }
 

@@ -185,17 +185,6 @@ function initClapboardIntro() {
     return;
   }
 
-  const stopParticles = initGalaxyParticles(introEl);
-
-  const skipBtn = document.getElementById('skip-intro-btn');
-  const phraseStage = document.getElementById('intro-phrase-stage');
-  const phraseText = document.getElementById('intro-phrase-text');
-
-  const logoStage = document.getElementById('intro-logo-stage');
-  const logoWrapper = document.querySelector('.intro-logo-wrapper');
-  const logoSweep = document.getElementById('intro-logo-sweep');
-  const tagline = document.getElementById('intro-tagline');
-
   let isDismissed = false;
   const activeTimeouts = [];
 
@@ -205,87 +194,120 @@ function initClapboardIntro() {
     return id;
   }
 
+  let stopParticles = null;
+
   function dismissIntro() {
     if (isDismissed) return;
     isDismissed = true;
     activeTimeouts.forEach(id => clearTimeout(id));
-    if (typeof stopParticles === 'function') stopParticles();
+    if (typeof stopParticles === 'function') {
+      try { stopParticles(); } catch (e) {}
+    }
 
-    sessionStorage.setItem('anava_intro_played', 'true');
+    try {
+      sessionStorage.setItem('anava_intro_played', 'true');
+    } catch (e) {}
+
     introEl.classList.add('dissolving');
     setTimeout(() => {
       introEl.style.display = 'none';
     }, 700);
   }
 
-  if (skipBtn) skipBtn.addEventListener('click', dismissIntro);
+  // Hard safety fallback: Ensure intro NEVER blocks website for more than 8.2s under any circumstances
+  setTimeout(() => {
+    dismissIntro();
+  }, 8200);
 
-  // Studio Title Sequence (8.0s Total Duration)
-  const phrases = [
-    { text: 'A THOUGHT', duration: 750 },
-    { text: 'AN IDEA', duration: 750 },
-    { text: 'A DECK', duration: 750 },
-    { text: 'A SHOOT', duration: 750 },
-    { text: 'A FILM', duration: 1100 } // Climax hold
-  ];
+  // Click/Tap anywhere on intro screen to skip immediately
+  introEl.addEventListener('click', dismissIntro);
 
-  function runPhraseSequence(index) {
-    if (isDismissed || !phraseText) return;
+  try {
+    stopParticles = initGalaxyParticles(introEl);
 
-    if (index >= phrases.length) {
-      // Transition from last phrase ("A FILM") into Logo Reveal Stage
-      if (phraseStage) phraseStage.style.display = 'none';
+    const skipBtn = document.getElementById('skip-intro-btn');
+    const phraseStage = document.getElementById('intro-phrase-stage');
+    const phraseText = document.getElementById('intro-phrase-text');
 
-      if (logoStage) {
-        logoStage.style.display = 'flex';
-        if (logoWrapper) {
-          logoWrapper.offsetHeight; // reflow
-          logoWrapper.classList.add('visible');
-        }
+    const logoStage = document.getElementById('intro-logo-stage');
+    const logoWrapper = document.querySelector('.intro-logo-wrapper');
+    const logoSweep = document.getElementById('intro-logo-sweep');
+    const tagline = document.getElementById('intro-tagline');
 
-        // Subliminal light sweep across logo
-        safeTimeout(() => {
-          if (isDismissed || !logoSweep) return;
-          logoSweep.classList.add('animate-sweep');
-        }, 250);
+    if (skipBtn) skipBtn.addEventListener('click', dismissIntro);
 
-        // Tagline reveal
-        safeTimeout(() => {
-          if (isDismissed || !tagline) return;
-          tagline.classList.add('visible');
-        }, 500);
+    // Studio Title Sequence (8.0s Total Duration)
+    const phrases = [
+      { text: 'A THOUGHT', duration: 750 },
+      { text: 'AN IDEA', duration: 750 },
+      { text: 'A DECK', duration: 750 },
+      { text: 'A SHOOT', duration: 750 },
+      { text: 'A FILM', duration: 1100 } // Climax hold
+    ];
 
-        // Final smooth dissolve into site hero after 1.85s logo reveal
-        safeTimeout(() => {
+    function runPhraseSequence(index) {
+      if (isDismissed || !phraseText) return;
+
+      if (index >= phrases.length) {
+        // Transition from last phrase ("A FILM") into Logo Reveal Stage
+        if (phraseStage) phraseStage.style.display = 'none';
+
+        if (logoStage) {
+          logoStage.style.display = 'flex';
+          if (logoWrapper) {
+            logoWrapper.offsetHeight; // reflow
+            logoWrapper.classList.add('visible');
+          }
+
+          // Subliminal light sweep across logo
+          safeTimeout(() => {
+            if (isDismissed || !logoSweep) return;
+            logoSweep.classList.add('animate-sweep');
+          }, 250);
+
+          // Tagline reveal
+          safeTimeout(() => {
+            if (isDismissed || !tagline) return;
+            tagline.classList.add('visible');
+          }, 500);
+
+          // Final smooth dissolve into site hero after 1.85s logo reveal
+          safeTimeout(() => {
+            dismissIntro();
+          }, 1850);
+        } else {
           dismissIntro();
-        }, 1850);
+        }
+        return;
       }
-      return;
+
+      const currentItem = phrases[index];
+      phraseText.textContent = currentItem.text;
+      phraseText.classList.remove('fade-out');
+      phraseText.offsetHeight; // reflow
+      phraseText.classList.add('visible');
+
+      // Hold current phrase, then optical focus pull & exposure fade out
+      safeTimeout(() => {
+        if (isDismissed) return;
+        phraseText.classList.remove('visible');
+        phraseText.classList.add('fade-out');
+
+        // Next phrase transition after optical focus out (300ms)
+        safeTimeout(() => {
+          runPhraseSequence(index + 1);
+        }, 300);
+      }, currentItem.duration);
     }
 
-    const currentItem = phrases[index];
-    phraseText.textContent = currentItem.text;
-    phraseText.classList.remove('fade-out');
-    phraseText.offsetHeight; // reflow
-    phraseText.classList.add('visible');
-
-    // Hold current phrase, then optical focus pull & exposure fade out
+    // Start sequence at t=250ms
     safeTimeout(() => {
-      if (isDismissed) return;
-      phraseText.classList.remove('visible');
-      phraseText.classList.add('fade-out');
-
-      // Next phrase transition after optical focus out (300ms)
-      safeTimeout(() => {
-        runPhraseSequence(index + 1);
-      }, 300);
-    }, currentItem.duration);
+      runPhraseSequence(0);
+    }, 250);
+  } catch (err) {
+    console.error('Intro animation error:', err);
+    dismissIntro();
   }
-
-  // Start sequence at t=250ms
-  safeTimeout(() => {
-    runPhraseSequence(0);
-  }, 250);
 }
 
 /* --------------------------------------------------------------------------

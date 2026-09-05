@@ -1,3 +1,4 @@
+// ANAVA FILMS - Core Scripts v4.0 Final Release
 function initApp() {
   initThemeToggle();
   initMobileMenu();
@@ -679,9 +680,6 @@ function initWorkFilters() {
 
   function applyFilters() {
     workItems.forEach(item => {
-      const itemCat = item.getAttribute('data-category');
-      const itemSubCats = (item.getAttribute('data-subcategories') || '').split(',');
-
       let matchPrimary = (currentPrimary === 'all' || itemCat === currentPrimary);
       let matchSecondary = true;
 

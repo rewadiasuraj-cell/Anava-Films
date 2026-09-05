@@ -6655,9 +6655,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   transition-delay: 0.8s;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1280px) {
   .philo-side-annotation {
-    display: none;
+    display: none !important;
   }
 }
 

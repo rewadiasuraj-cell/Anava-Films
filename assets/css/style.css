@@ -7005,7 +7005,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .skip-intro-btn {
   position: absolute;
   bottom: 2.5rem;
-  right: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -7018,6 +7019,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   border-radius: 30px;
   cursor: pointer;
   backdrop-filter: blur(10px);
+  white-space: nowrap;
   transition: all 0.3s ease;
 }
 
@@ -7025,19 +7027,15 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   background: rgba(245, 183, 25, 0.15);
   border-color: rgba(245, 183, 25, 0.5);
   color: #ffffff;
-  transform: translateY(-2px);
+  transform: translateX(-50%) translateY(-2px);
   box-shadow: 0 5px 20px rgba(245, 183, 25, 0.2);
 }
 
 @media (max-width: 768px) {
   .skip-intro-btn {
-    bottom: 2rem;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
+    bottom: 1.8rem;
     font-size: 0.7rem;
-    padding: 0.65rem 1.4rem;
-    white-space: nowrap;
+    padding: 0.55rem 1.25rem;
   }
 }
 

@@ -6323,22 +6323,29 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .philo-display-title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-size: clamp(1.6rem, 4.8vw, 3.6rem);
   font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
   margin: 0 0 1.5rem;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .philo-title-white {
   color: #ffffff;
-  display: block;
+  display: inline;
 }
 
 .philo-title-gold {
   color: #f5b719;
-  display: block;
+  display: inline;
+  margin-left: 0.35em;
+}
+
+.single-line-title {
+  white-space: nowrap !important;
+  font-size: clamp(1.4rem, 4.6vw, 3.5rem) !important;
 }
 
 .philo-desc-top {
@@ -6876,7 +6883,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 /* Clean Crisp Pure White Phrase Typography */
 .intro-phrase-text {
   font-family: 'Outfit', 'Cinzel', 'Inter', var(--font-display), sans-serif;
-  font-size: clamp(1.6rem, 7.5vw, 5.2rem);
+  font-size: clamp(1.2rem, 4.5vw, 3.2rem);
   font-weight: 700;
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;

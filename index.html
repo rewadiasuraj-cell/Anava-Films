@@ -10,19 +10,32 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Outfit:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="assets/css/style.css?v=11.0">
-  <script defer src="assets/js/main.js?v=11.0"></script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  
+  <link rel="stylesheet" href="assets/css/style.css?v=14.0">
+  <script defer src="assets/js/main.js?v=14.0"></script>
 </head>
 <body>
 
-  <!-- 01. Opening Full-Screen Studio Cinematic Intro Animation -->
+  <!-- 01. Opening Full-Screen Studio Cinematic Intro Video & Animation -->
   <div id="cinematic-intro" role="dialog" aria-label="Intro Animation">
+    <!-- Intro Video Stage -->
+    <div id="intro-video-stage" class="intro-video-stage-container">
+      <video id="intro-video-player" class="intro-video-player" autoplay muted playsinline preload="auto">
+        <source id="intro-video-source" src="intro/intro 3.mp4" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="intro-video-overlay-shadow"></div>
+    </div>
+
     <canvas id="intro-particles-canvas" class="intro-particles-canvas"></canvas>
     <div class="intro-grain-overlay"></div>
     <div class="cinematic-bg-glow"></div>
 
-    <!-- Phrase Sequence Stage (A THOUGHT -> AN IDEA -> A DECK -> A SHOOT -> A FILM) -->
-    <div id="intro-phrase-stage" class="intro-stage-container">
+    <!-- Phrase Sequence Stage (Fallback / Secondary Text) -->
+    <div id="intro-phrase-stage" class="intro-stage-container" style="display: none;">
       <div id="intro-phrase-text" class="intro-phrase-text">A THOUGHT</div>
     </div>
 
@@ -34,9 +47,24 @@
       <p class="intro-tagline-gold" id="intro-tagline">Give us a thought &mdash; We’ll give you ideas to shoot</p>
     </div>
 
-    <!-- Skip Intro Button -->
-    <button type="button" id="skip-intro-btn" class="skip-intro-btn" aria-label="Skip Intro">SKIP INTRO</button>
+    <!-- Intro Control Toolbar -->
+    <div class="intro-controls-bar">
+      <label for="intro-video-upload-input" class="intro-upload-btn" title="Upload local video file to preview intro">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+        <span>Test Your Video</span>
+        <input type="file" id="intro-video-upload-input" accept="video/mp4,video/webm,video/mov,video/quicktime" style="display:none;">
+      </label>
+      <button type="button" id="intro-sound-toggle-btn" class="intro-sound-btn" aria-label="Toggle Sound">🔊 UNMUTE</button>
+      <button type="button" id="skip-intro-btn" class="skip-intro-btn" aria-label="Skip Intro">SKIP INTRO ✕</button>
+    </div>
   </div>
+
+  <!-- Floating Local Tester Button to Replay Intro Anytime -->
+  <button type="button" id="replay-intro-floating-btn" class="intro-tester-badge" title="Replay Video Intro locally">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+    <span>Replay Intro Video</span>
+  </button>
+
 
 
   <!-- Persistent Header & Navigation -->

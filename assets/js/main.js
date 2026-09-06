@@ -173,6 +173,22 @@ function initGalaxyParticles(introEl) {
    -------------------------------------------------------------------------- */
 function initClapboardIntro() {
   const introEl = document.getElementById('cinematic-intro');
+  const videoPlayer = document.getElementById('intro-video-player');
+  const uploadInput = document.getElementById('intro-video-upload-input');
+  const soundBtn = document.getElementById('intro-sound-toggle-btn');
+  const skipBtn = document.getElementById('skip-intro-btn');
+  const floatingReplayBtn = document.getElementById('replay-intro-floating-btn');
+
+  // Floating replay button setup (works anytime on page)
+  if (floatingReplayBtn) {
+    floatingReplayBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sessionStorage.removeItem('anava_intro_played');
+      sessionStorage.setItem('force_intro_replay', 'true');
+      window.location.reload();
+    });
+  }
+
   if (!introEl) return;
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -185,6 +201,10 @@ function initClapboardIntro() {
     introEl.style.display = 'none';
     return;
   }
+
+  // Make intro visible
+  introEl.style.display = 'flex';
+  introEl.classList.remove('dissolving');
 
   let isDismissed = false;
   const activeTimeouts = [];
@@ -201,6 +221,11 @@ function initClapboardIntro() {
     if (isDismissed) return;
     isDismissed = true;
     activeTimeouts.forEach(id => clearTimeout(id));
+
+    if (videoPlayer) {
+      videoPlayer.pause();
+    }
+
     if (typeof stopParticles === 'function') {
       try { stopParticles(); } catch (e) {}
     }
@@ -215,64 +240,147 @@ function initClapboardIntro() {
     }, 700);
   }
 
-  // Hard safety fallback: Ensure intro NEVER blocks website for more than 8.2s under any circumstances
-  setTimeout(() => {
-    dismissIntro();
-  }, 8200);
+  // Skip Intro button listener
+  if (skipBtn) {
+    skipBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dismissIntro();
+    });
+  }
 
-  // Click/Tap anywhere on intro screen to skip immediately
-  introEl.addEventListener('click', dismissIntro);
+  // Sound toggle button listener
+  if (soundBtn && videoPlayer) {
+    soundBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (videoPlayer.muted) {
+        videoPlayer.muted = false;
+        soundBtn.innerHTML = '🔇 MUTE';
+      } else {
+        videoPlayer.muted = true;
+        soundBtn.innerHTML = '🔊 UNMUTE';
+      }
+    });
+  }
 
-  try {
-    stopParticles = initGalaxyParticles(introEl);
+  // Local Custom Video Upload/Tester input listener
+  if (uploadInput && videoPlayer) {
+    uploadInput.addEventListener('change', (e) => {
+      e.stopPropagation();
+      const file = e.target.files[0];
+      if (file) {
+        const fileUrl = URL.createObjectURL(file);
+        videoPlayer.src = fileUrl;
+        videoPlayer.currentTime = 0;
+        videoPlayer.play().catch(err => console.log('Video play error:', err));
+      }
+    });
+  }
 
-    const skipBtn = document.getElementById('skip-intro-btn');
-    const phraseStage = document.getElementById('intro-phrase-stage');
-    const phraseText = document.getElementById('intro-phrase-text');
-
+  function revealLogoStage() {
+    if (isDismissed) return;
+    const videoStage = document.getElementById('intro-video-stage');
     const logoStage = document.getElementById('intro-logo-stage');
     const logoWrapper = document.querySelector('.intro-logo-wrapper');
     const logoSweep = document.getElementById('intro-logo-sweep');
     const tagline = document.getElementById('intro-tagline');
 
-    if (skipBtn) skipBtn.addEventListener('click', dismissIntro);
+    if (videoStage) {
+      videoStage.style.opacity = '0';
+      videoStage.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => { videoStage.style.display = 'none'; }, 500);
+    }
 
-    // Studio Title Sequence (8.0s Total Duration)
+    if (logoStage) {
+      logoStage.style.display = 'flex';
+      logoStage.style.zIndex = '5';
+      if (logoWrapper) {
+        logoWrapper.offsetHeight;
+        logoWrapper.classList.add('visible');
+      }
+
+      safeTimeout(() => {
+        if (isDismissed || !logoSweep) return;
+        logoSweep.classList.add('animate-sweep');
+      }, 250);
+
+      safeTimeout(() => {
+        if (isDismissed || !tagline) return;
+        tagline.classList.add('visible');
+      }, 500);
+
+      safeTimeout(() => {
+        dismissIntro();
+      }, 1850);
+    } else {
+      dismissIntro();
+    }
+  }
+
+  // If Intro Video exists, play it and dissolve directly into website when ended
+  if (videoPlayer) {
+    videoPlayer.play().catch(() => {
+      // Browser autoplay policy fallback
+    });
+
+    videoPlayer.addEventListener('ended', () => {
+      dismissIntro();
+    });
+
+    // Safety fallback: if video is stuck or very long, cap intro fallback at 25s
+    setTimeout(() => {
+      if (!isDismissed && videoPlayer.paused) {
+        dismissIntro();
+      }
+    }, 25000);
+  } else {
+    // Hard safety fallback for text sequence if no video
+    setTimeout(() => {
+      dismissIntro();
+    }, 8200);
+  }
+
+  try {
+    stopParticles = initGalaxyParticles(introEl);
+
+    const phraseStage = document.getElementById('intro-phrase-stage');
+    const phraseText = document.getElementById('intro-phrase-text');
+    const logoStage = document.getElementById('intro-logo-stage');
+    const logoWrapper = document.querySelector('.intro-logo-wrapper');
+    const logoSweep = document.getElementById('intro-logo-sweep');
+    const tagline = document.getElementById('intro-tagline');
+
+    // Studio Title Sequence fallback (if phrase stage is displayed)
     const phrases = [
       { text: 'A THOUGHT', duration: 750 },
       { text: 'AN IDEA', duration: 750 },
       { text: 'A DECK', duration: 750 },
       { text: 'A SHOOT', duration: 750 },
-      { text: 'A FILM', duration: 1100 } // Climax hold
+      { text: 'A FILM', duration: 1100 }
     ];
 
     function runPhraseSequence(index) {
-      if (isDismissed || !phraseText) return;
+      if (isDismissed || !phraseText || phraseStage?.style.display === 'none') return;
 
       if (index >= phrases.length) {
-        // Transition from last phrase ("A FILM") into Logo Reveal Stage
         if (phraseStage) phraseStage.style.display = 'none';
 
         if (logoStage) {
           logoStage.style.display = 'flex';
           if (logoWrapper) {
-            logoWrapper.offsetHeight; // reflow
+            logoWrapper.offsetHeight;
             logoWrapper.classList.add('visible');
           }
 
-          // Subliminal light sweep across logo
           safeTimeout(() => {
             if (isDismissed || !logoSweep) return;
             logoSweep.classList.add('animate-sweep');
           }, 250);
 
-          // Tagline reveal
           safeTimeout(() => {
             if (isDismissed || !tagline) return;
             tagline.classList.add('visible');
           }, 500);
 
-          // Final smooth dissolve into site hero after 1.85s logo reveal
           safeTimeout(() => {
             dismissIntro();
           }, 1850);
@@ -285,26 +393,25 @@ function initClapboardIntro() {
       const currentItem = phrases[index];
       phraseText.textContent = currentItem.text;
       phraseText.classList.remove('fade-out');
-      phraseText.offsetHeight; // reflow
+      phraseText.offsetHeight;
       phraseText.classList.add('visible');
 
-      // Hold current phrase, then optical focus pull & exposure fade out
       safeTimeout(() => {
         if (isDismissed) return;
         phraseText.classList.remove('visible');
         phraseText.classList.add('fade-out');
 
-        // Next phrase transition after optical focus out (300ms)
         safeTimeout(() => {
           runPhraseSequence(index + 1);
         }, 300);
       }, currentItem.duration);
     }
 
-    // Start sequence at t=250ms
-    safeTimeout(() => {
-      runPhraseSequence(0);
-    }, 250);
+    if (phraseStage && phraseStage.style.display !== 'none') {
+      safeTimeout(() => {
+        runPhraseSequence(0);
+      }, 250);
+    }
   } catch (err) {
     console.error('Intro animation error:', err);
     dismissIntro();

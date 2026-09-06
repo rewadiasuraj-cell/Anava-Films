@@ -42,6 +42,8 @@ const filesToCopy = [
   'robots.txt',
   'sitemap.xml',
   'vercel.json',
+  'favicon.png',
+  'intro',
   'assets'
 ];
 

@@ -283,10 +283,10 @@ function initClapboardIntro() {
 
     function updateIntroVideoSource() {
       const isPortrait = window.innerHeight > window.innerWidth || window.innerWidth <= 991;
-      const targetSrc = isPortrait ? 'intro/intro 3 verticle 2.mp4?v=3.0' : 'intro/intro 3.mp4?v=3.0';
+      const targetSrc = isPortrait ? 'intro/intro-3-vertical.mp4?v=3.1' : 'intro/intro-3.mp4?v=3.1';
       const currentSrc = videoPlayer.currentSrc || videoPlayer.src || '';
 
-      if (isPortrait && !currentSrc.includes('verticle')) {
+      if (isPortrait && !currentSrc.includes('vertical')) {
         videoPlayer.src = targetSrc;
         videoPlayer.load();
         videoPlayer.muted = false;
@@ -294,7 +294,7 @@ function initClapboardIntro() {
           videoPlayer.muted = true;
           videoPlayer.play().catch(() => {});
         });
-      } else if (!isPortrait && currentSrc.includes('verticle')) {
+      } else if (!isPortrait && currentSrc.includes('vertical')) {
         videoPlayer.src = targetSrc;
         videoPlayer.load();
         videoPlayer.muted = false;

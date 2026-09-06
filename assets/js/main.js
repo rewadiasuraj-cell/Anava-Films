@@ -174,20 +174,7 @@ function initGalaxyParticles(introEl) {
 function initClapboardIntro() {
   const introEl = document.getElementById('cinematic-intro');
   const videoPlayer = document.getElementById('intro-video-player');
-  const uploadInput = document.getElementById('intro-video-upload-input');
-  const soundBtn = document.getElementById('intro-sound-toggle-btn');
   const skipBtn = document.getElementById('skip-intro-btn');
-  const floatingReplayBtn = document.getElementById('replay-intro-floating-btn');
-
-  // Floating replay button setup (works anytime on page)
-  if (floatingReplayBtn) {
-    floatingReplayBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      sessionStorage.removeItem('anava_intro_played');
-      sessionStorage.setItem('force_intro_replay', 'true');
-      window.location.reload();
-    });
-  }
 
   if (!introEl) return;
 
@@ -237,6 +224,8 @@ function initClapboardIntro() {
     introEl.classList.add('dissolving');
     setTimeout(() => {
       introEl.style.display = 'none';
+      const heroSec = document.querySelector('.home-hero-section');
+      if (heroSec) heroSec.classList.add('is-visible');
     }, 700);
   }
 
@@ -245,34 +234,6 @@ function initClapboardIntro() {
     skipBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       dismissIntro();
-    });
-  }
-
-  // Sound toggle button listener
-  if (soundBtn && videoPlayer) {
-    soundBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (videoPlayer.muted) {
-        videoPlayer.muted = false;
-        soundBtn.innerHTML = '🔇 MUTE';
-      } else {
-        videoPlayer.muted = true;
-        soundBtn.innerHTML = '🔊 UNMUTE';
-      }
-    });
-  }
-
-  // Local Custom Video Upload/Tester input listener
-  if (uploadInput && videoPlayer) {
-    uploadInput.addEventListener('change', (e) => {
-      e.stopPropagation();
-      const file = e.target.files[0];
-      if (file) {
-        const fileUrl = URL.createObjectURL(file);
-        videoPlayer.src = fileUrl;
-        videoPlayer.currentTime = 0;
-        videoPlayer.play().catch(err => console.log('Video play error:', err));
-      }
     });
   }
 
@@ -318,20 +279,60 @@ function initClapboardIntro() {
 
   // If Intro Video exists, play it and dissolve directly into website when ended
   if (videoPlayer) {
+    videoPlayer.muted = false;
+
+    function updateIntroVideoSource() {
+      const isPortrait = window.innerHeight > window.innerWidth || window.innerWidth <= 991;
+      const targetSrc = isPortrait ? 'intro/intro 3 verticle 2.mp4?v=3.0' : 'intro/intro 3.mp4?v=3.0';
+      const currentSrc = videoPlayer.currentSrc || videoPlayer.src || '';
+
+      if (isPortrait && !currentSrc.includes('verticle')) {
+        videoPlayer.src = targetSrc;
+        videoPlayer.load();
+        videoPlayer.muted = false;
+        videoPlayer.play().catch(() => {
+          videoPlayer.muted = true;
+          videoPlayer.play().catch(() => {});
+        });
+      } else if (!isPortrait && currentSrc.includes('verticle')) {
+        videoPlayer.src = targetSrc;
+        videoPlayer.load();
+        videoPlayer.muted = false;
+        videoPlayer.play().catch(() => {
+          videoPlayer.muted = true;
+          videoPlayer.play().catch(() => {});
+        });
+      }
+    }
+
+    updateIntroVideoSource();
+    window.addEventListener('resize', updateIntroVideoSource);
+    window.addEventListener('orientationchange', updateIntroVideoSource);
+
     videoPlayer.play().catch(() => {
-      // Browser autoplay policy fallback
+      // Browser autoplay policy fallback - if unmuted play is blocked, fallback to muted play smoothly
+      videoPlayer.muted = true;
+      videoPlayer.play().catch(() => {
+        safeTimeout(() => {
+          if (!isDismissed) dismissIntro();
+        }, 1500);
+      });
     });
 
     videoPlayer.addEventListener('ended', () => {
       dismissIntro();
     });
 
-    // Safety fallback: if video is stuck or very long, cap intro fallback at 25s
+    videoPlayer.addEventListener('error', () => {
+      dismissIntro();
+    });
+
+    // Safety fallback: if video is stuck, buffering, or fails to play within 4s, dismiss intro
     setTimeout(() => {
-      if (!isDismissed && videoPlayer.paused) {
+      if (!isDismissed && (videoPlayer.paused || videoPlayer.currentTime === 0)) {
         dismissIntro();
       }
-    }, 25000);
+    }, 4000);
   } else {
     // Hard safety fallback for text sequence if no video
     setTimeout(() => {
@@ -1205,9 +1206,9 @@ function initTstmSlider() {
   }
 }
 
-/* Cinematic Studio CTA & Philosophy Observer */
+/* Hero Section & Cinematic Studio Observer */
 document.addEventListener('DOMContentLoaded', () => {
-  const animatedSections = document.querySelectorAll('.cinematic-cta-section, .thinkers-section');
+  const animatedSections = document.querySelectorAll('.home-hero-section, .cinematic-cta-section, .thinkers-section');
   if (animatedSections.length > 0) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1215,7 +1216,7 @@ document.addEventListener('DOMContentLoaded', () => {
           entry.target.classList.add('is-visible');
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
 
     animatedSections.forEach(sec => observer.observe(sec));
   }

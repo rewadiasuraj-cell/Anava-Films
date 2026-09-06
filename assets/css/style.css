@@ -1445,6 +1445,63 @@ html[data-theme="light"] .text-metallic {
   margin-left: 8px;
 }
 
+/* ==========================================================================
+   Hero Section Scroll & Reveal Animations (Option 2: Fade In Up with Stagger)
+   ========================================================================== */
+.home-hero-section .hero-badge,
+.home-hero-section .hero-tagline-hero,
+.home-hero-section .hero-description,
+.home-hero-section .hero-cta-group,
+.home-hero-section .hero-showreel-bar {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.home-hero-section.is-visible .hero-badge {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.12s;
+}
+
+.home-hero-section.is-visible .hero-tagline-hero {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.28s;
+}
+
+.home-hero-section.is-visible .hero-description {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.44s;
+}
+
+.home-hero-section.is-visible .hero-cta-group {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.58s;
+}
+
+.home-hero-section.is-visible .hero-showreel-bar {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.72s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-section .hero-badge,
+  .home-hero-section .hero-tagline-hero,
+  .home-hero-section .hero-description,
+  .home-hero-section .hero-cta-group,
+  .home-hero-section .hero-showreel-bar {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+
 /* Manifesto & Pillars */
 .pillars-grid {
   display: grid;
@@ -7006,6 +7063,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   background: #000000;
   z-index: 99999;
   display: flex;
@@ -7509,8 +7567,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   bottom: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  max-width: 100vw !important;
-  max-height: 100vh !important;
+  height: 100dvh !important;
+  max-width: none !important;
+  max-height: none !important;
   margin: 0 !important;
   padding: 0 !important;
   z-index: 1 !important;
@@ -7523,21 +7582,28 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .intro-video-player {
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 100% !important;
+  height: 100% !important;
   width: 100vw !important;
   height: 100vh !important;
+  height: 100dvh !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
   min-width: 100vw !important;
   min-height: 100vh !important;
+  min-height: 100dvh !important;
   max-width: none !important;
   max-height: none !important;
   object-fit: cover !important;
+  object-position: center center !important;
   display: block !important;
   border: none !important;
   outline: none !important;
   margin: 0 !important;
   padding: 0 !important;
-  transform: none !important;
 }
 
 .intro-video-overlay-shadow {
@@ -7554,8 +7620,6 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   gap: 0.75rem;
 }
 
-.intro-upload-btn,
-.intro-sound-btn,
 .skip-intro-btn {
   background: rgba(15, 15, 15, 0.85) !important;
   border: 1px solid rgba(255, 255, 255, 0.25) !important;
@@ -7577,8 +7641,6 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
 }
 
-.intro-upload-btn:hover,
-.intro-sound-btn:hover,
 .skip-intro-btn:hover {
   background: rgba(212, 175, 55, 0.25) !important;
   border-color: #d4af37 !important;
@@ -7587,37 +7649,53 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3) !important;
 }
 
-.intro-tester-badge {
-  position: fixed;
-  bottom: 1.5rem;
-  left: 1.5rem;
-  z-index: 9999;
-  background: rgba(12, 12, 12, 0.92);
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  color: #d4af37;
-  padding: 0.6rem 1.2rem;
-  border-radius: 30px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
+/* ==========================================================================
+   MOBILE & PORTRAIT CINEMATIC INTRO VIDEO OPTIMIZATION (iPhone 15 / 393x852)
+   ========================================================================== */
+@media (max-width: 1024px), (orientation: portrait) {
+  #cinematic-intro,
+  .intro-video-stage-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    width: 100vw !important;
+    height: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    overflow: hidden !important;
+    background: #000000 !important;
+  }
 
-.intro-tester-badge:hover {
-  transform: translateY(-3px) scale(1.02);
-  background: #d4af37;
-  color: #000000;
-  box-shadow: 0 10px 35px rgba(212, 175, 55, 0.5);
-}
+  #cinematic-intro video,
+  .intro-video-player {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    transform-origin: center center !important;
+    width: 100% !important;
+    height: 100% !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    min-width: 100vw !important;
+    min-height: 100dvh !important;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block !important;
+  }
 
-@media (max-width: 768px) {
   .intro-controls-bar {
     bottom: 1.2rem;
     right: 1rem;
@@ -7625,17 +7703,10 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
     justify-content: center;
     flex-wrap: wrap;
   }
-  .intro-upload-btn,
-  .intro-sound-btn,
+
   .skip-intro-btn {
     padding: 0.45rem 0.8rem !important;
     font-size: 0.7rem !important;
-  }
-  .intro-tester-badge {
-    bottom: 1rem;
-    left: 1rem;
-    padding: 0.5rem 0.9rem;
-    font-size: 0.7rem;
   }
 }
 

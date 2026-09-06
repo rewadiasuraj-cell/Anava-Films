@@ -23,8 +23,9 @@
   <div id="cinematic-intro" role="dialog" aria-label="Intro Animation">
     <!-- Intro Video Stage -->
     <div id="intro-video-stage" class="intro-video-stage-container">
-      <video id="intro-video-player" class="intro-video-player" autoplay muted playsinline preload="auto">
-        <source id="intro-video-source" src="intro/intro 3.mp4" type="video/mp4">
+      <video id="intro-video-player" class="intro-video-player" autoplay playsinline preload="auto">
+        <source src="intro/intro 3 verticle 2.mp4?v=3.0" type="video/mp4" media="(orientation: portrait), (max-width: 991px)">
+        <source src="intro/intro 3.mp4?v=3.0" type="video/mp4">
         Your browser does not support video.
       </video>
       <div class="intro-video-overlay-shadow"></div>
@@ -49,21 +50,10 @@
 
     <!-- Intro Control Toolbar -->
     <div class="intro-controls-bar">
-      <label for="intro-video-upload-input" class="intro-upload-btn" title="Upload local video file to preview intro">
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
-        <span>Test Your Video</span>
-        <input type="file" id="intro-video-upload-input" accept="video/mp4,video/webm,video/mov,video/quicktime" style="display:none;">
-      </label>
-      <button type="button" id="intro-sound-toggle-btn" class="intro-sound-btn" aria-label="Toggle Sound">🔊 UNMUTE</button>
       <button type="button" id="skip-intro-btn" class="skip-intro-btn" aria-label="Skip Intro">SKIP INTRO ✕</button>
     </div>
   </div>
 
-  <!-- Floating Local Tester Button to Replay Intro Anytime -->
-  <button type="button" id="replay-intro-floating-btn" class="intro-tester-badge" title="Replay Video Intro locally">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
-    <span>Replay Intro Video</span>
-  </button>
 
 
 

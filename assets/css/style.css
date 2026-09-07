@@ -1705,15 +1705,24 @@ html[data-theme="light"] .text-metallic {
 }
 
 .role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.68rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   background: rgba(245, 183, 25, 0.08);
   color: var(--text-muted);
-  padding: 0.25rem 0.65rem;
-  border-radius: 4px;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
   border: 1px solid var(--border-light);
+}
+
+.role-badge-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -1750,17 +1759,114 @@ html[data-theme="light"] .text-metallic {
 
 .portfolio-view-all {
   white-space: nowrap;
+  display: none;
+}
+
+/* Category Tabs */
+.portfolio-tabs {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+
+.portfolio-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  padding: 0.3rem 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+.portfolio-tab-icon {
+  flex-shrink: 0;
+  color: var(--text-dim);
+  transition: color 0.25s ease;
+}
+
+.portfolio-tab:hover {
+  color: var(--text-main);
+}
+
+.portfolio-tab.active {
+  color: var(--text-main);
+}
+
+.portfolio-tab.active .portfolio-tab-icon {
+  color: var(--accent-gold);
+}
+
+.portfolio-tab.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.6rem;
+  height: 2px;
+  background: var(--accent-gold);
+  border-radius: 2px;
+}
+
+.portfolio-tab-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-light);
+  flex-shrink: 0;
+}
+
+.portfolio-tab-viewall {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.portfolio-viewall-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.portfolio-tab-viewall:hover .portfolio-viewall-circle {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #000;
+  transform: translateX(3px);
 }
 
 .portfolio-featured {
   background: var(--bg-card);
-  border-radius: var(--radius-md);
+  border-radius: 20px;
   overflow: hidden;
   border: 1px solid var(--border-light);
   cursor: pointer;
   transition: all 0.4s var(--transition-smooth);
   display: grid;
   grid-template-columns: 1.4fr 1fr;
+}
+
+.portfolio-featured .work-thumb-wrapper,
+.portfolio-strip-card .work-thumb-wrapper {
+  border-radius: inherit;
 }
 
 .portfolio-featured:hover {
@@ -1842,7 +1948,7 @@ html[data-theme="light"] .text-metallic {
 
 .portfolio-strip-card {
   background: var(--bg-card);
-  border-radius: var(--radius-sm);
+  border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--border-light);
   cursor: pointer;
@@ -1899,6 +2005,21 @@ html[data-theme="light"] .text-metallic {
 }
 
 @media (max-width: 640px) {
+  .portfolio-tabs {
+    gap: 1rem;
+  }
+  .portfolio-tab {
+    font-size: 0.82rem;
+    gap: 0.4rem;
+  }
+  .portfolio-tab-viewall {
+    font-size: 0.82rem;
+    margin-left: 0;
+  }
+  .portfolio-viewall-circle {
+    width: 28px;
+    height: 28px;
+  }
   .portfolio-strip {
     grid-auto-columns: minmax(200px, 78vw);
   }

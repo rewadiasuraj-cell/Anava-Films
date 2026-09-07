@@ -14,8 +14,8 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   
-  <link rel="stylesheet" href="assets/css/style.css?v=14.9">
-  <script defer src="assets/js/main.js?v=14.3"></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=15.0">
+  <script defer src="assets/js/main.js?v=14.4"></script>
 </head>
 <body>
 
@@ -271,11 +271,31 @@
           <span class="text-gold portfolio-eyebrow">PORTFOLIO</span>
           <h2 class="section-title portfolio-title">SELECTED <span class="silver-text">WORK</span></h2>
           <p class="subtitle">Commercial TVCs, viral vertical reels, brand narratives and performance campaigns.</p>
-          <a href="work" class="btn-outline portfolio-view-all">VIEW ALL WORK</a>
+
+          <!-- Category Tabs (filter the featured project + strip below by real project category) -->
+          <div class="portfolio-tabs" role="tablist">
+            <button type="button" class="portfolio-tab active" data-work-tab="tvc" role="tab" aria-selected="true">
+              <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+              <span>Client Work</span>
+            </button>
+            <button type="button" class="portfolio-tab" data-work-tab="vertical" role="tab" aria-selected="false">
+              <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>My Work</span>
+            </button>
+            <button type="button" class="portfolio-tab" data-work-tab="all" role="tab" aria-selected="false">
+              <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              <span>Projects</span>
+            </button>
+            <span class="portfolio-tab-divider"></span>
+            <a href="work" class="portfolio-tab-viewall">
+              <span>View All</span>
+              <span class="portfolio-viewall-circle">→</span>
+            </a>
+          </div>
         </div>
 
-        <!-- Featured Project -->
-        <div class="portfolio-featured" data-open-case="lenskart-hustler">
+        <!-- Featured Project (content swapped by portfolio tab filter via JS) -->
+        <div class="portfolio-featured" id="portfolio-featured" data-open-case="lenskart-hustler">
           <div class="work-thumb-wrapper portfolio-featured-media">
             <video src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" class="work-thumb-img" muted loop playsinline preload="auto" autoplay></video>
             <div class="work-play-overlay">
@@ -286,12 +306,7 @@
             <div class="work-category-tag">LENSKART • COMMERCIAL TVC</div>
             <h3 class="work-card-title portfolio-featured-title">Hustler — Keep Hustling</h3>
             <p class="work-card-desc portfolio-featured-desc">High-octane commercial ad film built around energy, attitude, and momentum.</p>
-            <div class="role-badges">
-              <span class="role-badge">Creative Direction</span>
-              <span class="role-badge">Ideation</span>
-              <span class="role-badge">Production</span>
-              <span class="role-badge">Direction</span>
-            </div>
+            <div class="role-badges"></div>
           </div>
         </div>
       </div>
@@ -302,8 +317,8 @@
         <a href="work" class="portfolio-more-link">MORE PROJECTS <span class="cta-arrow">→</span></a>
       </div>
 
-      <div class="portfolio-strip">
-        <div class="portfolio-strip-card" data-open-case="lenskart-hustler">
+      <div class="portfolio-strip" id="portfolio-strip">
+        <div class="portfolio-strip-card" data-open-case="lenskart-hustler" data-work-category="tvc">
           <div class="work-thumb-wrapper">
             <video src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" class="work-thumb-img" muted loop playsinline preload="auto" autoplay></video>
             <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
@@ -314,7 +329,7 @@
           </div>
         </div>
 
-        <div class="portfolio-strip-card" data-open-case="john-jacobs">
+        <div class="portfolio-strip-card" data-open-case="john-jacobs" data-work-category="tvc">
           <div class="work-thumb-wrapper">
             <video src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" class="work-thumb-img" muted loop playsinline preload="auto" autoplay></video>
             <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
@@ -325,7 +340,7 @@
           </div>
         </div>
 
-        <div class="portfolio-strip-card" data-open-case="karan-johar-kusha">
+        <div class="portfolio-strip-card" data-open-case="karan-johar-kusha" data-work-category="vertical">
           <div class="work-thumb-wrapper">
             <video src="assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4" class="work-thumb-img" muted loop playsinline preload="auto" autoplay></video>
             <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
@@ -336,7 +351,7 @@
           </div>
         </div>
 
-        <div class="portfolio-strip-card" data-open-case="orry-kfc">
+        <div class="portfolio-strip-card" data-open-case="orry-kfc" data-work-category="vertical">
           <div class="work-thumb-wrapper">
             <video src="assets/media/vertical-films/ORRY & KFC.mp4" class="work-thumb-img" muted loop playsinline preload="auto" autoplay></video>
             <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>

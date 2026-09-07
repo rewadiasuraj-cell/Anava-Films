@@ -455,7 +455,6 @@ function initShowreel() {
   const soundToggle = document.getElementById('showreel-sound-toggle');
   const nextBtn = document.getElementById('showreel-next-btn');
   const nextDurationLabel = document.getElementById('showreel-next-duration');
-  const centerPlayTime = document.querySelector('.showreel-play-time');
   if (!showreelVideo) return;
 
   let showreelIndex = 0;
@@ -513,7 +512,6 @@ function initShowreel() {
       }
 
       if (nextDurationLabel) nextDurationLabel.textContent = next.duration;
-      if (centerPlayTime) centerPlayTime.textContent = next.duration;
     });
   }
 }

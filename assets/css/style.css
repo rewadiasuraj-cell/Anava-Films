@@ -14,9 +14,9 @@
   --text-dim: #64748b;
   --border-light: rgba(255, 255, 255, 0.12);
   --border-active: rgba(245, 183, 25, 0.6);
-  --font-display: 'Outfit', sans-serif;
+  --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-serif: 'Inter', sans-serif;
   --header-height: 80px;
   --container-max: 1320px;
   --radius-sm: 8px;
@@ -306,7 +306,7 @@ html[data-theme="light"] .modal-close-btn {
   font-family: 'Inter', 'Helvetica Neue', 'Neue Haas Grotesk', sans-serif;
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 350;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   z-index: 2;
   
@@ -439,7 +439,7 @@ html[data-theme="light"] .modal-close-btn {
   border-radius: 30px;
   font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   cursor: pointer;
   backdrop-filter: blur(8px);
@@ -508,8 +508,8 @@ html[data-theme="light"] .modal-close-btn {
   padding: 0.4rem 0.9rem;
   border-radius: 30px;
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   color: var(--accent-gold);
 }
 
@@ -540,16 +540,16 @@ html[data-theme="light"] .modal-close-btn {
 .showreel-meta-title {
   font-family: var(--font-display);
   font-size: clamp(1.4rem, 3vw, 2.2rem);
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
 }
 
 .showreel-meta-sub {
   font-size: 0.9rem;
   color: var(--accent-gold);
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   margin-top: 0.2rem;
 }
 
@@ -561,8 +561,8 @@ html[data-theme="light"] .modal-close-btn {
   padding: 0.65rem 1.1rem;
   border-radius: 30px;
   font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -604,8 +604,8 @@ html[data-theme="light"] .modal-close-btn {
 
 .showreel-next-duration {
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 @media (max-width: 767px) {
@@ -646,8 +646,8 @@ html[data-theme="light"] .modal-close-btn {
 .thinkers-node {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 3.5vw, 2.6rem);
-  font-weight: 900;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   color: #ffffff;
   display: flex;
   align-items: center;
@@ -770,8 +770,8 @@ html[data-theme="light"] .modal-close-btn {
 .locations-badge {
   display: inline-block;
   font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.28em;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--accent-gold, #f5b719);
 }
@@ -779,8 +779,8 @@ html[data-theme="light"] .modal-close-btn {
 .locations-cities {
   font-family: var(--font-display, 'Syne', sans-serif);
   font-size: clamp(1.8rem, 5.2vw, 4.4rem);
-  font-weight: 900;
-  letter-spacing: 0.06em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #ffffff;
   line-height: 1.05;
@@ -842,8 +842,8 @@ html[data-theme="light"] .modal-close-btn {
 
 .marker-text {
   font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+  font-weight: 400;
+  letter-spacing: 0.07em;
   color: rgba(255, 255, 255, 0.88);
   text-transform: uppercase;
 }
@@ -910,8 +910,8 @@ html[data-theme="light"] .modal-close-btn {
 
 .secondary-filter-label {
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--accent-gold);
 }
@@ -923,7 +923,7 @@ html[data-theme="light"] .modal-close-btn {
   padding: 0.4rem 0.95rem;
   border-radius: 20px;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -990,18 +990,18 @@ img, video {
 .display-title {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0em;
   text-transform: uppercase;
 }
 
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 3.5vw, 3rem);
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   color: var(--text-main);
 }
@@ -1013,7 +1013,7 @@ img, video {
 .text-metallic {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   background: linear-gradient(
     135deg,
@@ -1071,7 +1071,7 @@ html[data-theme="light"] .text-metallic {
 .text-serif {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
 }
 
@@ -1148,7 +1148,7 @@ html[data-theme="light"] .text-metallic {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 7vw, 5.2rem);
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   background: linear-gradient(
     135deg,
@@ -1227,11 +1227,11 @@ html[data-theme="light"] .text-metallic {
   margin-top: 1.8rem;
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 600;
+  font-weight: 400;
   font-size: clamp(0.95rem, 1.8vw, 1.25rem);
   color: var(--accent-gold);
   text-align: center;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
@@ -1249,9 +1249,9 @@ html[data-theme="light"] .text-metallic {
   left: 50%;
   transform: translateX(-50%);
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-light);
@@ -1360,9 +1360,9 @@ html[data-theme="light"] .text-metallic {
 
 .nav-link {
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
   white-space: nowrap;
   color: rgba(255, 255, 255, 0.78);
   position: relative;
@@ -1422,9 +1422,9 @@ html[data-theme="light"] .text-metallic {
   background: #f5b719;
   color: #000000;
   font-family: var(--font-body);
-  font-weight: 800;
+  font-weight: 500;
   font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   padding: 0.68rem 1.5rem;
   border-radius: 999px;
   text-transform: uppercase;
@@ -1450,10 +1450,10 @@ html[data-theme="light"] .text-metallic {
   background: var(--accent-gold);
   color: #000000;
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 500;
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
   padding: 0.85rem 1.8rem;
   border-radius: 50px;
   border: 1px solid var(--accent-gold);
@@ -1477,10 +1477,10 @@ html[data-theme="light"] .text-metallic {
   background: transparent;
   color: var(--text-main);
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
   padding: 0.85rem 1.8rem;
   border-radius: 50px;
   border: 1px solid var(--border-light);
@@ -1504,8 +1504,8 @@ html[data-theme="light"] .text-metallic {
 
 .filter-btn {
   font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   padding: 0.65rem 1.5rem;
   border-radius: 50px;
   background: var(--bg-card);
@@ -1520,7 +1520,7 @@ html[data-theme="light"] .text-metallic {
   color: #000000;
   border-color: var(--accent-gold);
   box-shadow: 0 4px 18px var(--accent-gold-glow);
-  font-weight: 800;
+  font-weight: 500;
 }
 
 /* Hero Section */
@@ -1580,9 +1580,9 @@ html[data-theme="light"] .text-metallic {
 .hero-badge {
   display: inline-block;
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.07em;
   color: #f5b719;
   background: rgba(245, 183, 25, 0.08);
   border: 1px solid rgba(245, 183, 25, 0.4);
@@ -1594,9 +1594,9 @@ html[data-theme="light"] .text-metallic {
 .hero-tagline-hero {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 5.8vw, 5.2rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   max-width: 900px;
   margin-bottom: 1.5rem;
@@ -1607,7 +1607,7 @@ html[data-theme="light"] .text-metallic {
   color: #f5b719;
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: none;
   text-shadow: 0 0 30px rgba(245, 183, 25, 0.3);
 }
@@ -1637,8 +1637,8 @@ html[data-theme="light"] .text-metallic {
   align-items: center;
   gap: 10px;
   font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   color: #f5b719;
   text-transform: uppercase;
   text-decoration: none;
@@ -1744,17 +1744,17 @@ html[data-theme="light"] .text-metallic {
 
 .pillar-num {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--accent-gold);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
   margin-bottom: 0.6rem;
 }
 
 .pillar-title {
   font-family: var(--font-display);
   font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--text-main);
 }
 
@@ -1844,9 +1844,9 @@ html[data-theme="light"] .text-metallic {
 
 .work-category-tag {
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   color: var(--accent-gold);
   margin-bottom: 0.6rem;
 }
@@ -1854,7 +1854,7 @@ html[data-theme="light"] .text-metallic {
 .work-card-title {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 800;
+  font-weight: 500;
   line-height: 1.3;
   margin-bottom: 0.6rem;
   color: var(--text-main);
@@ -1883,9 +1883,9 @@ html[data-theme="light"] .text-metallic {
   align-items: center;
   gap: 0.4rem;
   font-size: 0.68rem;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   background: rgba(245, 183, 25, 0.08);
   color: var(--text-muted);
   padding: 0.4rem 0.75rem;
@@ -1917,9 +1917,9 @@ html[data-theme="light"] .text-metallic {
 
 .portfolio-eyebrow {
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
 }
 
 .portfolio-title {
@@ -1955,7 +1955,7 @@ html[data-theme="light"] .text-metallic {
   padding: 0.3rem 0;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--text-muted);
   cursor: pointer;
   position: relative;
@@ -2004,7 +2004,7 @@ html[data-theme="light"] .text-metallic {
   gap: 0.7rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--text-main);
   text-decoration: none;
   margin-left: auto;
@@ -2105,8 +2105,8 @@ html[data-theme="light"] .text-metallic {
 .portfolio-strip-label {
   font-family: var(--font-display);
   font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
   text-transform: uppercase;
 }
@@ -2117,8 +2117,8 @@ html[data-theme="light"] .text-metallic {
   gap: 0.5rem;
   font-family: var(--font-display);
   font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--accent-gold);
   text-decoration: none;
@@ -2173,8 +2173,8 @@ html[data-theme="light"] .text-metallic {
 
 .portfolio-strip-client {
   font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   color: var(--accent-gold);
   text-transform: uppercase;
 }
@@ -2182,7 +2182,7 @@ html[data-theme="light"] .text-metallic {
 .portfolio-strip-title {
   font-family: var(--font-display);
   font-size: 0.92rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-main);
   line-height: 1.3;
 }
@@ -2287,16 +2287,16 @@ html[data-theme="light"] .text-metallic {
 .tmf-title {
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 900;
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--text-main);
 }
 
 .tmf-num {
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--accent-gold);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
 }
 
 .tmf-list {
@@ -2319,7 +2319,7 @@ html[data-theme="light"] .text-metallic {
 }
 
 .tmf-item-title {
-  font-weight: 700;
+  font-weight: 400;
   font-size: 0.95rem;
   margin-bottom: 0.2rem;
   color: var(--text-main);
@@ -2356,7 +2356,7 @@ html[data-theme="light"] .text-metallic {
   justify-content: center;
   font-family: var(--font-display);
   font-size: 1.8rem;
-  font-weight: 900;
+  font-weight: 500;
   color: var(--accent-gold);
   line-height: 1;
   flex-shrink: 0;
@@ -2364,15 +2364,15 @@ html[data-theme="light"] .text-metallic {
 
 .step-number-label {
   font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   margin-top: 0.2rem;
 }
 
 .process-step-title {
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--text-main);
   margin-bottom: 0.6rem;
 }
@@ -2438,9 +2438,9 @@ html[data-theme="light"] .text-metallic {
 
 .contact-badge-label {
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   color: var(--accent-gold);
   margin-bottom: 0.8rem;
 }
@@ -2448,7 +2448,7 @@ html[data-theme="light"] .text-metallic {
 .contact-title {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 4vw, 3rem);
-  font-weight: 900;
+  font-weight: 500;
   color: var(--text-main);
   letter-spacing: 0.01em;
   margin-bottom: 1.2rem;
@@ -2471,16 +2471,16 @@ html[data-theme="light"] .text-metallic {
 
 .contact-meta-label {
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   color: var(--accent-gold);
   margin-bottom: 0.3rem;
 }
 
 .contact-email-link {
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-main);
   text-decoration: underline;
   transition: color 0.2s;
@@ -2492,7 +2492,7 @@ html[data-theme="light"] .text-metallic {
 
 .contact-meta-value {
   font-size: 1.05rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-main);
 }
 
@@ -2510,9 +2510,9 @@ html[data-theme="light"] .text-metallic {
 .form-label {
   display: block;
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
   color: var(--text-muted);
   margin-bottom: 0.6rem;
 }
@@ -2604,8 +2604,8 @@ textarea.form-control {
 .footer-col-title {
   font-family: var(--font-display);
   font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   color: var(--accent-gold);
   margin-bottom: 1.2rem;
 }
@@ -2653,7 +2653,7 @@ textarea.form-control {
   gap: 0.5rem;
   padding: 0.45rem 1rem !important;
   font-size: 0.8rem !important;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
 }
 
 .contact-social-btn .social-btn-icon {
@@ -2726,9 +2726,9 @@ textarea.form-control {
 
 .leadership-tag {
   font-size: 0.68rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   color: var(--accent-gold);
   margin-bottom: 0.4rem;
 }
@@ -2736,7 +2736,7 @@ textarea.form-control {
 .leadership-name {
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 2.5vw, 2.1rem);
-  font-weight: 900;
+  font-weight: 500;
   color: var(--text-main);
   letter-spacing: 0.02em;
   line-height: 1.15;
@@ -2814,7 +2814,7 @@ textarea.form-control {
   color: var(--accent-gold);
   font-family: var(--font-display);
   font-size: 0.9rem;
-  font-weight: 800;
+  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2824,7 +2824,7 @@ textarea.form-control {
 .author-name {
   font-family: var(--font-display);
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--text-main);
 }
 
@@ -3300,8 +3300,8 @@ body.no-scroll {
     width: 100% !important;
     padding: 0.75rem 1rem !important;
     font-size: 1.05rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.1em !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.04em !important;
     color: var(--text-muted) !important;
     text-align: center !important;
     border-radius: 10px !important;
@@ -3329,7 +3329,7 @@ body.no-scroll {
     width: 100% !important;
     padding: 0.85rem 1.5rem !important;
     font-size: 0.9rem !important;
-    font-weight: 800 !important;
+    font-weight: 500 !important;
   }
 
   /* Grid Layout Adjustments for Tablet & Mobile */
@@ -3506,9 +3506,9 @@ body.no-scroll {
 .people-badge-label {
   display: inline-block;
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.07em;
   color: #f5b719;
   margin-bottom: 0.6rem;
 }
@@ -3516,9 +3516,9 @@ body.no-scroll {
 .people-display-title {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 4.5vw, 3.6rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   color: var(--text-main);
 }
@@ -3621,19 +3621,19 @@ body.no-scroll {
 
 .people-role-tag {
   font-size: 0.68rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.05em;
   color: #f5b719;
 }
 
 .people-leader-name {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 3vw, 2.4rem);
-  font-weight: 900;
+  font-weight: 500;
   text-transform: uppercase;
   color: var(--text-main);
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
   margin-bottom: 1.2rem;
   line-height: 1.1;
 }
@@ -3649,13 +3649,13 @@ body.no-scroll {
 
 .people-leader-bio strong {
   color: var(--text-main);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .people-quote-box {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.05rem;
   color: #f5b719;
   border-left: 2px solid #f5b719;
@@ -3724,9 +3724,9 @@ html[data-theme="light"] .collab-hero-overlay {
 .collab-main-title {
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 5vw, 4.4rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   color: var(--text-main);
   margin-top: 1rem;
@@ -3737,7 +3737,7 @@ html[data-theme="light"] .collab-hero-overlay {
   color: #f5b719;
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400;
   text-transform: none;
 }
 
@@ -3760,8 +3760,8 @@ html[data-theme="light"] .collab-hero-overlay {
   color: var(--text-main);
   border: 1px solid var(--border-light);
   font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   padding: 0.55rem 1.3rem;
   border-radius: 999px;
   cursor: pointer;
@@ -3934,10 +3934,10 @@ html[data-theme="light"] .collab-author-avatar img {
 
 .collab-author-name {
   font-size: 0.75rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
   color: #f5b719;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   margin: 0;
 }
 
@@ -3985,7 +3985,7 @@ html[data-theme="light"] .collab-stats-bar {
 .stat-number {
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 900;
+  font-weight: 500;
   color: var(--text-main);
   line-height: 1;
 }
@@ -4057,9 +4057,9 @@ html[data-theme="light"] .proc-hero-overlay {
 .proc-main-title {
   font-family: var(--font-display);
   font-size: clamp(3rem, 7vw, 5.5rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.02;
-  letter-spacing: -0.02em;
+  letter-spacing: 0em;
   color: var(--text-primary);
   margin-top: 1.2rem;
   margin-bottom: 1.5rem;
@@ -4069,7 +4069,7 @@ html[data-theme="light"] .proc-hero-overlay {
 .proc-title-accent {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--accent-gold);
   text-transform: uppercase;
 }
@@ -4162,7 +4162,7 @@ html[data-theme="light"] .proc-step-card {
 .proc-step-num {
   font-family: var(--font-display);
   font-size: 1.6rem;
-  font-weight: 900;
+  font-weight: 500;
   color: var(--accent-gold);
   line-height: 1;
 }
@@ -4170,8 +4170,8 @@ html[data-theme="light"] .proc-step-card {
 .proc-step-label {
   font-family: var(--font-display);
   font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   color: var(--accent-gold);
   margin-top: 0.15rem;
 }
@@ -4203,9 +4203,9 @@ html[data-theme="light"] .proc-step-icon-circle {
 .proc-step-title {
   font-family: var(--font-display);
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   color: var(--text-primary);
   margin: 0;
 }
@@ -4261,7 +4261,7 @@ html[data-theme="light"] .proc-cta-card {
 .proc-cta-title {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 5vw, 3.6rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.1;
   text-transform: uppercase;
   color: var(--text-primary);
@@ -4271,7 +4271,7 @@ html[data-theme="light"] .proc-cta-card {
 .proc-cta-accent {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--accent-gold);
 }
 
@@ -4335,9 +4335,9 @@ html[data-theme="light"] .wwd-hero-overlay {
 .wwd-main-title {
   font-family: var(--font-display);
   font-size: clamp(3rem, 6.5vw, 5.2rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.02;
-  letter-spacing: -0.02em;
+  letter-spacing: 0em;
   color: var(--text-primary);
   margin-top: 1.2rem;
   margin-bottom: 1.5rem;
@@ -4347,7 +4347,7 @@ html[data-theme="light"] .wwd-hero-overlay {
 .wwd-title-accent {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--accent-gold);
   text-transform: uppercase;
 }
@@ -4441,7 +4441,7 @@ html[data-theme="light"] .wwd-pillar-card {
 .wwd-pillar-num {
   font-family: var(--font-display);
   font-size: 2.2rem;
-  font-weight: 900;
+  font-weight: 500;
   color: var(--accent-gold);
   line-height: 1;
   display: inline-block;
@@ -4451,7 +4451,7 @@ html[data-theme="light"] .wwd-pillar-card {
 .wwd-pillar-name {
   font-family: var(--font-display);
   font-size: 1.8rem;
-  font-weight: 900;
+  font-weight: 500;
   text-transform: uppercase;
   color: var(--text-primary);
   display: inline-block;
@@ -4461,8 +4461,8 @@ html[data-theme="light"] .wwd-pillar-card {
   display: block;
   font-family: var(--font-display);
   font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   color: var(--accent-gold);
   margin-top: 0.3rem;
 }
@@ -4500,7 +4500,7 @@ html[data-theme="light"] .wwd-pillar-card {
 .wwd-service-title {
   font-family: var(--font-display);
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 0.35rem;
 }
@@ -4556,7 +4556,7 @@ html[data-theme="light"] .wwd-cta-card {
 .wwd-cta-title {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 5vw, 3.6rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.1;
   text-transform: uppercase;
   color: var(--text-primary);
@@ -4629,9 +4629,9 @@ html[data-theme="light"] .about-hero-overlay {
   left: -0.5rem;
   font-family: var(--font-display);
   font-size: clamp(7rem, 16vw, 16rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 0.8;
-  letter-spacing: -0.04em;
+  letter-spacing: 0em;
   color: transparent;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
   user-select: none;
@@ -4653,9 +4653,9 @@ html[data-theme="light"] .about-watermark-text {
 .about-hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 5.5vw, 4.8rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   color: var(--text-primary);
   margin-top: 1.2rem;
@@ -4665,7 +4665,7 @@ html[data-theme="light"] .about-watermark-text {
 .about-title-accent {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-muted);
   text-transform: uppercase;
 }
@@ -4713,7 +4713,7 @@ html[data-theme="light"] .about-quote-box {
 .about-quote-text {
   font-family: var(--font-display);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-primary);
   line-height: 1.5;
 }
@@ -4751,7 +4751,7 @@ html[data-theme="light"] .about-quote-box {
 .wwd-cta-title {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 5vw, 3.6rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.1;
   text-transform: uppercase;
   color: var(--text-primary);
@@ -4824,9 +4824,9 @@ html[data-theme="light"] .about-hero-overlay {
   left: -0.5rem;
   font-family: var(--font-display);
   font-size: clamp(7rem, 16vw, 16rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 0.8;
-  letter-spacing: -0.04em;
+  letter-spacing: 0em;
   color: transparent;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
   user-select: none;
@@ -4848,9 +4848,9 @@ html[data-theme="light"] .about-watermark-text {
 .about-hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 5.5vw, 4.8rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   color: var(--text-primary);
   margin-top: 1.2rem;
@@ -4860,7 +4860,7 @@ html[data-theme="light"] .about-watermark-text {
 .about-title-accent {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-muted);
   text-transform: uppercase;
 }
@@ -4908,7 +4908,7 @@ html[data-theme="light"] .about-quote-box {
 .about-quote-text {
   font-family: var(--font-display);
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-primary);
   line-height: 1.5;
 }
@@ -4958,10 +4958,10 @@ html[data-theme="light"] .about-stat-icon {
 .about-stat-sub {
   font-family: var(--font-display);
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
   margin-bottom: -0.25rem;
   display: block;
 }
@@ -4969,7 +4969,7 @@ html[data-theme="light"] .about-stat-icon {
 .about-stat-number {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 2.2vw, 2rem);
-  font-weight: 900;
+  font-weight: 500;
   color: var(--accent-gold);
   line-height: 1.1;
 }
@@ -5047,9 +5047,9 @@ html[data-theme="light"] .about-ethos-card:not(:last-child) {
 
 .clapper-scene-num {
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #94a3b8;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   margin-bottom: 0.2rem;
   transition: opacity 0.15s ease, transform 0.15s ease;
@@ -5057,8 +5057,8 @@ html[data-theme="light"] .about-ethos-card:not(:last-child) {
 
 .clapper-scene-text {
   font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   color: #ffffff;
   transition: opacity 0.15s ease, transform 0.15s ease;
 }
@@ -5066,7 +5066,7 @@ html[data-theme="light"] .about-ethos-card:not(:last-child) {
 .about-ethos-title {
   font-family: var(--font-display);
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 500;
   color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
@@ -5165,10 +5165,10 @@ html[data-theme="light"] .about-ethos-card:not(:last-child) {
 }
 
 .cinematic-title-text {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(2.2rem, 7vw, 4.8rem);
-  font-weight: 900;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   color: #ffffff;
   text-transform: uppercase;
   text-align: center;
@@ -5228,8 +5228,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   border-radius: 40px;
   font-family: 'Inter', sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   cursor: pointer;
   text-transform: uppercase;
   backdrop-filter: blur(12px);
@@ -5265,8 +5265,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .people-badge-label {
   font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   color: var(--accent-gold);
   text-transform: uppercase;
   display: block;
@@ -5276,7 +5276,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .people-display-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4.5vw, 3.2rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.1;
   color: var(--text-main);
   text-transform: uppercase;
@@ -5388,8 +5388,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .people-role-tag {
   font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   color: var(--accent-gold);
   text-transform: uppercase;
 }
@@ -5397,8 +5397,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .people-leader-name {
   font-family: var(--font-display);
   font-size: 2.2rem;
-  font-weight: 900;
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--text-main);
   margin-bottom: 1.2rem;
 }
@@ -5423,9 +5423,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   font-family: var(--font-display);
   font-size: 0.95rem;
-  font-weight: 800;
+  font-weight: 500;
   font-style: italic;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   color: #ffffff;
   margin: 0.5rem 0 0 0;
 }
@@ -5502,18 +5502,18 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .workflow-badge-text {
   color: #f5b719;
   font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.24em;
+  font-weight: 400;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   font-family: 'Inter', sans-serif;
 }
 
 /* Main Display Title with Exact Weight Contrasts */
 .workflow-title {
-  font-family: 'Outfit', 'Inter', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.85rem, 4.4vw, 3.8rem);
   line-height: 1.1;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   margin-bottom: 3.5rem;
   color: #ffffff;
   text-transform: uppercase;
@@ -5524,13 +5524,13 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   font-weight: 300;
   color: #ffffff;
   opacity: 0.95;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
 }
 
 .workflow-title-bold {
-  font-weight: 800;
+  font-weight: 500;
   color: #ffffff;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
 }
 
 /* Scrollable container on mobile */
@@ -5601,9 +5601,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .workflow-node-label {
   margin-top: 1.15rem;
   font-size: 0.76rem;
-  font-weight: 700;
+  font-weight: 400;
   color: #ffffff;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   white-space: nowrap;
   font-family: 'Inter', sans-serif;
@@ -5648,7 +5648,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .workflow-subtext {
   font-size: 0.88rem;
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.07em;
   color: rgba(255, 255, 255, 0.62);
   text-transform: uppercase;
   margin: 3.2rem auto 2.4rem;
@@ -5665,8 +5665,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   background: #f5b719;
   color: #000000 !important;
   font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   padding: 0.95rem 2.5rem;
   border-radius: 999px;
@@ -5735,7 +5735,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   }
   .workflow-subtext {
     font-size: 0.8rem;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.05em;
     margin: 2.2rem auto 2rem;
   }
   .workflow-cta-btn {
@@ -5760,8 +5760,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   border: none;
   color: var(--text-muted);
   font-size: 0.9rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   padding: 0.4rem 0 0.8rem;
   cursor: pointer;
   position: relative;
@@ -5818,7 +5818,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   border: none;
   color: var(--text-muted);
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 400;
   text-align: left;
   padding: 0.5rem 0.8rem;
   border-radius: 6px;
@@ -5949,9 +5949,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .brand-logo-text {
   font-size: 0.8rem;
-  font-weight: 800;
+  font-weight: 500;
   color: #ffffff;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   font-family: var(--font-display);
 }
 
@@ -6000,10 +6000,10 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .work-card-name {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 900;
+  font-weight: 500;
   text-transform: uppercase;
   color: #ffffff;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   line-height: 1.15;
   margin: 0;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
@@ -6018,10 +6018,10 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .work-card-slogan {
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 500;
   color: #f5b719;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   margin-top: 0.2rem;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.9);
 }
@@ -6046,9 +6046,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .proc-badge {
   display: inline-block;
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.06em;
   color: #f5b719;
   margin-bottom: 0.8rem;
 }
@@ -6056,9 +6056,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .proc-title {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 4.5vw, 4.2rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   color: #ffffff;
   margin: 0;
@@ -6155,17 +6155,17 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .step-num-gold {
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 500;
   color: #f5b719;
 }
 
 .step-title {
   font-family: var(--font-display);
   font-size: 1.45rem;
-  font-weight: 900;
+  font-weight: 500;
   text-transform: uppercase;
   color: #ffffff;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   margin: 0;
 }
 
@@ -6220,7 +6220,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   align-items: center;
   gap: 0.4rem;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -6230,7 +6230,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .flow-arrow {
   color: #f5b719;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 0.85rem;
 }
 
@@ -6294,9 +6294,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .projector-quote-title {
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 3.2vw, 3rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.1;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   margin: 0;
 }
@@ -6369,9 +6369,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   align-items: center;
   gap: 0.5rem;
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 500;
   color: #f5b719;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-bottom: 2rem;
   transition: color 0.3s ease;
@@ -6386,9 +6386,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   flex-direction: column;
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 4.5vw, 4rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.02;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   margin: 0 0 1.2rem;
 }
@@ -6413,7 +6413,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .wwd-hero-tagline .text-gold {
   color: #f5b719;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .wwd-sidebar-divider {
@@ -6459,10 +6459,10 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .step-tab-text .tab-title {
   font-family: var(--font-display);
   font-size: 1.05rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   margin: 0;
   transition: color 0.3s ease;
 }
@@ -6542,7 +6542,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .panel-header-title {
   font-family: var(--font-display);
   font-size: 2.8rem;
-  font-weight: 900;
+  font-weight: 500;
   text-transform: uppercase;
   color: #ffffff;
   letter-spacing: 0.02em;
@@ -6562,7 +6562,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .panel-header-subtitle .sub-gold {
   color: #f5b719;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 /* Features Card Border Container */
@@ -6637,17 +6637,17 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .feature-small-icon.text-badge {
   font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
 .feature-title {
   font-family: var(--font-display);
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 500;
   text-transform: uppercase;
   color: #ffffff;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   margin: 0;
 }
 
@@ -6701,13 +6701,13 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .vfx-tag {
   font-size: 0.8rem;
   color: #f5b719;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .feature-watermark {
   font-family: var(--font-display);
   font-size: 2.8rem;
-  font-weight: 900;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.07);
   text-align: right;
   user-select: none;
@@ -6755,8 +6755,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .tstm-header-badge {
   font-family: var(--font-display);
   font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   color: #f5b719;
   text-transform: uppercase;
   margin-bottom: 0.8rem;
@@ -6766,9 +6766,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .tstm-header-title {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 4.5vw, 3.8rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.06;
-  letter-spacing: -0.02em;
+  letter-spacing: 0em;
   margin: 0;
 }
 
@@ -6829,8 +6829,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   color: #cbd5e1;
   font-family: var(--font-display);
   font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -7019,8 +7019,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   color: #f5b719;
   font-family: var(--font-display);
   font-size: 0.88rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   margin: 0;
   line-height: 1.2;
@@ -7076,7 +7076,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .tstm-metric-num {
   font-family: var(--font-display);
   font-size: 2rem;
-  font-weight: 900;
+  font-weight: 500;
   color: #f5b719;
   line-height: 1;
 }
@@ -7084,9 +7084,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .tstm-metric-lbl {
   font-family: var(--font-display);
   font-size: 0.72rem;
-  font-weight: 800;
+  font-weight: 500;
   color: #94a3b8;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   margin-top: 0.35rem;
 }
@@ -7229,8 +7229,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .showreel-play-label {
   font-family: var(--font-display);
   font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   color: #ffffff;
   text-transform: uppercase;
   margin-top: 0.2rem;
@@ -7291,9 +7291,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
   font-size: clamp(9rem, 26vw, 28rem);
-  font-weight: 900;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.02);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   pointer-events: none;
   user-select: none;
@@ -7306,8 +7306,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   z-index: 2;
   font-family: var(--font-display);
   font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
+  font-weight: 400;
+  letter-spacing: 0.07em;
   color: rgba(255, 255, 255, 0.38);
   text-transform: uppercase;
   pointer-events: none;
@@ -7357,7 +7357,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 }
 
 .script-tagline {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif), serif;
   font-style: italic;
   font-size: 1.45rem;
   text-transform: none;
@@ -7393,8 +7393,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .philo-badge {
   font-family: var(--font-display);
   font-size: clamp(0.78rem, 1.2vw, 0.92rem);
-  font-weight: 800;
-  letter-spacing: 0.28em;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   color: #f5b719;
   text-transform: uppercase;
 }
@@ -7409,10 +7409,10 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .philo-display-title {
   font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 500;
   font-size: clamp(2.4rem, 5vw, 4.4rem);
   line-height: 1.05;
-  letter-spacing: -0.01em;
+  letter-spacing: 0em;
   text-transform: uppercase;
   margin: 0 0 1.6rem 0;
   display: flex;
@@ -7443,7 +7443,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .philo-desc-bold {
   font-size: clamp(1.02rem, 1.4vw, 1.15rem);
   color: #ffffff;
-  font-weight: 700;
+  font-weight: 400;
   max-width: 520px;
   line-height: 1.6;
   margin: 0 0 2.4rem 0;
@@ -7487,7 +7487,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 }
 
 .philo-visual-note .script-tagline {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif), serif;
   font-style: italic;
   font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.85);
@@ -7504,8 +7504,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   gap: 0.35rem;
   font-family: var(--font-display);
   font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.6);
   text-align: right;
   text-transform: uppercase;
@@ -7520,8 +7520,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   gap: 0.9rem;
   font-family: var(--font-display);
   font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.65);
   text-transform: uppercase;
 }
@@ -7579,8 +7579,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .philo-step-name {
   font-family: var(--font-display);
   font-size: 1.1rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   color: #f5b719;
   margin-bottom: 0.4rem;
 }
@@ -7594,7 +7594,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .philo-step-arrow {
   color: rgba(245, 183, 25, 0.7);
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 400;
   flex-shrink: 0;
 }
 
@@ -7609,8 +7609,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   color: #090a0c;
   font-family: var(--font-display);
   font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 1.25rem 2.8rem;
   border-radius: 50px;
@@ -7750,7 +7750,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   .philo-visual-side-labels,
   .philo-visual-caption {
     font-size: 0.55rem;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.05em;
   }
   .philo-visual-note {
     top: 1rem;
@@ -7782,7 +7782,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   }
   .philo-step-name {
     font-size: 0.68rem;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.03em;
     margin-bottom: 0.2rem;
   }
   .philo-step-sub {
@@ -7796,7 +7796,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   .philo-cta-btn {
     padding: 1.1rem 1rem;
     font-size: clamp(0.72rem, 3.4vw, 0.9rem);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.03em;
     white-space: nowrap;
     width: 100%;
     gap: 0.5rem;
@@ -7831,8 +7831,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .wwd-badge {
   font-family: var(--font-display);
   font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   color: #f5b719;
   text-transform: uppercase;
   display: block;
@@ -7842,9 +7842,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .wwd-main-title {
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 900;
+  font-weight: 500;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: 0em;
   margin: 0 0 0.8rem;
   text-transform: uppercase;
 }
@@ -7949,8 +7949,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .wwd-card-step {
   font-family: var(--font-display);
   font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   color: #f5b719;
   text-transform: uppercase;
   margin-bottom: 0.3rem;
@@ -7959,7 +7959,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .wwd-card-name {
   font-family: var(--font-display);
   font-size: 1.8rem;
-  font-weight: 900;
+  font-weight: 500;
   color: #ffffff;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -7977,8 +7977,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .wwd-card-link {
   font-family: var(--font-display);
   font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   color: #f5b719;
   text-transform: uppercase;
   text-decoration: none;
@@ -8088,8 +8088,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .wwd-card-micro-label {
   font-family: var(--font-display);
   font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.55);
   text-transform: uppercase;
   text-align: right;
@@ -8141,8 +8141,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   gap: 0.45rem;
   font-family: var(--font-display);
   font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   color: rgba(255, 255, 255, 0.55);
   text-transform: uppercase;
 }
@@ -8170,8 +8170,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .wwd-cta-tag {
   font-family: var(--font-display);
   font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   color: #f5b719;
   text-transform: uppercase;
 }
@@ -8179,7 +8179,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .wwd-cta-title {
   font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 500;
   color: #ffffff;
   margin: 0.2rem 0 0.1rem;
 }
@@ -8365,9 +8365,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 /* Clean Crisp Pure White Phrase Typography */
 .intro-phrase-text {
-  font-family: 'Outfit', 'Cinzel', 'Inter', var(--font-display), sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.2rem, 4.5vw, 3.2rem);
-  font-weight: 700;
+  font-weight: 400;
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
   background: none;
@@ -8421,12 +8421,12 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 /* Gold Italic Tagline Matching Reference Screenshot */
 .intro-tagline-gold {
-  font-family: 'Playfair Display', 'Cinzel', serif;
+  font-family: var(--font-serif), serif;
   font-style: italic;
   font-size: clamp(0.72rem, 3.2vw, 1.8rem);
   font-weight: 500;
   color: #f5b719;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-transform: none;
   white-space: nowrap;
   text-align: center;
@@ -8456,7 +8456,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   .intro-phrase-text {
     white-space: nowrap;
     font-size: clamp(1.4rem, 7vw, 2.8rem);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.04em;
   }
   .intro-logo-wrapper {
     margin-bottom: 0.15rem;
@@ -8480,7 +8480,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   .intro-phrase-text {
     white-space: nowrap;
     font-size: clamp(1.25rem, 6.8vw, 2.2rem);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.03em;
   }
   .intro-logo-wrapper {
     margin-bottom: 0.1rem;
@@ -8501,10 +8501,10 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: rgba(255, 255, 255, 0.65);
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  font-weight: 400;
+  letter-spacing: 0.07em;
   padding: 0.65rem 1.4rem;
   border-radius: 30px;
   cursor: pointer;
@@ -8579,9 +8579,9 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
   font-size: clamp(8rem, 24vw, 26rem);
-  font-weight: 900;
+  font-weight: 500;
   color: rgba(255, 255, 255, 0.018);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   pointer-events: none;
   user-select: none;
@@ -8617,8 +8617,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .eyebrow-text {
   font-family: var(--font-display);
   font-size: clamp(0.75rem, 1.2vw, 0.9rem);
-  font-weight: 700;
-  letter-spacing: 0.28em;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   color: #f5b719;
   text-transform: uppercase;
 }
@@ -8653,7 +8653,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .cinematic-cta-title {
   font-family: var(--font-display);
-  font-weight: 900;
+  font-weight: 500;
   font-size: clamp(1.9rem, 4.6vw, 4.0rem);
   line-height: 1.25;
   text-transform: uppercase;
@@ -8665,12 +8665,12 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .cta-title-line.line-white {
   color: #ffffff;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.03em;
 }
 
 .cta-title-line.line-gold {
   color: #f5b719;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.03em;
   text-shadow: 0 0 35px rgba(245, 183, 25, 0.3);
 }
 
@@ -8693,8 +8693,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   color: #090a0c;
   font-family: var(--font-display);
   font-size: 1.02rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 1.15rem 3rem;
   border-radius: 50px;
@@ -8729,8 +8729,8 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   margin-top: 4.5rem;
   font-family: var(--font-display);
   font-size: clamp(0.68rem, 1vw, 0.8rem);
-  font-weight: 700;
-  letter-spacing: 0.25em;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.45);
   text-transform: uppercase;
   flex-wrap: wrap;
@@ -8888,7 +8888,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   font-family: 'Inter', sans-serif !important;
   font-size: 0.78rem !important;
   font-weight: 500 !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.03em !important;
   text-transform: uppercase !important;
   cursor: pointer !important;
   display: inline-flex !important;

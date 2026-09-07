@@ -1070,22 +1070,22 @@ function initModals() {
 
     modalContainer.innerHTML = `
       <div style="margin-bottom: 1.5rem;">
-        <span style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em;">${data.format}</span>
-        <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 800; margin-top: 0.4rem; line-height: 1.2;">${data.title}</h2>
+        <span style="color: var(--accent-gold); font-size: 0.8rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.05em;">${data.format}</span>
+        <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 500; margin-top: 0.4rem; line-height: 1.2;">${data.title}</h2>
       </div>
 
       <!-- Meta Row: CLIENT / FORMAT / ANAVA'S ROLE -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-light); padding: 1rem 1.4rem; border-radius: 8px; margin-bottom: 2rem;">
         <div>
-          <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">CLIENT</div>
-          <div style="font-size: 1rem; font-weight: 700; color: #fff; margin-top: 0.2rem;">${data.client}</div>
+          <div style="font-size: 0.7rem; font-weight: 400; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">CLIENT</div>
+          <div style="font-size: 1rem; font-weight: 400; color: #fff; margin-top: 0.2rem;">${data.client}</div>
         </div>
         <div>
-          <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em;">FORMAT</div>
-          <div style="font-size: 0.95rem; font-weight: 600; color: var(--accent-gold); margin-top: 0.2rem;">${data.format}</div>
+          <div style="font-size: 0.7rem; font-weight: 400; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">FORMAT</div>
+          <div style="font-size: 0.95rem; font-weight: 400; color: var(--accent-gold); margin-top: 0.2rem;">${data.format}</div>
         </div>
         <div style="grid-column: 1 / -1;">
-          <div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem;">ANAVA’S ROLE</div>
+          <div style="font-size: 0.7rem; font-weight: 400; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem;">ANAVA’S ROLE</div>
           <div class="role-badges" style="margin-top: 0;">
             ${data.roles.map(r => `<span class="role-badge" style="background: rgba(245, 183, 25, 0.15); color: var(--accent-gold); border-color: rgba(245, 183, 25, 0.35); font-size: 0.75rem;">${r}</span>`).join('')}
           </div>
@@ -1095,7 +1095,7 @@ function initModals() {
       <!-- 4 CONTENT BLOCKS: THE FINAL FILM (Prominent Top), THE THOUGHT, THE IDEA, THE MAKING -->
       <div style="margin-bottom: 2.5rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
-          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;">THE FINAL FILM</h4>
+          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em;">THE FINAL FILM</h4>
           <span style="font-size: 0.75rem; color: var(--text-muted);">HD Playback</span>
         </div>
         <div style="position: relative; aspect-ratio: 16/9; background: #000; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-light); box-shadow: 0 10px 40px rgba(0,0,0,0.6);">
@@ -1105,17 +1105,17 @@ function initModals() {
 
       <div style="display: grid; gap: 1.8rem; border-top: 1px solid var(--border-light); padding-top: 2rem;">
         <div>
-          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">THE THOUGHT (CLIENT BRIEF)</h4>
+          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase;">THE THOUGHT (CLIENT BRIEF)</h4>
           <p style="color: var(--text-muted); line-height: 1.65; margin-top: 0.4rem; font-size: 0.95rem;">${data.thought}</p>
         </div>
 
         <div>
-          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">THE IDEA (ANAVA'S CONCEPT)</h4>
+          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase;">THE IDEA (ANAVA'S CONCEPT)</h4>
           <p style="color: var(--text-muted); line-height: 1.65; margin-top: 0.4rem; font-size: 0.95rem;">${data.idea}</p>
         </div>
 
         <div>
-          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;">THE MAKING (EXECUTION)</h4>
+          <h4 style="color: var(--accent-gold); font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase;">THE MAKING (EXECUTION)</h4>
           <p style="color: var(--text-muted); line-height: 1.65; margin-top: 0.4rem; font-size: 0.95rem;">${data.making}</p>
         </div>
       </div>

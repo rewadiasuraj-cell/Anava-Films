@@ -7070,18 +7070,42 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
     font-size: clamp(1.8rem, 7.5vw, 2.8rem);
   }
   .philo-process-card {
-    flex-direction: column;
-    padding: 1.8rem 1.4rem;
-    gap: 1.2rem;
+    flex-direction: row;
+    padding: 1rem 0.6rem;
+    gap: 0.4rem;
+  }
+  .philo-step-icon-circle {
+    width: 34px;
+    height: 34px;
+    margin-bottom: 0.5rem;
+  }
+  .philo-step-icon-circle svg {
+    width: 15px;
+    height: 15px;
+  }
+  .philo-step-name {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2rem;
+  }
+  .philo-step-sub {
+    font-size: 0.6rem;
+    line-height: 1.25;
   }
   .philo-step-arrow {
-    transform: rotate(90deg);
-    margin: 0.2rem 0;
+    font-size: 0.9rem;
+    margin: 0;
   }
   .philo-cta-btn {
     padding: 1.1rem 1.8rem;
     font-size: 0.9rem;
     width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .philo-step-sub {
+    display: none;
   }
 }
 

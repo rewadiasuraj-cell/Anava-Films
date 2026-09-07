@@ -886,6 +886,21 @@ window.projectsData = {
     idea: 'Clean interview lighting and crisp audio focusing on trust and creative collaboration.',
     making: '2-camera sit-down interview with soft studio lighting.'
   },
+  'testimonial-lenskart-2': {
+    id: 'testimonial-lenskart-2',
+    title: 'Lenskart Leadership Testimonial',
+    client: 'Lenskart Leadership',
+    category: 'testimonials',
+    subcategories: ['social'],
+    format: 'Client Testimonial Film',
+    roles: ['Interview Production', 'Direction', 'Editing'],
+    thumbVideo: 'assets/media/testimonials/LENSKART TESTIMONIAL  (1).mp4',
+    videoSrc: 'assets/media/testimonials/LENSKART TESTIMONIAL  (1).mp4',
+    shortDesc: 'Structured on-set execution & creative collaboration.',
+    thought: 'Authentic feedback on Anava’s structured on-set execution.',
+    idea: 'Focused sit-down interview detailing creative alignment and seamless logistics.',
+    making: 'Multi-cam studio interview with warm ambient lighting and studio sound.'
+  },
   'bts-lenskart-perf': {
     id: 'bts-lenskart-perf',
     title: 'BTS: Lenskart Performance Shoot',

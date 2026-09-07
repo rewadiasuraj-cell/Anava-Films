@@ -4874,157 +4874,284 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   .people-leader-name {
     font-size: 1.7rem;
   }
-}/* --------------------------------------------------------------------------
-   Workflow Teaser ("FROM THOUGHT TO SCREEN") Styling
-   Desktop: Strictly single-line flow
-   Mobile / Tablet: Fluid responsive wrapped flow
+/* --------------------------------------------------------------------------
+   Workflow Section ("FROM THOUGHT TO SCREEN") - Reference Design
+   Matches Exact Typography, Light/Bold Weights, Badges, Connector Dots, and Glowing Button
    -------------------------------------------------------------------------- */
-.workflow-teaser-container {
+.workflow-teaser-section {
+  background: #080808;
+  padding: 5.5rem 1rem;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.workflow-teaser-container {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-.workflow-teaser-label {
-  font-size: 0.85rem;
-  font-weight: 700;
+/* Top Subtitle with Flanking Gold Lines */
+.workflow-badge-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.workflow-badge-line {
+  width: 48px;
+  height: 1px;
+  background: #f5b719;
+  opacity: 0.9;
+}
+
+.workflow-badge-text {
+  color: #f5b719;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--accent-gold, #f5b719);
-  display: block;
+  font-family: 'Inter', sans-serif;
 }
 
-.workflow-teaser-title {
-  margin: 0.6rem 0 1.2rem;
+/* Main Display Title with Exact Weight Contrasts */
+.workflow-title {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  font-size: clamp(1.85rem, 4.4vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  margin-bottom: 3.5rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.workflow-steps-flow {
+.workflow-title-light {
+  font-weight: 300;
+  color: #ffffff;
+  opacity: 0.95;
+  letter-spacing: 0.08em;
+}
+
+.workflow-title-bold {
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+}
+
+/* Scrollable container on mobile */
+.workflow-flow-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 1rem 0.5rem 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.workflow-flow-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Horizontal 7-Node Diagram Track */
+.workflow-diagram {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+  min-width: 900px; /* Guarantees strict single-line layout on desktop */
+}
+
+/* Node Item */
+.workflow-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+  width: 86px;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Circle Badge */
+.workflow-circle {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #181818, #0a0a0a);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  margin: 1.8rem auto 2.2rem;
-  flex-wrap: nowrap; /* Strictly single line on desktop */
-  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
 }
 
-.workflow-step-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  flex-shrink: 0;
-  white-space: nowrap;
+.workflow-circle svg {
+  width: 26px;
+  height: 26px;
+  display: block;
 }
 
-.workflow-step-arrow {
-  color: var(--accent-gold, #f5b719);
+.workflow-node:hover .workflow-circle {
+  border-color: #f5b719;
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 8px 25px rgba(245, 183, 25, 0.35);
+}
+
+/* Label Underneath Node */
+.workflow-node-label {
+  margin-top: 1.15rem;
+  font-size: 0.76rem;
   font-weight: 700;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-  user-select: none;
-  line-height: 1;
+  color: #ffffff;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+  transition: color 0.3s ease;
 }
 
-.workflow-step-pill {
+.workflow-node:hover .workflow-node-label {
+  color: #f5b719;
+}
+
+/* Connector between Nodes */
+.workflow-connector {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 33px; /* Exactly centers with 66px circle */
+  transform: translateY(-50%);
+  min-width: 28px;
+}
+
+.workflow-connector-line {
+  width: 100%;
+  height: 1px;
+  background: #f5b719;
+}
+
+.workflow-connector-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 5.5px;
+  height: 5.5px;
+  background: #f5b719;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(245, 183, 25, 0.6);
+}
+
+/* Subtitle below diagram */
+.workflow-subtext {
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.62);
+  text-transform: uppercase;
+  margin: 3.2rem auto 2.4rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Glowing Gold CTA Button */
+.workflow-cta-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.48rem 1.05rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 999px;
+  gap: 0.75rem;
+  background: #f5b719;
+  color: #000000 !important;
   font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.95rem 2.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 0 32px rgba(245, 183, 25, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Inter', sans-serif;
 }
 
-.workflow-step-pill:hover {
-  background: rgba(245, 183, 25, 0.15);
-  border-color: #f5b719;
-  color: #f5b719;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(245, 183, 25, 0.25);
+.workflow-cta-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 45px rgba(245, 183, 25, 0.75);
+  background: #ffc42e;
+  color: #000000 !important;
 }
 
-/* Medium Desktop & Large Tablets (992px - 1199px) */
-@media screen and (max-width: 1199px) and (min-width: 992px) {
-  .workflow-steps-flow {
-    gap: 0.4rem;
+.workflow-cta-btn .btn-arrow {
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.workflow-cta-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Tablet Scaling (769px - 1024px) */
+@media screen and (max-width: 1024px) {
+  .workflow-diagram {
+    min-width: 800px;
   }
-  .workflow-step-item {
-    gap: 0.4rem;
+  .workflow-circle {
+    width: 58px;
+    height: 58px;
   }
-  .workflow-step-pill {
-    padding: 0.44rem 0.85rem;
-    font-size: 0.82rem;
+  .workflow-circle svg {
+    width: 22px;
+    height: 22px;
   }
-  .workflow-step-arrow {
-    font-size: 0.95rem;
+  .workflow-connector {
+    margin-top: 29px;
+  }
+  .workflow-node {
+    width: 78px;
+  }
+  .workflow-node-label {
+    font-size: 0.72rem;
   }
 }
 
-/* Tablets (769px - 991px): Smooth single-line scaling */
-@media screen and (max-width: 991px) and (min-width: 769px) {
-  .workflow-steps-flow {
-    gap: 0.35rem;
-    flex-wrap: nowrap;
-  }
-  .workflow-step-item {
-    gap: 0.35rem;
-  }
-  .workflow-step-pill {
-    padding: 0.38rem 0.72rem;
-    font-size: 0.76rem;
-  }
-  .workflow-step-arrow {
-    font-size: 0.85rem;
-  }
-}
-
-/* Mobile Devices (<= 768px): Fluid multi-line wrapped flow */
+/* Mobile Devices (<= 768px) */
 @media screen and (max-width: 768px) {
-  .workflow-steps-flow {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.65rem 0.5rem;
-    max-width: 500px;
-    margin: 1.6rem auto 2rem;
+  .workflow-teaser-section {
+    padding: 4rem 1rem;
   }
-  .workflow-step-item {
-    gap: 0.45rem;
+  .workflow-title {
+    white-space: normal;
+    font-size: 2.1rem;
+    margin-bottom: 2.2rem;
   }
-  .workflow-step-pill {
-    padding: 0.42rem 0.85rem;
+  .workflow-badge-row {
+    gap: 0.8rem;
+  }
+  .workflow-badge-line {
+    width: 32px;
+  }
+  .workflow-subtext {
+    font-size: 0.8rem;
+    letter-spacing: 0.16em;
+    margin: 2.2rem auto 2rem;
+  }
+  .workflow-cta-btn {
+    padding: 0.85rem 2rem;
     font-size: 0.82rem;
-  }
-  .workflow-step-arrow {
-    font-size: 0.95rem;
   }
 }
 
-/* Small Mobile Devices (<= 480px) */
-@media screen and (max-width: 480px) {
-  .workflow-steps-flow {
-    gap: 0.55rem 0.35rem;
-    max-width: 100%;
-  }
-  .workflow-step-item {
-    gap: 0.32rem;
-  }
-  .workflow-step-pill {
-    padding: 0.36rem 0.68rem;
-    font-size: 0.76rem;
-  }
-  .workflow-step-arrow {
-    font-size: 0.85rem;
-  }
-}
 
 /* --------------------------------------------------------------------------
    Work Page - Curated Grid Layout (Matching Mockup)

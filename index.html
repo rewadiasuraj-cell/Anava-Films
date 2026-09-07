@@ -8,13 +8,13 @@
   <!-- Performance Optimization: Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Outfit:wght@200;300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   
-  <link rel="stylesheet" href="assets/css/style.css?v=14.1">
+  <link rel="stylesheet" href="assets/css/style.css?v=14.2">
   <script defer src="assets/js/main.js?v=14.0"></script>
 </head>
 <body>
@@ -479,46 +479,174 @@
 
 
   <!-- 07. FROM THOUGHT TO SCREEN (PROCESS TEASER) -->
-  <section class="section-padding border-top-divider workflow-teaser-section">
-    <div class="container workflow-teaser-container">
-      <span class="workflow-teaser-label">OUR WORKFLOW</span>
-      <h2 class="display-title single-line-title workflow-teaser-title">FROM THOUGHT TO SCREEN</h2>
+  <section class="workflow-teaser-section">
+    <div class="workflow-teaser-container">
+      
+      <!-- Top Badge with Flanking Lines -->
+      <div class="workflow-badge-row">
+        <span class="workflow-badge-line"></span>
+        <span class="workflow-badge-text">OUR WORKFLOW</span>
+        <span class="workflow-badge-line"></span>
+      </div>
 
-      <div class="workflow-steps-flow">
-        <div class="workflow-step-item">
-          <span class="workflow-step-pill">The Thought</span>
-          <span class="workflow-step-arrow">→</span>
-        </div>
-        <div class="workflow-step-item">
-          <span class="workflow-step-pill">The Idea</span>
-          <span class="workflow-step-arrow">→</span>
-        </div>
-        <div class="workflow-step-item">
-          <span class="workflow-step-pill">The Deck</span>
-          <span class="workflow-step-arrow">→</span>
-        </div>
-        <div class="workflow-step-item">
-          <span class="workflow-step-pill">Pre-Production</span>
-          <span class="workflow-step-arrow">→</span>
-        </div>
-        <div class="workflow-step-item">
-          <span class="workflow-step-pill">The Shoot</span>
-          <span class="workflow-step-arrow">→</span>
-        </div>
-        <div class="workflow-step-item">
-          <span class="workflow-step-pill">Post</span>
-          <span class="workflow-step-arrow">→</span>
-        </div>
-        <div class="workflow-step-item">
-          <span class="workflow-step-pill">Delivery</span>
+      <!-- Main Display Title -->
+      <h2 class="workflow-title">
+        <span class="workflow-title-light">FROM </span><span class="workflow-title-bold">THOUGHT TO SCREEN</span>
+      </h2>
+
+      <!-- 7 Steps Workflow Diagram -->
+      <div class="workflow-flow-wrapper">
+        <div class="workflow-diagram">
+          
+          <!-- 1. THOUGHT -->
+          <div class="workflow-node">
+            <div class="workflow-circle">
+              <!-- Lightbulb SVG -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18h6"/>
+                <path d="M10 22h4"/>
+                <path d="M12 2a7 7 0 0 0-7 7c0 2.6 1.4 4.8 3.5 6h7c2.1-1.2 3.5-3.4 3.5-6a7 7 0 0 0-7-7z"/>
+              </svg>
+            </div>
+            <span class="workflow-node-label">THOUGHT</span>
+          </div>
+
+          <!-- Connector 1 -->
+          <div class="workflow-connector">
+            <span class="workflow-connector-line"></span>
+            <span class="workflow-connector-dot"></span>
+          </div>
+
+          <!-- 2. IDEA -->
+          <div class="workflow-node">
+            <div class="workflow-circle">
+              <!-- Document SVG -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+                <line x1="8" y1="7" x2="16" y2="7"/>
+                <line x1="8" y1="12" x2="16" y2="12"/>
+                <line x1="8" y1="17" x2="13" y2="17"/>
+              </svg>
+            </div>
+            <span class="workflow-node-label">IDEA</span>
+          </div>
+
+          <!-- Connector 2 -->
+          <div class="workflow-connector">
+            <span class="workflow-connector-line"></span>
+            <span class="workflow-connector-dot"></span>
+          </div>
+
+          <!-- 3. DECK -->
+          <div class="workflow-node">
+            <div class="workflow-circle">
+              <!-- 4-Squares Grid SVG -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+              </svg>
+            </div>
+            <span class="workflow-node-label">DECK</span>
+          </div>
+
+          <!-- Connector 3 -->
+          <div class="workflow-connector">
+            <span class="workflow-connector-line"></span>
+            <span class="workflow-connector-dot"></span>
+          </div>
+
+          <!-- 4. PRE-PRODUCTION -->
+          <div class="workflow-node">
+            <div class="workflow-circle">
+              <!-- Cog / Gear SVG -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </div>
+            <span class="workflow-node-label">PRE-PRODUCTION</span>
+          </div>
+
+          <!-- Connector 4 -->
+          <div class="workflow-connector">
+            <span class="workflow-connector-line"></span>
+            <span class="workflow-connector-dot"></span>
+          </div>
+
+          <!-- 5. SHOOT -->
+          <div class="workflow-node">
+            <div class="workflow-circle">
+              <!-- Video Camera SVG -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#f5b719" stroke="#f5b719" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M23 7l-7 5 7 5V7z" />
+                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+              </svg>
+            </div>
+            <span class="workflow-node-label">SHOOT</span>
+          </div>
+
+          <!-- Connector 5 -->
+          <div class="workflow-connector">
+            <span class="workflow-connector-line"></span>
+            <span class="workflow-connector-dot"></span>
+          </div>
+
+          <!-- 6. POST -->
+          <div class="workflow-node">
+            <div class="workflow-circle">
+              <!-- Film / Player SVG -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="18" rx="2" />
+                <line x1="2" y1="7" x2="22" y2="7" />
+                <line x1="2" y1="17" x2="22" y2="17" />
+                <circle cx="5" cy="5" r="0.8" fill="#f5b719"/>
+                <circle cx="9.5" cy="5" r="0.8" fill="#f5b719"/>
+                <circle cx="14.5" cy="5" r="0.8" fill="#f5b719"/>
+                <circle cx="19" cy="5" r="0.8" fill="#f5b719"/>
+                <circle cx="5" cy="19" r="0.8" fill="#f5b719"/>
+                <circle cx="9.5" cy="19" r="0.8" fill="#f5b719"/>
+                <circle cx="14.5" cy="19" r="0.8" fill="#f5b719"/>
+                <circle cx="19" cy="19" r="0.8" fill="#f5b719"/>
+                <polygon points="10 10 15 12 10 14 10 10" fill="#f5b719" />
+              </svg>
+            </div>
+            <span class="workflow-node-label">POST</span>
+          </div>
+
+          <!-- Connector 6 -->
+          <div class="workflow-connector">
+            <span class="workflow-connector-line"></span>
+            <span class="workflow-connector-dot"></span>
+          </div>
+
+          <!-- 7. DELIVERY -->
+          <div class="workflow-node">
+            <div class="workflow-circle">
+              <!-- Paper Plane SVG -->
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+            </div>
+            <span class="workflow-node-label">DELIVERY</span>
+          </div>
+
         </div>
       </div>
 
-      <p class="subtitle" style="margin: 0 auto 2.2rem; font-size: 1.1rem; color: var(--text-muted);">
-        A thought goes in. A film comes out.
+      <!-- Subtitle -->
+      <p class="workflow-subtext">
+        A THOUGHT GOES IN. A FILM COMES OUT.
       </p>
 
-      <a href="process" class="btn-primary">EXPLORE THE FULL 7-STEP PROCESS</a>
+      <!-- Glowing CTA Button -->
+      <a href="process" class="workflow-cta-btn">
+        <span>EXPLORE OUR PROCESS</span>
+        <span class="btn-arrow">&rarr;</span>
+      </a>
+
     </div>
   </section>
 

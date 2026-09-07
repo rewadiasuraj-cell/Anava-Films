@@ -8,13 +8,13 @@
   <!-- Performance Optimization: Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@200;300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   
-  <link rel="stylesheet" href="assets/css/style.css?v=14.1">
+  <link rel="stylesheet" href="assets/css/style.css?v=14.3">
   <script defer src="assets/js/main.js?v=14.0"></script>
 </head>
 <body>
@@ -54,30 +54,183 @@
   </header>
 
   <!-- Main Process Section matching Reference Image Layout -->
-  <section class="process-page-section">
+  <section class="process-page-section" style="padding-top: 5rem;">
     <div class="container">
       
-      <!-- Top Header Zone -->
-      <div class="process-header-grid">
-        <div class="process-header-left">
-          <span class="proc-badge">OUR PROCESS</span>
-          <h1 class="proc-title">
-            FROM THOUGHT<br>
-            <span class="proc-title-gold">TO SCREEN</span>
-          </h1>
+      <!-- Top Hero Workflow Section matching Reference Image Layout -->
+      <div class="workflow-teaser-container" style="padding-top: 1rem; padding-bottom: 4rem;">
+        
+        <!-- Top Badge with Flanking Lines -->
+        <div class="workflow-badge-row">
+          <span class="workflow-badge-line"></span>
+          <span class="workflow-badge-text">OUR WORKFLOW</span>
+          <span class="workflow-badge-line"></span>
         </div>
-        <div class="process-header-right">
-          <p class="proc-header-desc">
-            Every great film begins with a simple spark. Here’s how we turn it into powerful stories on screen.
-          </p>
+
+        <!-- Main Display Title with Exact Weight Contrasts -->
+        <h1 class="workflow-title">
+          <span class="workflow-title-light">FROM </span><span class="workflow-title-bold">THOUGHT TO SCREEN</span>
+        </h1>
+
+        <!-- 7 Steps Workflow Diagram -->
+        <div class="workflow-flow-wrapper">
+          <div class="workflow-diagram">
+            
+            <!-- 1. THOUGHT -->
+            <a href="#step-1" class="workflow-node" title="Step 01: The Thought">
+              <div class="workflow-circle">
+                <!-- Lightbulb SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 18h6"/>
+                  <path d="M10 22h4"/>
+                  <path d="M12 2a7 7 0 0 0-7 7c0 2.6 1.4 4.8 3.5 6h7c2.1-1.2 3.5-3.4 3.5-6a7 7 0 0 0-7-7z"/>
+                </svg>
+              </div>
+              <span class="workflow-node-label">THOUGHT</span>
+            </a>
+
+            <!-- Connector 1 -->
+            <div class="workflow-connector">
+              <span class="workflow-connector-line"></span>
+              <span class="workflow-connector-dot"></span>
+            </div>
+
+            <!-- 2. IDEA -->
+            <a href="#step-2" class="workflow-node" title="Step 02: The Idea">
+              <div class="workflow-circle">
+                <!-- Document SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+                  <line x1="8" y1="7" x2="16" y2="7"/>
+                  <line x1="8" y1="12" x2="16" y2="12"/>
+                  <line x1="8" y1="17" x2="13" y2="17"/>
+                </svg>
+              </div>
+              <span class="workflow-node-label">IDEA</span>
+            </a>
+
+            <!-- Connector 2 -->
+            <div class="workflow-connector">
+              <span class="workflow-connector-line"></span>
+              <span class="workflow-connector-dot"></span>
+            </div>
+
+            <!-- 3. DECK -->
+            <a href="#step-3" class="workflow-node" title="Step 03: The Deck">
+              <div class="workflow-circle">
+                <!-- 4-Squares Grid SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                  <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                  <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                  <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+                </svg>
+              </div>
+              <span class="workflow-node-label">DECK</span>
+            </a>
+
+            <!-- Connector 3 -->
+            <div class="workflow-connector">
+              <span class="workflow-connector-line"></span>
+              <span class="workflow-connector-dot"></span>
+            </div>
+
+            <!-- 4. PRE-PRODUCTION -->
+            <a href="#step-4" class="workflow-node" title="Step 04: Pre-Production">
+              <div class="workflow-circle">
+                <!-- Cog / Gear SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+              </div>
+              <span class="workflow-node-label">PRE-PRODUCTION</span>
+            </a>
+
+            <!-- Connector 4 -->
+            <div class="workflow-connector">
+              <span class="workflow-connector-line"></span>
+              <span class="workflow-connector-dot"></span>
+            </div>
+
+            <!-- 5. SHOOT -->
+            <a href="#step-5" class="workflow-node" title="Step 05: The Shoot">
+              <div class="workflow-circle">
+                <!-- Video Camera SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#f5b719" stroke="#f5b719" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M23 7l-7 5 7 5V7z" />
+                  <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                </svg>
+              </div>
+              <span class="workflow-node-label">SHOOT</span>
+            </a>
+
+            <!-- Connector 5 -->
+            <div class="workflow-connector">
+              <span class="workflow-connector-line"></span>
+              <span class="workflow-connector-dot"></span>
+            </div>
+
+            <!-- 6. POST -->
+            <a href="#step-6" class="workflow-node" title="Step 06: Post">
+              <div class="workflow-circle">
+                <!-- Film / Player SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="18" rx="2" />
+                  <line x1="2" y1="7" x2="22" y2="7" />
+                  <line x1="2" y1="17" x2="22" y2="17" />
+                  <circle cx="5" cy="5" r="0.8" fill="#f5b719"/>
+                  <circle cx="9.5" cy="5" r="0.8" fill="#f5b719"/>
+                  <circle cx="14.5" cy="5" r="0.8" fill="#f5b719"/>
+                  <circle cx="19" cy="5" r="0.8" fill="#f5b719"/>
+                  <circle cx="5" cy="19" r="0.8" fill="#f5b719"/>
+                  <circle cx="9.5" cy="19" r="0.8" fill="#f5b719"/>
+                  <circle cx="14.5" cy="19" r="0.8" fill="#f5b719"/>
+                  <circle cx="19" cy="19" r="0.8" fill="#f5b719"/>
+                  <polygon points="10 10 15 12 10 14 10 10" fill="#f5b719" />
+                </svg>
+              </div>
+              <span class="workflow-node-label">POST</span>
+            </a>
+
+            <!-- Connector 6 -->
+            <div class="workflow-connector">
+              <span class="workflow-connector-line"></span>
+              <span class="workflow-connector-dot"></span>
+            </div>
+
+            <!-- 7. DELIVERY -->
+            <a href="#step-7" class="workflow-node" title="Step 07: Delivery">
+              <div class="workflow-circle">
+                <!-- Paper Plane SVG -->
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                </svg>
+              </div>
+              <span class="workflow-node-label">DELIVERY</span>
+            </a>
+
+          </div>
         </div>
+
+        <!-- Subtitle -->
+        <p class="workflow-subtext">
+          A THOUGHT GOES IN. A FILM COMES OUT.
+        </p>
+
+        <!-- Glowing CTA Button -->
+        <a href="#step-1" class="workflow-cta-btn">
+          EXPLORE OUR PROCESS <span class="btn-arrow">&rarr;</span>
+        </a>
+
       </div>
 
       <!-- 7 Step Grid Timeline -->
       <div class="process-steps-list">
         
         <!-- Step 01 -->
-        <div class="process-step-row">
+        <div class="process-step-row" id="step-1">
           <div class="step-node-col">
             <div class="step-icon-circle">
               <!-- Lightbulb SVG -->
@@ -102,7 +255,7 @@
         </div>
 
         <!-- Step 02 -->
-        <div class="process-step-row">
+        <div class="process-step-row" id="step-2">
           <div class="step-node-col">
             <div class="step-icon-circle">
               <!-- Search SVG -->
@@ -126,7 +279,7 @@
         </div>
 
         <!-- Step 03 -->
-        <div class="process-step-row">
+        <div class="process-step-row" id="step-3">
           <div class="step-node-col">
             <div class="step-icon-circle">
               <!-- Document SVG -->
@@ -167,7 +320,7 @@
         </div>
 
         <!-- Step 04 -->
-        <div class="process-step-row">
+        <div class="process-step-row" id="step-4">
           <div class="step-node-col">
             <div class="step-icon-circle">
               <!-- Clipboard SVG -->
@@ -208,7 +361,7 @@
         </div>
 
         <!-- Step 05 -->
-        <div class="process-step-row">
+        <div class="process-step-row" id="step-5">
           <div class="step-node-col">
             <div class="step-icon-circle">
               <!-- Clapperboard / Movie slate SVG -->
@@ -233,7 +386,7 @@
         </div>
 
         <!-- Step 06 -->
-        <div class="process-step-row">
+        <div class="process-step-row" id="step-6">
           <div class="step-node-col">
             <div class="step-icon-circle">
               <!-- Monitor / Screen SVG -->
@@ -294,7 +447,7 @@
         </div>
 
         <!-- Step 07 -->
-        <div class="process-step-row">
+        <div class="process-step-row" id="step-7">
           <div class="step-node-col">
             <div class="step-icon-circle">
               <!-- Paper Plane / Send SVG -->

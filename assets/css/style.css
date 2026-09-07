@@ -695,30 +695,31 @@ html[data-theme="light"] .modal-close-btn {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 40%;
+  width: 42%;
   background-size: cover;
   background-position: center center;
-  opacity: 0.14;
-  filter: grayscale(100%) contrast(150%) brightness(60%);
+  opacity: 0.32;
+  filter: grayscale(100%) contrast(140%) brightness(78%);
   pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
 .locations-bg-mumbai {
   left: 0;
-  mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
 }
 
 .locations-bg-delhi {
   right: 0;
-  mask-image: linear-gradient(to left, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);
-  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 100%);
 }
 
 .locations-bg-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(7, 8, 10, 0.65) 0%, rgba(7, 8, 10, 0.95) 70%, #07080a 100%);
+  background: radial-gradient(ellipse at center, rgba(7, 8, 10, 0.45) 0%, rgba(7, 8, 10, 0.90) 65%, #07080a 100%);
 }
 
 .locations-route-layer {

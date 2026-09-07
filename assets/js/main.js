@@ -811,6 +811,36 @@ window.projectsData = {
     idea: 'Clean, earthy tones with tactile plant elements and soft morning sunlight.',
     making: 'Studio tabletop setup with organic botanical props and high-resolution medium format captures.'
   },
+  'tira-beauty-kareena': {
+    id: 'tira-beauty-kareena',
+    title: 'Kareena Kapoor x Tira Beauty',
+    client: 'Tira Beauty (Reliance Retail)',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Brand Film / Commercial (Director Collaboration)',
+    roles: ['Direction (Director)', 'Creative Execution'],
+    thumbVideo: 'assets/media/New folder/Kareena kapoor.mp4',
+    videoSrc: 'assets/media/New folder/Kareena kapoor.mp4',
+    shortDesc: 'High-end beauty brand film featuring Bollywood superstar Kareena Kapoor Khan.',
+    thought: 'Capturing glamour, elegance, and beauty confidence in a high-profile celebrity collaboration.',
+    idea: '“For the Love of Beauty” — An intimate, opulent visual celebration of skincare and makeup artistry with Kareena Kapoor.',
+    making: 'Directed in collaboration as Director — featuring high-key cinematic lighting, luxury beauty optics, and meticulous post-color grading.'
+  },
+  'tira-beauty-campaign': {
+    id: 'tira-beauty-campaign',
+    title: 'Tira Beauty Digital Ad Suite',
+    client: 'Tira Beauty (Reliance Retail)',
+    category: 'vertical',
+    subcategories: ['performance', 'social'],
+    format: 'Digital Campaign / Commercial Series (Director Collaboration)',
+    roles: ['Direction (Director)', 'Visual Storytelling'],
+    thumbVideo: 'assets/media/New folder/Tira beauty 1.mp4',
+    videoSrc: 'assets/media/New folder/Tira beauty 1.mp4',
+    shortDesc: 'Vibrant, high-energy beauty campaign series created for mobile-first digital audiences.',
+    thought: 'Engaging modern beauty enthusiasts with fast-paced, high-glow visual hooks.',
+    idea: '“Express Your Glow” — A sleek, trend-driven digital commercial suite showcasing Tira Beauty’s flagship cosmetics line.',
+    making: 'Directed in collaboration as Director — shot with crisp beauty lighting, fast transitions, and vibrant color chemistry.'
+  },
   'aqualens-campaign': {
     id: 'aqualens-campaign',
     title: 'Aqualens — Comfort in Every Blink',

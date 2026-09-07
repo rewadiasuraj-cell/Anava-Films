@@ -7762,6 +7762,84 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   box-shadow: 0 0 20px rgba(245, 183, 25, 0.4);
 }
 
+/* ---- v2: Header cinematic visual + 3-column card grid ---- */
+.wwd-header-v2 {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.wwd-header-visual {
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  aspect-ratio: 16/9;
+}
+
+.wwd-header-visual-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 30%;
+  filter: contrast(1.1) brightness(0.9);
+}
+
+.wwd-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+
+.wwd-card-v2 {
+  min-height: 340px;
+}
+
+.wwd-card-v2 .wwd-card-bg-image {
+  width: 100%;
+  background-position: center center;
+}
+
+.wwd-card-v2 .wwd-card-overlay {
+  background: linear-gradient(180deg, rgba(11, 13, 18, 0.55) 0%, rgba(11, 13, 18, 0.4) 35%, rgba(11, 13, 18, 0.92) 100%);
+}
+
+.wwd-card-content-v2 {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 1.6rem;
+}
+
+.wwd-card-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.wwd-card-micro-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+  text-align: right;
+  line-height: 1.6;
+}
+
+.wwd-card-link-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.wwd-card-link:hover .wwd-card-link-arrow,
+.btn-primary:hover .wwd-card-link-arrow {
+  transform: translateX(4px);
+}
+
 /* Bottom CTA Card */
 .wwd-cta-card {
   background: #0b0d12;
@@ -7773,6 +7851,34 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   justify-content: space-between;
   gap: 1.5rem;
   margin-top: 0.5rem;
+}
+
+.wwd-cta-card-v2 {
+  margin-top: 1.4rem;
+}
+
+.wwd-cta-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.wwd-cta-steps {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.wwd-cta-step-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
 }
 
 .wwd-cta-left {
@@ -7841,6 +7947,19 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 }
 
 /* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .wwd-header-v2 {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+  .wwd-header-visual {
+    aspect-ratio: 16/8;
+  }
+  .wwd-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .wwd-card-content {
     padding: 1.4rem 1.2rem;
@@ -7867,6 +7986,23 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   .wwd-card-overlay {
     background: linear-gradient(90deg, #0b0d12 0%, #0b0d12 50%, rgba(11, 13, 18, 0.8) 75%, rgba(11, 13, 18, 0.3) 100%);
   }
+  .wwd-card-v2 {
+    min-height: 260px;
+  }
+  .wwd-card-v2 .wwd-card-bg-image {
+    width: 100%;
+  }
+  .wwd-card-v2 .wwd-card-overlay {
+    background: linear-gradient(180deg, rgba(11, 13, 18, 0.5) 0%, rgba(11, 13, 18, 0.4) 30%, rgba(11, 13, 18, 0.94) 100%);
+  }
+  .wwd-card-content-v2 {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.3rem;
+  }
+  .wwd-card-micro-label {
+    font-size: 0.55rem;
+  }
   .wwd-cta-card {
     padding: 1.2rem;
   }
@@ -7876,6 +8012,25 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   }
   .wwd-cta-title {
     font-size: 1.1rem;
+  }
+  .wwd-cta-card-v2 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+  }
+  .wwd-cta-right {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .wwd-cta-right .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+  .wwd-cta-steps {
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 }
 

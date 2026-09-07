@@ -138,34 +138,38 @@
 
         <!-- Form Card -->
         <div class="contact-form-card">
-          <form id="anava-contact-form">
+          <form id="anava-contact-form" action="https://formsubmit.co/office@anavafilms.com" method="POST">
+            <input type="hidden" name="_subject" value="New Thought & Inquiry - ANAVA FILMS Website">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+
             <h3 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; margin-bottom: 1.8rem;">SEND US YOUR THOUGHT</h3>
 
             <div class="form-group">
               <label class="form-label" for="client-name">YOUR NAME / BRAND *</label>
-              <input type="text" id="client-name" class="form-control" placeholder="e.g. Rahul / Brand Name" required>
+              <input type="text" id="client-name" name="Client_Name_or_Brand" class="form-control" placeholder="e.g. Rahul / Brand Name" required>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="client-email">EMAIL ADDRESS *</label>
-              <input type="email" id="client-email" class="form-control" placeholder="name@company.com" required>
+              <input type="email" id="client-email" name="Email_Address" class="form-control" placeholder="name@company.com" required>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="project-type">WHAT KIND OF FILM OR CONTENT ARE YOU THINKING OF?</label>
-              <select id="project-type" class="form-control">
-                <option value="tvc">Commercial TVC / Brand Film</option>
-                <option value="vertical">Vertical Film / Viral Social Reel</option>
-                <option value="performance">Performance Ads / Conversion Suite</option>
-                <option value="catalogue">Product Shoot & Catalogue Visuals</option>
-                <option value="podcast">Podcast & Studio Broadcast</option>
-                <option value="consulting">Creative Consulting / Just Have A Thought</option>
+              <select id="project-type" name="Project_Content_Type" class="form-control">
+                <option value="Commercial TVC / Brand Film">Commercial TVC / Brand Film</option>
+                <option value="Vertical Film / Viral Social Reel">Vertical Film / Viral Social Reel</option>
+                <option value="Performance Ads / Conversion Suite">Performance Ads / Conversion Suite</option>
+                <option value="Product Shoot & Catalogue Visuals">Product Shoot & Catalogue Visuals</option>
+                <option value="Podcast & Studio Broadcast">Podcast & Studio Broadcast</option>
+                <option value="Creative Consulting / Just Have A Thought">Creative Consulting / Just Have A Thought</option>
               </select>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="thought-message">TELL US YOUR THOUGHT *</label>
-              <textarea id="thought-message" class="form-control" placeholder="Even if it's just one thought, problem or product objective..." rows="5" required></textarea>
+              <textarea id="thought-message" name="Thought_and_Objective" class="form-control" placeholder="Even if it's just one thought, problem or product objective..." rows="5" required></textarea>
             </div>
 
             <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 1.15rem; font-size: 0.95rem;">

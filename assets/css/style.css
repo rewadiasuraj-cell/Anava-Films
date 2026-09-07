@@ -4833,21 +4833,74 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   .people-leader-name {
     font-size: 1.7rem;
   }
-}/* Workflow Step Pills */
+}/* --------------------------------------------------------------------------
+   Workflow Teaser ("FROM THOUGHT TO SCREEN") Styling
+   Desktop: Strictly single-line flow
+   Mobile / Tablet: Fluid responsive wrapped flow
+   -------------------------------------------------------------------------- */
+.workflow-teaser-container {
+  text-align: center;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.workflow-teaser-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold, #f5b719);
+  display: block;
+}
+
+.workflow-teaser-title {
+  margin: 0.6rem 0 1.2rem;
+}
+
+.workflow-steps-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 1.8rem auto 2.2rem;
+  flex-wrap: nowrap; /* Strictly single line on desktop */
+  width: 100%;
+}
+
+.workflow-step-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.workflow-step-arrow {
+  color: var(--accent-gold, #f5b719);
+  font-weight: 700;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  user-select: none;
+  line-height: 1;
+}
+
 .workflow-step-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1.1rem;
+  padding: 0.48rem 1.05rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 999px;
   font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .workflow-step-pill:hover {
@@ -4855,6 +4908,81 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   border-color: #f5b719;
   color: #f5b719;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 183, 25, 0.25);
+}
+
+/* Medium Desktop & Large Tablets (992px - 1199px) */
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+  .workflow-steps-flow {
+    gap: 0.4rem;
+  }
+  .workflow-step-item {
+    gap: 0.4rem;
+  }
+  .workflow-step-pill {
+    padding: 0.44rem 0.85rem;
+    font-size: 0.82rem;
+  }
+  .workflow-step-arrow {
+    font-size: 0.95rem;
+  }
+}
+
+/* Tablets (769px - 991px): Smooth single-line scaling */
+@media screen and (max-width: 991px) and (min-width: 769px) {
+  .workflow-steps-flow {
+    gap: 0.35rem;
+    flex-wrap: nowrap;
+  }
+  .workflow-step-item {
+    gap: 0.35rem;
+  }
+  .workflow-step-pill {
+    padding: 0.38rem 0.72rem;
+    font-size: 0.76rem;
+  }
+  .workflow-step-arrow {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile Devices (<= 768px): Fluid multi-line wrapped flow */
+@media screen and (max-width: 768px) {
+  .workflow-steps-flow {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem 0.5rem;
+    max-width: 500px;
+    margin: 1.6rem auto 2rem;
+  }
+  .workflow-step-item {
+    gap: 0.45rem;
+  }
+  .workflow-step-pill {
+    padding: 0.42rem 0.85rem;
+    font-size: 0.82rem;
+  }
+  .workflow-step-arrow {
+    font-size: 0.95rem;
+  }
+}
+
+/* Small Mobile Devices (<= 480px) */
+@media screen and (max-width: 480px) {
+  .workflow-steps-flow {
+    gap: 0.55rem 0.35rem;
+    max-width: 100%;
+  }
+  .workflow-step-item {
+    gap: 0.32rem;
+  }
+  .workflow-step-pill {
+    padding: 0.36rem 0.68rem;
+    font-size: 0.76rem;
+  }
+  .workflow-step-arrow {
+    font-size: 0.85rem;
+  }
 }
 
 /* --------------------------------------------------------------------------

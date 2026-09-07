@@ -282,29 +282,21 @@ function initClapboardIntro() {
 
   // If Intro Video exists, play it and dissolve directly into website when ended
   if (videoPlayer) {
-    videoPlayer.muted = false;
+    // Mobile/desktop browsers block unmuted autoplay, so start muted right away
+    // instead of wasting a guaranteed-to-fail unmuted attempt first (that retry
+    // was the main source of the "laggy" mobile intro).
+    videoPlayer.muted = true;
 
     function updateIntroVideoSource() {
       const isPortrait = window.innerHeight > window.innerWidth || window.innerWidth <= 991;
       const targetSrc = isPortrait ? 'intro/intro-3-vertical.mp4?v=3.1' : 'intro/intro-3.mp4?v=3.1';
       const currentSrc = videoPlayer.currentSrc || videoPlayer.src || '';
 
-      if (isPortrait && !currentSrc.includes('vertical')) {
+      if ((isPortrait && !currentSrc.includes('vertical')) || (!isPortrait && currentSrc.includes('vertical'))) {
         videoPlayer.src = targetSrc;
         videoPlayer.load();
-        videoPlayer.muted = false;
-        videoPlayer.play().catch(() => {
-          videoPlayer.muted = true;
-          videoPlayer.play().catch(() => {});
-        });
-      } else if (!isPortrait && currentSrc.includes('vertical')) {
-        videoPlayer.src = targetSrc;
-        videoPlayer.load();
-        videoPlayer.muted = false;
-        videoPlayer.play().catch(() => {
-          videoPlayer.muted = true;
-          videoPlayer.play().catch(() => {});
-        });
+        videoPlayer.muted = true;
+        videoPlayer.play().catch(() => {});
       }
     }
 
@@ -313,13 +305,9 @@ function initClapboardIntro() {
     window.addEventListener('orientationchange', updateIntroVideoSource);
 
     videoPlayer.play().catch(() => {
-      // Browser autoplay policy fallback - if unmuted play is blocked, fallback to muted play smoothly
-      videoPlayer.muted = true;
-      videoPlayer.play().catch(() => {
-        safeTimeout(() => {
-          if (!isDismissed) dismissIntro();
-        }, 1500);
-      });
+      safeTimeout(() => {
+        if (!isDismissed) dismissIntro();
+      }, 1500);
     });
 
     videoPlayer.addEventListener('ended', () => {
@@ -330,12 +318,12 @@ function initClapboardIntro() {
       dismissIntro();
     });
 
-    // Safety fallback: if video is stuck, buffering, or fails to play within 4s, dismiss intro
+    // Safety fallback: if video is stuck, buffering, or fails to play within 3s, dismiss intro
     setTimeout(() => {
       if (!isDismissed && (videoPlayer.paused || videoPlayer.currentTime === 0)) {
         dismissIntro();
       }
-    }, 4000);
+    }, 3000);
   } else {
     // Hard safety fallback for text sequence if no video
     setTimeout(() => {
@@ -1257,9 +1245,22 @@ function initContactForm() {
    -------------------------------------------------------------------------- */
 function initLogoIntroTrigger() {
   const brandLogos = document.querySelectorAll('.brand-logo');
+  const isHomePage = document.getElementById('cinematic-intro') !== null;
+
   brandLogos.forEach(logo => {
     logo.addEventListener('click', (e) => {
       sessionStorage.removeItem('anava_intro_played');
+
+      // Already on the homepage: replay the intro in place instead of a full
+      // page reload, which was the main cause of the "laggy" replay on mobile
+      // (re-downloading the page, CSS and video over mobile data every click).
+      if (isHomePage) {
+        e.preventDefault();
+        sessionStorage.setItem('force_intro_replay', 'true');
+        initClapboardIntro();
+        return;
+      }
+
       sessionStorage.setItem('force_intro_replay', 'true');
     });
   });

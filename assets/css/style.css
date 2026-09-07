@@ -2031,6 +2031,13 @@ html[data-theme="light"] .text-metallic {
   }
 }
 
+@media (max-width: 768px) {
+  .portfolio-title {
+    margin-top: 1.4rem;
+    margin-bottom: 1rem;
+  }
+}
+
 /* Think Make Finish 3-Column Grid */
 .tmf-grid {
   display: grid;

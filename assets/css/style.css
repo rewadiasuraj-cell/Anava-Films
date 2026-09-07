@@ -698,8 +698,8 @@ html[data-theme="light"] .modal-close-btn {
   width: 42%;
   background-size: cover;
   background-position: center center;
-  opacity: 0.32;
-  filter: grayscale(100%) contrast(140%) brightness(78%);
+  opacity: 0.6;
+  filter: grayscale(60%) contrast(120%) brightness(95%);
   pointer-events: none;
   transition: opacity 0.5s ease;
 }
@@ -719,7 +719,7 @@ html[data-theme="light"] .modal-close-btn {
 .locations-bg-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(7, 8, 10, 0.45) 0%, rgba(7, 8, 10, 0.90) 65%, #07080a 100%);
+  background: radial-gradient(ellipse at center, rgba(7, 8, 10, 0.3) 0%, rgba(7, 8, 10, 0.75) 65%, #07080a 100%);
 }
 
 .locations-route-layer {

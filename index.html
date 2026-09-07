@@ -14,8 +14,8 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   
-  <link rel="stylesheet" href="assets/css/style.css?v=15.4">
-  <script defer src="assets/js/main.js?v=14.4"></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=15.5">
+  <script defer src="assets/js/main.js?v=14.5"></script>
 </head>
 <body>
 
@@ -266,32 +266,27 @@
   <!-- 05. SELECTED WORK SECTION -->
   <section class="section-padding border-top-divider portfolio-section">
     <div class="container">
+      <!-- Category Tabs (filter the featured project + strip below by real project category) -->
+      <div class="portfolio-tabs" role="tablist">
+        <button type="button" class="portfolio-tab active" data-work-tab="tvc" role="tab" aria-selected="true">
+          <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          <span>Client Work</span>
+        </button>
+        <button type="button" class="portfolio-tab" data-work-tab="vertical" role="tab" aria-selected="false">
+          <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>My Work</span>
+        </button>
+        <button type="button" class="portfolio-tab" data-work-tab="all" role="tab" aria-selected="false">
+          <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <span>Projects</span>
+        </button>
+      </div>
+
       <div class="portfolio-top-row">
         <div class="portfolio-header-col">
           <span class="text-gold portfolio-eyebrow">PORTFOLIO</span>
           <h2 class="section-title portfolio-title">SELECTED <span class="silver-text">WORK</span></h2>
           <p class="subtitle">Commercial TVCs, viral vertical reels, brand narratives and performance campaigns.</p>
-
-          <!-- Category Tabs (filter the featured project + strip below by real project category) -->
-          <div class="portfolio-tabs" role="tablist">
-            <button type="button" class="portfolio-tab active" data-work-tab="tvc" role="tab" aria-selected="true">
-              <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-              <span>Client Work</span>
-            </button>
-            <button type="button" class="portfolio-tab" data-work-tab="vertical" role="tab" aria-selected="false">
-              <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              <span>My Work</span>
-            </button>
-            <button type="button" class="portfolio-tab" data-work-tab="all" role="tab" aria-selected="false">
-              <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-              <span>Projects</span>
-            </button>
-            <span class="portfolio-tab-divider"></span>
-            <a href="work" class="portfolio-tab-viewall">
-              <span>View All</span>
-              <span class="portfolio-viewall-circle">→</span>
-            </a>
-          </div>
         </div>
 
         <!-- Featured Project (content swapped by portfolio tab filter via JS) -->
@@ -318,14 +313,14 @@
       </div>
 
       <div class="portfolio-strip" id="portfolio-strip">
-        <div class="portfolio-strip-card" data-open-case="lenskart-hustler" data-work-category="tvc">
+        <div class="portfolio-strip-card" data-open-case="lenskart-superman-1" data-work-category="tvc">
           <div class="work-thumb-wrapper">
-            <video src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" class="work-thumb-img" muted loop playsinline preload="auto" autoplay></video>
+            <video src="assets/media/event-films/LENSKART X SUPERMAN MOVIE.mp4" class="work-thumb-img" muted loop playsinline preload="auto" autoplay></video>
             <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
           </div>
           <div class="portfolio-strip-meta">
-            <span class="portfolio-strip-client">LENSKART</span>
-            <span class="portfolio-strip-title">Hustler — Keep Hustling</span>
+            <span class="portfolio-strip-client">LENSKART / WARNER BROS</span>
+            <span class="portfolio-strip-title">Lenskart x Superman Launch</span>
           </div>
         </div>
 

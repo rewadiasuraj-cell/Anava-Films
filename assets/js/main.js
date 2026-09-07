@@ -479,6 +479,22 @@ function initPortfolioTabs() {
   const featuredDesc = featured.querySelector('.portfolio-featured-desc');
   const featuredBadges = featured.querySelector('.role-badges');
 
+  function swapFeaturedTo(id) {
+    const data = window.projectsData && window.projectsData[id];
+    if (!data) return;
+
+    featured.setAttribute('data-open-case', id);
+    if (featuredVideo) {
+      featuredVideo.setAttribute('src', data.videoSrc || data.thumbVideo);
+      featuredVideo.load();
+      featuredVideo.play().catch(() => {});
+    }
+    if (featuredTag) featuredTag.textContent = `${data.client} • ${data.format}`.toUpperCase();
+    if (featuredTitle) featuredTitle.textContent = data.title;
+    if (featuredDesc) featuredDesc.textContent = data.shortDesc;
+    renderPortfolioRoleBadges(featuredBadges, data.roles);
+  }
+
   function applyFilter(filter) {
     let firstMatchId = null;
 
@@ -490,21 +506,7 @@ function initPortfolioTabs() {
       }
     });
 
-    if (!firstMatchId) return;
-
-    const data = window.projectsData && window.projectsData[firstMatchId];
-    if (!data) return;
-
-    featured.setAttribute('data-open-case', firstMatchId);
-    if (featuredVideo) {
-      featuredVideo.setAttribute('src', data.videoSrc || data.thumbVideo);
-      featuredVideo.load();
-      featuredVideo.play().catch(() => {});
-    }
-    if (featuredTag) featuredTag.textContent = `${data.client} • ${data.format}`.toUpperCase();
-    if (featuredTitle) featuredTitle.textContent = data.title;
-    if (featuredDesc) featuredDesc.textContent = data.shortDesc;
-    renderPortfolioRoleBadges(featuredBadges, data.roles);
+    if (firstMatchId) swapFeaturedTo(firstMatchId);
   }
 
   tabs.forEach(tab => {
@@ -519,9 +521,17 @@ function initPortfolioTabs() {
     });
   });
 
-  // Render initial badges for the default active tab's featured project
+  // On load: only filter strip visibility + render badges for the featured
+  // project already in the HTML — don't swap the featured video/text away
+  // from its default (avoids flashing to a different project on load).
   const activeTab = document.querySelector('.portfolio-tab.active');
-  applyFilter(activeTab ? activeTab.getAttribute('data-work-tab') : 'tvc');
+  const initialFilter = activeTab ? activeTab.getAttribute('data-work-tab') : 'tvc';
+  stripCards.forEach(card => {
+    const matches = initialFilter === 'all' || card.getAttribute('data-work-category') === initialFilter;
+    card.style.display = matches ? '' : 'none';
+  });
+  const initialData = window.projectsData && window.projectsData[featured.getAttribute('data-open-case')];
+  if (initialData) renderPortfolioRoleBadges(featuredBadges, initialData.roles);
 }
 
 const SHOWREEL_PLAYLIST = [

@@ -2426,8 +2426,9 @@ textarea.form-control {
 }
 
 .footer-social-icon {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;

@@ -7562,9 +7562,12 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
     margin: 0;
   }
   .philo-cta-btn {
-    padding: 1.1rem 1.8rem;
-    font-size: 0.9rem;
+    padding: 1.1rem 1rem;
+    font-size: clamp(0.72rem, 3.4vw, 0.9rem);
+    letter-spacing: 0.08em;
+    white-space: nowrap;
     width: 100%;
+    gap: 0.5rem;
   }
 }
 

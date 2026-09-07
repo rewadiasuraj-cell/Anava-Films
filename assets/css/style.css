@@ -5065,6 +5065,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   text-transform: uppercase;
   margin: 3.2rem auto 2.4rem;
   font-family: 'Inter', sans-serif;
+  text-align: center;
 }
 
 /* Glowing Gold CTA Button */

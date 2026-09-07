@@ -186,6 +186,8 @@ function initClapboardIntro() {
     sessionStorage.removeItem('force_intro_replay');
   } else if (prefersReducedMotion || introAlreadyPlayed) {
     introEl.style.display = 'none';
+    const heroSec = document.querySelector('.home-hero-section');
+    if (heroSec) heroSec.classList.add('is-visible');
     return;
   }
 

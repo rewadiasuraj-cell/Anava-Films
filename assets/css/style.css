@@ -7242,7 +7242,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center center;
+  background-position: left center;
   transition: transform 8s ease;
 }
 

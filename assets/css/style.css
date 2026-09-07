@@ -4892,6 +4892,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   max-width: 1240px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  text-align: center;
 }
 
 /* Top Subtitle with Flanking Gold Lines */

@@ -8015,14 +8015,26 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   }
   .wwd-cta-card-v2 {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 1.2rem;
+  }
+  .wwd-cta-left {
+    align-items: center;
+  }
+  .wwd-cta-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .wwd-cta-right {
     width: 100%;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
+  }
+  .wwd-cta-steps {
+    justify-content: center;
   }
   .wwd-cta-right .btn-primary {
     width: 100%;

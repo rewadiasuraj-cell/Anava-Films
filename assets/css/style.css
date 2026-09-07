@@ -1863,6 +1863,7 @@ html[data-theme="light"] .text-metallic {
   transition: all 0.4s var(--transition-smooth);
   display: grid;
   grid-template-columns: 1.4fr 1fr;
+  height: 440px;
 }
 
 .portfolio-featured .work-thumb-wrapper,
@@ -1876,9 +1877,17 @@ html[data-theme="light"] .text-metallic {
 }
 
 .portfolio-featured-media {
-  aspect-ratio: auto;
+  position: relative;
   height: 100%;
-  min-height: 320px;
+  max-height: 440px;
+  overflow: hidden;
+}
+
+.portfolio-featured-media .work-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
 }
 
 .portfolio-featured-info {
@@ -1997,10 +2006,12 @@ html[data-theme="light"] .text-metallic {
   }
   .portfolio-featured {
     grid-template-columns: 1fr;
+    height: auto;
   }
   .portfolio-featured-media {
     aspect-ratio: 16/9;
     height: auto;
+    max-height: none;
     min-height: 0;
   }
 }

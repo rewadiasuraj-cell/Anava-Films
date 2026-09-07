@@ -576,6 +576,46 @@ html[data-theme="light"] .modal-close-btn {
   border-color: var(--accent-gold);
 }
 
+.showreel-controls-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.showreel-next-btn {
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 0.65rem 1.1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.showreel-next-btn:hover {
+  background: var(--accent-gold);
+  color: #000;
+  border-color: var(--accent-gold);
+}
+
+@media (max-width: 767px) {
+  .showreel-controls-group {
+    gap: 0.5rem;
+  }
+
+  .showreel-sound-toggle span:first-child,
+  .showreel-next-btn span {
+    font-size: 0.72rem;
+  }
+}
+
 /* ==========================================================================
    THINKERS WHO MAKE SECTION (Item 6)
    ========================================================================== */

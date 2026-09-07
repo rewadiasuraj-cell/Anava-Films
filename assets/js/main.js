@@ -443,11 +443,20 @@ function initHeaderScroll() {
 /* --------------------------------------------------------------------------
    4. Showreel Video Autoplay on Scroll + Unmute Control
    -------------------------------------------------------------------------- */
+const SHOWREEL_PLAYLIST = [
+  'assets/media/tvc/Sunil Shetty AD Landscape.mp4',
+  'assets/media/tvc/LENSKART HUSTLER AD FILM.mp4',
+  'assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4'
+];
+
 function initShowreel() {
   const showreelVideo = document.getElementById('showreel-player');
   const showreelBg = document.querySelector('.showreel-video-bg');
   const soundToggle = document.getElementById('showreel-sound-toggle');
+  const nextBtn = document.getElementById('showreel-next-btn');
   if (!showreelVideo) return;
+
+  let showreelIndex = 0;
 
   showreelVideo.muted = true;
   showreelVideo.playsInline = true;
@@ -476,9 +485,30 @@ function initShowreel() {
   if (soundToggle) {
     soundToggle.addEventListener('click', () => {
       showreelVideo.muted = !showreelVideo.muted;
-      soundToggle.innerHTML = showreelVideo.muted 
+      soundToggle.innerHTML = showreelVideo.muted
         ? `<span>🔊</span> UNMUTE SHOWREEL`
         : `<span>🔇</span> MUTE AUDIO`;
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      showreelIndex = (showreelIndex + 1) % SHOWREEL_PLAYLIST.length;
+      const nextSrc = SHOWREEL_PLAYLIST[showreelIndex];
+      const wasMuted = showreelVideo.muted;
+
+      showreelVideo.pause();
+      showreelVideo.src = nextSrc;
+      showreelVideo.muted = wasMuted;
+      showreelVideo.load();
+      showreelVideo.play().catch(() => {});
+
+      if (showreelBg) {
+        showreelBg.pause();
+        showreelBg.src = nextSrc;
+        showreelBg.load();
+        showreelBg.play().catch(() => {});
+      }
     });
   }
 }

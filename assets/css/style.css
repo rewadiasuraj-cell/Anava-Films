@@ -1877,36 +1877,38 @@ html[data-theme="light"] .text-metallic {
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 183, 25, 0.15);
 }
 
-.portfolio-featured-media {
-  grid-column: 1 / 2 !important;
-  grid-row: 1 !important;
-  position: relative !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  height: 100% !important;
-  min-width: 0 !important;
-  max-height: 440px !important;
-  aspect-ratio: initial !important;
-  overflow: hidden !important;
-}
+@media (min-width: 1025px) {
+  .portfolio-featured-media {
+    grid-column: 1 / 2 !important;
+    grid-row: 1 !important;
+    position: relative !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    max-height: 440px !important;
+    aspect-ratio: initial !important;
+    overflow: hidden !important;
+  }
 
-.portfolio-featured-media .work-thumb-img {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: center 20% !important;
-}
+  .portfolio-featured-media .work-thumb-img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 20% !important;
+  }
 
-.portfolio-featured-info {
-  grid-column: 2 / 3 !important;
-  grid-row: 1 !important;
-  min-width: 0 !important;
-  padding: 2rem 2.2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  .portfolio-featured-info {
+    grid-column: 2 / 3 !important;
+    grid-row: 1 !important;
+    min-width: 0 !important;
+    padding: 2rem 2.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .portfolio-featured-title {
@@ -2017,14 +2019,34 @@ html[data-theme="light"] .text-metallic {
     gap: 2rem;
   }
   .portfolio-featured {
-    grid-template-columns: 1fr;
-    height: auto;
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
   }
   .portfolio-featured-media {
-    aspect-ratio: 16/9;
-    height: auto;
-    max-height: none;
-    min-height: 0;
+    width: 100% !important;
+    height: 240px !important;
+    min-height: 200px !important;
+    max-height: none !important;
+    aspect-ratio: 16/9 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+  .portfolio-featured-media .work-thumb-img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .portfolio-featured-info {
+    width: 100% !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    padding: 1.5rem 1.2rem !important;
   }
 }
 

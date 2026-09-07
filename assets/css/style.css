@@ -2040,6 +2040,47 @@ textarea.form-control {
   color: var(--accent-gold);
 }
 
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.footer-social-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-social-link:hover .footer-social-icon {
+  transform: scale(1.18);
+}
+
+.contact-social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1rem !important;
+  font-size: 0.8rem !important;
+  letter-spacing: 0.06em;
+}
+
+.contact-social-btn .social-btn-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-social-btn:hover .social-btn-icon {
+  transform: scale(1.18);
+}
+
 /* Leadership Cards Grid (The People Behind Anava — Premium Design) */
 .leadership-grid {
   display: grid;

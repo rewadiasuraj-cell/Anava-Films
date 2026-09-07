@@ -1749,6 +1749,7 @@ html[data-theme="light"] .text-metallic {
 }
 
 .portfolio-title {
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
   margin-top: 0.5rem;
   margin-bottom: 0.9rem;
 }
@@ -2033,6 +2034,7 @@ html[data-theme="light"] .text-metallic {
 
 @media (max-width: 768px) {
   .portfolio-title {
+    font-size: clamp(1.8rem, 7.5vw, 2.5rem);
     margin-top: 1.4rem;
     margin-bottom: 1rem;
   }

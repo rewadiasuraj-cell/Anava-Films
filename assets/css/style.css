@@ -7812,7 +7812,15 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 }
 
 .wwd-card-v2 .wwd-card-overlay {
-  background: linear-gradient(180deg, rgba(11, 13, 18, 0.55) 0%, rgba(11, 13, 18, 0.4) 35%, rgba(11, 13, 18, 0.92) 100%);
+  background: linear-gradient(180deg, rgba(11, 13, 18, 0.62) 0%, rgba(11, 13, 18, 0.48) 35%, rgba(11, 13, 18, 0.94) 100%);
+}
+
+.wwd-card-v2 .wwd-card-name,
+.wwd-card-v2 .wwd-card-step,
+.wwd-card-v2 .wwd-card-desc,
+.wwd-card-v2 .wwd-card-link,
+.wwd-card-v2 .wwd-card-micro-label {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
 }
 
 .wwd-card-content-v2 {

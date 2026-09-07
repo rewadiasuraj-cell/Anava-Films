@@ -530,8 +530,13 @@ function initPortfolioTabs() {
     const matches = initialFilter === 'all' || card.getAttribute('data-work-category') === initialFilter;
     card.style.display = matches ? '' : 'none';
   });
-  const initialData = window.projectsData && window.projectsData[featured.getAttribute('data-open-case')];
-  if (initialData) renderPortfolioRoleBadges(featuredBadges, initialData.roles);
+  // window.projectsData is assigned further down in this same script file,
+  // after this function runs on page load — defer to the next tick so it's
+  // guaranteed to be ready.
+  setTimeout(() => {
+    const initialData = window.projectsData && window.projectsData[featured.getAttribute('data-open-case')];
+    if (initialData) renderPortfolioRoleBadges(featuredBadges, initialData.roles);
+  }, 0);
 }
 
 const SHOWREEL_PLAYLIST = [

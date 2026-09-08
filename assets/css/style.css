@@ -14,9 +14,9 @@
   --text-dim: #64748b;
   --border-light: rgba(255, 255, 255, 0.12);
   --border-active: rgba(245, 183, 25, 0.6);
-  --font-display: 'Inter', sans-serif;
+  --font-display: 'DM Serif Display', serif;
   --font-body: 'Inter', sans-serif;
-  --font-serif: 'Inter', sans-serif;
+  --font-serif: 'DM Serif Display', serif;
   --header-height: 80px;
   --container-max: 1320px;
   --radius-sm: 8px;

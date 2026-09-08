@@ -846,15 +846,15 @@ window.projectsData = {
   },
   'filn-perfume': {
     id: 'filn-perfume',
-    title: 'FILN — Perfume Brand Film',
-    client: 'FILN',
+    title: 'FIKN ELIXIR — Perfume Brand Film',
+    client: 'FIKN ELIXIR',
     category: 'tvc',
     subcategories: ['product', 'social'],
     format: 'Brand Film',
     roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
     thumbVideo: 'assets/media/tvc/FILN PERFUME FILM.mp4',
     videoSrc: 'assets/media/tvc/FILN PERFUME FILM.mp4',
-    shortDesc: 'An aesthetic-led product film capturing the mood and craft of the FILN fragrance.',
+    shortDesc: 'An aesthetic-led product film capturing the mood and craft of the FIKN Elixir fragrance.',
     thought: 'A perfume needs to be felt, not just seen — the film had to carry a mood.',
     idea: 'Aesthetic, sensorial visuals built around light, texture and the product itself.',
     making: 'Styled product photography and cinematic motion shot to highlight the bottle and brand feel.'

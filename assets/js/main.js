@@ -859,6 +859,21 @@ window.projectsData = {
     idea: 'Aesthetic, sensorial visuals built around light, texture and the product itself.',
     making: 'Styled product photography and cinematic motion shot to highlight the bottle and brand feel.'
   },
+  'fikn-elixir-2': {
+    id: 'fikn-elixir-2',
+    title: 'FIKN ELIXIR — Perfume Brand Film II',
+    client: 'FIKN ELIXIR',
+    category: 'tvc',
+    subcategories: ['product', 'social'],
+    format: 'Brand Film',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/FIKN ELIXIR FILM 02.mp4',
+    videoSrc: 'assets/media/tvc/FIKN ELIXIR FILM 02.mp4',
+    shortDesc: 'A second aesthetic-led product film for the FIKN Elixir fragrance.',
+    thought: 'A perfume needs to be felt, not just seen — the film had to carry a mood.',
+    idea: 'Aesthetic, sensorial visuals built around light, texture and the product itself.',
+    making: 'Styled product photography and cinematic motion shot to highlight the bottle and brand feel.'
+  },
   'podcast-simplai': {
     id: 'podcast-simplai',
     title: 'SimplAI — Tech & AI Podcast Series',

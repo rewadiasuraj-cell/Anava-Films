@@ -6829,55 +6829,6 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   margin: 0;
 }
 
-/* Optional extra content strip below FINISH cards (partners / VFX tags) */
-.wwd-extra-note {
-  padding: 1rem 1.1rem 1.2rem;
-  border-top: none;
-  background: rgba(12, 14, 18, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-top: none;
-  border-radius: 0 0 12px 12px;
-  margin-top: -1.25rem;
-}
-
-.wwd-extra-note .feature-partners-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.6rem 1rem;
-  margin: 0;
-}
-
-.wwd-extra-note .partner-bullet-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.wwd-extra-note .partner-bullet-list li {
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.75);
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.wwd-extra-note .partner-bullet-list li::before {
-  content: '•';
-  color: #f5b719;
-}
-
-.wwd-extra-note .feature-tags-inline {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.9rem;
-}
-
-.wwd-extra-note .vfx-tag {
-  font-size: 0.75rem;
-  color: rgba(245, 183, 25, 0.9);
-  font-weight: 400;
-}
-
 @media (max-width: 992px) {
   .wwd-layout-grid {
     grid-template-columns: 1fr;

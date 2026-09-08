@@ -952,6 +952,8 @@ function initWorkFilters() {
 
   function applyFilters() {
     workItems.forEach(item => {
+      const itemCat = item.getAttribute('data-category') || '';
+      const itemSubCats = (item.getAttribute('data-subcategories') || '').split(',').map(s => s.trim());
       let matchPrimary = (currentPrimary === 'all' || itemCat === currentPrimary);
       let matchSecondary = true;
 

@@ -5920,6 +5920,22 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   overflow: hidden;
 }
 
+/* Cinematic bottom-fade for text readability, above the video/image, below the overlay content */
+.work-card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(0, 0, 0, 0.55) 22%,
+    rgba(0, 0, 0, 0.20) 45%,
+    rgba(0, 0, 0, 0) 68%
+  );
+}
+
 .work-card-video {
   width: 100%;
   height: 100%;
@@ -5990,7 +6006,6 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   right: 0;
   z-index: 3;
   padding: 2.5rem 1.25rem 1.2rem;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.65) 60%, transparent 100%);
   display: flex;
   flex-direction: column;
   gap: 0.2rem;

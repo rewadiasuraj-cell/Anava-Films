@@ -844,20 +844,20 @@ window.projectsData = {
     idea: 'Water-ripple aesthetics with bright, refreshing micro-lighting on eye models.',
     making: 'High-speed liquid splashing photography combined with extreme macro eye portraiture.'
   },
-  'fikn-performance': {
-    id: 'fikn-performance',
-    title: 'FIKN — High-Conversion Performance Suite',
-    client: 'FIKN',
-    category: 'vertical',
-    subcategories: ['performance', 'social'],
-    format: 'Performance Ad Series',
+  'filn-perfume': {
+    id: 'filn-perfume',
+    title: 'FILN — Perfume Brand Film',
+    client: 'FILN',
+    category: 'tvc',
+    subcategories: ['product', 'social'],
+    format: 'Brand Film',
     roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
-    thumbVideo: 'assets/media/testimonials/LENSKART TESTIMONIAL  (2).mp4',
-    videoSrc: 'assets/media/testimonials/LENSKART TESTIMONIAL  (2).mp4',
-    shortDesc: 'Direct-response video ads structured with 3-second hooks and strong conversion CTAs.',
-    thought: 'Converting mobile shoppers requires immediate problem-solution storytelling.',
-    idea: 'Punchy typography overlays, instant relatable hooks, and clear product demonstrations.',
-    making: 'Agile studio shooting with rapid A/B hook variations and platform-optimized color grades.'
+    thumbVideo: 'assets/media/tvc/FILN PERFUME FILM.mp4',
+    videoSrc: 'assets/media/tvc/FILN PERFUME FILM.mp4',
+    shortDesc: 'An aesthetic-led product film capturing the mood and craft of the FILN fragrance.',
+    thought: 'A perfume needs to be felt, not just seen — the film had to carry a mood.',
+    idea: 'Aesthetic, sensorial visuals built around light, texture and the product itself.',
+    making: 'Styled product photography and cinematic motion shot to highlight the bottle and brand feel.'
   },
   'podcast-simplai': {
     id: 'podcast-simplai',

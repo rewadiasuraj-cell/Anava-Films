@@ -6684,7 +6684,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .wwd-featured-title {
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  font-size: 1rem;
   font-weight: 500;
   text-transform: uppercase;
   color: #ffffff;

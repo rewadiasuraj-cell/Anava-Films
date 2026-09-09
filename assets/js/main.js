@@ -1084,6 +1084,21 @@ window.projectsData = {
     idea: 'Close-up texture shots and real application moments to build trust fast.',
     making: 'Studio shoot styled for social-first, high-energy digital delivery.'
   },
+  'aqualens-contact-lens-film': {
+    id: 'aqualens-contact-lens-film',
+    title: 'Aqualens — Contact Lens Film',
+    client: 'Aqualens',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/AQUALENS CONTACT LENS FILM.mp4',
+    videoSrc: 'assets/media/tvc/AQUALENS CONTACT LENS FILM.mp4',
+    shortDesc: 'A product-led film built to communicate comfort and clarity for daily contact lens wear.',
+    thought: 'Contact lenses needed to feel effortless, comfortable and confidence-building.',
+    idea: 'Clean product visuals paired with everyday clarity moments.',
+    making: 'Studio product photography combined with lifestyle footage for a polished digital film.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

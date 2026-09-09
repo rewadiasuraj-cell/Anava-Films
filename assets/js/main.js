@@ -934,6 +934,21 @@ window.projectsData = {
     idea: 'Clean product photography paired with lifestyle moments to sell design and durability.',
     making: 'Studio product shoots combined with location lifestyle footage for a well-rounded brand story.'
   },
+  'boat-case-study': {
+    id: 'boat-case-study',
+    title: 'boAt — Brand Film',
+    client: 'boAt',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/BOAT FILM.mp4',
+    videoSrc: 'assets/media/tvc/BOAT FILM.mp4',
+    shortDesc: 'A high-energy brand film built around boAt\'s bold, youth-first audio identity.',
+    thought: 'The film needed the same energy and attitude as the brand itself.',
+    idea: 'Punchy cuts, vibrant color grading and lifestyle-first product moments.',
+    making: 'Fast-paced production with dynamic camera movement to match the brand\'s tone.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

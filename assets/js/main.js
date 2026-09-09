@@ -1069,6 +1069,21 @@ window.projectsData = {
     idea: 'Fast cuts and vibrant color paired with real makeup application moments.',
     making: 'Studio shoot styled for social-first, high-energy digital delivery.'
   },
+  'tira-short-3-skin': {
+    id: 'tira-short-3-skin',
+    title: 'Tira Beauty — Skin Shorts',
+    client: 'Tira Beauty (Reliance Retail)',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/TIRA SHORT 3 SKIN.mp4',
+    videoSrc: 'assets/media/tvc/TIRA SHORT 3 SKIN.mp4',
+    shortDesc: 'A quick-hit digital short spotlighting Tira Beauty\'s skincare range.',
+    thought: 'Skincare content needed to feel authentic and benefit-led in a short format.',
+    idea: 'Close-up texture shots and real application moments to build trust fast.',
+    making: 'Studio shoot styled for social-first, high-energy digital delivery.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

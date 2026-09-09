@@ -1009,6 +1009,21 @@ window.projectsData = {
     idea: 'Lifestyle-first visuals that make blue-light protection feel essential, not clinical.',
     making: 'Product and lifestyle photography shot to bring the benefit to life on screen.'
   },
+  'lenskart-blue-ray-2': {
+    id: 'lenskart-blue-ray-2',
+    title: 'Lenskart — Blue Ray Glasses Film II',
+    client: 'Lenskart',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/LENSKART BLUE RAY GLASSES FILM 02.mp4',
+    videoSrc: 'assets/media/tvc/LENSKART BLUE RAY GLASSES FILM 02.mp4',
+    shortDesc: 'A second product-led film for Lenskart\'s blue-ray protection eyewear range.',
+    thought: 'Everyday screen time needed a relatable, benefit-first story.',
+    idea: 'Lifestyle-first visuals that make blue-light protection feel essential, not clinical.',
+    making: 'Product and lifestyle photography shot to bring the benefit to life on screen.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

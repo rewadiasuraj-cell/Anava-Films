@@ -964,6 +964,21 @@ window.projectsData = {
     idea: 'Sharp visuals and pacing that echo the show\'s energy while keeping the product central.',
     making: 'Studio and product-focused shoot styled for a punchy, campaign-ready digital film.'
   },
+  'sunil-shetty-film': {
+    id: 'sunil-shetty-film',
+    title: 'Sunil Shetty — Brand Film',
+    client: 'Sunil Shetty',
+    category: 'tvc',
+    subcategories: ['social', 'performance'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/SUNIL SHETTY FILM.mp4',
+    videoSrc: 'assets/media/tvc/SUNIL SHETTY FILM.mp4',
+    shortDesc: 'A celebrity-led brand film built around Sunil Shetty\'s presence and star power.',
+    thought: 'The film needed to let the talent\'s screen presence carry the brand message.',
+    idea: 'Confident framing and pacing that put the star front and center.',
+    making: 'On-location shoot with cinematic lighting and direction tailored to a celebrity feature.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

@@ -1024,6 +1024,21 @@ window.projectsData = {
     idea: 'Lifestyle-first visuals that make blue-light protection feel essential, not clinical.',
     making: 'Product and lifestyle photography shot to bring the benefit to life on screen.'
   },
+  'lenskart-personality-film': {
+    id: 'lenskart-personality-film',
+    title: 'Lenskart — Personality Film',
+    client: 'Lenskart',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/LENSKART PERSONALITY FILM.mp4',
+    videoSrc: 'assets/media/tvc/LENSKART PERSONALITY FILM.mp4',
+    shortDesc: 'A brand film celebrating how eyewear reflects individual personality and style.',
+    thought: 'Glasses aren\'t just function — they\'re an expression of who you are.',
+    idea: 'Diverse looks and personalities styled around Lenskart\'s frame range.',
+    making: 'Multi-look studio and lifestyle shoot built to showcase range and versatility.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

@@ -1054,6 +1054,21 @@ window.projectsData = {
     idea: 'Clean product visuals paired with everyday clarity moments.',
     making: 'Studio product photography combined with lifestyle footage for a polished digital film.'
   },
+  'tira-makeup-shorties': {
+    id: 'tira-makeup-shorties',
+    title: 'Tira Beauty — Makeup Shorties',
+    client: 'Tira Beauty (Reliance Retail)',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/TIRA MAKEUP SHORTIES.mp4',
+    videoSrc: 'assets/media/tvc/TIRA MAKEUP SHORTIES.mp4',
+    shortDesc: 'A series of quick, punchy makeup-led digital shorts for Tira Beauty.',
+    thought: 'Short-form beauty content needed to grab attention in seconds.',
+    idea: 'Fast cuts and vibrant color paired with real makeup application moments.',
+    making: 'Studio shoot styled for social-first, high-energy digital delivery.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

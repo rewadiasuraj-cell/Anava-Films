@@ -5920,6 +5920,11 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   overflow: hidden;
 }
 
+/* Vertical/portrait videos keep their true 9:16 shape instead of the landscape crop */
+.work-card-item[data-category="vertical"] .work-card-media {
+  aspect-ratio: 9 / 16;
+}
+
 /* Cinematic bottom-fade for text readability, above the video/image, below the overlay content */
 .work-card-media::after {
   content: '';

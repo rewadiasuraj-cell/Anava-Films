@@ -13,6 +13,7 @@ function initApp() {
   initVideoThumbnails();
   initTestimonialTabs();
   initTstmSlider();
+  initClientLogoMarquee();
 }
 
 if (document.readyState === 'loading') {
@@ -1608,3 +1609,169 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedSections.forEach(sec => observer.observe(sec));
   }
 });
+
+/* --------------------------------------------------------------------------
+   Client Logo Marquee (Hero Section) — auto-scrolling, seamless, rAF-driven
+   -------------------------------------------------------------------------- */
+function initClientLogoMarquee() {
+  const section = document.querySelector('.client-marquee-section');
+  const viewport = document.getElementById('logoMarqueeViewport');
+  const track = document.getElementById('logoMarqueeTrack');
+  const toggleBtn = document.getElementById('logoMarqueeToggle');
+  if (!section || !viewport || !track) return;
+
+  const SPEED_PX_PER_SEC = 24;
+  const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const baseItems = Array.from(track.children);
+  let seqWidth = 0;
+  let offset = 0;
+  let rafId = null;
+  let lastTime = null;
+  let manuallyPaused = false;
+  let hoverPaused = false;
+  let reducedMotion = reduceMotionQuery.matches;
+
+  function clearClones() {
+    Array.from(track.children).forEach(child => {
+      if (child.dataset.clone === 'true') child.remove();
+    });
+  }
+
+  function measureSeqWidth() {
+    if (!baseItems.length) return 0;
+    const first = baseItems[0];
+    const last = baseItems[baseItems.length - 1];
+    const firstRect = first.getBoundingClientRect();
+    const lastRect = last.getBoundingClientRect();
+    const trackStyles = getComputedStyle(track);
+    const gap = parseFloat(trackStyles.columnGap || trackStyles.gap || '0') || 0;
+    return (lastRect.right - firstRect.left) + gap;
+  }
+
+  function buildTrack() {
+    clearClones();
+    seqWidth = measureSeqWidth();
+    if (!seqWidth) return;
+
+    const targetWidth = viewport.clientWidth * 2 + seqWidth;
+    let currentWidth = seqWidth;
+
+    while (currentWidth < targetWidth) {
+      baseItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.dataset.clone = 'true';
+        clone.setAttribute('aria-hidden', 'true');
+        const img = clone.querySelector('img');
+        if (img) img.setAttribute('alt', '');
+        track.appendChild(clone);
+      });
+      currentWidth += seqWidth;
+    }
+
+    offset = seqWidth ? offset % seqWidth : 0;
+  }
+
+  function isPaused() {
+    return reducedMotion || manuallyPaused || hoverPaused;
+  }
+
+  function step(timestamp) {
+    if (lastTime === null) lastTime = timestamp;
+    const dt = (timestamp - lastTime) / 1000;
+    lastTime = timestamp;
+
+    if (!isPaused() && seqWidth > 0) {
+      offset += SPEED_PX_PER_SEC * dt;
+      if (offset >= seqWidth) offset -= seqWidth;
+      track.style.transform = `translateX(${-offset}px)`;
+    }
+    rafId = requestAnimationFrame(step);
+  }
+
+  function startLoop() {
+    if (rafId === null) {
+      lastTime = null;
+      rafId = requestAnimationFrame(step);
+    }
+  }
+
+  function stopLoop() {
+    if (rafId !== null) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+  }
+
+  function setupReducedMotion() {
+    clearClones();
+    track.style.transform = 'none';
+    viewport.style.overflowX = 'auto';
+    stopLoop();
+    if (toggleBtn) toggleBtn.hidden = true;
+  }
+
+  function setupFullMotion() {
+    viewport.style.overflowX = 'hidden';
+    if (toggleBtn) toggleBtn.hidden = false;
+    buildTrack();
+    startLoop();
+  }
+
+  function applyMotionPreference() {
+    reducedMotion = reduceMotionQuery.matches;
+    if (reducedMotion) {
+      setupReducedMotion();
+    } else {
+      setupFullMotion();
+    }
+  }
+
+  section.addEventListener('mouseenter', () => { hoverPaused = true; });
+  section.addEventListener('mouseleave', () => { hoverPaused = false; });
+  section.addEventListener('focusin', () => { hoverPaused = true; });
+  section.addEventListener('focusout', () => { hoverPaused = false; });
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      manuallyPaused = !manuallyPaused;
+      toggleBtn.setAttribute('aria-pressed', String(manuallyPaused));
+      toggleBtn.classList.toggle('is-paused', manuallyPaused);
+      toggleBtn.setAttribute('aria-label', manuallyPaused ? 'Resume logo scroll' : 'Pause logo scroll');
+    });
+  }
+
+  let resizeTimer = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (!reducedMotion) buildTrack();
+    }, 150);
+  });
+
+  if (typeof reduceMotionQuery.addEventListener === 'function') {
+    reduceMotionQuery.addEventListener('change', applyMotionPreference);
+  } else if (typeof reduceMotionQuery.addListener === 'function') {
+    reduceMotionQuery.addListener(applyMotionPreference);
+  }
+
+  const images = Array.from(track.querySelectorAll('img'));
+  let loadedCount = 0;
+  function onImageSettle() {
+    loadedCount += 1;
+    if (loadedCount === images.length) applyMotionPreference();
+  }
+
+  if (images.length === 0) {
+    applyMotionPreference();
+  } else {
+    images.forEach(img => {
+      if (img.complete) {
+        onImageSettle();
+      } else {
+        img.addEventListener('load', onImageSettle, { once: true });
+        img.addEventListener('error', onImageSettle, { once: true });
+      }
+    });
+  }
+}

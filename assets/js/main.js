@@ -818,7 +818,7 @@ window.projectsData = {
     id: 'tira-beauty-campaign',
     title: 'Tira Beauty Digital Ad Suite',
     client: 'Tira Beauty (Reliance Retail)',
-    category: 'vertical',
+    category: 'tvc',
     subcategories: ['performance', 'social'],
     format: 'Digital Campaign / Commercial Series (Director Collaboration)',
     roles: ['Direction (Director)', 'Visual Storytelling'],

@@ -5838,6 +5838,7 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  align-items: start;
 }
 
 @media (max-width: 1024px) {

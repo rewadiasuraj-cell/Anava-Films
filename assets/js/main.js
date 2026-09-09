@@ -919,6 +919,21 @@ window.projectsData = {
     idea: 'A moody visual narrative blending neon shadows, slow motion, and silhouette framing.',
     making: 'Shot in anamorphic format with custom color science and stylized visual effects.'
   },
+  'maxima-watches': {
+    id: 'maxima-watches',
+    title: 'Maxima — Watches Brand Film',
+    client: 'Maxima',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/MAXIMA WATCHES FILM.mp4',
+    videoSrc: 'assets/media/tvc/MAXIMA WATCHES FILM.mp4',
+    shortDesc: 'A product-led brand film celebrating precision, style and everyday craftsmanship.',
+    thought: 'A watch brand needs to feel both premium and wearable, in equal measure.',
+    idea: 'Clean product photography paired with lifestyle moments to sell design and durability.',
+    making: 'Studio product shoots combined with location lifestyle footage for a well-rounded brand story.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

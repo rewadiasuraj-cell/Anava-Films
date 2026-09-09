@@ -949,6 +949,21 @@ window.projectsData = {
     idea: 'Punchy cuts, vibrant color grading and lifestyle-first product moments.',
     making: 'Fast-paced production with dynamic camera movement to match the brand\'s tone.'
   },
+  'lenskart-shark-tank': {
+    id: 'lenskart-shark-tank',
+    title: 'Lenskart — Shark Tank Film',
+    client: 'Lenskart',
+    category: 'tvc',
+    subcategories: ['social', 'performance'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/LENSKART SHARK TANK FILM.mp4',
+    videoSrc: 'assets/media/tvc/LENSKART SHARK TANK FILM.mp4',
+    shortDesc: 'A campaign film built around Lenskart\'s Shark Tank moment and brand momentum.',
+    thought: 'Capturing the confidence and clarity that comes with a validated, growing brand.',
+    idea: 'Sharp visuals and pacing that echo the show\'s energy while keeping the product central.',
+    making: 'Studio and product-focused shoot styled for a punchy, campaign-ready digital film.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

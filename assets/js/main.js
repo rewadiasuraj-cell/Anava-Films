@@ -1039,6 +1039,21 @@ window.projectsData = {
     idea: 'Diverse looks and personalities styled around Lenskart\'s frame range.',
     making: 'Multi-look studio and lifestyle shoot built to showcase range and versatility.'
   },
+  'lk-aqualens-film': {
+    id: 'lk-aqualens-film',
+    title: 'Lenskart Aqualens — Digital TVC',
+    client: 'Aqualens (Lenskart)',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/LK AQUALENS FILM.mp4',
+    videoSrc: 'assets/media/tvc/LK AQUALENS FILM.mp4',
+    shortDesc: 'A product-led digital film for Aqualens contact lenses under the Lenskart umbrella.',
+    thought: 'Contact lenses needed to feel effortless, comfortable and confidence-building.',
+    idea: 'Clean product visuals paired with everyday clarity moments.',
+    making: 'Studio product photography combined with lifestyle footage for a polished digital film.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

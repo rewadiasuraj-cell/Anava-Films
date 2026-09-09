@@ -979,6 +979,21 @@ window.projectsData = {
     idea: 'Confident framing and pacing that put the star front and center.',
     making: 'On-location shoot with cinematic lighting and direction tailored to a celebrity feature.'
   },
+  'chandak-film': {
+    id: 'chandak-film',
+    title: 'Chandak — Brand Film',
+    client: 'Chandak',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/CHANDAK FILM.mp4',
+    videoSrc: 'assets/media/tvc/CHANDAK FILM.mp4',
+    shortDesc: 'A brand film built to communicate craft, trust and reliability.',
+    thought: 'The brand needed a film that felt dependable and premium at once.',
+    idea: 'Clean, confident visuals paired with a steady, reassuring pace.',
+    making: 'On-location production styled for a polished, trust-building brand narrative.'
+  },
   'testimonial-lenskart-1': {
     id: 'testimonial-lenskart-1',
     title: 'Lenskart Partner Testimonial',

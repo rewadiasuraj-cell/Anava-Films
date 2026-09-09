@@ -1763,6 +1763,7 @@ html[data-theme="light"] .text-metallic {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  align-items: start;
 }
 
 .work-card {

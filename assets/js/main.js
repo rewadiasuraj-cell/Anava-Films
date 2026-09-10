@@ -1503,7 +1503,12 @@ function initVideoThumbnails() {
     }
   };
 
-  // IntersectionObserver to play visible videos & pause offscreen ones for performance
+  // Track which videos are actually visible right now, so the autoplay-policy
+  // fallback below only ever retries videos that are supposed to be playing —
+  // never the whole page's worth regardless of scroll position.
+  const visibleVideos = new Set();
+
+  // IntersectionObserver to load & play only videos actually visible, pause offscreen ones
   if ('IntersectionObserver' in window) {
     const videoObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -1511,9 +1516,11 @@ function initVideoThumbnails() {
         if (!video) return;
 
         if (entry.isIntersecting) {
-          video.preload = 'auto';
+          visibleVideos.add(video);
+          if (video.preload !== 'auto') video.preload = 'auto';
           playVideo(video);
         } else {
+          visibleVideos.delete(video);
           video.pause();
         }
       });
@@ -1522,23 +1529,24 @@ function initVideoThumbnails() {
     videoElements.forEach(video => {
       const parent = video.closest('.work-card-item, .work-card, .collab-card, .work-thumb-wrapper') || video;
       videoObserver.observe(parent);
-      playVideo(video);
+      // Do NOT eagerly play here — only the observer callback (on intersection) should
+      // trigger loading/playback, otherwise every video on the page starts downloading
+      // and decoding at once regardless of visibility.
     });
   } else {
     videoElements.forEach(video => playVideo(video));
   }
 
-  // Fallback triggers for first user interaction if blocked by restrictive autoplay policies
-  const tryAutoplayAll = () => {
-    videoElements.forEach(video => {
-      if (video.paused) {
-        playVideo(video);
-      }
+  // Fallback for first user interaction, in case a restrictive autoplay policy
+  // blocked the initial play() call — only retries videos currently in view.
+  const tryAutoplayVisible = () => {
+    visibleVideos.forEach(video => {
+      if (video.paused) playVideo(video);
     });
   };
 
   ['click', 'touchstart', 'scroll', 'mousemove'].forEach(evt => {
-    window.addEventListener(evt, tryAutoplayAll, { once: true, passive: true });
+    window.addEventListener(evt, tryAutoplayVisible, { once: true, passive: true });
   });
 }
 

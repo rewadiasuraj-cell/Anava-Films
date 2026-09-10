@@ -463,14 +463,18 @@ html[data-theme="light"] .modal-close-btn {
   width: 100%;
   background: #050608;
   overflow: hidden;
+  padding: 3rem 2rem;
 }
 
 .showreel-container {
   position: relative;
   width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
   aspect-ratio: 16/9;
   max-height: 80vh;
   background: #000;
+  border-radius: 20px;
 }
 
 .showreel-video {
@@ -483,6 +487,7 @@ html[data-theme="light"] .modal-close-btn {
 .showreel-overlay {
   position: absolute;
   inset: 0;
+  z-index: 3;
   background: linear-gradient(
     180deg,
     rgba(8, 9, 11, 0.5) 0%,
@@ -493,7 +498,7 @@ html[data-theme="light"] .modal-close-btn {
   pointer-events: none;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 2rem;
 }
 
@@ -535,63 +540,92 @@ html[data-theme="light"] .modal-close-btn {
 
 .showreel-meta {
   color: #fff;
+  text-align: right;
 }
 
 .showreel-meta-title {
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  color: var(--accent-gold);
 }
 
 .showreel-meta-sub {
-  font-size: 0.9rem;
-  color: var(--accent-gold);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.65);
   font-weight: 400;
-  letter-spacing: 0.04em;
-  margin-top: 0.2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
 }
 
-.showreel-sound-toggle {
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  padding: 0.65rem 1.1rem;
-  border-radius: 30px;
-  font-size: 0.8rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  cursor: pointer;
+.showreel-play-label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: all 0.2s ease;
+  gap: 0.7rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #fff;
 }
 
-.showreel-sound-toggle:hover {
+.showreel-play-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
   background: var(--accent-gold);
   color: #000;
-  border-color: var(--accent-gold);
+  font-size: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+.showreel-play-label:hover .showreel-play-icon {
+  transform: scale(1.08);
+}
+
+.showreel-play-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.showreel-play-line {
+  width: 28px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.showreel-play-duration {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.04em;
 }
 
 .showreel-next-arrow-btn {
   position: absolute;
   right: 1.25rem;
-  bottom: 1.25rem;
+  top: 1.25rem;
   z-index: 5;
   background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: #fff;
-  padding: 0.55rem 0.7rem;
-  border-radius: 30px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
   pointer-events: auto;
   transition: all 0.2s ease;
 }
@@ -602,21 +636,66 @@ html[data-theme="light"] .modal-close-btn {
   border-color: var(--accent-gold);
 }
 
-.showreel-next-duration {
-  font-size: 0.75rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-}
-
 @media (max-width: 767px) {
-  .showreel-next-arrow-btn {
-    right: 0.9rem;
-    bottom: 0.9rem;
-    padding: 0.5rem 0.65rem;
+  .showreel-section {
+    padding: 1.5rem 1rem;
   }
 
-  .showreel-next-duration {
+  .showreel-play-icon {
+    width: 34px;
+    height: 34px;
     font-size: 0.7rem;
+  }
+
+  .showreel-play-text {
+    font-size: 0.7rem;
+  }
+
+  .showreel-play-line {
+    width: 18px;
+  }
+
+  .showreel-play-duration {
+    font-size: 0.7rem;
+  }
+
+  .showreel-next-arrow-btn {
+    right: 0.9rem;
+    top: 0.9rem;
+    width: 32px;
+    height: 32px;
+  }
+
+  .showreel-overlay {
+    padding: 1.1rem;
+  }
+
+  .showreel-bottom-bar {
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .showreel-play-text {
+    display: none;
+  }
+
+  .showreel-play-line {
+    width: 12px;
+  }
+
+  .showreel-meta {
+    max-width: 62%;
+  }
+
+  .showreel-meta-title {
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+
+  .showreel-meta-sub {
+    font-size: 0.58rem;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
   }
 }
 

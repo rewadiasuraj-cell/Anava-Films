@@ -547,7 +547,7 @@ function initShowreel() {
   const showreelBg = document.querySelector('.showreel-video-bg');
   const soundToggle = document.getElementById('showreel-sound-toggle');
   const nextBtn = document.getElementById('showreel-next-btn');
-  const nextDurationLabel = document.getElementById('showreel-next-duration');
+  const nextDurationLabel = document.getElementById('showreel-current-duration');
   if (!showreelVideo) return;
 
   let showreelIndex = 0;
@@ -593,9 +593,7 @@ function initShowreel() {
   if (soundToggle) {
     soundToggle.addEventListener('click', () => {
       showreelVideo.muted = !showreelVideo.muted;
-      soundToggle.innerHTML = showreelVideo.muted
-        ? `<span>🔊</span> UNMUTE SHOWREEL`
-        : `<span>🔇</span> MUTE AUDIO`;
+      soundToggle.setAttribute('aria-pressed', String(!showreelVideo.muted));
     });
   }
 

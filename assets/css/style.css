@@ -9105,17 +9105,11 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .client-marquee-section {
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
+  width: 100%;
   padding: 28px 0;
-  margin-top: 2rem;
-  margin-bottom: 0.2rem;
+  margin: 0;
   background: var(--bg-dark, #08090b);
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .logo-marquee-viewport {

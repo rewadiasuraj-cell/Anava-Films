@@ -2,6 +2,9 @@
 
 RewriteEngine On
 
+# Testimonials page retired — send any old links/bookmarks to Home
+RewriteRule ^testimonials(\.html)?/?$ / [R=301,L]
+
 # Force HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

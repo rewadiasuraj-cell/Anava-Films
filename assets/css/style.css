@@ -9105,15 +9105,25 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 
 .client-marquee-section {
   position: relative;
-  width: 100%;
-  padding: 36px 0;
-  margin: 0.4rem 0 0.2rem;
-  background: transparent;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  padding: 28px 0;
+  margin-top: 2rem;
+  margin-bottom: 0.2rem;
+  background: var(--bg-dark, #08090b);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
 .logo-marquee-viewport {
   overflow: hidden;
+  max-width: var(--container-max);
   width: 100%;
+  margin: 0 auto;
+  padding: 0 24px;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0,
@@ -9164,15 +9174,6 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
 .logo-marquee-item:focus-within img {
   opacity: 1;
 }
-
-/* Per-logo size balancing — thinner/whitespace-heavy marks get a small boost */
-.logo-marquee-item.logo--green-lotus img { height: 47px; }
-.logo-marquee-item.logo--wow img { height: 44px; }
-.logo-marquee-item.logo--indus-valley img { height: 42px; }
-.logo-marquee-item.logo--tira img { height: 41px; }
-.logo-marquee-item.logo--celio img { height: 40px; }
-.logo-marquee-item.logo--kfc img { height: 36px; }
-.logo-marquee-item.logo--simplai img { height: 36px; }
 
 .logo-marquee-toggle {
   position: absolute;
@@ -9233,14 +9234,6 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   .logo-marquee-item img {
     height: 28px;
   }
-
-  .logo-marquee-item.logo--green-lotus img { height: 34px; }
-  .logo-marquee-item.logo--wow img { height: 32px; }
-  .logo-marquee-item.logo--indus-valley img { height: 31px; }
-  .logo-marquee-item.logo--tira img { height: 30px; }
-  .logo-marquee-item.logo--celio img { height: 29px; }
-  .logo-marquee-item.logo--kfc img { height: 26px; }
-  .logo-marquee-item.logo--simplai img { height: 26px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

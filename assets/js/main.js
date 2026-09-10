@@ -1677,7 +1677,7 @@ function initClientLogoMarquee() {
   const toggleBtn = document.getElementById('logoMarqueeToggle');
   if (!section || !viewport || !track) return;
 
-  const SPEED_PX_PER_SEC = 24;
+  const SPEED_PX_PER_SEC = 34;
   const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const baseItems = Array.from(track.children);

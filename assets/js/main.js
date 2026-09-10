@@ -325,6 +325,14 @@ function initClapboardIntro() {
         dismissIntro();
       }
     }, 3000);
+
+    // Hard ceiling: even if the video IS playing (just slowly, e.g. rebuffering
+    // on a slow connection), never let the intro block real page content beyond
+    // this. The video itself is ~7s, so this only ever fires in a genuine
+    // slow-network edge case.
+    setTimeout(() => {
+      if (!isDismissed) dismissIntro();
+    }, 8000);
   } else {
     // Hard safety fallback for text sequence if no video
     setTimeout(() => {
@@ -546,16 +554,20 @@ function initShowreel() {
 
   showreelVideo.muted = true;
   showreelVideo.playsInline = true;
+  if (showreelVideo.dataset.poster) showreelVideo.poster = showreelVideo.dataset.poster;
 
   if (showreelBg) {
     showreelBg.muted = true;
     showreelBg.playsInline = true;
+    if (showreelBg.dataset.poster) showreelBg.poster = showreelBg.dataset.poster;
   }
 
   // IntersectionObserver to play when in viewport
+  let showreelIsVisible = false;
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        showreelIsVisible = entry.isIntersecting;
         if (entry.isIntersecting) {
           showreelVideo.play().catch(() => {});
           if (showreelBg) showreelBg.play().catch(() => {});
@@ -567,6 +579,16 @@ function initShowreel() {
     }, { threshold: 0.25 });
     observer.observe(showreelVideo);
   }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      showreelVideo.pause();
+      if (showreelBg) showreelBg.pause();
+    } else if (showreelIsVisible) {
+      showreelVideo.play().catch(() => {});
+      if (showreelBg) showreelBg.play().catch(() => {});
+    }
+  });
 
   if (soundToggle) {
     soundToggle.addEventListener('click', () => {
@@ -1507,6 +1529,20 @@ function initVideoThumbnails() {
   // fallback below only ever retries videos that are supposed to be playing —
   // never the whole page's worth regardless of scroll position.
   const visibleVideos = new Set();
+  const isMobileViewport = () => window.matchMedia('(max-width: 767px)').matches;
+
+  // On mobile, only one decorative preview video plays at a time (battery/CPU/
+  // bandwidth). Entering a new one pauses whichever was playing before it.
+  let mobileActiveVideo = null;
+  function playRespectingMobileLimit(video) {
+    if (isMobileViewport()) {
+      if (mobileActiveVideo && mobileActiveVideo !== video) {
+        mobileActiveVideo.pause();
+      }
+      mobileActiveVideo = video;
+    }
+    playVideo(video);
+  }
 
   // IntersectionObserver to load & play only videos actually visible, pause offscreen ones
   if ('IntersectionObserver' in window) {
@@ -1517,11 +1553,13 @@ function initVideoThumbnails() {
 
         if (entry.isIntersecting) {
           visibleVideos.add(video);
+          if (video.dataset.poster && !video.poster) video.poster = video.dataset.poster;
           if (video.preload !== 'auto') video.preload = 'auto';
-          playVideo(video);
+          playRespectingMobileLimit(video);
         } else {
           visibleVideos.delete(video);
           video.pause();
+          if (mobileActiveVideo === video) mobileActiveVideo = null;
         }
       });
     }, { rootMargin: '200px 0px', threshold: 0.01 });
@@ -1541,12 +1579,23 @@ function initVideoThumbnails() {
   // blocked the initial play() call — only retries videos currently in view.
   const tryAutoplayVisible = () => {
     visibleVideos.forEach(video => {
-      if (video.paused) playVideo(video);
+      if (video.paused) playRespectingMobileLimit(video);
     });
   };
 
   ['click', 'touchstart', 'scroll', 'mousemove'].forEach(evt => {
     window.addEventListener(evt, tryAutoplayVisible, { once: true, passive: true });
+  });
+
+  // Pause everything while the tab/app is backgrounded; resume only videos
+  // still actually in view (respecting the mobile one-at-a-time limit) when
+  // it comes back to the foreground.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      visibleVideos.forEach(video => video.pause());
+    } else {
+      visibleVideos.forEach(video => playRespectingMobileLimit(video));
+    }
   });
 }
 

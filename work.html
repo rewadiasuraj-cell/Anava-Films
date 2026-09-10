@@ -8,14 +8,14 @@
   <!-- Performance Optimization: Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   
-  <link rel="stylesheet" href="assets/css/style.css?v=22.8">
-  <script defer src="assets/js/main.js?v=18.9"></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=20260910.4">
+  <script defer src="assets/js/main.js?v=20260910.4"></script>
 </head>
 <body>
 
@@ -36,13 +36,23 @@
           <li><a href="process" class="nav-link">PROCESS</a></li>
           <li><a href="about" class="nav-link">ABOUT</a></li>
           <li><a href="contact" class="nav-link">CONTACT</a></li>
-          <li class="mobile-cta-item"><a href="contact" class="btn-primary mobile-nav-cta">LET’S TALK</a></li>
+          <li class="mobile-cta-item"><a href="contact" class="btn-header-get-in-touch mobile-nav-cta">
+          <span>GET IN TOUCH</span>
+          <span class="btn-header-arrow-circle">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a></li>
         </ul>
       </nav>
 
       <!-- 3. RIGHT ZONE: CTA & HAMBURGER -->
       <div class="header-actions">
-        <a href="contact" class="btn-primary btn-header-cta">LET’S TALK</a>
+        <a href="contact" class="btn-header-get-in-touch">
+          <span>GET IN TOUCH</span>
+          <span class="btn-header-arrow-circle">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
         <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" onclick="toggleMobileMenu(event)">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -57,10 +67,10 @@
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem;">
         <div>
-          <span style="color: #f5b719; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;">OUR WORK</span>
+          <span style="color: #c55e02; font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em;">OUR WORK</span>
           <h1 class="display-title" style="font-size: clamp(2.5rem, 5.5vw, 4.8rem); line-height: 1.05; font-weight: 500; margin-top: 0.5rem;">
-            CURATED WORK.<br>
-            <span style="color: #f5b719;">REAL IMPACT.</span>
+            Curated Work.<br>
+            <span style="color: #c55e02;">Real Impact.</span>
           </h1>
         </div>
         <div style="max-width: 440px; margin-bottom: 0.5rem;">
@@ -70,27 +80,15 @@
         </div>
       </div>
 
-      <!-- Category Filter Bar with Dropdown for Vertical -->
+      <!-- Category Filter Bar (5 Tabs) -->
       <div style="margin-top: 3.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 0.8rem;">
         <div class="work-filter-tabs">
-          <button class="work-tab-btn active" data-filter="all">ALL</button>
-          <button class="work-tab-btn" data-filter="tvc">TVCS / DIGITAL</button>
+          <button class="work-tab-btn active" data-filter="tvc">TVCS / DIGITAL</button>
+          <button class="work-tab-btn" data-filter="vertical">VERTICAL</button>
+          <button class="work-tab-btn" data-filter="events">EVENTS</button>
+          <button class="work-tab-btn" data-filter="photoshoots">PHOTOSHOOTS</button>
           <button class="work-tab-btn" data-filter="testimonials">TESTIMONIALS</button>
           <button class="work-tab-btn" data-filter="podcasts">PODCASTS</button>
-          
-          <!-- Dropdown Tab for VERTICAL -->
-          <div class="filter-dropdown-wrapper">
-            <button class="work-tab-btn dropdown-toggle-btn" data-filter="vertical" id="vertical-dropdown-btn">
-              VERTICAL <span style="font-size: 0.75rem; margin-left: 3px;">▾</span>
-            </button>
-            <div class="filter-dropdown-menu" id="vertical-dropdown-menu">
-              <button class="dropdown-item active" data-subfilter="all">All Vertical</button>
-              <button class="dropdown-item" data-subfilter="performance">Performance Ads</button>
-              <button class="dropdown-item" data-subfilter="catalogue">Catalogue Shoots</button>
-            </div>
-          </div>
-
-          <button class="work-tab-btn" data-filter="photoshoots">PHOTOSHOOTS</button>
         </div>
       </div>
     </div>
@@ -101,7 +99,25 @@
     <div class="container">
       <div class="curated-work-grid">
 
-        <!-- 1. Hustler -->
+        <!-- 1. Sunil Shetty -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,performance" data-open-case="sunil-shetty-film">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/Sunil Shetty AD Landscape.mp4#t=2.5" data-poster="assets/images/posters/sunil-shetty-ad-landscape.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">SUNIL SHETTY</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">SUNIL SHETTY</h3>
+              <div class="work-card-subcat">Commercial Ad Film</div>
+              <div class="work-card-slogan">THE ACTION ICON</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Hustler -->
         <div class="work-card-item" data-category="tvc" data-subcategories="social,performance" data-open-case="lenskart-hustler">
           <div class="work-card-media">
             <video src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4#t=2.5" data-poster="assets/images/posters/lenskart-hustler-ad-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
@@ -109,7 +125,7 @@
               <span class="brand-logo-text">∞ lenskart</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
               <h3 class="work-card-name">HUSTLER</h3>
@@ -119,97 +135,7 @@
           </div>
         </div>
 
-        <!-- 2. John Jacobs -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social" data-open-case="john-jacobs">
-          <div class="work-card-media">
-            <video src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4#t=2.5" data-poster="assets/images/posters/lenskart-john-jacbos-eyewear-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">JOHN JACOBS</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">JOHN JACOBS</h3>
-              <div class="work-card-subcat">Valentine's Day Film</div>
-              <div class="work-card-slogan">AN EYE FOR LOVE</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 3. Catalogue Shoots -->
-        <div class="work-card-item" data-category="vertical" data-subcategories="performance,catalogue" data-open-case="lenskart-inf-03">
-          <div class="work-card-media">
-            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 03.mp4#t=2.5" data-poster="assets/images/posters/lenskart-influencers-film-03.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">∞ lenskart</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">CATALOGUE SHOOTS</h3>
-              <div class="work-card-subcat">Lenskart Collections</div>
-              <div class="work-card-slogan">STYLE. EVERY ANGLE.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. Performance Ads -->
-        <div class="work-card-item" data-category="vertical" data-subcategories="performance,catalogue" data-open-case="lenskart-inf-05">
-          <div class="work-card-media">
-            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 05.mp4#t=2.5" data-poster="assets/images/posters/lenskart-influencers-film-05.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">∞ lenskart</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">PERFORMANCE ADS</h3>
-              <div class="work-card-subcat">Performance Campaigns</div>
-              <div class="work-card-slogan">SEE MORE. DO MORE.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 5. WOW Skin Science -->
-        <div class="work-card-item" data-category="testimonials" data-subcategories="product,social" data-open-case="wow-brand-content">
-          <div class="work-card-media">
-            <video src="assets/media/testimonials/WOW TESTIMONIAL .mp4#t=2.5" data-poster="assets/images/posters/wow-testimonial.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">WOW™ SKIN SCIENCE</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">WOW SKIN SCIENCE</h3>
-              <div class="work-card-subcat">Digital / Brand Content</div>
-              <div class="work-card-slogan">NATURE. SCIENCE. YOU.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 6. Indus Valley -->
-        <div class="work-card-item" data-category="photoshoots" data-subcategories="catalogue,product" data-open-case="indus-valley-brand">
-          <div class="work-card-media">
-            <video src="assets/media/Video-42213.mp4#t=0.1" data-poster="assets/images/posters/video-42213.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">Indus Valley</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">INDUS VALLEY</h3>
-              <div class="work-card-subcat">Hair Colour Brand Content</div>
-              <div class="work-card-slogan">COLOURS OF NATURE</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tira Beauty x Kareena Kapoor (Director Role Only) -->
+        <!-- 3. Tira Kareena Kapoor -->
         <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="tira-beauty-kareena">
           <div class="work-card-media">
             <video src="assets/media/New folder/Kareena kapoor.mp4#t=0.5" data-poster="assets/images/posters/kareena-kapoor.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
@@ -217,7 +143,7 @@
               <span class="brand-logo-text">TIRA BEAUTY</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
               <h3 class="work-card-name">KAREENA KAPOOR x TIRA</h3>
@@ -227,97 +153,261 @@
           </div>
         </div>
 
-        <!-- Tira Beauty Ad Suite (Director Role Only) -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="performance,social" data-open-case="tira-beauty-campaign">
+        <!-- 4. John Jacobs (Got an eye for love) -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social" data-open-case="john-jacobs">
           <div class="work-card-media">
-            <video src="assets/media/New folder/Tira beauty 1.mp4#t=0.5" data-poster="assets/images/posters/tira-beauty-1.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <video src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4#t=2.5" data-poster="assets/images/posters/lenskart-john-jacbos-eyewear-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">JOHN JACOBS</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">JOHN JACOBS</h3>
+              <div class="work-card-subcat">Valentine's Day Film</div>
+              <div class="work-card-slogan">AN EYE FOR LOVE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Lenskart Blue Ray Glasses -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="lenskart-blue-ray">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/LENSKART BLUE RAY GLASSES FILM.mp4#t=0.5" data-poster="assets/images/posters/lenskart-blue-ray-glasses-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">∞ lenskart</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">LENSKART BLUE RAY</h3>
+              <div class="work-card-subcat">Screen Protection Ad</div>
+              <div class="work-card-slogan">PROTECT YOUR VISION</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Shorties for Tira Makeup -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="tira-makeup-shorties">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/TIRA MAKEUP SHORTIES.mp4#t=0.5" data-poster="assets/images/posters/tira-makeup-shorties.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
             <div class="work-brand-logo-tag">
               <span class="brand-logo-text">TIRA BEAUTY</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">TIRA BEAUTY SUITE</h3>
-              <div class="work-card-subcat">Digital Campaign (Director Role)</div>
+              <h3 class="work-card-name">TIRA MAKEUP SHORTIES</h3>
+              <div class="work-card-subcat">Digital Campaign</div>
               <div class="work-card-slogan">EXPRESS YOUR GLOW</div>
             </div>
           </div>
         </div>
 
-        <!-- 7. Aqualens -->
-        <div class="work-card-item" data-category="photoshoots" data-subcategories="catalogue,performance,product" data-open-case="aqualens-campaign">
+        <!-- 7. Lenskart Personality Film -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="lenskart-personality-film">
           <div class="work-card-media">
-            <video src="assets/media/testimonials/LENSKART TESTIMONIAL  (1).mp4#t=2.5" data-poster="assets/images/posters/lenskart-testimonial-1.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <video src="assets/media/tvc/LENSKART PERSONALITY FILM.mp4#t=0.5" data-poster="assets/images/posters/lenskart-personality-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">∞ lenskart</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">LENSKART PERSONALITY</h3>
+              <div class="work-card-subcat">Brand Film</div>
+              <div class="work-card-slogan">EXPRESS YOUR STYLE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Chandak Film -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="chandak-film">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/CHANDAK FILM.mp4#t=0.5" data-poster="assets/images/posters/chandak-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">CHANDAK GROUP</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">CHANDAK GROUP</h3>
+              <div class="work-card-subcat">Real Estate Ad</div>
+              <div class="work-card-slogan">PROMISE OF ELEGANCE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. LK Aqualens Film -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="lk-aqualens-film">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/LK AQUALENS FILM.mp4#t=0.5" data-poster="assets/images/posters/lk-aqualens-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
             <div class="work-brand-logo-tag">
               <span class="brand-logo-text">aqualens</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">AQUALENS</h3>
-              <div class="work-card-subcat">Photoshoots · Catalogue · Performance</div>
-              <div class="work-card-slogan">CLARITY THAT DEFINES YOU</div>
+              <h3 class="work-card-name">LK AQUALENS</h3>
+              <div class="work-card-subcat">Contact Lens Film</div>
+              <div class="work-card-slogan">FEEL THE CLARITY</div>
             </div>
           </div>
         </div>
 
-        <!-- 8. FIKN Elixir Perfume -->
-        <div class="work-card-item" data-category="vertical" data-subcategories="product,social" data-open-case="filn-perfume">
+        <!-- 10. Lenskart Shark Tank Film -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,performance" data-open-case="lenskart-shark-tank">
           <div class="work-card-media">
-            <video src="assets/media/tvc/FILN PERFUME FILM.mp4#t=0.5" data-poster="assets/images/posters/filn-perfume-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <video src="assets/media/tvc/LENSKART SHARK TANK FILM.mp4#t=0.5" data-poster="assets/images/posters/lenskart-shark-tank-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
             <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">FIKN ELIXIR</span>
+              <span class="brand-logo-text">∞ lenskart</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">FIKN ELIXIR</h3>
-              <div class="work-card-subcat">Perfume Brand Film</div>
-              <div class="work-card-slogan">SCENT OF STYLE</div>
+              <h3 class="work-card-name">LENSKART SHARK TANK</h3>
+              <div class="work-card-subcat">TVC Commercial</div>
+              <div class="work-card-slogan">VISION FOR ENTREPRENEURS</div>
             </div>
           </div>
         </div>
 
-        <!-- 8b. FIKN Elixir Perfume II -->
-        <div class="work-card-item" data-category="vertical" data-subcategories="product,social" data-open-case="fikn-elixir-2">
+        <!-- 11. boAt Commercial -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="boat-case-study">
           <div class="work-card-media">
-            <video src="assets/media/tvc/FIKN ELIXIR FILM 02.mp4#t=0.5" data-poster="assets/images/posters/fikn-elixir-film-02.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <video src="assets/media/tvc/BOAT FILM.mp4#t=0.5" data-poster="assets/images/posters/boat-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
             <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">FIKN ELIXIR</span>
+              <span class="brand-logo-text">boAt COMMERCIAL</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">FIKN ELIXIR</h3>
-              <div class="work-card-subcat">Perfume Brand Film</div>
-              <div class="work-card-slogan">SCENT OF STYLE</div>
+              <h3 class="work-card-name">boAt COMMERCIAL</h3>
+              <div class="work-card-subcat">Brand Case Study Film</div>
+              <div class="work-card-slogan">PLUG INTO NIRVANA</div>
             </div>
           </div>
         </div>
 
-        <!-- 8d. FIKN Elixir Perfume IV -->
-        <div class="work-card-item" data-category="vertical" data-subcategories="product,social" data-open-case="fikn-elixir-4">
+        <!-- 12. Gamers Film LK Blue Ray Glasses -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="lenskart-blue-ray-2">
           <div class="work-card-media">
-            <video src="assets/media/tvc/FIKN ELIXIR FILM 04.mp4#t=0.5" data-poster="assets/images/posters/fikn-elixir-film-04.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <video src="assets/media/tvc/LENSKART BLUE RAY GLASSES FILM 02.mp4#t=0.5" data-poster="assets/images/posters/lenskart-blue-ray-glasses-film-02.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
             <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">FIKN ELIXIR</span>
+              <span class="brand-logo-text">∞ lenskart</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">FIKN ELIXIR</h3>
-              <div class="work-card-subcat">Perfume Brand Film</div>
-              <div class="work-card-slogan">SCENT OF STYLE</div>
+              <h3 class="work-card-name">GAMERS FILM x LENSKART</h3>
+              <div class="work-card-subcat">Blue Ray Glasses Ad</div>
+              <div class="work-card-slogan">LEVEL UP YOUR VISION</div>
             </div>
           </div>
         </div>
 
-        <!-- 9. Karan Johar & Kusha Kapila -->
+        <!-- 13. Indus Valley Hair Colour -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="catalogue,product" data-open-case="indus-valley-brand">
+          <div class="work-card-media">
+            <video src="assets/media/Video-42213.mp4#t=0.1" data-poster="assets/images/posters/video-42213.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">Indus Valley</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">INDUS VALLEY</h3>
+              <div class="work-card-subcat">Hair Colour Brand Content</div>
+              <div class="work-card-slogan">COLOURS OF NATURE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Aqualens Contact Lens Film -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="aqualens-contact-lens-film">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/AQUALENS CONTACT LENS FILM.mp4#t=0.5" data-poster="assets/images/posters/aqualens-contact-lens-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">aqualens</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">AQUALENS CONTACT LENS</h3>
+              <div class="work-card-subcat">Digital TVC</div>
+              <div class="work-card-slogan">SEE THE WORLD CLEARLY</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. Maxima Watches Film -->
+        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="maxima-watches">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/MAXIMA WATCHES FILM.mp4#t=0.5" data-poster="assets/images/posters/maxima-watches-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">MAXIMA</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">MAXIMA WATCHES</h3>
+              <div class="work-card-subcat">Commercial Ad Film</div>
+              <div class="work-card-slogan">PRECISION & STYLE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ADDITIONAL CATEGORY CARDS (Vertical / Testimonials / Podcasts / Photoshoots) -->
+
+        <!-- Catalogue Shoots -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="performance,catalogue" data-open-case="lenskart-inf-03">
+          <div class="work-card-media">
+            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 03.mp4#t=2.5" data-poster="assets/images/posters/lenskart-influencers-film-03.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">∞ lenskart</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">CATALOGUE SHOOTS</h3>
+              <div class="work-card-subcat">Lenskart Collections</div>
+              <div class="work-card-slogan">STYLE. EVERY ANGLE.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance Ads -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="performance,catalogue" data-open-case="lenskart-inf-05">
+          <div class="work-card-media">
+            <video src="assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 05.mp4#t=2.5" data-poster="assets/images/posters/lenskart-influencers-film-05.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">∞ lenskart</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">PERFORMANCE ADS</h3>
+              <div class="work-card-subcat">Performance Campaigns</div>
+              <div class="work-card-slogan">SEE MORE. DO MORE.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Karan & Kusha -->
         <div class="work-card-item" data-category="vertical" data-subcategories="social,product" data-open-case="karan-johar-kusha">
           <div class="work-card-media">
             <video src="assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4#t=2.5" data-poster="assets/images/posters/karan-johar-kusha-kapila-x-lenskart-film-03.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
@@ -325,7 +415,7 @@
               <span class="brand-logo-text">∞ lenskart</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
               <h3 class="work-card-name">KARAN & KUSHA</h3>
@@ -335,7 +425,7 @@
           </div>
         </div>
 
-        <!-- 10. Orry & KFC Commercial -->
+        <!-- Orry & KFC Commercial -->
         <div class="work-card-item" data-category="vertical" data-subcategories="social,performance" data-open-case="orry-kfc">
           <div class="work-card-media">
             <video src="assets/media/vertical-films/ORRY & KFC.mp4#t=2.5" data-poster="assets/images/posters/orry-kfc.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
@@ -343,7 +433,7 @@
               <span class="brand-logo-text">KFC INDIA</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
               <h3 class="work-card-name">ORRY & KFC</h3>
@@ -353,7 +443,7 @@
           </div>
         </div>
 
-        <!-- 11. KFC x Jitesh Sharma -->
+        <!-- KFC x Jitesh Sharma -->
         <div class="work-card-item" data-category="vertical" data-subcategories="social,performance" data-open-case="kfc-jitesh">
           <div class="work-card-media">
             <video src="assets/media/vertical-films/KFC X JITESH SHARMA ( RCB).mp4#t=2.5" data-poster="assets/images/posters/kfc-x-jitesh-sharma-rcb.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
@@ -361,7 +451,7 @@
               <span class="brand-logo-text">KFC x RCB</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
               <h3 class="work-card-name">JITESH SHARMA</h3>
@@ -371,7 +461,7 @@
           </div>
         </div>
 
-        <!-- 12. Thumbs Up x Zaid Darbar -->
+        <!-- Thumbs Up x Zaid Darbar -->
         <div class="work-card-item" data-category="vertical" data-subcategories="social" data-open-case="thumbsup-zaid">
           <div class="work-card-media" style="background-image: url('assets/images/posters/zaid_darbar_poster.jpg'); background-size: cover; background-position: center;">
             <video src="assets/media/vertical-films/THUMBS UP X ZAID DARBAR FILM.mp4" data-poster="assets/images/posters/zaid_darbar_poster.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
@@ -379,7 +469,7 @@
               <span class="brand-logo-text">THUMS UP</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
               <h3 class="work-card-name">ZAID DARBAR</h3>
@@ -389,7 +479,80 @@
           </div>
         </div>
 
-        <!-- 13. Lenskart Partner Testimonial -->
+        <!-- FIKN Elixir Perfume -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="product,social" data-open-case="filn-perfume">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/FILN PERFUME FILM.mp4#t=0.5" data-poster="assets/images/posters/filn-perfume-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">FIKN ELIXIR</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">FIKN ELIXIR</h3>
+              <div class="work-card-subcat">Perfume Brand Film</div>
+              <div class="work-card-slogan">SCENT OF STYLE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIKN Elixir Perfume II -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="product,social" data-open-case="fikn-elixir-2">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/FIKN ELIXIR FILM 02.mp4#t=0.5" data-poster="assets/images/posters/fikn-elixir-film-02.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">FIKN ELIXIR</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">FIKN ELIXIR</h3>
+              <div class="work-card-subcat">Perfume Brand Film</div>
+              <div class="work-card-slogan">SCENT OF STYLE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIKN Elixir Perfume IV -->
+        <div class="work-card-item" data-category="vertical" data-subcategories="product,social" data-open-case="fikn-elixir-4">
+          <div class="work-card-media">
+            <video src="assets/media/tvc/FIKN ELIXIR FILM 04.mp4#t=0.5" data-poster="assets/images/posters/fikn-elixir-film-04.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">FIKN ELIXIR</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">FIKN ELIXIR</h3>
+              <div class="work-card-subcat">Perfume Brand Film</div>
+              <div class="work-card-slogan">SCENT OF STYLE</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TESTIMONIALS SECTION CARDS -->
+        <!-- WOW Skin Science Testimonial I -->
+        <div class="work-card-item" data-category="testimonials" data-subcategories="product,social" data-open-case="wow-brand-content">
+          <div class="work-card-media">
+            <video src="assets/media/testimonials/WOW TESTIMONIAL .mp4#t=2.5" data-poster="assets/images/posters/wow-testimonial.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">WOW™ SKIN SCIENCE</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">WOW Skin Science I</h3>
+              <div class="work-card-subcat">Digital / Brand Content</div>
+              <div class="work-card-slogan">NATURE. SCIENCE. YOU.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lenskart Partner Testimonial -->
         <div class="work-card-item" data-category="testimonials" data-subcategories="social" data-open-case="testimonial-lenskart-1">
           <div class="work-card-media">
             <video src="assets/media/testimonials/LENSKART TESTIMONIAL FILM.mp4#t=2.5" data-poster="assets/images/posters/lenskart-testimonial-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
@@ -397,17 +560,37 @@
               <span class="brand-logo-text">∞ lenskart</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">PARTNER TESTIMONIAL</h3>
+              <h3 class="work-card-name">Partner Testimonial I</h3>
               <div class="work-card-subcat">Lenskart Leadership Story</div>
               <div class="work-card-slogan">TRUSTED PARTNERSHIP</div>
             </div>
           </div>
         </div>
 
-        <!-- 14. SimplAI Podcast -->
+        <!-- Lenskart Leadership Testimonial II -->
+        <div class="work-card-item" data-category="testimonials" data-subcategories="social" data-open-case="testimonial-lenskart-2">
+          <div class="work-card-media">
+            <video src="assets/media/testimonials/LENSKART TESTIMONIAL  (1).mp4#t=2.5" data-poster="assets/images/posters/lenskart-testimonial-1.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
+            <div class="work-brand-logo-tag">
+              <span class="brand-logo-text">∞ lenskart</span>
+            </div>
+            <div class="work-card-play-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">Leadership Testimonial</h3>
+              <div class="work-card-subcat">Lenskart Leadership Story</div>
+              <div class="work-card-slogan">CREATIVE ALIGNMENT</div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- SimplAI Podcast -->
         <div class="work-card-item" data-category="podcasts" data-subcategories="social" data-open-case="podcast-simplai">
           <div class="work-card-media" style="background-image: url('assets/images/posters/simplai_podcast_poster.jpg'); background-size: cover; background-position: center;">
             <video src="assets/media/podcast/Podcast.mp4" data-poster="assets/images/posters/simplai_podcast_poster.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
@@ -415,7 +598,7 @@
               <span class="brand-logo-text">simplAI</span>
             </div>
             <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
             </div>
             <div class="work-card-bottom-overlay">
               <h3 class="work-card-name">SIMPLAI PODCAST</h3>
@@ -425,245 +608,352 @@
           </div>
         </div>
 
-        <!-- 15. Music Video Space -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social" data-open-case="music-video-space">
-          <div class="work-card-media" style="background-image: url('assets/images/posters/music_video_space_poster.jpg'); background-size: cover; background-position: center;">
-            <video src="assets/media/music-video/song-music-video.mp4" data-poster="assets/images/posters/music_video_space_poster.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">ANAVA MUSIC</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-01.jpg" target="_blank" rel="noopener" aria-label="Male model holding a contact lens pack — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-01-560.webp"
+            srcset="assets/images/photoshoots/shoot-01-560.webp 560w, assets/images/photoshoots/shoot-01.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Male model holding a contact lens pack" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-02.jpg" target="_blank" rel="noopener" aria-label="Male model holding a turquoise lens case — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-02-560.webp"
+            srcset="assets/images/photoshoots/shoot-02-560.webp 560w, assets/images/photoshoots/shoot-02.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Male model holding a turquoise lens case" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-03.jpg" target="_blank" rel="noopener" aria-label="Beauty portrait with hand framing the face — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-03-560.webp"
+            srcset="assets/images/photoshoots/shoot-03-560.webp 560w, assets/images/photoshoots/shoot-03.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Beauty portrait with hand framing the face" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-04.jpg" target="_blank" rel="noopener" aria-label="Studio portrait in a beige top — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-04-560.webp"
+            srcset="assets/images/photoshoots/shoot-04-560.webp 560w, assets/images/photoshoots/shoot-04.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Studio portrait in a beige top" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-05.jpg" target="_blank" rel="noopener" aria-label="Model holding a lens pack beside her face — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-05-560.webp"
+            srcset="assets/images/photoshoots/shoot-05-560.webp 560w, assets/images/photoshoots/shoot-05.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Model holding a lens pack beside her face" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-06.jpg" target="_blank" rel="noopener" aria-label="Model presenting a contact lens pack — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-06-560.webp"
+            srcset="assets/images/photoshoots/shoot-06-560.webp 560w, assets/images/photoshoots/shoot-06.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Model presenting a contact lens pack" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-07.jpg" target="_blank" rel="noopener" aria-label="Close-up eye portrait of a male model — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-07-560.webp"
+            srcset="assets/images/photoshoots/shoot-07-560.webp 560w, assets/images/photoshoots/shoot-07.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Close-up eye portrait of a male model" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-08.jpg" target="_blank" rel="noopener" aria-label="Studio portrait in a green dress — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-08-560.webp"
+            srcset="assets/images/photoshoots/shoot-08-560.webp 560w, assets/images/photoshoots/shoot-08.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Studio portrait in a green dress" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-09.jpg" target="_blank" rel="noopener" aria-label="Beauty portrait holding a lens pack near the forehead — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-09-560.webp"
+            srcset="assets/images/photoshoots/shoot-09-560.webp 560w, assets/images/photoshoots/shoot-09.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Beauty portrait holding a lens pack near the forehead" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-10.jpg" target="_blank" rel="noopener" aria-label="Over-the-shoulder beauty portrait — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-10-560.webp"
+            srcset="assets/images/photoshoots/shoot-10-560.webp 560w, assets/images/photoshoots/shoot-10.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Over-the-shoulder beauty portrait" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-11.jpg" target="_blank" rel="noopener" aria-label="Model in a green dress holding a lens pack — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-11-560.webp"
+            srcset="assets/images/photoshoots/shoot-11-560.webp 560w, assets/images/photoshoots/shoot-11.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Model in a green dress holding a lens pack" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-12.jpg" target="_blank" rel="noopener" aria-label="Two models in a white studio — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-12-560.webp"
+            srcset="assets/images/photoshoots/shoot-12-560.webp 560w, assets/images/photoshoots/shoot-12.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Two models in a white studio" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-13.jpg" target="_blank" rel="noopener" aria-label="Three models posed together in a white studio — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-13-560.webp"
+            srcset="assets/images/photoshoots/shoot-13-560.webp 560w, assets/images/photoshoots/shoot-13.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Three models posed together in a white studio" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-14.jpg" target="_blank" rel="noopener" aria-label="Group portrait of three female models — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-14-560.webp"
+            srcset="assets/images/photoshoots/shoot-14-560.webp 560w, assets/images/photoshoots/shoot-14.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Group portrait of three female models" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-15.jpg" target="_blank" rel="noopener" aria-label="Male portrait with a narrow beam of light across the eyes — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-15-560.webp"
+            srcset="assets/images/photoshoots/shoot-15-560.webp 560w, assets/images/photoshoots/shoot-15.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Male portrait with a narrow beam of light across the eyes" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-16.jpg" target="_blank" rel="noopener" aria-label="Female portrait with a narrow beam of light across the eyes — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-16-560.webp"
+            srcset="assets/images/photoshoots/shoot-16-560.webp 560w, assets/images/photoshoots/shoot-16.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Female portrait with a narrow beam of light across the eyes" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-17.jpg" target="_blank" rel="noopener" aria-label="Dramatically lit beauty portrait — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-17-560.webp"
+            srcset="assets/images/photoshoots/shoot-17-560.webp 560w, assets/images/photoshoots/shoot-17.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Dramatically lit beauty portrait" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-18.jpg" target="_blank" rel="noopener" aria-label="Close-up beauty portrait with warm lighting — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-18-560.webp"
+            srcset="assets/images/photoshoots/shoot-18-560.webp 560w, assets/images/photoshoots/shoot-18.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Close-up beauty portrait with warm lighting" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-19.jpg" target="_blank" rel="noopener" aria-label="Studio portrait against a dark background — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-19-560.webp"
+            srcset="assets/images/photoshoots/shoot-19-560.webp 560w, assets/images/photoshoots/shoot-19.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Studio portrait against a dark background" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-20.jpg" target="_blank" rel="noopener" aria-label="Close-up portrait of a model in a white top — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-20-560.webp"
+            srcset="assets/images/photoshoots/shoot-20-560.webp 560w, assets/images/photoshoots/shoot-20.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Close-up portrait of a model in a white top" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-21.jpg" target="_blank" rel="noopener" aria-label="Three models presenting contact lens products — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-21-560.webp"
+            srcset="assets/images/photoshoots/shoot-21-560.webp 560w, assets/images/photoshoots/shoot-21.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Three models presenting contact lens products" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-22.jpg" target="_blank" rel="noopener" aria-label="Two models holding contact lens packs — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-22-560.webp"
+            srcset="assets/images/photoshoots/shoot-22-560.webp 560w, assets/images/photoshoots/shoot-22.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Two models holding contact lens packs" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-23.jpg" target="_blank" rel="noopener" aria-label="Close-up portrait of two models — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-23-560.webp"
+            srcset="assets/images/photoshoots/shoot-23-560.webp 560w, assets/images/photoshoots/shoot-23.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Close-up portrait of two models" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-24.jpg" target="_blank" rel="noopener" aria-label="Model in a red outfit holding a green lens pack — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-24-560.webp"
+            srcset="assets/images/photoshoots/shoot-24-560.webp 560w, assets/images/photoshoots/shoot-24.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Model in a red outfit holding a green lens pack" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-25.jpg" target="_blank" rel="noopener" aria-label="Front-facing close-up beauty portrait — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-25-560.webp"
+            srcset="assets/images/photoshoots/shoot-25-560.webp 560w, assets/images/photoshoots/shoot-25.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Front-facing close-up beauty portrait" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-26.jpg" target="_blank" rel="noopener" aria-label="Two models in red and green outfits — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-26-560.webp"
+            srcset="assets/images/photoshoots/shoot-26-560.webp 560w, assets/images/photoshoots/shoot-26.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Two models in red and green outfits" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-27.jpg" target="_blank" rel="noopener" aria-label="Smiling model in a red outfit holding a lens pack — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-27-560.webp"
+            srcset="assets/images/photoshoots/shoot-27-560.webp 560w, assets/images/photoshoots/shoot-27.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Smiling model in a red outfit holding a lens pack" loading="lazy" decoding="async">
+        </a>
+        <a class="work-card-item photoshoot-card" data-category="photoshoots" href="assets/images/photoshoots/shoot-28.jpg" target="_blank" rel="noopener" aria-label="Male model framing his face with his hands — open full image in a new tab" style="display: none;">
+          <img src="assets/images/photoshoots/shoot-28-560.webp"
+            srcset="assets/images/photoshoots/shoot-28-560.webp 560w, assets/images/photoshoots/shoot-28.jpg 1120w"
+            sizes="(max-width: 640px) calc((100vw - 3rem) / 2), (max-width: 1024px) 30vw, 23vw"
+            width="1120" height="1488" alt="Male model framing his face with his hands" loading="lazy" decoding="async">
+        </a>
+
+        <div class="work-card-item event-card" data-category="events" data-open-case="lenskart-superman-1" style="display: none;">
+          <div class="work-card-media">
+            <video src="assets/media/event-films/LENSKART X SUPERMAN MOVIE.mp4" poster="assets/images/posters/event-lenskart-superman-1.jpg" data-poster="assets/images/posters/event-lenskart-superman-1.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play LENSKART X SUPERMAN — FILM 1">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">I NEED MY SPACE</h3>
-              <div class="work-card-subcat">Narrative Music Film</div>
-              <div class="work-card-slogan">CINEMATIC FREEDOM</div>
+              <h3 class="work-card-name">LENSKART X SUPERMAN — FILM 1</h3>
+              <div class="work-card-subcat">Event Film</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-card-item event-card" data-category="events" data-open-case="lenskart-superman-2" style="display: none;">
+          <div class="work-card-media">
+            <video src="assets/media/event-films/LENSKART X SUPERMAN MOVIE-2.mp4" poster="assets/images/posters/event-lenskart-superman-2.jpg" data-poster="assets/images/posters/event-lenskart-superman-2.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play LENSKART X SUPERMAN — FILM 2">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">LENSKART X SUPERMAN — FILM 2</h3>
+              <div class="work-card-subcat">Event Film</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-card-item event-card" data-category="events" data-open-case="celio-event" style="display: none;">
+          <div class="work-card-media">
+            <video src="assets/media/event-films/Celio.mp4" poster="assets/images/posters/event-celio-event.jpg" data-poster="assets/images/posters/event-celio-event.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play CELIO">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">CELIO</h3>
+              <div class="work-card-subcat">Event Film</div>
+            </div>
+          </div>
+        </div>
+        <div class="work-card-item event-card" data-category="events" data-open-case="godrej-properties-event" style="display: none;">
+          <div class="work-card-media">
+            <video src="assets/media/event-films/Godrej properties.mp4" poster="assets/images/posters/event-godrej-properties-event.jpg" data-poster="assets/images/posters/event-godrej-properties-event.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play GODREJ PROPERTIES">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <div class="work-card-bottom-overlay">
+              <h3 class="work-card-name">GODREJ PROPERTIES</h3>
+              <div class="work-card-subcat">Event Film</div>
             </div>
           </div>
         </div>
 
-        <!-- Maxima Watches -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="maxima-watches">
+        <div class="work-card-item vertical-added-card" data-category="vertical" data-open-case="aqua-color-1" style="display: none;">
           <div class="work-card-media">
-            <video src="assets/media/tvc/MAXIMA WATCHES FILM.mp4#t=0.5" data-poster="assets/images/posters/maxima-watches-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">MAXIMA</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+            <video src="assets/media/vertical-films/aqua-color-1.mp4" poster="assets/images/posters/aqua-color-1.png" data-poster="assets/images/posters/aqua-color-1.png" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play AQUA COLOR — FILM 1">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">MAXIMA WATCHES</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">TIME. WELL DESIGNED.</div>
+              <h3 class="work-card-name">AQUA COLOR — FILM 1</h3>
+              <div class="work-card-subcat">Vertical Film</div>
             </div>
           </div>
         </div>
-
-        <!-- Boat -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="boat-case-study">
+        <div class="work-card-item vertical-added-card" data-category="vertical" data-open-case="aqua-color-2" style="display: none;">
           <div class="work-card-media">
-            <video src="assets/media/tvc/BOAT FILM.mp4#t=0.5" data-poster="assets/images/posters/boat-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">boAt</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+            <video src="assets/media/vertical-films/aqua-color-2.mp4" poster="assets/images/posters/aqua-color-2.png" data-poster="assets/images/posters/aqua-color-2.png" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play AQUA COLOR — FILM 2">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">BOAT</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">PLUGGED IN. TUNED UP.</div>
+              <h3 class="work-card-name">AQUA COLOR — FILM 2</h3>
+              <div class="work-card-subcat">Vertical Film</div>
             </div>
           </div>
         </div>
-
-        <!-- Lenskart Shark Tank -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,performance" data-open-case="lenskart-shark-tank">
+        <div class="work-card-item vertical-added-card" data-category="vertical" data-open-case="lenskart-performance-27" style="display: none;">
           <div class="work-card-media">
-            <video src="assets/media/tvc/LENSKART SHARK TANK FILM.mp4#t=0.5" data-poster="assets/images/posters/lenskart-shark-tank-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">∞ lenskart</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+            <video src="assets/media/vertical-films/lenskart-performance-27.mp4" poster="assets/images/posters/lenskart-performance-27.jpg" data-poster="assets/images/posters/lenskart-performance-27.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play LENSKART — PERFORMANCE FILM 27">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">SHARK TANK</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">SEE THE DEAL CLEARLY</div>
+              <h3 class="work-card-name">LENSKART — PERFORMANCE FILM 27</h3>
+              <div class="work-card-subcat">Vertical Film</div>
             </div>
           </div>
         </div>
-
-        <!-- Sunil Shetty -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,performance" data-open-case="sunil-shetty-film">
+        <div class="work-card-item vertical-added-card" data-category="vertical" data-open-case="lenskart-performance-28" style="display: none;">
           <div class="work-card-media">
-            <video src="assets/media/tvc/SUNIL SHETTY FILM.mp4#t=0.5" data-poster="assets/images/posters/sunil-shetty-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">SUNIL SHETTY</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+            <video src="assets/media/vertical-films/lenskart-performance-28.mp4" poster="assets/images/posters/lenskart-performance-28.jpg" data-poster="assets/images/posters/lenskart-performance-28.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play LENSKART — PERFORMANCE FILM 28">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">SUNIL SHETTY</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">STAR POWER. REAL IMPACT.</div>
+              <h3 class="work-card-name">LENSKART — PERFORMANCE FILM 28</h3>
+              <div class="work-card-subcat">Vertical Film</div>
             </div>
           </div>
         </div>
-
-        <!-- Chandak -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="chandak-film">
+        <div class="work-card-item vertical-added-card" data-category="vertical" data-open-case="lenskart-performance-40" style="display: none;">
           <div class="work-card-media">
-            <video src="assets/media/tvc/CHANDAK FILM.mp4#t=0.5" data-poster="assets/images/posters/chandak-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">CHANDAK</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+            <video src="assets/media/vertical-films/lenskart-performance-40.mp4" poster="assets/images/posters/lenskart-performance-40.jpg" data-poster="assets/images/posters/lenskart-performance-40.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play LENSKART — PERFORMANCE FILM 40">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">CHANDAK</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">CRAFTED FOR TRUST</div>
+              <h3 class="work-card-name">LENSKART — PERFORMANCE FILM 40</h3>
+              <div class="work-card-subcat">Vertical Film</div>
             </div>
           </div>
         </div>
-
-        <!-- Lenskart Blue Ray Glasses -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="lenskart-blue-ray">
+        <div class="work-card-item vertical-added-card" data-category="vertical" data-open-case="lenskart-performance-42" style="display: none;">
           <div class="work-card-media">
-            <video src="assets/media/tvc/LENSKART BLUE RAY GLASSES FILM.mp4#t=0.5" data-poster="assets/images/posters/lenskart-blue-ray-glasses-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">∞ lenskart</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+            <video src="assets/media/vertical-films/lenskart-performance-42.mp4" poster="assets/images/posters/lenskart-performance-42.jpg" data-poster="assets/images/posters/lenskart-performance-42.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play LENSKART — PERFORMANCE FILM 42">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">BLUE RAY GLASSES</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">SCREEN SAFE. STYLE READY.</div>
+              <h3 class="work-card-name">LENSKART — PERFORMANCE FILM 42</h3>
+              <div class="work-card-subcat">Vertical Film</div>
             </div>
           </div>
         </div>
-
-        <!-- Lenskart Blue Ray Glasses II -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="lenskart-blue-ray-2">
+        <div class="work-card-item vertical-added-card" data-category="vertical" data-open-case="lenskart-performance-49" style="display: none;">
           <div class="work-card-media">
-            <video src="assets/media/tvc/LENSKART BLUE RAY GLASSES FILM 02.mp4#t=0.5" data-poster="assets/images/posters/lenskart-blue-ray-glasses-film-02.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">∞ lenskart</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+            <video src="assets/media/vertical-films/lenskart-performance-49.mp4" poster="assets/images/posters/lenskart-performance-49.jpg" data-poster="assets/images/posters/lenskart-performance-49.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play LENSKART — PERFORMANCE FILM 49">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">BLUE RAY GLASSES</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">SCREEN SAFE. STYLE READY.</div>
+              <h3 class="work-card-name">LENSKART — PERFORMANCE FILM 49</h3>
+              <div class="work-card-subcat">Vertical Film</div>
             </div>
           </div>
         </div>
-
-        <!-- Lenskart Personality Film -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="lenskart-personality-film">
+        <div class="work-card-item vertical-added-card" data-category="vertical" data-open-case="lenskart-performance-50" style="display: none;">
           <div class="work-card-media">
-            <video src="assets/media/tvc/LENSKART PERSONALITY FILM.mp4#t=0.5" data-poster="assets/images/posters/lenskart-personality-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">∞ lenskart</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+            <video src="assets/media/vertical-films/lenskart-performance-50.mp4" poster="assets/images/posters/lenskart-performance-50.jpg" data-poster="assets/images/posters/lenskart-performance-50.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play LENSKART — PERFORMANCE FILM 50">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">PERSONALITY FILM</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">FRAMES THAT FIT YOU</div>
+              <h3 class="work-card-name">LENSKART — PERFORMANCE FILM 50</h3>
+              <div class="work-card-subcat">Vertical Film</div>
             </div>
           </div>
         </div>
-
-        <!-- LK Aqualens -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="lk-aqualens-film">
+        <div class="work-card-item vertical-added-card" data-category="vertical" data-open-case="lenskart-performance-51" style="display: none;">
           <div class="work-card-media">
-            <video src="assets/media/tvc/LK AQUALENS FILM.mp4#t=0.5" data-poster="assets/images/posters/lk-aqualens-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">aqualens</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+            <video src="assets/media/vertical-films/lenskart-performance-51.mp4" poster="assets/images/posters/lenskart-performance-51.jpg" data-poster="assets/images/posters/lenskart-performance-51.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play LENSKART — PERFORMANCE FILM 51">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">LK AQUALENS</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">CLARITY THAT DEFINES YOU</div>
+              <h3 class="work-card-name">LENSKART — PERFORMANCE FILM 51</h3>
+              <div class="work-card-subcat">Vertical Film</div>
             </div>
           </div>
         </div>
-
-        <!-- Tira Makeup Shorties -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="tira-makeup-shorties">
+        <div class="work-card-item vertical-added-card" data-category="vertical" data-open-case="lenskart-performance-52" style="display: none;">
           <div class="work-card-media">
-            <video src="assets/media/tvc/TIRA MAKEUP SHORTIES.mp4#t=0.5" data-poster="assets/images/posters/tira-makeup-shorties.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">TIRA BEAUTY</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+            <video src="assets/media/vertical-films/lenskart-performance-52.mp4" poster="assets/images/posters/lenskart-performance-52.jpg" data-poster="assets/images/posters/lenskart-performance-52.jpg" class="work-card-video" width="720" height="1280" muted loop playsinline preload="none"></video>
+            <button type="button" class="work-card-play-btn" aria-label="Play LENSKART — PERFORMANCE FILM 52">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="#ffffff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            </button>
             <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">MAKEUP SHORTIES</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">EXPRESS YOUR GLOW</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tira Short 3 - Skin -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="tira-short-3-skin">
-          <div class="work-card-media">
-            <video src="assets/media/tvc/TIRA SHORT 3 SKIN.mp4#t=0.5" data-poster="assets/images/posters/tira-short-3-skin.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">TIRA BEAUTY</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">SKIN SHORTS</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">GLOW FROM WITHIN</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Aqualens Contact Lens Film -->
-        <div class="work-card-item" data-category="tvc" data-subcategories="social,product" data-open-case="aqualens-contact-lens-film">
-          <div class="work-card-media">
-            <video src="assets/media/tvc/AQUALENS CONTACT LENS FILM.mp4#t=0.5" data-poster="assets/images/posters/aqualens-contact-lens-film.jpg" class="work-card-video" muted loop playsinline preload="none"></video>
-            <div class="work-brand-logo-tag">
-              <span class="brand-logo-text">aqualens</span>
-            </div>
-            <div class="work-card-play-btn">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <div class="work-card-bottom-overlay">
-              <h3 class="work-card-name">CONTACT LENS FILM</h3>
-              <div class="work-card-subcat">Digital TVC</div>
-              <div class="work-card-slogan">SEE THE WORLD CLEARLY</div>
+              <h3 class="work-card-name">LENSKART — PERFORMANCE FILM 52</h3>
+              <div class="work-card-subcat">Vertical Film</div>
             </div>
           </div>
         </div>
 
       </div>
 
+      <p id="work-empty-state" class="work-empty-state" role="status" hidden>No photoshoots to display yet.</p>
+
       <!-- Load More Button -->
       <div style="text-align: center; margin-top: 3.5rem;">
-        <button id="load-more-btn" style="background: transparent; border: 1px solid #f5b719; color: #f5b719; font-weight: 500; padding: 0.9rem 2.2rem; letter-spacing: 0.03em; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+        <button id="load-more-btn" style="background: transparent; border: 1px solid #c55e02; color: #c55e02; font-weight: 500; padding: 0.9rem 2.2rem; letter-spacing: 0.03em; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
           LOAD MORE WORK +
         </button>
       </div>

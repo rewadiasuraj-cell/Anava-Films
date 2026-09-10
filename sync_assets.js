@@ -29,8 +29,8 @@ const avatarJackson = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 
     </linearGradient>
   </defs>
   <rect width="400" height="400" fill="url(#g1)"/>
-  <circle cx="200" cy="140" r="65" fill="#f5b719" opacity="0.9"/>
-  <path d="M70 360 C70 240, 330 240, 330 360 Z" fill="#f5b719" opacity="0.9"/>
+  <circle cx="200" cy="140" r="65" fill="#c55e02" opacity="0.9"/>
+  <path d="M70 360 C70 240, 330 240, 330 360 Z" fill="#c55e02" opacity="0.9"/>
   <text x="200" y="380" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="2">JACKSON KHATRI</text>
 </svg>`;
 

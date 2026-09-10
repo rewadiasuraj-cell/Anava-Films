@@ -1,0 +1,21 @@
+ANAVA FILMS — LATEST ALL UPDATES (10 SEPTEMBER 2026)
+
+This single ZIP supersedes earlier source/patch ZIPs. Merge its anava-films contents into your ORIGINAL full project, replacing matching files only. Preserve files absent from this ZIP, especially the original assets/media videos that were excluded from the initial upload. Do not replace/delete the whole original project directory. Back up first.
+
+INCLUDED
+- Six-page GET IN TOUCH header CTA matching the homepage, including orange circular arrow and mobile menu.
+- Exact supplied homepage studio background, dark overlay, and exact supplied centered description. Desktop >=1200px uses three lines; smaller widths wrap naturally.
+- SUNIL SHETTY label without x LENSKART; I NEED MY SPACE removed from TVCs; WOW Skin Science moved exclusively to Testimonials.
+- What Brands Say subtitle: Your friendly neighbourhood ANAVA FILMS.
+- All 28 supplied photos, originals unchanged, responsive thumbnails and a 4/3/2-column gallery.
+- EVENTS tab: two Lenskart x Superman films, Celio, Godrej Properties. All four supplied MP4s included unchanged, with extracted posters and portrait playback.
+- VERTICAL tab: existing nine preserved, plus Aqua Color films 1 and 2 and Lenskart Performance films 27, 28, 40, 42, 49, 50, 51, 52. Total 19. All ten new MP4s included unchanged. Image 1 assigned to Aqua Color 1; image 2 to Aqua Color 2; supplied thumbnail bytes unchanged. Other posters extracted from the clips.
+
+DUPLICATE REVIEW
+No matching existing filename/reference for the ten new clips. No identical new files, duplicate Work card IDs or identical Work card video source paths. Existing card posters reviewed for obvious overlap. Original old video binaries were excluded from the first project ZIP, so identical footage under a different old filename cannot be conclusively ruled out. No unverified old cards were removed.
+
+VALIDATION
+Build and JavaScript syntax passed. Filter checks: TVCs 15, Testimonials 3, Podcasts 1, Vertical 19, Photoshoots 28, Events 4. New media sources/posters verified; all fourteen supplied videos fully decoded with ffmpeg. New video files and Aqua thumbnails checked byte-for-byte against uploads. Browser visual/playback review and live deployment remain pending.
+
+DEPLOYMENT
+After merging into the original complete project, run npm run build and use the existing hosting process. Never mirror/delete deploy from this reduced-media package. No live deployment has been performed.

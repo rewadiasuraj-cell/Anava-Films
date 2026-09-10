@@ -445,16 +445,16 @@ function initHeaderScroll() {
    4.5 Homepage Portfolio Category Tabs (Client Work / My Work / Projects)
    -------------------------------------------------------------------------- */
 const PORTFOLIO_ROLE_ICONS = {
-  'Creative Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>',
-  'Ideation': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.4-2.5l13.2-4.4c1.1-.3 2.2.3 2.5 1.4L20.2 6Z"/><path d="M11.9 8.1l3.5 6.9"/><path d="M6.3 9.7l3.5 6.9"/><path d="M3.3 22 3 11"/><path d="M13 22h6a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H8"/></svg>',
-  'Production': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
-  'Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
-  'Scripting': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
-  'Celebrity Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-  'Post-Production': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>'
+  'Creative Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>',
+  'Ideation': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.4-2.5l13.2-4.4c1.1-.3 2.2.3 2.5 1.4L20.2 6Z"/><path d="M11.9 8.1l3.5 6.9"/><path d="M6.3 9.7l3.5 6.9"/><path d="M3.3 22 3 11"/><path d="M13 22h6a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H8"/></svg>',
+  'Production': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  'Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+  'Scripting': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+  'Celebrity Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  'Post-Production': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>'
 };
 
-const PORTFOLIO_ROLE_ICON_FALLBACK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#f5b719"><circle cx="12" cy="12" r="4"/></svg>';
+const PORTFOLIO_ROLE_ICON_FALLBACK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#c55e02"><circle cx="12" cy="12" r="4"/></svg>';
 
 function renderPortfolioRoleBadges(container, roles) {
   if (!container || !roles) return;
@@ -543,81 +543,112 @@ const SHOWREEL_PLAYLIST = [
 ];
 
 function initShowreel() {
-  const showreelVideo = document.getElementById('showreel-player');
-  const showreelBg = document.querySelector('.showreel-video-bg');
-  const soundToggle = document.getElementById('showreel-sound-toggle');
-  const nextBtn = document.getElementById('showreel-next-btn');
-  const nextDurationLabel = document.getElementById('showreel-current-duration');
-  if (!showreelVideo) return;
+  const showreelContainers = document.querySelectorAll('.showreel-container');
+  if (!showreelContainers.length) return;
 
-  let showreelIndex = 0;
+  showreelContainers.forEach((container) => {
+    const showreelVideo = container.querySelector('.showreel-video');
+    const showreelBg = container.querySelector('.showreel-video-bg');
+    const soundToggle = container.querySelector('.showreel-play-label');
+    const iconSpan = soundToggle ? soundToggle.querySelector('.showreel-play-icon') : null;
 
-  showreelVideo.muted = true;
-  showreelVideo.playsInline = true;
-  if (showreelVideo.dataset.poster) showreelVideo.poster = showreelVideo.dataset.poster;
+    if (!showreelVideo) return;
 
-  if (showreelBg) {
-    showreelBg.muted = true;
-    showreelBg.playsInline = true;
-    if (showreelBg.dataset.poster) showreelBg.poster = showreelBg.dataset.poster;
-  }
+    showreelVideo.muted = true;
+    showreelVideo.playsInline = true;
+    if (showreelVideo.dataset.poster) showreelVideo.poster = showreelVideo.dataset.poster;
 
-  // IntersectionObserver to play when in viewport
-  let showreelIsVisible = false;
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        showreelIsVisible = entry.isIntersecting;
-        if (entry.isIntersecting) {
-          showreelVideo.play().catch(() => {});
-          if (showreelBg) showreelBg.play().catch(() => {});
-        } else {
-          showreelVideo.pause();
-          if (showreelBg) showreelBg.pause();
+    if (showreelBg) {
+      showreelBg.muted = true;
+      showreelBg.playsInline = true;
+      if (showreelBg.dataset.poster) showreelBg.poster = showreelBg.dataset.poster;
+    }
+
+    // IntersectionObserver to play when in viewport
+    let showreelIsVisible = false;
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          showreelIsVisible = entry.isIntersecting;
+          if (entry.isIntersecting) {
+            showreelVideo.play().catch(() => {});
+            if (showreelBg) showreelBg.play().catch(() => {});
+          } else {
+            showreelVideo.pause();
+            if (showreelBg) showreelBg.pause();
+          }
+        });
+      }, { threshold: 0.25 });
+      observer.observe(showreelVideo);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        showreelVideo.pause();
+        if (showreelBg) showreelBg.pause();
+      } else if (showreelIsVisible) {
+        showreelVideo.play().catch(() => {});
+        if (showreelBg) showreelBg.play().catch(() => {});
+      }
+    });
+
+    if (soundToggle) {
+      soundToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const willMute = !showreelVideo.muted;
+
+        if (!willMute) {
+          // Unmuting this video: mute all other videos across the site
+          document.querySelectorAll('video').forEach(v => {
+            if (v !== showreelVideo && v !== showreelBg) {
+              v.muted = true;
+            }
+          });
+        }
+
+        showreelVideo.muted = willMute;
+        soundToggle.setAttribute('aria-pressed', String(!showreelVideo.muted));
+        if (iconSpan) {
+          iconSpan.innerHTML = showreelVideo.muted
+            ? `<svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>`
+            : `<svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>`;
         }
       });
-    }, { threshold: 0.25 });
-    observer.observe(showreelVideo);
-  }
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      showreelVideo.pause();
-      if (showreelBg) showreelBg.pause();
-    } else if (showreelIsVisible) {
-      showreelVideo.play().catch(() => {});
-      if (showreelBg) showreelBg.play().catch(() => {});
     }
   });
 
-  if (soundToggle) {
-    soundToggle.addEventListener('click', () => {
-      showreelVideo.muted = !showreelVideo.muted;
-      soundToggle.setAttribute('aria-pressed', String(!showreelVideo.muted));
-    });
-  }
+  // Next playlist button logic for primary showreel section
+  const primarySection = document.getElementById('showreel');
+  if (primarySection) {
+    const nextBtn = primarySection.querySelector('#showreel-next-btn');
+    const showreelVideo = primarySection.querySelector('.showreel-video');
+    const showreelBg = primarySection.querySelector('.showreel-video-bg');
+    const nextDurationLabel = primarySection.querySelector('#showreel-current-duration');
+    let showreelIndex = 0;
 
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      showreelIndex = (showreelIndex + 1) % SHOWREEL_PLAYLIST.length;
-      const next = SHOWREEL_PLAYLIST[showreelIndex];
-      const wasMuted = showreelVideo.muted;
+    if (nextBtn && showreelVideo) {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showreelIndex = (showreelIndex + 1) % SHOWREEL_PLAYLIST.length;
+        const next = SHOWREEL_PLAYLIST[showreelIndex];
+        const wasMuted = showreelVideo.muted;
 
-      showreelVideo.pause();
-      showreelVideo.src = next.src;
-      showreelVideo.muted = wasMuted;
-      showreelVideo.load();
-      showreelVideo.play().catch(() => {});
+        showreelVideo.pause();
+        showreelVideo.src = next.src;
+        showreelVideo.muted = wasMuted;
+        showreelVideo.load();
+        showreelVideo.play().catch(() => {});
 
-      if (showreelBg) {
-        showreelBg.pause();
-        showreelBg.src = next.src;
-        showreelBg.load();
-        showreelBg.play().catch(() => {});
-      }
+        if (showreelBg) {
+          showreelBg.pause();
+          showreelBg.src = next.src;
+          showreelBg.load();
+          showreelBg.play().catch(() => {});
+        }
 
-      if (nextDurationLabel) nextDurationLabel.textContent = next.duration;
-    });
+        if (nextDurationLabel) nextDurationLabel.textContent = next.duration;
+      });
+    }
   }
 }
 
@@ -925,6 +956,21 @@ window.projectsData = {
     idea: '3-camera angles with dynamic live switching, subtle warm rim lights, and broadcast audio.',
     making: 'Acoustically tuned studio space, cinema camera package, and custom LUT color pipeline.'
   },
+  'aqualens-contact-lens-film': {
+    id: 'aqualens-contact-lens-film',
+    title: 'Aqualens — Contact Lens Film',
+    client: 'Aqualens',
+    category: 'tvc',
+    subcategories: ['social', 'product'],
+    format: 'Digital TVC',
+    roles: ['Creative Direction', 'Scripting', 'Production', 'Post-Production'],
+    thumbVideo: 'assets/media/tvc/AQUALENS CONTACT LENS FILM.mp4',
+    videoSrc: 'assets/media/tvc/AQUALENS CONTACT LENS FILM.mp4',
+    shortDesc: 'A product-led film built to communicate comfort and clarity for daily contact lens wear.',
+    thought: 'Contact lenses needed to feel effortless, comfortable and confidence-building.',
+    idea: 'Clean product visuals paired with everyday clarity moments.',
+    making: 'Studio product photography combined with lifestyle footage for a polished digital film.'
+  },
   'music-video-space': {
     id: 'music-video-space',
     title: 'I Need My Space — Music Video',
@@ -1150,6 +1196,66 @@ window.projectsData = {
     idea: 'Focused sit-down interview detailing creative alignment and seamless logistics.',
     making: 'Multi-cam studio interview with warm ambient lighting and studio sound.'
   },
+  'testimonial-lenskart-2-unique': {
+    id: 'testimonial-lenskart-2-unique',
+    title: 'Lenskart — Partner Testimonial II',
+    client: 'Lenskart Leadership',
+    category: 'testimonials',
+    subcategories: ['social'],
+    format: 'Client Testimonial Film',
+    roles: ['Interview Production', 'Direction', 'Editing'],
+    thumbVideo: 'assets/media/testimonials/LENSKART TESTIMONIAL (2).mp4',
+    videoSrc: 'assets/media/testimonials/LENSKART TESTIMONIAL (2).mp4',
+    shortDesc: 'Lenskart leadership feedback on creative collaboration and scale.',
+    thought: 'Authentic brand storytelling from the client’s perspective.',
+    idea: 'Clean interview lighting and crisp audio focusing on trust and creative collaboration.',
+    making: '2-camera sit-down interview with soft studio lighting.'
+  },
+  'wow-testimonial-2': {
+    id: 'wow-testimonial-2',
+    title: 'WOW Skin Science — Brand Testimonial II',
+    client: 'WOW Skin Science',
+    category: 'testimonials',
+    subcategories: ['product', 'social'],
+    format: 'Client Testimonial',
+    roles: ['Creative Direction', 'Interview Production', 'Editing'],
+    thumbVideo: 'assets/media/testimonials/WOW TESTIMONIAL (2).mp4',
+    videoSrc: 'assets/media/testimonials/WOW TESTIMONIAL (2).mp4',
+    shortDesc: 'Client experience and product performance highlights for WOW Skin Science.',
+    thought: 'Nature meets science — delivering authentic product trust.',
+    idea: 'Direct-to-camera testimonial paired with high-impact product cutaways.',
+    making: 'Studio lighting setup optimized for skin tone and product clarity.'
+  },
+  'wow-testimonial-3': {
+    id: 'wow-testimonial-3',
+    title: 'WOW Skin Science — Brand Testimonial III',
+    client: 'WOW Skin Science',
+    category: 'testimonials',
+    subcategories: ['product', 'social'],
+    format: 'Client Testimonial',
+    roles: ['Creative Direction', 'Interview Production', 'Editing'],
+    thumbVideo: 'assets/media/testimonials/WOW TESTIMONIAL (3).mp4',
+    videoSrc: 'assets/media/testimonials/WOW TESTIMONIAL (3).mp4',
+    shortDesc: 'In-depth testimonial on creative partnership and brand growth.',
+    thought: 'Building long-term brand equity through honest client storytelling.',
+    idea: 'Focused interview narrative with dynamic product visuals.',
+    making: 'Multi-angle studio capture with custom audio mastering.'
+  },
+  'wow-testimonial-4': {
+    id: 'wow-testimonial-4',
+    title: 'WOW Skin Science — Brand Testimonial IV',
+    client: 'WOW Skin Science',
+    category: 'testimonials',
+    subcategories: ['product', 'social'],
+    format: 'Client Testimonial',
+    roles: ['Creative Direction', 'Interview Production', 'Editing'],
+    thumbVideo: 'assets/media/testimonials/WOW TESTIMONIAL (4).mp4',
+    videoSrc: 'assets/media/testimonials/WOW TESTIMONIAL (4).mp4',
+    shortDesc: 'Comprehensive brand feedback and creative campaign review.',
+    thought: 'Demonstrating real-world results and creative execution.',
+    idea: 'High-energy testimonial structure blended with campaign highlights.',
+    making: 'Studio interview production with cinematic color pipeline.'
+  },
   'bts-lenskart-perf': {
     id: 'bts-lenskart-perf',
     title: 'BTS: Lenskart Performance Shoot',
@@ -1170,29 +1276,159 @@ window.projectsData = {
 /* --------------------------------------------------------------------------
    6. Work Page Primary & Secondary Filtering (Client-side, no reload)
    -------------------------------------------------------------------------- */
+Object.assign(window.projectsData, {
+  "lenskart-superman-1": {
+    "id": "lenskart-superman-1",
+    "title": "LENSKART X SUPERMAN — FILM 1",
+    "client": "Lenskart",
+    "category": "events",
+    "eventOnly": true,
+    "format": "Event Film",
+    "videoSrc": "assets/media/event-films/LENSKART X SUPERMAN MOVIE.mp4",
+    "thumbVideo": "assets/media/event-films/LENSKART X SUPERMAN MOVIE.mp4"
+  },
+  "lenskart-superman-2": {
+    "id": "lenskart-superman-2",
+    "title": "LENSKART X SUPERMAN — FILM 2",
+    "client": "Lenskart",
+    "category": "events",
+    "eventOnly": true,
+    "format": "Event Film",
+    "videoSrc": "assets/media/event-films/LENSKART X SUPERMAN MOVIE-2.mp4",
+    "thumbVideo": "assets/media/event-films/LENSKART X SUPERMAN MOVIE-2.mp4"
+  },
+  "celio-event": {
+    "id": "celio-event",
+    "title": "CELIO",
+    "client": "Celio",
+    "category": "events",
+    "eventOnly": true,
+    "format": "Event Film",
+    "videoSrc": "assets/media/event-films/Celio.mp4",
+    "thumbVideo": "assets/media/event-films/Celio.mp4"
+  },
+  "godrej-properties-event": {
+    "id": "godrej-properties-event",
+    "title": "GODREJ PROPERTIES",
+    "client": "Godrej Properties",
+    "category": "events",
+    "eventOnly": true,
+    "format": "Event Film",
+    "videoSrc": "assets/media/event-films/Godrej properties.mp4",
+    "thumbVideo": "assets/media/event-films/Godrej properties.mp4"
+  }
+});
+
+Object.assign(window.projectsData, {
+  "aqua-color-1": {
+    "id": "aqua-color-1",
+    "title": "AQUA COLOR — FILM 1",
+    "category": "vertical",
+    "portraitOnly": true,
+    "videoSrc": "assets/media/vertical-films/aqua-color-1.mp4",
+    "thumbVideo": "assets/media/vertical-films/aqua-color-1.mp4"
+  },
+  "aqua-color-2": {
+    "id": "aqua-color-2",
+    "title": "AQUA COLOR — FILM 2",
+    "category": "vertical",
+    "portraitOnly": true,
+    "videoSrc": "assets/media/vertical-films/aqua-color-2.mp4",
+    "thumbVideo": "assets/media/vertical-films/aqua-color-2.mp4"
+  },
+  "lenskart-performance-27": {
+    "id": "lenskart-performance-27",
+    "title": "LENSKART — PERFORMANCE FILM 27",
+    "category": "vertical",
+    "portraitOnly": true,
+    "videoSrc": "assets/media/vertical-films/lenskart-performance-27.mp4",
+    "thumbVideo": "assets/media/vertical-films/lenskart-performance-27.mp4"
+  },
+  "lenskart-performance-28": {
+    "id": "lenskart-performance-28",
+    "title": "LENSKART — PERFORMANCE FILM 28",
+    "category": "vertical",
+    "portraitOnly": true,
+    "videoSrc": "assets/media/vertical-films/lenskart-performance-28.mp4",
+    "thumbVideo": "assets/media/vertical-films/lenskart-performance-28.mp4"
+  },
+  "lenskart-performance-40": {
+    "id": "lenskart-performance-40",
+    "title": "LENSKART — PERFORMANCE FILM 40",
+    "category": "vertical",
+    "portraitOnly": true,
+    "videoSrc": "assets/media/vertical-films/lenskart-performance-40.mp4",
+    "thumbVideo": "assets/media/vertical-films/lenskart-performance-40.mp4"
+  },
+  "lenskart-performance-42": {
+    "id": "lenskart-performance-42",
+    "title": "LENSKART — PERFORMANCE FILM 42",
+    "category": "vertical",
+    "portraitOnly": true,
+    "videoSrc": "assets/media/vertical-films/lenskart-performance-42.mp4",
+    "thumbVideo": "assets/media/vertical-films/lenskart-performance-42.mp4"
+  },
+  "lenskart-performance-49": {
+    "id": "lenskart-performance-49",
+    "title": "LENSKART — PERFORMANCE FILM 49",
+    "category": "vertical",
+    "portraitOnly": true,
+    "videoSrc": "assets/media/vertical-films/lenskart-performance-49.mp4",
+    "thumbVideo": "assets/media/vertical-films/lenskart-performance-49.mp4"
+  },
+  "lenskart-performance-50": {
+    "id": "lenskart-performance-50",
+    "title": "LENSKART — PERFORMANCE FILM 50",
+    "category": "vertical",
+    "portraitOnly": true,
+    "videoSrc": "assets/media/vertical-films/lenskart-performance-50.mp4",
+    "thumbVideo": "assets/media/vertical-films/lenskart-performance-50.mp4"
+  },
+  "lenskart-performance-51": {
+    "id": "lenskart-performance-51",
+    "title": "LENSKART — PERFORMANCE FILM 51",
+    "category": "vertical",
+    "portraitOnly": true,
+    "videoSrc": "assets/media/vertical-films/lenskart-performance-51.mp4",
+    "thumbVideo": "assets/media/vertical-films/lenskart-performance-51.mp4"
+  },
+  "lenskart-performance-52": {
+    "id": "lenskart-performance-52",
+    "title": "LENSKART — PERFORMANCE FILM 52",
+    "category": "vertical",
+    "portraitOnly": true,
+    "videoSrc": "assets/media/vertical-films/lenskart-performance-52.mp4",
+    "thumbVideo": "assets/media/vertical-films/lenskart-performance-52.mp4"
+  }
+});
+
 function initWorkFilters() {
   const primaryTabBtns = document.querySelectorAll('.work-tab-btn, .filter-btn');
-  const dropdownToggleBtn = document.getElementById('vertical-dropdown-btn');
-  const dropdownItems = document.querySelectorAll('.dropdown-item');
   const workItems = document.querySelectorAll('.work-card-item, .work-card');
+  const workGrid = document.querySelector('.curated-work-grid');
 
   if (!workItems.length) return;
 
-  let currentPrimary = 'all';
-  let currentSecondary = 'all';
+  const activeTab = document.querySelector('.work-tab-btn.active, .filter-btn.active');
+  let currentPrimary = activeTab ? (activeTab.getAttribute('data-filter') || 'tvc') : 'tvc';
 
   function applyFilters() {
+    if (workGrid) {
+      workGrid.setAttribute('data-active-filter', currentPrimary);
+    }
+
+    const hasMatches = Array.from(workItems).some(item =>
+      (item.getAttribute('data-category') || '').split(' ').includes(currentPrimary));
+    const emptyState = document.getElementById('work-empty-state');
+    if (emptyState) emptyState.hidden = hasMatches;
+    const loadMore = document.getElementById('load-more-btn');
+    if (loadMore) loadMore.hidden = !hasMatches || ['photoshoots', 'events'].includes(currentPrimary);
+
     workItems.forEach(item => {
       const itemCat = item.getAttribute('data-category') || '';
-      const itemSubCats = (item.getAttribute('data-subcategories') || '').split(',').map(s => s.trim());
-      let matchPrimary = (currentPrimary === 'all' || itemCat === currentPrimary);
-      let matchSecondary = true;
+      let matchPrimary = itemCat.split(' ').includes(currentPrimary) || itemCat === currentPrimary;
 
-      if (currentPrimary === 'vertical' && currentSecondary !== 'all') {
-        matchSecondary = itemSubCats.includes(currentSecondary);
-      }
-
-      if (matchPrimary && matchSecondary) {
+      if (matchPrimary) {
         item.style.display = item.classList.contains('work-card-item') ? 'flex' : 'block';
         item.style.opacity = '1';
         item.style.transform = 'translateY(0)';
@@ -1204,42 +1440,10 @@ function initWorkFilters() {
 
   primaryTabBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      if (btn.classList.contains('dropdown-toggle-btn')) {
-        // Toggle dropdown on mobile/click
-        const menu = document.getElementById('vertical-dropdown-menu');
-        if (menu) menu.classList.toggle('show');
-      }
-
       primaryTabBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
-      currentPrimary = btn.getAttribute('data-filter') || 'all';
-      if (currentPrimary !== 'vertical') {
-        currentSecondary = 'all';
-        dropdownItems.forEach(di => di.classList.remove('active'));
-        const allSubBtn = document.querySelector('.dropdown-item[data-subfilter="all"]');
-        if (allSubBtn) allSubBtn.classList.add('active');
-      }
-      applyFilters();
-    });
-  });
-
-  dropdownItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const sub = item.getAttribute('data-subfilter');
-
-      dropdownItems.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-
-      primaryTabBtns.forEach(b => b.classList.remove('active'));
-      if (dropdownToggleBtn) dropdownToggleBtn.classList.add('active');
-
-      const menu = document.getElementById('vertical-dropdown-menu');
-      if (menu) menu.classList.remove('show');
-
-      currentPrimary = 'vertical';
-      currentSecondary = sub;
+      currentPrimary = btn.getAttribute('data-filter') || 'tvc';
       applyFilters();
     });
   });
@@ -1282,6 +1486,14 @@ function initModals() {
 
   function renderProjectModal(data) {
     if (!modalContainer) return;
+    if (data.eventOnly || data.portraitOnly) {
+      modalContainer.innerHTML = `
+        <h2 style="font-size:clamp(1.4rem,4vw,2rem);margin:0 2rem 1.25rem 0;">${data.title}</h2>
+        <video src="${data.videoSrc}" controls autoplay playsinline aria-label="${data.title}"
+          style="display:block;width:auto;max-width:100%;height:70vh;height:70dvh;max-height:800px;aspect-ratio:9/16;object-fit:contain;margin:auto;background:#000;border-radius:12px;"></video>`;
+      return;
+    }
+
 
     const isDirectVideo = data.videoSrc && (data.videoSrc.endsWith('.mp4') || data.videoSrc.endsWith('.mov') || data.videoSrc.endsWith('.webm'));
 
@@ -1308,7 +1520,7 @@ function initModals() {
         <div style="grid-column: 1 / -1;">
           <div style="font-size: 0.7rem; font-weight: 400; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem;">ANAVA’S ROLE</div>
           <div class="role-badges" style="margin-top: 0;">
-            ${data.roles.map(r => `<span class="role-badge" style="background: rgba(245, 183, 25, 0.15); color: var(--accent-gold); border-color: rgba(245, 183, 25, 0.35); font-size: 0.75rem;">${r}</span>`).join('')}
+            ${data.roles.map(r => `<span class="role-badge" style="background: rgba(197, 94, 2, 0.15); color: var(--accent-gold); border-color: rgba(197, 94, 2, 0.35); font-size: 0.75rem;">${r}</span>`).join('')}
           </div>
         </div>
       </div>
@@ -1410,7 +1622,7 @@ function initContactForm() {
   if (urlParams.get('status') === 'success' && feedbackEl) {
     feedbackEl.style.display = 'block';
     feedbackEl.innerHTML = `
-      <div style="background: rgba(245, 183, 25, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
+      <div style="background: rgba(197, 94, 2, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
         ✨ <strong>Thought Received!</strong> Your message has been sent directly to office@anavafilms.com. We’ll review your thought and get back to you with ideas to shoot within 24 hours.
       </div>
     `;
@@ -1456,7 +1668,7 @@ function initContactForm() {
       if (feedbackEl) {
         feedbackEl.style.display = 'block';
         feedbackEl.innerHTML = `
-          <div style="background: rgba(245, 183, 25, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
+          <div style="background: rgba(197, 94, 2, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
             ✨ <strong>Thought Received!</strong> Your message has been sent directly to office@anavafilms.com. We’ll review your thought and get back to you with ideas to shoot within 24 hours.
           </div>
         `;
@@ -1499,6 +1711,52 @@ function initLogoIntroTrigger() {
   });
 }
 
+window.toggleCardAudio = function(btn, event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  const cardMedia = btn.closest('.work-card-media') || btn.closest('.work-card-item') || btn.parentElement;
+  if (!cardMedia) return;
+  const video = cardMedia.querySelector('video');
+  if (!video) return;
+
+  const isMuted = video.muted;
+  const allVideos = document.querySelectorAll('video');
+
+  if (isMuted) {
+    // Mute all other videos
+    allVideos.forEach(v => {
+      if (v !== video && v.id !== 'showreel-player') {
+        v.muted = true;
+        const otherBtn = (v.parentElement && v.parentElement.querySelector('.card-sound-toggle-btn')) || (v.closest('.work-card-media') && v.closest('.work-card-media').querySelector('.card-sound-toggle-btn'));
+        if (otherBtn) {
+          otherBtn.classList.remove('is-unmuted');
+          const mIcon = otherBtn.querySelector('.icon-muted');
+          const uIcon = otherBtn.querySelector('.icon-unmuted');
+          if (mIcon) mIcon.style.display = 'block';
+          if (uIcon) uIcon.style.display = 'none';
+        }
+      }
+    });
+
+    video.muted = false;
+    video.play().catch(() => {});
+    btn.classList.add('is-unmuted');
+    const mIcon = btn.querySelector('.icon-muted');
+    const uIcon = btn.querySelector('.icon-unmuted');
+    if (mIcon) mIcon.style.display = 'none';
+    if (uIcon) uIcon.style.display = 'block';
+  } else {
+    video.muted = true;
+    btn.classList.remove('is-unmuted');
+    const mIcon = btn.querySelector('.icon-muted');
+    const uIcon = btn.querySelector('.icon-unmuted');
+    if (mIcon) mIcon.style.display = 'block';
+    if (uIcon) uIcon.style.display = 'none';
+  }
+};
+
 /* --------------------------------------------------------------------------
    11. Automatic In-Thumbnail Video Autoplay (Continuous Smooth Video Previews)
    -------------------------------------------------------------------------- */
@@ -1506,6 +1764,24 @@ function initVideoThumbnails() {
   const videoElements = document.querySelectorAll('.work-card video, .work-thumb-wrapper video, .collab-card video, .work-card-item video, .work-card-media video, .work-card-video, .work-thumb-img, .tstm-card video, .tstm-card-video');
   
   if (!videoElements.length) return;
+
+  // Dynamically attach sound toggle button to all video card containers
+  videoElements.forEach(video => {
+    if (video.id === 'showreel-player' || video.classList.contains('showreel-video-bg')) return;
+    const parent = video.closest('.work-card-media, .work-card-item, .work-card, .collab-card, .work-thumb-wrapper');
+    if (parent && !parent.querySelector('.card-sound-toggle-btn')) {
+      const btn = document.createElement('button');
+      btn.className = 'card-sound-toggle-btn';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Toggle card audio');
+      btn.innerHTML = `
+        <svg class="icon-muted" viewBox="0 0 24 24" width="12" height="12" fill="#ffffff"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+        <svg class="icon-unmuted" viewBox="0 0 24 24" width="12" height="12" fill="#ffffff" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+      `;
+      btn.addEventListener('click', (e) => window.toggleCardAudio(btn, e));
+      parent.appendChild(btn);
+    }
+  });
 
   const playVideo = (video) => {
     video.muted = true;
@@ -1621,11 +1897,11 @@ window.switchWwdTab = function(tabName) {
   const heroLines = document.querySelector('.wwd-hero-three-lines');
   if (heroLines) {
     if (tabName === 'think') {
-      heroLines.innerHTML = '<span class="line-gold">THINK.</span><span class="line-white">MAKE.</span><span class="line-white">FINISH.</span>';
+      heroLines.innerHTML = '<span class="line-gold">Think.</span><span class="line-white">Make.</span><span class="line-white">Finish.</span>';
     } else if (tabName === 'make') {
-      heroLines.innerHTML = '<span class="line-white">THINK.</span><span class="line-gold">MAKE.</span><span class="line-white">FINISH.</span>';
+      heroLines.innerHTML = '<span class="line-white">Think.</span><span class="line-gold">Make.</span><span class="line-white">Finish.</span>';
     } else {
-      heroLines.innerHTML = '<span class="line-white">THINK.</span><span class="line-white">MAKE.</span><span class="line-gold">FINISH.</span>';
+      heroLines.innerHTML = '<span class="line-white">Think.</span><span class="line-white">Make.</span><span class="line-gold">Finish.</span>';
     }
   }
 };
@@ -1675,7 +1951,7 @@ function initClientLogoMarquee() {
   const toggleBtn = document.getElementById('logoMarqueeToggle');
   if (!section || !viewport || !track) return;
 
-  const SPEED_PX_PER_SEC = 34;
+  const SPEED_PX_PER_SEC = 70;
   const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const baseItems = Array.from(track.children);

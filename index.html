@@ -8,14 +8,14 @@
   <!-- Performance Optimization: Resource Hints -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600;1,700;1,900&family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   
-  <link rel="stylesheet" href="assets/css/style.css?v=22.8">
-  <script defer src="assets/js/main.js?v=18.9"></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=20260910.4">
+  <script defer src="assets/js/main.js?v=20260910.4"></script>
 </head>
 <body>
 
@@ -70,13 +70,23 @@
           <li><a href="process" class="nav-link">PROCESS</a></li>
           <li><a href="about" class="nav-link">ABOUT</a></li>
           <li><a href="contact" class="nav-link">CONTACT</a></li>
-          <li class="mobile-cta-item"><a href="contact" class="btn-primary mobile-nav-cta">LET’S TALK</a></li>
+          <li class="mobile-cta-item"><a href="contact" class="btn-header-get-in-touch mobile-nav-cta">
+          <span>GET IN TOUCH</span>
+          <span class="btn-header-arrow-circle">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a></li>
         </ul>
       </nav>
 
       <!-- 3. RIGHT ZONE: PERSISTENT CTA & HAMBURGER -->
       <div class="header-actions">
-        <a href="contact" class="btn-primary btn-header-cta">LET’S TALK</a>
+        <a href="contact" class="btn-header-get-in-touch">
+          <span>GET IN TOUCH</span>
+          <span class="btn-header-arrow-circle">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
         <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" onclick="toggleMobileMenu(event)">
           <span class="hamburger-bar"></span>
           <span class="hamburger-bar"></span>
@@ -89,86 +99,105 @@
 
   <!-- 02. HERO SECTION -->
   <section class="home-hero-section">
+    <div class="hero-bg-wrapper">
+      <div class="hero-bg-image"></div>
+    </div>
     <div class="hero-overlay"></div>
+
+    <!-- Left Sidebar Tagline Column -->
+    
+
+    <!-- Right Sidebar Scroll Indicator -->
+    
+    </div>
 
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge">
-          <span>CREATIVE PRODUCTION HOUSE</span>
-        </div>
-
         <h1 class="hero-tagline-hero">
-          GIVE US A<br>
-          THOUGHT.<br>
-          WE’LL GIVE YOU<br>
-          <span class="hero-accent-text">IDEAS TO SHOOT.</span>
+          <span class="hero-title-top">Give us a thought.</span>
+          <span class="hero-title-editorial">We’ll give you <span class="hero-title-orange">idea to shoot.</span></span>
         </h1>
 
         <p class="hero-description">
-          Anava Films is an agency-cum-production house built to take a thought all the way to the final frame. We work across creative direction, ideation, scripting, production, direction and post-production helping brands turn briefs into ideas, and ideas into films, campaigns and content.
+          <span class="hero-description-line">Anava Films is an agency-cum-production house built to take a thought all the way to the final frame.</span>
+          <span class="hero-description-line">We work across creative direction, ideation, scripting, production, direction and post-production</span>
+          <span class="hero-description-line">helping brands turn briefs into ideas, and ideas into films, campaigns and content.</span>
         </p>
 
         <div class="hero-cta-group">
-          <a href="work" class="btn-primary">VIEW OUR WORK</a>
-          <a href="contact" class="btn-outline">LET’S TALK</a>
+          <a href="contact" class="btn-pill-orange">LET'S TALK <span class="cta-arrow">→</span></a>
+          <button type="button" class="btn-showreel-circle-trigger" id="hero-watch-showreel-btn" onclick="if(window.onOpenShowreel){window.onOpenShowreel(event);}">
+            <span class="play-circle-icon">▶</span>
+            <span class="showreel-circle-text">WATCH SHOWREEL</span>
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Client Logo Marquee — its own bar, attached directly to the showreel below -->
+  <!-- Client Logo Marquee — attached directly to the hero & showreel -->
   <section class="client-marquee-section" aria-label="Brands we've worked with">
     <h2 class="visually-hidden">Brands we've worked with</h2>
-    <div class="logo-marquee-viewport" id="logoMarqueeViewport">
-      <ul class="logo-marquee-track" id="logoMarqueeTrack">
-        <li class="logo-marquee-item logo--lenskart"><img src="assets/images/clients/lenskart-white.png" alt="Lenskart"></li>
-        <li class="logo-marquee-item logo--indus-valley"><img src="assets/images/clients/indus-valley-white.png" alt="Indus Valley"></li>
-        <li class="logo-marquee-item logo--green-lotus"><img src="assets/images/clients/green-lotus-white.png" alt="Green Lotus"></li>
-        <li class="logo-marquee-item logo--celio"><img src="assets/images/clients/celio-white.png" alt="Celio"></li>
-        <li class="logo-marquee-item logo--tira"><img src="assets/images/clients/tira-white.png" alt="Tira Beauty"></li>
-        <li class="logo-marquee-item logo--godrej"><img src="assets/images/clients/godrej-properties-white.png" alt="Godrej Properties"></li>
-        <li class="logo-marquee-item logo--wow"><img src="assets/images/clients/wow-skin-science-white.png" alt="WOW Skin Science"></li>
-        <li class="logo-marquee-item logo--fikn"><img src="assets/images/clients/fikn-white.png" alt="FIKN — India's 1st Elixir"></li>
-        <li class="logo-marquee-item logo--kfc"><img src="assets/images/clients/kfc-white.png" alt="KFC India"></li>
-        <li class="logo-marquee-item logo--simplai"><img src="assets/images/clients/simplai-white.png" alt="SimplAI"></li>
-      </ul>
+    <div class="client-marquee-bar-container">
+      
+      <div class="logo-marquee-viewport" id="logoMarqueeViewport">
+        <ul class="logo-marquee-track" id="logoMarqueeTrack">
+          <li class="logo-marquee-item logo--lenskart"><img src="assets/images/clients/lenskart-white.png" alt="Lenskart"></li>
+          <li class="logo-marquee-item logo--indus-valley"><img src="assets/images/clients/indus-valley-white.png" alt="Indus Valley"></li>
+          <li class="logo-marquee-item logo--green-lotus"><img src="assets/images/clients/green-lotus-white.png" alt="Green Lotus"></li>
+          <li class="logo-marquee-item logo--celio"><img src="assets/images/clients/celio-white.png" alt="Celio"></li>
+          <li class="logo-marquee-item logo--tira"><img src="assets/images/clients/tira-white.png" alt="Tira Beauty"></li>
+          <li class="logo-marquee-item logo--godrej"><img src="assets/images/clients/godrej-properties-white.png" alt="Godrej Properties"></li>
+          <li class="logo-marquee-item logo--wow"><img src="assets/images/clients/wow-skin-science-white.png" alt="WOW Skin Science"></li>
+          <li class="logo-marquee-item logo--fikn"><img src="assets/images/clients/fikn-white.png" alt="FIKN — India's 1st Elixir"></li>
+          <li class="logo-marquee-item logo--kfc"><img src="assets/images/clients/kfc-white.png" alt="KFC India"></li>
+          <li class="logo-marquee-item logo--simplai"><img src="assets/images/clients/simplai-white.png" alt="SimplAI"></li>
+        </ul>
+      </div>
     </div>
     <button type="button" class="logo-marquee-toggle" id="logoMarqueeToggle" aria-pressed="false" aria-label="Pause logo scroll">
-      <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>
-      <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><polygon points="7,5 19,12 7,19"></polygon></svg>
+      <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="#ffffff" aria-hidden="true"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>
+      <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="#ffffff" aria-hidden="true"><polygon points="7,5 19,12 7,19"></polygon></svg>
     </button>
   </section>
 
-  <!-- 03. SHOWREEL SECTION (REDESIGNED MATCHING MOCKUP) -->
+  <!-- 03. SHOWREEL SECTION (ULTRA-WIDE CINEMATIC BANNER) -->
   <section class="showreel-section border-top-divider" id="showreel">
-    <div class="showreel-container">
-      <video class="showreel-video-bg" src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-poster="assets/images/posters/sunil-shetty-ad-landscape.jpg" muted loop playsinline preload="none"></video>
-      <video id="showreel-player" class="showreel-video" src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-poster="assets/images/posters/sunil-shetty-ad-landscape.jpg" muted loop playsinline preload="none"></video>
+    <div class="showreel-wide-container">
+      <div class="showreel-container group cursor-pointer" onclick="if(window.onOpenShowreel){window.onOpenShowreel(event);}" data-open-case="showreel-sunil-shetty">
+        <video class="showreel-video-bg" src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-poster="assets/images/posters/sunil-shetty-ad-landscape.jpg" autoplay muted loop playsinline preload="auto"></video>
+        <video id="showreel-player" class="showreel-video" src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-poster="assets/images/posters/sunil-shetty-ad-landscape.jpg" autoplay muted loop playsinline preload="auto"></video>
 
-      <div class="showreel-overlay">
-        <div class="showreel-bottom-bar">
-          <button id="showreel-sound-toggle" class="showreel-play-label" aria-label="Toggle showreel sound">
-            <span class="showreel-play-icon" id="showreelSoundIcon">▶</span>
-            <span class="showreel-play-text">SHOWREEL</span>
-            <span class="showreel-play-line"></span>
-            <span class="showreel-play-duration" id="showreel-current-duration">01:45</span>
-          </button>
+        <!-- Dual-edge horizontal & bottom vignette gradient overlay -->
+        <div class="showreel-vignette-overlay"></div>
 
-          <div class="showreel-meta">
-            <div class="showreel-meta-title">ANAVA FILMS</div>
-            <div class="showreel-meta-sub">THINKING. MAKING. FINISHING.</div>
+        <div class="showreel-overlay">
+          <div class="showreel-bottom-bar">
+            <button id="showreel-sound-toggle" class="showreel-play-label" aria-label="Toggle showreel sound">
+              <span class="showreel-play-icon" id="showreelSoundIcon">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              </span>
+              <span class="showreel-play-text">SHOWREEL</span>
+              <span class="showreel-play-line"></span>
+              <span class="showreel-play-duration" id="showreel-current-duration">01:45</span>
+            </button>
+
+            <div class="showreel-meta">
+              <div class="showreel-meta-title">ANAVA FILMS</div>
+              <div class="showreel-meta-sub">Thinking. Making. Finishing.</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <button id="showreel-next-btn" class="showreel-next-arrow-btn" aria-label="Next Showreel">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
+        <button id="showreel-next-btn" class="showreel-next-arrow-btn" aria-label="Next Showreel" onclick="event.stopPropagation()">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
     </div>
   </section>
 
 
-  <!-- 04. THINKERS WHO MAKE / OUR PHILOSOPHY SECTION (CINEMATIC FILM STUDIO REDESIGN) -->
+  <!-- 04. Thinkers Who Make / OUR PHILOSOPHY SECTION (CINEMATIC FILM STUDIO REDESIGN) -->
   <section class="thinkers-section border-top-divider" id="philosophy">
     <div class="philo-watermark">ANAVA</div>
 
@@ -181,8 +210,8 @@
         </div>
 
         <h2 class="philo-display-title">
-          <span class="philo-title-white">THINKERS</span>
-          <span class="philo-title-gold">WHO MAKE.</span>
+          <span class="philo-title-white">Thinkers</span>
+          <span class="philo-title-gold">Who Make.</span>
         </h2>
 
         <p class="philo-desc-top">
@@ -197,7 +226,7 @@
         <div class="philo-process-card">
           <div class="philo-step-item">
             <div class="philo-step-icon-circle">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/>
               </svg>
             </div>
@@ -209,7 +238,7 @@
 
           <div class="philo-step-item">
             <div class="philo-step-icon-circle">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                 <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
               </svg>
@@ -222,7 +251,7 @@
 
           <div class="philo-step-item">
             <div class="philo-step-icon-circle">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="10"/>
                 <circle cx="12" cy="12" r="6"/>
                 <circle cx="12" cy="12" r="2"/>
@@ -267,103 +296,6 @@
   </section>
 
 
-  <!-- 05. SELECTED WORK SECTION -->
-  <section class="section-padding border-top-divider portfolio-section">
-    <div class="container">
-      <!-- Category Tabs (filter the featured project + strip below by real project category) -->
-      <div class="portfolio-tabs" role="tablist">
-        <button type="button" class="portfolio-tab active" data-work-tab="tvc" role="tab" aria-selected="true">
-          <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-          <span>Client Work</span>
-        </button>
-        <button type="button" class="portfolio-tab" data-work-tab="vertical" role="tab" aria-selected="false">
-          <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          <span>My Work</span>
-        </button>
-        <button type="button" class="portfolio-tab" data-work-tab="all" role="tab" aria-selected="false">
-          <svg class="portfolio-tab-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-          <span>Projects</span>
-        </button>
-      </div>
-
-      <div class="portfolio-top-row">
-        <div class="portfolio-header-col">
-          <span class="text-gold portfolio-eyebrow">PORTFOLIO</span>
-          <h2 class="section-title portfolio-title">SELECTED <span class="silver-text">WORK</span></h2>
-          <p class="subtitle">Commercial TVCs, viral vertical reels, brand narratives and performance campaigns.</p>
-        </div>
-
-        <!-- Featured Project (content swapped by portfolio tab filter via JS) -->
-        <div class="portfolio-featured" id="portfolio-featured" data-open-case="lenskart-hustler">
-          <div class="work-thumb-wrapper portfolio-featured-media">
-            <video src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-poster="assets/images/posters/lenskart-hustler-ad-film.jpg" class="work-thumb-img" muted loop playsinline preload="none"></video>
-            <div class="work-play-overlay">
-              <div class="play-icon-btn">▶</div>
-            </div>
-          </div>
-          <div class="portfolio-featured-info">
-            <div class="work-category-tag">LENSKART • COMMERCIAL TVC</div>
-            <h3 class="work-card-title portfolio-featured-title">Hustler — Keep Hustling</h3>
-            <p class="work-card-desc portfolio-featured-desc">High-octane commercial ad film built around energy, attitude, and momentum.</p>
-            <div class="role-badges"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Featured Work Strip -->
-      <div class="portfolio-strip-header">
-        <span class="portfolio-strip-label">FEATURED WORK</span>
-        <a href="work" class="portfolio-more-link">MORE PROJECTS <span class="cta-arrow">→</span></a>
-      </div>
-
-      <div class="portfolio-strip" id="portfolio-strip">
-        <div class="portfolio-strip-card" data-open-case="lenskart-superman-1" data-work-category="tvc">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/event-films/LENSKART X SUPERMAN MOVIE.mp4" data-poster="assets/images/posters/lenskart-x-superman-movie.jpg" class="work-thumb-img" muted loop playsinline preload="none"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="portfolio-strip-meta">
-            <span class="portfolio-strip-client">LENSKART / WARNER BROS</span>
-            <span class="portfolio-strip-title">Lenskart x Superman Launch</span>
-          </div>
-        </div>
-
-        <div class="portfolio-strip-card" data-open-case="john-jacobs" data-work-category="tvc">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" data-poster="assets/images/posters/lenskart-john-jacbos-eyewear-film.jpg" class="work-thumb-img" muted loop playsinline preload="none"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="portfolio-strip-meta">
-            <span class="portfolio-strip-client">JOHN JACOBS EYEWEAR</span>
-            <span class="portfolio-strip-title">An Eye for Love</span>
-          </div>
-        </div>
-
-        <div class="portfolio-strip-card" data-open-case="karan-johar-kusha" data-work-category="vertical">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4" data-poster="assets/images/posters/karan-johar-kusha-kapila-x-lenskart-film-03.jpg" class="work-thumb-img" muted loop playsinline preload="none"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="portfolio-strip-meta">
-            <span class="portfolio-strip-client">LENSKART</span>
-            <span class="portfolio-strip-title">Karan Johar &amp; Kusha Kapila</span>
-          </div>
-        </div>
-
-        <div class="portfolio-strip-card" data-open-case="orry-kfc" data-work-category="vertical">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/vertical-films/ORRY & KFC.mp4" data-poster="assets/images/posters/orry-kfc.jpg" class="work-thumb-img" muted loop playsinline preload="none"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="portfolio-strip-meta">
-            <span class="portfolio-strip-client">KFC INDIA</span>
-            <span class="portfolio-strip-title">Orry &amp; KFC Commercial</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
 
   <!-- 06. WHAT WE DO (REDESIGNED MATCHING REFERENCE MOCKUP) -->
   <section class="wwd-section border-top-divider">
@@ -372,8 +304,8 @@
         <div class="wwd-header-text">
           <span class="wwd-badge">WHAT WE DO</span>
           <h2 class="wwd-main-title">
-            <span class="wwd-title-white">FROM IDEA TO</span>
-            <span class="wwd-title-gold">IMPACT.</span>
+            <span class="wwd-title-white">From Idea to</span>
+            <span class="wwd-title-gold">Impact.</span>
           </h2>
           <p class="wwd-subtitle">End-to-end creative solutions that turn ideas into powerful visual stories.</p>
         </div>
@@ -392,7 +324,7 @@
           <div class="wwd-card-content wwd-card-content-v2">
             <div class="wwd-card-top-row">
               <div class="wwd-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>
               </div>
               <span class="wwd-card-micro-label">IDEATION<br>CONCEPT<br>SCRIPTING</span>
             </div>
@@ -416,7 +348,7 @@
           <div class="wwd-card-content wwd-card-content-v2">
             <div class="wwd-card-top-row">
               <div class="wwd-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8H4z"/><path d="m4 11 3.5-7h4L8 11"/><path d="m11.5 11 3.5-7h4l-3.5 7"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8H4z"/><path d="m4 11 3.5-7h4L8 11"/><path d="m11.5 11 3.5-7h4l-3.5 7"/></svg>
               </div>
               <span class="wwd-card-micro-label">PRODUCTION<br>DIRECTION<br>CASTING</span>
             </div>
@@ -440,7 +372,7 @@
           <div class="wwd-card-content wwd-card-content-v2">
             <div class="wwd-card-top-row">
               <div class="wwd-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               </div>
               <span class="wwd-card-micro-label">EDITING<br>VFX<br>COLOR GRADING</span>
             </div>
@@ -471,15 +403,15 @@
           <a href="contact" class="btn-primary">LET’S TALK <span class="wwd-card-link-arrow">→</span></a>
           <div class="wwd-cta-steps">
             <span class="wwd-cta-step-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>
               THINK
             </span>
             <span class="wwd-cta-step-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8H4z"/><path d="m4 11 3.5-7h4L8 11"/><path d="m11.5 11 3.5-7h4l-3.5 7"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8H4z"/><path d="m4 11 3.5-7h4L8 11"/><path d="m11.5 11 3.5-7h4l-3.5 7"/></svg>
               MAKE
             </span>
             <span class="wwd-cta-step-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               FINISH
             </span>
           </div>
@@ -489,7 +421,39 @@
   </section>
 
 
-  <!-- 07. FROM THOUGHT TO SCREEN (PROCESS TEASER) -->
+  <!-- 06B. JOHN JACOBS SHOWREEL SECTION (ULTRA-WIDE CINEMATIC BANNER) -->
+  <section class="showreel-section border-top-divider" id="showreel-john-jacobs">
+    <div class="showreel-wide-container">
+      <div class="showreel-container group cursor-pointer" onclick="if(window.onOpenShowreel){window.onOpenShowreel(event);}" data-open-case="john-jacobs">
+        <video class="showreel-video-bg" src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" data-poster="assets/images/posters/lenskart-john-jacbos-eyewear-film.jpg" autoplay muted loop playsinline preload="auto"></video>
+        <video id="showreel-player-jj" class="showreel-video" src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" data-poster="assets/images/posters/lenskart-john-jacbos-eyewear-film.jpg" autoplay muted loop playsinline preload="auto"></video>
+
+        <!-- Dual-edge horizontal & bottom vignette gradient overlay -->
+        <div class="showreel-vignette-overlay"></div>
+
+        <div class="showreel-overlay">
+          <div class="showreel-bottom-bar">
+            <button id="showreel-sound-toggle-jj" class="showreel-play-label" aria-label="Toggle John Jacobs showreel sound">
+              <span class="showreel-play-icon" id="showreelSoundIconJJ">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+              </span>
+              <span class="showreel-play-text">JOHN JACOBS</span>
+              <span class="showreel-play-line"></span>
+              <span class="showreel-play-duration">01:08</span>
+            </button>
+
+            <div class="showreel-meta">
+              <div class="showreel-meta-title">JOHN JACOBS</div>
+              <div class="showreel-meta-sub">AN EYE FOR LOVE &bull; VALENTINE'S DAY FILM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 07. From Thought to Screen (PROCESS TEASER) -->
   <section class="workflow-teaser-section">
     <div class="workflow-teaser-container">
       
@@ -502,7 +466,7 @@
 
       <!-- Main Display Title -->
       <h2 class="workflow-title">
-        <span class="workflow-title-light">FROM </span><span class="workflow-title-bold">THOUGHT TO </span><span class="workflow-title-light">SCREEN</span>
+        <span class="workflow-title-light">From </span><span class="workflow-title-bold">Thought to </span><span class="workflow-title-gold">Screen</span>
       </h2>
 
       <!-- 7 Steps Workflow Diagram -->
@@ -513,7 +477,7 @@
           <div class="workflow-node">
             <div class="workflow-circle">
               <!-- Lightbulb SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 18h6"/>
                 <path d="M10 22h4"/>
                 <path d="M12 2a7 7 0 0 0-7 7c0 2.6 1.4 4.8 3.5 6h7c2.1-1.2 3.5-3.4 3.5-6a7 7 0 0 0-7-7z"/>
@@ -532,7 +496,7 @@
           <div class="workflow-node">
             <div class="workflow-circle">
               <!-- Document SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
                 <line x1="8" y1="7" x2="16" y2="7"/>
                 <line x1="8" y1="12" x2="16" y2="12"/>
@@ -552,7 +516,7 @@
           <div class="workflow-node">
             <div class="workflow-circle">
               <!-- 4-Squares Grid SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="3" width="7" height="7" rx="1.5"/>
                 <rect x="14" y="3" width="7" height="7" rx="1.5"/>
                 <rect x="3" y="14" width="7" height="7" rx="1.5"/>
@@ -572,7 +536,7 @@
           <div class="workflow-node">
             <div class="workflow-circle">
               <!-- Cog / Gear SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="12" cy="12" r="3"/>
                 <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
               </svg>
@@ -590,7 +554,7 @@
           <div class="workflow-node">
             <div class="workflow-circle">
               <!-- Video Camera SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="#f5b719" stroke="#f5b719" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="#c55e02" stroke="#c55e02" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M23 7l-7 5 7 5V7z" />
                 <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
               </svg>
@@ -608,19 +572,19 @@
           <div class="workflow-node">
             <div class="workflow-circle">
               <!-- Film / Player SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="2" y="3" width="20" height="18" rx="2" />
                 <line x1="2" y1="7" x2="22" y2="7" />
                 <line x1="2" y1="17" x2="22" y2="17" />
-                <circle cx="5" cy="5" r="0.8" fill="#f5b719"/>
-                <circle cx="9.5" cy="5" r="0.8" fill="#f5b719"/>
-                <circle cx="14.5" cy="5" r="0.8" fill="#f5b719"/>
-                <circle cx="19" cy="5" r="0.8" fill="#f5b719"/>
-                <circle cx="5" cy="19" r="0.8" fill="#f5b719"/>
-                <circle cx="9.5" cy="19" r="0.8" fill="#f5b719"/>
-                <circle cx="14.5" cy="19" r="0.8" fill="#f5b719"/>
-                <circle cx="19" cy="19" r="0.8" fill="#f5b719"/>
-                <polygon points="10 10 15 12 10 14 10 10" fill="#f5b719" />
+                <circle cx="5" cy="5" r="0.8" fill="#c55e02"/>
+                <circle cx="9.5" cy="5" r="0.8" fill="#c55e02"/>
+                <circle cx="14.5" cy="5" r="0.8" fill="#c55e02"/>
+                <circle cx="19" cy="5" r="0.8" fill="#c55e02"/>
+                <circle cx="5" cy="19" r="0.8" fill="#c55e02"/>
+                <circle cx="9.5" cy="19" r="0.8" fill="#c55e02"/>
+                <circle cx="14.5" cy="19" r="0.8" fill="#c55e02"/>
+                <circle cx="19" cy="19" r="0.8" fill="#c55e02"/>
+                <polygon points="10 10 15 12 10 14 10 10" fill="#c55e02" />
               </svg>
             </div>
             <span class="workflow-node-label">POST</span>
@@ -636,7 +600,7 @@
           <div class="workflow-node">
             <div class="workflow-circle">
               <!-- Paper Plane SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f5b719" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="22" y1="2" x2="11" y2="13" />
                 <polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
@@ -662,15 +626,15 @@
   </section>
 
 
-  <!-- 08. ABOUT JACKSON & ANJAN (THE PEOPLE BEHIND ANAVA) -->
+  <!-- 08. ABOUT JACKSON & ANJAN (The People Behind Anava) -->
   <section class="section-padding border-top-divider people-leadership-section">
     <div class="container">
       <div class="people-header-row">
         <div>
           <span class="people-badge-label">LEADERSHIP</span>
           <h2 class="people-display-title">
-            THE PEOPLE<br>
-            <span class="people-title-highlight">BEHIND ANAVA</span>
+            The People<br>
+            <span class="people-title-highlight">Behind Anava</span>
           </h2>
         </div>
         <div class="people-header-sub">
@@ -689,7 +653,7 @@
           <div class="people-info-col">
             <div class="people-role-header">
               <div class="people-avatar-circle">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="#ffffff">
                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
               </div>
@@ -721,7 +685,7 @@
           <div class="people-info-col">
             <div class="people-role-header">
               <div class="people-avatar-circle">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="#ffffff">
                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
               </div>
@@ -751,17 +715,26 @@
   </section>
 
 
-  <!-- 09. TESTIMONIALS (TEASER) -->
-  <section class="section-padding border-top-divider">
-    <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3rem;">
-        <div>
-          <span class="text-gold" style="font-size: 0.85rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.05em;">COLLABORATORS</span>
-          <h2 class="section-title" style="margin-top: 0.4rem;">WHAT BRANDS <span class="silver-text">SAY</span></h2>
-          <p class="subtitle">Real feedback from clients, line producers, directors and crew.</p>
+  <!-- 09. TESTIMONIALS / What Brands Say SECTION -->
+  <section class="border-top-divider" style="padding: 0 0 5rem 0; background: var(--bg-dark);">
+    <!-- Cinematic Header Banner Block -->
+    <div class="brands-say-banner-wrapper">
+      <div class="brands-say-banner-bg" style="background-image: url('assets/images/what_brands_say_bg.jpg');"></div>
+      <div class="brands-say-banner-overlay"></div>
+      <div class="container brands-say-banner-container">
+        <div class="brands-say-banner-content">
+          <span class="brands-say-eyebrow">COLLABORATORS</span>
+          <h2 class="brands-say-title">
+            What<br>
+            Brands <em>Say</em>
+          </h2>
+          <p class="brands-say-subtitle">Your friendly neighbourhood ANAVA FILMS.</p>
         </div>
       </div>
+    </div>
 
+    <!-- Testimonial Cards Grid -->
+    <div class="container" style="margin-top: 3.5rem;">
       <div class="work-grid">
         <div class="work-card" data-open-case="testimonial-lenskart-1">
           <div class="work-thumb-wrapper">
@@ -804,49 +777,61 @@
 
 
   <!-- 10. LOCATIONS SECTION -->
-  <section class="locations-section border-top-divider">
-    <!-- Background Landmark Imagery (User Assets) -->
-    <div class="locations-bg-wrapper">
-      <div class="locations-bg-item locations-bg-mumbai" style="background-image: url('assets/images/mumbai_gateway_bg.jpg?v=1.0');"></div>
-      <div class="locations-bg-item locations-bg-delhi" style="background-image: url('assets/images/delhi_indiagate_bg.jpg?v=1.0');"></div>
-      <div class="locations-bg-overlay"></div>
-    </div>
-
-    <!-- Graceful Arching Route SVG Line (Passes above the heading) -->
-    <div class="locations-route-layer">
-      <svg class="locations-route-svg" viewBox="0 0 1200 240" preserveAspectRatio="none">
-        <path d="M 160,130 Q 600,25 1040,130" fill="none" stroke="#f5b719" stroke-width="1.5" stroke-dasharray="5 6" opacity="0.45" />
-      </svg>
-    </div>
-
-    <div class="container locations-container">
-      <!-- Left Location Marker (Mumbai) -->
-      <div class="location-marker location-marker-mumbai">
-        <svg class="marker-pin-icon" viewBox="0 0 24 24" width="15" height="15" fill="#f5b719">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-        </svg>
-        <span class="marker-text">MUMBAI</span>
-      </div>
-
-      <!-- Center Content -->
-      <div class="locations-center-box">
-        <div class="locations-eyebrow-wrapper">
-          <span class="locations-eyebrow-dash"></span>
-          <span class="locations-badge">LOCATIONS</span>
-          <span class="locations-eyebrow-dash"></span>
+    <!-- 10. LOCATIONS SECTION (EXACT MOCKUP DESIGN) -->
+  <section class="section-padding border-top-divider" style="padding-top: 4.5rem; padding-bottom: 5.5rem; background: var(--bg-dark);">
+    <div class="container">
+      <div class="location-cards-grid">
+        <!-- MUMBAI CARD -->
+        <div class="location-card location-card-mumbai" style="background-image: url('assets/images/mumbai_sealink_bg.jpg');">
+          <div class="location-card-overlay"></div>
+          <div class="location-card-content">
+            <div class="location-card-header">
+              <div class="location-card-title-group">
+                <h3 class="location-card-city">Mumbai</h3>
+                <span class="location-hq-pill">HQ</span>
+              </div>
+              <div class="location-card-script">
+                Same City<br>Bigger<br>Stories
+              </div>
+            </div>
+            <div class="location-card-address">
+              301, Creative House,<br>
+              Linking Road, Bandra West,<br>
+              Mumbai - 400050
+            </div>
+            <div class="location-card-footer">
+              <a href="https://maps.google.com/?q=Linking+Road+Bandra+West+Mumbai+400050" target="_blank" rel="noopener" class="location-direction-btn">
+                <span>Get Directions</span>
+                <span class="direction-arrow">→</span>
+              </a>
+            </div>
+          </div>
         </div>
-        <h2 class="locations-cities">MUMBAI <span class="city-dot">•</span> DELHI</h2>
-        <p class="locations-supporting">
-          Based in Mumbai &amp; Delhi. Working wherever the idea takes us.
-        </p>
-      </div>
 
-      <!-- Right Location Marker (Delhi) -->
-      <div class="location-marker location-marker-delhi">
-        <svg class="marker-pin-icon" viewBox="0 0 24 24" width="15" height="15" fill="#f5b719">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-        </svg>
-        <span class="marker-text">DELHI</span>
+        <!-- DELHI CARD -->
+        <div class="location-card location-card-delhi" style="background-image: url('assets/images/delhi_indiagate_bg.jpg');">
+          <div class="location-card-overlay"></div>
+          <div class="location-card-content">
+            <div class="location-card-header">
+              <div class="location-card-title-group">
+                <h3 class="location-card-city">Delhi</h3>
+              </div>
+              <div class="location-card-script">
+                More<br>Ideas<br>More<br>Films
+              </div>
+            </div>
+            <div class="location-card-address">
+              Studio 8, Creative Block,<br>
+              Saket, New Delhi - 110017
+            </div>
+            <div class="location-card-footer">
+              <a href="https://maps.google.com/?q=Saket+New+Delhi+110017" target="_blank" rel="noopener" class="location-direction-btn">
+                <span>Get Directions</span>
+                <span class="direction-arrow">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -869,8 +854,8 @@
         <div class="cinematic-bracket bracket-left"></div>
         
         <h2 class="cinematic-cta-title">
-          <span class="cta-title-line line-white">WANT TO COLLABORATE</span>
-          <span class="cta-title-line line-gold">WITH ANAVA?</span>
+          <span class="cta-title-line line-white">Want to Collaborate</span>
+          <span class="cta-title-line line-gold">With Anava?</span>
         </h2>
 
         <div class="cinematic-bracket bracket-right"></div>

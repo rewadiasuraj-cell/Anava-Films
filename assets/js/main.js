@@ -445,16 +445,16 @@ function initHeaderScroll() {
    4.5 Homepage Portfolio Category Tabs (Client Work / My Work / Projects)
    -------------------------------------------------------------------------- */
 const PORTFOLIO_ROLE_ICONS = {
-  'Creative Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>',
-  'Ideation': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.4-2.5l13.2-4.4c1.1-.3 2.2.3 2.5 1.4L20.2 6Z"/><path d="M11.9 8.1l3.5 6.9"/><path d="M6.3 9.7l3.5 6.9"/><path d="M3.3 22 3 11"/><path d="M13 22h6a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H8"/></svg>',
-  'Production': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
-  'Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
-  'Scripting': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
-  'Celebrity Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
-  'Post-Production': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c55e02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>'
+  'Creative Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>',
+  'Ideation': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.4-2.5l13.2-4.4c1.1-.3 2.2.3 2.5 1.4L20.2 6Z"/><path d="M11.9 8.1l3.5 6.9"/><path d="M6.3 9.7l3.5 6.9"/><path d="M3.3 22 3 11"/><path d="M13 22h6a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H8"/></svg>',
+  'Production': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  'Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+  'Scripting': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
+  'Celebrity Direction': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+  'Post-Production': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>'
 };
 
-const PORTFOLIO_ROLE_ICON_FALLBACK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#c55e02"><circle cx="12" cy="12" r="4"/></svg>';
+const PORTFOLIO_ROLE_ICON_FALLBACK = '<svg width="14" height="14" viewBox="0 0 24 24" fill="#f05223"><circle cx="12" cy="12" r="4"/></svg>';
 
 function renderPortfolioRoleBadges(container, roles) {
   if (!container || !roles) return;
@@ -1565,7 +1565,7 @@ function initModals() {
         <div style="grid-column: 1 / -1;">
           <div style="font-size: 0.7rem; font-weight: 400; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.4rem;">ANAVA’S ROLE</div>
           <div class="role-badges" style="margin-top: 0;">
-            ${data.roles.map(r => `<span class="role-badge" style="background: rgba(197, 94, 2, 0.15); color: var(--accent-gold); border-color: rgba(197, 94, 2, 0.35); font-size: 0.75rem;">${r}</span>`).join('')}
+            ${data.roles.map(r => `<span class="role-badge" style="background: rgba(240, 82, 35, 0.15); color: var(--accent-gold); border-color: rgba(240, 82, 35, 0.35); font-size: 0.75rem;">${r}</span>`).join('')}
           </div>
         </div>
       </div>
@@ -1667,7 +1667,7 @@ function initContactForm() {
   if (urlParams.get('status') === 'success' && feedbackEl) {
     feedbackEl.style.display = 'block';
     feedbackEl.innerHTML = `
-      <div style="background: rgba(197, 94, 2, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
+      <div style="background: rgba(240, 82, 35, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
         ✨ <strong>Thought Received!</strong> Your message has been sent directly to office@anavafilms.com. We’ll review your thought and get back to you with ideas to shoot within 24 hours.
       </div>
     `;
@@ -1713,7 +1713,7 @@ function initContactForm() {
       if (feedbackEl) {
         feedbackEl.style.display = 'block';
         feedbackEl.innerHTML = `
-          <div style="background: rgba(197, 94, 2, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
+          <div style="background: rgba(240, 82, 35, 0.15); border: 1px solid var(--accent-gold); padding: 1.2rem; border-radius: 8px; color: #fff; font-size: 0.95rem; margin-top: 1rem;">
             ✨ <strong>Thought Received!</strong> Your message has been sent directly to office@anavafilms.com. We’ll review your thought and get back to you with ideas to shoot within 24 hours.
           </div>
         `;

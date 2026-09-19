@@ -7663,13 +7663,6 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   text-transform: uppercase;
 }
 
-.philo-accent-line {
-  width: 32px;
-  height: 2px;
-  background: #f05223;
-  border-radius: 2px;
-  flex-shrink: 0;
-}
 
 .philo-display-title {
   font-family: var(--font-display);
@@ -8870,13 +8863,6 @@ html[data-theme="light"] #cinematic-intro .intro-wordmark-img {
   margin-bottom: 2rem;
 }
 
-.eyebrow-line {
-  display: inline-block;
-  width: 36px;
-  height: 1.5px;
-  background: #f05223;
-  opacity: 0.85;
-}
 
 .eyebrow-text {
   font-family: var(--font-display);

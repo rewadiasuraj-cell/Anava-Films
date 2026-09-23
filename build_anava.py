@@ -401,13 +401,7 @@ def page_home():
     </div>
   </div>
 
-  <div class="hero-foot" aria-hidden="true">
-    <div class="hero-foot-mid">
-      <span class="rail-mouse"><i></i></span>
-      <span class="hero-foot-scroll">Scroll to explore</span>
-      <span class="hero-foot-line"></span>
-    </div>
-  </div>
+  <div class="hero-foot hero-foot-spacer" aria-hidden="true"></div>
 
   <div class="trusted">
     <div class="trusted-inner">
@@ -437,9 +431,9 @@ def page_home():
 
 <section class="section">
   <div class="container">
-    <div class="sec-label" style="margin-bottom:28px"><span class="sec-num">01</span><span class="sec-name">Our Philosophy</span></div>
     <div class="phil-grid">
       <div class="reveal">
+        <div class="sec-label" style="margin-bottom:24px"><span class="sec-num">01</span><span class="sec-name">Our Philosophy</span></div>
         <span class="eyebrow">Thinkers Who Make</span>
         <h2 class="phil-title">Thinkers who <span class="o">make.</span></h2>
         <p class="lead">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn't get lost between the people who think them and the people who make them.</p>
@@ -744,7 +738,7 @@ def page_wwd():
     </div>
     <div class="wwd-grid">
       <div class="reveal">
-        <div class="phil-media" style="aspect-ratio:16/10" data-lightbox="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-caption="From cut to craft">
+        <div class="phil-media finish-feature" data-lightbox="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-caption="From cut to craft">
           <video data-src="assets/media/behind-the-scenes/BTS Colour Grading.mp4" poster="assets/images/posters/bts-colour-grading.jpg" muted loop playsinline preload="none" class="hover-play"></video>
           <div class="phil-side">From Cut<br>To Craft</div>
         </div>

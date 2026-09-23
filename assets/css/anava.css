@@ -219,13 +219,13 @@ p{margin:0}
   position:relative;color:#fff;
   background:var(--accent);
   border-radius:999px;overflow:hidden;
-  box-shadow:0 10px 24px rgba(240,82,35,.26);
+  box-shadow:0 4px 12px rgba(240,82,35,.12);
   transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease);
 }
 .btn-primary:hover,.btn-light:hover,.hero-split.centered .hero-actions .play-btn:hover{
   transform:translateY(-2px);
   background:#ff6234;
-  box-shadow:0 16px 32px rgba(240,82,35,.4);
+  box-shadow:0 6px 16px rgba(240,82,35,.18);
 }
 .btn-primary:active,.btn-light:active,.hero-split.centered .hero-actions .play-btn:active{
   transform:translateY(1px) scale(.985);
@@ -486,7 +486,7 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 }
 
 .hero-cine-inner{
-  position:relative;z-index:3;text-align:center;
+  position:relative;top:6px;z-index:3;text-align:center;
   display:flex;flex-direction:column;align-items:center;
   /* The block sits low in the frame on purpose — the free space belongs
      above the eyebrow, not between the scroll cue and the logo strip. */
@@ -674,8 +674,8 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
    FILTER BAR (Work)
    ========================================================================== */
 /* The search field is gone, so the pills are the whole bar and sit centred */
-.filter-bar{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;margin:40px 0 34px}
-.pills{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.filter-bar{display:flex;align-items:center;justify-content:flex-start;gap:20px;flex-wrap:wrap;margin:40px 0 34px}
+.pills{display:flex;align-items:center;justify-content:flex-start;gap:10px;flex-wrap:wrap}
 .pill{
   border:1px solid var(--line);background:transparent;color:rgba(255,255,255,.8);
   border-radius:999px;padding:10px 22px;font-size:.82rem;font-weight:500;cursor:pointer;
@@ -1517,3 +1517,12 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   background:rgba(0,0,0,.7);color:#fff;font:inherit;cursor:pointer;
 }
 .intro-skip:focus-visible{outline:2px solid #fff;outline-offset:4px}
+
+/* Preserve the hero composition after removing its decorative scroll cue. */
+.hero-foot-spacer::before{content:"";display:block;height:134px}
+@media (max-width:760px){
+  .hero-foot-spacer::before{height:110px}
+}
+@media (min-width:1001px){
+  .finish-feature{aspect-ratio:9/16;width:100%;max-width:300px;margin-inline:auto}
+}

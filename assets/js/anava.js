@@ -62,19 +62,24 @@
     document.querySelectorAll('video[data-src]').forEach(function (v) { vObs.observe(v); });
   }
 
-  /* ---------- Home hero loop ----------
-     The still stays underneath; the loop only fades in once it is really
-     playing, so a blocked autoplay or slow network just leaves the still. */
-  var heroVid = document.querySelector('video[data-hero-src]');
-  if (heroVid) {
-    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var saver = navigator.connection && navigator.connection.saveData;
-    if (!calm && !saver) {
-      heroVid.addEventListener('playing', function () { heroVid.classList.add('is-on'); }, { once: true });
-      heroVid.src = heroVid.dataset.heroSrc;
-      var p = heroVid.play();
-      if (p && p.catch) p.catch(function () {});
-    }
+  /* ---------- Home hero parallax ----------
+     The still drifts down at a quarter of the scroll speed, so it falls
+     behind the headline as the page moves. It stops updating once the hero
+     has scrolled out of view. */
+  var para = document.querySelector('img[data-parallax]');
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (para && !calm) {
+    var paraHost = para.closest('.hero-cine') || para.parentElement;
+    var paraTick = false;
+    var paraMove = function () {
+      paraTick = false;
+      var y = Math.min(window.scrollY, paraHost.offsetHeight);
+      para.style.transform = 'translate3d(0,' + (y * 0.25).toFixed(1) + 'px,0)';
+    };
+    window.addEventListener('scroll', function () {
+      if (!paraTick) { paraTick = true; requestAnimationFrame(paraMove); }
+    }, { passive: true });
+    paraMove();
   }
 
   /* ---------- Reveal on scroll ---------- */

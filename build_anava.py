@@ -375,10 +375,7 @@ def page_home():
     ) + header("index.html") + f"""
 <section class="hero-cine">
   <div class="hero-cine-bg">
-    <img src="assets/images/home-hero-studio.jpg" alt="" fetchpriority="high">
-    <!-- Fades in over the still once it is actually playing; anava.js skips it
-         for reduced-motion and data-saver visitors, who keep the still. -->
-    <video class="hero-cine-video" data-hero-src="assets/media/home-hero-loop.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <img src="assets/images/home-hero-studio.jpg" alt="" fetchpriority="high" data-parallax>
   </div>
 
   <div class="container hero-cine-inner">

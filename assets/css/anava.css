@@ -477,12 +477,14 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 }
 .hero-cine-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-cine-bg img,.hero-cine-bg video{width:100%;height:100%;object-fit:cover}
-/* Parallax: the still is a quarter taller than the hero so anava.js can
-   drift it down at 0.25x the scroll speed without ever showing an edge.
+/* Parallax: the still is a fifth taller than the hero so anava.js can
+   drift it down at 0.2x the scroll speed without ever showing an edge.
    Transform-driven rather than background-attachment:fixed, which iOS
-   Safari ignores. */
+   Safari ignores. The crop leans left and up so the lamp and the truss —
+   the subject of the plate — stay in frame on every width. */
 .hero-cine-bg img[data-parallax]{
-  position:absolute;left:0;top:0;height:125%;will-change:transform;
+  position:absolute;left:0;top:0;height:120%;will-change:transform;
+  object-position:22% 0%;
 }
 @media (prefers-reduced-motion:reduce){
   .hero-cine-bg img[data-parallax]{height:100%;will-change:auto}
@@ -553,11 +555,10 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 }
 .hero-cine-actions .btn svg{width:17px;height:17px;flex:none}
 /* The quieter second path, for visitors who want to see the work before talking */
-.hero-cine-actions .btn-ghost{
-  border-color:rgba(255,255,255,.34);background:rgba(8,8,8,.28);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-}
-.hero-cine-actions .btn-ghost svg{width:15px;height:15px}
+/* The hero's one action carries the brand ramp rather than the flat orange */
+.btn-primary.btn-grad{background:var(--accent-grad)}
+.btn-primary.btn-grad:hover{background:linear-gradient(100deg,#ff6234 0%,#ff8c52 100%)}
+.hero-cine-actions .btn svg{width:15px;height:15px}
 
 /* ---- Hero foot: place, scroll cue, and the four verbs ---- */
 /* The foot takes the slack so it hugs the logo strip, rather than the strip

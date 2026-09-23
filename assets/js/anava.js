@@ -108,18 +108,20 @@
     paraMove();
   }
 
-  /* ---------- Work cards: colour reveal on touch screens ----------
-     Without hover, a card's grade wipes in once it is mostly on screen and
-     drains back to B/W when it scrolls away (CSS: .wcard.is-color). */
-  if ('IntersectionObserver' in window && window.matchMedia &&
-      window.matchMedia('(hover: none)').matches) {
-    var cObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        en.target.classList.toggle('is-color', en.intersectionRatio >= 0.6);
-      });
-    }, { threshold: [0, 0.6] });
-    document.querySelectorAll('.wcard:not(.photo)').forEach(function (c) { cObs.observe(c); });
-  }
+  /* ---------- Work cards: colour reveal on touch ----------
+     The grade only ever comes in at the reader's hand — hover with a mouse,
+     a touch on a phone or tablet, never on its own while scrolling. The
+     touched card keeps its colour (CSS: .wcard.is-color) until another one
+     is touched. */
+  document.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'touch' && e.pointerType !== 'pen') return;
+    var card = e.target.closest('.wcard:not(.photo)');
+    if (!card) return;
+    document.querySelectorAll('.wcard.is-color').forEach(function (c) {
+      if (c !== card) c.classList.remove('is-color');
+    });
+    card.classList.add('is-color');
+  }, { passive: true });
 
   /* ---------- Reveal on scroll ---------- */
   if ('IntersectionObserver' in window) {

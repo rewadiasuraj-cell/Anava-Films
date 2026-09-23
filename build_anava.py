@@ -49,7 +49,7 @@ def header(active):
     return f"""
 <header class="site-header">
   <div class="header-inner">
-    <a href="/" class="brand"><img src="assets/images/anava_official_logo_white.png" alt="ANAVA FILMS"></a>
+    <a href="/" class="brand"><img class="brand-word" src="assets/images/anava_official_logo_white.png" alt="ANAVA FILMS"><img class="brand-mark" src="assets/images/anava-mark.png" alt="" aria-hidden="true" width="34" height="29"></a>
     <nav class="nav"><ul style="display:contents">{links}</ul></nav>
     <div class="header-actions" style="display:flex;align-items:center;gap:14px">
       <a href="contact.html" class="btn-talk">Let's Talk <span class="circ">{DIAG}</span></a>

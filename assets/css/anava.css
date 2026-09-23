@@ -1635,7 +1635,10 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
    .is-compact) the capsule folds to a small wordmark pill, centred;
    hovering the header strip, focusing into it, or tapping it on a touch
    screen (.is-peek) opens it back out. Folded, it is a circle carrying the
-   gold A mark in place of the wordmark, which read as clutter mid-page. Phones keep their own burger header.
+   gold A mark in place of the wordmark, which read as clutter mid-page.
+   The circle folds to the LEFT, onto the wordmark's own spot, not the
+   centre: iPad Safari's compact address bar floats over the top centre of
+   the page while scrolling down and would hide a centred circle. Phones keep their own burger header.
    Motion: the width glides with no overshoot (a spring on a 1400px change
    would dip the pill to half its size); the bounce is a small squash-and-
    rebound in scale, the same size whichever way the capsule moves.
@@ -1647,7 +1650,10 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
     :root{--spring:linear(0,.016 1.1%,.064 2.3%,.241 4.9%,.477 7.8%,.723 11.3%,.884 14.7%,.998 18.5%,1.049 21.9%,1.066 25.1%,1.061 28.6%,1.038 33.4%,1.012 38.9%,.996 45.4%,.992 52%,.999 66.4%,1)}
   }
   .header-inner{
-    transition:max-width .75s cubic-bezier(.22,1,.36,1),padding .75s cubic-bezier(.22,1,.36,1),gap .75s cubic-bezier(.22,1,.36,1),
+    /* Explicit left margin (equal to what auto-centring gave) so the fold
+       anchors on the left edge where the wordmark sits */
+    margin:0 auto 0 calc((100% - min(100%,var(--container)))/2);
+    transition:max-width .75s cubic-bezier(.22,1,.36,1),padding .75s cubic-bezier(.22,1,.36,1),gap .75s cubic-bezier(.22,1,.36,1),margin-top .5s cubic-bezier(.22,1,.36,1),
       background .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);
   }
   .brand{position:relative;display:flex;align-items:center}
@@ -1664,6 +1670,14 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   }
   .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .header-inner{
     max-width:56px;height:56px;gap:0;padding:0;justify-content:center;cursor:pointer;
+  }
+}
+/* Touch screens: drop the circle clear of Safari's floating toolbar */
+@media (min-width:761px) and (hover:none){
+  .site-header.is-compact:not(:focus-within):not(.is-peek) .header-inner{margin-top:26px}
+}
+@media (min-width:761px){
+  .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .header-inner{
     animation:pillSquash .75s var(--ease) both;
   }
   /* Opening from the pill gets its own, gentler stretch-and-settle */
@@ -1700,28 +1714,33 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .site-header.is-compact .header-inner{animation:none!important}
 }
 
-/* ---- Work cards: B/W until hovered, then the colour grade wipes in ----
+/* ---- Work cards: B/W until hovered, then the colour grade dissolves in ----
    Every video card (photos keep their colour) carries a grayscale layer
    over its thumbnail. On hover, keyboard focus, play — or, on touch
    screens, when the card is touched (anava.js adds .is-color) — the layer
-   is clipped away left to right, like a before/after grade reveal. The
-   play button and text sit above it, so they stay in colour throughout. */
+   dissolves away: a straight cross-fade of the whole frame from B/W to the
+   final grade, no wipe edge. Opacity is the one property animated, so it
+   runs on the compositor and stays smooth. The play button and text sit
+   above the layer, so they stay in colour throughout. */
 .wcard:not(.photo)::before{
   content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   -webkit-backdrop-filter:grayscale(1) contrast(1.06) brightness(.92);
   backdrop-filter:grayscale(1) contrast(1.06) brightness(.92);
-  clip-path:inset(0 0 0 0);
-  transition:clip-path .85s cubic-bezier(.65,0,.35,1);
+  opacity:1;will-change:opacity;
+  /* leaving: the grade drains back to B/W, a little quicker */
+  transition:opacity .7s cubic-bezier(.4,0,.2,1);
 }
 .wcard:not(.photo):hover::before,
 .wcard:not(.photo):focus-visible::before,
 .wcard:not(.photo).is-playing::before,
-.wcard:not(.photo).is-color::before{clip-path:inset(0 0 0 100%)}
-/* Leaving the card, the grade drains back the other way, a touch quicker */
-.wcard:not(.photo):not(:hover)::before{transition-duration:.6s}
+.wcard:not(.photo).is-color::before{
+  opacity:0;
+  /* entering: a slow, soft dissolve into colour */
+  transition:opacity 1.1s cubic-bezier(.33,0,.2,1);
+}
 @supports not ((backdrop-filter:grayscale(1)) or (-webkit-backdrop-filter:grayscale(1))){
   .wcard:not(.photo)::before{display:none}
-  .wcard:not(.photo) img,.wcard:not(.photo) video{filter:grayscale(1);transition:filter .7s var(--ease),transform .7s var(--ease)}
+  .wcard:not(.photo) img,.wcard:not(.photo) video{filter:grayscale(1);transition:filter 1.1s cubic-bezier(.33,0,.2,1),transform .7s var(--ease)}
   .wcard:not(.photo):hover img,.wcard:not(.photo):hover video,
   .wcard:not(.photo).is-color img,.wcard:not(.photo).is-color video{filter:none}
 }

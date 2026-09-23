@@ -1,270 +1,238 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Got a Thought? — CONTACT ANAVA FILMS</title>
-  <meta name="description" content="You don't need a finished brief. You don't need a script. You don't even need to know exactly what the film should look like. Just give us the thought. We'll bring the ideas. Contact Anava Films.">
-  <!-- Performance Optimization: Resource Hints -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  
-  <link rel="stylesheet" href="assets/css/style.css?v=20260910.4">
-  <script defer src="assets/js/main.js?v=20260910.4"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Got a Thought? — Contact ANAVA FILMS</title>
+<meta name="description" content="Talk to Anava Films in Mumbai and Delhi. You don't need a finished brief — just give us the thought.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/anava.css">
+<script defer src="assets/js/anava.js"></script>
 </head>
 <body>
 
-  <!-- Persistent Header & Navigation -->
-  <header class="main-header scrolled">
-    <div class="header-container">
-      <!-- 1. LEFT ZONE: LOGO -->
-      <a href="/" class="brand-logo">
-        <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS Logo" class="brand-logo-img">
-      </a>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand"><img src="assets/images/anava_official_logo_white.png" alt="ANAVA FILMS"></a>
+    <nav class="nav"><ul style="display:contents"><li><a href="/" class="">Home</a></li><li><a href="work" class="">Work</a></li><li><a href="what-we-do" class="">What We Do</a></li><li><a href="process" class="">Process</a></li><li><a href="about" class="">About</a></li><li><a href="contact" class="active">Contact</a></li></ul></nav>
+    <div class="header-actions" style="display:flex;align-items:center;gap:14px">
+      <a href="contact" class="btn-talk">Let's Talk <span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+      <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
 
-      <!-- 2. CENTER ZONE: NAVIGATION -->
-      <nav class="main-nav">
-        <ul class="nav-links">
-          <li><a href="/" class="nav-link">HOME</a></li>
-          <li><a href="work" class="nav-link">WORK</a></li>
-          <li><a href="what-we-do" class="nav-link">WHAT WE DO</a></li>
-          <li><a href="process" class="nav-link">PROCESS</a></li>
-          <li><a href="about" class="nav-link">ABOUT</a></li>
-          <li><a href="contact" class="nav-link active">CONTACT</a></li>
-          <li class="mobile-cta-item"><a href="contact" class="btn-header-get-in-touch mobile-nav-cta">
-          <span>GET IN TOUCH</span>
-          <span class="btn-header-arrow-circle">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </a></li>
-        </ul>
-      </nav>
-
-      <!-- 3. RIGHT ZONE: CTA & HAMBURGER -->
-      <div class="header-actions">
-        <a href="contact" class="btn-header-get-in-touch">
-          <span>GET IN TOUCH</span>
-          <span class="btn-header-arrow-circle">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </a>
-        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" onclick="toggleMobileMenu(event)">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
+<section class="hero-split centered">
+  <div class="container">
+    <div class="hero-split-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Contact</span>
+        <h1 class="display">Got a <span class="o">thought?</span></h1>
+        <p class="lead">You don't need a finished brief. You don't need a script. You don't even need to know exactly what the film should look like. Just give us the thought — we'll bring the ideas.</p>
+        <div class="hero-actions">
+          <a href="#form" class="btn btn-light">Let's Make It <span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        </div>
+      </div>
+      <div class="hero-media reveal">
+        <img src="assets/images/director_chair_hero.jpg" alt="Anava Films director chair">
+        <div class="hero-script script">Ideas<br>People<br>Films</div>
+        <div class="hero-tag">A thought today. A story tomorrow.</div>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- Hero Header (CHANGED: Got a Thought?) -->
-  <section class="hero-section" style="min-height: 48vh; padding-top: calc(var(--header-height) + 4rem);">
-    <div class="container">
-      <div class="hero-content">
-        <span class="hero-badge">START A CONVERSATION</span>
-        <h1 class="display-title">Got a <span style="color: #f05223;">Thought?</span></h1>
-        <p class="subtitle" style="max-width: 800px; font-size: 1.2rem; line-height: 1.7; margin-top: 1rem;">
-          You don't need a finished brief. You don't need a script. You don't even need to know exactly what the film should look like. Just give us the thought. We'll bring the ideas.
+<section style="padding-bottom:40px" id="form">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="card-panel reveal">
+        <span class="eyebrow">Send us a message</span>
+        <h2 style="font-size:1.75rem;margin-top:12px">Tell us about your project.</h2>
+        <form id="contact-form" action="https://formsubmit.co/office@anavafilms.com" method="POST">
+          <div class="form-grid">
+            <input class="field" name="name" placeholder="Your Name*" required>
+            <input class="field" name="email" type="email" placeholder="Your Email*" required>
+            <input class="field full" name="company" placeholder="Company / Brand">
+            <select class="field full" name="type">
+              <option value="">Project Type</option>
+              <option>Commercial TVC / Brand Film</option>
+              <option>Vertical Film / Viral Social Reel</option>
+              <option>Performance Ads / Conversion Suite</option>
+              <option>Product Shoot &amp; Catalogue Visuals</option>
+              <option>Podcast &amp; Studio Broadcast</option>
+              <option>Creative Consulting / Just Have A Thought</option>
+            </select>
+            <textarea class="field full" name="message" placeholder="Tell us about your project..." required></textarea>
+          </div>
+          <div class="form-foot">
+            <button class="btn btn-primary" type="submit">Send Message <span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+            <p class="form-note">We usually respond within 24 hours.</p>
+          </div>
+          <p id="form-feedback" role="status" aria-live="polite" hidden style="margin-top:14px;font-size:15px;"></p>
+        </form>
+      </div>
+
+      <div class="reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2 class="display-sm" style="margin:14px 0 4px">Let's <span class="o">connect.</span></h2>
+        <div class="contact-rows">
+          <div class="crow">
+            <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <div><div class="crow-label">Email</div><div class="crow-val"><a href="mailto:office@anavafilms.com">office@anavafilms.com</a></div></div>
+          </div>
+          <div class="crow">
+            <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v2.5a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.7 2 2 0 0 1 4.1 1.5h2.5a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.7 9.3a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <div><div class="crow-label">Phone</div><div class="crow-val"><a href="tel:+918691924669">Jackson — +91 86919 24669</a><br><a href="tel:+919911111273">Anjan — +91 99111 11273</a></div></div>
+          </div>
+          <div class="crow">
+            <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+            <div><div class="crow-label">Follow Us</div><div class="crow-val"><a href="https://www.instagram.com/anavafilms" target="_blank" rel="noopener">Instagram</a> | <a href="https://vimeo.com/anavafilms" target="_blank" rel="noopener">Vimeo</a> | <a href="https://www.youtube.com/@anavafilms" target="_blank" rel="noopener">YouTube</a></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="loc-head reveal">
+      <span class="eyebrow">Visit us</span>
+      <h2 class="display-sm oneline">Our <span class="o">locations.</span></h2>
+      <p class="lead">Come say hello. We're in Mumbai and Delhi.</p>
+    </div>
+    <div class="loc-grid reveal">
+          <div class="loc">
+            <div class="loc-bg"><img src="assets/images/mumbai_gateway_bg.jpg" alt="Mumbai"></div>
+            <span class="script">Same<br>City<br>Bigger<br>Stories</span>
+            <div class="loc-inner">
+              <div class="loc-top"><h3>Mumbai</h3></div>
+              <a class="loc-link" href="https://maps.google.com/?q=Linking+Road+Bandra+West+Mumbai" target="_blank" rel="noopener">Get Directions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </div>
+          <div class="loc">
+            <div class="loc-bg"><img src="assets/images/delhi_indiagate_bg.jpg" alt="Delhi"></div>
+            <span class="script">More<br>Ideas<br>More<br>Films</span>
+            <div class="loc-inner">
+              <div class="loc-top"><h3>Delhi</h3></div>
+              <a class="loc-link" href="https://maps.google.com/?q=Saket+New+Delhi" target="_blank" rel="noopener">Get Directions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-band warm reveal">
+      <div class="cta-band-bg"><img src="assets/images/hero_dark.jpg" alt=""></div>
+      <div class="cta-band-inner">
+        <div>
+          <span class="eyebrow">Let's build together</span>
+          <h2 class="display-sm display-2line"><span>Great ideas start with</span><span>a <em class="o">conversation.</em></span></h2>
+        </div>
+        <div>
+          <p class="lead">Have a thought? Let's talk. We'll give you ideas to shoot.</p>
+          <a href="mailto:office@anavafilms.com" class="btn btn-primary">Let's Talk <span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        </div>
+      </div>
+      <div class="script">Ideas<br>Into<br>Action</div>
+    </div>
+  </div>
+</section>
+
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <a href="/"><img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS Logo"></a>
+        </div>
+        <p class="footer-desc">
+          ANAVA FILMS &mdash; Give us a thought. We&rsquo;ll give you ideas to shoot.
         </p>
       </div>
-    </div>
-  </section>
 
-  <!-- Contact Form & Direct Info -->
-  <section class="section-padding border-top-divider">
-    <div class="container">
-      
-      <div class="contact-wrapper">
+      <div class="footer-nav">
+        <div>
+          <div class="footer-col-title">NAVIGATION</div>
+          <ul class="footer-links">
+            <li><a href="/" class="footer-link">Home</a></li>
+            <li><a href="work" class="footer-link">Work</a></li>
+            <li><a href="what-we-do" class="footer-link">What We Do</a></li>
+            <li><a href="process" class="footer-link">Process</a></li>
+          </ul>
+        </div>
 
-        <!-- Info Card -->
-        <div class="contact-info-card">
-          <span class="contact-badge-label">DIRECT CONTACT</span>
-          <h2 class="section-title contact-title">LET’S TALK</h2>
-          
-          <p class="contact-subtitle-desc">
-            Whether you have an upcoming product campaign, a single-line thought, or need creative consulting, our team in Mumbai and Delhi is ready.
-          </p>
+        <div>
+          <div class="footer-col-title">COMPANY</div>
+          <ul class="footer-links">
+            <li><a href="about" class="footer-link">About Us</a></li>
+            <li><a href="contact" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
 
-          <div class="contact-meta-divider">
-            <div>
-              <div class="contact-meta-label">EMAIL US</div>
-              <a href="mailto:office@anavafilms.com" class="contact-email-link" style="display: inline-flex; align-items: center; gap: 0.55rem;">
-                <img src="assets/images/icons/mail.svg?v=1.0" alt="Email" width="18" height="18" style="object-fit: contain; flex-shrink: 0;">
+        <div>
+          <div class="footer-col-title">CONNECT</div>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:office@anavafilms.com" class="footer-link footer-social-link">
+                <img src="assets/images/icons/mail.svg" alt="Email" class="footer-social-icon" width="18" height="18">
                 <span>office@anavafilms.com</span>
               </a>
-            </div>
-
-            <div>
-              <div class="contact-meta-label">DIRECT PHONE NUMBERS</div>
-              <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.4rem;">
-                <a href="tel:+918691924669" style="color: #ffffff; font-weight: 400; text-decoration: none; font-size: 1.05rem; display: inline-flex; align-items: center; gap: 0.55rem;">
-                  <img src="assets/images/icons/call.svg?v=1.0" alt="Call" width="18" height="18" style="object-fit: contain; flex-shrink: 0;">
-                  <span>Jackson: <span style="color: #f05223;">+91 8691924669</span></span>
-                </a>
-                <a href="tel:+919911111273" style="color: #ffffff; font-weight: 400; text-decoration: none; font-size: 1.05rem; display: inline-flex; align-items: center; gap: 0.55rem;">
-                  <img src="assets/images/icons/call.svg?v=1.0" alt="Call" width="18" height="18" style="object-fit: contain; flex-shrink: 0;">
-                  <span>Anjan: <span style="color: #f05223;">+91 9911111273</span></span>
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <div class="contact-meta-label">LOCATIONS</div>
-              <div class="contact-meta-value">Mumbai · Delhi</div>
-            </div>
-
-            <div>
-              <div class="contact-meta-label">CONNECT DIRECTLY</div>
-              <div style="display: flex; gap: 0.8rem; margin-top: 0.5rem; flex-wrap: wrap;">
-                <a href="https://www.instagram.com/anava_films" target="_blank" rel="noopener noreferrer" class="btn-outline contact-social-btn">
-                  <img src="assets/images/icons/instagram.svg" alt="Instagram" width="16" height="16" class="social-btn-icon">
-                  <span>Instagram</span>
-                </a>
-                <a href="https://vimeo.com/zackdirect" target="_blank" rel="noopener noreferrer" class="btn-outline contact-social-btn">
-                  <img src="assets/images/icons/vimeo.svg" alt="Vimeo" width="16" height="16" class="social-btn-icon">
-                  <span>Vimeo</span>
-                </a>
-                <a href="https://www.youtube.com/@anava-films" target="_blank" rel="noopener noreferrer" class="btn-outline contact-social-btn">
-                  <img src="assets/images/icons/youtube.svg" alt="YouTube" width="16" height="16" class="social-btn-icon">
-                  <span>YouTube</span>
-                </a>
-              </div>
-            </div>
-
-          </div>
+            </li>
+            <li>
+              <a href="tel:+918691924669" class="footer-link footer-social-link">
+                <img src="assets/images/icons/call.svg" alt="Call" class="footer-social-icon" width="18" height="18">
+                <span>Jackson: 8691924669</span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+919911111273" class="footer-link footer-social-link">
+                <img src="assets/images/icons/call.svg" alt="Call" class="footer-social-icon" width="18" height="18">
+                <span>Anjan: 9911111273</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/anava_films" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
+                <img src="assets/images/icons/instagram.svg" alt="Instagram" class="footer-social-icon" width="18" height="18">
+                <span>Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://vimeo.com/zackdirect" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
+                <img src="assets/images/icons/vimeo.svg" alt="Vimeo" class="footer-social-icon" width="18" height="18">
+                <span>Vimeo</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/@anava-films" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
+                <img src="assets/images/icons/youtube.svg" alt="YouTube" class="footer-social-icon" width="18" height="18">
+                <span>YouTube</span>
+              </a>
+            </li>
+          </ul>
         </div>
-
-        <!-- Form Card -->
-        <div class="contact-form-card">
-          <form id="anava-contact-form" action="https://formsubmit.co/office@anavafilms.com" method="POST">
-            <input type="hidden" name="_subject" value="New Thought & Inquiry - ANAVA FILMS Website">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_captcha" value="false">
-
-            <h3 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 500; margin-bottom: 1.8rem;">SEND US YOUR THOUGHT</h3>
-
-            <div class="form-group">
-              <label class="form-label" for="client-name">YOUR NAME / BRAND *</label>
-              <input type="text" id="client-name" name="Client_Name_or_Brand" class="form-control" placeholder="e.g. Rahul / Brand Name" required>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="client-email">EMAIL ADDRESS *</label>
-              <input type="email" id="client-email" name="Email_Address" class="form-control" placeholder="name@company.com" required>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="project-type">WHAT KIND OF FILM OR CONTENT ARE YOU THINKING OF?</label>
-              <select id="project-type" name="Project_Content_Type" class="form-control">
-                <option value="Commercial TVC / Brand Film">Commercial TVC / Brand Film</option>
-                <option value="Vertical Film / Viral Social Reel">Vertical Film / Viral Social Reel</option>
-                <option value="Performance Ads / Conversion Suite">Performance Ads / Conversion Suite</option>
-                <option value="Product Shoot & Catalogue Visuals">Product Shoot & Catalogue Visuals</option>
-                <option value="Podcast & Studio Broadcast">Podcast & Studio Broadcast</option>
-                <option value="Creative Consulting / Just Have A Thought">Creative Consulting / Just Have A Thought</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="thought-message">TELL US YOUR THOUGHT *</label>
-              <textarea id="thought-message" name="Thought_and_Objective" class="form-control" placeholder="Even if it's just one thought, problem or product objective..." rows="5" required></textarea>
-            </div>
-
-            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center; padding: 1.15rem; font-size: 0.95rem;">
-              LET’S MAKE IT.
-            </button>
-
-            <div id="form-feedback" style="display: none;"></div>
-          </form>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Master Footer -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS Logo" style="height: 50px; width: auto; display: block; margin-left: 0; margin-top: 0.6rem; margin-bottom: 1.2rem;">
-          </div>
-        </div>
-
-        <div class="footer-nav">
-          <div>
-            <div class="footer-col-title">NAVIGATION</div>
-            <ul class="footer-links">
-              <li><a href="/" class="footer-link">Home</a></li>
-              <li><a href="work" class="footer-link">Work</a></li>
-              <li><a href="what-we-do" class="footer-link">What We Do</a></li>
-              <li><a href="process" class="footer-link">Process</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="footer-col-title">COMPANY</div>
-            <ul class="footer-links">
-              <li><a href="about" class="footer-link">About Us</a></li>              <li><a href="contact" class="footer-link">Contact Us</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="footer-col-title">CONNECT</div>
-            <ul class="footer-links">
-              <li>
-                <a href="mailto:office@anavafilms.com" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/mail.svg?v=1.0" alt="Email" class="footer-social-icon" width="18" height="18">
-                  <span>office@anavafilms.com</span>
-                </a>
-              </li>
-              <li>
-                <a href="tel:+918691924669" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/call.svg?v=1.0" alt="Call" class="footer-social-icon" width="18" height="18">
-                  <span>Jackson: +91 8691924669</span>
-                </a>
-              </li>
-              <li>
-                <a href="tel:+919911111273" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/call.svg?v=1.0" alt="Call" class="footer-social-icon" width="18" height="18">
-                  <span>Anjan: +91 9911111273</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/anava_films" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/instagram.svg" alt="Instagram" class="footer-social-icon" width="18" height="18">
-                  <span>Instagram</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://vimeo.com/zackdirect" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/vimeo.svg" alt="Vimeo" class="footer-social-icon" width="18" height="18">
-                  <span>Vimeo</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.youtube.com/@anava-films" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/youtube.svg" alt="YouTube" class="footer-social-icon" width="18" height="18">
-                  <span>YouTube</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>&copy; 2026 ANAVA FILMS. All rights reserved.</div>
       </div>
     </div>
-  </footer>
 
+    <div class="footer-bottom">
+      <div>&copy; <span data-year></span> ANAVA FILMS. All rights reserved.</div>
+      <div>ANAVA FILMS &mdash; Give us a thought. We&rsquo;ll give you ideas to shoot.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <div class="lightbox-inner">
+    <div id="lightbox-body"></div>
+    <p class="lightbox-cap" id="lightbox-cap"></p>
+  </div>
+</div>
 </body>
 </html>

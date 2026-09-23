@@ -1,0 +1,1519 @@
+/* ==========================================================================
+   ANAVA FILMS — Redesign Design System
+   Dark cinematic · orange accent · heavy display type · script accents
+   ========================================================================== */
+
+/* ---------- Tokens ---------- */
+:root{
+  --bg:#0a0a0a;
+  --bg-2:#101010;
+  --surface:#161616;
+  --surface-2:#1c1c1c;
+  --line:rgba(255,255,255,.10);
+  --line-soft:rgba(255,255,255,.06);
+  --text:#ffffff;
+  --muted:#9c9c9c;
+  --muted-2:#6f6f6f;
+  --accent:#f05223;
+  --accent-soft:rgba(240,82,35,.14);
+  /* One orange ramp for every call to action on the site */
+  --accent-grad:linear-gradient(100deg,#f05223 0%,#ff7a3d 100%);
+  --accent-glow:0 16px 40px rgba(240,82,35,.3);
+  --radius:14px;
+  --radius-lg:20px;
+  --header-h:78px;
+  --container:1320px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --font-display:'Archivo',system-ui,sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-script:'Caveat',cursive;
+}
+
+/* ---------- Reset ---------- */
+*,*::before,*::after{box-sizing:border-box}
+/* body alone does not stop the page scrolling sideways; the marquee's
+   off-screen half could still be dragged into view on a narrow phone. */
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:hidden}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--font-body);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img,video{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+ul{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4{margin:0;font-family:var(--font-display);font-weight:800;line-height:1.02;letter-spacing:-.02em}
+p{margin:0}
+::selection{background:var(--accent);color:#fff}
+
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 28px}
+/* A 1320px measure leaves a big monitor mostly empty margin. The container
+   steps up twice so the work, the heroes and the process all use the screen;
+   the reading columns inside them keep their own ch caps, so line length
+   does not run away with it. */
+@media (min-width:1560px){:root{--container:1460px}}
+@media (min-width:1800px){:root{--container:1620px}}
+@media (min-width:2200px){:root{--container:1760px}}
+.section{padding:88px 0}
+.section-sm{padding:52px 0}
+
+/* ---------- Type utilities ---------- */
+.eyebrow{
+  font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
+}
+.eyebrow-muted{color:var(--muted-2)}
+.display{
+  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(2.2rem,4.4vw,4rem);line-height:.98;letter-spacing:-.025em;
+}
+.hero-full .display{font-size:clamp(2.4rem,4.8vw,4.4rem)}
+.display-sm{
+  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(2rem,4.2vw,3.5rem);line-height:1;letter-spacing:-.022em;
+}
+/* "Thinkers who make." is set as one line, so it is sized off the viewport
+   rather than the display-sm ramp — the column is too narrow to hold it at
+   the full display size. */
+.phil-title{
+  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+  white-space:nowrap;font-size:clamp(1.75rem,4.1vw,3.1rem);
+  line-height:1;letter-spacing:-.028em;margin:16px 0 22px;
+}
+/* Headings that must hold one line are sized off the viewport so they
+   shrink to fit instead of wrapping on a narrow phone. */
+.oneline{white-space:nowrap;font-size:clamp(1.4rem,8.4vw,3.5rem)}
+/* A longer one-line heading needs a gentler ramp or it runs off a phone */
+.oneline-long{font-size:clamp(.9rem,4.35vw,3.5rem)}
+.o{color:var(--accent)}
+.lead{color:var(--muted);font-size:1.02rem;line-height:1.65;max-width:52ch}
+/* One step between the headline and the body copy: larger and brighter than
+   the lead, lighter and quieter than the display type. */
+.standfirst{
+  font-family:'Playfair Display',Georgia,serif;font-weight:400;
+  font-size:clamp(1.05rem,1.9vw,1.55rem);line-height:1.45;
+  color:rgba(255,255,255,.9);max-width:44ch;
+}
+
+.script{
+  font-family:var(--font-script);color:rgba(255,255,255,.82);
+  font-size:clamp(1.3rem,2vw,1.9rem);line-height:1.15;letter-spacing:.01em;
+}
+
+/* ---------- Header ---------- */
+/* The bar itself carries no plate — it is only a positioning rail. The glass
+   is the capsule inside it, so the photograph runs behind and around the nav
+   rather than being cut off by a full-width band. */
+.site-header{
+  position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:900;
+  display:flex;align-items:center;background:none;border:none;
+  padding:0 clamp(14px,2vw,26px);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  width:100%;max-width:var(--container);margin:0 auto;
+  padding:9px 10px 9px 24px;border-radius:999px;
+  /* Blur plus saturate is what makes it read as glass rather than fog: the
+     colour behind stays alive, it just goes soft. */
+  background:rgba(22,20,19,.2);
+  -webkit-backdrop-filter:blur(26px) saturate(185%);
+  backdrop-filter:blur(26px) saturate(185%);
+  border:1px solid rgba(255,255,255,.14);
+  /* A lit top edge and a dark drop: the two cues that read as thickness */
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2),
+    inset 0 -1px 0 rgba(255,255,255,.05),
+    0 10px 34px rgba(0,0,0,.34);
+  transition:background .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);
+}
+/* Once the page is under it the glass takes on more body, so the links keep
+   their contrast over whatever is scrolling past. */
+.site-header.is-scrolled .header-inner{
+  background:rgba(14,13,12,.4);
+  border-color:rgba(255,255,255,.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(255,255,255,.05),
+    0 14px 40px rgba(0,0,0,.48);
+}
+/* Safari and Firefox without backdrop-filter get an opaque plate instead of
+   a transparent one, which would leave the links unreadable. */
+@supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
+  .header-inner{background:rgba(12,11,10,.9)}
+}
+.brand img{height:27px;width:auto;object-fit:contain}
+.nav{display:flex;align-items:center;gap:30px}
+.nav{gap:38px}
+.nav a{
+  font-size:.78rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  white-space:nowrap;
+  color:rgba(255,255,255,.8);transition:color .2s var(--ease);position:relative;padding:4px 0;
+}
+.nav a:hover{color:#fff}
+.nav a.active{color:var(--accent)}
+
+/* Outlined pill on the plate rather than a solid white chip — the orange
+   sits only in the arrow, so the header stays quiet over the photograph. */
+.btn-talk{
+  display:inline-flex;align-items:center;gap:14px;
+  background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.2);
+  border-radius:999px;padding:7px 7px 7px 24px;flex:none;white-space:nowrap;
+  font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  backdrop-filter:blur(6px);
+  transition:border-color .25s var(--ease),background .25s var(--ease);
+}
+.btn-talk:hover{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.16)}
+.btn-talk .circ{
+  width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;
+  display:grid;place-items:center;flex:none;
+}
+.btn-talk .circ svg{width:15px;height:15px}
+
+/* place-items is grid-only, so the flex column needs justify-content to centre */
+.burger{
+  display:none;width:40px;height:40px;padding:0;
+  border:1px solid rgba(255,255,255,.2);border-radius:999px;
+  background:rgba(255,255,255,.08);cursor:pointer;
+  flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  transition:border-color .25s var(--ease);
+}
+.burger:hover{border-color:rgba(255,255,255,.3)}
+.burger span{
+  display:block;width:18px;height:2px;border-radius:1px;background:#fff;
+  transition:transform .25s var(--ease),opacity .2s var(--ease);
+}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:12px;border-radius:999px;
+  /* Pills sit about a third shorter than they did — the width carries the
+     label, the height no longer competes with the headline above it. */
+  padding:9px 9px 9px 26px;font-size:.9rem;font-weight:600;border:none;cursor:pointer;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease);
+}
+.btn .circ{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;flex:none}
+.btn .circ svg{width:14px;height:14px}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary .circ{background:rgba(255,255,255,.22);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);filter:drop-shadow(0 14px 22px rgba(240,82,35,.42))}
+/* Was a white pill; every action on the site now carries the same ramp */
+.btn-light{background:var(--accent);color:#fff}
+.btn-light .circ{background:rgba(255,255,255,.22);color:#fff}
+.btn-light:hover{transform:translateY(-2px);filter:drop-shadow(0 14px 22px rgba(240,82,35,.42))}
+
+/* ---------- Liquid metal on the orange ramp ----------
+   Molten metal, not chrome: the brand gradient stays the base colour and the
+   metal is only light moving across it. Three layers do the work —
+     1. soft repeating bands that drift, for the flowing-liquid read
+     2. one hard specular streak that sweeps on hover, for the polish
+     3. a lit top rim and a dark bottom rim, for the sense of a thick object
+   All of it is blend modes over the existing background, so the button keeps
+   its own gradient, glow, size and hover lift. */
+/* ---------- CTAs: one flat orange, no ramp and no moving light ----------
+   The metal treatment and the two-tone ramp both read as texture on a shape
+   that should be a single, unmistakable block of brand colour. */
+.btn-primary,.btn-light,.hero-split.centered .hero-actions .play-btn{
+  position:relative;color:#fff;
+  background:var(--accent);
+  border-radius:999px;overflow:hidden;
+  box-shadow:0 10px 24px rgba(240,82,35,.26);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease);
+}
+.btn-primary:hover,.btn-light:hover,.hero-split.centered .hero-actions .play-btn:hover{
+  transform:translateY(-2px);
+  background:#ff6234;
+  box-shadow:0 16px 32px rgba(240,82,35,.4);
+}
+.btn-primary:active,.btn-light:active,.hero-split.centered .hero-actions .play-btn:active{
+  transform:translateY(1px) scale(.985);
+  box-shadow:inset 0 2px 6px rgba(80,18,0,.4),0 4px 12px rgba(240,82,35,.22);
+}
+.btn-primary .circ,.btn-light .circ{background:rgba(255,255,255,.22);color:#fff}
+/* Click ripple, spawned at the pointer by anava.js */
+.btn-ripple{
+  position:absolute;width:22px;height:22px;border-radius:50%;
+  transform:translate(-50%,-50%) scale(0);pointer-events:none;
+  background:radial-gradient(circle,rgba(255,255,255,.45) 0%,rgba(255,255,255,0) 70%);
+  animation:btnRipple .6s ease-out forwards;
+}
+@keyframes btnRipple{
+  from{transform:translate(-50%,-50%) scale(0);opacity:.6}
+  to{transform:translate(-50%,-50%) scale(4.5);opacity:0}
+}
+@media (prefers-reduced-motion:reduce){.btn-ripple{display:none}}
+.btn-ghost{background:transparent;color:#fff;border:1px solid var(--line);padding:13px 26px}
+.btn-dark{
+  background:rgba(12,12,12,.62);color:#fff;border:1px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(6px);
+}
+.btn-dark:hover{border-color:rgba(255,255,255,.65);background:rgba(12,12,12,.85);transform:translateY(-2px)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+.circ-arrow{
+  width:46px;height:46px;border-radius:50%;border:1px solid var(--line);
+  display:grid;place-items:center;flex:none;transition:.25s var(--ease);
+}
+.circ-arrow svg{width:16px;height:16px}
+a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.play-btn{
+  width:58px;height:58px;border-radius:50%;background:#fff;color:#0a0a0a;border:none;cursor:pointer;
+  display:grid;place-items:center;flex:none;transition:.25s var(--ease);
+}
+.play-btn svg{width:18px;height:18px;margin-left:2px}
+.play-btn:hover{background:var(--accent);color:#fff;transform:scale(1.06)}
+
+.link-row{display:inline-flex;align-items:center;gap:18px;cursor:pointer}
+.link-row .label{font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.link-row .rule{width:88px;height:1px;background:rgba(255,255,255,.28)}
+
+/* ---------- Section head (numbered) ---------- */
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:38px}
+.sec-label{display:flex;align-items:center;gap:16px}
+.sec-num{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--muted-2)}
+.sec-name{font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.sec-more{display:inline-flex;align-items:center;gap:14px;font-size:.82rem;font-weight:500;color:var(--muted)}
+.sec-more:hover{color:#fff}
+
+/* ==========================================================================
+   HERO — split (Work / Process / Contact style)
+   ========================================================================== */
+.hero-split{padding-top:calc(var(--header-h) + 46px);padding-bottom:34px}
+.hero-split-grid{display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);gap:46px;align-items:center}
+.hero-copy .display{margin:16px 0 20px}
+.hero-actions{margin-top:30px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.hero-media{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  aspect-ratio:16/10;background:var(--surface);
+}
+/* 16/7 is exactly 30% less tall than 16/10 at the same width. The tighter
+   crop cut the subject's head off, so the frame is pulled up towards the
+   top of the footage rather than centred. */
+.hero-media.short{aspect-ratio:16/7}
+.hero-media.short img,.hero-media.short video{object-position:center 32%}
+/* Centred page hero: the headline owns the full width instead of a narrow
+   left column, the media sits under it, and every element shares one axis. */
+.hero-split.centered .hero-split-grid{grid-template-columns:minmax(0,1fr);gap:40px}
+.hero-split.centered .hero-copy{text-align:left;max-width:none}
+.hero-split.centered .hero-copy .display{
+  font-size:clamp(2.4rem,5.4vw,4.9rem);margin:20px 0 22px;max-width:none;line-height:.95;
+}
+.hero-split.centered .hero-copy .lead{max-width:40ch;margin-left:0;margin-right:0}
+.hero-split.centered .hero-copy .standfirst{max-width:34ch;margin:0}
+.hero-split.centered .hero-copy .standfirst + .lead{
+  margin-top:18px;max-width:58ch;font-size:.94rem;color:var(--muted-2);
+}
+/* A headline set as one line is sized off the viewport, not the ch cap */
+.hero-split.centered .hero-copy .display.display-1line{
+  white-space:normal;max-width:none;font-size:clamp(2.4rem,5.4vw,4.9rem);
+}
+/* Two lines, each unbreakable: the ch cap was splitting the first line in
+   three, so this one is sized off the viewport like the one-line headings. */
+.hero-split.centered .hero-copy .display.display-2line{
+  /* Each line is unbreakable, so this one is sized to fit the copy column
+     rather than the frame — otherwise it runs out over the photograph. */
+  max-width:none;font-size:clamp(1.9rem,4.1vw,3.6rem);
+  display:flex;flex-direction:column;align-items:flex-start;
+}
+.display-2line > span{white-space:nowrap}
+/* The same two-unbreakable-lines treatment, sized for a CTA band */
+.cta-band .display-sm.display-2line{
+  font-size:clamp(1.2rem,5.4vw,3.4rem);
+  display:flex;flex-direction:column;align-items:center;
+}
+.display-2line em{font-style:normal}
+
+/* CTA band hierarchy: a quiet numbered stepper, then the headline, then the
+   promise, then one clear action with the secondary route as a plain link. */
+.stepper{
+  display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap;
+  margin:0 0 20px;padding:0;list-style:none;
+}
+.stepper li{
+  display:flex;align-items:center;gap:8px;
+  font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);
+}
+.stepper-n{
+  font-family:var(--font-display);font-size:.62rem;font-weight:800;
+  color:var(--accent);letter-spacing:.06em;
+}
+.stepper li + li::before{
+  content:"";width:26px;height:1px;background:rgba(255,255,255,.28);margin-right:18px;
+}
+.cta-band .standfirst{max-width:36ch;margin:0 auto;color:rgba(255,255,255,.94)}
+.text-link{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:.82rem;font-weight:500;color:rgba(255,255,255,.72);
+  border-bottom:1px solid rgba(255,255,255,.28);padding-bottom:3px;
+}
+.text-link:hover{color:#fff;border-bottom-color:#fff}
+.cta-band .cta-actions{gap:28px;margin-top:6px}
+/* The headline carries the weight here, so the action stays small under it */
+/* One filled action, left on the same axis as everything above it. The
+   only colour in the block, so it reads as the single next step. */
+.hero-split.centered .hero-actions{justify-content:flex-start;margin-top:34px;gap:16px}
+.hero-split.centered .hero-actions .btn{padding:14px 14px 14px 26px;font-size:.84rem}
+.hero-split.centered .hero-actions .btn .circ{width:30px;height:30px}
+.hero-split.centered .hero-actions .btn .circ svg{width:13px;height:13px}
+.hero-split.centered .hero-actions .play-btn{
+  width:auto;height:auto;border-radius:999px;border:none;
+  background:var(--accent);
+  color:#fff;padding:9px 28px 9px 10px;
+  display:inline-flex;align-items:center;gap:14px;cursor:pointer;
+}
+.hero-split.centered .hero-actions .play-btn svg{width:15px;height:15px;flex:none}
+.pb-label{
+  font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  white-space:nowrap;
+}
+.hero-split.centered .hero-actions .link-row{display:none}
+.hero-split.centered .link-row{flex:none}
+.hero-split.centered .hero-media{max-width:none;margin:0 auto;width:100%}
+/* The copy rides on the footage instead of sitting above it: one frame, one
+   block of type. Both children share a single grid cell — media beneath,
+   copy centred on top — which also removes the stacked gap between them. */
+.hero-split.centered .hero-split-grid{grid-template-areas:"stack";gap:0}
+.hero-split.centered .hero-copy,
+.hero-split.centered .hero-media{grid-area:stack}
+.hero-split.centered .hero-media,
+.hero-split.centered .hero-media.short{
+  aspect-ratio:auto;min-height:clamp(480px,70svh,700px);
+}
+/* The copy sits on the left third, so the plate is opaque there and clears
+   away to the right — the frame keeps its subject instead of a flat wash. */
+.hero-split.centered .hero-media::after{
+  background:
+    linear-gradient(90deg,rgba(6,6,6,.97) 0%,rgba(6,6,6,.93) 34%,rgba(6,6,6,.66) 54%,rgba(6,6,6,.2) 78%,rgba(6,6,6,.05) 100%),
+    linear-gradient(180deg,rgba(6,6,6,.45) 0%,transparent 26%,transparent 72%,rgba(6,6,6,.5) 100%);
+}
+/* Body copy now sits on a photograph rather than the page ground */
+.hero-split.centered .hero-copy .lead{color:rgba(255,255,255,.86)}
+.hero-split.centered .hero-copy .standfirst{color:#fff}
+.hero-split.centered .hero-copy .standfirst + .lead{color:rgba(255,255,255,.8)}
+/* The copy, not the footage, sets the frame's height now, so the media has to
+   be pinned to the frame rather than sized by its own box. */
+.hero-split.centered .hero-media > img,
+.hero-split.centered .hero-media > video{position:absolute;inset:0}
+/* The copy owns the left third, so the frame is pulled left inside its own
+   footage — the subject lands clear of the type instead of under it. */
+.hero-split.centered .hero-media > img,
+.hero-split.centered .hero-media > video{object-position:22% center}
+.hero-split.centered .hero-media.short > img,
+.hero-split.centered .hero-media.short > video{object-position:22% 32%}
+/* Where the source is narrower than the frame, cover crops vertically and
+   leaves no horizontal slack for object-position to use — so those two are
+   scaled up first and then slid, which is the only way to move the subject
+   sideways without opening a gap at the edge. */
+.hero-split.centered .hero-media.shift-right > img,
+.hero-split.centered .hero-media.shift-right > video{
+  transform:scale(1.3) translateX(11%);transform-origin:center;
+}
+.hero-split.centered .hero-copy{
+  position:relative;z-index:3;align-self:center;justify-self:start;
+  width:min(640px,60%);
+  padding:clamp(36px,5vw,58px) clamp(24px,4vw,44px) clamp(36px,5vw,58px) clamp(28px,5vw,68px);
+}
+/* Eyebrow, rule, headline, promise, action — five steps, each one notch
+   quieter than the last, all starting from the same left edge. */
+.hero-split.centered .hero-copy .eyebrow{
+  display:flex;align-items:center;gap:16px;
+  font-size:.72rem;letter-spacing:.22em;color:var(--accent);
+}
+.hero-split.centered .hero-copy .eyebrow::after{
+  content:"";height:1px;width:clamp(28px,4vw,58px);flex:none;
+  background:linear-gradient(90deg,var(--accent),rgba(240,82,35,0));
+}
+.hero-split.centered .hero-script{display:none}
+.hero-media[data-lightbox]{cursor:pointer}
+.hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover}
+.hero-media::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(10,10,10,.55) 0%,rgba(10,10,10,.05) 45%,rgba(10,10,10,.5) 100%);
+}
+.hero-script{position:absolute;right:26px;top:26px;z-index:2;text-align:right;line-height:1.35}
+/* The copy runs down the left of the frame, so the caption sits opposite it
+   in the bottom right rather than under the headline. */
+.hero-tag{
+  position:absolute;left:0;right:0;bottom:22px;z-index:2;text-align:right;
+  padding:0 30px;
+  font-size:.66rem;letter-spacing:.3em;color:rgba(255,255,255,.72);text-transform:uppercase;
+}
+
+/* ==========================================================================
+   HOME — full-bleed hero
+   ========================================================================== */
+.hero-full{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding-top:calc(var(--header-h) + 92px);padding-bottom:78px;overflow:hidden;
+}
+.hero-full-bg{position:absolute;inset:0;z-index:0}
+.hero-full-bg img,.hero-full-bg video{width:100%;height:100%;object-fit:cover}
+.hero-full-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(95deg,rgba(8,8,8,.94) 0%,rgba(8,8,8,.72) 42%,rgba(8,8,8,.35) 100%),
+             linear-gradient(0deg,rgba(8,8,8,.9) 0%,transparent 40%);
+}
+.hero-full .container{position:relative;z-index:2}
+.hero-full .display{margin:18px 0 0;max-width:15ch}
+.hero-full .display .dim{color:rgba(255,255,255,.55)}
+.hero-foot{
+  position:absolute;left:0;right:0;bottom:42px;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.hero-cities{display:flex;align-items:center;gap:16px;font-size:.74rem;letter-spacing:.24em;color:rgba(255,255,255,.7)}
+.hero-cities .dash{width:26px;height:1px;background:rgba(255,255,255,.4)}
+.hero-script-abs{position:absolute;right:38px;top:26%;z-index:2;text-align:right;line-height:1.3}
+
+/* ==========================================================================
+   HOME — cinematic centered hero
+   ========================================================================== */
+.hero-cine{
+  position:relative;min-height:100svh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;overflow:hidden;
+  padding:calc(var(--header-h) + 18px) 0 0;
+}
+.hero-cine-bg{position:absolute;inset:0;z-index:0}
+.hero-cine-bg img,.hero-cine-bg video{width:100%;height:100%;object-fit:cover}
+.hero-cine-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(64% 54% at 50% 44%,rgba(8,8,8,.30) 0%,rgba(8,8,8,.52) 62%,rgba(6,6,6,.80) 100%),
+    linear-gradient(180deg,rgba(8,8,8,.74) 0%,rgba(8,8,8,.18) 28%,rgba(8,8,8,.30) 64%,rgba(6,6,6,.88) 100%);
+}
+
+.hero-cine-inner{
+  position:relative;z-index:3;text-align:center;
+  display:flex;flex-direction:column;align-items:center;
+  /* The block sits low in the frame on purpose — the free space belongs
+     above the eyebrow, not between the scroll cue and the logo strip. */
+  margin:auto 0 0;padding:clamp(30px,5.2vh,62px) 0 0;
+}
+.hero-eyebrow{
+  font-size:.62rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.68);margin-bottom:22px;
+}
+/* Two voices, one statement: the ask is set in the display face, the promise
+   answers it in the serif. The serif line is italic end to end — mixing roman
+   and italic inside one line made the two halves read as different phrases. */
+.hero-cine-title{
+  margin:0;letter-spacing:0;line-height:1;
+  display:flex;flex-direction:column;gap:.1em;
+}
+.hero-cine-title .hl-1{
+  font-family:var(--font-display);font-weight:700;
+  font-size:clamp(2.7rem,6.1vw,5.5rem);letter-spacing:-.032em;line-height:1.02;color:#fff;
+}
+.hero-cine-title .hl-2{
+  font-family:'Playfair Display',Georgia,serif;font-weight:400;font-style:italic;
+  font-size:clamp(2.5rem,5.9vw,5.2rem);letter-spacing:-.016em;line-height:1.1;
+  color:#fff;
+}
+.hero-cine-title .hl-2 em{font-style:italic;color:var(--accent)}
+
+/* A full paragraph now, not a one-line strapline. The measure is set so it
+   lands on three lines on a desktop, and the opening claim is lifted a step
+   brighter than the detail that follows it — one paragraph, two weights. */
+.hero-cine-lead{
+  text-wrap:pretty;
+  margin:26px auto 0;max-width:min(96ch,100%);color:rgba(255,255,255,.58);
+  font-size:clamp(.88rem,1.05vw,1rem);line-height:1.78;letter-spacing:.005em;
+}
+.hero-cine-lead strong{font-weight:500;color:rgba(255,255,255,.92)}
+.hero-cine-actions{margin-top:44px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+/* Large, sentence-case pills with an inline diagonal arrow — no arrow chip */
+.hero-cine-actions .btn{
+  padding:15px 34px;gap:14px;font-size:1.02rem;font-weight:600;
+  letter-spacing:0;text-transform:none;
+}
+.hero-cine-actions .btn svg{width:17px;height:17px;flex:none}
+
+/* ---- Hero foot: place, scroll cue, and the four verbs ---- */
+/* The foot takes the slack so it hugs the logo strip, rather than the strip
+   taking it and leaving a band of empty plate between the two. */
+.hero-foot{
+  position:relative;z-index:3;width:100%;max-width:var(--container);
+  margin:0 auto;padding:clamp(76px,11vh,132px) 28px 4px;
+  display:flex;justify-content:center;flex:none;
+  /* Decoration only (aria-hidden): it must never take a click meant for the
+     button above it, whatever the viewport height does to the layout. */
+  pointer-events:none;
+}
+.hero-foot-mid{display:flex;flex-direction:column;align-items:center;gap:12px}
+.hero-foot-scroll{
+  font-size:.68rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);
+}
+.hero-foot-line{width:1px;height:62px;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent)}
+
+.hero-reel-link{
+  display:inline-flex;align-items:center;gap:16px;background:none;border:none;cursor:pointer;padding:0;
+}
+.hero-reel-link .circ-arrow{width:48px;height:48px;border-color:rgba(255,255,255,.4)}
+.hero-reel-link .circ-arrow svg{width:15px;height:15px;margin-left:2px}
+.hero-reel-link .label{font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+.hero-reel-link:hover .circ-arrow{background:var(--accent);border-color:var(--accent)}
+
+/* ---- side rails ---- */
+.hero-rail{
+  position:absolute;z-index:3;top:50%;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.62);
+}
+.hero-rail-left{left:34px}
+.hero-rail-right{right:34px;align-items:flex-end;text-align:right;gap:14px}
+.rail-tick{width:1px;height:62px;background:rgba(255,255,255,.28)}
+.rail-tick.short{width:1px;height:26px}
+.rail-statement{
+  font-size:.66rem;letter-spacing:.24em;line-height:2.1;text-transform:uppercase;
+  color:rgba(255,255,255,.8);margin:0;
+}
+.rail-underline{width:44px;height:2px;background:var(--accent);margin:6px 0 30px}
+.rail-scroll{font-size:.6rem;letter-spacing:.26em;color:rgba(255,255,255,.6)}
+.rail-mouse{
+  width:20px;height:32px;border:1px solid rgba(255,255,255,.4);border-radius:12px;
+  display:grid;justify-items:center;padding-top:6px;
+}
+.rail-mouse i{display:block;width:3px;height:6px;border-radius:2px;background:rgba(255,255,255,.85);animation:mouseDot 1.8s var(--ease) infinite}
+@keyframes mouseDot{0%,100%{transform:translateY(0);opacity:1}55%{transform:translateY(9px);opacity:.25}}
+
+/* ---- trusted-by strip ---- */
+/* A black band with hairline rules: the logos carry the only colour, so the
+   lane reads as part of the hero rather than a white slab cutting it off. */
+.trusted{
+  position:relative;z-index:3;width:100%;
+  background:#0a0a0a;overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.14);
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+/* One stacked, full-bleed arrangement at every width: the label sits centred
+   on its own black band above the logo lane, the way the phone layout reads. */
+.trusted-inner{width:100%;display:flex;flex-direction:column}
+.trusted-label{
+  width:100%;display:flex;align-items:center;justify-content:center;
+  padding:12px 24px;border-bottom:1px solid rgba(255,255,255,.12);
+  font-size:.66rem;font-weight:600;letter-spacing:.2em;line-height:1.6;
+  text-transform:uppercase;color:rgba(255,255,255,.72);text-align:center;
+}
+/* The list is rendered twice, so translating it half way loops seamlessly */
+/* No edge fade here: against white it reads as a clipped logo, not a fade */
+.trusted-marquee{width:100%;min-width:0;overflow:hidden}
+.trusted-logos{display:flex;width:max-content;align-items:stretch;animation:trustedScroll 14s linear infinite}
+@keyframes trustedScroll{to{transform:translateX(-50%)}}
+.trusted-logos li{
+  flex:0 0 auto;width:clamp(120px,11vw,168px);display:grid;place-items:center;
+  padding:14px 14px;border-left:1px solid rgba(255,255,255,.1);
+}
+.trusted-logos img{
+  max-height:34px;max-width:100%;width:auto;object-fit:contain;
+  opacity:.72;transition:opacity .25s var(--ease);
+  /* Every mark is flattened to a white silhouette: ten brand palettes side by
+     side pulled the eye around the strip instead of down the page. Black first,
+     then inverted, so light and dark source art both land on pure white. */
+  filter:brightness(0) invert(1);
+}
+/* A knockout mark (a light shape inside a coloured plate) loses its interior to
+   that filter and lands as one white blob, so those ship as hand-made white
+   files and pass through untouched. */
+.trusted-logos img.logo-asis,.marquee img.logo-asis{filter:none}
+.trusted-logos li:hover img{opacity:1}
+
+/* ---------- Showreel band ---------- */
+/* The showreel runs wider than the text column it follows — it is the one
+   piece of the page that should feel like a screen rather than a block of
+   content, so it breaks out of the 1320px measure. */
+.reel-wide{max-width:min(1680px,100% - 40px);padding-left:0;padding-right:0}
+.reel{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line-soft);
+  aspect-ratio:21/8;background:#000;cursor:pointer;
+}
+.reel video,.reel img{width:100%;height:100%;object-fit:cover;opacity:1;transition:transform .6s var(--ease)}
+.reel:hover video,.reel:hover img{opacity:1;transform:scale(1.02)}
+/* The play control sits in the top-left so it clears the key art's own
+   title block, which runs through the middle of the frame. */
+.reel-overlay{
+  position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:space-between;
+  padding:clamp(18px,3vw,30px) clamp(20px,4vw,52px);
+  background:none;
+  text-shadow:0 1px 6px rgba(0,0,0,.8);
+}
+.reel-left{display:flex;align-items:center;gap:18px}
+.reel-meta{display:flex;align-items:center;gap:20px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.reel-meta .rule{width:70px;height:1px;background:rgba(255,255,255,.3)}
+.reel-right{text-align:right;font-size:.7rem;letter-spacing:.2em;color:rgba(255,255,255,.72);line-height:2;text-transform:uppercase}
+.reel-right strong{display:block;font-size:.74rem;letter-spacing:.3em;color:#fff;margin-bottom:10px;font-weight:600}
+/* Scaled down with the control now that it sits in the corner, not centred */
+.reel .play-btn{width:46px;height:46px}
+.reel .play-btn svg{width:15px;height:15px}
+.reel-meta{font-size:.72rem;letter-spacing:.14em}
+/* Small credit line tucked into the reel's bottom-left corner */
+.reel-credit{
+  position:absolute;left:clamp(20px,4vw,52px);bottom:16px;z-index:4;
+  font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.75);text-shadow:0 1px 6px rgba(0,0,0,.7);
+}
+/* Studio mark on the reel, opposite the film credit */
+.reel-mark{
+  position:absolute;right:clamp(20px,4vw,52px);bottom:16px;z-index:4;
+  font-family:var(--font-display);font-weight:800;font-size:.76rem;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(255,255,255,.62);text-shadow:0 1px 8px rgba(0,0,0,.8);
+}
+
+/* ---------- Logo marquee ---------- */
+.marquee{overflow:hidden;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:26px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.marquee-track{display:flex;gap:70px;width:max-content;animation:marquee 22s linear infinite;align-items:center}
+.marquee img{height:30px;width:auto;max-width:130px;object-fit:contain;opacity:.55;filter:brightness(0) invert(1);transition:.3s var(--ease)}
+.marquee img:hover{opacity:.95}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ==========================================================================
+   FILTER BAR (Work)
+   ========================================================================== */
+/* The search field is gone, so the pills are the whole bar and sit centred */
+.filter-bar{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap;margin:40px 0 34px}
+.pills{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.pill{
+  border:1px solid var(--line);background:transparent;color:rgba(255,255,255,.8);
+  border-radius:999px;padding:10px 22px;font-size:.82rem;font-weight:500;cursor:pointer;
+  transition:.22s var(--ease);white-space:nowrap;
+}
+.pill:hover{border-color:rgba(255,255,255,.34);color:#fff}
+.pill.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.pill-drop{position:relative}
+.pill-drop .pill{display:inline-flex;align-items:center;gap:9px}
+.pill-drop .pill svg{width:12px;height:12px;transition:transform .22s var(--ease)}
+.pill-drop.open .pill svg{transform:rotate(180deg)}
+.drop-menu{
+  position:absolute;top:calc(100% + 10px);left:0;min-width:200px;z-index:60;
+  background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:8px;
+  opacity:0;visibility:hidden;transform:translateY(-6px);transition:.22s var(--ease);
+  box-shadow:0 24px 50px rgba(0,0,0,.6);
+}
+.pill-drop.open .drop-menu{opacity:1;visibility:visible;transform:translateY(0)}
+.drop-menu button{
+  display:block;width:100%;text-align:left;background:none;border:none;cursor:pointer;
+  padding:9px 14px;border-radius:8px;font-size:.84rem;color:rgba(255,255,255,.78);transition:.18s var(--ease);
+}
+.drop-menu button:hover{background:rgba(255,255,255,.07);color:#fff}
+.drop-menu button.active{color:var(--accent)}
+
+.search{position:relative;flex:none;width:min(330px,100%)}
+.search input{
+  width:100%;background:var(--surface);border:1px solid var(--line);border-radius:999px;
+  padding:12px 46px 12px 22px;font-size:.85rem;outline:none;transition:.22s var(--ease);
+}
+.search input::placeholder{color:var(--muted-2)}
+.search input:focus{border-color:var(--accent)}
+.search svg{position:absolute;right:18px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted-2)}
+
+/* ==========================================================================
+   WORK GRID (bento / masonry-ish)
+   ========================================================================== */
+/* Three up on a desktop, two on a tablet, one on a phone — the same count
+   whether the clips are landscape or vertical, so a tab switch never changes
+   the rhythm of the page under the reader. */
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;grid-auto-flow:dense}
+.wcard{
+  position:relative;border-radius:var(--radius);overflow:hidden;background:var(--surface);
+  aspect-ratio:16/9;cursor:pointer;border:1px solid var(--line-soft);
+}
+.wcard.portrait{aspect-ratio:3/4}
+.wcard media,.wcard img,.wcard video{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .7s var(--ease),opacity .4s var(--ease);
+}
+.wcard::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(0deg,rgba(6,6,6,.9) 0%,rgba(6,6,6,.25) 42%,rgba(6,6,6,0) 68%);
+  transition:opacity .35s var(--ease);
+}
+.wcard:hover img,.wcard:hover video{transform:scale(1.05)}
+.wcard-info{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:20px 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
+}
+.wcard-brand{font-size:.84rem;font-weight:600;color:#fff;margin-bottom:3px}
+.wcard-cat{font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:8px}
+.wcard-title{font-family:var(--font-display);font-size:1.02rem;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.wcard .circ-arrow{width:38px;height:38px;background:rgba(255,255,255,.1);backdrop-filter:blur(6px);border-color:rgba(255,255,255,.2)}
+.wcard:hover .circ-arrow{background:var(--accent);border-color:var(--accent)}
+.wcard.is-hidden{display:none}
+
+/* Cards whose poster is designed key art: the title is already in the image,
+   so drop the text overlay and keep only the play affordance. */
+.wcard.has-art::after{background:linear-gradient(0deg,rgba(6,6,6,.45),transparent 45%)}
+.wcard.has-art .wcard-info{justify-content:flex-end;padding:14px}
+.wcard.has-art .wcard-info > div:first-child{display:none}
+.wcard.photo::after{background:linear-gradient(0deg,rgba(6,6,6,.5),transparent 55%)}
+
+.load-more-wrap{display:flex;justify-content:center;margin-top:44px}
+.empty-state{text-align:center;padding:70px 0;color:var(--muted)}
+
+/* ==========================================================================
+   CTA BAND
+   ========================================================================== */
+.cta-band{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  min-height:330px;display:flex;align-items:center;
+}
+.cta-band-bg{position:absolute;inset:0;z-index:0}
+.cta-band-bg img,.cta-band-bg video{width:100%;height:100%;object-fit:cover}
+/* Centred copy needs a symmetric plate — a left-weighted gradient would put
+   one half of the headline on black and the other on the photograph. */
+.cta-band-bg::after{
+  content:"";position:absolute;inset:0;
+  /* 40% less light through the plate than the first pass — the still is
+     texture behind the words, not a picture competing with them. */
+  background:rgba(0,0,0,.76);
+}
+/* The accent is the loudest thing on these bands, so the plate has to stay
+   dark enough for it to read. A warm-but-light plate put orange on orange. */
+.cta-band.warm .cta-band-bg::after{
+  background:rgba(0,0,0,.80);
+}
+.cta-band.warm .cta-band-bg img{opacity:1}
+/* Every CTA band stacks on one centred axis: headline, then supporting line,
+   then the action. The button is deliberately well below the headline in size
+   so the hierarchy reads headline → promise → action, not three equal blocks. */
+.cta-band-inner{
+  position:relative;z-index:2;width:100%;
+  padding:clamp(40px,5vw,62px) clamp(24px,5vw,64px);
+  display:grid;grid-template-columns:minmax(0,1fr);gap:18px;
+  justify-items:center;text-align:center;
+}
+.cta-band .display-sm{font-size:clamp(2.1rem,4.6vw,3.9rem)}
+/* The band ships its copy in two wrapper divs from the old two-column layout;
+   dissolving them lets every line become its own row on the centred axis. */
+.cta-band-inner > div:not(.cta-actions){display:contents}
+.cta-band .eyebrow{margin-bottom:2px}
+.cta-band .display-sm{margin:0}
+.cta-band .lead{font-size:.95rem;max-width:52ch;margin-left:auto;margin-right:auto}
+.cta-band .btn{padding:12px 12px 12px 24px;font-size:.8rem}
+.cta-band .btn .circ{width:30px;height:30px}
+.cta-band .btn .circ svg{width:13px;height:13px}
+.cta-band .cta-actions{justify-content:center}
+.cta-band .script{display:none}
+/* Body copy over a warm plate needs to sit well clear of the background */
+.cta-band.warm .lead{color:rgba(255,255,255,.88)}
+.cta-band.warm .eyebrow{color:#ffb99f}
+/* An orange pill on an orange plate reads as one shape, so invert the CTA */
+.cta-band.warm .btn-primary{background:var(--accent);color:#fff}
+.cta-band.warm .btn-primary .circ{background:rgba(255,255,255,.22);color:#fff}
+.cta-band.warm .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
+.cta-band.warm .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
+.cta-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+/* Compact variant: half the height, and the plate reads as texture not photo.
+   It stacks centred, so the copy and the CTA sit on one vertical axis and the
+   overlay has to be symmetric rather than the left-weighted gradient above. */
+.cta-band.compact{min-height:165px}
+.cta-band.compact .cta-band-inner{padding:clamp(34px,4vw,48px) clamp(22px,5vw,60px);gap:14px}
+.cta-band.compact .cta-band-bg img{opacity:1}
+.cta-band.compact .cta-band-bg::after{
+  background:rgba(0,0,0,.81);
+}
+.cta-band.compact .display-sm{font-size:clamp(1.9rem,3.7vw,3rem)}
+.cta-band.compact .lead{font-size:.9rem}
+.cta-band.compact .btn{padding:11px 11px 11px 22px;font-size:.84rem}
+.cta-band.compact .script{font-size:1rem;opacity:.6}
+
+.cta-band .script{position:absolute;right:30px;top:50%;transform:translateY(-50%);z-index:3;text-align:right;opacity:.75;font-size:1.25rem}
+
+/* ==========================================================================
+   WHAT WE DO — homepage teaser
+   ========================================================================== */
+.wwd-teaser-head{text-align:center;max-width:720px;margin:-6px auto 46px}
+.wwd-teaser-head .lead{margin:16px auto 0;text-wrap:balance}
+/* Sized off the viewport rather than wrapped, so the promise stays one line.
+   `white-space` is a shorthand for white-space-collapse + text-wrap, so the
+   `text-wrap:balance` on the rule above — one step more specific — was quietly
+   overriding the nowrap half of it. Hence the matching specificity here and the
+   explicit text-wrap. */
+.wwd-teaser-head .lead.teaser-oneline{
+  white-space:nowrap;text-wrap:nowrap;max-width:none;
+  font-size:clamp(.62rem,1.42vw,1.05rem);
+}
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-soft)}
+/* Inside each stage the ramp is number (quietest, a marker) → name (loudest)
+   → what it covers. The accent rule on top is what the eye lands on first. */
+.tri-item{
+  position:relative;padding:34px 30px 36px;border-left:1px solid var(--line-soft);
+  display:flex;flex-direction:column;gap:10px;transition:background .3s var(--ease);
+}
+.tri-item:first-child{border-left:none}
+.tri-item::before{
+  content:"";position:absolute;left:-1px;right:0;top:-1px;height:2px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s var(--ease);
+}
+.tri-item:hover{background:rgba(255,255,255,.025)}
+.tri-item:hover::before{transform:scaleX(1)}
+.tri-n{
+  font-family:var(--font-display);font-size:.68rem;font-weight:800;
+  letter-spacing:.22em;color:var(--muted-2);
+}
+.tri-item h3{
+  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(1.6rem,2.8vw,2.5rem);letter-spacing:-.025em;line-height:1;
+}
+.tri-item p{color:var(--muted);font-size:.9rem;line-height:1.6;max-width:30ch}
+.tri-foot{display:flex;justify-content:center;margin-top:44px}
+.tri-foot .btn{padding:12px 26px;font-size:.8rem;gap:10px}
+
+/* ==========================================================================
+   PROCESS — timeline
+   ========================================================================== */
+.steps{position:relative;margin-top:60px}
+.steps::before{content:"";position:absolute;left:13px;top:18px;bottom:18px;width:1px;background:var(--line)}
+.step{
+  /* The label column is sized for the longest stage name, "Post-production",
+     which was being clipped mid-word at the old 78px. */
+  display:grid;grid-template-columns:70px 108px minmax(0,1fr) minmax(0,1.05fr);
+  gap:26px;align-items:start;padding:30px 0;border-bottom:1px solid var(--line-soft);
+}
+.step:last-child{border-bottom:none}
+.step-num{font-family:var(--font-display);font-size:2.1rem;font-weight:800;color:rgba(255,255,255,.22);line-height:1}
+.step-dot{position:relative;padding-top:12px}
+.step-dot::before{content:"";position:absolute;left:-52px;top:12px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(240,82,35,.16)}
+.step-label{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;line-height:1.5}
+/* Each stage title is one short line, so it can carry real display weight */
+.step-title{
+  font-family:var(--font-display);font-size:clamp(1.5rem,2.3vw,2.3rem);
+  font-weight:800;text-transform:uppercase;letter-spacing:-.025em;line-height:1.02;
+}
+.step-body{color:var(--muted);font-size:.9rem;line-height:1.65;padding-top:22px}
+.step-media{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/7;background:var(--surface)}
+.step-media img,.step-media video{width:100%;height:100%;object-fit:cover}
+.step-media .caption{
+  position:absolute;right:16px;bottom:14px;z-index:2;text-align:right;
+  font-size:.58rem;letter-spacing:.2em;line-height:1.9;text-transform:uppercase;color:rgba(255,255,255,.8);
+}
+.step-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 40%,rgba(6,6,6,.7))}
+.chip-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.chip{border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.7rem;color:var(--muted)}
+
+/* Process rail (home) — one compact track, a line of copy per step ---------
+   The old version wrapped into a broken two-column grid on phones and said
+   nothing beyond a number, so this trades that space for actual explanation. */
+.proc-rail{position:relative;border-top:1px solid var(--line-soft);padding-top:30px}
+.proc-track{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:0;
+  position:relative;
+}
+/* Connector runs behind the dots and warms up left to right. On scroll it
+   draws itself across the rail, so the line reads as the process advancing
+   rather than as a static rule that happens to be orange. */
+.proc-track::before{
+  content:"";position:absolute;left:0;right:0;top:31px;height:1px;
+  background:linear-gradient(90deg,rgba(255,255,255,.14),var(--accent));
+  transform:scaleX(0);transform-origin:left center;
+  transition:transform 3s var(--ease);
+}
+.proc-rail.in .proc-track::before{transform:scaleX(1)}
+/* Each step rises in just behind the line as it reaches that dot — the stagger
+   is what makes the seven read as one sequence instead of seven cards. */
+.proc-rail .proc-step{
+  opacity:0;transform:translateY(16px);
+  transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);
+}
+.proc-rail.in .proc-step{opacity:1;transform:none}
+.proc-rail.in .proc-step:nth-child(1){transition-delay:.20s}
+.proc-rail.in .proc-step:nth-child(2){transition-delay:.56s}
+.proc-rail.in .proc-step:nth-child(3){transition-delay:.92s}
+.proc-rail.in .proc-step:nth-child(4){transition-delay:1.28s}
+.proc-rail.in .proc-step:nth-child(5){transition-delay:1.64s}
+.proc-rail.in .proc-step:nth-child(6){transition-delay:2.00s}
+.proc-rail.in .proc-step:nth-child(7){transition-delay:2.36s}
+/* The dot lands last and pops, so the eye is pulled along the line */
+.proc-rail .proc-dot{transform:scale(0);transition:transform .9s cubic-bezier(.34,1.56,.64,1)}
+.proc-rail.in .proc-dot{transform:scale(1)}
+.proc-rail.in .proc-step:nth-child(1) .proc-dot{transition-delay:.40s}
+.proc-rail.in .proc-step:nth-child(2) .proc-dot{transition-delay:.76s}
+.proc-rail.in .proc-step:nth-child(3) .proc-dot{transition-delay:1.12s}
+.proc-rail.in .proc-step:nth-child(4) .proc-dot{transition-delay:1.48s}
+.proc-rail.in .proc-step:nth-child(5) .proc-dot{transition-delay:1.84s}
+.proc-rail.in .proc-step:nth-child(6) .proc-dot{transition-delay:2.20s}
+.proc-rail.in .proc-step:nth-child(7) .proc-dot{transition-delay:2.56s}
+@media (prefers-reduced-motion:reduce){
+  .proc-track::before,.proc-rail .proc-step,.proc-rail .proc-dot{
+    opacity:1;transform:none;transition:none;
+  }
+  .proc-track::before{transform:scaleX(1)}
+}
+.proc-step{position:relative;padding:0 16px 0 0}
+.proc-num{
+  display:block;font-family:var(--font-display);font-size:1.15rem;font-weight:700;
+  color:var(--muted-2);line-height:1;margin-bottom:12px;
+}
+.proc-dot{
+  display:block;width:9px;height:9px;border-radius:50%;
+  background:var(--accent);position:relative;z-index:2;
+  box-shadow:0 0 0 4px var(--bg);
+}
+.proc-name{
+  font-family:var(--font-body);font-size:.82rem;font-weight:600;letter-spacing:.02em;
+  color:#fff;margin:16px 0 5px;
+}
+.proc-note{font-size:.74rem;line-height:1.45;color:var(--muted);padding-right:8px}
+.proc-step:hover .proc-num{color:var(--accent)}
+
+/* ==========================================================================
+   WHAT WE DO
+   ========================================================================== */
+.wwd-block{padding:80px 0;border-bottom:1px solid var(--line-soft)}
+/* Each stage announces itself on a centred axis above its cards, so the three
+   blocks share one rhythm: number, headline, promise, then the detail. */
+.wwd-head{max-width:860px;margin:0 auto 46px;text-align:center}
+.wwd-title{
+  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+  font-size:clamp(2.3rem,5vw,4.2rem);line-height:.98;letter-spacing:-.028em;
+  margin:14px 0 18px;
+}
+.wwd-head .lead{margin-left:auto;margin-right:auto;max-width:58ch}
+.wwd-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:52px;align-items:start}
+.wwd-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.wwd-cards-4{grid-template-columns:repeat(4,1fr)}
+.wwd-grid-even{grid-template-columns:1fr 1fr;gap:40px}
+.svc{
+  background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);
+  overflow:hidden;transition:.3s var(--ease);
+}
+.svc:hover{border-color:rgba(240,82,35,.45);transform:translateY(-3px)}
+.svc-media{aspect-ratio:16/9;overflow:hidden;background:#0d0d0d;position:relative}
+.svc-media img,.svc-media video{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.svc:hover .svc-media img,.svc:hover .svc-media video{transform:scale(1.05)}
+.svc-body{padding:18px 20px 22px}
+.svc-body h4{font-size:1rem;font-weight:700;letter-spacing:-.01em;margin-bottom:7px}
+.svc-body p{color:var(--muted);font-size:.85rem;line-height:1.6}
+
+.wwd-block.warm{
+  border-bottom:none;position:relative;overflow:hidden;padding:96px 0;
+}
+.wwd-block.warm .warm-bg{position:absolute;inset:0;z-index:0}
+.wwd-block.warm .warm-bg img,.wwd-block.warm .warm-bg video{width:100%;height:100%;object-fit:cover}
+.wwd-block.warm .warm-bg::after{
+  content:"";position:absolute;inset:0;
+  background:rgba(0,0,0,.80);
+}
+.wwd-block.warm .container{position:relative;z-index:2}
+.wwd-side{position:absolute;right:30px;top:74px;z-index:3;text-align:right;font-size:.62rem;letter-spacing:.22em;line-height:2.2;color:rgba(255,255,255,.66);text-transform:uppercase}
+
+.list-cards{display:flex;flex-direction:column;gap:12px}
+.lcard{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:center;padding:10px;border:1px solid var(--line-soft);border-radius:12px;background:var(--surface);transition:.28s var(--ease)}
+.lcard:hover{border-color:rgba(240,82,35,.4)}
+.lcard-media{border-radius:9px;overflow:hidden;aspect-ratio:16/10;background:#0d0d0d}
+.lcard-media img,.lcard-media video{width:100%;height:100%;object-fit:cover}
+.lcard h4{font-size:.96rem;font-weight:700;margin-bottom:5px}
+.lcard p{color:var(--muted);font-size:.82rem;line-height:1.55;padding-right:12px}
+
+/* ==========================================================================
+   CONTACT
+   ========================================================================== */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:34px;align-items:start}
+.card-panel{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:clamp(24px,3.4vw,40px)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.form-grid .full{grid-column:1/-1}
+.field{
+  width:100%;background:var(--surface-2);border:1px solid var(--line);border-radius:11px;
+  padding:14px 17px;font-size:.88rem;outline:none;transition:.22s var(--ease);
+}
+.field::placeholder{color:var(--muted-2)}
+.field:focus{border-color:var(--accent)}
+textarea.field{min-height:132px;resize:vertical;font-family:var(--font-body)}
+select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239c9c9c' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 16px center;background-size:16px}
+.form-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
+.form-note{color:var(--muted);font-size:.8rem;line-height:1.5;max-width:20ch}
+
+/* Scaled up so this column carries the same weight as the form panel beside
+   it, instead of reading as a caption next to it. */
+.contact-rows{display:flex;flex-direction:column;gap:26px;margin-top:34px}
+.crow{display:flex;align-items:flex-start;gap:20px}
+.crow-ic{width:54px;height:54px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center;flex:none;color:var(--accent)}
+.crow-ic svg{width:22px;height:22px}
+.crow-label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:6px}
+.crow-val{color:#fff;font-size:1.08rem;line-height:1.6;font-weight:500}
+.crow-val a:hover{color:var(--accent)}
+
+/* The locations moved out of the narrow contact column into a section of
+   their own, so the plates get room to read as photographs again. */
+.loc-head{text-align:center;max-width:760px;margin:0 auto 30px}
+.loc-head .lead{margin:12px auto 0}
+.loc-head .display-sm{margin-top:14px}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.loc{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/7;display:flex;align-items:flex-end;border:1px solid var(--line-soft)}
+.loc-bg{position:absolute;inset:0;z-index:0}
+/* The city plates were shot dark and the old scrim buried them; lift the
+   photograph and keep the scrim only where the name and link sit. */
+.loc-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(1.95) contrast(1.02) saturate(1.15)}
+.loc-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,6,6,.82) 0%,rgba(6,6,6,.3) 46%,rgba(6,6,6,0) 100%)}
+.loc-inner{position:relative;z-index:2;padding:22px 26px;width:100%}
+.loc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.loc-top h3{font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:800;text-transform:uppercase}
+.badge{font-size:.58rem;letter-spacing:.14em;border:1px solid var(--line);border-radius:5px;padding:3px 7px;color:rgba(255,255,255,.8)}
+.loc address{font-style:normal;color:rgba(255,255,255,.82);font-size:.86rem;line-height:1.6;margin-bottom:18px;max-width:22ch}
+.loc .script{position:absolute;right:16px;top:12px;font-size:.82rem;text-align:right;line-height:1.3;opacity:.62;z-index:3}
+.loc-link{display:inline-flex;align-items:center;gap:9px;font-size:.82rem;font-weight:500}
+.loc-link:hover{color:var(--accent)}
+
+/* ==========================================================================
+   ABOUT
+   ========================================================================== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:52px}
+.stat{border:1px solid var(--line-soft);border-radius:var(--radius);padding:26px 22px;background:var(--surface)}
+.stat-n{font-family:var(--font-display);font-size:2.3rem;font-weight:800;color:var(--accent);line-height:1}
+.stat-l{margin-top:8px;color:var(--muted);font-size:.84rem}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.value{border:1px solid var(--line-soft);border-radius:var(--radius);padding:24px 20px;background:var(--surface);transition:.28s var(--ease)}
+.value:hover{border-color:rgba(240,82,35,.4);transform:translateY(-3px)}
+.value h4{font-size:1rem;font-weight:700;margin-bottom:8px}
+.value p{color:var(--muted);font-size:.85rem;line-height:1.6}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px}
+.person{border:1px solid var(--line-soft);border-radius:var(--radius-lg);overflow:hidden;background:var(--surface)}
+.person-img{aspect-ratio:4/4.2;overflow:hidden;background:#0d0d0d}
+.person-img img{
+  width:100%;height:100%;object-fit:cover;object-position:center 30%;
+  filter:grayscale(1) contrast(1.04);
+}
+.person-body{padding:26px}
+.person-role{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.person-body h3{font-family:var(--font-display);font-size:1.5rem;font-weight:800;text-transform:uppercase;margin-bottom:14px}
+.person-body p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:12px}
+.quote{border-left:2px solid var(--accent);padding-left:16px;margin-top:18px;font-size:.86rem;font-weight:600;color:rgba(255,255,255,.9);line-height:1.5}
+.pull-quote{
+  border:1px solid var(--line-soft);border-radius:var(--radius-lg);background:var(--surface);
+  padding:clamp(26px,4vw,46px);margin-top:44px;text-align:center;
+}
+.pull-quote p{font-family:var(--font-display);font-size:clamp(1.2rem,2.3vw,1.85rem);font-weight:700;line-height:1.35;letter-spacing:-.01em}
+
+/* Testimonials */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.tst{border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;background:var(--surface);cursor:pointer;transition:.28s var(--ease)}
+.tst:hover{border-color:rgba(240,82,35,.4);transform:translateY(-3px)}
+.tst-media{position:relative;aspect-ratio:16/9;background:#0d0d0d}
+.tst-media img,.tst-media video{width:100%;height:100%;object-fit:cover}
+.tst-media .play-badge{position:absolute;left:16px;bottom:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.92);color:#0a0a0a;display:grid;place-items:center}
+.tst-media .play-badge svg{width:13px;height:13px;margin-left:2px}
+.tst-body{padding:20px}
+.tst-src{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.tst-body p{color:rgba(255,255,255,.88);font-size:.9rem;line-height:1.55;font-weight:500}
+.tst-body span{display:block;margin-top:10px;color:var(--muted);font-size:.8rem}
+
+/* Selected work row (home) */
+/* Two up, not four: at four the films were postage stamps on a 1320px page
+   and the section reads as a contact sheet rather than a selection. */
+.sel-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.sel{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;cursor:pointer;border:1px solid var(--line-soft)}
+.sel img,.sel video{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+.sel:hover img,.sel:hover video{transform:scale(1.05)}
+.sel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,6,6,.4),transparent 45%);pointer-events:none}
+/* The key art carries the title, so the card only needs a play affordance */
+.sel-play{
+  position:absolute;right:14px;bottom:14px;z-index:2;
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.12);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.22);color:#fff;transition:.25s var(--ease);
+}
+.sel-play svg{width:14px;height:14px;margin-left:2px}
+.sel:hover .sel-play{background:var(--accent);border-color:var(--accent)}
+
+/* Philosophy split */
+/* The copy column carries a one-line headline now, so it takes the larger
+   share; the lead loses its 52ch cap so it runs to the column edge instead
+   of stopping short and leaving a ragged gutter. */
+.phil-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);gap:52px;align-items:center}
+.phil-grid .lead{max-width:none}
+.phil-media{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:16/10}
+.phil-media img,.phil-media video{width:100%;height:100%;object-fit:cover}
+.phil-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,8,8,.75),transparent 55%)}
+.phil-side{position:absolute;right:24px;top:26px;z-index:2;text-align:right;font-size:.62rem;letter-spacing:.22em;line-height:2.2;color:rgba(255,255,255,.7);text-transform:uppercase}
+
+/* Statement band — a framed panel, not text floating on a photo ------------
+   The image now sits behind a hard scrim on the text side so the two halves
+   of the line can carry real contrast against each other. */
+.statement{
+  position:relative;overflow:hidden;
+  min-height:300px;display:flex;align-items:center;
+}
+.statement-bg{position:absolute;inset:0;z-index:0}
+.statement-bg img,.statement-bg video{width:100%;height:100%;object-fit:cover}
+/* A soft wash rather than a slab, so the frame stays visible behind the words */
+.statement-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(7,7,7,.72) 0%,rgba(7,7,7,.5) 38%,rgba(7,7,7,.28) 70%,rgba(7,7,7,.12) 100%);
+}
+.statement-inner{position:relative;z-index:2;width:100%;padding-top:34px;padding-bottom:34px}
+.statement .eyebrow{text-shadow:0 2px 12px rgba(0,0,0,.9)}
+.statement-title{
+  display:flex;flex-direction:column;gap:2px;margin:14px 0 0;
+  font-family:var(--font-display);text-transform:uppercase;letter-spacing:-.022em;line-height:1.02;
+  text-shadow:0 2px 18px rgba(0,0,0,.85);
+}
+.statement-title .st-a{font-weight:600;font-size:clamp(1.5rem,2.7vw,2.3rem);color:#fff}
+.statement-title .st-b{font-weight:800;font-size:clamp(1.7rem,3.2vw,2.8rem);color:var(--accent)}
+.statement .script{
+  position:absolute;right:28px;top:50%;transform:translateY(-50%);z-index:3;
+  text-align:right;opacity:.6;font-size:1.05rem;
+}
+
+/* ==========================================================================
+   FOOTER — ported from the live anavafilms.com
+   ========================================================================== */
+.main-footer{background:#080808;border-top:1px solid var(--line);padding:5rem 0 3rem}
+.footer-top{display:grid;grid-template-columns:1.5fr 2fr;gap:4rem;margin-bottom:4rem}
+.footer-logo{display:flex;align-items:center;margin-bottom:1.2rem;width:max-content;max-width:100%}
+.footer-logo img{
+  height:28px;width:auto;max-width:220px;object-fit:contain;display:block;flex-shrink:0;
+  filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,255,255,.35));
+  transition:transform .3s var(--ease);
+}
+.footer-logo img:hover{transform:scale(1.03)}
+.footer-desc{font-size:.95rem;color:var(--muted);max-width:380px;line-height:1.6}
+.footer-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.footer-col-title{
+  font-family:var(--font-display);font-size:.8rem;font-weight:600;letter-spacing:.04em;
+  color:var(--accent);margin-bottom:1.2rem;
+}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.8rem}
+.footer-link{font-size:.9rem;color:var(--muted);transition:color .2s var(--ease)}
+.footer-link:hover{color:var(--accent)}
+.footer-social-link{display:inline-flex;align-items:center;gap:.55rem}
+.footer-social-icon{
+  width:18px;height:18px;object-fit:contain;display:inline-block;vertical-align:middle;
+  flex-shrink:0;transition:transform .25s var(--ease);
+}
+.footer-social-link:hover .footer-social-icon{transform:scale(1.18)}
+.footer-bottom{
+  border-top:1px solid var(--line);padding-top:2rem;
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  font-size:.85rem;color:var(--muted-2);
+}
+
+/* ==========================================================================
+   LIGHTBOX
+   ========================================================================== */
+.lightbox{position:fixed;inset:0;z-index:1200;background:rgba(5,5,5,.94);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:26px}
+.lightbox.open{display:flex}
+.lightbox-inner{width:min(1100px,100%);max-height:88vh}
+.lightbox video,.lightbox img{width:100%;max-height:82vh;object-fit:contain;border-radius:12px;background:#000}
+.lightbox-close{position:absolute;top:22px;right:26px;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;display:grid;place-items:center}
+.lightbox-close:hover{background:var(--accent);border-color:var(--accent)}
+.lightbox-cap{margin-top:14px;text-align:center;color:var(--muted);font-size:.86rem}
+
+/* ==========================================================================
+   Reveal animation
+   ========================================================================== */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+
+/* ---------- Orange text carries the same ramp as the buttons ----------
+   The gradient is painted as the element's background and then clipped to the
+   glyphs. It is wrapped in @supports because without the clip the fill would
+   be transparent and the text would vanish rather than fall back to solid. */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .o,
+  .eyebrow,
+  .hero-cine-title .hl-2 em,
+  .statement-title .st-b,
+  .stat-n,
+  .stepper-n,
+  .step-label,
+  .person-role,
+  .tst-src,
+  .nav a.active,
+  .footer-col-title{
+    background-image:var(--accent-grad);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  /* The eyebrow in a page hero is a flex row whose ::after draws the rule —
+     the clip must not swallow that line, so it repaints its own fill. */
+  .hero-split.centered .hero-copy .eyebrow::after{-webkit-text-fill-color:initial}
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width:1100px){
+  /* Tablet: the vw ramp alone leaves the hero cramped against the rails */
+  .hero-cine-title .hl-1{font-size:clamp(2.6rem,7.3vw,4.2rem)}
+  .hero-cine-title .hl-2{font-size:clamp(1.9rem,5.7vw,3.3rem)}
+  .hero-cine-lead{max-width:min(92ch,100%)}
+  .hero-foot{padding-bottom:20px}
+  .hero-cine-actions .btn{padding:12px 26px;font-size:.92rem}
+  .work-grid{grid-template-columns:repeat(2,1fr)}
+  .tst-grid{grid-template-columns:1fr}
+  .stats,.values{grid-template-columns:repeat(2,1fr)}
+}
+/* ---- Tablet portrait (iPad ~820–1024) ----
+   One tier of its own: the 1100 ramp is still sized for a landscape tablet,
+   so on a portrait iPad the header wrapped onto two lines and the hero type
+   ran close to the frame. Every heading steps down one notch here, and the
+   step down to the phone ramp at 760 happens from this, not from desktop. */
+@media (max-width:1024px){
+  .header-inner{gap:14px;padding:8px 8px 8px 18px}
+  .nav{gap:16px}
+  .nav a{font-size:.66rem;letter-spacing:.07em}
+  .btn-talk{gap:8px;padding:5px 5px 5px 14px;font-size:.62rem;letter-spacing:.08em}
+  .btn-talk .circ{width:26px;height:26px}
+  .btn-talk .circ svg{width:12px;height:12px}
+
+  .hero-cine-title .hl-1{font-size:clamp(2.1rem,6.3vw,3.5rem)}
+  .hero-cine-title .hl-2{font-size:clamp(1.75rem,5.2vw,2.9rem)}
+  .hero-eyebrow{font-size:.58rem;letter-spacing:.2em;margin-bottom:18px}
+  .hero-cine-lead{font-size:.86rem;line-height:1.7;margin-top:20px;max-width:min(70ch,100%)}
+  .hero-cine-actions{margin-top:32px}
+  .hero-cine-actions .btn{padding:11px 24px;font-size:.88rem}
+
+  .display{font-size:clamp(1.9rem,5.4vw,3.1rem)}
+  .hero-split.centered .hero-copy .display,
+  .hero-split.centered .hero-copy .display.display-1line,
+  .hero-split.centered .hero-copy .display.display-2line{
+    font-size:clamp(1.8rem,5.6vw,3.2rem);
+  }
+  /* A portrait frame has no right third to spare, so the copy takes the
+     full width and the plate goes back to an even wash under it. */
+  .hero-split.centered .hero-copy{width:100%;padding-right:clamp(28px,5vw,56px)}
+  .hero-split.centered .hero-media::after{
+    background:
+      linear-gradient(90deg,rgba(6,6,6,.94) 0%,rgba(6,6,6,.84) 42%,rgba(6,6,6,.6) 74%,rgba(6,6,6,.42) 100%),
+      linear-gradient(180deg,rgba(6,6,6,.4) 0%,transparent 28%,transparent 70%,rgba(6,6,6,.5) 100%);
+  }
+  .display-sm,.cta-band .display-sm,.cta-band.compact .display-sm,
+  .cta-band .display-sm.display-2line,.oneline,.oneline-long,
+  .phil-title,.wwd-title,.statement-title{font-size:clamp(1.3rem,4.6vw,2.5rem)}
+  .tri-item h3,.step-title{font-size:1.45rem}
+  .standfirst,.cta-band .standfirst{font-size:1.1rem}
+  .lead,.wwd-head .lead{font-size:.9rem;line-height:1.72}
+}
+@media (max-width:980px){
+  .section{padding:64px 0}
+  .section-sm{padding:40px 0}
+  .wwd-block{padding:58px 0}
+  /* A tablet has room for the links, so it keeps the real nav — the burger
+     takes over only at phone widths. The links tighten up to fit. */
+  .nav{gap:18px}
+  .nav a{font-size:.8rem}
+  .btn-talk{padding:6px 6px 6px 16px;font-size:.78rem}
+  .btn-talk .circ{width:26px;height:26px}
+  .btn-talk .circ svg{width:12px;height:12px}
+  .hero-split-grid,.phil-grid,.contact-grid,.wwd-grid{grid-template-columns:1fr}
+  .cta-band-inner{grid-template-columns:1fr;gap:26px}
+  .cta-band .script,.statement .script,.hero-script-abs,.wwd-side{display:none}
+  .statement{min-height:230px}
+  /* Tablets keep the hero rails — without them the hero reads as an empty
+     photograph. They just tuck in closer to the edges. */
+  .hero-rail{gap:12px;font-size:.58rem;letter-spacing:.2em}
+  .hero-rail-left{left:14px}
+  .hero-rail-right{right:14px;gap:10px}
+  .rail-tick{height:42px}
+  .rail-tick.short{height:18px}
+  /* A tall portrait tablet turns a svh-only hero into a long empty plate,
+     so the height is also capped in px and the copy sits lower. */
+  /* On a tall portrait tablet an svh-only hero leaves a long empty plate.
+     Capping the height in px keeps the slack small, and the copy stays
+     centred in it so the space reads evenly above and below. */
+  .hero-cine{min-height:min(76svh,620px)}
+  .hero-cine-inner{margin:auto 0;padding-top:clamp(24px,4.4vh,54px);padding-bottom:34px}
+  .trusted-label{padding:11px 20px;font-size:.6rem;letter-spacing:.16em}
+  .trusted-logos li{width:120px;padding:12px 10px}
+  .trusted-logos img{max-height:26px}
+  .people,.loc-grid{grid-template-columns:1fr}
+  .tri{grid-template-columns:1fr}
+  .tri-item{border-left:none;border-bottom:1px solid var(--line-soft);padding:22px 0 24px}
+  .tri-item:last-child{border-bottom:none}
+  .loc{aspect-ratio:16/9}
+  .loc-inner{padding:18px 20px}
+  .wwd-cards-4{grid-template-columns:repeat(2,1fr)}
+  .wwd-grid-even{grid-template-columns:1fr;gap:24px}
+
+  /* The timeline rail and its four columns don't survive a narrow screen —
+     drop the rail and let each step stack in reading order instead. */
+  .steps{margin-top:36px}
+  .steps::before{display:none}
+  .step{display:block;padding:26px 0}
+  .step-num{display:inline-block;vertical-align:middle;font-size:1.7rem;margin-right:14px}
+  .step-dot{display:inline-block;vertical-align:middle;padding-top:0}
+  .step-dot::before{display:none}
+  .step-label{margin-bottom:0}
+  .step-title{margin-top:14px;font-size:1.35rem}
+  .step-body{padding-top:10px}
+  .step-media{margin-top:18px;aspect-ratio:16/9}
+}
+@media (max-width:760px){
+  /* ---- Phone type ramp ----
+     The one-line headings are sized off the viewport so they never wrap. On a
+     phone that pushed some section headings down to 17px — smaller than the
+     body copy beneath them, which inverts the hierarchy. Below this width they
+     are allowed to wrap and sit on a fixed ramp instead:
+       H1 34px · H2 26px · H3 20px · standfirst 17px · body 15px · label 11px */
+  /* The page H1s already self-size to fit their one or two lines and land
+     near 30px here, so they keep nowrap; only the section headings, which
+     collapsed to 17px, are allowed to wrap onto a second line. */
+  .oneline,.oneline-long,.phil-title{white-space:normal}
+  .display{font-size:2.15rem;line-height:1.02}
+  .hero-split.centered .hero-copy .display,
+  .hero-split.centered .hero-copy .display.display-1line,
+  .hero-split.centered .hero-copy .display.display-2line{font-size:clamp(1.5rem,8.4vw,2.4rem);max-width:none}
+  .hero-split.centered .hero-media,
+  .hero-split.centered .hero-media.short{min-height:clamp(400px,66svh,540px)}
+  .hero-split.centered .hero-copy{padding:30px 20px}
+  .hero-split.centered .hero-copy .lead{max-width:none}
+  .hero-split.centered .hero-actions .play-btn{padding:8px 22px 8px 9px}
+  .hero-split.centered .hero-actions .play-btn::after{font-size:.7rem;letter-spacing:.12em}
+  .hero-split.centered .hero-script{display:none}
+  .display-sm,.oneline,.oneline-long,.phil-title,.wwd-title,
+  .cta-band .display-sm,.cta-band.compact .display-sm,
+  .cta-band .display-sm.display-2line{font-size:1.62rem;line-height:1.06}
+  .tri-item h3,.step-title{font-size:1.28rem}
+  .standfirst,.cta-band .standfirst{font-size:1.05rem;line-height:1.5}
+  .lead,.hero-cine-lead,.wwd-head .lead{font-size:.94rem;line-height:1.62}
+  .eyebrow,.sec-name{font-size:.68rem;letter-spacing:.14em}
+  .btn{font-size:.78rem;padding:11px 11px 11px 20px}
+  .btn-ghost{padding:11px 20px}
+  .btn .circ{width:26px;height:26px}
+  .btn .circ svg{width:12px;height:12px}
+  .phil-title{margin:12px 0 16px}
+  .wwd-teaser-head{margin-bottom:30px}
+  /* One line here would drop under 10px — smaller than the body copy around
+     it — so the promise wraps on a phone, like the one-line headings do. */
+  .wwd-teaser-head .lead.teaser-oneline{white-space:normal;text-wrap:balance;font-size:.94rem}
+  .tri-item{padding:22px 0 24px;gap:7px}
+  /* A nowrap headline inside a grid column sets that column's min-content
+     width, so on a phone it pushed the whole band wider than its own plate and
+     every line spilled past the edge. Inside the bands the headings wrap. */
+  .cta-band .display-2line,
+  .cta-band .display-2line > span{white-space:normal}
+  .cta-band .display-2line{display:block}
+  .cta-band .display-2line > span{display:block}
+  .cta-band .lead,.cta-band .standfirst{max-width:100%}
+  .cta-band-inner{padding-left:20px;padding-right:20px}
+  /* The stepper's rules do not survive a wrap, so the steps read as a row of
+     labels instead of a connected track. */
+  .stepper{gap:14px;margin-bottom:16px}
+  .stepper li{font-size:.6rem;letter-spacing:.14em;gap:6px}
+  .stepper li + li::before{display:none}
+  .cta-band .cta-actions{flex-direction:column;align-items:center;gap:16px}
+  .hero-rail{display:none}
+  .nav,.header-actions .btn-talk{display:none}
+  .burger{display:flex}
+  /* The panel is the same glass as the capsule it drops out of */
+  .nav.mobile-open{
+    display:flex;flex-direction:column;align-items:flex-end;gap:4px;
+    position:fixed;top:calc(var(--header-h) - 4px);z-index:890;
+    left:clamp(14px,2vw,26px);right:clamp(14px,2vw,26px);
+    /* A menu has to be read, not looked through — the glass here is mostly
+       plate with just enough transparency to keep the page alive behind it. */
+    background:rgba(16,15,14,.93);
+    -webkit-backdrop-filter:blur(34px) saturate(180%);
+    backdrop-filter:blur(34px) saturate(180%);
+    border:1px solid rgba(255,255,255,.14);border-radius:24px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 18px 44px rgba(0,0,0,.5);
+    padding:10px 22px 16px;
+  }
+  @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){
+    .nav.mobile-open{background:rgba(12,11,10,.97)}
+  }
+  /* Right-aligned so the list sits under the burger that opened it */
+  .nav.mobile-open a{
+    display:block;width:100%;padding:13px 0;text-align:right;
+    border-bottom:1px solid rgba(255,255,255,.08);font-size:1rem;
+  }
+  .section{padding:46px 0}
+  .section-sm{padding:26px 0}
+  .wwd-block{padding:42px 0}
+  .container{padding:0 20px}
+  .cta-band-inner{padding:34px 22px}
+  .cta-band.compact .cta-band-inner{padding:24px 20px}
+  .proc-rail{padding-top:24px}
+  .proc-track{
+    display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;
+  }
+  .proc-track::-webkit-scrollbar{display:none}
+  .proc-track::before{right:auto;width:max(100%,1200px)}
+  .proc-step{flex:0 0 46%;scroll-snap-align:start;padding-right:18px}
+  .proc-note{font-size:.72rem}
+  .cta-band{min-height:auto}
+  .cta-actions{gap:10px}
+  .cta-actions .btn{width:auto;flex:0 0 auto}
+  .wcard-info{padding:13px 13px;gap:8px}
+  .wcard-brand{font-size:.72rem;margin-bottom:2px}
+  .wcard-cat{font-size:.5rem;letter-spacing:.1em;margin-bottom:5px}
+  .wcard-title{font-size:.8rem;line-height:1.15}
+  .wcard .circ-arrow{width:28px;height:28px}
+  .wcard .circ-arrow svg{width:11px;height:11px}
+  .hero-full{padding-top:calc(var(--header-h) + 54px);padding-bottom:60px}
+  /* Two columns leaves a 16:9 card ~95px tall — too small to read the key art.
+     Landscape cards take the full width; only the tall ones pair up. */
+  .work-grid{grid-template-columns:1fr;gap:14px}
+  .wcard:not(.portrait):not(.photo){grid-column:span 2}
+  .wwd-cards,.wwd-cards-4{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .lcard{grid-template-columns:110px minmax(0,1fr);gap:14px}
+  .search{width:100%}
+  .reel-wide{max-width:100%;padding-left:20px;padding-right:20px}
+  .reel{aspect-ratio:16/10}
+  .reel-credit{left:16px;bottom:12px;font-size:.66rem;letter-spacing:.1em}
+  /* Credit and studio mark collide on a phone-width reel; keep the credit */
+  .reel-mark{display:none}
+  .reel-right{display:none}
+  .hero-full{min-height:88svh}
+  .hero-foot{position:static;margin-top:36px}
+  .hero-cine{min-height:92svh;padding-top:calc(var(--header-h) + 40px)}
+  .hero-cine .hero-cine-inner{padding-top:clamp(20px,3.6vh,42px);padding-bottom:30px}
+  /* The three-part foot has no room beside the copy on a phone: keep the
+     scroll cue, drop the place line and the verb row. */
+  .hero-foot{padding-bottom:18px}
+  .hero-foot-line{height:38px}
+  .hero-eyebrow{font-size:.54rem;letter-spacing:.18em;margin-bottom:16px}
+  /* A full-width pill reads as a bar across the plate; keep it hugging its
+     own label so it sits as a button under the headline. */
+  .hero-cine-actions{margin-top:28px;gap:12px}
+  .hero-cine-actions .btn{width:auto;padding:10px 26px;font-size:.88rem;gap:10px}
+  .hero-cine-actions .btn svg{width:15px;height:15px}
+  /* On a phone the display line has to hold two or three lines of its own, so
+     it drops below the vw ramp and the serif answer stays clearly subordinate */
+  .hero-cine-title{gap:.2em}
+  .hero-cine-title .hl-1{font-size:clamp(2.2rem,10.6vw,3.4rem);line-height:1.02}
+  .hero-cine-title .hl-2{font-size:clamp(1.62rem,8vw,2.6rem);line-height:1.18}
+  .hero-cine-lead{margin-top:18px;max-width:100%;font-size:.82rem;line-height:1.6}
+  /* A full-width pill dominates the phone hero — keep the CTA compact */
+  .hero-cine-actions{margin-top:26px;gap:14px}
+  .hero-cine-actions .btn{
+    padding:8px 8px 8px 22px;font-size:.72rem;letter-spacing:.07em;gap:9px;
+  }
+  .hero-cine-actions .btn .circ{width:26px;height:26px}
+  .hero-cine-actions .btn .circ svg{width:12px;height:12px}
+  .hero-reel-link{justify-content:center}
+  .main-footer{padding:3.5rem 0 2.2rem}
+  .footer-top{display:flex;flex-direction:column;gap:2.5rem;margin-bottom:2.5rem}
+  .footer-nav{grid-template-columns:1fr 1fr;gap:2rem 1.5rem}
+  .footer-bottom{flex-direction:column;align-items:flex-start;gap:8px}
+}
+@media (max-width:460px){
+  .stats,.values,.sel-grid{grid-template-columns:1fr}
+  .wcard-title{font-size:.9rem}
+  .step-num{font-size:1.45rem}
+  .step-title{font-size:1.2rem}
+}
+.site-intro{
+  position:fixed;inset:0;width:100vw;height:100dvh;max-width:none;max-height:none;
+  margin:0;padding:0;border:0;background:#000;color:#fff;overflow:hidden;
+}
+.site-intro::backdrop{background:#000}
+.site-intro video{display:block;width:100%;height:100%;object-fit:contain;opacity:1;filter:none}
+.intro-skip{
+  position:absolute;right:max(24px,env(safe-area-inset-right));
+  bottom:max(24px,env(safe-area-inset-bottom));padding:12px 20px;
+  border:1px solid rgba(255,255,255,.65);border-radius:999px;
+  background:rgba(0,0,0,.7);color:#fff;font:inherit;cursor:pointer;
+}
+.intro-skip:focus-visible{outline:2px solid #fff;outline-offset:4px}

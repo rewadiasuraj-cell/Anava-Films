@@ -1,979 +1,328 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ANAVA FILMS - Give us a thought. We’ll give you ideas to shoot.</title>
-  <meta name="description" content="Anava Films is an agency-cum-production house built to take a thought all the way to the final frame. Creative direction, ideation, scripting, production, direction and post-production.">
-  <!-- Performance Optimization: Resource Hints -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600;1,700;1,900&family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  
-  <link rel="stylesheet" href="assets/css/style.css?v=20260910.4">
-  <script defer src="assets/js/main.js?v=20260910.4"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANAVA FILMS — Give us a thought. We'll give you ideas to shoot.</title>
+<meta name="description" content="Anava Films is an agency-cum-production house in Mumbai and Delhi taking a thought all the way to the final frame.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/anava.css">
+<script defer src="assets/js/anava.js"></script>
 </head>
 <body>
 
-  <!-- 01. Opening Full-Screen Studio Cinematic Intro Video & Animation -->
-  <div id="cinematic-intro" role="dialog" aria-label="Intro Animation">
-    <!-- Intro Video Stage -->
-    <div id="intro-video-stage" class="intro-video-stage-container">
-      <video id="intro-video-player" class="intro-video-player" autoplay muted playsinline preload="auto">
-        <source src="intro/intro-3-vertical.mp4?v=3.1" type="video/mp4" media="(orientation: portrait), (max-width: 991px)">
-        <source src="intro/intro-3.mp4?v=3.1" type="video/mp4">
-        Your browser does not support video.
-      </video>
-      <div class="intro-video-overlay-shadow"></div>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand"><img src="assets/images/anava_official_logo_white.png" alt="ANAVA FILMS"></a>
+    <nav class="nav"><ul style="display:contents"><li><a href="/" class="active">Home</a></li><li><a href="work" class="">Work</a></li><li><a href="what-we-do" class="">What We Do</a></li><li><a href="process" class="">Process</a></li><li><a href="about" class="">About</a></li><li><a href="contact" class="">Contact</a></li></ul></nav>
+    <div class="header-actions" style="display:flex;align-items:center;gap:14px">
+      <a href="contact" class="btn-talk">Let's Talk <span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span></a>
+      <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
+  </div>
+</header>
 
-    <canvas id="intro-particles-canvas" class="intro-particles-canvas"></canvas>
-    <div class="intro-grain-overlay"></div>
-    <div class="cinematic-bg-glow"></div>
-
-    <!-- Phrase Sequence Stage (Fallback / Secondary Text) -->
-    <div id="intro-phrase-stage" class="intro-stage-container" style="display: none;">
-      <div id="intro-phrase-text" class="intro-phrase-text">A THOUGHT</div>
-    </div>
-
-    <!-- Final Logo Reveal Stage -->
-    <div id="intro-logo-stage" class="intro-stage-container" style="display: none;">
-      <div class="intro-logo-wrapper">
-        <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS" class="intro-logo-img">
-      </div>
-      <p class="intro-tagline-gold" id="intro-tagline">Give us a thought &mdash; We’ll give you ideas to shoot</p>
-    </div>
-
+<dialog class="site-intro" id="site-intro" aria-label="Welcome to Anava Films">
+  <video id="site-intro-video" muted playsinline preload="none" aria-label="Anava Films intro"></video>
+  <button type="button" class="intro-skip" autofocus>Skip intro &rarr;</button>
+</dialog>
+<section class="hero-cine">
+  <div class="hero-cine-bg">
+    <img src="assets/images/home-hero-studio.jpg" alt="" fetchpriority="high">
   </div>
 
+  <div class="container hero-cine-inner">
+    <span class="hero-eyebrow">Independent thinking. Collective making.</span>
+    <h1 class="hero-cine-title">
+      <span class="hl-1">Give us a thought.</span>
+      <span class="hl-2">We&rsquo;ll give you <em>ideas to shoot.</em></span>
+    </h1>
+    <p class="hero-cine-lead"><strong>Anava Films is an agency-cum-production house bringing ideas to life &mdash; from first thought to final frame.</strong> We work across creative direction, ideation, scripting, production and post-production, turning brand briefs into compelling films, campaigns and content.</p>
+    <div class="hero-cine-actions">
+      <button type="button" class="btn btn-primary" data-lightbox="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-caption="Anava Films &middot; Showreel">Watch Showreel <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+    </div>
+  </div>
 
+  <div class="hero-foot" aria-hidden="true">
+    <div class="hero-foot-mid">
+      <span class="rail-mouse"><i></i></span>
+      <span class="hero-foot-scroll">Scroll to explore</span>
+      <span class="hero-foot-line"></span>
+    </div>
+  </div>
 
-
-  <!-- Persistent Header & Navigation -->
-  <header class="main-header">
-    <div class="header-container">
-      <!-- 1. LEFT ZONE: LOGO -->
-      <a href="/" class="brand-logo">
-        <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS Logo" class="brand-logo-img">
-      </a>
-
-      <!-- 2. CENTER ZONE: NAVIGATION -->
-      <nav class="main-nav">
-        <ul class="nav-links">
-          <li><a href="/" class="nav-link active">HOME</a></li>
-          <li><a href="work" class="nav-link">WORK</a></li>
-          <li><a href="what-we-do" class="nav-link">WHAT WE DO</a></li>
-          <li><a href="process" class="nav-link">PROCESS</a></li>
-          <li><a href="about" class="nav-link">ABOUT</a></li>
-          <li><a href="contact" class="nav-link">CONTACT</a></li>
-          <li class="mobile-cta-item"><a href="contact" class="btn-header-get-in-touch mobile-nav-cta">
-          <span>GET IN TOUCH</span>
-          <span class="btn-header-arrow-circle">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </a></li>
-        </ul>
-      </nav>
-
-      <!-- 3. RIGHT ZONE: PERSISTENT CTA & HAMBURGER -->
-      <div class="header-actions">
-        <a href="contact" class="btn-header-get-in-touch">
-          <span>GET IN TOUCH</span>
-          <span class="btn-header-arrow-circle">
-            <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </a>
-        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" onclick="toggleMobileMenu(event)">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
+  <div class="trusted">
+    <div class="trusted-inner">
+      <p class="trusted-label">Trusted by brands who dare</p>
+      <div class="trusted-marquee">
+        <ul class="trusted-logos"><li><img src="assets/Companies logo/Lenskart.png" alt="Lenskart" loading="lazy"></li><li><img src="assets/Companies logo/Indus Valley.png" alt="Indus Valley" loading="lazy"></li><li><img src="assets/Companies logo/Green LOTUS.png" alt="Green LOTUS" loading="lazy"></li><li><img src="assets/Companies logo/celio.png" alt="celio" loading="lazy"></li><li><img src="assets/Companies logo/tira.png" alt="tira" loading="lazy"></li><li><img src="assets/Companies logo/godrej properties.png" alt="godrej properties" loading="lazy"></li><li><img src="assets/Companies logo/wow skin science.png" alt="wow skin science" loading="lazy"></li><li><img src="assets/Companies logo/fikn.png" alt="fikn" loading="lazy"></li><li><img class="logo-asis" src="assets/Companies logo/KFC-white.png" alt="KFC" loading="lazy"></li><li><img class="logo-asis" src="assets/Companies logo/Simpl ai-white.png" alt="Simpl ai" loading="lazy"></li><li><img src="assets/Companies logo/Lenskart.png" alt="Lenskart" loading="lazy"></li><li><img src="assets/Companies logo/Indus Valley.png" alt="Indus Valley" loading="lazy"></li><li><img src="assets/Companies logo/Green LOTUS.png" alt="Green LOTUS" loading="lazy"></li><li><img src="assets/Companies logo/celio.png" alt="celio" loading="lazy"></li><li><img src="assets/Companies logo/tira.png" alt="tira" loading="lazy"></li><li><img src="assets/Companies logo/godrej properties.png" alt="godrej properties" loading="lazy"></li><li><img src="assets/Companies logo/wow skin science.png" alt="wow skin science" loading="lazy"></li><li><img src="assets/Companies logo/fikn.png" alt="fikn" loading="lazy"></li><li><img class="logo-asis" src="assets/Companies logo/KFC-white.png" alt="KFC" loading="lazy"></li><li><img class="logo-asis" src="assets/Companies logo/Simpl ai-white.png" alt="Simpl ai" loading="lazy"></li></ul>
       </div>
     </div>
-  </header>
+  </div>
+</section>
 
-
-  <!-- 02. HERO SECTION -->
-  <section class="home-hero-section">
-    <div class="hero-bg-wrapper">
-      <div class="hero-bg-image"></div>
-    </div>
-    <div class="hero-overlay"></div>
-
-    <!-- Left Sidebar Tagline Column -->
-    
-
-    <!-- Right Sidebar Scroll Indicator -->
-    
-    </div>
-
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-tagline-hero">
-          <span class="hero-title-top">Give us a thought.</span>
-          <span class="hero-title-editorial">We’ll give you <span class="hero-title-orange">idea to shoot.</span></span>
-        </h1>
-
-        <p class="hero-description">
-          <span class="hero-description-line">Anava Films is an agency-cum-production house built to take a thought all the way to the final frame.</span>
-          <span class="hero-description-line">We work across creative direction, ideation, scripting, production, direction and post-production</span>
-          <span class="hero-description-line">helping brands turn briefs into ideas, and ideas into films, campaigns and content.</span>
-        </p>
-
-        <div class="hero-cta-group">
-          <a href="contact" class="btn-pill-orange">LET'S TALK <span class="cta-arrow">→</span></a>
-          <button type="button" class="btn-showreel-circle-trigger" id="hero-watch-showreel-btn" onclick="if(window.onOpenShowreel){window.onOpenShowreel(event);}">
-            <span class="play-circle-icon">▶</span>
-            <span class="showreel-circle-text">WATCH SHOWREEL</span>
-          </button>
+<section class="section-sm">
+  <div class="container reel-wide">
+    <div class="reel reveal" data-lightbox="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-caption="Anava Films &middot; Showreel">
+      <video data-src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" poster="assets/images/thumbnails/sunil-shetty-film.jpg" muted loop playsinline preload="none"></video>
+      <div class="reel-overlay">
+        <div class="reel-left">
+          <span class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="reel-meta">Showreel &middot; 01:45</span>
         </div>
+      </div>
+      <div class="reel-credit">Sunil Shetty &mdash; Brand Film</div>
+      <div class="reel-mark">Anava Films</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-label" style="margin-bottom:28px"><span class="sec-num">01</span><span class="sec-name">Our Philosophy</span></div>
+    <div class="phil-grid">
+      <div class="reveal">
+        <span class="eyebrow">Thinkers Who Make</span>
+        <h2 class="phil-title">Thinkers who <span class="o">make.</span></h2>
+        <p class="lead">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn't get lost between the people who think them and the people who make them.</p>
+        <p class="lead" style="margin-top:14px">So we bring both sides together. You bring the thought. We build the idea, make the film and deliver the final product.</p>
+      </div>
+      <div class="phil-media reveal">
+        <img src="assets/images/thinkers-who-make.jpg" alt="Anava Films director on set">
+        <div class="phil-side">Ideas<br>People<br>Films<br><br>A Creative<br>Production<br>House</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Client Logo Marquee — attached directly to the hero & showreel -->
-  <section class="client-marquee-section" aria-label="Brands we've worked with">
-    <h2 class="visually-hidden">Brands we've worked with</h2>
-    <div class="client-marquee-bar-container">
-      
-      <div class="logo-marquee-viewport" id="logoMarqueeViewport">
-        <ul class="logo-marquee-track" id="logoMarqueeTrack">
-          <li class="logo-marquee-item logo--lenskart"><img src="assets/images/clients/lenskart-white.png" alt="Lenskart"></li>
-          <li class="logo-marquee-item logo--indus-valley"><img src="assets/images/clients/indus-valley-white.png" alt="Indus Valley"></li>
-          <li class="logo-marquee-item logo--green-lotus"><img src="assets/images/clients/green-lotus-white.png" alt="Green Lotus"></li>
-          <li class="logo-marquee-item logo--celio"><img src="assets/images/clients/celio-white.png" alt="Celio"></li>
-          <li class="logo-marquee-item logo--tira"><img src="assets/images/clients/tira-white.png" alt="Tira Beauty"></li>
-          <li class="logo-marquee-item logo--godrej"><img src="assets/images/clients/godrej-properties-white.png" alt="Godrej Properties"></li>
-          <li class="logo-marquee-item logo--wow"><img src="assets/images/clients/wow-skin-science-white.png" alt="WOW Skin Science"></li>
-          <li class="logo-marquee-item logo--fikn"><img src="assets/images/clients/fikn-white.png" alt="FIKN — India's 1st Elixir"></li>
-          <li class="logo-marquee-item logo--kfc"><img src="assets/images/clients/kfc-white.png" alt="KFC India"></li>
-          <li class="logo-marquee-item logo--simplai"><img src="assets/images/clients/simplai-white.png" alt="SimplAI"></li>
-        </ul>
-      </div>
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label"><span class="sec-num">02</span><span class="sec-name">Selected Work</span></div>
+      <a href="work" class="sec-more">View All Work <span class="circ-arrow" style="width:40px;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
-    <button type="button" class="logo-marquee-toggle" id="logoMarqueeToggle" aria-pressed="false" aria-label="Pause logo scroll">
-      <svg class="icon-pause" viewBox="0 0 24 24" width="14" height="14" fill="#ffffff" aria-hidden="true"><rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect></svg>
-      <svg class="icon-play" viewBox="0 0 24 24" width="14" height="14" fill="#ffffff" aria-hidden="true"><polygon points="7,5 19,12 7,19"></polygon></svg>
-    </button>
-  </section>
+    <h2 class="display-sm oneline oneline-long" style="margin:-10px 0 34px">Work that stays with <span class="o">you.</span></h2>
+    <div class="sel-grid reveal">
+      <article class="sel" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Lenskart &middot; Hustler — Keep Hustling">
+        <video data-src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" poster="assets/images/thumbnails/lenskart-hustler.jpg" muted loop playsinline preload="none"
+               class="hover-play dwell-play"></video>
+        <span class="sel-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </article>
+      <article class="sel" data-lightbox="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" data-caption="John Jacobs &middot; An Eye For Love">
+        <video data-src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" poster="assets/images/thumbnails/john-jacobs.jpg" muted loop playsinline preload="none"
+               class="hover-play dwell-play"></video>
+        <span class="sel-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </article>
+      <article class="sel" data-lightbox="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-caption="Sunil Shetty &middot; The Action Icon">
+        <video data-src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" poster="assets/images/thumbnails/sunil-shetty-film.jpg" muted loop playsinline preload="none"
+               class="hover-play dwell-play"></video>
+        <span class="sel-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </article>
+      <article class="sel" data-lightbox="assets/media/tvc/CHANDAK FILM.mp4" data-caption="Chandak Group &middot; Promise of Elegance">
+        <video data-src="assets/media/tvc/CHANDAK FILM.mp4" poster="assets/images/thumbnails/chandak-film.jpg" muted loop playsinline preload="none"
+               class="hover-play dwell-play"></video>
+        <span class="sel-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      </article></div>
+  </div>
+</section>
 
-  <!-- 03. SHOWREEL SECTION (ULTRA-WIDE CINEMATIC BANNER) -->
-  <section class="showreel-section border-top-divider" id="showreel">
-    <div class="showreel-wide-container">
-      <div class="showreel-container group cursor-pointer" onclick="if(window.onOpenShowreel){window.onOpenShowreel(event);}" data-open-case="showreel-sunil-shetty">
-        <video class="showreel-video-bg" src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-poster="assets/images/posters/sunil-shetty-ad-landscape.jpg" autoplay muted loop playsinline preload="auto"></video>
-        <video id="showreel-player" class="showreel-video" src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-poster="assets/images/posters/sunil-shetty-ad-landscape.jpg" autoplay muted loop playsinline preload="auto"></video>
-
-        <!-- Dual-edge horizontal & bottom vignette gradient overlay -->
-        <div class="showreel-vignette-overlay"></div>
-
-        <div class="showreel-overlay">
-          <div class="showreel-bottom-bar">
-            <button id="showreel-sound-toggle" class="showreel-play-label" aria-label="Toggle showreel sound">
-              <span class="showreel-play-icon" id="showreelSoundIcon">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-              </span>
-              <span class="showreel-play-text">SHOWREEL</span>
-              <span class="showreel-play-line"></span>
-              <span class="showreel-play-duration" id="showreel-current-duration">01:45</span>
-            </button>
-
-            <div class="showreel-meta">
-              <div class="showreel-meta-title">ANAVA FILMS</div>
-              <div class="showreel-meta-sub">Thinking. Making. Finishing.</div>
-            </div>
-          </div>
-        </div>
-
-        <button id="showreel-next-btn" class="showreel-next-arrow-btn" aria-label="Next Showreel" onclick="event.stopPropagation()">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 6l6 6-6 6"/></svg>
-        </button>
-      </div>
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head" style="margin-bottom:26px">
+      <div class="sec-label"><span class="sec-num">03</span><span class="sec-name">What We Do</span></div>
     </div>
-  </section>
-
-
-  <!-- 04. Thinkers Who Make / OUR PHILOSOPHY SECTION (CINEMATIC FILM STUDIO REDESIGN) -->
-  <section class="thinkers-section border-top-divider" id="philosophy">
-    <div class="philo-watermark">ANAVA</div>
-
-    <div class="container philo-container">
-      <div class="philo-left-col">
-        <div class="philo-eyebrow-group">
-          <span class="philo-badge">OUR PHILOSOPHY</span>
-        </div>
-
-        <h2 class="philo-display-title">
-          <span class="philo-title-white">Thinkers</span>
-          <span class="philo-title-gold">Who Make.</span>
-        </h2>
-
-        <p class="philo-desc-top">
-          Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn't get lost between the people who think them and the people who make them.
-        </p>
-
-        <p class="philo-desc-bold">
-          So we bring both sides together. You bring the thought. We build the idea, make the film and deliver the final product.
-        </p>
-
-        <!-- 3-Step Process Card Container (THINK -> MAKE -> DELIVER) -->
-        <div class="philo-process-card">
-          <div class="philo-step-item">
-            <div class="philo-step-icon-circle">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/>
-              </svg>
-            </div>
-            <div class="philo-step-name">THINK</div>
-            <div class="philo-step-sub">The thought, the spark.</div>
-          </div>
-
-          <div class="philo-step-arrow">→</div>
-
-          <div class="philo-step-item">
-            <div class="philo-step-icon-circle">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-              </svg>
-            </div>
-            <div class="philo-step-name">MAKE</div>
-            <div class="philo-step-sub">The craft, the process.</div>
-          </div>
-
-          <div class="philo-step-arrow">→</div>
-
-          <div class="philo-step-item">
-            <div class="philo-step-icon-circle">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <circle cx="12" cy="12" r="6"/>
-                <circle cx="12" cy="12" r="2"/>
-              </svg>
-            </div>
-            <div class="philo-step-name">DELIVER</div>
-            <div class="philo-step-sub">The film, the impact.</div>
-          </div>
-        </div>
-
-        <!-- Yellow Full Pill CTA Button -->
-        <a href="#showreel" class="philo-cta-btn">
-          <span>WATCH THE SHOWREEL 2026</span>
-          <span class="cta-arrow">→</span>
-        </a>
-      </div>
-
-      <!-- Cinematic Visual Panel -->
-      <div class="philo-visual-panel">
-        <div class="philo-visual-img" style="background-image: url('assets/images/thinkers-who-make.jpg?v=1.0');"></div>
-        <div class="philo-visual-overlay"></div>
-
-        <div class="philo-visual-note">
-          <span class="script-tagline">From Thought to Screen</span>
-        </div>
-
-        <div class="philo-visual-side-labels">
-          <span>STORIES</span>
-          <span>BRANDS</span>
-          <span>PEOPLE</span>
-          <span>CULTURE</span>
-        </div>
-
-        <div class="philo-visual-caption">
-          <span>IDEAS</span>
-          <span>PEOPLE</span>
-          <span>FILMS</span>
-          <span>IMPACT</span>
-        </div>
-      </div>
+    <div class="wwd-teaser-head reveal">
+      <h2 class="display-sm oneline oneline-long">From idea to <span class="o">impact.</span></h2>
+      <p class="lead teaser-oneline">End-to-end creative solutions that turn ideas into powerful visual stories.</p>
     </div>
-  </section>
-
-
-
-  <!-- 06. WHAT WE DO (REDESIGNED MATCHING REFERENCE MOCKUP) -->
-  <section class="wwd-section border-top-divider">
-    <div class="container">
-      <div class="wwd-header wwd-header-v2">
-        <div class="wwd-header-text">
-          <span class="wwd-badge">WHAT WE DO</span>
-          <h2 class="wwd-main-title">
-            <span class="wwd-title-white">From Idea to</span>
-            <span class="wwd-title-gold">Impact.</span>
-          </h2>
-          <p class="wwd-subtitle">End-to-end creative solutions that turn ideas into powerful visual stories.</p>
-        </div>
-        <div class="wwd-header-visual">
-          <div class="wwd-header-visual-img" style="background-image: url('assets/images/wwd-header-visual.jpg?v=1.0');"></div>
-        </div>
-      </div>
-
-      <div class="wwd-cards-grid">
-
-        <!-- Card 1: 01 / CONCEPT — THINK -->
-        <div class="wwd-card wwd-card-v2" data-card="think">
-          <video class="wwd-card-bg-video" src="assets/media/what-we-do/THINK.mp4" data-poster="assets/images/posters/think.jpg" muted loop playsinline preload="none"></video>
-          <div class="wwd-card-overlay"></div>
-
-          <div class="wwd-card-content wwd-card-content-v2">
-            <div class="wwd-card-top-row">
-              <div class="wwd-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>
-              </div>
-              <span class="wwd-card-micro-label">IDEATION<br>CONCEPT<br>SCRIPTING</span>
-            </div>
-
-            <div class="wwd-card-meta">
-              <span class="wwd-card-step">01 / CONCEPT</span>
-              <h3 class="wwd-card-name">THINK</h3>
-              <p class="wwd-card-desc">
-                Creative Direction, Ideation &amp; Concept Development, Scripting, Creative Consulting.
-              </p>
-              <a href="what-we-do" class="wwd-card-link">EXPLORE THINK <span class="wwd-card-link-arrow">→</span></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2: 02 / SHOOT — MAKE -->
-        <div class="wwd-card wwd-card-v2" data-card="make">
-          <video class="wwd-card-bg-video" src="assets/media/what-we-do/MAKE.mp4" data-poster="assets/images/posters/make.jpg" muted loop playsinline preload="none"></video>
-          <div class="wwd-card-overlay"></div>
-
-          <div class="wwd-card-content wwd-card-content-v2">
-            <div class="wwd-card-top-row">
-              <div class="wwd-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8H4z"/><path d="m4 11 3.5-7h4L8 11"/><path d="m11.5 11 3.5-7h4l-3.5 7"/></svg>
-              </div>
-              <span class="wwd-card-micro-label">PRODUCTION<br>DIRECTION<br>CASTING</span>
-            </div>
-
-            <div class="wwd-card-meta">
-              <span class="wwd-card-step">02 / SHOOT</span>
-              <h3 class="wwd-card-name">MAKE</h3>
-              <p class="wwd-card-desc">
-                Production, Direction, Casting (Domestic &amp; International), Art Direction &amp; Production Design.
-              </p>
-              <a href="what-we-do" class="wwd-card-link">EXPLORE MAKE <span class="wwd-card-link-arrow">→</span></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3: 03 / POST — FINISH -->
-        <div class="wwd-card wwd-card-v2" data-card="finish">
-          <video class="wwd-card-bg-video" src="assets/media/what-we-do/FINISH.mp4" data-poster="assets/images/posters/finish.jpg" muted loop playsinline preload="none"></video>
-          <div class="wwd-card-overlay"></div>
-
-          <div class="wwd-card-content wwd-card-content-v2">
-            <div class="wwd-card-top-row">
-              <div class="wwd-icon-box">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              </div>
-              <span class="wwd-card-micro-label">EDITING<br>VFX<br>COLOR GRADING</span>
-            </div>
-
-            <div class="wwd-card-meta">
-              <span class="wwd-card-step">03 / POST</span>
-              <h3 class="wwd-card-name">FINISH</h3>
-              <p class="wwd-card-desc">
-                Editing, VFX, Sound Design, Color Grading, Motion Graphics &amp; Final Delivery.
-              </p>
-              <a href="what-we-do" class="wwd-card-link">EXPLORE FINISH <span class="wwd-card-link-arrow">→</span></a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Bottom CTA Card -->
-      <div class="wwd-cta-card wwd-cta-card-v2">
-        <div class="wwd-cta-left">
-          <div class="wwd-cta-meta">
-            <span class="wwd-cta-tag">LET'S CREATE TOGETHER</span>
-            <h4 class="wwd-cta-title">Have a project in mind?</h4>
-            <p class="wwd-cta-sub">Let's bring your idea to life.</p>
-          </div>
-        </div>
-        <div class="wwd-cta-right">
-          <a href="contact" class="btn-primary">LET’S TALK <span class="wwd-card-link-arrow">→</span></a>
-          <div class="wwd-cta-steps">
-            <span class="wwd-cta-step-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1.55.65 2.8 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg>
-              THINK
-            </span>
-            <span class="wwd-cta-step-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8H4z"/><path d="m4 11 3.5-7h4L8 11"/><path d="m11.5 11 3.5-7h4l-3.5 7"/></svg>
-              MAKE
-            </span>
-            <span class="wwd-cta-step-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              FINISH
-            </span>
-          </div>
-        </div>
-      </div>
+    <div class="tri reveal">
+      <article class="tri-item">
+        <span class="tri-n">01</span>
+        <h3>Think</h3>
+        <p>Creative direction, ideation and scripting.</p>
+      </article>
+      <article class="tri-item">
+        <span class="tri-n">02</span>
+        <h3>Make</h3>
+        <p>Production, direction, casting and art direction.</p>
+      </article>
+      <article class="tri-item">
+        <span class="tri-n">03</span>
+        <h3>Finish</h3>
+        <p>Edit, sound, colour, VFX and mastering.</p>
+      </article>
     </div>
-  </section>
-
-
-  <!-- 06B. JOHN JACOBS SHOWREEL SECTION (ULTRA-WIDE CINEMATIC BANNER) -->
-  <section class="showreel-section border-top-divider" id="showreel-john-jacobs">
-    <div class="showreel-wide-container">
-      <div class="showreel-container group cursor-pointer" onclick="if(window.onOpenShowreel){window.onOpenShowreel(event);}" data-open-case="john-jacobs">
-        <video class="showreel-video-bg" src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" data-poster="assets/images/posters/lenskart-john-jacbos-eyewear-film.jpg" autoplay muted loop playsinline preload="auto"></video>
-        <video id="showreel-player-jj" class="showreel-video" src="assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4" data-poster="assets/images/posters/lenskart-john-jacbos-eyewear-film.jpg" autoplay muted loop playsinline preload="auto"></video>
-
-        <!-- Dual-edge horizontal & bottom vignette gradient overlay -->
-        <div class="showreel-vignette-overlay"></div>
-
-        <div class="showreel-overlay">
-          <div class="showreel-bottom-bar">
-            <button id="showreel-sound-toggle-jj" class="showreel-play-label" aria-label="Toggle John Jacobs showreel sound">
-              <span class="showreel-play-icon" id="showreelSoundIconJJ">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="#ffffff"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-              </span>
-              <span class="showreel-play-text">JOHN JACOBS</span>
-              <span class="showreel-play-line"></span>
-              <span class="showreel-play-duration">01:08</span>
-            </button>
-
-            <div class="showreel-meta">
-              <div class="showreel-meta-title">JOHN JACOBS</div>
-              <div class="showreel-meta-sub">AN EYE FOR LOVE &bull; VALENTINE'S DAY FILM</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="tri-foot reveal">
+      <a href="what-we-do" class="btn btn-ghost">See what we do <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
-  </section>
+  </div>
+</section>
 
-
-  <!-- 07. From Thought to Screen (PROCESS TEASER) -->
-  <section class="workflow-teaser-section">
-    <div class="workflow-teaser-container">
-      
-      <!-- Top Badge with Flanking Lines -->
-      <div class="workflow-badge-row">
-        <span class="workflow-badge-line"></span>
-        <span class="workflow-badge-text">OUR WORKFLOW</span>
-        <span class="workflow-badge-line"></span>
-      </div>
-
-      <!-- Main Display Title -->
-      <h2 class="workflow-title">
-        <span class="workflow-title-light">From </span><span class="workflow-title-bold">Thought to </span><span class="workflow-title-gold">Screen</span>
-      </h2>
-
-      <!-- 7 Steps Workflow Diagram -->
-      <div class="workflow-flow-wrapper">
-        <div class="workflow-diagram">
-          
-          <!-- 1. THOUGHT -->
-          <div class="workflow-node">
-            <div class="workflow-circle">
-              <!-- Lightbulb SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 18h6"/>
-                <path d="M10 22h4"/>
-                <path d="M12 2a7 7 0 0 0-7 7c0 2.6 1.4 4.8 3.5 6h7c2.1-1.2 3.5-3.4 3.5-6a7 7 0 0 0-7-7z"/>
-              </svg>
-            </div>
-            <span class="workflow-node-label">THOUGHT</span>
-          </div>
-
-          <!-- Connector 1 -->
-          <div class="workflow-connector">
-            <span class="workflow-connector-line"></span>
-            <span class="workflow-connector-dot"></span>
-          </div>
-
-          <!-- 2. IDEA -->
-          <div class="workflow-node">
-            <div class="workflow-circle">
-              <!-- Document SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
-                <line x1="8" y1="7" x2="16" y2="7"/>
-                <line x1="8" y1="12" x2="16" y2="12"/>
-                <line x1="8" y1="17" x2="13" y2="17"/>
-              </svg>
-            </div>
-            <span class="workflow-node-label">IDEA</span>
-          </div>
-
-          <!-- Connector 2 -->
-          <div class="workflow-connector">
-            <span class="workflow-connector-line"></span>
-            <span class="workflow-connector-dot"></span>
-          </div>
-
-          <!-- 3. DECK -->
-          <div class="workflow-node">
-            <div class="workflow-circle">
-              <!-- 4-Squares Grid SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="7" height="7" rx="1.5"/>
-                <rect x="14" y="3" width="7" height="7" rx="1.5"/>
-                <rect x="3" y="14" width="7" height="7" rx="1.5"/>
-                <rect x="14" y="14" width="7" height="7" rx="1.5"/>
-              </svg>
-            </div>
-            <span class="workflow-node-label">DECK</span>
-          </div>
-
-          <!-- Connector 3 -->
-          <div class="workflow-connector">
-            <span class="workflow-connector-line"></span>
-            <span class="workflow-connector-dot"></span>
-          </div>
-
-          <!-- 4. PRE-PRODUCTION -->
-          <div class="workflow-node">
-            <div class="workflow-circle">
-              <!-- Cog / Gear SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-              </svg>
-            </div>
-            <span class="workflow-node-label">PRE-PRODUCTION</span>
-          </div>
-
-          <!-- Connector 4 -->
-          <div class="workflow-connector">
-            <span class="workflow-connector-line"></span>
-            <span class="workflow-connector-dot"></span>
-          </div>
-
-          <!-- 5. SHOOT -->
-          <div class="workflow-node">
-            <div class="workflow-circle">
-              <!-- Video Camera SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="#f05223" stroke="#f05223" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M23 7l-7 5 7 5V7z" />
-                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-              </svg>
-            </div>
-            <span class="workflow-node-label">SHOOT</span>
-          </div>
-
-          <!-- Connector 5 -->
-          <div class="workflow-connector">
-            <span class="workflow-connector-line"></span>
-            <span class="workflow-connector-dot"></span>
-          </div>
-
-          <!-- 6. POST -->
-          <div class="workflow-node">
-            <div class="workflow-circle">
-              <!-- Film / Player SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="2" y="3" width="20" height="18" rx="2" />
-                <line x1="2" y1="7" x2="22" y2="7" />
-                <line x1="2" y1="17" x2="22" y2="17" />
-                <circle cx="5" cy="5" r="0.8" fill="#f05223"/>
-                <circle cx="9.5" cy="5" r="0.8" fill="#f05223"/>
-                <circle cx="14.5" cy="5" r="0.8" fill="#f05223"/>
-                <circle cx="19" cy="5" r="0.8" fill="#f05223"/>
-                <circle cx="5" cy="19" r="0.8" fill="#f05223"/>
-                <circle cx="9.5" cy="19" r="0.8" fill="#f05223"/>
-                <circle cx="14.5" cy="19" r="0.8" fill="#f05223"/>
-                <circle cx="19" cy="19" r="0.8" fill="#f05223"/>
-                <polygon points="10 10 15 12 10 14 10 10" fill="#f05223" />
-              </svg>
-            </div>
-            <span class="workflow-node-label">POST</span>
-          </div>
-
-          <!-- Connector 6 -->
-          <div class="workflow-connector">
-            <span class="workflow-connector-line"></span>
-            <span class="workflow-connector-dot"></span>
-          </div>
-
-          <!-- 7. DELIVERY -->
-          <div class="workflow-node">
-            <div class="workflow-circle">
-              <!-- Paper Plane SVG -->
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f05223" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
-              </svg>
-            </div>
-            <span class="workflow-node-label">DELIVERY</span>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Subtitle -->
-      <p class="workflow-subtext">
-        A THOUGHT GOES IN. A FILM COMES OUT.
-      </p>
-
-      <!-- Glowing CTA Button -->
-      <a href="process" class="workflow-cta-btn">
-        <span>EXPLORE OUR PROCESS</span>
-        <span class="btn-arrow">&rarr;</span>
-      </a>
-
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label"><span class="sec-num">04</span><span class="sec-name">Our Process</span></div>
+      <a href="process" class="sec-more">See The Process <span class="circ-arrow" style="width:40px;height:40px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
     </div>
-  </section>
+    <div class="proc-rail reveal">
+      <div class="proc-track">
+        <article class="proc-step">
+          <span class="proc-num">01</span>
+          <span class="proc-dot"></span>
+          <h4 class="proc-name">Thought</h4>
+          <p class="proc-note">A brief, a product, or a problem.</p>
+        </article>
+        <article class="proc-step">
+          <span class="proc-num">02</span>
+          <span class="proc-dot"></span>
+          <h4 class="proc-name">Idea</h4>
+          <p class="proc-note">We find the strongest angle.</p>
+        </article>
+        <article class="proc-step">
+          <span class="proc-num">03</span>
+          <span class="proc-dot"></span>
+          <h4 class="proc-name">Deck</h4>
+          <p class="proc-note">Concept, treatment, script, mood.</p>
+        </article>
+        <article class="proc-step">
+          <span class="proc-num">04</span>
+          <span class="proc-dot"></span>
+          <h4 class="proc-name">Pre-production</h4>
+          <p class="proc-note">Crew, cast, locations, schedule.</p>
+        </article>
+        <article class="proc-step">
+          <span class="proc-num">05</span>
+          <span class="proc-dot"></span>
+          <h4 class="proc-name">Shoot</h4>
+          <p class="proc-note">The deck becomes reality.</p>
+        </article>
+        <article class="proc-step">
+          <span class="proc-num">06</span>
+          <span class="proc-dot"></span>
+          <h4 class="proc-name">Post</h4>
+          <p class="proc-note">Edit, sound, colour, VFX.</p>
+        </article>
+        <article class="proc-step">
+          <span class="proc-num">07</span>
+          <span class="proc-dot"></span>
+          <h4 class="proc-name">Delivery</h4>
+          <p class="proc-note">The final film goes live.</p>
+        </article></div>
+    </div>
+  </div>
+</section>
 
 
-  <!-- 08. ABOUT JACKSON & ANJAN (The People Behind Anava) -->
-  <section class="section-padding border-top-divider people-leadership-section">
-    <div class="container">
-      <div class="people-header-row">
+<section class="section">
+  <div class="container">
+    <div class="cta-band compact reveal">
+      <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt=""></div>
+      <div class="cta-band-inner">
         <div>
-          <span class="people-badge-label">LEADERSHIP</span>
-          <h2 class="people-display-title">
-            The People<br>
-            <span class="people-title-highlight">Behind Anava</span>
-          </h2>
+          <span class="eyebrow">Let's create together</span>
+          <h2 class="display-sm">Want to collaborate<br>with <span class="o">Anava?</span></h2>
         </div>
-        <div class="people-header-sub">
-          <span class="people-sub-line"></span>
-          <p>Creative vision paired with structured production execution.</p>
+        <div>
+          <p class="lead">Give us a thought. We'll give you ideas to shoot.</p>
+          <a href="contact" class="btn btn-primary">Let's Talk <span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </div>
       </div>
-
-      <div class="people-leadership-list">
-        <!-- Row 1: Jackson Khatri -->
-        <div class="people-leader-row">
-          <div class="people-photo-card">
-            <img src="assets/images/jackson_khatri.jpg" alt="Jackson Khatri - Founder & Creative Director">
-          </div>
-
-          <div class="people-info-col">
-            <div class="people-role-header">
-              <div class="people-avatar-circle">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="#ffffff">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-              </div>
-              <span class="people-role-tag">FOUNDER · CREATIVE DIRECTOR · PRODUCER · DIRECTOR</span>
-            </div>
-
-            <h3 class="people-leader-name">JACKSON KHATRI</h3>
-
-            <div class="people-leader-bio">
-              <p>
-                Jackson’s journey began with a <strong>B.Sc. in Animation & Multimedia</strong>, developing a deep understanding of visual storytelling, framing, pacing, and crafting worlds frame by frame.
-              </p>
-              <p>
-                Working across assistant direction, scripting, producing, and directing, he identified a recurring fracture in the industry: great ideas getting lost in translation between agency thinkers and on-set makers.
-              </p>
-              <blockquote class="people-quote-box">
-                “A GREAT PRODUCTION STARTS MUCH BEFORE THE CAMERA STARTS ROLLING.”
-              </blockquote>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row 2: Anjan Khatri -->
-        <div class="people-leader-row">
-          <div class="people-photo-card">
-            <img src="assets/images/anjan_khatri.jpg" alt="Anjan Khatri - Producer & Production Head">
-          </div>
-
-          <div class="people-info-col">
-            <div class="people-role-header">
-              <div class="people-avatar-circle">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="#ffffff">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-              </div>
-              <span class="people-role-tag">PRODUCER · PRODUCTION HEAD</span>
-            </div>
-
-            <h3 class="people-leader-name">ANJAN KHATRI</h3>
-
-            <div class="people-leader-bio">
-              <p>
-                As Anava expanded, Jackson’s brother <strong>Anjan Khatri</strong> joined the team as Producer to fortify the production and execution backbone of the company.
-              </p>
-              <p>
-                Anjan oversees the complete physical execution machinery — managing complex multi-location shoots, crew assemblies, budgeting, and high-efficiency logistical timelines.
-              </p>
-              <blockquote class="people-quote-box">
-                “TURNING CREATIVE VISION INTO SEAMLESS, STRESS-FREE PRODUCTION EXECUTION.”
-              </blockquote>
-              <p class="people-summary-note">
-                Together, Jackson and Anjan ensure that client ideas are both creatively groundbreaking and executively flawless.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- 09. TESTIMONIALS / What Brands Say SECTION -->
-  <section class="border-top-divider" style="padding: 0 0 5rem 0; background: var(--bg-dark);">
-    <!-- Cinematic Header Banner Block -->
-    <div class="brands-say-banner-wrapper">
-      <div class="brands-say-banner-bg" style="background-image: url('assets/images/what_brands_say_bg.jpg');"></div>
-      <div class="brands-say-banner-overlay"></div>
-      <div class="container brands-say-banner-container">
-        <div class="brands-say-banner-content">
-          <span class="brands-say-eyebrow">COLLABORATORS</span>
-          <h2 class="brands-say-title">
-            What<br>
-            Brands <em>Say</em>
-          </h2>
-          <p class="brands-say-subtitle">Your friendly neighbourhood ANAVA FILMS.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Testimonial Cards Grid -->
-    <div class="container" style="margin-top: 3.5rem;">
-      <div class="work-grid">
-        <div class="work-card" data-open-case="testimonial-lenskart-1">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/testimonials/LENSKART TESTIMONIAL FILM.mp4" data-poster="assets/images/posters/lenskart-testimonial-film.jpg" class="work-thumb-img" muted loop playsinline preload="none"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">LENSKART • VIDEO TESTIMONIAL</div>
-            <h3 class="work-card-title">What Lenskart leadership says about partnering with Anava</h3>
-            <p class="work-card-desc">"How Jackson and Anjan turn a one-line thought into a complete shoot deck."</p>
-          </div>
-        </div>
-
-        <div class="work-card" data-open-case="wow-brand-content">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/testimonials/WOW TESTIMONIAL .mp4" data-poster="assets/images/posters/wow-testimonial.jpg" class="work-thumb-img" muted loop playsinline preload="none"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">WOW SKIN SCIENCE • VIDEO TESTIMONIAL</div>
-            <h3 class="work-card-title">Directing with clarity and speed before roll camera</h3>
-            <p class="work-card-desc">"The level of preparation before shoot day makes directing seamless."</p>
-          </div>
-        </div>
-
-        <div class="work-card" data-open-case="testimonial-lenskart-2">
-          <div class="work-thumb-wrapper">
-            <video src="assets/media/testimonials/LENSKART TESTIMONIAL  (1).mp4" data-poster="assets/images/posters/lenskart-testimonial-1.jpg" class="work-thumb-img" muted loop playsinline preload="none"></video>
-            <div class="work-play-overlay"><div class="play-icon-btn">▶</div></div>
-          </div>
-          <div class="work-card-info">
-            <div class="work-category-tag">LENSKART • VIDEO TESTIMONIAL</div>
-            <h3 class="work-card-title">Structured on-set execution & creative collaboration</h3>
-            <p class="work-card-desc">"Organized logistics meets uncompromising creative direction on set."</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- 10. LOCATIONS SECTION -->
-    <!-- 10. LOCATIONS SECTION (EXACT MOCKUP DESIGN) -->
-  <section class="section-padding border-top-divider" style="padding-top: 4.5rem; padding-bottom: 5.5rem; background: var(--bg-dark);">
-    <div class="container">
-      <div class="location-cards-grid">
-        <!-- MUMBAI CARD -->
-        <div class="location-card location-card-mumbai" style="background-image: url('assets/images/mumbai_sealink_bg.jpg');">
-          <div class="location-card-overlay"></div>
-          <div class="location-card-content">
-            <div class="location-card-header">
-              <div class="location-card-title-group">
-                <h3 class="location-card-city">Mumbai</h3>
-                <span class="location-hq-pill">HQ</span>
-              </div>
-              <div class="location-card-script">
-                Same City<br>Bigger<br>Stories
-              </div>
-            </div>
-            <div class="location-card-address">
-              301, Creative House,<br>
-              Linking Road, Bandra West,<br>
-              Mumbai - 400050
-            </div>
-            <div class="location-card-footer">
-              <a href="https://maps.google.com/?q=Linking+Road+Bandra+West+Mumbai+400050" target="_blank" rel="noopener" class="location-direction-btn">
-                <span>Get Directions</span>
-                <span class="direction-arrow">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- DELHI CARD -->
-        <div class="location-card location-card-delhi" style="background-image: url('assets/images/delhi_indiagate_bg.jpg');">
-          <div class="location-card-overlay"></div>
-          <div class="location-card-content">
-            <div class="location-card-header">
-              <div class="location-card-title-group">
-                <h3 class="location-card-city">Delhi</h3>
-              </div>
-              <div class="location-card-script">
-                More<br>Ideas<br>More<br>Films
-              </div>
-            </div>
-            <div class="location-card-address">
-              Studio 8, Creative Block,<br>
-              Saket, New Delhi - 110017
-            </div>
-            <div class="location-card-footer">
-              <a href="https://maps.google.com/?q=Saket+New+Delhi+110017" target="_blank" rel="noopener" class="location-direction-btn">
-                <span>Get Directions</span>
-                <span class="direction-arrow">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- CINEMATIC FILM STUDIO CTA BANNER -->
-  <section class="cinematic-cta-section" id="studio-cta">
-    <div class="cinematic-cta-bg" style="background-image: url('assets/images/cinematic_studio_cta_bg.jpg?v=1.0');"></div>
-    <div class="cinematic-cta-overlay"></div>
-    <div class="cinematic-cta-watermark">ANAVA</div>
-
-    <div class="container cinematic-cta-container">
-      <div class="cinematic-cta-eyebrow">
-        <span class="eyebrow-text">LET'S CREATE TOGETHER</span>
-      </div>
-
-      <div class="cinematic-cta-headline-wrapper">
-        <div class="cinematic-bracket bracket-left"></div>
-        
-        <h2 class="cinematic-cta-title">
-          <span class="cta-title-line line-white">Want to Collaborate</span>
-          <span class="cta-title-line line-gold">With Anava?</span>
-        </h2>
-
-        <div class="cinematic-bracket bracket-right"></div>
-      </div>
-
-      <p class="cinematic-cta-subtext">
-        Give us a thought. We’ll give you ideas to shoot.
-      </p>
-
-      <div class="cinematic-cta-action">
-        <a href="contact" class="btn-cinematic-pill">
-          <span>LET'S TALK</span>
-          <svg class="btn-pill-arrow" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-      </div>
-
-      <div class="cinematic-cta-infoline">
-        <span>CREATIVE MINDS</span>
-        <span class="info-sep">|</span>
-        <span>FAST RESPONSE</span>
-        <span class="info-sep">|</span>
-        <span>PAN INDIA</span>
-        <span class="info-sep">|</span>
-        <span>REAL RESULTS</span>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Case Study / Project Modal Component -->
-  <div id="case-modal" class="modal-backdrop">
-    <div class="modal-content">
-      <button id="modal-close-btn" class="modal-close-btn" aria-label="Close Modal">&times;</button>
-      <div id="modal-dynamic-body"></div>
+      <div class="script">Ideas<br>Into<br>Action</div>
     </div>
   </div>
+</section>
 
-
-  <!-- Master Footer -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS Logo" style="height: 50px; width: auto; display: block; margin-left: 0; margin-top: 0.6rem; margin-bottom: 1.2rem;">
-          </div>
-          <p class="footer-desc">
-            ANAVA FILMS - Give us a thought. We’ll give you ideas to shoot.
-          </p>
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <a href="/"><img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS Logo"></a>
         </div>
-
-        <div class="footer-nav">
-          <div>
-            <div class="footer-col-title">NAVIGATION</div>
-            <ul class="footer-links">
-              <li><a href="/" class="footer-link">Home</a></li>
-              <li><a href="work" class="footer-link">Work</a></li>
-              <li><a href="what-we-do" class="footer-link">What We Do</a></li>
-              <li><a href="process" class="footer-link">Process</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="footer-col-title">COMPANY</div>
-            <ul class="footer-links">
-              <li><a href="about" class="footer-link">About Us</a></li>              <li><a href="contact" class="footer-link">Contact Us</a></li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="footer-col-title">CONNECT</div>
-            <ul class="footer-links">
-              <li>
-                <a href="mailto:office@anavafilms.com" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/mail.svg?v=1.0" alt="Email" class="footer-social-icon" width="18" height="18">
-                  <span>office@anavafilms.com</span>
-                </a>
-              </li>
-              <li>
-                <a href="tel:+918691924669" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/call.svg?v=1.0" alt="Call" class="footer-social-icon" width="18" height="18">
-                  <span>Jackson: +91 8691924669</span>
-                </a>
-              </li>
-              <li>
-                <a href="tel:+919911111273" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/call.svg?v=1.0" alt="Call" class="footer-social-icon" width="18" height="18">
-                  <span>Anjan: +91 9911111273</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/anava_films" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/instagram.svg" alt="Instagram" class="footer-social-icon" width="18" height="18">
-                  <span>Instagram</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://vimeo.com/zackdirect" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/vimeo.svg" alt="Vimeo" class="footer-social-icon" width="18" height="18">
-                  <span>Vimeo</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://www.youtube.com/@anava-films" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
-                  <img src="assets/images/icons/youtube.svg" alt="YouTube" class="footer-social-icon" width="18" height="18">
-                  <span>YouTube</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <p class="footer-desc">
+          ANAVA FILMS &mdash; Give us a thought. We&rsquo;ll give you ideas to shoot.
+        </p>
       </div>
 
-      <div class="footer-bottom">
-        <div>&copy; 2026 ANAVA FILMS. All rights reserved.</div>
-        <div>ANAVA FILMS - Give us a thought. We’ll give you ideas to shoot.</div>
+      <div class="footer-nav">
+        <div>
+          <div class="footer-col-title">NAVIGATION</div>
+          <ul class="footer-links">
+            <li><a href="/" class="footer-link">Home</a></li>
+            <li><a href="work" class="footer-link">Work</a></li>
+            <li><a href="what-we-do" class="footer-link">What We Do</a></li>
+            <li><a href="process" class="footer-link">Process</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">COMPANY</div>
+          <ul class="footer-links">
+            <li><a href="about" class="footer-link">About Us</a></li>
+            <li><a href="contact" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">CONNECT</div>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:office@anavafilms.com" class="footer-link footer-social-link">
+                <img src="assets/images/icons/mail.svg" alt="Email" class="footer-social-icon" width="18" height="18">
+                <span>office@anavafilms.com</span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+918691924669" class="footer-link footer-social-link">
+                <img src="assets/images/icons/call.svg" alt="Call" class="footer-social-icon" width="18" height="18">
+                <span>Jackson: 8691924669</span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+919911111273" class="footer-link footer-social-link">
+                <img src="assets/images/icons/call.svg" alt="Call" class="footer-social-icon" width="18" height="18">
+                <span>Anjan: 9911111273</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/anava_films" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
+                <img src="assets/images/icons/instagram.svg" alt="Instagram" class="footer-social-icon" width="18" height="18">
+                <span>Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://vimeo.com/zackdirect" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
+                <img src="assets/images/icons/vimeo.svg" alt="Vimeo" class="footer-social-icon" width="18" height="18">
+                <span>Vimeo</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/@anava-films" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
+                <img src="assets/images/icons/youtube.svg" alt="YouTube" class="footer-social-icon" width="18" height="18">
+                <span>YouTube</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </footer>
 
+    <div class="footer-bottom">
+      <div>&copy; <span data-year></span> ANAVA FILMS. All rights reserved.</div>
+      <div>ANAVA FILMS &mdash; Give us a thought. We&rsquo;ll give you ideas to shoot.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <div class="lightbox-inner">
+    <div id="lightbox-body"></div>
+    <p class="lightbox-cap" id="lightbox-cap"></p>
+  </div>
+</div>
 </body>
 </html>

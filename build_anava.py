@@ -1,0 +1,1068 @@
+#!/usr/bin/env python3
+"""Generate the redesigned ANAVA FILMS pages from live-site content."""
+import json, os, html, re
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+with open(os.path.join(ROOT, "work.json"), encoding="utf-8") as work_file:
+    cards = json.load(work_file)
+
+HEAD = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/anava.css">
+<script defer src="assets/js/anava.js"></script>
+</head>
+<body>
+"""
+
+ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
+CHEV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>'
+DIAG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>'
+
+NAV = [("index.html", "Home"), ("work.html", "Work"), ("what-we-do.html", "What We Do"),
+       ("process.html", "Process"), ("about.html", "About"), ("contact.html", "Contact")]
+
+
+def header(active):
+    links = "".join(
+        f'<li><a href="{"/" if h == "index.html" else h}" '
+        f'class="{"active" if h == active else ""}">{n}</a></li>' for h, n in NAV)
+    return f"""
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand"><img src="assets/images/anava_official_logo_white.png" alt="ANAVA FILMS"></a>
+    <nav class="nav"><ul style="display:contents">{links}</ul></nav>
+    <div class="header-actions" style="display:flex;align-items:center;gap:14px">
+      <a href="contact.html" class="btn-talk">Let's Talk <span class="circ">{DIAG}</span></a>
+      <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+"""
+
+
+SOCIALS = """
+<div class="socials">
+  <a href="https://www.instagram.com/anavafilms" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+  <a href="https://vimeo.com/anavafilms" target="_blank" rel="noopener" aria-label="Vimeo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7.4c-.1 2.1-1.6 5-4.4 8.6C14.7 19.8 12.2 21.6 10.2 21.6c-1.2 0-2.3-1.1-3.1-3.4l-1.7-6.3C4.8 9.6 4.1 8.5 3.4 8.5c-.2 0-.7.3-1.4.8L1 8.2c1-.9 2-1.8 3-2.7 1.3-1.2 2.3-1.8 3-1.8 1.6-.2 2.6.9 3 3.3.4 2.6.7 4.2.8 4.8.5 2 1 3 1.5 3 .5 0 1.2-.7 2.1-2.2.9-1.5 1.4-2.6 1.5-3.4.1-1-.3-1.5-1.3-1.5-.5 0-.9.1-1.4.3.9-3.1 2.7-4.6 5.4-4.5 2 .1 2.9 1.4 2.8 3.9z"/></svg></a>
+  <a href="https://www.youtube.com/@anavafilms" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.4-5.2a2.8 2.8 0 0 0-2-2C18.9 4.4 12 4.4 12 4.4s-6.9 0-8.6.4a2.8 2.8 0 0 0-2 2C1 8.5 1 12 1 12s0 3.5.4 5.2a2.8 2.8 0 0 0 2 2c1.7.4 8.6.4 8.6.4s6.9 0 8.6-.4a2.8 2.8 0 0 0 2-2C23 15.5 23 12 23 12zM9.8 15.3V8.7l5.7 3.3-5.7 3.3z"/></svg></a>
+</div>
+"""
+
+
+def footer(active):
+    """The live anavafilms.com footer, carried over as-is."""
+    return f"""
+<footer class="main-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <a href="/"><img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS Logo"></a>
+        </div>
+        <p class="footer-desc">
+          ANAVA FILMS &mdash; Give us a thought. We&rsquo;ll give you ideas to shoot.
+        </p>
+      </div>
+
+      <div class="footer-nav">
+        <div>
+          <div class="footer-col-title">NAVIGATION</div>
+          <ul class="footer-links">
+            <li><a href="/" class="footer-link">Home</a></li>
+            <li><a href="work.html" class="footer-link">Work</a></li>
+            <li><a href="what-we-do.html" class="footer-link">What We Do</a></li>
+            <li><a href="process.html" class="footer-link">Process</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">COMPANY</div>
+          <ul class="footer-links">
+            <li><a href="about.html" class="footer-link">About Us</a></li>
+            <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">CONNECT</div>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:office@anavafilms.com" class="footer-link footer-social-link">
+                <img src="assets/images/icons/mail.svg" alt="Email" class="footer-social-icon" width="18" height="18">
+                <span>office@anavafilms.com</span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+918691924669" class="footer-link footer-social-link">
+                <img src="assets/images/icons/call.svg" alt="Call" class="footer-social-icon" width="18" height="18">
+                <span>Jackson: 8691924669</span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+919911111273" class="footer-link footer-social-link">
+                <img src="assets/images/icons/call.svg" alt="Call" class="footer-social-icon" width="18" height="18">
+                <span>Anjan: 9911111273</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/anava_films" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
+                <img src="assets/images/icons/instagram.svg" alt="Instagram" class="footer-social-icon" width="18" height="18">
+                <span>Instagram</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://vimeo.com/zackdirect" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
+                <img src="assets/images/icons/vimeo.svg" alt="Vimeo" class="footer-social-icon" width="18" height="18">
+                <span>Vimeo</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/@anava-films" target="_blank" rel="noopener noreferrer" class="footer-link footer-social-link">
+                <img src="assets/images/icons/youtube.svg" alt="YouTube" class="footer-social-icon" width="18" height="18">
+                <span>YouTube</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; <span data-year></span> ANAVA FILMS. All rights reserved.</div>
+      <div>ANAVA FILMS &mdash; Give us a thought. We&rsquo;ll give you ideas to shoot.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <div class="lightbox-inner">
+    <div id="lightbox-body"></div>
+    <p class="lightbox-cap" id="lightbox-cap"></p>
+  </div>
+</div>
+</body>
+</html>
+"""
+
+
+def esc(s):
+    return html.escape(s or "", quote=True)
+
+
+# ---------------------------------------------------------------- work grid
+CAT_LABEL = {
+    "tvc": "TVCs / Digital", "vertical": "Vertical", "events": "Events",
+    "photoshoots": "Photoshoots", "testimonials": "Testimonials", "podcasts": "Podcasts",
+    "bts": "Behind The Scenes",
+}
+
+
+def pretty(s):
+    """Title-case a SHOUTY label, keeping small brand quirks readable."""
+    if not s:
+        return ""
+    s = s.replace("∞ lenskart", "Lenskart").replace("&amp;", "&")
+    if s.isupper() or s.replace(" ", "").isupper():
+        words = []
+        for w in s.split():
+            if len(w) <= 3 and w.isalpha() and w.upper() in ("KFC", "FIKN", "RCB", "LK", "BTS", "VFX"):
+                words.append(w.upper())
+            elif w.isdigit() or "—" in w or "&" in w:
+                words.append(w)
+            else:
+                words.append(w.capitalize())
+        s = " ".join(words)
+    return s
+
+
+def build_work_cards():
+    out, idx = [], 0
+    for c in cards:
+        cat = c["category"]
+        video = c.get("video", "").split("#")[0]
+        poster = c.get("poster", "")
+        img = c.get("img", "")
+        brand = pretty(c.get("brand", "")) or CAT_LABEL.get(cat, "")
+        name = pretty(c.get("name", ""))
+        sub = c.get("subcat", "") or CAT_LABEL.get(cat, "")
+        slogan = c.get("slogan", "")
+
+        if cat == "photoshoots":
+            full = img.replace("-560.webp", ".jpg")
+            media = (f'<img src="{esc(img)}" alt="{esc(name or "Anava Films photoshoot")}" '
+                     f'loading="lazy" decoding="async">')
+            shape = "portrait photo"
+            lb = f'data-lightbox="{esc(full)}" data-lightbox-type="image" data-caption="Photoshoot &middot; Anava Films"'
+            info = ""
+        else:
+            if video:
+                media = (f'<video data-src="{esc(video)}" poster="{esc(poster)}" muted loop '
+                         f'playsinline preload="none" class="hover-play"></video>')
+                lb = f'data-lightbox="{esc(video)}" data-caption="{esc(name)} &middot; {esc(sub)}"'
+            elif img:
+                media = f'<img src="{esc(img)}" alt="{esc(name)}" loading="lazy">'
+                lb = f'data-lightbox="{esc(img)}" data-lightbox-type="image" data-caption="{esc(name)}"'
+            else:
+                continue
+            # One ratio per orientation keeps every row the same height; only the
+            # text overlay differs once a card carries designed key art.
+            # Event films are shot 9:16, so they belong with the portrait cards.
+            shape = "portrait" if cat in ("vertical", "events") else ""
+            if "thumbnails/" in poster:
+                shape = (shape + " has-art").strip()
+            info = f"""
+      <div class="wcard-info">
+        <div>
+          <div class="wcard-brand">{esc(brand)}</div>
+          <div class="wcard-cat">{esc(sub)}</div>
+          <h3 class="wcard-title">{esc(slogan or name)}</h3>
+        </div>
+        <span class="circ-arrow">{PLAY}</span>
+      </div>"""
+            idx += 1
+
+        search = " ".join([brand, name, sub, slogan, CAT_LABEL.get(cat, "")]).lower()
+        out.append(f"""
+    <article class="wcard {shape}" data-category="{cat}" data-sub="{esc(c.get('subcategories',''))}"
+             data-search="{esc(search)}" {lb}>
+      {media}{info}
+    </article>""")
+    return "\n".join(out)
+
+
+# ---------------------------------------------------------------- pages
+def page_work():
+    filters = f"""
+  <div class="filter-bar">
+    <div class="pills">
+      <button class="pill active" data-filter="tvc">TVCs / Digital</button>
+      <div class="pill-drop">
+        <button class="pill" type="button">Vertical {CHEV}</button>
+        <div class="drop-menu">
+          <button data-filter="vertical">All Vertical</button>
+          <button data-filter="vertical" data-sub="performance">Performance Ads</button>
+          <button data-filter="vertical" data-sub="catalogue">Catalogue Shoots</button>
+          <button data-filter="vertical" data-sub="social">Social Content</button>
+          <button data-filter="vertical" data-sub="product">Product Content</button>
+        </div>
+      </div>
+      <button class="pill" data-filter="events">Events</button>
+      <button class="pill" data-filter="bts">BTS</button>
+      <button class="pill" data-filter="testimonials">Testimonials</button>
+      <button class="pill" data-filter="podcasts">Podcasts</button>
+      <button class="pill" data-filter="photoshoots">Photoshoots</button>
+    </div>
+  </div>"""
+
+    return HEAD.format(
+        title="Our Work — ANAVA FILMS",
+        desc="Selected films, TVCs, vertical content, performance campaigns, photoshoots and podcasts by Anava Films."
+    ) + header("work.html") + f"""
+<section class="hero-split centered">
+  <div class="container">
+    <div class="hero-split-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Our Work</span>
+        <h1 class="display">Ideas that make<br>an <span class="o">impact.</span></h1>
+        <p class="lead">A selection of films, campaigns, content and collaborations we've created with brands, artists and partners.</p>
+        <div class="hero-actions">
+          <button class="play-btn" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Lenskart &middot; Hustler &mdash; Keep Hustling">{PLAY}<span class="pb-label">Watch Showreel</span></button>
+          <span class="link-row"><span class="label">Watch Showreel</span></span>
+        </div>
+      </div>
+      <div class="hero-media reveal" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Lenskart &middot; Hustler &mdash; Keep Hustling">
+        <video data-src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" poster="assets/images/thumbnails/hustler-work-hero.png" muted loop playsinline preload="none" class="hover-play"></video>
+        <div class="hero-script script">Thoughts<br>Ideas<br>People<br>Films</div>
+        <div class="hero-tag">Hustler &mdash; Keep Hustling</div>
+      </div>
+    </div>
+    {filters}
+  </div>
+</section>
+
+<section style="padding-bottom:90px">
+  <div class="container">
+    <div class="work-grid" id="work-grid">
+{build_work_cards()}
+    </div>
+    <p class="empty-state" id="work-empty" style="display:none">Nothing in this category yet.</p>
+    <div class="load-more-wrap">
+      <button class="btn btn-ghost" id="load-more">View more</button>
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom:90px">
+  <div class="container">
+    <div class="cta-band compact reveal">
+      <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt=""></div>
+      <div class="cta-band-inner">
+        <div>
+          <span class="eyebrow">Have a project in mind?</span>
+          <h2 class="display-sm">Let's create<br>something <span class="o">great.</span></h2>
+        </div>
+        <div>
+          <p class="lead">Whether it's a thought, a product or a full brief, we're ready to turn it into something powerful.</p>
+          <a href="contact.html" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
+        </div>
+      </div>
+      <div class="script">More<br>Ideas<br>More<br>Films</div>
+    </div>
+  </div>
+</section>
+""" + footer("work.html")
+
+
+def page_home():
+    # All four carry designed key art, so these are the landscape films
+    sel = [
+        ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/thumbnails/lenskart-hustler.jpg", "Lenskart", "Hustler — Keep Hustling"),
+        ("assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4", "assets/images/thumbnails/john-jacobs.jpg", "John Jacobs", "An Eye For Love"),
+        ("assets/media/tvc/Sunil Shetty AD Landscape.mp4", "assets/images/thumbnails/sunil-shetty-film.jpg", "Sunil Shetty", "The Action Icon"),
+        ("assets/media/tvc/CHANDAK FILM.mp4", "assets/images/thumbnails/chandak-film.jpg", "Chandak Group", "Promise of Elegance"),
+    ]
+    sel_html = "".join(f"""
+      <article class="sel" data-lightbox="{esc(v)}" data-caption="{esc(b)} &middot; {esc(t)}">
+        <video data-src="{esc(v)}" poster="{esc(p)}" muted loop playsinline preload="none"
+               class="hover-play dwell-play"></video>
+        <span class="sel-play">{PLAY}</span>
+      </article>""" for v, p, b, t in sel)
+
+    steps = [
+        ("Thought", "A brief, a product, or a problem."),
+        ("Idea", "We find the strongest angle."),
+        ("Deck", "Concept, treatment, script, mood."),
+        ("Pre-production", "Crew, cast, locations, schedule."),
+        ("Shoot", "The deck becomes reality."),
+        ("Post", "Edit, sound, colour, VFX."),
+        ("Delivery", "The final film goes live."),
+    ]
+    rail = "".join(f"""
+        <article class="proc-step">
+          <span class="proc-num">0{i+1}</span>
+          <span class="proc-dot"></span>
+          <h4 class="proc-name">{name}</h4>
+          <p class="proc-note">{note}</p>
+        </article>""" for i, (name, note) in enumerate(steps))
+
+    # A knockout mark — a light shape sitting inside a coloured plate — cannot be
+    # flattened to a silhouette: brightness(0) blacks out the light parts too and
+    # the whole thing becomes one white blob. These two ship as hand-made white
+    # versions instead, and skip the filter.
+    KNOCKOUT = {"KFC": "KFC-white", "Simpl ai": "Simpl ai-white"}
+
+    def logo_img(name, extra=""):
+        file = KNOCKOUT.get(name, name)
+        cls = ("logo-asis " + extra).strip() if name in KNOCKOUT else extra
+        c = f' class="{cls}"' if cls else ""
+        return f'<img{c} src="assets/Companies logo/{file}.png" alt="{name}" loading="lazy">'
+
+    logos = ["Lenskart", "KFC", "tira", "Indus Valley", "wow skin science", "celio",
+             "fikn", "godrej properties", "Simpl ai", "Green LOTUS"]
+    marquee = "".join(logo_img(l) for l in logos * 2)
+
+    trusted_order = ["Lenskart", "Indus Valley", "Green LOTUS", "celio", "tira",
+                     "godrej properties", "wow skin science", "fikn", "KFC", "Simpl ai"]
+    trusted = "".join(f"<li>{logo_img(l)}</li>" for l in trusted_order * 2)
+
+    return HEAD.format(
+        title="ANAVA FILMS — Give us a thought. We'll give you ideas to shoot.",
+        desc="Anava Films is an agency-cum-production house in Mumbai and Delhi taking a thought all the way to the final frame."
+    ) + header("index.html") + f"""
+<dialog class="site-intro" id="site-intro" aria-label="Welcome to Anava Films">
+  <video id="site-intro-video" muted playsinline preload="none" aria-label="Anava Films intro"></video>
+  <button type="button" class="intro-skip" autofocus>Skip intro &rarr;</button>
+</dialog>
+<section class="hero-cine">
+  <div class="hero-cine-bg">
+    <img src="assets/images/home-hero-studio.jpg" alt="" fetchpriority="high">
+  </div>
+
+  <div class="container hero-cine-inner">
+    <span class="hero-eyebrow">Independent thinking. Collective making.</span>
+    <h1 class="hero-cine-title">
+      <span class="hl-1">Give us a thought.</span>
+      <span class="hl-2">We&rsquo;ll give you <em>ideas to shoot.</em></span>
+    </h1>
+    <p class="hero-cine-lead"><strong>Anava Films is an agency-cum-production house bringing ideas to life &mdash; from first thought to final frame.</strong> We work across creative direction, ideation, scripting, production and post-production, turning brand briefs into compelling films, campaigns and content.</p>
+    <div class="hero-cine-actions">
+      <button type="button" class="btn btn-primary" data-lightbox="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-caption="Anava Films &middot; Showreel">Watch Showreel {PLAY}</button>
+    </div>
+  </div>
+
+  <div class="hero-foot" aria-hidden="true">
+    <div class="hero-foot-mid">
+      <span class="rail-mouse"><i></i></span>
+      <span class="hero-foot-scroll">Scroll to explore</span>
+      <span class="hero-foot-line"></span>
+    </div>
+  </div>
+
+  <div class="trusted">
+    <div class="trusted-inner">
+      <p class="trusted-label">Trusted by brands who dare</p>
+      <div class="trusted-marquee">
+        <ul class="trusted-logos">{trusted}</ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container reel-wide">
+    <div class="reel reveal" data-lightbox="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-caption="Anava Films &middot; Showreel">
+      <video data-src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" poster="assets/images/thumbnails/sunil-shetty-film.jpg" muted loop playsinline preload="none"></video>
+      <div class="reel-overlay">
+        <div class="reel-left">
+          <span class="play-btn">{PLAY}</span>
+          <span class="reel-meta">Showreel &middot; 01:45</span>
+        </div>
+      </div>
+      <div class="reel-credit">Sunil Shetty &mdash; Brand Film</div>
+      <div class="reel-mark">Anava Films</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-label" style="margin-bottom:28px"><span class="sec-num">01</span><span class="sec-name">Our Philosophy</span></div>
+    <div class="phil-grid">
+      <div class="reveal">
+        <span class="eyebrow">Thinkers Who Make</span>
+        <h2 class="phil-title">Thinkers who <span class="o">make.</span></h2>
+        <p class="lead">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn't get lost between the people who think them and the people who make them.</p>
+        <p class="lead" style="margin-top:14px">So we bring both sides together. You bring the thought. We build the idea, make the film and deliver the final product.</p>
+      </div>
+      <div class="phil-media reveal">
+        <img src="assets/images/thinkers-who-make.jpg" alt="Anava Films director on set">
+        <div class="phil-side">Ideas<br>People<br>Films<br><br>A Creative<br>Production<br>House</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label"><span class="sec-num">02</span><span class="sec-name">Selected Work</span></div>
+      <a href="work.html" class="sec-more">View All Work <span class="circ-arrow" style="width:40px;height:40px">{ARROW}</span></a>
+    </div>
+    <h2 class="display-sm oneline oneline-long" style="margin:-10px 0 34px">Work that stays with <span class="o">you.</span></h2>
+    <div class="sel-grid reveal">{sel_html}</div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head" style="margin-bottom:26px">
+      <div class="sec-label"><span class="sec-num">03</span><span class="sec-name">What We Do</span></div>
+    </div>
+    <div class="wwd-teaser-head reveal">
+      <h2 class="display-sm oneline oneline-long">From idea to <span class="o">impact.</span></h2>
+      <p class="lead teaser-oneline">End-to-end creative solutions that turn ideas into powerful visual stories.</p>
+    </div>
+    <div class="tri reveal">
+      <article class="tri-item">
+        <span class="tri-n">01</span>
+        <h3>Think</h3>
+        <p>Creative direction, ideation and scripting.</p>
+      </article>
+      <article class="tri-item">
+        <span class="tri-n">02</span>
+        <h3>Make</h3>
+        <p>Production, direction, casting and art direction.</p>
+      </article>
+      <article class="tri-item">
+        <span class="tri-n">03</span>
+        <h3>Finish</h3>
+        <p>Edit, sound, colour, VFX and mastering.</p>
+      </article>
+    </div>
+    <div class="tri-foot reveal">
+      <a href="what-we-do.html" class="btn btn-ghost">See what we do {ARROW.replace('<svg','<svg width="15" height="15"')}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label"><span class="sec-num">04</span><span class="sec-name">Our Process</span></div>
+      <a href="process.html" class="sec-more">See The Process <span class="circ-arrow" style="width:40px;height:40px">{ARROW}</span></a>
+    </div>
+    <div class="proc-rail reveal">
+      <div class="proc-track">{rail}</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="cta-band compact reveal">
+      <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt=""></div>
+      <div class="cta-band-inner">
+        <div>
+          <span class="eyebrow">Let's create together</span>
+          <h2 class="display-sm">Want to collaborate<br>with <span class="o">Anava?</span></h2>
+        </div>
+        <div>
+          <p class="lead">Give us a thought. We'll give you ideas to shoot.</p>
+          <a href="contact.html" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
+        </div>
+      </div>
+      <div class="script">Ideas<br>Into<br>Action</div>
+    </div>
+  </div>
+</section>
+""" + footer("index.html")
+
+
+def page_process():
+    steps = [
+        ("01", "Thought", "Start with a thought.",
+         "You bring a thought, brief, product or problem. It could be a single line or a fully detailed idea. We listen, understand and ask the right questions.",
+         ["Brief", "Product", "Problem", "Listening", "The right questions"],
+         "assets/images/process/process_step_1.jpg", "Your thought.<br>Our starting point."),
+        ("02", "Idea", "Turn it into an idea.",
+         "We explore creative territories, find the right angle and develop a strong, relevant and exciting idea.",
+         ["Creative territories", "The right angle", "Idea development", "Relevance"],
+         "assets/images/process/process_step_2.jpg", "Ideas<br>that make<br>sense."),
+        ("03", "Deck", "Shape the story.",
+         "The idea becomes a visual world — a clear creative deck with mood, references, tone, treatment and execution plan.",
+         ["Concept", "Treatment", "Script", "Mood", "Visual references", "Casting", "Locations", "Execution approach"],
+         "assets/images/process/process_step_3.jpg", "A clear vision<br>before we roll."),
+        ("04", "Pre-production", "Plan every detail.",
+         "We plan everything required to execute the idea, so shoot day runs smoothly.",
+         ["Crew", "Casting", "Locations", "Art direction", "Styling", "Production design", "Schedule", "Equipment", "Logistics"],
+         "assets/images/process/process_step_4.jpg", "Prepared<br>for a stronger<br>tomorrow."),
+        ("05", "Shoot", "Bring it to life.",
+         "The deck becomes reality. We direct, collaborate with talent and capture the moments that make the story real.",
+         ["Direction", "Talent", "Camera", "Lighting", "Sound", "On-set art", "The moments"],
+         "assets/images/process/process_step_5.jpg", "Ideas<br>in action."),
+        ("06", "Post-production", "Polish the story.",
+         "Editing, sound design, music, colour grading, VFX and final finishing — where the film truly comes together.",
+         ["Offline Edit", "Music", "Sound", "Colour", "Online", "VFX", "Mastering"],
+         "assets/images/process/process_step_6.jpg", "Where<br>good gets<br>great."),
+        ("07", "Delivery", "A film that works.",
+         "The final idea reaches the audience, ready to make an impact across screens, platforms and audiences.",
+         ["The final film", "Formats", "Screens", "Platforms", "Audiences"],
+         "assets/images/process/process_step_7.jpg", "From our screen<br>to the world."),
+    ]
+    rows = ""
+    for n, label, title, body, chips, img, cap in steps:
+        chip_html = ""
+        if chips:
+            chip_html = '<div class="chip-row">' + "".join(f'<span class="chip">{c}</span>' for c in chips) + "</div>"
+        rows += f"""
+    <div class="step reveal">
+      <div class="step-num">{n}</div>
+      <div class="step-dot">
+        <div class="step-label">{label}</div>
+      </div>
+      <div>
+        <h3 class="step-title">{title}</h3>
+        <p class="step-body" style="padding-top:12px">{body}</p>
+        {chip_html}
+      </div>
+      <div class="step-media"><img src="{img}" alt="{label}"><div class="caption">{cap}</div></div>
+    </div>"""
+
+    return HEAD.format(
+        title="The Process — From Thought to Screen — ANAVA FILMS",
+        desc="A clear, collaborative creative process that takes you from a simple thought to a powerful final film."
+    ) + header("process.html") + f"""
+<section class="hero-split centered">
+  <div class="container">
+    <div class="hero-split-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Our Process</span>
+        <h1 class="display">From thought<br>to <span class="o">screen.</span></h1>
+        <p class="lead">A clear, collaborative and creative process that takes you from a simple thought to a powerful final film.</p>
+        <div class="hero-actions">
+          <button class="play-btn" data-lightbox="assets/media/behind-the-scenes/BTS Think.mp4" data-caption="Our Process &middot; Anava Films">{PLAY}<span class="pb-label">Watch Our Process</span></button>
+          <span class="link-row"><span class="label">Watch Our Process</span></span>
+        </div>
+      </div>
+      <div class="hero-media reveal">
+        <img src="assets/images/process/projector_banner.jpg" alt="Anava Films process">
+        <div class="hero-script script">Thoughts<br>Ideas<br>Plans<br>Action</div>
+        <div class="hero-tag">Same thinking. Different perspective.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom:80px">
+  <div class="container">
+    <div class="steps">{rows}</div>
+  </div>
+</section>
+
+<section style="padding-bottom:90px">
+  <div class="container">
+    <div class="cta-band warm reveal">
+      <div class="cta-band-bg"><img src="assets/images/hero_dark.jpg" alt=""></div>
+      <div class="cta-band-inner">
+        <div>
+          <span class="eyebrow">The Result</span>
+          <h2 class="display-sm">A thought goes in.<br>A film <span class="o">comes out.</span></h2>
+        </div>
+        <div>
+          <p class="lead">Whether it's a product, a problem or a simple thought, we take it all the way — from idea to execution, under one roof.</p>
+          <a href="contact.html" class="btn btn-primary">Let's Create Together <span class="circ">{ARROW}</span></a>
+        </div>
+      </div>
+      <div class="script">More<br>Ideas<br>More<br>Films</div>
+    </div>
+  </div>
+</section>
+""" + footer("process.html")
+
+
+def page_wwd():
+    think = [
+        ("Creative Direction", "We find the creative thought behind the brief and build a visual direction that gives the idea a clear personality.",
+         "assets/media/behind-the-scenes/BTS Think.mp4", "assets/images/posters/bts-think.jpg"),
+        ("Ideation &amp; Concept Development", "The brief is only the starting point. We explore creative territories and develop ideas that are exciting, relevant and executable.",
+         "", "assets/images/posters/think.jpg"),
+        ("Scripting", "From a one-line thought to a complete film script, we develop stories built specifically for the screen.",
+         "assets/media/behind-the-scenes/BTS Scripting.mp4", "assets/images/posters/bts-scripting.jpg"),
+        ("Creative Consulting", "Brands can approach Anava even before they have a production brief. We help define what the idea could be before deciding how it should be made.",
+         "", "assets/images/posters/make.jpg"),
+    ]
+    make = [
+        ("Production", "End-to-end production, shoot management, crew, equipment and execution.",
+         "assets/media/behind-the-scenes/BTS Make.mp4", "assets/images/posters/bts-make.jpg"),
+        ("Direction", "Turning the idea into performances, frames, visuals and moments.",
+         "assets/media/what-we-do/MAKE.mp4", "assets/images/posters/make.jpg"),
+        ("Casting", "Domestic and international casting — finding the right talent for the world of each project.",
+         "assets/media/behind-the-scenes/BTS International Casting.mp4", "assets/images/posters/bts-international-casting.jpg"),
+        ("Art Direction", "Production design, props, styling, colour, sets and the details inside every frame.",
+         "", "assets/images/posters/bts-finish-1.jpg"),
+    ]
+    finish = [
+        ("Offline Editing", "Shaping performance, pacing, structure and rhythm — where the shoot becomes a story.",
+         "assets/media/behind-the-scenes/BTS Finish 1.mp4", "assets/images/posters/bts-finish-1.jpg"),
+        ("Music &amp; Sound", "Music, sound design, ambience and final audio finishing.",
+         "assets/media/behind-the-scenes/BTS Finish 2.mp4", "assets/images/posters/bts-finish-2.jpg"),
+        ("Colour Grading &amp; Online", "Premium colour grading, online finishing and final picture polish.",
+         "assets/media/behind-the-scenes/BTS Colour Grading.mp4", "assets/images/posters/bts-colour-grading.jpg"),
+        ("VFX &amp; Mastering", "Compositing &middot; Cleanup &middot; Animation &middot; VFX &middot; Motion &middot; Finishing &middot; Mastering.",
+         "assets/media/behind-the-scenes/BTS VFX Mastering.mp4", "assets/images/posters/bts-vfx-mastering.jpg"),
+    ]
+
+    def svc_cards(items):
+        out = ""
+        for t, d, v, p in items:
+            media = (f'<video data-src="{esc(v)}" poster="{esc(p)}" muted loop playsinline preload="none" class="hover-play"></video>'
+                     if v else f'<img src="{esc(p)}" alt="{t}" loading="lazy">')
+            attrs = f'data-lightbox="{esc(v)}" data-caption="{t}"' if v else ""
+            out += f"""
+        <article class="svc" {attrs}>
+          <div class="svc-media">{media}</div>
+          <div class="svc-body"><h4>{t}</h4><p>{d}</p></div>
+        </article>"""
+        return out
+
+    def list_cards(items):
+        out = ""
+        for t, d, v, p in items:
+            media = (f'<video data-src="{esc(v)}" poster="{esc(p)}" muted loop playsinline preload="none" class="hover-play"></video>'
+                     if v else f'<img src="{esc(p)}" alt="{t}" loading="lazy">')
+            attrs = f'data-lightbox="{esc(v)}" data-caption="{t}"' if v else ""
+            out += f"""
+        <article class="lcard" {attrs}>
+          <div class="lcard-media">{media}</div>
+          <div><h4>{t}</h4><p>{d}</p></div>
+        </article>"""
+        return out
+
+    return HEAD.format(
+        title="What We Do — Think &middot; Make &middot; Finish — ANAVA FILMS",
+        desc="Creative direction, ideation, scripting, production, direction and post-production — end-to-end, under one roof."
+    ) + header("what-we-do.html") + f"""
+<section class="hero-split centered" style="padding-bottom:10px">
+  <div class="container">
+    <div class="hero-split-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">What We Do</span>
+        <h1 class="display display-1line">From idea to <span class="o">impact.</span></h1>
+        <p class="lead">End-to-end creative solutions that turn ideas into powerful visual stories — think, make and finish, all under one roof.</p>
+      </div>
+      <div class="hero-media short shift-right reveal">
+        <video src="assets/media/what-we-do/THINK.mp4" poster="assets/images/posters/think.jpg" autoplay muted loop playsinline></video>
+        <div class="hero-script script">Think<br>Make<br>Finish</div>
+        <div class="hero-tag">Anava Films</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wwd-block">
+  <div class="container">
+    <div class="wwd-head reveal">
+      <span class="eyebrow eyebrow-muted">01 /</span>
+      <h2 class="wwd-title">Think<span class="o">.</span></h2>
+      <p class="lead">Before there's a shoot, there needs to be an idea worth shooting. This is where raw ideas turn into shootable stories.</p>
+    </div>
+    <div class="wwd-cards wwd-cards-4 reveal">{svc_cards(think)}</div>
+  </div>
+</section>
+
+<section class="wwd-block warm">
+  <div class="warm-bg"><video src="assets/media/what-we-do/MAKE.mp4" poster="assets/images/posters/make.jpg" autoplay muted loop playsinline></video></div>
+  <div class="wwd-side">People<br>Equipment<br>Locations<br>Stories</div>
+  <div class="container">
+    <div class="wwd-head reveal">
+      <span class="eyebrow eyebrow-muted">02 /</span>
+      <h2 class="wwd-title">Then we <span class="o">make it real.</span></h2>
+      <p class="lead">From pre-production to the final shot, we bring together the right people, technology and craft to turn ideas into powerful visual experiences.</p>
+    </div>
+    <div class="wwd-cards wwd-cards-4 reveal">{svc_cards(make)}</div>
+  </div>
+</section>
+
+<section class="wwd-block">
+  <div class="container">
+    <div class="wwd-head reveal">
+      <span class="eyebrow eyebrow-muted">03 /</span>
+      <h2 class="wwd-title">The shoot ends.<br>The story <span class="o">doesn't.</span></h2>
+      <p class="lead">Post is where everything comes together. We refine, enhance and elevate the film so it not only looks great, but feels right.</p>
+    </div>
+    <div class="wwd-grid">
+      <div class="reveal">
+        <div class="phil-media" style="aspect-ratio:16/10" data-lightbox="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-caption="From cut to craft">
+          <video data-src="assets/media/behind-the-scenes/BTS Colour Grading.mp4" poster="assets/images/posters/bts-colour-grading.jpg" muted loop playsinline preload="none" class="hover-play"></video>
+          <div class="phil-side">From Cut<br>To Craft</div>
+        </div>
+      </div>
+      <div class="list-cards reveal">{list_cards(finish)}</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-band warm reveal">
+      <div class="cta-band-bg"><img src="assets/images/hero_dark.jpg" alt=""></div>
+      <div class="cta-band-inner">
+        <div>
+          <ol class="stepper">
+            <li><span class="stepper-n">01</span>Think</li>
+            <li><span class="stepper-n">02</span>Make</li>
+            <li><span class="stepper-n">03</span>Finish</li>
+          </ol>
+          <h2 class="display-sm display-2line"><span>One thought, all the way</span><span>to <em class="o">the screen.</em></span></h2>
+        </div>
+        <div>
+          <p class="standfirst">Got a thought? Let's make it.</p>
+          <div class="cta-actions">
+            <a href="contact.html" class="btn btn-primary">Let's Make It <span class="circ">{ARROW}</span></a>
+            <a href="process.html" class="text-link">See our process {ARROW.replace('<svg','<svg width="14" height="14"')}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+""" + footer("what-we-do.html")
+
+
+def page_contact():
+    return HEAD.format(
+        title="Got a Thought? — Contact ANAVA FILMS",
+        desc="Talk to Anava Films in Mumbai and Delhi. You don't need a finished brief — just give us the thought."
+    ) + header("contact.html") + f"""
+<section class="hero-split centered">
+  <div class="container">
+    <div class="hero-split-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">Contact</span>
+        <h1 class="display">Got a <span class="o">thought?</span></h1>
+        <p class="lead">You don't need a finished brief. You don't need a script. You don't even need to know exactly what the film should look like. Just give us the thought — we'll bring the ideas.</p>
+        <div class="hero-actions">
+          <a href="#form" class="btn btn-light">Let's Make It <span class="circ">{ARROW}</span></a>
+        </div>
+      </div>
+      <div class="hero-media reveal">
+        <img src="assets/images/director_chair_hero.jpg" alt="Anava Films director chair">
+        <div class="hero-script script">Ideas<br>People<br>Films</div>
+        <div class="hero-tag">A thought today. A story tomorrow.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom:40px" id="form">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="card-panel reveal">
+        <span class="eyebrow">Send us a message</span>
+        <h2 style="font-size:1.75rem;margin-top:12px">Tell us about your project.</h2>
+        <form id="contact-form" action="https://formsubmit.co/office@anavafilms.com" method="POST">
+          <div class="form-grid">
+            <input class="field" name="name" placeholder="Your Name*" required>
+            <input class="field" name="email" type="email" placeholder="Your Email*" required>
+            <input class="field full" name="company" placeholder="Company / Brand">
+            <select class="field full" name="type">
+              <option value="">Project Type</option>
+              <option>Commercial TVC / Brand Film</option>
+              <option>Vertical Film / Viral Social Reel</option>
+              <option>Performance Ads / Conversion Suite</option>
+              <option>Product Shoot &amp; Catalogue Visuals</option>
+              <option>Podcast &amp; Studio Broadcast</option>
+              <option>Creative Consulting / Just Have A Thought</option>
+            </select>
+            <textarea class="field full" name="message" placeholder="Tell us about your project..." required></textarea>
+          </div>
+          <div class="form-foot">
+            <button class="btn btn-primary" type="submit">Send Message <span class="circ">{ARROW}</span></button>
+            <p class="form-note">We usually respond within 24 hours.</p>
+            <p id="form-feedback" role="status" aria-live="polite" hidden></p>
+          </div>
+        </form>
+      </div>
+
+      <div class="reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2 class="display-sm" style="margin:14px 0 4px">Let's <span class="o">connect.</span></h2>
+        <div class="contact-rows">
+          <div class="crow">
+            <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <div><div class="crow-label">Email</div><div class="crow-val"><a href="mailto:office@anavafilms.com">office@anavafilms.com</a></div></div>
+          </div>
+          <div class="crow">
+            <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v2.5a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.7 2 2 0 0 1 4.1 1.5h2.5a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.7 9.3a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <div><div class="crow-label">Phone</div><div class="crow-val"><a href="tel:+918691924669">Jackson — +91 86919 24669</a><br><a href="tel:+919911111273">Anjan — +91 99111 11273</a></div></div>
+          </div>
+          <div class="crow">
+            <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+            <div><div class="crow-label">Follow Us</div><div class="crow-val"><a href="https://www.instagram.com/anavafilms" target="_blank" rel="noopener">Instagram</a> | <a href="https://vimeo.com/anavafilms" target="_blank" rel="noopener">Vimeo</a> | <a href="https://www.youtube.com/@anavafilms" target="_blank" rel="noopener">YouTube</a></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="loc-head reveal">
+      <span class="eyebrow">Visit us</span>
+      <h2 class="display-sm oneline">Our <span class="o">locations.</span></h2>
+      <p class="lead">Come say hello. We're in Mumbai and Delhi.</p>
+    </div>
+    <div class="loc-grid reveal">
+          <div class="loc">
+            <div class="loc-bg"><img src="assets/images/mumbai_gateway_bg.jpg" alt="Mumbai"></div>
+            <span class="script">Same<br>City<br>Bigger<br>Stories</span>
+            <div class="loc-inner">
+              <div class="loc-top"><h3>Mumbai</h3></div>
+              <a class="loc-link" href="https://maps.google.com/?q=Linking+Road+Bandra+West+Mumbai" target="_blank" rel="noopener">Get Directions {ARROW.replace('<svg','<svg width="14" height="14"')}</a>
+            </div>
+          </div>
+          <div class="loc">
+            <div class="loc-bg"><img src="assets/images/delhi_indiagate_bg.jpg" alt="Delhi"></div>
+            <span class="script">More<br>Ideas<br>More<br>Films</span>
+            <div class="loc-inner">
+              <div class="loc-top"><h3>Delhi</h3></div>
+              <a class="loc-link" href="https://maps.google.com/?q=Saket+New+Delhi" target="_blank" rel="noopener">Get Directions {ARROW.replace('<svg','<svg width="14" height="14"')}</a>
+            </div>
+          </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-band warm reveal">
+      <div class="cta-band-bg"><img src="assets/images/hero_dark.jpg" alt=""></div>
+      <div class="cta-band-inner">
+        <div>
+          <span class="eyebrow">Let's build together</span>
+          <h2 class="display-sm display-2line"><span>Great ideas start with</span><span>a <em class="o">conversation.</em></span></h2>
+        </div>
+        <div>
+          <p class="lead">Have a thought? Let's talk. We'll give you ideas to shoot.</p>
+          <a href="mailto:office@anavafilms.com" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
+        </div>
+      </div>
+      <div class="script">Ideas<br>Into<br>Action</div>
+    </div>
+  </div>
+</section>
+""" + footer("contact.html")
+
+
+def page_about():
+    stats = [("50+", "Projects Delivered"), ("8+", "Years of Experience"),
+             ("30+", "Creative Professionals"), ("Across", "India")]
+    stat_html = "".join(f'<div class="stat"><div class="stat-n">{n}</div><div class="stat-l">{l}</div></div>'
+                        for n, l in stats)
+    values = [("Think Deep", "We challenge ideas to find what's worth making."),
+              ("Work Together", "Thinkers and makers under one roof."),
+              ("Make It Real", "From thought to screen, we own the journey."),
+              ("Keep It Simple", "Fewer layers. Faster decisions. Stronger outcomes.")]
+    val_html = "".join(f'<div class="value"><h4>{t}</h4><p>{d}</p></div>' for t, d in values)
+
+    tst = [
+        ("Lenskart &middot; Video Testimonial", "How Jackson and Anjan turn a one-line thought into a complete shoot deck.",
+         "What Lenskart leadership says about partnering with Anava",
+         "assets/media/testimonials/LENSKART TESTIMONIAL FILM.mp4", "assets/images/posters/lenskart-testimonial-film.jpg"),
+        ("WOW Skin Science &middot; Video Testimonial", "The level of preparation before shoot day makes directing seamless.",
+         "Directing with clarity and speed before roll camera",
+         "assets/media/testimonials/WOW TESTIMONIAL .mp4", "assets/images/posters/wow-testimonial.jpg"),
+        ("Lenskart &middot; Video Testimonial", "Organized logistics meets uncompromising creative direction on set.",
+         "Structured on-set execution &amp; creative collaboration",
+         "assets/media/testimonials/LENSKART TESTIMONIAL  (1).mp4", "assets/images/posters/lenskart-testimonial-1.jpg"),
+    ]
+    tst_html = "".join(f"""
+      <article class="tst" data-lightbox="{esc(v)}" data-caption="{src}">
+        <div class="tst-media">
+          <video data-src="{esc(v)}" poster="{esc(p)}" muted loop playsinline preload="none" class="hover-play"></video>
+          <span class="play-badge">{PLAY}</span>
+        </div>
+        <div class="tst-body"><div class="tst-src">{src}</div><p>&ldquo;{q}&rdquo;</p><span>{sub}</span></div>
+      </article>""" for src, q, sub, v, p in tst)
+
+    return HEAD.format(
+        title="About — ANAVA FILMS",
+        desc="We are not just a production house. Anava Films is an agency-cum-production house where the people who think are close to the people who make."
+    ) + header("about.html") + f"""
+<section class="hero-split centered">
+  <div class="container">
+    <div class="hero-split-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">About &middot; Identity &amp; Ethos</span>
+        <h1 class="display display-2line"><span>We are not just a</span><span class="o">production house.</span></h1>
+        <p class="standfirst">A production house gets an idea and figures out how to make it.</p>
+        <p class="lead">We like to get involved earlier &mdash; sometimes it's a complete brief, sometimes a problem, sometimes a product, and sometimes just a thought.</p>
+      </div>
+      <div class="hero-media shift-right reveal">
+        <img src="assets/images/about-production-team.png" alt="Anava Films production team working on set">
+        <div class="hero-script script">Thinkers<br>Who<br>Make</div>
+        <div class="hero-tag">Mumbai &mdash; Delhi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="wwd-grid wwd-grid-even">
+      <div class="reveal">
+        <p class="lead">We take that thought, challenge it, shape it and turn it into an idea worth making. Then we make it — from creative direction and ideation to scripting, casting, production, direction and post-production, bringing the creative and executional sides together.</p>
+      </div>
+      <div class="reveal">
+        <p class="lead">That's why we see Anava as an agency-cum-production house. We don't believe in the gap between the people who think and the people who make. At Anava, the people who think are also close to the people who make.</p>
+      </div>
+    </div>
+    <div class="pull-quote reveal">
+      <p>&ldquo;Fewer layers. Faster thinking. Better communication.<br>Ideas that are actually made to work on screen.&rdquo;</p>
+    </div>
+    <div class="stats reveal">{stat_html}</div>
+    <div class="values reveal">{val_html}</div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label"><span class="sec-name">Leadership</span></div>
+    </div>
+    <h2 class="display-sm oneline oneline-long">The people behind <span class="o">Anava.</span></h2>
+    <p class="lead" style="margin-top:14px">Creative vision paired with structured production execution.</p>
+    <div class="people reveal">
+      <article class="person">
+        <div class="person-img"><img src="assets/images/jackson_khatri.jpg" alt="Jackson Khatri"></div>
+        <div class="person-body">
+          <div class="person-role">Founder &middot; Creative Director &middot; Producer &middot; Director</div>
+          <h3>Jackson Khatri</h3>
+          <p>Jackson's journey began with a B.Sc. in Animation &amp; Multimedia, developing a deep understanding of visual storytelling, framing, pacing, and crafting worlds frame by frame.</p>
+          <p>Working across assistant direction, scripting, producing and directing, he identified a recurring fracture in the industry: great ideas getting lost in translation between agency thinkers and on-set makers.</p>
+        </div>
+      </article>
+      <article class="person">
+        <div class="person-img"><img src="assets/images/anjan_khatri.jpg" alt="Anjan Khatri"></div>
+        <div class="person-body">
+          <div class="person-role">Producer &middot; Production Head</div>
+          <h3>Anjan Khatri</h3>
+          <p>As Anava expanded, Jackson's brother Anjan Khatri joined the team as Producer to fortify the production and execution backbone of the company.</p>
+          <p>Anjan oversees the complete physical execution machinery — managing complex multi-location shoots, crew assemblies, budgeting and high-efficiency logistical timelines.</p>
+        </div>
+      </article>
+    </div>
+    <p class="lead" style="margin-top:26px">Together, Jackson and Anjan ensure that client ideas are both creatively groundbreaking and executively flawless.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-label"><span class="sec-name">Collaborators</span></div>
+    </div>
+    <h2 class="display-sm oneline">What <span class="o">brands</span> say.</h2>
+    <div class="tst-grid">{tst_html}</div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="cta-band compact reveal">
+      <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt=""></div>
+      <div class="cta-band-inner">
+        <div>
+          <span class="eyebrow">Let's create together</span>
+          <h2 class="display-sm">Want to collaborate<br>with <span class="o">Anava?</span></h2>
+        </div>
+        <div>
+          <p class="lead">Give us a thought. We'll give you ideas to shoot.</p>
+          <a href="contact.html" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
+        </div>
+      </div>
+      <div class="script">Ideas<br>Into<br>Action</div>
+    </div>
+  </div>
+</section>
+""" + footer("about.html")
+
+
+PAGES = {
+    "index.html": page_home,
+    "work.html": page_work,
+    "what-we-do.html": page_wwd,
+    "process.html": page_process,
+    "about.html": page_about,
+    "contact.html": page_contact,
+}
+
+def clean_urls(markup):
+    """Rewrite internal page links to the extensionless form .htaccess serves."""
+    markup = markup.replace('href="index.html"', 'href="/"')
+    for page in PAGES:
+        if page == "index.html":
+            continue
+        markup = markup.replace(f'href="{page}"', f'href="{page[:-5]}"')
+    return markup
+
+
+if __name__ == "__main__":
+    for fn, builder in PAGES.items():
+        path = os.path.join(ROOT, fn)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(clean_urls(builder()))
+        print("wrote", fn, os.path.getsize(path) // 1024, "KB")

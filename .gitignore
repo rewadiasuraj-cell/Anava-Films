@@ -4,3 +4,5 @@ node_modules/
 .env.local
 assets/media/podcast/Podcast.mp4
 dist/
+.backups/
+.update-staging/

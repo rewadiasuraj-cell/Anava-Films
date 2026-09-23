@@ -62,6 +62,21 @@
     document.querySelectorAll('video[data-src]').forEach(function (v) { vObs.observe(v); });
   }
 
+  /* ---------- Home hero loop ----------
+     The still stays underneath; the loop only fades in once it is really
+     playing, so a blocked autoplay or slow network just leaves the still. */
+  var heroVid = document.querySelector('video[data-hero-src]');
+  if (heroVid) {
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var saver = navigator.connection && navigator.connection.saveData;
+    if (!calm && !saver) {
+      heroVid.addEventListener('playing', function () { heroVid.classList.add('is-on'); }, { once: true });
+      heroVid.src = heroVid.dataset.heroSrc;
+      var p = heroVid.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+  }
+
   /* ---------- Reveal on scroll ---------- */
   if ('IntersectionObserver' in window) {
     var rObs = new IntersectionObserver(function (entries) {

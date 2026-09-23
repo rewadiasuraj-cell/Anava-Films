@@ -28,6 +28,9 @@
 <section class="hero-cine">
   <div class="hero-cine-bg">
     <img src="assets/images/home-hero-studio.jpg" alt="" fetchpriority="high">
+    <!-- Fades in over the still once it is actually playing; anava.js skips it
+         for reduced-motion and data-saver visitors, who keep the still. -->
+    <video class="hero-cine-video" data-hero-src="assets/media/home-hero-loop.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
   </div>
 
   <div class="container hero-cine-inner">
@@ -43,6 +46,7 @@
     </p>
     <div class="hero-cine-actions">
       <a href="contact" class="btn btn-primary">Let&rsquo;s talk <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <a href="work" class="btn btn-ghost">View our work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 
@@ -116,8 +120,8 @@
                class="hover-play dwell-play"></video>
         <span class="sel-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
       </article>
-      <article class="sel" data-lightbox="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-caption="Sunil Shetty &middot; The Action Icon">
-        <video data-src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" poster="assets/images/thumbnails/sunil-shetty-film.jpg" muted loop playsinline preload="none"
+      <article class="sel" data-lightbox="assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4" data-caption="Tira Beauty &middot; Kareena Kapoor">
+        <video data-src="assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4" poster="assets/images/thumbnails/tira-beauty-kareena.jpg" muted loop playsinline preload="none"
                class="hover-play dwell-play"></video>
         <span class="sel-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
       </article>
@@ -212,6 +216,7 @@
           <p class="proc-note">The final film goes live.</p>
         </article></div>
     </div>
+    <p class="proc-hint" aria-hidden="true">Swipe to see all 7 steps <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></p>
   </div>
 </section>
 
@@ -255,12 +260,6 @@
             <li><a href="work" class="footer-link">Work</a></li>
             <li><a href="what-we-do" class="footer-link">What We Do</a></li>
             <li><a href="process" class="footer-link">Process</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="footer-col-title">COMPANY</div>
-          <ul class="footer-links">
             <li><a href="about" class="footer-link">About Us</a></li>
             <li><a href="contact" class="footer-link">Contact Us</a></li>
           </ul>
@@ -312,7 +311,7 @@
 
     <div class="footer-bottom">
       <div>&copy; <span data-year></span> ANAVA FILMS. All rights reserved.</div>
-      <div>ANAVA FILMS &mdash; Give us a thought. We&rsquo;ll give you ideas to shoot.</div>
+      <div>Mumbai &mdash; Delhi</div>
     </div>
   </div>
 </footer>

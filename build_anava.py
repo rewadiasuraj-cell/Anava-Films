@@ -484,9 +484,6 @@ def page_home():
         <p>Edit, sound, colour, VFX and mastering.</p>
       </article>
     </div>
-    <div class="tri-foot reveal">
-      <a href="what-we-do.html" class="btn btn-ghost">See what we do {ARROW.replace('<svg','<svg width="15" height="15"')}</a>
-    </div>
   </div>
 </section>
 

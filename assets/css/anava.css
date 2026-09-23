@@ -553,11 +553,10 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 }
 .hero-cine-actions .btn svg{width:17px;height:17px;flex:none}
 /* The quieter second path, for visitors who want to see the work before talking */
-.hero-cine-actions .btn-ghost{
-  border-color:rgba(255,255,255,.34);background:rgba(8,8,8,.28);
-  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
-}
-.hero-cine-actions .btn-ghost svg{width:15px;height:15px}
+/* The hero's one action carries the brand ramp rather than the flat orange */
+.btn-primary.btn-grad{background:var(--accent-grad)}
+.btn-primary.btn-grad:hover{background:linear-gradient(100deg,#ff6234 0%,#ff8c52 100%)}
+.hero-cine-actions .btn svg{width:15px;height:15px}
 
 /* ---- Hero foot: place, scroll cue, and the four verbs ---- */
 /* The foot takes the slack so it hugs the logo strip, rather than the strip

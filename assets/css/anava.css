@@ -1897,3 +1897,25 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .wh-films{height:clamp(300px,24vw,480px)}
   .wh-film,.wh-films .wh-film:last-child{aspect-ratio:auto;height:100%}
 }
+
+/* Desktop polish: the menu sits on the true centre line (logo and CTA get
+   equal flex so their different widths no longer push it off-axis), and
+   the Work hero type steps up into a clear display / lead / action scale. */
+@media (min-width:761px){
+  .header-inner .brand,.header-inner .header-actions{flex:1 1 0}
+  .header-inner .header-actions{justify-content:flex-end}
+  /* The capsule's padding is heavier on the left (24px vs 10px; 18 vs 8 on
+     tablets), which moves the middle of its content right by half the
+     difference; the menu steps back by that much to sit on the page centre. */
+  .header-inner .nav{position:relative;left:-5px}
+}
+@media (min-width:1025px){.header-inner .nav{left:-7px}}
+@media (min-width:1101px){
+  .work-hero{padding-top:calc(var(--header-h) + 56px)}
+  .wh-eyebrow{font-size:.86rem;letter-spacing:.28em;gap:22px}
+  .wh-eyebrow::before,.wh-eyebrow::after{width:56px}
+  .wh-title{margin-top:22px;font-size:clamp(3.6rem,4.9vw,5.6rem);line-height:.98;letter-spacing:-.035em}
+  .wh-lead{margin-top:24px;max-width:50ch;font-size:clamp(1.12rem,1.15vw,1.32rem);line-height:1.6;color:rgba(255,255,255,.78)}
+  .wh-cta{margin-top:34px;padding:15px 40px;font-size:.9rem}
+  .wh-films{margin-top:48px}
+}

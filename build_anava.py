@@ -28,7 +28,7 @@ PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></
 CHEV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>'
 DIAG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>'
 
-NAV = [("index.html", "Home"), ("work.html", "Work"), ("what-we-do.html", "What We Do"),
+NAV = [("index.html", "Home"), ("work.html", "Work"),
        ("process.html", "Process"), ("about.html", "About"), ("contact.html", "Contact")]
 
 
@@ -80,7 +80,7 @@ def footer(active):
           <ul class="footer-links">
             <li><a href="/" class="footer-link">Home</a></li>
             <li><a href="work.html" class="footer-link">Work</a></li>
-            <li><a href="what-we-do.html" class="footer-link">What We Do</a></li>
+            <li><a href="about.html#what-we-do" class="footer-link">What We Do</a></li>
             <li><a href="process.html" class="footer-link">Process</a></li>
             <li><a href="about.html" class="footer-link">About Us</a></li>
             <li><a href="contact.html" class="footer-link">Contact Us</a></li>
@@ -319,13 +319,11 @@ def page_work():
 
 
 def page_home():
-    # All four carry designed key art, so these are the landscape films
+    # Two landscape films with designed key art, one row side by side; the rest
+    # live on the Work page. (Sunil Shetty already fronts the showreel above.)
     sel = [
         ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/thumbnails/lenskart-hustler.jpg", "Lenskart", "Hustler — Keep Hustling"),
-        ("assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4", "assets/images/thumbnails/john-jacobs.jpg", "John Jacobs", "An Eye For Love"),
-        # Sunil Shetty already fronts the showreel above, so this slot shows a different film
         ("assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4", "assets/images/thumbnails/tira-beauty-kareena.jpg", "Tira Beauty", "Kareena Kapoor"),
-        ("assets/media/tvc/CHANDAK FILM.mp4", "assets/images/thumbnails/chandak-film.jpg", "Chandak Group", "Promise of Elegance"),
     ]
     sel_html = "".join(f"""
       <article class="sel" data-lightbox="{esc(v)}" data-caption="{esc(b)} &middot; {esc(t)}">
@@ -490,7 +488,7 @@ def page_home():
       </article>
     </div>
     <div class="tri-foot reveal">
-      <a href="what-we-do.html" class="btn btn-ghost">See what we do {ARROW.replace('<svg','<svg width="15" height="15"')}</a>
+      <a href="about.html#what-we-do" class="btn btn-ghost">See what we do {ARROW.replace('<svg','<svg width="15" height="15"')}</a>
     </div>
   </div>
 </section>
@@ -632,7 +630,8 @@ def page_process():
 """ + footer("process.html")
 
 
-def page_wwd():
+def wwd_sections():
+    """Think / Make / Finish — once its own page, now a section of About (#what-we-do)."""
     think = [
         ("Creative Direction", "We find the creative thought behind the brief and build a visual direction that gives the idea a clear personality.",
          "assets/media/behind-the-scenes/BTS Think.mp4", "assets/images/posters/bts-think.jpg"),
@@ -690,24 +689,14 @@ def page_wwd():
         </article>"""
         return out
 
-    return HEAD.format(
-        title="What We Do — Think &middot; Make &middot; Finish — ANAVA FILMS",
-        desc="Creative direction, ideation, scripting, production, direction and post-production — end-to-end, under one roof."
-    ) + header("what-we-do.html") + f"""
-<section class="hero-split centered" style="padding-bottom:10px">
+    return f"""
+<section class="section wwd-intro" id="what-we-do">
   <div class="container">
-    <div class="hero-split-grid">
-      <div class="hero-copy reveal">
-        <span class="eyebrow">What We Do</span>
-        <h1 class="display display-1line">From idea to <span class="o">impact.</span></h1>
-        <p class="lead">End-to-end creative solutions that turn ideas into powerful visual stories — think, make and finish, all under one roof.</p>
-      </div>
-      <div class="hero-media short shift-right reveal">
-        <video src="assets/media/what-we-do/THINK.mp4" poster="assets/images/posters/think.jpg" autoplay muted loop playsinline></video>
-        <div class="hero-script script">Think<br>Make<br>Finish</div>
-        <div class="hero-tag">Anava Films</div>
-      </div>
+    <div class="sec-head">
+      <div class="sec-label"><span class="sec-name">What We Do</span></div>
     </div>
+    <h2 class="display-sm oneline oneline-long">From idea to <span class="o">impact.</span></h2>
+    <p class="lead" style="margin-top:14px">End-to-end creative solutions that turn ideas into powerful visual stories &mdash; think, make and finish, all under one roof.</p>
   </div>
 </section>
 
@@ -753,32 +742,7 @@ def page_wwd():
     </div>
   </div>
 </section>
-
-<section class="section">
-  <div class="container">
-    <div class="cta-band warm reveal">
-      <div class="cta-band-bg"><img src="assets/images/hero_dark.jpg" alt=""></div>
-      <div class="cta-band-inner">
-        <div>
-          <ol class="stepper">
-            <li><span class="stepper-n">01</span>Think</li>
-            <li><span class="stepper-n">02</span>Make</li>
-            <li><span class="stepper-n">03</span>Finish</li>
-          </ol>
-          <h2 class="display-sm display-2line"><span>One thought, all the way</span><span>to <em class="o">the screen.</em></span></h2>
-        </div>
-        <div>
-          <p class="standfirst">Got a thought? Let's make it.</p>
-          <div class="cta-actions">
-            <a href="contact.html" class="btn btn-primary">Let's Make It <span class="circ">{ARROW}</span></a>
-            <a href="process.html" class="text-link">See our process {ARROW.replace('<svg','<svg width="14" height="14"')}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-""" + footer("what-we-do.html")
+"""
 
 
 def page_contact():
@@ -940,8 +904,8 @@ def page_about():
       </article>""" for src, q, sub, v, p in tst)
 
     return HEAD.format(
-        title="About — ANAVA FILMS",
-        desc="We are not just a production house. Anava Films is an agency-cum-production house where the people who think are close to the people who make."
+        title="About &amp; What We Do — ANAVA FILMS",
+        desc="Anava Films is an agency-cum-production house: creative direction, ideation, scripting, production, direction and post-production, under one roof."
     ) + header("about.html") + f"""
 <section class="hero-split centered">
   <div class="container">
@@ -978,7 +942,7 @@ def page_about():
     <div class="values reveal">{val_html}</div>
   </div>
 </section>
-
+{wwd_sections()}
 <section class="section" style="padding-top:20px">
   <div class="container">
     <div class="sec-head">
@@ -1044,7 +1008,6 @@ def page_about():
 PAGES = {
     "index.html": page_home,
     "work.html": page_work,
-    "what-we-do.html": page_wwd,
     "process.html": page_process,
     "about.html": page_about,
     "contact.html": page_contact,
@@ -1057,6 +1020,7 @@ def clean_urls(markup):
         if page == "index.html":
             continue
         markup = markup.replace(f'href="{page}"', f'href="{page[:-5]}"')
+        markup = markup.replace(f'href="{page}#', f'href="{page[:-5]}#')
     return markup
 
 

@@ -5,7 +5,7 @@ the next build overwrites your changes.
 
     python3 build_anava.py
 
-That regenerates all six pages from:
+That regenerates all five pages from:
 
 - `build_anava.py` — page structure and copy
 - `work.json` — the 83 work cards (category, video path, poster, brand, name)
@@ -15,7 +15,7 @@ not generated.
 
 ## Layout
 
-    index.html work.html what-we-do.html process.html about.html contact.html
+    index.html work.html process.html about.html contact.html
     assets/css/anava.css      one stylesheet, no framework
     assets/js/anava.js        one script, no dependencies
     assets/media/             video by category (tvc, vertical-films,

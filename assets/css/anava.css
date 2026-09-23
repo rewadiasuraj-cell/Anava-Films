@@ -1566,3 +1566,9 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .footer-desc{font-size:1.02rem}
   .footer-link{font-size:.98rem}
 }
+
+/* ---- About: What We Do (merged in from its old page) ---- */
+/* Linked as about#what-we-do from the footer, the home teaser and the old
+   /what-we-do redirect; clear the fixed header when it lands. */
+#what-we-do{scroll-margin-top:calc(var(--header-h) + 10px)}
+.wwd-intro{padding-bottom:0}

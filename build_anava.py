@@ -199,6 +199,9 @@ def build_work_cards():
                      and "thumbnails/" not in c.get("poster", ""))
     for c in ordered:
         cat = c["category"]
+        # The Podcasts tab is retired; its card stays in work.json, unlisted
+        if cat == "podcasts":
+            continue
         video = c.get("video", "").split("#")[0]
         poster = c.get("poster", "")
         img = c.get("img", "")
@@ -215,10 +218,17 @@ def build_work_cards():
             lb = f'data-lightbox="{esc(full)}" data-lightbox-type="image" data-caption="Photoshoot &middot; Anava Films"'
             info = ""
         else:
+            title = c.get("title") or name
+            fmt = c.get("format") or sub
             if video:
                 media = (f'<video data-src="{esc(video)}" poster="{esc(poster)}" muted loop '
                          f'playsinline preload="none" class="hover-play"></video>')
-                lb = f'data-lightbox="{esc(video)}" data-caption="{esc(name)} &middot; {esc(sub)}"'
+                # The project write-up rides on the card; anava.js lays it out
+                # as a case study around the film when the card is opened.
+                case = {k: c[k] for k in ("title", "client", "format", "roles", "shortDesc",
+                                          "thought", "idea", "making", "duration") if c.get(k)}
+                lb = (f'data-lightbox="{esc(video)}" data-caption="{esc(title)}" '
+                      f"data-case='{esc(json.dumps(case, ensure_ascii=False))}'")
             elif img:
                 media = f'<img src="{esc(img)}" alt="{esc(name)}" loading="lazy">'
                 lb = f'data-lightbox="{esc(img)}" data-lightbox-type="image" data-caption="{esc(name)}"'
@@ -230,18 +240,19 @@ def build_work_cards():
             shape = "portrait" if cat in ("vertical", "events") else ""
             if "thumbnails/" in poster:
                 shape = (shape + " has-art").strip()
-            info = f"""
+            d = c.get("duration")
+            dur = f'<span class="wcard-dur" aria-label="Duration">{d // 60}:{d % 60:02d}</span>' if d else ""
+            info = f"""{dur}
       <div class="wcard-info">
         <div>
-          <div class="wcard-brand">{esc(brand)}</div>
-          <div class="wcard-cat">{esc(sub)}</div>
-          <h3 class="wcard-title">{esc(slogan or name)}</h3>
+          <h3 class="wcard-title">{esc(title)}</h3>
+          <div class="wcard-cat">{esc(fmt)}</div>
         </div>
         <span class="circ-arrow">{PLAY}</span>
       </div>"""
             idx += 1
 
-        search = " ".join([brand, name, sub, slogan, CAT_LABEL.get(cat, "")]).lower()
+        search = " ".join([brand, name, sub, slogan, c.get("title", ""), CAT_LABEL.get(cat, "")]).lower()
         out.append(f"""
     <article class="wcard {shape}" data-category="{cat}" data-sub="{esc(c.get('subcategories',''))}"
              data-search="{esc(search)}" {lb}>
@@ -266,22 +277,19 @@ def page_work():
         <div class="drop-menu">
           <button data-filter="vertical">All Vertical</button>
           <button data-filter="vertical" data-sub="performance">Performance Ads</button>
-          <button data-filter="vertical" data-sub="catalogue">Catalogue Shoots</button>
-          <button data-filter="vertical" data-sub="social">Social Content</button>
-          <button data-filter="vertical" data-sub="product">Product Content</button>
+          <button data-filter="vertical" data-sub="social|product">Social &amp; Product Content</button>
         </div>
       </div>
       <button class="pill" data-filter="events">Events</button>
       <button class="pill" data-filter="bts">BTS</button>
       <button class="pill" data-filter="testimonials">Testimonials</button>
-      <button class="pill" data-filter="podcasts">Podcasts</button>
       <button class="pill" data-filter="photoshoots">Photoshoots</button>
     </div>
   </div>"""
 
     return HEAD.format(**ASSET_V,
         title="Our Work — ANAVA FILMS",
-        desc="Selected films, TVCs, vertical content, performance campaigns, photoshoots and podcasts by Anava Films."
+        desc="Selected films, TVCs, vertical content, performance campaigns and photoshoots by Anava Films."
     ) + header("work.html") + f"""
 <section class="hero-split centered">
   <div class="container">

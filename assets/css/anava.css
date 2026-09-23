@@ -776,9 +776,10 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 
 /* Cards whose poster is designed key art: the title is already in the image,
    so drop the text overlay and keep only the play affordance. */
-.wcard.has-art::after{background:linear-gradient(0deg,rgba(6,6,6,.45),transparent 45%)}
-.wcard.has-art .wcard-info{justify-content:flex-end;padding:14px}
-.wcard.has-art .wcard-info > div:first-child{display:none}
+/* Designed key art already carries a big title, so its caption strip is a
+   quieter one: a smaller name line over a lighter shade. */
+.wcard.has-art::after{background:linear-gradient(0deg,rgba(6,6,6,.78) 0%,rgba(6,6,6,.2) 34%,transparent 52%)}
+.wcard.has-art .wcard-info{padding:14px 14px 14px 16px}
 .wcard.photo::after{background:linear-gradient(0deg,rgba(6,6,6,.5),transparent 55%)}
 
 .load-more-wrap{display:flex;justify-content:center;margin-top:44px}
@@ -1585,7 +1586,9 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .work-grid[data-view="tvc"],.work-grid[data-view="bts"]{grid-template-columns:repeat(4,1fr)}
   .work-grid[data-view="tvc"] .wcard-title,.work-grid[data-view="bts"] .wcard-title{font-size:.9rem}
 }
-.work-grid[data-view="vertical"]{grid-template-columns:repeat(4,1fr)}
+/* Vertical: 5 across on a desktop, 3 large on a tablet (either way up), 2 on a phone */
+.work-grid[data-view="vertical"]{grid-template-columns:repeat(3,1fr)}
+@media (min-width:1101px){.work-grid[data-view="vertical"]{grid-template-columns:repeat(5,1fr)}}
 .work-grid[data-view="photoshoots"]{grid-template-columns:repeat(4,1fr)}
 @media (max-width:760px){
   /* Three or four across leaves a phone card too small to read; two holds */
@@ -1745,3 +1748,63 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .wcard:not(.photo).is-color img,.wcard:not(.photo).is-color video{filter:none}
 }
 @media (prefers-reduced-motion:reduce){.wcard:not(.photo)::before{transition:none}}
+
+/* ---- Work cards: name bottom-left, running time top-right ---- */
+.wcard-info .wcard-title{font-size:.92rem;line-height:1.2;text-wrap:balance}
+.wcard-info .wcard-cat{margin:5px 0 0;color:rgba(255,255,255,.66)}
+.wcard-info > div:first-child{min-width:0}
+.wcard-dur{
+  position:absolute;top:12px;right:12px;z-index:2;
+  padding:4px 9px;border-radius:999px;
+  font-size:.68rem;font-weight:600;letter-spacing:.06em;font-variant-numeric:tabular-nums;color:#fff;
+  background:rgba(10,10,10,.55);border:1px solid rgba(255,255,255,.16);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+@media (max-width:760px){
+  /* Half-width phone cards: the name alone, over a deeper shade */
+  .wcard-info .wcard-cat{display:none}
+  .wcard.has-art::after{background:linear-gradient(0deg,rgba(6,6,6,.9) 0%,rgba(6,6,6,.35) 30%,transparent 48%)}
+  .wcard-info .wcard-title{font-size:.8rem}
+  .wcard-dur{top:8px;right:8px;font-size:.6rem;padding:3px 7px}
+}
+
+/* ---- Lightbox: a Work film opens as its case study ----
+   Format and title, then Client / Format / Anava's role, the film itself
+   with a countdown of its running time, then the Thought, Idea and Making —
+   the layout of the earlier anavafilms.com project pages. */
+.lightbox.is-case{align-items:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:70px 22px 40px}
+.lightbox.is-case .lightbox-inner{max-height:none;width:min(1000px,100%);margin:0 auto}
+.lightbox.is-case .lightbox-cap{display:none}
+.case-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.case-title{font-family:var(--font-display);font-weight:800;font-size:clamp(1.6rem,3.6vw,2.6rem);line-height:1.08;letter-spacing:-.02em;margin:8px 0 22px}
+.case-meta{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px 26px;
+  padding:16px 20px;margin-bottom:24px;border-radius:12px;
+  background:rgba(255,255,255,.035);border:1px solid var(--line-soft);
+}
+.case-meta dt{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:4px}
+.case-meta dd{margin:0;font-size:.95rem;color:#fff}
+.case-meta .case-roles{grid-column:1/-1}
+.case-roles dd{display:flex;flex-wrap:wrap;gap:8px}
+.case-role{font-size:.74rem;padding:5px 11px;border-radius:999px;color:var(--accent);background:rgba(240,82,35,.12);border:1px solid rgba(240,82,35,.32)}
+.case-film{position:relative;border-radius:12px;overflow:hidden;background:#000;border:1px solid var(--line-soft);box-shadow:0 12px 40px rgba(0,0,0,.55)}
+.lightbox .case-film video{display:block;width:100%;max-height:78vh;border-radius:0}
+.case-count{
+  position:absolute;top:12px;right:12px;z-index:2;pointer-events:none;
+  padding:5px 11px;border-radius:999px;font-size:.78rem;font-weight:600;letter-spacing:.05em;
+  font-variant-numeric:tabular-nums;color:#fff;background:rgba(10,10,10,.6);
+  border:1px solid rgba(255,255,255,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  transition:background .3s var(--ease);
+}
+.case-count.is-running{background:rgba(240,82,35,.85);border-color:rgba(240,82,35,.9)}
+.case-desc{margin:20px 0 0;color:rgba(255,255,255,.8);font-size:1rem;line-height:1.65;max-width:70ch}
+.case-notes{display:grid;gap:22px;margin-top:28px;padding-top:26px;border-top:1px solid var(--line-soft)}
+.case-notes h4{font-family:var(--font-display);font-size:.95rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.case-notes p{margin:0;color:var(--muted);line-height:1.65;font-size:.95rem;max-width:72ch}
+@media (min-width:900px){.case-notes{grid-template-columns:repeat(3,1fr);gap:28px}}
+@media (max-width:760px){
+  .lightbox.is-case{padding:64px 16px 32px}
+  .case-meta{grid-template-columns:1fr 1fr;gap:12px 16px;padding:14px 16px}
+  .case-meta dd{font-size:.88rem}
+  .case-role{font-size:.68rem;padding:4px 9px}
+}

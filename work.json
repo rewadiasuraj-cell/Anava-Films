@@ -9,7 +9,21 @@
   "brand": "SUNIL SHETTY",
   "name": "SUNIL SHETTY",
   "subcat": "Commercial Ad Film",
-  "slogan": "THE ACTION ICON"
+  "slogan": "THE ACTION ICON",
+  "duration": 63,
+  "title": "Sunil Shetty — Brand Film",
+  "client": "Sunil Shetty",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A celebrity-led brand film built around Sunil Shetty's presence and star power.",
+  "thought": "The film needed to let the talent's screen presence carry the brand message.",
+  "idea": "Confident framing and pacing that put the star front and center.",
+  "making": "On-location shoot with cinematic lighting and direction tailored to a celebrity feature."
  },
  {
   "category": "tvc",
@@ -21,7 +35,22 @@
   "brand": "∞ lenskart",
   "name": "HUSTLER",
   "subcat": "Digital TVC",
-  "slogan": "KEEP HUSTLING"
+  "slogan": "KEEP HUSTLING",
+  "duration": 45,
+  "title": "Hustler — Keep Hustling",
+  "client": "Lenskart",
+  "format": "TVC / Commercial Ad Film",
+  "roles": [
+   "Creative Direction",
+   "Ideation",
+   "Production",
+   "Direction",
+   "Post-Production"
+  ],
+  "shortDesc": "High-octane commercial ad film built around energy, attitude, and momentum.",
+  "thought": "How do you launch a bold, razor-sharp eyewear range that speaks directly to creators, athletes and everyday hustlers without sounding like generic sportswear?",
+  "idea": "“Keep Hustling” — A rhythm-driven cinematic narrative where eyewear is not an accessory, but armor for ambition.",
+  "making": "Shot with high-speed anamorphic optics, custom strobe cues, fast-paced set transitions and custom mastered urban soundscapes."
  },
  {
   "category": "tvc",
@@ -33,7 +62,21 @@
   "brand": "JOHN JACOBS",
   "name": "JOHN JACOBS",
   "subcat": "Valentine's Day Film",
-  "slogan": "AN EYE FOR LOVE"
+  "slogan": "AN EYE FOR LOVE",
+  "duration": 45,
+  "title": "John Jacobs — An Eye for Love",
+  "client": "John Jacobs",
+  "format": "TVC / Commercial Ad Film",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Direction"
+  ],
+  "shortDesc": "Atmospheric romantic commercial focusing on visual chemistry and subtle eye contact.",
+  "thought": "Eye contact is where quiet luxury and intimate connection begin. How do we make optical frames evoke pure romance?",
+  "idea": "“An Eye for Love” — A tender, visually opulent narrative capturing stolen glances and architectural romance.",
+  "making": "Curated warm palette, vintage prime lenses, soft natural lighting and poetic blocking to emphasize every gaze."
  },
  {
   "category": "tvc",
@@ -45,7 +88,21 @@
   "brand": "∞ lenskart",
   "name": "LENSKART BLUE RAY",
   "subcat": "Screen Protection Ad",
-  "slogan": "PROTECT YOUR VISION"
+  "slogan": "PROTECT YOUR VISION",
+  "duration": 33,
+  "title": "Lenskart — Blue Ray Glasses Film",
+  "client": "Lenskart",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A product-led film highlighting Lenskart's blue-ray protection eyewear.",
+  "thought": "Everyday screen time needed a relatable, benefit-first story.",
+  "idea": "Lifestyle-first visuals that make blue-light protection feel essential, not clinical.",
+  "making": "Product and lifestyle photography shot to bring the benefit to life on screen."
  },
  {
   "category": "tvc",
@@ -57,7 +114,21 @@
   "brand": "TIRA BEAUTY",
   "name": "TIRA MAKEUP SHORTIES",
   "subcat": "Digital Campaign",
-  "slogan": "EXPRESS YOUR GLOW"
+  "slogan": "EXPRESS YOUR GLOW",
+  "duration": 10,
+  "title": "Tira Beauty — Makeup Shorties",
+  "client": "Tira Beauty (Reliance Retail)",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A series of quick, punchy makeup-led digital shorts for Tira Beauty.",
+  "thought": "Short-form beauty content needed to grab attention in seconds.",
+  "idea": "Fast cuts and vibrant color paired with real makeup application moments.",
+  "making": "Studio shoot styled for social-first, high-energy digital delivery."
  },
  {
   "category": "tvc",
@@ -69,7 +140,21 @@
   "brand": "∞ lenskart",
   "name": "LENSKART PERSONALITY",
   "subcat": "Brand Film",
-  "slogan": "EXPRESS YOUR STYLE"
+  "slogan": "EXPRESS YOUR STYLE",
+  "duration": 30,
+  "title": "Lenskart — Personality Film",
+  "client": "Lenskart",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A brand film celebrating how eyewear reflects individual personality and style.",
+  "thought": "Glasses aren't just function — they're an expression of who you are.",
+  "idea": "Diverse looks and personalities styled around Lenskart's frame range.",
+  "making": "Multi-look studio and lifestyle shoot built to showcase range and versatility."
  },
  {
   "category": "tvc",
@@ -81,7 +166,21 @@
   "brand": "CHANDAK GROUP",
   "name": "CHANDAK GROUP",
   "subcat": "Real Estate Ad",
-  "slogan": "PROMISE OF ELEGANCE"
+  "slogan": "PROMISE OF ELEGANCE",
+  "duration": 156,
+  "title": "Chandak — Brand Film",
+  "client": "Chandak",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A brand film built to communicate craft, trust and reliability.",
+  "thought": "The brand needed a film that felt dependable and premium at once.",
+  "idea": "Clean, confident visuals paired with a steady, reassuring pace.",
+  "making": "On-location production styled for a polished, trust-building brand narrative."
  },
  {
   "category": "tvc",
@@ -93,7 +192,21 @@
   "brand": "aqualens",
   "name": "LK AQUALENS",
   "subcat": "Contact Lens Film",
-  "slogan": "FEEL THE CLARITY"
+  "slogan": "FEEL THE CLARITY",
+  "duration": 46,
+  "title": "Lenskart Aqualens — Digital TVC",
+  "client": "Aqualens (Lenskart)",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A product-led digital film for Aqualens contact lenses under the Lenskart umbrella.",
+  "thought": "Contact lenses needed to feel effortless, comfortable and confidence-building.",
+  "idea": "Clean product visuals paired with everyday clarity moments.",
+  "making": "Studio product photography combined with lifestyle footage for a polished digital film."
  },
  {
   "category": "tvc",
@@ -105,7 +218,21 @@
   "brand": "∞ lenskart",
   "name": "LENSKART SHARK TANK",
   "subcat": "TVC Commercial",
-  "slogan": "VISION FOR ENTREPRENEURS"
+  "slogan": "VISION FOR ENTREPRENEURS",
+  "duration": 20,
+  "title": "Lenskart — Shark Tank Film",
+  "client": "Lenskart",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A campaign film built around Lenskart's Shark Tank moment and brand momentum.",
+  "thought": "Capturing the confidence and clarity that comes with a validated, growing brand.",
+  "idea": "Sharp visuals and pacing that echo the show's energy while keeping the product central.",
+  "making": "Studio and product-focused shoot styled for a punchy, campaign-ready digital film."
  },
  {
   "category": "tvc",
@@ -117,7 +244,21 @@
   "brand": "boAt COMMERCIAL",
   "name": "boAt COMMERCIAL",
   "subcat": "Brand Case Study Film",
-  "slogan": "PLUG INTO NIRVANA"
+  "slogan": "PLUG INTO NIRVANA",
+  "duration": 98,
+  "title": "boAt — Brand Film",
+  "client": "boAt",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A high-energy brand film built around boAt's bold, youth-first audio identity.",
+  "thought": "The film needed the same energy and attitude as the brand itself.",
+  "idea": "Punchy cuts, vibrant color grading and lifestyle-first product moments.",
+  "making": "Fast-paced production with dynamic camera movement to match the brand's tone."
  },
  {
   "category": "tvc",
@@ -129,7 +270,21 @@
   "brand": "∞ lenskart",
   "name": "GAMERS FILM x LENSKART",
   "subcat": "Blue Ray Glasses Ad",
-  "slogan": "LEVEL UP YOUR VISION"
+  "slogan": "LEVEL UP YOUR VISION",
+  "duration": 37,
+  "title": "Lenskart — Blue Ray Glasses Film II",
+  "client": "Lenskart",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A second product-led film for Lenskart's blue-ray protection eyewear range.",
+  "thought": "Everyday screen time needed a relatable, benefit-first story.",
+  "idea": "Lifestyle-first visuals that make blue-light protection feel essential, not clinical.",
+  "making": "Product and lifestyle photography shot to bring the benefit to life on screen."
  },
  {
   "category": "tvc",
@@ -141,7 +296,20 @@
   "brand": "Indus Valley",
   "name": "INDUS VALLEY",
   "subcat": "Hair Colour Brand Content",
-  "slogan": "COLOURS OF NATURE"
+  "slogan": "COLOURS OF NATURE",
+  "duration": 60,
+  "title": "Indus Valley — Organic Hair & Skin Campaign",
+  "client": "Indus Valley",
+  "format": "Brand Visuals & Photoshoots",
+  "roles": [
+   "Creative Direction",
+   "Art Direction",
+   "Production"
+  ],
+  "shortDesc": "Editorial product shoot and campaign assets for organic personal care brand.",
+  "thought": "Showcasing pure bio-organic ingredients with editorial premium minimalism.",
+  "idea": "Clean, earthy tones with tactile plant elements and soft morning sunlight.",
+  "making": "Studio tabletop setup with organic botanical props and high-resolution medium format captures."
  },
  {
   "category": "tvc",
@@ -153,7 +321,21 @@
   "brand": "aqualens",
   "name": "AQUALENS CONTACT LENS",
   "subcat": "Digital TVC",
-  "slogan": "SEE THE WORLD CLEARLY"
+  "slogan": "SEE THE WORLD CLEARLY",
+  "duration": 25,
+  "title": "Aqualens — Contact Lens Film",
+  "client": "Aqualens",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A product-led film built to communicate comfort and clarity for daily contact lens wear.",
+  "thought": "Contact lenses needed to feel effortless, comfortable and confidence-building.",
+  "idea": "Clean product visuals paired with everyday clarity moments.",
+  "making": "Studio product photography combined with lifestyle footage for a polished digital film."
  },
  {
   "category": "tvc",
@@ -165,7 +347,21 @@
   "brand": "MAXIMA",
   "name": "MAXIMA WATCHES",
   "subcat": "Commercial Ad Film",
-  "slogan": "PRECISION & STYLE"
+  "slogan": "PRECISION & STYLE",
+  "duration": 18,
+  "title": "Maxima — Watches Brand Film",
+  "client": "Maxima",
+  "format": "Digital TVC",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A product-led brand film celebrating precision, style and everyday craftsmanship.",
+  "thought": "A watch brand needs to feel both premium and wearable, in equal measure.",
+  "idea": "Clean product photography paired with lifestyle moments to sell design and durability.",
+  "making": "Studio product shoots combined with location lifestyle footage for a well-rounded brand story."
  },
  {
   "category": "tvc",
@@ -177,7 +373,19 @@
   "brand": "TIRA BEAUTY",
   "name": "KAREENA KAPOOR x TIRA",
   "subcat": "Brand Film (Director Role)",
-  "slogan": "FOR THE LOVE OF BEAUTY"
+  "slogan": "FOR THE LOVE OF BEAUTY",
+  "duration": 12,
+  "title": "Kareena Kapoor x Tira Beauty",
+  "client": "Tira Beauty (Reliance Retail)",
+  "format": "Brand Film / Commercial (Director Collaboration)",
+  "roles": [
+   "Direction (Director)",
+   "Creative Execution"
+  ],
+  "shortDesc": "High-end beauty brand film featuring Bollywood superstar Kareena Kapoor Khan.",
+  "thought": "Capturing glamour, elegance, and beauty confidence in a high-profile celebrity collaboration.",
+  "idea": "“For the Love of Beauty” — An intimate, opulent visual celebration of skincare and makeup artistry with Kareena Kapoor.",
+  "making": "Directed in collaboration as Director — featuring high-key cinematic lighting, luxury beauty optics, and meticulous post-color grading."
  },
  {
   "category": "vertical",
@@ -189,7 +397,20 @@
   "brand": "∞ lenskart",
   "name": "CATALOGUE SHOOTS",
   "subcat": "Lenskart Collections",
-  "slogan": "STYLE. EVERY ANGLE."
+  "slogan": "STYLE. EVERY ANGLE.",
+  "duration": 16,
+  "title": "Lenskart Influencers Campaign #03",
+  "client": "Lenskart",
+  "format": "Performance Ad Film",
+  "roles": [
+   "Creative Direction",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "High-converting social ad tailored for fashion performance marketing.",
+  "thought": "High-converting social ads require high visual standards and clear product focus.",
+  "idea": "Close-up fashion influencer styling tailored for performance marketing.",
+  "making": "Studio lighting setup optimized for color accuracy and product texture."
  },
  {
   "category": "vertical",
@@ -201,7 +422,20 @@
   "brand": "∞ lenskart",
   "name": "PERFORMANCE ADS",
   "subcat": "Performance Campaigns",
-  "slogan": "SEE MORE. DO MORE."
+  "slogan": "SEE MORE. DO MORE.",
+  "duration": 15,
+  "title": "Lenskart Influencers Campaign #05",
+  "client": "Lenskart",
+  "format": "Performance Ad Film",
+  "roles": [
+   "Creative Direction",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "Dynamic model transitions highlighting frame shapes and lens reflections.",
+  "thought": "Highlighting eyewear versatility across different fashion styles.",
+  "idea": "Dynamic model transitions highlighting frame shapes and lens reflections.",
+  "making": "Rapid lighting changes and precision color grading."
  },
  {
   "category": "vertical",
@@ -213,7 +447,21 @@
   "brand": "∞ lenskart",
   "name": "KARAN & KUSHA",
   "subcat": "Celebrity Reel / Social Content",
-  "slogan": "STAR POWER. REEL IMPACT."
+  "slogan": "STAR POWER. REEL IMPACT.",
+  "duration": 62,
+  "title": "Karan Johar & Kusha Kapila x Lenskart",
+  "client": "Lenskart",
+  "format": "Vertical Social Film / Celebrity Reel",
+  "roles": [
+   "Creative Direction",
+   "Celebrity Direction",
+   "Scripting",
+   "Production"
+  ],
+  "shortDesc": "Witty celebrity dialogue film engineered for high-converting social media feeds.",
+  "thought": "Combining celebrity star power with sharp comedy in a vertical 9:16 format.",
+  "idea": "Witty, fast-paced dialogue between Karan Johar and Kusha Kapila showcasing eyewear fashion.",
+  "making": "Dual camera setup tailored for high-engagement mobile feeds and instant social conversion."
  },
  {
   "category": "vertical",
@@ -225,7 +473,21 @@
   "brand": "KFC INDIA",
   "name": "ORRY & KFC",
   "subcat": "Viral Reel / Performance",
-  "slogan": "SO GOOD. VIRAL IMPACT."
+  "slogan": "SO GOOD. VIRAL IMPACT.",
+  "duration": 44,
+  "title": "Orry & KFC Commercial",
+  "client": "KFC India",
+  "format": "Vertical Commercial / Viral Social Ad",
+  "roles": [
+   "Creative Direction",
+   "Production",
+   "Direction",
+   "Post-Production"
+  ],
+  "shortDesc": "Pop-culture viral commercial featuring internet icon Orry with energetic food styling.",
+  "thought": "Capturing internet pop culture icon Orry in an energetic KFC campaign.",
+  "idea": "A quirky, vibrant social film with bold pop-up aesthetics and viral pacing.",
+  "making": "High-contrast studio lighting, quick-cut editing, and custom sound design."
  },
  {
   "category": "vertical",
@@ -237,7 +499,20 @@
   "brand": "KFC x RCB",
   "name": "JITESH SHARMA",
   "subcat": "Sports Commercial",
-  "slogan": "POWER & CRUNCH"
+  "slogan": "POWER & CRUNCH",
+  "duration": 46,
+  "title": "KFC x Jitesh Sharma (RCB)",
+  "client": "KFC / Royal Challengers Bangalore",
+  "format": "Vertical Sports Commercial",
+  "roles": [
+   "Creative Direction",
+   "Production",
+   "Direction"
+  ],
+  "shortDesc": "Fast-paced sports commercial merging IPL cricket energy with craveable food crunch.",
+  "thought": "Fusing IPL cricket excitement with craveable KFC crunch.",
+  "idea": "A fast-paced player commercial showcasing Jitesh Sharma enjoying KFC favorites.",
+  "making": "Shot in studio environment with sports lighting and high-speed food cinematography."
  },
  {
   "category": "vertical",
@@ -249,7 +524,21 @@
   "brand": "THUMS UP",
   "name": "ZAID DARBAR",
   "subcat": "Action & Social Film",
-  "slogan": "TASTE THE THUNDER"
+  "slogan": "TASTE THE THUNDER",
+  "duration": 63,
+  "title": "Thumbs Up x Zaid Darbar",
+  "client": "Thumbs Up",
+  "format": "Vertical Action & Dance Reel",
+  "roles": [
+   "Creative Direction",
+   "Choreography",
+   "Production",
+   "Direction"
+  ],
+  "shortDesc": "Action-packed energy for the iconic Thumbs Up brand.",
+  "thought": "Action-packed energy for the iconic Thumbs Up brand.",
+  "idea": "High-intensity stunt & motion sequence featuring Zaid Darbar.",
+  "making": "Dynamic tracking shots, speed ramps, and punchy audio mastering."
  },
  {
   "category": "vertical",
@@ -261,7 +550,21 @@
   "brand": "FIKN ELIXIR",
   "name": "FIKN ELIXIR",
   "subcat": "Perfume Brand Film",
-  "slogan": "SCENT OF STYLE"
+  "slogan": "SCENT OF STYLE",
+  "duration": 43,
+  "title": "FIKN Elixir — Perfume Brand Film",
+  "client": "FIKN ELIXIR",
+  "format": "Brand Film",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "An aesthetic-led product film capturing the mood and craft of the FIKN Elixir fragrance.",
+  "thought": "A perfume needs to be felt, not just seen — the film had to carry a mood.",
+  "idea": "Aesthetic, sensorial visuals built around light, texture and the product itself.",
+  "making": "Styled product photography and cinematic motion shot to highlight the bottle and brand feel."
  },
  {
   "category": "vertical",
@@ -273,7 +576,21 @@
   "brand": "FIKN ELIXIR",
   "name": "FIKN ELIXIR",
   "subcat": "Perfume Brand Film",
-  "slogan": "SCENT OF STYLE"
+  "slogan": "SCENT OF STYLE",
+  "duration": 29,
+  "title": "FIKN Elixir — Perfume Brand Film II",
+  "client": "FIKN ELIXIR",
+  "format": "Brand Film",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A second aesthetic-led product film for the FIKN Elixir fragrance.",
+  "thought": "A perfume needs to be felt, not just seen — the film had to carry a mood.",
+  "idea": "Aesthetic, sensorial visuals built around light, texture and the product itself.",
+  "making": "Styled product photography and cinematic motion shot to highlight the bottle and brand feel."
  },
  {
   "category": "vertical",
@@ -285,7 +602,21 @@
   "brand": "FIKN ELIXIR",
   "name": "FIKN ELIXIR",
   "subcat": "Perfume Brand Film",
-  "slogan": "SCENT OF STYLE"
+  "slogan": "SCENT OF STYLE",
+  "duration": 34,
+  "title": "FIKN Elixir — Perfume Brand Film IV",
+  "client": "FIKN ELIXIR",
+  "format": "Brand Film",
+  "roles": [
+   "Creative Direction",
+   "Scripting",
+   "Production",
+   "Post-Production"
+  ],
+  "shortDesc": "A fourth aesthetic-led product film for the FIKN Elixir fragrance.",
+  "thought": "A perfume needs to be felt, not just seen — the film had to carry a mood.",
+  "idea": "Aesthetic, sensorial visuals built around light, texture and the product itself.",
+  "making": "Styled product photography and cinematic motion shot to highlight the bottle and brand feel."
  },
  {
   "category": "testimonials",
@@ -297,7 +628,20 @@
   "brand": "∞ lenskart",
   "name": "Partner Testimonial Film",
   "subcat": "Lenskart Leadership Story",
-  "slogan": "TRUSTED PARTNERSHIP"
+  "slogan": "TRUSTED PARTNERSHIP",
+  "duration": 39,
+  "title": "Partner Testimonial Film",
+  "client": "Lenskart Leadership",
+  "format": "Client Testimonial Film",
+  "roles": [
+   "Interview Production",
+   "Direction",
+   "Editing"
+  ],
+  "shortDesc": "How Jackson and Anjan turn a one-line thought into a complete shoot deck.",
+  "thought": "Authentic brand storytelling from the client’s perspective.",
+  "idea": "Clean interview lighting and crisp audio focusing on trust and creative collaboration.",
+  "making": "2-camera sit-down interview with soft studio lighting."
  },
  {
   "category": "testimonials",
@@ -309,7 +653,20 @@
   "brand": "∞ lenskart",
   "name": "Partner Testimonial I",
   "subcat": "Lenskart Leadership Story",
-  "slogan": "COLLABORATION & SCALE"
+  "slogan": "COLLABORATION & SCALE",
+  "duration": 33,
+  "title": "Partner Testimonial I",
+  "client": "Lenskart Leadership",
+  "format": "Client Testimonial Film",
+  "roles": [
+   "Interview Production",
+   "Direction",
+   "Editing"
+  ],
+  "shortDesc": "Lenskart leadership feedback on creative collaboration and scale.",
+  "thought": "Authentic brand storytelling from the client’s perspective.",
+  "idea": "Clean interview lighting and crisp audio focusing on trust and creative collaboration.",
+  "making": "2-camera sit-down interview with soft studio lighting."
  },
  {
   "category": "testimonials",
@@ -321,7 +678,20 @@
   "brand": "∞ lenskart",
   "name": "Leadership Testimonial I",
   "subcat": "Lenskart Leadership Story",
-  "slogan": "CREATIVE ALIGNMENT"
+  "slogan": "CREATIVE ALIGNMENT",
+  "duration": 30,
+  "title": "Leadership Testimonial I",
+  "client": "Lenskart Leadership",
+  "format": "Client Testimonial Film",
+  "roles": [
+   "Interview Production",
+   "Direction",
+   "Editing"
+  ],
+  "shortDesc": "Structured on-set execution & creative collaboration.",
+  "thought": "Authentic feedback on Anava’s structured on-set execution.",
+  "idea": "Focused sit-down interview detailing creative alignment and seamless logistics.",
+  "making": "Multi-cam studio interview with warm ambient lighting and studio sound."
  },
  {
   "category": "testimonials",
@@ -333,7 +703,20 @@
   "brand": "∞ lenskart",
   "name": "Leadership Testimonial II",
   "subcat": "Lenskart Leadership Story",
-  "slogan": "VISION & EXECUTION"
+  "slogan": "VISION & EXECUTION",
+  "duration": 44,
+  "title": "Leadership Testimonial II",
+  "client": "Lenskart Leadership",
+  "format": "Client Testimonial Film",
+  "roles": [
+   "Interview Production",
+   "Direction",
+   "Editing"
+  ],
+  "shortDesc": "Lenskart leadership feedback on vision, strategy, and seamless execution.",
+  "thought": "Translating vision into high-impact visual storytelling.",
+  "idea": "Focused executive sit-down detailing Anava’s creative precision.",
+  "making": "Cinema studio lighting with dedicated audio capture."
  },
  {
   "category": "testimonials",
@@ -345,7 +728,20 @@
   "brand": "∞ lenskart",
   "name": "Partner Testimonial II",
   "subcat": "Lenskart Leadership Story",
-  "slogan": "PRODUCTION IMPACT"
+  "slogan": "PRODUCTION IMPACT",
+  "duration": 40,
+  "title": "Partner Testimonial II",
+  "client": "Lenskart Leadership",
+  "format": "Client Testimonial Film",
+  "roles": [
+   "Interview Production",
+   "Direction",
+   "Editing"
+  ],
+  "shortDesc": "Lenskart leadership on production impact and partnership depth.",
+  "thought": "Building long-term strategic relationships with visionary brands.",
+  "idea": "Authentic narrative focusing on reliability, quality, and speed.",
+  "making": "Executive studio setup with two-angle interview capture."
  },
  {
   "category": "testimonials",
@@ -357,7 +753,20 @@
   "brand": "∞ lenskart",
   "name": "Leadership Testimonial III",
   "subcat": "Lenskart Leadership Story",
-  "slogan": "CREATIVE EXCELLENCE"
+  "slogan": "CREATIVE EXCELLENCE",
+  "duration": 33,
+  "title": "Leadership Testimonial III",
+  "client": "Lenskart Leadership",
+  "format": "Client Testimonial Film",
+  "roles": [
+   "Interview Production",
+   "Direction",
+   "Editing"
+  ],
+  "shortDesc": "Reflections on creative excellence and brand consistency.",
+  "thought": "Maintaining high production value across multi-channel campaigns.",
+  "idea": "Insightful client interview detailing Anava’s end-to-end execution.",
+  "making": "Multi-cam studio interview with professional color grading."
  },
  {
   "category": "podcasts",
@@ -717,7 +1126,21 @@
   "brand": "",
   "name": "LENSKART X SUPERMAN — FILM 1",
   "subcat": "Event Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 52,
+  "title": "Lenskart x Superman Launch",
+  "client": "Lenskart / Warner Bros",
+  "format": "Event & Commercial Launch Film",
+  "roles": [
+   "Creative Direction",
+   "Production",
+   "Direction",
+   "Editing"
+  ],
+  "shortDesc": "Cinematic event film showcasing celebrity guests, launch installations, and crowd reaction.",
+  "thought": "Capturing the grand unveil of the Lenskart x Superman collection.",
+  "idea": "Cinematic event film showcasing celebrity guests, launch installations, and crowd reaction.",
+  "making": "Multi-camera live event coverage with gimbal tracking and atmosphere shots."
  },
  {
   "category": "events",
@@ -729,7 +1152,20 @@
   "brand": "",
   "name": "LENSKART X SUPERMAN — FILM 2",
   "subcat": "Event Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 32,
+  "title": "Lenskart x Superman Experience Film",
+  "client": "Lenskart / Warner Bros",
+  "format": "Experiential Brand Film",
+  "roles": [
+   "Event Coverage",
+   "Direction",
+   "Post-Production"
+  ],
+  "shortDesc": "Slick recap featuring red carpet interviews, visual displays, and product reveals.",
+  "thought": "Immersive highlights of the Superman brand experience venue.",
+  "idea": "Slick recap featuring red carpet interviews, visual displays, and product reveals.",
+  "making": "Low-light prime lenses, live audio recording, and high-beat editing."
  },
  {
   "category": "events",
@@ -741,7 +1177,11 @@
   "brand": "",
   "name": "CELIO",
   "subcat": "Event Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 60,
+  "title": "Celio — Event Film",
+  "client": "Celio",
+  "format": "Event Film"
  },
  {
   "category": "events",
@@ -753,7 +1193,11 @@
   "brand": "",
   "name": "GODREJ PROPERTIES",
   "subcat": "Event Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 75,
+  "title": "Godrej Properties — Event Film",
+  "client": "Godrej Properties",
+  "format": "Event Film"
  },
  {
   "category": "vertical",
@@ -765,7 +1209,10 @@
   "brand": "",
   "name": "AQUA COLOR — FILM 1",
   "subcat": "Vertical Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 15,
+  "title": "Aqua Color — Film 1",
+  "format": "Vertical Film"
  },
  {
   "category": "vertical",
@@ -777,11 +1224,14 @@
   "brand": "",
   "name": "AQUA COLOR — FILM 2",
   "subcat": "Vertical Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 15,
+  "title": "Aqua Color — Film 2",
+  "format": "Vertical Film"
  },
  {
   "category": "vertical",
-  "subcategories": "",
+  "subcategories": "performance",
   "open-case": "lenskart-performance-27",
   "video": "assets/media/vertical-films/lenskart-performance-27.mp4",
   "img": "",
@@ -789,11 +1239,15 @@
   "brand": "",
   "name": "LENSKART — PERFORMANCE FILM 27",
   "subcat": "Vertical Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 15,
+  "title": "Lenskart — Performance Film 27",
+  "client": "Lenskart",
+  "format": "Performance Ad (Vertical)"
  },
  {
   "category": "vertical",
-  "subcategories": "",
+  "subcategories": "performance",
   "open-case": "lenskart-performance-28",
   "video": "assets/media/vertical-films/lenskart-performance-28.mp4",
   "img": "",
@@ -801,11 +1255,15 @@
   "brand": "",
   "name": "LENSKART — PERFORMANCE FILM 28",
   "subcat": "Vertical Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 16,
+  "title": "Lenskart — Performance Film 28",
+  "client": "Lenskart",
+  "format": "Performance Ad (Vertical)"
  },
  {
   "category": "vertical",
-  "subcategories": "",
+  "subcategories": "performance",
   "open-case": "lenskart-performance-40",
   "video": "assets/media/vertical-films/lenskart-performance-40.mp4",
   "img": "",
@@ -813,11 +1271,15 @@
   "brand": "",
   "name": "LENSKART — PERFORMANCE FILM 40",
   "subcat": "Vertical Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 15,
+  "title": "Lenskart — Performance Film 40",
+  "client": "Lenskart",
+  "format": "Performance Ad (Vertical)"
  },
  {
   "category": "vertical",
-  "subcategories": "",
+  "subcategories": "performance",
   "open-case": "lenskart-performance-42",
   "video": "assets/media/vertical-films/lenskart-performance-42.mp4",
   "img": "",
@@ -825,11 +1287,15 @@
   "brand": "",
   "name": "LENSKART — PERFORMANCE FILM 42",
   "subcat": "Vertical Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 15,
+  "title": "Lenskart — Performance Film 42",
+  "client": "Lenskart",
+  "format": "Performance Ad (Vertical)"
  },
  {
   "category": "vertical",
-  "subcategories": "",
+  "subcategories": "performance",
   "open-case": "lenskart-performance-49",
   "video": "assets/media/vertical-films/lenskart-performance-49.mp4",
   "img": "",
@@ -837,11 +1303,15 @@
   "brand": "",
   "name": "LENSKART — PERFORMANCE FILM 49",
   "subcat": "Vertical Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 15,
+  "title": "Lenskart — Performance Film 49",
+  "client": "Lenskart",
+  "format": "Performance Ad (Vertical)"
  },
  {
   "category": "vertical",
-  "subcategories": "",
+  "subcategories": "performance",
   "open-case": "lenskart-performance-50",
   "video": "assets/media/vertical-films/lenskart-performance-50.mp4",
   "img": "",
@@ -849,11 +1319,15 @@
   "brand": "",
   "name": "LENSKART — PERFORMANCE FILM 50",
   "subcat": "Vertical Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 14,
+  "title": "Lenskart — Performance Film 50",
+  "client": "Lenskart",
+  "format": "Performance Ad (Vertical)"
  },
  {
   "category": "vertical",
-  "subcategories": "",
+  "subcategories": "performance",
   "open-case": "lenskart-performance-51",
   "video": "assets/media/vertical-films/lenskart-performance-51.mp4",
   "img": "",
@@ -861,11 +1335,15 @@
   "brand": "",
   "name": "LENSKART — PERFORMANCE FILM 51",
   "subcat": "Vertical Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 18,
+  "title": "Lenskart — Performance Film 51",
+  "client": "Lenskart",
+  "format": "Performance Ad (Vertical)"
  },
  {
   "category": "vertical",
-  "subcategories": "",
+  "subcategories": "performance",
   "open-case": "lenskart-performance-52",
   "video": "assets/media/vertical-films/lenskart-performance-52.mp4",
   "img": "",
@@ -873,7 +1351,11 @@
   "brand": "",
   "name": "LENSKART — PERFORMANCE FILM 52",
   "subcat": "Vertical Film",
-  "slogan": ""
+  "slogan": "",
+  "duration": 15,
+  "title": "Lenskart — Performance Film 52",
+  "client": "Lenskart",
+  "format": "Performance Ad (Vertical)"
  },
  {
   "category": "bts",
@@ -886,7 +1368,20 @@
   "name": "Performance Film — On Set",
   "subcat": "Behind The Scenes",
   "slogan": "Performance Film — On Set",
-  "orientation": "landscape"
+  "orientation": "landscape",
+  "duration": 143,
+  "title": "BTS: Lenskart Performance Shoot",
+  "client": "Anava Production House",
+  "format": "Behind The Scenes Documentary",
+  "roles": [
+   "Production Management",
+   "Cinematography",
+   "Editing"
+  ],
+  "shortDesc": "Raw footage showing how a high-end commercial comes together behind the lens.",
+  "thought": "Showing how a high-end commercial comes together behind the lens.",
+  "idea": "Raw, energetic footage of director, lighting crew, camera team, and talent on set.",
+  "making": "Run-and-gun documentary style shot alongside the main commercial crew."
  },
  {
   "category": "bts",
@@ -899,7 +1394,11 @@
   "name": "Hustler — On Set",
   "subcat": "Behind The Scenes",
   "slogan": "Hustler — On Set",
-  "orientation": "landscape"
+  "orientation": "landscape",
+  "duration": 95,
+  "title": "Hustler — On Set",
+  "format": "Behind The Scenes",
+  "client": "Lenskart"
  },
  {
   "category": "bts",
@@ -912,7 +1411,11 @@
   "name": "International Casting",
   "subcat": "Behind The Scenes",
   "slogan": "International Casting",
-  "orientation": "landscape"
+  "orientation": "landscape",
+  "duration": 8,
+  "title": "International Casting",
+  "format": "Behind The Scenes",
+  "client": "Anava Films"
  },
  {
   "category": "bts",
@@ -925,7 +1428,11 @@
   "name": "Scripting The Idea",
   "subcat": "Behind The Scenes",
   "slogan": "Scripting The Idea",
-  "orientation": "landscape"
+  "orientation": "landscape",
+  "duration": 13,
+  "title": "Scripting The Idea",
+  "format": "Behind The Scenes",
+  "client": "Anava Films"
  },
  {
   "category": "bts",
@@ -938,7 +1445,11 @@
   "name": "The Thinking Room",
   "subcat": "Behind The Scenes",
   "slogan": "The Thinking Room",
-  "orientation": "landscape"
+  "orientation": "landscape",
+  "duration": 15,
+  "title": "The Thinking Room",
+  "format": "Behind The Scenes",
+  "client": "Anava Films"
  },
  {
   "category": "bts",
@@ -951,7 +1462,11 @@
   "name": "Making It Real",
   "subcat": "Behind The Scenes",
   "slogan": "Making It Real",
-  "orientation": "landscape"
+  "orientation": "landscape",
+  "duration": 13,
+  "title": "Making It Real",
+  "format": "Behind The Scenes",
+  "client": "Anava Films"
  },
  {
   "category": "bts",
@@ -964,7 +1479,11 @@
   "name": "Colour Grading",
   "subcat": "Behind The Scenes",
   "slogan": "Colour Grading",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "duration": 5,
+  "title": "Colour Grading",
+  "format": "Behind The Scenes",
+  "client": "Anava Films"
  },
  {
   "category": "bts",
@@ -977,7 +1496,11 @@
   "name": "VFX Mastering",
   "subcat": "Behind The Scenes",
   "slogan": "VFX Mastering",
-  "orientation": "landscape"
+  "orientation": "landscape",
+  "duration": 59,
+  "title": "VFX Mastering",
+  "format": "Behind The Scenes",
+  "client": "Anava Films"
  },
  {
   "category": "bts",
@@ -990,7 +1513,11 @@
   "name": "The Finish — Part One",
   "subcat": "Behind The Scenes",
   "slogan": "The Finish — Part One",
-  "orientation": "landscape"
+  "orientation": "landscape",
+  "duration": 8,
+  "title": "The Finish — Part One",
+  "format": "Behind The Scenes",
+  "client": "Anava Films"
  },
  {
   "category": "bts",
@@ -1003,6 +1530,10 @@
   "name": "The Finish — Part Two",
   "subcat": "Behind The Scenes",
   "slogan": "The Finish — Part Two",
-  "orientation": "portrait"
+  "orientation": "portrait",
+  "duration": 19,
+  "title": "The Finish — Part Two",
+  "format": "Behind The Scenes",
+  "client": "Anava Films"
  }
 ]

@@ -160,9 +160,84 @@
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
+  function fmtTime(t) {
+    t = Math.max(0, Math.round(t || 0));
+    return Math.floor(t / 60) + ':' + ('0' + (t % 60)).slice(-2);
+  }
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  }
+
+  /* A Work film opens as its case study: format and title, Client / Format /
+     Anava's role, the film with a running-time countdown, then the Thought,
+     Idea and Making — the earlier anavafilms.com project page. Built with
+     textContent only, so nothing in the data is parsed as markup. */
+  function openCase(src, data) {
+    if (!lb) return;
+    lbBody.innerHTML = '';
+    var wrap = el('article', 'case');
+    if (data.format) wrap.appendChild(el('span', 'case-eyebrow', data.format));
+    wrap.appendChild(el('h2', 'case-title', data.title || ''));
+
+    var meta = el('dl', 'case-meta');
+    function row(label, value, cls) {
+      var d = el('div', cls || '');
+      d.appendChild(el('dt', '', label));
+      var dd = el('dd');
+      if (Array.isArray(value)) value.forEach(function (r) { dd.appendChild(el('span', 'case-role', r)); });
+      else dd.textContent = value;
+      d.appendChild(dd);
+      meta.appendChild(d);
+    }
+    if (data.client) row('Client', data.client);
+    if (data.format) row('Format', data.format);
+    if (data.duration) row('Running time', fmtTime(data.duration));
+    if (data.roles && data.roles.length) row('Anava\u2019s role', data.roles, 'case-roles');
+    if (meta.children.length) wrap.appendChild(meta);
+
+    var film = el('div', 'case-film');
+    var v = document.createElement('video');
+    v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true;
+    var count = el('span', 'case-count', data.duration ? fmtTime(data.duration) : '');
+    count.setAttribute('aria-hidden', 'true');
+    function tick() {
+      var total = isFinite(v.duration) ? v.duration : (data.duration || 0);
+      count.textContent = fmtTime(total - v.currentTime);
+    }
+    v.addEventListener('loadedmetadata', tick);
+    v.addEventListener('timeupdate', tick);
+    v.addEventListener('play', function () { count.classList.add('is-running'); });
+    v.addEventListener('pause', function () { count.classList.remove('is-running'); });
+    v.addEventListener('ended', function () { count.classList.remove('is-running'); });
+    film.appendChild(v);
+    film.appendChild(count);
+    wrap.appendChild(film);
+
+    if (data.shortDesc) wrap.appendChild(el('p', 'case-desc', data.shortDesc));
+    var notes = el('div', 'case-notes');
+    [['The thought', data.thought], ['The idea', data.idea], ['The making', data.making]]
+      .forEach(function (n) {
+        if (!n[1]) return;
+        var b = el('div');
+        b.appendChild(el('h4', '', n[0]));
+        b.appendChild(el('p', '', n[1]));
+        notes.appendChild(b);
+      });
+    if (notes.children.length) wrap.appendChild(notes);
+
+    lbBody.appendChild(wrap);
+    if (lbCap) lbCap.textContent = '';
+    lb.classList.add('open', 'is-case');
+    lb.scrollTop = 0;
+    document.body.style.overflow = 'hidden';
+  }
+
   function closeLightbox() {
     if (!lb) return;
-    lb.classList.remove('open');
+    lb.classList.remove('open', 'is-case');
     lbBody.innerHTML = '';
     document.body.style.overflow = '';
   }
@@ -172,6 +247,11 @@
     var trigger = e.target.closest('[data-lightbox]');
     if (trigger) {
       e.preventDefault();
+      var caseData = trigger.getAttribute('data-case');
+      if (caseData) {
+        try { openCase(trigger.getAttribute('data-lightbox'), JSON.parse(caseData)); return; }
+        catch (err) { /* malformed data: fall back to the plain player */ }
+      }
       openLightbox(
         trigger.getAttribute('data-lightbox'),
         trigger.getAttribute('data-caption') || '',
@@ -192,11 +272,18 @@
     var empty = document.getElementById('work-empty');
     // Batch size per tab, each a whole number of rows for that tab's grid
     // (see .work-grid[data-view] in anava.css): TVCs and BTS run four across
-    // on a desktop and two on a tablet; Vertical and Photoshoots run four
-    // across (two on a phone). The film tabs open short on purpose — the reader chooses
+    // on a desktop and two on a tablet; Vertical 5 / 3 / 2 and Photoshoots
+    // 4 / 4 / 2 (desktop / tablet / phone). render() rounds each batch up to
+    // whole rows. The film tabs open short on purpose — the reader chooses
     // to go deeper rather than being handed everything at once.
     var PAGE = { tvc: 8, bts: 8, vertical: 12, photoshoots: 12 };
     function pageSize(filter) { return PAGE[filter] || 15; }
+    // Columns the grid is laying out right now (they change per tab and per
+    // device, see .work-grid[data-view]); batches round up to whole rows.
+    function columns() {
+      var cols = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;
+      return Math.max(1, cols);
+    }
     // Start on whichever pill ships marked active rather than a hard-coded value
     var firstPill = document.querySelector('.pill.active[data-filter]');
     var startFilter = firstPill ? firstPill.dataset.filter : 'all';
@@ -204,7 +291,7 @@
       filter: startFilter,
       sub: firstPill ? (firstPill.dataset.sub || '') : '',
       q: '',
-      shown: pageSize(startFilter)
+      pages: 1
     };
 
     function matches(card) {
@@ -212,7 +299,10 @@
       var subs = card.dataset.sub || '';
       var text = (card.dataset.search || '').toLowerCase();
       if (state.filter !== 'all' && cat !== state.filter) return false;
-      if (state.sub && subs.split(',').indexOf(state.sub) === -1) return false;
+      // A menu entry can cover several sub-tags ("social|product")
+      if (state.sub && !state.sub.split('|').some(function (s) {
+        return subs.split(',').indexOf(s) !== -1;
+      })) return false;
       if (state.q && text.indexOf(state.q) === -1) return false;
       return true;
     }
@@ -220,6 +310,8 @@
     function render() {
       var count = 0;
       grid.dataset.view = state.filter;
+      var cols = columns();
+      state.shown = Math.ceil(pageSize(state.filter) * state.pages / cols) * cols;
       cards.forEach(function (c) {
         if (matches(c)) {
           count++;
@@ -238,7 +330,7 @@
         var sub = p.dataset.sub || '';
         state.filter = f;
         state.sub = sub;
-        state.shown = pageSize(f);
+        state.pages = 1;
         document.querySelectorAll('.pill').forEach(function (x) { x.classList.remove('active'); });
         document.querySelectorAll('.drop-menu button').forEach(function (x) { x.classList.remove('active'); });
         if (p.classList.contains('pill')) {
@@ -267,11 +359,13 @@
 
     if (loadMoreBtn) {
       loadMoreBtn.addEventListener('click', function () {
-        state.shown += pageSize(state.filter);
+        state.pages += 1;
         render();
       });
     }
     render();
+    var rt;
+    window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(render, 150); });
   }
 
   /* ---------- Contact form (AJAX with mailto fallback) ---------- */

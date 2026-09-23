@@ -192,7 +192,12 @@ def pretty(s):
 
 def build_work_cards():
     out, idx = [], 0
-    for c in cards:
+    # BTS opens on its eight strongest cards: designed thumbnails before frame
+    # grabs. Tabs filter by category, so moving the rest later changes no
+    # other tab's order.
+    ordered = sorted(cards, key=lambda c: c["category"] == "bts"
+                     and "thumbnails/" not in c.get("poster", ""))
+    for c in ordered:
         cat = c["category"]
         video = c.get("video", "").split("#")[0]
         poster = c.get("poster", "")
@@ -247,6 +252,11 @@ def build_work_cards():
 
 # ---------------------------------------------------------------- pages
 def page_work():
+    collage = "".join(
+        f'<img src="assets/images/thumbnails/{f}.jpg" alt="" fetchpriority="high">'
+        # 2x2, read row by row: the right column is the clear side of the frame
+        # (the copy darkens the left), so the two headline films sit there.
+        for f in ("john-jacobs", "tira-beauty-kareena", "sunil-shetty-film", "lenskart-hustler"))
     filters = f"""
   <div class="filter-bar">
     <div class="pills">
@@ -285,10 +295,12 @@ def page_work():
           <span class="link-row"><span class="label">Watch Showreel</span></span>
         </div>
       </div>
-      <div class="hero-media reveal" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Lenskart &middot; Hustler &mdash; Keep Hustling">
-        <video data-src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" poster="assets/images/thumbnails/lenskart-hustler.jpg" muted loop playsinline preload="none" class="hover-play"></video>
+      <div class="hero-media hero-collage-frame reveal">
+        <!-- The heading promises impact; the frame shows it — a wall of the
+             films themselves rather than one still from one of them. -->
+        <div class="hero-collage" aria-hidden="true">{collage}</div>
         <div class="hero-script script">Thoughts<br>Ideas<br>People<br>Films</div>
-        <div class="hero-tag">Hustler &mdash; Keep Hustling</div>
+        <div class="hero-tag">Selected films &mdash; Anava</div>
       </div>
     </div>
     {filters}
@@ -297,7 +309,7 @@ def page_work():
 
 <section style="padding-bottom:90px">
   <div class="container">
-    <div class="work-grid" id="work-grid">
+    <div class="work-grid" id="work-grid" data-view="tvc">
 {build_work_cards()}
     </div>
     <p class="empty-state" id="work-empty" style="display:none">Nothing in this category yet.</p>
@@ -400,14 +412,6 @@ def page_home():
     </p>
     <div class="hero-cine-actions">
       <a href="work.html" class="btn btn-primary btn-grad">View our work {ARROW}</a>
-    </div>
-  </div>
-
-  <div class="hero-foot" aria-hidden="true">
-    <div class="hero-foot-mid">
-      <span class="rail-mouse"><i></i></span>
-      <span class="hero-foot-scroll">Scroll to explore</span>
-      <span class="hero-foot-line"></span>
     </div>
   </div>
 

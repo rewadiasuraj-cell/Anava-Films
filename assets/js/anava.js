@@ -4,11 +4,37 @@
 
   /* ---------- Header ---------- */
   var header = document.querySelector('.site-header');
+  var lastPeekY = 0;
   function onScroll() {
-    if (header) header.classList.toggle('is-scrolled', window.scrollY > 24);
+    if (!header) return;
+    header.classList.toggle('is-scrolled', window.scrollY > 24);
+    // Past the first screenful the capsule folds to the wordmark (CSS, 761px+)
+    header.classList.toggle('is-compact', window.scrollY > 120);
+    // A tap-opened header closes again once the reader scrolls on
+    if (header.classList.contains('is-peek') && Math.abs(window.scrollY - lastPeekY) > 60) {
+      header.classList.remove('is-peek');
+    }
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  /* Touch screens have no hover: the first tap on the folded pill opens it
+     (instead of following the wordmark link home), a tap elsewhere folds it. */
+  if (header && window.matchMedia) {
+    var noHover = window.matchMedia('(hover: none)');
+    var wide = window.matchMedia('(min-width: 761px)');
+    header.addEventListener('click', function (e) {
+      if (!noHover.matches || !wide.matches) return;
+      if (header.classList.contains('is-compact') && !header.classList.contains('is-peek')) {
+        e.preventDefault();
+        header.classList.add('is-peek');
+        lastPeekY = window.scrollY;
+      }
+    }, true);
+    document.addEventListener('click', function (e) {
+      if (!header.contains(e.target)) header.classList.remove('is-peek');
+    });
+  }
 
   /* ---------- Mobile nav ---------- */
   var burger = document.querySelector('.burger');
@@ -149,11 +175,12 @@
     var pills = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
     var loadMoreBtn = document.getElementById('load-more');
     var empty = document.getElementById('work-empty');
-    // Batch size per tab, every one a multiple of the three-column grid so the
-    // last visible row is never half empty. The film tabs open short on
-    // purpose — the reader chooses to go deeper rather than being handed
-    // everything at once.
-    var PAGE = { tvc: 6, vertical: 12, photoshoots: 9 };
+    // Batch size per tab, each a whole number of rows for that tab's grid
+    // (see .work-grid[data-view] in anava.css): TVCs and BTS run four across
+    // on a desktop and two on a tablet, Vertical three across, Photoshoots
+    // four across. The film tabs open short on purpose — the reader chooses
+    // to go deeper rather than being handed everything at once.
+    var PAGE = { tvc: 8, bts: 8, vertical: 12, photoshoots: 12 };
     function pageSize(filter) { return PAGE[filter] || 15; }
     // Start on whichever pill ships marked active rather than a hard-coded value
     var firstPill = document.querySelector('.pill.active[data-filter]');
@@ -177,6 +204,7 @@
 
     function render() {
       var count = 0;
+      grid.dataset.view = state.filter;
       cards.forEach(function (c) {
         if (matches(c)) {
           count++;

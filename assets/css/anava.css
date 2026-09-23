@@ -499,9 +499,8 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 .hero-cine-inner{
   position:relative;z-index:3;text-align:center;
   display:flex;flex-direction:column;align-items:center;
-  /* The block sits low in the frame on purpose — the free space belongs
-     above the eyebrow, not between the scroll cue and the logo strip. */
-  margin:auto 0 0;padding:clamp(30px,5.2vh,62px) 0 0;
+  /* Centred in the space between the header and the logo strip */
+  margin:auto 0;padding:clamp(30px,5.2vh,62px) 0;
 }
 .hero-eyebrow{
   font-size:.62rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;
@@ -1576,3 +1575,83 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
    /what-we-do redirect; clear the fixed header when it lands. */
 #what-we-do{scroll-margin-top:calc(var(--header-h) + 10px)}
 .wwd-intro{padding-bottom:0}
+
+/* ---- Work grid: per-tab columns ----
+   anava.js mirrors the active tab onto #work-grid[data-view]. Each tab's
+   opening batch (PAGE in anava.js) is a whole number of these rows. */
+@media (min-width:1101px){
+  .work-grid[data-view="tvc"],.work-grid[data-view="bts"]{grid-template-columns:repeat(4,1fr)}
+  .work-grid[data-view="tvc"] .wcard-title,.work-grid[data-view="bts"] .wcard-title{font-size:.9rem}
+}
+.work-grid[data-view="vertical"]{grid-template-columns:repeat(3,1fr)}
+.work-grid[data-view="photoshoots"]{grid-template-columns:repeat(4,1fr)}
+@media (max-width:760px){
+  /* Three or four across leaves a phone card too small to read; two holds */
+  .work-grid[data-view="vertical"],.work-grid[data-view="photoshoots"]{grid-template-columns:repeat(2,1fr);gap:10px}
+}
+
+/* ---- Work hero: collage of the films ----
+   Four key-art posters as one tilted wall. It fills the frame and is
+   over-scaled so the tilt never shows a corner; the frame's own ::after
+   gradient keeps the copy on the left readable. */
+.hero-collage{
+  position:absolute;inset:0;z-index:0;
+  display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;gap:14px;
+  transform:rotate(-5deg) scale(1.22);transform-origin:62% 50%;
+}
+.hero-collage img{
+  width:100%;height:100%;object-fit:cover;border-radius:12px;
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+}
+.hero-split.centered .hero-collage-frame::after{z-index:1}
+.hero-split.centered .hero-collage-frame .hero-script,
+.hero-split.centered .hero-collage-frame .hero-tag{z-index:2}
+@media (max-width:760px){
+  /* Tall phone frame: the posters stack in one column instead */
+  .hero-collage{grid-template-columns:1fr;gap:10px;transform:rotate(-4deg) scale(1.2);transform-origin:50% 50%;
+    /* Each poster carries its own title; soft focus keeps those words from
+       reading against the headline laid over them */
+    filter:blur(2.5px)}
+  /* The copy covers the whole phone frame, so the wall sits further back */
+  .hero-split.centered .hero-collage-frame::after{
+    background:
+      linear-gradient(180deg,rgba(6,6,6,.4) 0%,transparent 28%,transparent 70%,rgba(6,6,6,.6) 100%),
+      rgba(6,6,6,.74);
+  }
+}
+@media (prefers-reduced-motion:no-preference){
+  .hero-collage img{animation:collageIn .9s var(--ease) both}
+  .hero-collage img:nth-child(2){animation-delay:.08s}
+  .hero-collage img:nth-child(3){animation-delay:.16s}
+  .hero-collage img:nth-child(4){animation-delay:.24s}
+}
+@keyframes collageIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ==========================================================================
+   HEADER — compact pill on scroll, expands on hover / tap
+   Full bar at the top of the page. Once the page scrolls (anava.js adds
+   .is-compact) the capsule folds to just the wordmark, centred; hovering
+   the header strip, focusing into it, or tapping it on a touch screen
+   (.is-peek) opens it back out. Phones keep their own burger header.
+   ========================================================================== */
+@media (min-width:761px){
+  .header-inner{
+    transition:max-width .55s var(--ease),padding .55s var(--ease),gap .55s var(--ease),
+      background .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);
+  }
+  .site-header .nav,.site-header .header-actions{
+    transition:max-width .55s var(--ease),opacity .3s var(--ease) .15s;
+    max-width:1000px;overflow:hidden;
+  }
+  .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .header-inner{
+    max-width:196px;gap:0;padding:12px 24px;justify-content:center;cursor:pointer;
+  }
+  .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .nav,
+  .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .header-actions{
+    max-width:0;opacity:0;pointer-events:none;
+    transition:max-width .55s var(--ease),opacity .15s var(--ease);
+  }
+}
+@media (min-width:761px) and (prefers-reduced-motion:reduce){
+  .header-inner,.site-header .nav,.site-header .header-actions{transition:none}
+}

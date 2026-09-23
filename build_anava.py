@@ -190,6 +190,19 @@ def pretty(s):
     return s
 
 
+CASE_KEYS = ("title", "client", "format", "roles", "shortDesc", "thought", "idea", "making", "duration")
+
+
+def case_attr(c):
+    """The project write-up a card carries; anava.js lays it out as a case study."""
+    case = {k: c[k] for k in CASE_KEYS if c.get(k)}
+    return f"data-case='{esc(json.dumps(case, ensure_ascii=False))}'"
+
+
+def card_for(video):
+    return next(c for c in cards if c.get("video", "").split("#")[0] == video)
+
+
 def build_work_cards():
     out, idx = [], 0
     # BTS opens on its eight strongest cards: designed thumbnails before frame
@@ -225,10 +238,7 @@ def build_work_cards():
                          f'playsinline preload="none" class="hover-play"></video>')
                 # The project write-up rides on the card; anava.js lays it out
                 # as a case study around the film when the card is opened.
-                case = {k: c[k] for k in ("title", "client", "format", "roles", "shortDesc",
-                                          "thought", "idea", "making", "duration") if c.get(k)}
-                lb = (f'data-lightbox="{esc(video)}" data-caption="{esc(title)}" '
-                      f"data-case='{esc(json.dumps(case, ensure_ascii=False))}'")
+                lb = f'data-lightbox="{esc(video)}" data-caption="{esc(title)}" {case_attr(c)}'
             elif img:
                 media = f'<img src="{esc(img)}" alt="{esc(name)}" loading="lazy">'
                 lb = f'data-lightbox="{esc(img)}" data-lightbox-type="image" data-caption="{esc(name)}"'
@@ -263,11 +273,18 @@ def build_work_cards():
 
 # ---------------------------------------------------------------- pages
 def page_work():
-    collage = "".join(
-        f'<img src="assets/images/thumbnails/{f}.jpg" alt="" fetchpriority="high">'
-        # 2x2, read row by row: the right column is the clear side of the frame
-        # (the copy darkens the left), so the two headline films sit there.
-        for f in ("john-jacobs", "tira-beauty-kareena", "sunil-shetty-film", "lenskart-hustler"))
+    # Two headline films under the title, numbered like a reel; each opens
+    # its case study.
+    feature = [
+        ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/work-hero-hustlr.jpg", "Lenskart", "34% 30%"),
+        ("assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4", "assets/images/thumbnails/tira-beauty-kareena.jpg", "Tira Beauty", "82% 30%"),
+    ]
+    features = "".join(f"""
+      <button class="wh-film" type="button" data-lightbox="{esc(v)}" data-caption="{esc(card_for(v)['title'])}" {case_attr(card_for(v))}>
+        <img src="{esc(img)}" alt="{esc(card_for(v)['title'])}" style="object-position:{pos}" fetchpriority="high">
+        <span class="wh-film-play" aria-hidden="true">{PLAY}</span>
+        <span class="wh-film-tag"><b>0{i + 1}</b> / {esc(brand)}</span>
+      </button>""" for i, (v, img, brand, pos) in enumerate(feature))
     filters = f"""
   <div class="filter-bar">
     <div class="pills">
@@ -291,26 +308,18 @@ def page_work():
         title="Our Work — ANAVA FILMS",
         desc="Selected films, TVCs, vertical content, performance campaigns and photoshoots by Anava Films."
     ) + header("work.html") + f"""
-<section class="hero-split centered">
+<section class="work-hero">
   <div class="container">
-    <div class="hero-split-grid">
-      <div class="hero-copy reveal">
-        <span class="eyebrow">Our Work</span>
-        <h1 class="display">IDEAS THAT<br>MAKE<br>AN <span class="o">IMPACT.</span></h1>
-        <p class="lead">A selection of films, campaigns, content and collaborations we've created with brands, artists and partners.</p>
-        <div class="hero-actions">
-          <button class="play-btn" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Lenskart &middot; Hustler &mdash; Keep Hustling">{PLAY}<span class="pb-label">Watch Showreel</span></button>
-          <span class="link-row"><span class="label">Watch Showreel</span></span>
-        </div>
-      </div>
-      <div class="hero-media hero-collage-frame reveal">
-        <!-- The heading promises impact; the frame shows it — a wall of the
-             films themselves rather than one still from one of them. -->
-        <div class="hero-collage" aria-hidden="true">{collage}</div>
-        <div class="hero-script script">Thoughts<br>Ideas<br>People<br>Films</div>
-        <div class="hero-tag">Selected films &mdash; Anava</div>
-      </div>
+    <div class="wh-head reveal">
+      <span class="wh-eyebrow">Our Work</span>
+      <h1 class="wh-title">Ideas That Make An <span class="o">Impact.</span></h1>
+      <p class="wh-lead">A selection of films, campaigns, content and collaborations we&rsquo;ve created with brands, artists and partners.</p>
+      <button class="btn btn-primary wh-cta" type="button" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Anava Films &middot; Showreel">{PLAY} Watch Showreel</button>
     </div>
+  </div>
+  <div class="wh-films reveal">{features}
+  </div>
+  <div class="container">
     {filters}
   </div>
 </section>

@@ -403,14 +403,6 @@ def page_home():
     </div>
   </div>
 
-  <div class="hero-foot" aria-hidden="true">
-    <div class="hero-foot-mid">
-      <span class="rail-mouse"><i></i></span>
-      <span class="hero-foot-scroll">Scroll to explore</span>
-      <span class="hero-foot-line"></span>
-    </div>
-  </div>
-
   <div class="trusted">
     <div class="trusted-inner">
       <p class="trusted-label">Trusted by brands who dare</p>

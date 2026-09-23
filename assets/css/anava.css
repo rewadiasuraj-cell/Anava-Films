@@ -499,9 +499,8 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 .hero-cine-inner{
   position:relative;z-index:3;text-align:center;
   display:flex;flex-direction:column;align-items:center;
-  /* The block sits low in the frame on purpose — the free space belongs
-     above the eyebrow, not between the scroll cue and the logo strip. */
-  margin:auto 0 0;padding:clamp(30px,5.2vh,62px) 0 0;
+  /* Centred in the space between the header and the logo strip */
+  margin:auto 0;padding:clamp(30px,5.2vh,62px) 0;
 }
 .hero-eyebrow{
   font-size:.62rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;

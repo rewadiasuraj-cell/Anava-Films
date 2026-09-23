@@ -142,6 +142,8 @@ p{margin:0}
   .header-inner{background:rgba(12,11,10,.9)}
 }
 .brand img{height:27px;width:auto;object-fit:contain}
+.brand .brand-mark{display:none}
+@media (min-width:761px){.brand .brand-mark{display:block}}
 .nav{display:flex;align-items:center;gap:30px}
 .nav{gap:38px}
 .nav a{
@@ -1583,7 +1585,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .work-grid[data-view="tvc"],.work-grid[data-view="bts"]{grid-template-columns:repeat(4,1fr)}
   .work-grid[data-view="tvc"] .wcard-title,.work-grid[data-view="bts"] .wcard-title{font-size:.9rem}
 }
-.work-grid[data-view="vertical"]{grid-template-columns:repeat(3,1fr)}
+.work-grid[data-view="vertical"]{grid-template-columns:repeat(4,1fr)}
 .work-grid[data-view="photoshoots"]{grid-template-columns:repeat(4,1fr)}
 @media (max-width:760px){
   /* Three or four across leaves a phone card too small to read; two holds */
@@ -1630,36 +1632,78 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
 /* ==========================================================================
    HEADER — compact pill on scroll, expands on hover / tap
    Full bar at the top of the page. Once the page scrolls (anava.js adds
-   .is-compact) the capsule folds to just the wordmark, centred; hovering
-   the header strip, focusing into it, or tapping it on a touch screen
-   (.is-peek) opens it back out. Phones keep their own burger header.
+   .is-compact) the capsule folds to a small wordmark pill, centred;
+   hovering the header strip, focusing into it, or tapping it on a touch
+   screen (.is-peek) opens it back out. Folded, it is a circle carrying the
+   gold A mark in place of the wordmark, which read as clutter mid-page. Phones keep their own burger header.
+   Motion: the width glides with no overshoot (a spring on a 1400px change
+   would dip the pill to half its size); the bounce is a small squash-and-
+   rebound in scale, the same size whichever way the capsule moves.
    ========================================================================== */
 @media (min-width:761px){
+  :root{--spring:cubic-bezier(.34,1.32,.64,1)}
+  @supports (transition-timing-function:linear(0,1)){
+    /* ~6% overshoot, one gentle rebound, settles by ~70% of the time */
+    :root{--spring:linear(0,.016 1.1%,.064 2.3%,.241 4.9%,.477 7.8%,.723 11.3%,.884 14.7%,.998 18.5%,1.049 21.9%,1.066 25.1%,1.061 28.6%,1.038 33.4%,1.012 38.9%,.996 45.4%,.992 52%,.999 66.4%,1)}
+  }
   .header-inner{
-    transition:max-width .55s var(--ease),padding .55s var(--ease),gap .55s var(--ease),
+    transition:max-width .75s cubic-bezier(.22,1,.36,1),padding .75s cubic-bezier(.22,1,.36,1),gap .75s cubic-bezier(.22,1,.36,1),
       background .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);
   }
+  .brand{position:relative;display:flex;align-items:center}
+  .brand .brand-word{max-width:220px;transition:max-width .75s cubic-bezier(.22,1,.36,1),opacity .3s var(--ease) .15s}
+  .brand .brand-mark{
+    position:absolute;left:50%;top:50%;width:34px;height:auto;
+    max-width:none; /* the global img cap would size it to the 0-wide folded brand box */
+    opacity:0;transform:translate(-50%,-50%) scale(.5) rotate(-90deg);pointer-events:none;
+    transition:opacity .2s var(--ease),transform .6s var(--spring);
+  }
   .site-header .nav,.site-header .header-actions{
-    transition:max-width .55s var(--ease),opacity .3s var(--ease) .15s;
+    transition:max-width .75s cubic-bezier(.22,1,.36,1),opacity .3s var(--ease) .18s,transform .6s var(--spring) .1s;
     max-width:1000px;overflow:hidden;
   }
   .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .header-inner{
-    max-width:196px;gap:0;padding:12px 24px;justify-content:center;cursor:pointer;
+    max-width:56px;height:56px;gap:0;padding:0;justify-content:center;cursor:pointer;
+    animation:pillSquash .75s var(--ease) both;
+  }
+  /* Opening from the pill gets its own, gentler stretch-and-settle */
+  .site-header.is-compact:is(:hover,:focus-within,.is-peek) .header-inner{
+    animation:pillOpen .7s var(--ease) both;
+  }
+  .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .brand-word{max-width:0;opacity:0;transition:max-width .75s cubic-bezier(.22,1,.36,1),opacity .15s var(--ease)}
+  .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .brand-mark{
+    opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0);
+    transition:opacity .3s var(--ease) .2s,transform .7s var(--spring) .15s;
   }
   .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .nav,
   .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .header-actions{
-    max-width:0;opacity:0;pointer-events:none;
-    transition:max-width .55s var(--ease),opacity .15s var(--ease);
+    max-width:0;opacity:0;pointer-events:none;transform:translateX(-8px);
+    transition:max-width .75s cubic-bezier(.22,1,.36,1),opacity .15s var(--ease),transform .3s var(--ease);
   }
 }
+/* A soft, liquid landing: wider-flatter, then taller-narrower, then rest */
+@keyframes pillSquash{
+  0%{transform:scale(1,1)}
+  45%{transform:scale(1.05,.92)}
+  68%{transform:scale(.98,1.04)}
+  86%{transform:scale(1.01,.99)}
+  100%{transform:scale(1,1)}
+}
+@keyframes pillOpen{
+  0%{transform:scale(1,1)}
+  40%{transform:scale(1.012,.94)}
+  70%{transform:scale(.997,1.02)}
+  100%{transform:scale(1,1)}
+}
 @media (min-width:761px) and (prefers-reduced-motion:reduce){
-  .header-inner,.site-header .nav,.site-header .header-actions{transition:none}
+  .header-inner,.brand img,.site-header .nav,.site-header .header-actions{transition:none}
+  .site-header.is-compact .header-inner{animation:none!important}
 }
 
 /* ---- Work cards: B/W until hovered, then the colour grade wipes in ----
    Every video card (photos keep their colour) carries a grayscale layer
    over its thumbnail. On hover, keyboard focus, play — or, on touch
-   screens, once the card sits in view (anava.js adds .is-color) — the layer
+   screens, when the card is touched (anava.js adds .is-color) — the layer
    is clipped away left to right, like a before/after grade reveal. The
    play button and text sit above it, so they stay in colour throughout. */
 .wcard:not(.photo)::before{

@@ -1,10 +1,20 @@
 #!/usr/bin/env python3
 """Generate the redesigned ANAVA FILMS pages from live-site content."""
-import json, os, html, re
+import json, os, html, re, hashlib
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 with open(os.path.join(ROOT, "work.json"), encoding="utf-8") as work_file:
     cards = json.load(work_file)
+
+
+def asset_version(rel):
+    """Short content hash for cache-busting. .htaccess lets browsers keep CSS
+    and JS for a month, so the URL has to change whenever the file does."""
+    with open(os.path.join(ROOT, rel), "rb") as f:
+        return hashlib.sha1(f.read()).hexdigest()[:10]
+
+ASSET_V = {"css_v": asset_version("assets/css/anava.css"),
+           "js_v": asset_version("assets/js/anava.js")}
 
 HEAD = """<!DOCTYPE html>
 <html lang="en">
@@ -17,16 +27,16 @@ HEAD = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/anava.css">
-<script defer src="assets/js/anava.js"></script>
+<link rel="stylesheet" href="assets/css/anava.css?v={css_v}">
+<script defer src="assets/js/anava.js?v={js_v}"></script>
 </head>
 <body>
 """
 
-ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
-PLAY = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
-CHEV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>'
-DIAG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>'
+ARROW = '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
+PLAY = '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
+CHEV = '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>'
+DIAG = '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>'
 
 NAV = [("index.html", "Home"), ("work.html", "Work"),
        ("process.html", "Process"), ("about.html", "About"), ("contact.html", "Contact")]
@@ -259,7 +269,7 @@ def page_work():
     </div>
   </div>"""
 
-    return HEAD.format(
+    return HEAD.format(**ASSET_V,
         title="Our Work — ANAVA FILMS",
         desc="Selected films, TVCs, vertical content, performance campaigns, photoshoots and podcasts by Anava Films."
     ) + header("work.html") + f"""
@@ -369,7 +379,7 @@ def page_home():
                      "godrej properties", "wow skin science", "fikn", "KFC", "Simpl ai"]
     trusted = "".join(f"<li>{logo_img(l)}</li>" for l in trusted_order * 2)
 
-    return HEAD.format(
+    return HEAD.format(**ASSET_V,
         title="ANAVA FILMS — Give us a thought. We'll give you ideas to shoot.",
         desc="Anava Films is an agency-cum-production house in Mumbai and Delhi taking a thought all the way to the final frame."
     ) + header("index.html") + f"""
@@ -484,7 +494,7 @@ def page_home():
       </article>
     </div>
     <div class="tri-foot reveal">
-      <a href="about.html#what-we-do" class="btn btn-ghost">See what we do {ARROW.replace('<svg','<svg width="15" height="15"')}</a>
+      <a href="about.html#what-we-do" class="btn btn-ghost">See what we do {ARROW.replace('width="1em" height="1em"','width="15" height="15"')}</a>
     </div>
   </div>
 </section>
@@ -574,7 +584,7 @@ def page_process():
       <div class="step-media"><img src="{img}" alt="{label}"><div class="caption">{cap}</div></div>
     </div>"""
 
-    return HEAD.format(
+    return HEAD.format(**ASSET_V,
         title="The Process — From Thought to Screen — ANAVA FILMS",
         desc="A clear, collaborative creative process that takes you from a simple thought to a powerful final film."
     ) + header("process.html") + f"""
@@ -742,7 +752,7 @@ def wwd_sections():
 
 
 def page_contact():
-    return HEAD.format(
+    return HEAD.format(**ASSET_V,
         title="Got a Thought? — Contact ANAVA FILMS",
         desc="Talk to Anava Films in Mumbai and Delhi. You don't need a finished brief — just give us the thought."
     ) + header("contact.html") + f"""
@@ -832,7 +842,7 @@ def page_contact():
             <span class="script">Same<br>City<br>Bigger<br>Stories</span>
             <div class="loc-inner">
               <div class="loc-top"><h3>Mumbai</h3></div>
-              <a class="loc-link" href="https://maps.google.com/?q=Linking+Road+Bandra+West+Mumbai" target="_blank" rel="noopener">Get Directions {ARROW.replace('<svg','<svg width="14" height="14"')}</a>
+              <a class="loc-link" href="https://maps.google.com/?q=Linking+Road+Bandra+West+Mumbai" target="_blank" rel="noopener">Get Directions {ARROW.replace('width="1em" height="1em"','width="14" height="14"')}</a>
             </div>
           </div>
           <div class="loc">
@@ -840,7 +850,7 @@ def page_contact():
             <span class="script">More<br>Ideas<br>More<br>Films</span>
             <div class="loc-inner">
               <div class="loc-top"><h3>Delhi</h3></div>
-              <a class="loc-link" href="https://maps.google.com/?q=Saket+New+Delhi" target="_blank" rel="noopener">Get Directions {ARROW.replace('<svg','<svg width="14" height="14"')}</a>
+              <a class="loc-link" href="https://maps.google.com/?q=Saket+New+Delhi" target="_blank" rel="noopener">Get Directions {ARROW.replace('width="1em" height="1em"','width="14" height="14"')}</a>
             </div>
           </div>
     </div>
@@ -899,7 +909,7 @@ def page_about():
         <div class="tst-body"><div class="tst-src">{src}</div><p>&ldquo;{q}&rdquo;</p><span>{sub}</span></div>
       </article>""" for src, q, sub, v, p in tst)
 
-    return HEAD.format(
+    return HEAD.format(**ASSET_V,
         title="About &amp; What We Do — ANAVA FILMS",
         desc="Anava Films is an agency-cum-production house: creative direction, ideation, scripting, production, direction and post-production, under one roof."
     ) + header("about.html") + f"""

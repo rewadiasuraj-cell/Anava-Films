@@ -2,53 +2,6 @@
 (function () {
   'use strict';
 
-  /* ---------- Responsive welcome film: once per tab session ---------- */
-  var intro = document.getElementById('site-intro');
-  if (intro && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var seenIntro = false;
-    try { seenIntro = sessionStorage.getItem('anava_redesign_intro_seen') === 'true'; } catch (e) {}
-    if (!seenIntro && typeof intro.showModal === 'function') {
-      var introVideo = document.getElementById('site-intro-video');
-      var oldOverflow = document.body.style.overflow;
-      var introDone = false;
-      var introStartupTimer;
-      var introStallTimer;
-      var introMaxTimer;
-      function finishIntro() {
-        if (introDone) return;
-        introDone = true;
-        clearTimeout(introStartupTimer);
-        clearTimeout(introStallTimer);
-        clearTimeout(introMaxTimer);
-        introVideo.pause();
-        intro.close();
-        document.body.style.overflow = oldOverflow;
-        try { sessionStorage.setItem('anava_redesign_intro_seen', 'true'); } catch (e) {}
-      }
-      intro.querySelector('.intro-skip').addEventListener('click', finishIntro);
-      intro.addEventListener('cancel', function (e) { e.preventDefault(); finishIntro(); });
-      introVideo.addEventListener('ended', finishIntro);
-      introVideo.addEventListener('error', finishIntro);
-      introVideo.addEventListener('playing', function () {
-        clearTimeout(introStartupTimer);
-        clearTimeout(introStallTimer);
-      });
-      introVideo.addEventListener('waiting', function () {
-        clearTimeout(introStallTimer);
-        introStallTimer = setTimeout(finishIntro, 5000);
-      });
-      introVideo.src = window.matchMedia('(max-width: 760px)').matches
-        ? 'intro/intro-3-vertical.mp4?v=20260923'
-        : 'intro/intro-3.mp4?v=20260923';
-      introVideo.muted = true;
-      intro.showModal();
-      document.body.style.overflow = 'hidden';
-      introStartupTimer = setTimeout(finishIntro, 5000);
-      introMaxTimer = setTimeout(finishIntro, 30000);
-      introVideo.play().catch(finishIntro);
-    }
-  }
-
   /* ---------- Header ---------- */
   var header = document.querySelector('.site-header');
   function onScroll() {
@@ -74,19 +27,16 @@
     });
   }
 
-  /* ---------- Poster hydration + hover play ---------- */
+  /* ---------- Poster hydration ---------- */
   function hydrate(v) {
     if (v.dataset.poster && !v.poster) v.poster = v.dataset.poster;
   }
   document.querySelectorAll('video[data-poster]').forEach(hydrate);
 
-  document.querySelectorAll('.hover-play').forEach(function (el) {
-    var v = el.tagName === 'VIDEO' ? el : el.querySelector('video');
-    if (!v) return;
-    var card = v.closest('.wcard, .sel, .svc, .lcard, .tst, .reel') || el;
-
-    // Colour only while the clip is actually running — keeps the black & white
-    // thumbnail treatment working on touch, where there is no hover.
+  /* Video playback is on card click only (via lightbox) — no auto-play on hover or scroll */
+  document.querySelectorAll('video').forEach(function (v) {
+    var card = v.closest('.wcard, .sel, .svc, .lcard, .tst, .reel');
+    if (!card) return;
     v.addEventListener('play', function () {
       v.classList.add('playing');
       card.classList.add('is-playing');
@@ -97,50 +47,7 @@
         card.classList.remove('is-playing');
       });
     });
-    card.addEventListener('mouseenter', function () {
-      if (!v.src && v.dataset.src) v.src = v.dataset.src;
-      v.play().catch(function () {});
-    });
-    card.addEventListener('mouseleave', function () {
-      v.pause();
-      try { v.currentTime = 0; } catch (e) {}
-    });
   });
-
-  /* ---------- Dwell autoplay ----------
-     The poster is designed key art worth looking at, so a card that stays in
-     view holds its thumbnail for a beat before the clip takes over. Hovering
-     still starts it immediately via .hover-play above. */
-  var DWELL_MS = 5000;
-  if ('IntersectionObserver' in window) {
-    var dwellTimers = new WeakMap();
-    var dObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        var v = en.target;
-        if (en.isIntersecting) {
-          if (dwellTimers.has(v)) return;
-          dwellTimers.set(v, setTimeout(function () {
-            // preload="none" means the src alone buffers nothing, so ask for
-            // the data and start as soon as there is enough of it.
-            if (!v.src && v.dataset.src) v.src = v.dataset.src;
-            v.preload = 'auto';
-            var start = function () { v.play().catch(function () {}); };
-            if (v.readyState >= 2) {
-              start();
-            } else {
-              v.addEventListener('canplay', start, { once: true });
-              v.load();
-            }
-          }, DWELL_MS));
-        } else {
-          clearTimeout(dwellTimers.get(v));
-          dwellTimers.delete(v);
-          v.pause();
-        }
-      });
-    }, { threshold: 0.6 });
-    document.querySelectorAll('video.dwell-play').forEach(function (v) { dObs.observe(v); });
-  }
 
   /* ---------- Lazy video sources (work grid) ---------- */
   if ('IntersectionObserver' in window) {
@@ -304,40 +211,71 @@
     render();
   }
 
-  /* ---------- Contact form ---------- */
+  /* ---------- Contact form (AJAX with mailto fallback) ---------- */
   var form = document.getElementById('contact-form');
+  var feedback = document.getElementById('form-feedback');
   if (form) {
-    form.addEventListener('submit', async function (e) {
+    function openMailto(d) {
+      var body =
+        'Name / Brand: ' + (d.get('name') || '') + '\n' +
+        'Email: ' + (d.get('email') || '') + '\n' +
+        'Company / Brand: ' + (d.get('company') || '') + '\n' +
+        'Project Type: ' + (d.get('type') || '') + '\n\n' +
+        'The Thought:\n' + (d.get('message') || '');
+      window.location.href =
+        'mailto:office@anavafilms.com?subject=' +
+        encodeURIComponent('New Thought from ' + (d.get('name') || 'Website')) +
+        '&body=' + encodeURIComponent(body);
+    }
+
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
       var d = new FormData(form);
-      var button = form.querySelector('button[type="submit"]');
-      var feedback = document.getElementById('form-feedback');
-      if (button.disabled) return;
-      button.disabled = true;
-      feedback.hidden = false;
-      feedback.textContent = 'Sending your thought…';
-      try {
-        var response = await fetch('https://formsubmit.co/ajax/office@anavafilms.com', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            _subject: 'New Production Inquiry: ' + d.get('name'),
-            _template: 'table', _captcha: 'false',
-            name: d.get('name'), email: d.get('email'),
-            company: d.get('company'), type: d.get('type'), message: d.get('message')
-          })
-        });
-        var result = await response.json();
-        if (!response.ok || !(result.success === true || result.success === 'true')) {
-          throw new Error('Submission was not confirmed');
-        }
-        form.reset();
-        feedback.textContent = 'Thought received! We’ll get back to you soon.';
-      } catch (error) {
-        feedback.textContent = 'We couldn’t confirm delivery. Please try again or email office@anavafilms.com. Your message is still here.';
-      } finally {
-        button.disabled = false;
+      var actionUrl = form.getAttribute('action');
+
+      if (!actionUrl || actionUrl.startsWith('mailto:')) {
+        openMailto(d);
+        return;
       }
+
+      var button = form.querySelector('button[type="submit"]');
+      var originalText = button ? button.innerHTML : '';
+      if (button) {
+        button.disabled = true;
+        button.innerHTML = 'Sending...';
+      }
+
+      fetch(actionUrl, {
+        method: 'POST',
+        body: d,
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          form.reset();
+          if (feedback) {
+            feedback.hidden = false;
+            feedback.style.color = '#34d399';
+            feedback.textContent = 'Thank you! Your message has been sent. We’ll be in touch shortly.';
+          } else {
+            alert('Thank you! Your message has been sent. We’ll be in touch shortly.');
+          }
+        } else {
+          throw new Error('Submission returned error');
+        }
+      }).catch(function () {
+        // Fallback to mailto if fetch encounters issue or network error
+        if (feedback) {
+          feedback.hidden = false;
+          feedback.style.color = '#f59e0b';
+          feedback.textContent = 'Opening your email client to send message...';
+        }
+        openMailto(d);
+      }).finally(function () {
+        if (button) {
+          button.disabled = false;
+          button.innerHTML = originalText;
+        }
+      });
     });
   }
 

@@ -274,7 +274,7 @@ def page_work():
     <div class="hero-split-grid">
       <div class="hero-copy reveal">
         <span class="eyebrow">Our Work</span>
-        <h1 class="display">Ideas that make<br>an <span class="o">impact.</span></h1>
+        <h1 class="display">IDEAS THAT<br>MAKE<br>AN <span class="o">IMPACT.</span></h1>
         <p class="lead">A selection of films, campaigns, content and collaborations we've created with brands, artists and partners.</p>
         <div class="hero-actions">
           <button class="play-btn" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Lenskart &middot; Hustler &mdash; Keep Hustling">{PLAY}<span class="pb-label">Watch Showreel</span></button>
@@ -282,7 +282,7 @@ def page_work():
         </div>
       </div>
       <div class="hero-media reveal" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Lenskart &middot; Hustler &mdash; Keep Hustling">
-        <video data-src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" poster="assets/images/thumbnails/hustler-work-hero.png" muted loop playsinline preload="none" class="hover-play"></video>
+        <video data-src="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" poster="assets/images/thumbnails/lenskart-hustler.jpg" muted loop playsinline preload="none" class="hover-play"></video>
         <div class="hero-script script">Thoughts<br>Ideas<br>People<br>Films</div>
         <div class="hero-tag">Hustler &mdash; Keep Hustling</div>
       </div>
@@ -310,7 +310,7 @@ def page_work():
       <div class="cta-band-inner">
         <div>
           <span class="eyebrow">Have a project in mind?</span>
-          <h2 class="display-sm">Let's create<br>something <span class="o">great.</span></h2>
+          <h2 class="display-sm">Let's create<br><span class="o">something great.</span></h2>
         </div>
         <div>
           <p class="lead">Whether it's a thought, a product or a full brief, we're ready to turn it into something powerful.</p>
@@ -380,10 +380,6 @@ def page_home():
         title="ANAVA FILMS — Give us a thought. We'll give you ideas to shoot.",
         desc="Anava Films is an agency-cum-production house in Mumbai and Delhi taking a thought all the way to the final frame."
     ) + header("index.html") + f"""
-<dialog class="site-intro" id="site-intro" aria-label="Welcome to Anava Films">
-  <video id="site-intro-video" muted playsinline preload="none" aria-label="Anava Films intro"></video>
-  <button type="button" class="intro-skip" autofocus>Skip intro &rarr;</button>
-</dialog>
 <section class="hero-cine">
   <div class="hero-cine-bg">
     <img src="assets/images/home-hero-studio.jpg" alt="" fetchpriority="high">
@@ -395,13 +391,23 @@ def page_home():
       <span class="hl-1">Give us a thought.</span>
       <span class="hl-2">We&rsquo;ll give you <em>ideas to shoot.</em></span>
     </h1>
-    <p class="hero-cine-lead"><strong>Anava Films is an agency-cum-production house bringing ideas to life &mdash; from first thought to final frame.</strong> We work across creative direction, ideation, scripting, production and post-production, turning brand briefs into compelling films, campaigns and content.</p>
+    <p class="hero-cine-lead">
+      <span class="hero-line hero-line-1"><strong>Anava Films is an agency-cum-production house bringing ideas to life &mdash; from first thought to final frame.</strong></span>
+      <span class="hero-line hero-line-2">We work across creative direction, ideation, scripting, production and post-production, turning brand briefs into compelling films,</span>
+      <span class="hero-line hero-line-3">campaigns and content.</span>
+    </p>
     <div class="hero-cine-actions">
-      <button type="button" class="btn btn-primary" data-lightbox="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-caption="Anava Films &middot; Showreel">Watch Showreel {PLAY}</button>
+      <a href="contact.html" class="btn btn-primary">Let&rsquo;s talk {DIAG}</a>
     </div>
   </div>
 
-  <div class="hero-foot hero-foot-spacer" aria-hidden="true"></div>
+  <div class="hero-foot" aria-hidden="true">
+    <div class="hero-foot-mid">
+      <span class="rail-mouse"><i></i></span>
+      <span class="hero-foot-scroll">Scroll to explore</span>
+      <span class="hero-foot-line"></span>
+    </div>
+  </div>
 
   <div class="trusted">
     <div class="trusted-inner">
@@ -431,9 +437,9 @@ def page_home():
 
 <section class="section">
   <div class="container">
+    <div class="sec-label" style="margin-bottom:28px"><span class="sec-num">01</span><span class="sec-name">Our Philosophy</span></div>
     <div class="phil-grid">
       <div class="reveal">
-        <div class="sec-label" style="margin-bottom:24px"><span class="sec-num">01</span><span class="sec-name">Our Philosophy</span></div>
         <span class="eyebrow">Thinkers Who Make</span>
         <h2 class="phil-title">Thinkers who <span class="o">make.</span></h2>
         <p class="lead">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn't get lost between the people who think them and the people who make them.</p>
@@ -464,7 +470,7 @@ def page_home():
       <div class="sec-label"><span class="sec-num">03</span><span class="sec-name">What We Do</span></div>
     </div>
     <div class="wwd-teaser-head reveal">
-      <h2 class="display-sm oneline oneline-long">From idea to <span class="o">impact.</span></h2>
+      <h2 class="display-sm oneline oneline-long">FROM IDEA TO <span class="o">IMPACT.</span></h2>
       <p class="lead teaser-oneline">End-to-end creative solutions that turn ideas into powerful visual stories.</p>
     </div>
     <div class="tri reveal">
@@ -483,6 +489,9 @@ def page_home():
         <h3>Finish</h3>
         <p>Edit, sound, colour, VFX and mastering.</p>
       </article>
+    </div>
+    <div class="tri-foot reveal">
+      <a href="what-we-do.html" class="btn btn-ghost">See what we do {ARROW.replace('<svg','<svg width="15" height="15"')}</a>
     </div>
   </div>
 </section>
@@ -735,7 +744,7 @@ def page_wwd():
     </div>
     <div class="wwd-grid">
       <div class="reveal">
-        <div class="phil-media finish-feature" data-lightbox="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-caption="From cut to craft">
+        <div class="phil-media" style="aspect-ratio:16/10" data-lightbox="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-caption="From cut to craft">
           <video data-src="assets/media/behind-the-scenes/BTS Colour Grading.mp4" poster="assets/images/posters/bts-colour-grading.jpg" muted loop playsinline preload="none" class="hover-play"></video>
           <div class="phil-side">From Cut<br>To Craft</div>
         </div>
@@ -822,8 +831,8 @@ def page_contact():
           <div class="form-foot">
             <button class="btn btn-primary" type="submit">Send Message <span class="circ">{ARROW}</span></button>
             <p class="form-note">We usually respond within 24 hours.</p>
-            <p id="form-feedback" role="status" aria-live="polite" hidden></p>
           </div>
+          <p id="form-feedback" role="status" aria-live="polite" hidden style="margin-top:14px;font-size:15px;"></p>
         </form>
       </div>
 
@@ -944,7 +953,7 @@ def page_about():
         <p class="lead">We like to get involved earlier &mdash; sometimes it's a complete brief, sometimes a problem, sometimes a product, and sometimes just a thought.</p>
       </div>
       <div class="hero-media shift-right reveal">
-        <img src="assets/images/about-production-team.png" alt="Anava Films production team working on set">
+        <img src="assets/images/about-director-onset.png" alt="Anava Films directing team on set">
         <div class="hero-script script">Thinkers<br>Who<br>Make</div>
         <div class="hero-tag">Mumbai &mdash; Delhi</div>
       </div>

@@ -33,7 +33,6 @@ function copyRecursiveSync(src, dest) {
 const filesToCopy = [
   'index.html',
   'about.html',
-  'what-we-do.html',
   'work.html',
   'process.html',
   'testimonials.html',

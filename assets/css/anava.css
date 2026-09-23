@@ -475,15 +475,18 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
   justify-content:center;align-items:center;overflow:hidden;
   padding:calc(var(--header-h) + 18px) 0 0;
 }
-.hero-cine-bg{position:absolute;inset:0;z-index:0}
+.hero-cine-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-cine-bg img,.hero-cine-bg video{width:100%;height:100%;object-fit:cover}
-/* BTS footage runs brighter and cooler than the studio still; pull it down
-   to the same low-key, warm-ish mood so the headline keeps its contrast. */
-.hero-cine-video{
-  position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease);
-  filter:brightness(.62) saturate(.8) sepia(.12);
+/* Parallax: the still is a quarter taller than the hero so anava.js can
+   drift it down at 0.25x the scroll speed without ever showing an edge.
+   Transform-driven rather than background-attachment:fixed, which iOS
+   Safari ignores. */
+.hero-cine-bg img[data-parallax]{
+  position:absolute;left:0;top:0;height:125%;will-change:transform;
 }
-.hero-cine-video.is-on{opacity:1}
+@media (prefers-reduced-motion:reduce){
+  .hero-cine-bg img[data-parallax]{height:100%;will-change:auto}
+}
 .hero-cine-bg::after{
   content:"";position:absolute;inset:0;
   background:
@@ -1566,3 +1569,9 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .footer-desc{font-size:1.02rem}
   .footer-link{font-size:.98rem}
 }
+
+/* ---- About: What We Do (merged in from its old page) ---- */
+/* Linked as about#what-we-do from the footer, the home teaser and the old
+   /what-we-do redirect; clear the fixed header when it lands. */
+#what-we-do{scroll-margin-top:calc(var(--header-h) + 10px)}
+.wwd-intro{padding-bottom:0}

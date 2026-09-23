@@ -190,8 +190,8 @@
     var empty = document.getElementById('work-empty');
     // Batch size per tab, each a whole number of rows for that tab's grid
     // (see .work-grid[data-view] in anava.css): TVCs and BTS run four across
-    // on a desktop and two on a tablet, Vertical three across, Photoshoots
-    // four across. The film tabs open short on purpose — the reader chooses
+    // on a desktop and two on a tablet; Vertical and Photoshoots run four
+    // across (two on a phone). The film tabs open short on purpose — the reader chooses
     // to go deeper rather than being handed everything at once.
     var PAGE = { tvc: 8, bts: 8, vertical: 12, photoshoots: 12 };
     function pageSize(filter) { return PAGE[filter] || 15; }

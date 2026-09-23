@@ -375,7 +375,7 @@ def page_home():
     ) + header("index.html") + f"""
 <section class="hero-cine">
   <div class="hero-cine-bg">
-    <img src="assets/images/home-hero-studio.jpg" alt="" fetchpriority="high" data-parallax>
+    <img src="assets/images/home-hero-stage.jpg" alt="" fetchpriority="high" data-parallax>
   </div>
 
   <div class="container hero-cine-inner">

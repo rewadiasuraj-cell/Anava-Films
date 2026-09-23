@@ -63,7 +63,7 @@
   }
 
   /* ---------- Home hero parallax ----------
-     The still drifts down at a quarter of the scroll speed, so it falls
+     The still drifts down at a fifth of the scroll speed, so it falls
      behind the headline as the page moves. It stops updating once the hero
      has scrolled out of view. */
   var para = document.querySelector('img[data-parallax]');
@@ -74,7 +74,7 @@
     var paraMove = function () {
       paraTick = false;
       var y = Math.min(window.scrollY, paraHost.offsetHeight);
-      para.style.transform = 'translate3d(0,' + (y * 0.25).toFixed(1) + 'px,0)';
+      para.style.transform = 'translate3d(0,' + (y * 0.2).toFixed(1) + 'px,0)';
     };
     window.addEventListener('scroll', function () {
       if (!paraTick) { paraTick = true; requestAnimationFrame(paraMove); }

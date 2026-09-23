@@ -390,7 +390,6 @@ def page_home():
       <span class="hero-line hero-line-3">campaigns and content.</span>
     </p>
     <div class="hero-cine-actions">
-      <a href="contact.html" class="btn btn-primary">Let&rsquo;s talk {DIAG}</a>
       <a href="work.html" class="btn btn-ghost">View our work {ARROW}</a>
     </div>
   </div>

@@ -82,12 +82,6 @@ def footer(active):
             <li><a href="work.html" class="footer-link">Work</a></li>
             <li><a href="what-we-do.html" class="footer-link">What We Do</a></li>
             <li><a href="process.html" class="footer-link">Process</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <div class="footer-col-title">COMPANY</div>
-          <ul class="footer-links">
             <li><a href="about.html" class="footer-link">About Us</a></li>
             <li><a href="contact.html" class="footer-link">Contact Us</a></li>
           </ul>
@@ -139,7 +133,7 @@ def footer(active):
 
     <div class="footer-bottom">
       <div>&copy; <span data-year></span> ANAVA FILMS. All rights reserved.</div>
-      <div>ANAVA FILMS &mdash; Give us a thought. We&rsquo;ll give you ideas to shoot.</div>
+      <div>Mumbai &mdash; Delhi</div>
     </div>
   </div>
 </footer>
@@ -329,7 +323,8 @@ def page_home():
     sel = [
         ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/thumbnails/lenskart-hustler.jpg", "Lenskart", "Hustler — Keep Hustling"),
         ("assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4", "assets/images/thumbnails/john-jacobs.jpg", "John Jacobs", "An Eye For Love"),
-        ("assets/media/tvc/Sunil Shetty AD Landscape.mp4", "assets/images/thumbnails/sunil-shetty-film.jpg", "Sunil Shetty", "The Action Icon"),
+        # Sunil Shetty already fronts the showreel above, so this slot shows a different film
+        ("assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4", "assets/images/thumbnails/tira-beauty-kareena.jpg", "Tira Beauty", "Kareena Kapoor"),
         ("assets/media/tvc/CHANDAK FILM.mp4", "assets/images/thumbnails/chandak-film.jpg", "Chandak Group", "Promise of Elegance"),
     ]
     sel_html = "".join(f"""
@@ -383,6 +378,9 @@ def page_home():
 <section class="hero-cine">
   <div class="hero-cine-bg">
     <img src="assets/images/home-hero-studio.jpg" alt="" fetchpriority="high">
+    <!-- Fades in over the still once it is actually playing; anava.js skips it
+         for reduced-motion and data-saver visitors, who keep the still. -->
+    <video class="hero-cine-video" data-hero-src="assets/media/home-hero-loop.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
   </div>
 
   <div class="container hero-cine-inner">
@@ -398,6 +396,7 @@ def page_home():
     </p>
     <div class="hero-cine-actions">
       <a href="contact.html" class="btn btn-primary">Let&rsquo;s talk {DIAG}</a>
+      <a href="work.html" class="btn btn-ghost">View our work {ARROW}</a>
     </div>
   </div>
 
@@ -505,6 +504,7 @@ def page_home():
     <div class="proc-rail reveal">
       <div class="proc-track">{rail}</div>
     </div>
+    <p class="proc-hint" aria-hidden="true">Swipe to see all 7 steps {ARROW}</p>
   </div>
 </section>
 

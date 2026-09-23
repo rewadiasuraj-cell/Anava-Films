@@ -477,6 +477,13 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 }
 .hero-cine-bg{position:absolute;inset:0;z-index:0}
 .hero-cine-bg img,.hero-cine-bg video{width:100%;height:100%;object-fit:cover}
+/* BTS footage runs brighter and cooler than the studio still; pull it down
+   to the same low-key, warm-ish mood so the headline keeps its contrast. */
+.hero-cine-video{
+  position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease);
+  filter:brightness(.62) saturate(.8) sepia(.12);
+}
+.hero-cine-video.is-on{opacity:1}
 .hero-cine-bg::after{
   content:"";position:absolute;inset:0;
   background:
@@ -542,6 +549,12 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
   letter-spacing:0;text-transform:none;
 }
 .hero-cine-actions .btn svg{width:17px;height:17px;flex:none}
+/* The quieter second path, for visitors who want to see the work before talking */
+.hero-cine-actions .btn-ghost{
+  border-color:rgba(255,255,255,.34);background:rgba(8,8,8,.28);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+}
+.hero-cine-actions .btn-ghost svg{width:15px;height:15px}
 
 /* ---- Hero foot: place, scroll cue, and the four verbs ---- */
 /* The foot takes the slack so it hugs the logo strip, rather than the strip
@@ -972,6 +985,14 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 }
 .proc-note{font-size:.74rem;line-height:1.45;color:var(--muted);padding-right:8px}
 .proc-step:hover .proc-num{color:var(--accent)}
+/* Only shown where the rail turns into a sideways scroller (phones) */
+.proc-hint{
+  display:none;align-items:center;gap:8px;margin:18px 0 0;
+  font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+}
+.proc-hint svg{width:13px;height:13px;color:var(--accent);animation:hintNudge 1.6s var(--ease) infinite}
+@keyframes hintNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@media (prefers-reduced-motion:reduce){.proc-hint svg{animation:none}}
 
 /* ==========================================================================
    WHAT WE DO
@@ -1184,7 +1205,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
 }
 .footer-logo img:hover{transform:scale(1.03)}
 .footer-desc{font-size:.95rem;color:var(--muted);max-width:380px;line-height:1.6}
-.footer-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.footer-nav{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
 .footer-col-title{
   font-family:var(--font-display);font-size:.8rem;font-weight:600;letter-spacing:.04em;
   color:var(--accent);margin-bottom:1.2rem;
@@ -1454,6 +1475,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .proc-track::before{right:auto;width:max(100%,1200px)}
   .proc-step{flex:0 0 46%;scroll-snap-align:start;padding-right:18px}
   .proc-note{font-size:.72rem}
+  .proc-hint{display:flex}
   .cta-band{min-height:auto}
   .cta-actions{gap:10px}
   .cta-actions .btn{width:auto;flex:0 0 auto}
@@ -1480,12 +1502,12 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .reel-right{display:none}
   .hero-full{min-height:88svh}
   .hero-foot{position:static;margin-top:36px}
-  .hero-cine{min-height:92svh;padding-top:calc(var(--header-h) + 40px)}
-  .hero-cine .hero-cine-inner{padding-top:clamp(20px,3.6vh,42px);padding-bottom:30px}
-  /* The three-part foot has no room beside the copy on a phone: keep the
-     scroll cue, drop the place line and the verb row. */
-  .hero-foot{padding-bottom:18px}
-  .hero-foot-line{height:38px}
+  /* On a phone the hero sizes to its copy instead of the screen, so the
+     "Trusted by" logos land in the first view rather than a band of empty
+     plate. The marquee peeking in is the scroll cue, so the mouse icon goes. */
+  .hero-cine{min-height:0;padding-top:calc(var(--header-h) + 34px)}
+  .hero-cine .hero-cine-inner{padding-top:clamp(20px,3.6vh,42px);padding-bottom:44px}
+  .hero-foot{display:none}
   .hero-eyebrow{font-size:.54rem;letter-spacing:.18em;margin-bottom:16px}
   /* A full-width pill reads as a bar across the plate; keep it hugging its
      own label so it sits as a button under the headline. */
@@ -1499,10 +1521,11 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .hero-cine-title .hl-2{font-size:clamp(1.62rem,8vw,2.6rem);line-height:1.18}
   .hero-cine-lead{margin-top:18px;max-width:100%;font-size:.82rem;line-height:1.6}
   /* A full-width pill dominates the phone hero — keep the CTA compact */
-  .hero-cine-actions{margin-top:26px;gap:14px}
+  .hero-cine-actions{margin-top:26px;gap:10px;flex-wrap:nowrap}
   .hero-cine-actions .btn{
-    padding:8px 8px 8px 22px;font-size:.72rem;letter-spacing:.07em;gap:9px;
+    min-width:0;padding:11px 20px;font-size:.8rem;letter-spacing:.01em;gap:8px;
   }
+  .hero-cine-actions .btn svg{width:13px;height:13px}
   .hero-cine-actions .btn .circ{width:26px;height:26px}
   .hero-cine-actions .btn .circ svg{width:12px;height:12px}
   .hero-reel-link{justify-content:center}
@@ -1516,4 +1539,30 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .wcard-title{font-size:.9rem}
   .step-num{font-size:1.45rem}
   .step-title{font-size:1.2rem}
+}
+
+/* ==========================================================================
+   LARGE DESKTOP (1080p and up)
+   The container grows to 1620px here, but the copy was still sized for a
+   laptop and read small against it. One step up for body text only; the
+   iPad (1080px) and laptops keep the sizes above.
+   ========================================================================== */
+@media (min-width:1600px){
+  .lead{font-size:1.14rem;max-width:56ch}
+  .phil-title{font-size:3.6rem}
+  .phil-grid{gap:72px}
+  .hero-eyebrow{font-size:.7rem}
+  .hero-cine-lead{font-size:1.1rem;max-width:1200px}
+  .hero-cine-actions .btn{font-size:1.04rem}
+  .sec-num{font-size:1.05rem}
+  .sec-name{font-size:.82rem}
+  .tri-item h3{font-size:2.8rem}
+  .tri-item p{font-size:1.04rem}
+  .tri-foot .btn,.cta-band.compact .btn{font-size:.9rem}
+  .cta-band.compact .lead{font-size:1.02rem}
+  .proc-num{font-size:1.35rem}
+  .proc-name{font-size:.98rem}
+  .proc-note{font-size:.88rem}
+  .footer-desc{font-size:1.02rem}
+  .footer-link{font-size:.98rem}
 }

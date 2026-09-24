@@ -585,17 +585,18 @@ def page_home():
   </div>
 </section>
 
-<section class="section phil2">
-  <div class="container">
-    <div class="sec-label phil2-label"><span class="sec-num">01</span><span class="sec-name">Our Philosophy</span></div>
-    <h2 class="phil2-title reveal">Thinkers Who <span class="o">Make.</span></h2>
-    <figure class="phil2-band reveal">
-      <div class="phil2-frame"><img src="assets/images/thinkers-band-4k.jpg" alt="Anava Films crew directing a scene on set" loading="lazy"></div>
-      <figcaption class="phil2-quote">You bring<br>the thought.</figcaption>
-    </figure>
-    <div class="phil2-copy reveal">
-      <p class="phil2-lead">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn&rsquo;t get lost between the people who think them and the people who make them.</p>
-      <a href="about.html" class="stays-link phil2-more">About Anava {DIAG}</a>
+<section class="phx" aria-labelledby="phx-title">
+  <picture class="phx-media">
+    <source media="(max-width:760px)" srcset="assets/images/thinkers-set-m.webp" type="image/webp">
+    <source srcset="assets/images/thinkers-set.webp" type="image/webp">
+    <img src="assets/images/thinkers-band-4k.jpg" alt="Anava Films crew directing a scene on set" width="3200" height="854" loading="lazy" decoding="async">
+  </picture>
+  <div class="container phx-inner">
+    <div class="phx-copy">
+      <p class="phx-eyebrow phx-in"><span class="phx-num">01</span><span class="phx-rule" aria-hidden="true"></span><span class="phx-name">Our Philosophy</span></p>
+      <h2 class="phx-title phx-in" id="phx-title">Thinkers<br class="phx-br"> Who <span class="o">Make.</span></h2>
+      <p class="phx-lead phx-in">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn&rsquo;t get lost between the people who think them and the people who make them.</p>
+      <a href="about.html" class="phx-cta phx-in">About Anava <span class="phx-arrow">{DIAG}</span></a>
     </div>
   </div>
 </section>

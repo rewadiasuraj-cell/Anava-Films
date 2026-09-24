@@ -264,20 +264,26 @@
     acts.forEach(function (a) { io.observe(a); });
   })();
 
-  /* ---------- Thinkers Who Make: a slow push-in (1.02 -> 1.00) as the set
-     rises to the middle of the screen, then it holds ---------- */
+  /* ---------- Thinkers Who Make: copy reveals in order when the section
+     arrives, and the set photo drifts 1.03 -> 1.06 across its pass ---------- */
   (function () {
-    var band = document.querySelector('.phil2-band');
-    if (!band || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var img = band.querySelector('img'), on = false, raf = 0;
+    var sec = document.querySelector('.phx');
+    if (!sec) return;
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (still || !('IntersectionObserver' in window)) { sec.classList.add('is-in'); return; }
+    sec.classList.add('phx-armed');
+    new IntersectionObserver(function (es, io) {
+      if (es[0].isIntersecting) { sec.classList.add('is-in'); io.disconnect(); }
+    }, { threshold: 0.3 }).observe(sec);
+    var img = sec.querySelector('.phx-media img'), on = false, raf = 0;
     function tick() {
       raf = 0;
-      var r = band.getBoundingClientRect(), vh = window.innerHeight;
-      var k = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2);   // -1..1 across the pass
-      img.style.setProperty('--ps', (1 + 0.02 * Math.max(0, Math.min(1, k))).toFixed(4));
+      var r = sec.getBoundingClientRect(), vh = window.innerHeight;
+      var k = Math.max(0, Math.min(1, (vh - r.top) / (vh + r.height)));   // 0..1 across the pass
+      img.style.setProperty('--ps', (1.03 + 0.03 * k).toFixed(4));
     }
     function onScroll() { if (on && !raf) raf = requestAnimationFrame(tick); }
-    new IntersectionObserver(function (es) { on = es[0].isIntersecting; if (on) onScroll(); }).observe(band);
+    new IntersectionObserver(function (es) { on = es[0].isIntersecting; if (on) onScroll(); }).observe(sec);
     window.addEventListener('scroll', onScroll, { passive: true });
   })();
 
@@ -886,7 +892,7 @@
   }
 
   /* ---------- 2. collect reveal items and give each section a sequence ---------- */
-  var SKIP = '.work-hero, .hero-cine, .ww, .step, .pj, .pj-hero, .cap, .ct-hero, .ct-main, .intro, .site-header, .main-footer, .lightbox, .case';
+  var SKIP = '.work-hero, .hero-cine, .phx, .ww, .step, .pj, .pj-hero, .cap, .ct-hero, .ct-main, .intro, .site-header, .main-footer, .lightbox, .case';
   var ROLES = [
     ['label', '.eyebrow, .sec-name, .stays-label, .approach-eyebrow, .pb-eyebrow'],
     ['heading', HEADINGS],

@@ -3306,3 +3306,18 @@ html.hero-go .hero-cine .hl-1 em{
 .wcard.has-art .wcard-info{justify-content:flex-end}
 .wcard.has-art::after{background:linear-gradient(0deg,rgba(6,6,6,.4) 0%,transparent 26%)}
 @media (max-width:760px){.wcard.has-art::after{background:linear-gradient(0deg,rgba(6,6,6,.45) 0%,transparent 28%)}}
+
+/* No glow on any button or CTA: flat brand fills, no orange halos or
+   drop-shadow blooms at rest, on hover or when pressed */
+.btn,.btn-primary,.btn-light,.btn-talk,.hero-cta,.wh-cta,
+.hero-split.centered .hero-actions .play-btn,.sw-play,.play-btn,.circ-arrow,
+.btn-primary:hover,.btn-light:hover,.btn-talk:hover,.hero-cta:hover,.wh-cta:hover,
+.btn-primary:focus-visible,.btn-light:focus-visible,.hero-cta:focus-visible,
+.btn-primary:active,.btn-light:active,
+.hero-split.centered .hero-actions .play-btn:hover,.hero-split.centered .hero-actions .play-btn:active,
+.sw-play:hover,.play-btn:hover{
+  box-shadow:none!important;filter:none!important;
+}
+.hero-cine .hero-cine-actions .hero-cta{box-shadow:inset 0 1px 0 rgba(255,255,255,.16)!important}
+.btn-talk .circ-mark,.btn-talk:hover .circ-mark,.btn-talk:focus-visible .circ-mark,
+.wh-stage .wh-film-play,.wh-stage:hover .wh-film-play{box-shadow:none!important}

@@ -363,7 +363,7 @@ def page_work():
       <div class="cta-band-inner">
         <div>
           <span class="eyebrow">Have a project in mind?</span>
-          <h2 class="display-sm">Let's create<br><span class="o">something great.</span></h2>
+          <h2 class="display-sm">Let's Create<br><span class="o">Something Great.</span></h2>
         </div>
         <div>
           <p class="lead">Whether it's a thought, a product or a full brief, we're ready to turn it into something powerful.</p>
@@ -536,7 +536,7 @@ def page_home():
       <img src="assets/images/people-onset.jpg" alt="The Anava Films crew setting up a shot on location" loading="lazy">
       <div class="pb-copy">
         <p class="pb-eyebrow">The People Behind the Work</p>
-        <h2 class="pb-title">Thinkers and makers.<br><span class="o">One crew.</span></h2>
+        <h2 class="pb-title">Thinkers and Makers.<br><span class="o">One Crew.</span></h2>
         <p class="pb-text">The same team that shapes the idea is on set to shoot it.</p>
         <span class="pb-link">Meet the team {DIAG}</span>
       </div>
@@ -592,7 +592,7 @@ def page_home():
     <div class="cta-band compact home-cta reveal">
       <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt="" loading="lazy"></div>
       <div class="cta-band-inner">
-        <h2 class="display-sm">Have a thought worth <span class="o">shooting?</span></h2>
+        <h2 class="display-sm">Have a Thought Worth <span class="o">Shooting?</span></h2>
         <a href="contact.html" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
       </div>
     </div>
@@ -660,7 +660,7 @@ def page_process():
     <div class="hero-split-grid">
       <div class="hero-copy reveal">
         <span class="eyebrow">Our Process</span>
-        <h1 class="display">From thought<br>to <span class="o">screen.</span></h1>
+        <h1 class="display">From Thought<br>to <span class="o">Screen.</span></h1>
         <p class="lead">A clear, collaborative and creative process that takes you from a simple thought to a powerful final film.</p>
         <div class="hero-actions">
           <button class="play-btn" data-lightbox="assets/media/behind-the-scenes/BTS Think.mp4" data-caption="Our Process &middot; Anava Films">{PLAY}<span class="pb-label">Watch Our Process</span></button>
@@ -689,7 +689,7 @@ def page_process():
       <div class="cta-band-inner">
         <div>
           <span class="eyebrow">The Result</span>
-          <h2 class="display-sm">A thought goes in.<br>A film <span class="o">comes out.</span></h2>
+          <h2 class="display-sm">A Thought Goes In.<br>A Film <span class="o">Comes Out.</span></h2>
         </div>
         <div>
           <p class="lead">Whether it's a product, a problem or a simple thought, we take it all the way — from idea to execution, under one roof.</p>
@@ -768,7 +768,7 @@ def wwd_sections():
     <div class="sec-head">
       <div class="sec-label"><span class="sec-name">What We Do</span></div>
     </div>
-    <h2 class="display-sm oneline oneline-long">From idea to <span class="o">impact.</span></h2>
+    <h2 class="display-sm oneline oneline-long">From Idea to <span class="o">Impact.</span></h2>
     <p class="lead" style="margin-top:14px">End-to-end creative solutions that turn ideas into powerful visual stories &mdash; think, make and finish, all under one roof.</p>
   </div>
 </section>
@@ -790,7 +790,7 @@ def wwd_sections():
   <div class="container">
     <div class="wwd-head reveal">
       <span class="eyebrow eyebrow-muted">02</span>
-      <h2 class="wwd-title">Then we <span class="o">make it real.</span></h2>
+      <h2 class="wwd-title">Then We <span class="o">Make It Real.</span></h2>
       <p class="lead">From pre-production to the final shot, we bring together the right people, technology and craft to turn ideas into powerful visual experiences.</p>
     </div>
     <div class="wwd-cards wwd-cards-4 reveal">{svc_cards(make)}</div>
@@ -801,7 +801,7 @@ def wwd_sections():
   <div class="container">
     <div class="wwd-head reveal">
       <span class="eyebrow eyebrow-muted">03</span>
-      <h2 class="wwd-title">The shoot ends.<br>The story <span class="o">doesn't.</span></h2>
+      <h2 class="wwd-title">The Shoot Ends.<br>The Story <span class="o">Doesn't.</span></h2>
       <p class="lead">Post is where everything comes together. We refine, enhance and elevate the film so it not only looks great, but feels right.</p>
     </div>
     <div class="wwd-grid">
@@ -828,7 +828,7 @@ def page_contact():
     <div class="hero-split-grid">
       <div class="hero-copy reveal">
         <span class="eyebrow">Contact</span>
-        <h1 class="display">Got a <span class="o">thought?</span></h1>
+        <h1 class="display">Got a <span class="o">Thought?</span></h1>
         <p class="lead">You don't need a finished brief. You don't need a script. You don't even need to know exactly what the film should look like. Just give us the thought — we'll bring the ideas.</p>
         <div class="hero-actions">
           <a href="#form" class="btn btn-light">Let's Make It <span class="circ">{ARROW}</span></a>
@@ -875,7 +875,7 @@ def page_contact():
 
       <div class="reveal">
         <span class="eyebrow">Get in touch</span>
-        <h2 class="display-sm" style="margin:14px 0 4px">Let's <span class="o">connect.</span></h2>
+        <h2 class="display-sm" style="margin:14px 0 4px">Let's <span class="o">Connect.</span></h2>
         <div class="contact-rows">
           <div class="crow">
             <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
@@ -900,7 +900,7 @@ def page_contact():
   <div class="container">
     <div class="loc-head reveal">
       <span class="eyebrow">Visit us</span>
-      <h2 class="display-sm oneline">Our <span class="o">locations.</span></h2>
+      <h2 class="display-sm oneline">Our <span class="o">Locations.</span></h2>
       <p class="lead">Come say hello. We're in Mumbai and Delhi.</p>
     </div>
     <div class="loc-grid reveal">
@@ -931,7 +931,7 @@ def page_contact():
       <div class="cta-band-inner">
         <div>
           <span class="eyebrow">Let's build together</span>
-          <h2 class="display-sm display-2line"><span>Great ideas start with</span><span>a <em class="o">conversation.</em></span></h2>
+          <h2 class="display-sm display-2line"><span>Great Ideas Start With</span><span>a <em class="o">Conversation.</em></span></h2>
         </div>
         <div>
           <p class="lead">Have a thought? Let's talk. We'll give you ideas to shoot.</p>
@@ -966,7 +966,7 @@ def page_about():
     <div class="hero-split-grid">
       <div class="hero-copy reveal">
         <span class="eyebrow">About &middot; Identity &amp; Ethos</span>
-        <h1 class="display display-2line"><span>We are not just a</span><span class="o">production house.</span></h1>
+        <h1 class="display display-2line"><span>We Are Not Just a</span><span class="o">Production House.</span></h1>
         <p class="standfirst">A production house gets an idea and figures out how to make it.</p>
         <p class="lead">We like to get involved earlier &mdash; sometimes it's a complete brief, sometimes a problem, sometimes a product, and sometimes just a thought.</p>
       </div>
@@ -1002,7 +1002,7 @@ def page_about():
     <div class="sec-head">
       <div class="sec-label"><span class="sec-name">Leadership</span></div>
     </div>
-    <h2 class="display-sm oneline oneline-long">The people behind <span class="o">Anava.</span></h2>
+    <h2 class="display-sm oneline oneline-long">The People Behind <span class="o">Anava.</span></h2>
     <p class="lead" style="margin-top:14px">Creative vision paired with structured production execution.</p>
     <div class="people reveal">
       <article class="person">
@@ -1035,7 +1035,7 @@ def page_about():
       <div class="cta-band-inner">
         <div>
           <span class="eyebrow">Let's create together</span>
-          <h2 class="display-sm">Want to collaborate<br>with <span class="o">Anava?</span></h2>
+          <h2 class="display-sm">Want to Collaborate<br>With <span class="o">Anava?</span></h2>
         </div>
         <div>
           <p class="lead">Give us a thought. We'll give you ideas to shoot.</p>

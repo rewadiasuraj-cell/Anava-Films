@@ -415,7 +415,7 @@ def page_home():
     # in from the left. Each opens its case study.
     sel = [
         ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/thumbnails/lenskart-hustler.jpg", "Lenskart", "Hustlr"),
-        ("assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4", "assets/images/thumbnails/tira-beauty-kareena.jpg", "Tira Beauty", "Kareena Kapoor"),
+        ("assets/media/tvc/LK AQUALENS FILM.mp4", "assets/images/thumbnails/lk-aqualens-film.jpg", "Lenskart Aqualens", "Digital TVC"),
     ]
     sel_html = "".join(f"""
       <figure class="sw-card sw-card-{i + 1}">

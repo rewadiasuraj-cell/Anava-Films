@@ -184,6 +184,11 @@
     aObs.observe(arc.parentNode);
   }
 
+  /* ---------- Home approach steps: tap/click reveals each step's image ---------- */
+  document.querySelectorAll('[data-reveal-steps] > li').forEach(function (li) {
+    li.addEventListener('click', function () { li.classList.toggle('is-open'); });
+  });
+
   /* ---------- Lightbox ---------- */
   var lb = document.getElementById('lightbox');
   var lbBody = document.getElementById('lightbox-body');

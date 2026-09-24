@@ -1984,7 +1984,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
 .approach-num b{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,2.6vw,2.9rem);color:var(--accent);line-height:1}
 .approach-num span{color:var(--muted);font-size:1rem}
 .approach-steps h3{margin:18px 0 0;font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,2.8vw,3.1rem);letter-spacing:-.03em;line-height:1}
-.approach-steps li > p:last-child{margin:22px 0 0;max-width:30ch;color:rgba(255,255,255,.78);font-size:clamp(.95rem,1.1vw,1.15rem);line-height:1.6}
+.approach-steps li > .approach-desc{margin:22px 0 0;max-width:30ch;color:rgba(255,255,255,.78);font-size:clamp(.95rem,1.1vw,1.15rem);line-height:1.6}
 .approach-steps li:hover .approach-dot{background:var(--accent)}
 .approach-dot{transition:background .3s var(--ease)}
 
@@ -1999,7 +1999,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .approach-steps li{padding:0 0 0 46px}
   .approach-steps li .approach-dot{top:1px}
   .approach-steps h3{margin-top:10px}
-  .approach-steps li > p:last-child{margin-top:12px;max-width:none}
+  .approach-steps li > .approach-desc{margin-top:12px;max-width:none}
 }
 
 /* ==========================================================================
@@ -2242,3 +2242,45 @@ html.intro-on,html.intro-on body{overflow:hidden}
 .stays-label::before,
 .phil2-label .sec-name::before{content:none;display:none}
 .phil2-label .sec-name{padding-left:0}
+
+/* ---- Approach steps: an image per step, revealed on hover / tap ----
+   Each step reserves a quiet frame so nothing jumps. On hover (mouse) or tap
+   (touch, anava.js toggles .is-open) the still dissolves in: opacity and blur
+   clear together while it settles from a slight zoom, the frame's hint fades
+   out, and the step's dot fills. */
+.approach-steps li{cursor:pointer}
+.approach-media{
+  position:relative;margin:26px 0 0;max-width:420px;aspect-ratio:16/10;overflow:hidden;
+  border-radius:14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.08);
+  transition:border-color .6s var(--ease);
+}
+.approach-media img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;filter:blur(14px) saturate(.4);transform:scale(1.14);
+  transition:opacity .9s var(--ease),filter 1.1s var(--ease),transform 1.6s cubic-bezier(.2,.7,.2,1);
+}
+.approach-hint{
+  position:absolute;inset:0;display:grid;place-items:center;z-index:1;
+  font-size:.66rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.34);
+  transition:opacity .5s var(--ease);
+}
+.approach-hint::before{
+  content:"";position:absolute;width:44px;height:44px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.14);animation:hintPulse 2.6s ease-in-out infinite;
+}
+@keyframes hintPulse{0%,100%{transform:scale(1.35);opacity:.5}50%{transform:scale(1.7);opacity:0}}
+.approach-steps li.is-open .approach-media img{opacity:1;filter:none;transform:none}
+.approach-steps li.is-open .approach-hint{opacity:0}
+.approach-steps li.is-open .approach-media{border-color:rgba(240,82,35,.45)}
+.approach-steps li.is-open .approach-dot{background:var(--accent)}
+@media (hover:hover){
+  .approach-steps li:hover .approach-media img{opacity:1;filter:none;transform:none}
+  .approach-steps li:hover .approach-hint{opacity:0}
+  .approach-steps li:hover .approach-media{border-color:rgba(240,82,35,.45)}
+}
+@media (hover:none){.approach-hint{font-size:0}.approach-hint::after{content:"Tap";font-size:.66rem}}
+@media (max-width:900px){.approach-media{margin-top:18px;max-width:none}}
+@media (prefers-reduced-motion:reduce){
+  .approach-media img{transform:none;filter:none;transition:opacity .4s}
+  .approach-hint::before{animation:none}
+}

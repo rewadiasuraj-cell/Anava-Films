@@ -527,24 +527,36 @@ def page_home():
     </div>
   </div>
   <div class="container">
-    <ol class="approach-steps reveal">
+    <ol class="approach-steps reveal" data-reveal-steps>
       <li>
         <span class="approach-dot" aria-hidden="true"></span>
         <p class="approach-num"><b>01</b> <span>Concept</span></p>
         <h3>Think</h3>
-        <p>Creative Direction, Ideation &amp; Concept Development, Scripting, Creative Consulting.</p>
+        <p class="approach-desc">Creative Direction, Ideation &amp; Concept Development, Scripting, Creative Consulting.</p>
+        <figure class="approach-media" aria-hidden="true">
+          <span class="approach-hint">View</span>
+          <img src="assets/images/approach-think.jpg" alt="Writer sketching storyboards and a script at a desk" loading="lazy">
+        </figure>
       </li>
       <li>
         <span class="approach-dot" aria-hidden="true"></span>
         <p class="approach-num"><b>02</b> <span>Shoot</span></p>
         <h3>Make</h3>
-        <p>Production, Direction, Casting (Domestic &amp; International), Art Direction &amp; Production Design.</p>
+        <p class="approach-desc">Production, Direction, Casting (Domestic &amp; International), Art Direction &amp; Production Design.</p>
+        <figure class="approach-media" aria-hidden="true">
+          <span class="approach-hint">View</span>
+          <img src="assets/images/approach-make.jpg" alt="Film crew and cameras on a lit set" loading="lazy">
+        </figure>
       </li>
       <li>
         <span class="approach-dot" aria-hidden="true"></span>
         <p class="approach-num"><b>03</b> <span>Post</span></p>
         <h3>Finish</h3>
-        <p>Editing, VFX, Sound Design, Color Grading, Motion Graphics &amp; Final Delivery.</p>
+        <p class="approach-desc">Editing, VFX, Sound Design, Color Grading, Motion Graphics &amp; Final Delivery.</p>
+        <figure class="approach-media" aria-hidden="true">
+          <span class="approach-hint">View</span>
+          <img src="assets/images/approach-finish.jpg" alt="Editor grading a film across three monitors" loading="lazy">
+        </figure>
       </li>
     </ol>
   </div>

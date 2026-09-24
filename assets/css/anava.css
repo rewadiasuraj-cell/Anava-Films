@@ -2941,3 +2941,14 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .work-grid[data-view="events"]{grid-template-columns:repeat(4,1fr);gap:18px}
   .work-grid[data-view="events"] .wcard-title{font-size:.9rem}
 }
+/* Hero lead: three fixed lines (claim, services, outcome). Desktop holds
+   each on one line; smaller screens let each line wrap on its own. */
+.hero-cine-lead .hero-line{display:block;white-space:normal}
+.hero-cine-lead .hero-line-2,.hero-cine-lead .hero-line-3{margin-top:.1em}
+@media (min-width:900px){
+  .hero-cine-lead .hero-line{white-space:nowrap;width:max-content;position:relative;left:50%;transform:translateX(-50%)}
+}
+@media (min-width:761px) and (max-width:899px){.hero-cine-lead{max-width:100%;font-size:.9rem}}
+/* Collaborate CTA: "Want to Collaborate With" on one line, "Anava?" below */
+.cta-collab .cc-1{white-space:nowrap}
+@media (max-width:760px){.cta-collab .cc-1{white-space:normal}}

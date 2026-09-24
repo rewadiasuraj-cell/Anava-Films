@@ -2664,3 +2664,14 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .pill-ink{transition:none}
   .wh-stage:hover .wh-poster,.wh-stage:hover .wh-video{transform:none}
 }
+
+/* ---- Intro on phones: fit the whole 9:16 film to the visible screen ----
+   iOS Safari sized the fixed overlay to the large viewport (under its
+   toolbars) and the <video> fell back to its intrinsic height, so the film
+   sat low with a black band on top and its lower part under the toolbar.
+   The overlay now tracks the dynamic viewport, the video fills it
+   absolutely, and in portrait it is contained (never cropped); the film's
+   own dark edges blend into the black surround. */
+.intro{top:0;left:0;right:auto;bottom:auto;width:100%;height:100vh;height:100dvh}
+.intro-video{position:absolute;inset:0;width:100%;height:100%}
+@media (orientation:portrait){.intro-video{object-fit:contain;object-position:50% 50%}}

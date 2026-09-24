@@ -717,41 +717,63 @@ def page_process():
          ["The final film", "Formats", "Screens", "Platforms", "Audiences"],
          "assets/images/process/process_step_7.jpg", "From our screen<br>to the world."),
     ]
+    # The journey: one pinned composition on wide screens (see anava.js,
+    # "Process journey"); each stage is a real <article> in DOM order, with
+    # its own frame, so narrow screens and reduced motion simply stack them.
+    KEYS = ["thought", "idea", "deck", "pre", "shoot", "post", "delivery"]
+    REFS = ["assets/images/approach-think.jpg", "assets/images/thinkers-band-4k.jpg",
+            "assets/images/approach-camera.jpg"]
+    nav = "".join(
+        f'<li><button type="button" data-go="{i}" aria-label="Go to stage {n}: {label}"><b>{n}</b><span>{label}</span></button></li>'
+        for i, (n, label, *_rest) in enumerate(steps))
     rows = ""
-    for n, label, title, body, chips, img, cap in steps:
-        chip_html = ""
-        if chips:
-            chip_html = '<div class="chip-row">' + "".join(f'<span class="chip">{c}</span>' for c in chips) + "</div>"
+    for i, (n, label, title, body, chips, img, cap) in enumerate(steps):
+        key = KEYS[i]
+        items = "".join(f'<li style="--k:{k}"><span>{c}</span><i aria-hidden="true"></i></li>'
+                        for k, c in enumerate(chips))
+        extra = ""
+        if key == "idea":
+            extra = '<div class="pj-refs" aria-hidden="true">' + "".join(
+                f'<span class="pj-ref pj-ref-{k}"><img src="{r}" alt="" loading="lazy" decoding="async"></span>'
+                for k, r in enumerate(REFS)) + "</div>"
+        elif key == "pre":
+            extra = '<ul class="pj-edge" aria-hidden="true">' + "".join(
+                f'<li style="--k:{k}">{c}</li>' for k, c in enumerate(chips)) + "</ul>"
+        elif key == "shoot":
+            extra = '<span class="pj-rec" aria-hidden="true"><i></i>REC</span>'
+        load = 'fetchpriority="high"' if i == 0 else 'loading="lazy"'
         rows += f"""
-    <div class="step reveal">
-      <div class="step-num">{n}</div>
-      <div class="step-dot">
-        <div class="step-label">{label}</div>
-      </div>
-      <div>
-        <h3 class="step-title">{title}</h3>
-        <p class="step-body" style="padding-top:12px">{body}</p>
-        {chip_html}
-      </div>
-      <div class="step-media"><img src="{img}" alt="{label}"><div class="caption">{cap}</div></div>
-    </div>"""
+      <article class="pj-stage pj-{key}{' is-on' if i == 0 else ''}" id="stage-{n}" data-i="{i}" style="--n:{len(chips)}" aria-labelledby="stage-{n}-t">
+        <div class="pj-text">
+          <p class="pj-num"><b>{n}</b><span>{label}</span></p>
+          <h2 class="pj-title" id="stage-{n}-t">{title}</h2>
+          <p class="pj-body">{body}</p>
+          <ul class="pj-items" aria-label="{label}: what it covers">{items}</ul>
+        </div>
+        <figure class="pj-fig">
+          <img src="{img}" alt="{label}" {load} decoding="async">
+          <figcaption class="pj-cap">{cap}</figcaption>
+          {extra}
+        </figure>
+      </article>"""
 
     return HEAD.format(**ASSET_V,
         title="The Process — From Thought to Screen — ANAVA FILMS",
         desc="A clear, collaborative creative process that takes you from a simple thought to a powerful final film."
     ) + header("process.html") + f"""
-<section class="hero-split centered">
+<section class="hero-split centered pj-hero">
   <div class="container">
     <div class="hero-split-grid">
-      <div class="hero-copy reveal">
+      <div class="hero-copy">
         <span class="eyebrow">Our Process</span>
         <h1 class="display">From Thought<br>to <span class="o">Screen.</span></h1>
         <p class="lead">A clear, collaborative and creative process that takes you from a simple thought to a powerful final film.</p>
         <div class="hero-actions">
           <button class="play-btn" data-lightbox="assets/media/behind-the-scenes/BTS Think.mp4" data-caption="Our Process &middot; Anava Films">{PLAY}<span class="pb-label">Watch Our Process</span></button>
         </div>
+        <a class="pj-cue" href="#process-journey"><span>Scroll to Follow the Process</span><i aria-hidden="true"></i></a>
       </div>
-      <div class="hero-media reveal">
+      <div class="hero-media">
         <img src="assets/images/process/projector_banner.jpg" alt="Anava Films process">
         <div class="hero-script script">Thoughts<br>Ideas<br>Plans<br>Action</div>
         <div class="hero-tag">Same thinking. Different perspective.</div>
@@ -760,9 +782,14 @@ def page_process():
   </div>
 </section>
 
-<section style="padding-bottom:80px">
-  <div class="container">
-    <div class="steps">{rows}</div>
+<section class="pj" id="process-journey" aria-label="The process, stage by stage">
+  <div class="pj-pin">
+    <nav class="pj-nav" aria-label="Process stages">
+      <ol>{nav}</ol>
+      <span class="pj-rail" aria-hidden="true"><i></i></span>
+    </nav>
+    <div class="pj-stages">{rows}
+    </div>
   </div>
 </section>
 

@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/anava.css?v=73ec224339">
+<link rel="stylesheet" href="assets/css/anava.css?v=86a043eebf">
 <script>document.documentElement.classList.add('m-js')</script>
-<script defer src="assets/js/anava.js?v=04e46eeeac"></script>
+<script defer src="assets/js/anava.js?v=e2d23ae39c"></script>
 </head>
 <body>
 
@@ -26,18 +26,19 @@
   </div>
 </header>
 
-<section class="hero-split centered">
+<section class="hero-split centered pj-hero">
   <div class="container">
     <div class="hero-split-grid">
-      <div class="hero-copy reveal">
+      <div class="hero-copy">
         <span class="eyebrow">Our Process</span>
         <h1 class="display">From Thought<br>to <span class="o">Screen.</span></h1>
         <p class="lead">A clear, collaborative and creative process that takes you from a simple thought to a powerful final film.</p>
         <div class="hero-actions">
           <button class="play-btn" data-lightbox="assets/media/behind-the-scenes/BTS Think.mp4" data-caption="Our Process &middot; Anava Films"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg><span class="pb-label">Watch Our Process</span></button>
         </div>
+        <a class="pj-cue" href="#process-journey"><span>Scroll to Follow the Process</span><i aria-hidden="true"></i></a>
       </div>
-      <div class="hero-media reveal">
+      <div class="hero-media">
         <img src="assets/images/process/projector_banner.jpg" alt="Anava Films process">
         <div class="hero-script script">Thoughts<br>Ideas<br>Plans<br>Action</div>
         <div class="hero-tag">Same thinking. Different perspective.</div>
@@ -46,93 +47,105 @@
   </div>
 </section>
 
-<section style="padding-bottom:80px">
-  <div class="container">
-    <div class="steps">
-    <div class="step reveal">
-      <div class="step-num">01</div>
-      <div class="step-dot">
-        <div class="step-label">Thought</div>
-      </div>
-      <div>
-        <h3 class="step-title">Start With a Thought.</h3>
-        <p class="step-body" style="padding-top:12px">You bring a thought, brief, product or problem. It could be a single line or a fully detailed idea. We listen, understand and ask the right questions.</p>
-        <div class="chip-row"><span class="chip">Brief</span><span class="chip">Product</span><span class="chip">Problem</span><span class="chip">Listening</span><span class="chip">The right questions</span></div>
-      </div>
-      <div class="step-media"><img src="assets/images/process/process_step_1.jpg" alt="Thought"><div class="caption">Your thought.<br>Our starting point.</div></div>
+<section class="pj" id="process-journey" aria-label="The process, stage by stage">
+  <div class="pj-pin">
+    <nav class="pj-nav" aria-label="Process stages">
+      <ol><li><button type="button" data-go="0" aria-label="Go to stage 01: Thought"><b>01</b><span>Thought</span></button></li><li><button type="button" data-go="1" aria-label="Go to stage 02: Idea"><b>02</b><span>Idea</span></button></li><li><button type="button" data-go="2" aria-label="Go to stage 03: Deck"><b>03</b><span>Deck</span></button></li><li><button type="button" data-go="3" aria-label="Go to stage 04: Pre-production"><b>04</b><span>Pre-production</span></button></li><li><button type="button" data-go="4" aria-label="Go to stage 05: Shoot"><b>05</b><span>Shoot</span></button></li><li><button type="button" data-go="5" aria-label="Go to stage 06: Post-production"><b>06</b><span>Post-production</span></button></li><li><button type="button" data-go="6" aria-label="Go to stage 07: Delivery"><b>07</b><span>Delivery</span></button></li></ol>
+      <span class="pj-rail" aria-hidden="true"><i></i></span>
+    </nav>
+    <div class="pj-stages">
+      <article class="pj-stage pj-thought is-on" id="stage-01" data-i="0" style="--n:5" aria-labelledby="stage-01-t">
+        <div class="pj-text">
+          <p class="pj-num"><b>01</b><span>Thought</span></p>
+          <h2 class="pj-title" id="stage-01-t">Start With a Thought.</h2>
+          <p class="pj-body">You bring a thought, brief, product or problem. It could be a single line or a fully detailed idea. We listen, understand and ask the right questions.</p>
+          <ul class="pj-items" aria-label="Thought: what it covers"><li style="--k:0"><span>Brief</span><i aria-hidden="true"></i></li><li style="--k:1"><span>Product</span><i aria-hidden="true"></i></li><li style="--k:2"><span>Problem</span><i aria-hidden="true"></i></li><li style="--k:3"><span>Listening</span><i aria-hidden="true"></i></li><li style="--k:4"><span>The right questions</span><i aria-hidden="true"></i></li></ul>
+        </div>
+        <figure class="pj-fig">
+          <img src="assets/images/process/process_step_1.jpg" alt="Thought" fetchpriority="high" decoding="async">
+          <figcaption class="pj-cap">Your thought.<br>Our starting point.</figcaption>
+          
+        </figure>
+      </article>
+      <article class="pj-stage pj-idea" id="stage-02" data-i="1" style="--n:4" aria-labelledby="stage-02-t">
+        <div class="pj-text">
+          <p class="pj-num"><b>02</b><span>Idea</span></p>
+          <h2 class="pj-title" id="stage-02-t">Turn It Into an Idea.</h2>
+          <p class="pj-body">We explore creative territories, find the right angle and develop a strong, relevant and exciting idea.</p>
+          <ul class="pj-items" aria-label="Idea: what it covers"><li style="--k:0"><span>Creative territories</span><i aria-hidden="true"></i></li><li style="--k:1"><span>The right angle</span><i aria-hidden="true"></i></li><li style="--k:2"><span>Idea development</span><i aria-hidden="true"></i></li><li style="--k:3"><span>Relevance</span><i aria-hidden="true"></i></li></ul>
+        </div>
+        <figure class="pj-fig">
+          <img src="assets/images/process/process_step_2.jpg" alt="Idea" loading="lazy" decoding="async">
+          <figcaption class="pj-cap">Ideas<br>that make<br>sense.</figcaption>
+          <div class="pj-refs" aria-hidden="true"><span class="pj-ref pj-ref-0"><img src="assets/images/approach-think.jpg" alt="" loading="lazy" decoding="async"></span><span class="pj-ref pj-ref-1"><img src="assets/images/thinkers-band-4k.jpg" alt="" loading="lazy" decoding="async"></span><span class="pj-ref pj-ref-2"><img src="assets/images/approach-camera.jpg" alt="" loading="lazy" decoding="async"></span></div>
+        </figure>
+      </article>
+      <article class="pj-stage pj-deck" id="stage-03" data-i="2" style="--n:8" aria-labelledby="stage-03-t">
+        <div class="pj-text">
+          <p class="pj-num"><b>03</b><span>Deck</span></p>
+          <h2 class="pj-title" id="stage-03-t">Shape the Story.</h2>
+          <p class="pj-body">The idea becomes a visual world — a clear creative deck with mood, references, tone, treatment and execution plan.</p>
+          <ul class="pj-items" aria-label="Deck: what it covers"><li style="--k:0"><span>Concept</span><i aria-hidden="true"></i></li><li style="--k:1"><span>Treatment</span><i aria-hidden="true"></i></li><li style="--k:2"><span>Script</span><i aria-hidden="true"></i></li><li style="--k:3"><span>Mood</span><i aria-hidden="true"></i></li><li style="--k:4"><span>Visual references</span><i aria-hidden="true"></i></li><li style="--k:5"><span>Casting</span><i aria-hidden="true"></i></li><li style="--k:6"><span>Locations</span><i aria-hidden="true"></i></li><li style="--k:7"><span>Execution approach</span><i aria-hidden="true"></i></li></ul>
+        </div>
+        <figure class="pj-fig">
+          <img src="assets/images/process/process_step_3.jpg" alt="Deck" loading="lazy" decoding="async">
+          <figcaption class="pj-cap">A clear vision<br>before we roll.</figcaption>
+          
+        </figure>
+      </article>
+      <article class="pj-stage pj-pre" id="stage-04" data-i="3" style="--n:9" aria-labelledby="stage-04-t">
+        <div class="pj-text">
+          <p class="pj-num"><b>04</b><span>Pre-production</span></p>
+          <h2 class="pj-title" id="stage-04-t">Plan Every Detail.</h2>
+          <p class="pj-body">We plan everything required to execute the idea, so shoot day runs smoothly.</p>
+          <ul class="pj-items" aria-label="Pre-production: what it covers"><li style="--k:0"><span>Crew</span><i aria-hidden="true"></i></li><li style="--k:1"><span>Casting</span><i aria-hidden="true"></i></li><li style="--k:2"><span>Locations</span><i aria-hidden="true"></i></li><li style="--k:3"><span>Art direction</span><i aria-hidden="true"></i></li><li style="--k:4"><span>Styling</span><i aria-hidden="true"></i></li><li style="--k:5"><span>Production design</span><i aria-hidden="true"></i></li><li style="--k:6"><span>Schedule</span><i aria-hidden="true"></i></li><li style="--k:7"><span>Equipment</span><i aria-hidden="true"></i></li><li style="--k:8"><span>Logistics</span><i aria-hidden="true"></i></li></ul>
+        </div>
+        <figure class="pj-fig">
+          <img src="assets/images/process/process_step_4.jpg" alt="Pre-production" loading="lazy" decoding="async">
+          <figcaption class="pj-cap">Prepared<br>for a stronger<br>tomorrow.</figcaption>
+          <ul class="pj-edge" aria-hidden="true"><li style="--k:0">Crew</li><li style="--k:1">Casting</li><li style="--k:2">Locations</li><li style="--k:3">Art direction</li><li style="--k:4">Styling</li><li style="--k:5">Production design</li><li style="--k:6">Schedule</li><li style="--k:7">Equipment</li><li style="--k:8">Logistics</li></ul>
+        </figure>
+      </article>
+      <article class="pj-stage pj-shoot" id="stage-05" data-i="4" style="--n:7" aria-labelledby="stage-05-t">
+        <div class="pj-text">
+          <p class="pj-num"><b>05</b><span>Shoot</span></p>
+          <h2 class="pj-title" id="stage-05-t">Bring It to Life.</h2>
+          <p class="pj-body">The deck becomes reality. We direct, collaborate with talent and capture the moments that make the story real.</p>
+          <ul class="pj-items" aria-label="Shoot: what it covers"><li style="--k:0"><span>Direction</span><i aria-hidden="true"></i></li><li style="--k:1"><span>Talent</span><i aria-hidden="true"></i></li><li style="--k:2"><span>Camera</span><i aria-hidden="true"></i></li><li style="--k:3"><span>Lighting</span><i aria-hidden="true"></i></li><li style="--k:4"><span>Sound</span><i aria-hidden="true"></i></li><li style="--k:5"><span>On-set art</span><i aria-hidden="true"></i></li><li style="--k:6"><span>The moments</span><i aria-hidden="true"></i></li></ul>
+        </div>
+        <figure class="pj-fig">
+          <img src="assets/images/process/process_step_5.jpg" alt="Shoot" loading="lazy" decoding="async">
+          <figcaption class="pj-cap">Ideas<br>in action.</figcaption>
+          <span class="pj-rec" aria-hidden="true"><i></i>REC</span>
+        </figure>
+      </article>
+      <article class="pj-stage pj-post" id="stage-06" data-i="5" style="--n:7" aria-labelledby="stage-06-t">
+        <div class="pj-text">
+          <p class="pj-num"><b>06</b><span>Post-production</span></p>
+          <h2 class="pj-title" id="stage-06-t">Polish the Story.</h2>
+          <p class="pj-body">Editing, sound design, music, colour grading, VFX and final finishing — where the film truly comes together.</p>
+          <ul class="pj-items" aria-label="Post-production: what it covers"><li style="--k:0"><span>Offline Edit</span><i aria-hidden="true"></i></li><li style="--k:1"><span>Music</span><i aria-hidden="true"></i></li><li style="--k:2"><span>Sound</span><i aria-hidden="true"></i></li><li style="--k:3"><span>Colour</span><i aria-hidden="true"></i></li><li style="--k:4"><span>Online</span><i aria-hidden="true"></i></li><li style="--k:5"><span>VFX</span><i aria-hidden="true"></i></li><li style="--k:6"><span>Mastering</span><i aria-hidden="true"></i></li></ul>
+        </div>
+        <figure class="pj-fig">
+          <img src="assets/images/process/process_step_6.jpg" alt="Post-production" loading="lazy" decoding="async">
+          <figcaption class="pj-cap">Where<br>good gets<br>great.</figcaption>
+          
+        </figure>
+      </article>
+      <article class="pj-stage pj-delivery" id="stage-07" data-i="6" style="--n:5" aria-labelledby="stage-07-t">
+        <div class="pj-text">
+          <p class="pj-num"><b>07</b><span>Delivery</span></p>
+          <h2 class="pj-title" id="stage-07-t">A Film That Works.</h2>
+          <p class="pj-body">The final idea reaches the audience, ready to make an impact across screens, platforms and audiences.</p>
+          <ul class="pj-items" aria-label="Delivery: what it covers"><li style="--k:0"><span>The final film</span><i aria-hidden="true"></i></li><li style="--k:1"><span>Formats</span><i aria-hidden="true"></i></li><li style="--k:2"><span>Screens</span><i aria-hidden="true"></i></li><li style="--k:3"><span>Platforms</span><i aria-hidden="true"></i></li><li style="--k:4"><span>Audiences</span><i aria-hidden="true"></i></li></ul>
+        </div>
+        <figure class="pj-fig">
+          <img src="assets/images/process/process_step_7.jpg" alt="Delivery" loading="lazy" decoding="async">
+          <figcaption class="pj-cap">From our screen<br>to the world.</figcaption>
+          
+        </figure>
+      </article>
     </div>
-    <div class="step reveal">
-      <div class="step-num">02</div>
-      <div class="step-dot">
-        <div class="step-label">Idea</div>
-      </div>
-      <div>
-        <h3 class="step-title">Turn It Into an Idea.</h3>
-        <p class="step-body" style="padding-top:12px">We explore creative territories, find the right angle and develop a strong, relevant and exciting idea.</p>
-        <div class="chip-row"><span class="chip">Creative territories</span><span class="chip">The right angle</span><span class="chip">Idea development</span><span class="chip">Relevance</span></div>
-      </div>
-      <div class="step-media"><img src="assets/images/process/process_step_2.jpg" alt="Idea"><div class="caption">Ideas<br>that make<br>sense.</div></div>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">03</div>
-      <div class="step-dot">
-        <div class="step-label">Deck</div>
-      </div>
-      <div>
-        <h3 class="step-title">Shape the Story.</h3>
-        <p class="step-body" style="padding-top:12px">The idea becomes a visual world — a clear creative deck with mood, references, tone, treatment and execution plan.</p>
-        <div class="chip-row"><span class="chip">Concept</span><span class="chip">Treatment</span><span class="chip">Script</span><span class="chip">Mood</span><span class="chip">Visual references</span><span class="chip">Casting</span><span class="chip">Locations</span><span class="chip">Execution approach</span></div>
-      </div>
-      <div class="step-media"><img src="assets/images/process/process_step_3.jpg" alt="Deck"><div class="caption">A clear vision<br>before we roll.</div></div>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">04</div>
-      <div class="step-dot">
-        <div class="step-label">Pre-production</div>
-      </div>
-      <div>
-        <h3 class="step-title">Plan Every Detail.</h3>
-        <p class="step-body" style="padding-top:12px">We plan everything required to execute the idea, so shoot day runs smoothly.</p>
-        <div class="chip-row"><span class="chip">Crew</span><span class="chip">Casting</span><span class="chip">Locations</span><span class="chip">Art direction</span><span class="chip">Styling</span><span class="chip">Production design</span><span class="chip">Schedule</span><span class="chip">Equipment</span><span class="chip">Logistics</span></div>
-      </div>
-      <div class="step-media"><img src="assets/images/process/process_step_4.jpg" alt="Pre-production"><div class="caption">Prepared<br>for a stronger<br>tomorrow.</div></div>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">05</div>
-      <div class="step-dot">
-        <div class="step-label">Shoot</div>
-      </div>
-      <div>
-        <h3 class="step-title">Bring It to Life.</h3>
-        <p class="step-body" style="padding-top:12px">The deck becomes reality. We direct, collaborate with talent and capture the moments that make the story real.</p>
-        <div class="chip-row"><span class="chip">Direction</span><span class="chip">Talent</span><span class="chip">Camera</span><span class="chip">Lighting</span><span class="chip">Sound</span><span class="chip">On-set art</span><span class="chip">The moments</span></div>
-      </div>
-      <div class="step-media"><img src="assets/images/process/process_step_5.jpg" alt="Shoot"><div class="caption">Ideas<br>in action.</div></div>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">06</div>
-      <div class="step-dot">
-        <div class="step-label">Post-production</div>
-      </div>
-      <div>
-        <h3 class="step-title">Polish the Story.</h3>
-        <p class="step-body" style="padding-top:12px">Editing, sound design, music, colour grading, VFX and final finishing — where the film truly comes together.</p>
-        <div class="chip-row"><span class="chip">Offline Edit</span><span class="chip">Music</span><span class="chip">Sound</span><span class="chip">Colour</span><span class="chip">Online</span><span class="chip">VFX</span><span class="chip">Mastering</span></div>
-      </div>
-      <div class="step-media"><img src="assets/images/process/process_step_6.jpg" alt="Post-production"><div class="caption">Where<br>good gets<br>great.</div></div>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">07</div>
-      <div class="step-dot">
-        <div class="step-label">Delivery</div>
-      </div>
-      <div>
-        <h3 class="step-title">A Film That Works.</h3>
-        <p class="step-body" style="padding-top:12px">The final idea reaches the audience, ready to make an impact across screens, platforms and audiences.</p>
-        <div class="chip-row"><span class="chip">The final film</span><span class="chip">Formats</span><span class="chip">Screens</span><span class="chip">Platforms</span><span class="chip">Audiences</span></div>
-      </div>
-      <div class="step-media"><img src="assets/images/process/process_step_7.jpg" alt="Delivery"><div class="caption">From our screen<br>to the world.</div></div>
-    </div></div>
   </div>
 </section>
 

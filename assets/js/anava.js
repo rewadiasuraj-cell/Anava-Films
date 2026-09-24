@@ -809,7 +809,7 @@
   }
 
   /* ---------- 2. collect reveal items and give each section a sequence ---------- */
-  var SKIP = '.work-hero, .hero-cine, .ww, .step, .intro, .site-header, .main-footer, .lightbox, .case';
+  var SKIP = '.work-hero, .hero-cine, .ww, .step, .pj, .pj-hero, .intro, .site-header, .main-footer, .lightbox, .case';
   var ROLES = [
     ['label', '.eyebrow, .sec-name, .stays-label, .approach-eyebrow, .pb-eyebrow'],
     ['heading', HEADINGS],
@@ -1489,4 +1489,164 @@
       stop(); if (ro) ro.disconnect(); if (io) io.disconnect();
     });
   });
+})();
+
+/* ==========================================================================
+   Process journey — one composition the page scrolls through.
+   Wide screens: the section is tall (about 0.8 viewport per stage) and its
+   inner frame is sticky, so the page keeps scrolling normally while the
+   frame stays put. Scroll position alone drives everything: which stage is
+   on, how far its content has unfolded (number, title, body, then its
+   items one by one), the slow push-in on its frame and the orange rail.
+   Phones, portrait tablets and reduced motion: the stages simply stack and
+   reveal as they enter, under a small sticky 01–07 indicator.
+   ========================================================================== */
+(function () {
+  'use strict';
+  var root = document.querySelector('.pj');
+  if (!root || !window.matchMedia) return;
+  var stages = Array.prototype.slice.call(root.querySelectorAll('.pj-stage'));
+  var navBtns = Array.prototype.slice.call(root.querySelectorAll('.pj-nav button'));
+  var rail = root.querySelector('.pj-rail i');
+  var N = stages.length;
+  if (!N) return;
+  var wideMq = window.matchMedia('(min-width: 1025px) and (min-height: 560px)');
+  var calmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var lists = stages.map(function (st) {
+    return {
+      items: Array.prototype.slice.call(st.querySelectorAll('.pj-items > li')),
+      edges: Array.prototype.slice.call(st.querySelectorAll('.pj-edge > li')),
+      shown: -1, r: 0, cur: -1
+    };
+  });
+  var mode = '', active = -1, raf = 0, near = true, io = null;
+
+  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+  function perStage() { return window.innerWidth < 1280 ? 0.62 : 0.78; }
+  function span() { return Math.max(1, root.offsetHeight - window.innerHeight); }
+  function progress() { return clamp(-root.getBoundingClientRect().top / span(), 0, 1); }
+
+  function setActive(i) {
+    if (i === active) return;
+    active = i;
+    stages.forEach(function (st, k) {
+      st.classList.toggle('is-on', k === i);
+      st.classList.toggle('is-past', k < i);
+    });
+    navBtns.forEach(function (b, k) {
+      b.classList.toggle('is-on', k === i);
+      b.classList.toggle('is-done', k < i);
+      if (k === i) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+    });
+    root.setAttribute('data-stage', stages[i].className.replace(/.*\bpj-(thought|idea|deck|pre|shoot|post|delivery)\b.*/, '$1'));
+    // warm the next frame before it is needed
+    var nx = stages[i + 1] && stages[i + 1].querySelector('.pj-fig img');
+    if (nx && nx.loading === 'lazy') nx.loading = 'eager';
+  }
+
+  // How much of stage i has unfolded at local progress t (0..1)
+  function unfold(i, t) {
+    var L = lists[i], st = stages[i];
+    var r = t < 0.1 ? 1 : t < 0.24 ? 2 : 3;
+    if (r !== L.r) { L.r = r; st.setAttribute('data-r', r); }
+    var n = L.items.length, a = 0.34, b = 0.84;
+    var f = n ? (t - a) / ((b - a) / n) : 0;              // items revealed, fractional
+    var shown = clamp(Math.floor(f) + 1, 0, n);
+    if (t < a) shown = 0;
+    if (shown !== L.shown) {
+      L.shown = shown;
+      for (var k = 0; k < n; k++) {
+        L.items[k].classList.toggle('is-in', k < shown);
+        L.items[k].classList.toggle('is-cur', k === shown - 1);
+        if (L.edges[k]) L.edges[k].classList.toggle('is-in', k < shown);
+      }
+    }
+    // the current item's own progress (post-production timeline fill)
+    if (shown > 0) L.items[shown - 1].style.setProperty('--f', clamp(f - (shown - 1), 0, 1).toFixed(3));
+    st.style.setProperty('--t', t.toFixed(3));
+  }
+
+  function update() {
+    raf = 0;
+    var p = progress();
+    if (rail) rail.style.transform = (mode === 'pin' ? 'scaleY(' : 'scaleX(') + p.toFixed(4) + ')';
+    if (mode !== 'pin') return;
+    var P = p * N, i = Math.min(N - 1, Math.floor(P));
+    setActive(i);
+    unfold(i, Math.min(1, P - i));
+  }
+  function onScroll() { if (near && !raf) raf = requestAnimationFrame(update); }
+
+  function reset() {
+    stages.forEach(function (st, k) {
+      st.classList.remove('is-seen', 'is-on', 'is-past');
+      st.removeAttribute('data-r');
+      st.style.removeProperty('--t');
+      lists[k].shown = -1; lists[k].r = 0;
+      lists[k].items.forEach(function (li) { li.classList.remove('is-in', 'is-cur'); li.style.removeProperty('--f'); });
+      lists[k].edges.forEach(function (li) { li.classList.remove('is-in'); });
+    });
+    active = -1;
+    if (io) { io.disconnect(); io = null; }
+  }
+
+  function setMode() {
+    var want = wideMq.matches && !calmMq.matches ? 'pin' : 'flow';
+    if (want !== mode) {
+      mode = want;
+      reset();
+      root.setAttribute('data-mode', mode);
+      if (mode === 'flow') flow();
+    }
+    if (mode === 'pin') root.style.setProperty('--pj-h', (100 + N * perStage() * 100).toFixed(0) + 'vh');
+    else root.style.removeProperty('--pj-h');
+    update();
+  }
+
+  // Stacked stages: each unfolds once as it arrives; the one in the middle
+  // of the screen lights its number in the indicator
+  function flow() {
+    if (!('IntersectionObserver' in window) || calmMq.matches) {
+      stages.forEach(function (st) { st.classList.add('is-seen'); });
+      lists.forEach(function (L) { L.items.forEach(function (li) { li.classList.add('is-in'); }); });
+    }
+    if (!('IntersectionObserver' in window)) return;
+    io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var k = +e.target.getAttribute('data-i');
+        if (e.intersectionRatio > 0 || e.rootBounds === null) {
+          e.target.classList.add('is-seen');
+          lists[k].items.forEach(function (li) { li.classList.add('is-in'); });
+        }
+      });
+    }, { rootMargin: '0px 0px -18% 0px' });
+    var mid = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) setActive(+e.target.getAttribute('data-i')); });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    stages.forEach(function (st) { io.observe(st); mid.observe(st); });
+    var d = io.disconnect.bind(io);
+    io.disconnect = function () { d(); mid.disconnect(); };
+  }
+
+  // 01–07: jump to a stage (landing once its title and copy are up)
+  navBtns.forEach(function (b, k) {
+    b.addEventListener('click', function () {
+      var hh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 78;
+      var top = root.getBoundingClientRect().top + window.pageYOffset;
+      var y = mode === 'pin' ? top + (k + 0.55) / N * span()
+        : stages[k].getBoundingClientRect().top + window.pageYOffset - hh - 64;
+      window.scrollTo({ top: Math.round(y), behavior: calmMq.matches ? 'auto' : 'smooth' });
+    });
+  });
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var rT = 0;
+  window.addEventListener('resize', function () { clearTimeout(rT); rT = setTimeout(setMode, 120); });
+  if (wideMq.addEventListener) { wideMq.addEventListener('change', setMode); calmMq.addEventListener('change', setMode); }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { near = es[0].isIntersecting; if (near) onScroll(); },
+      { rootMargin: '100px 0px' }).observe(root);
+  }
+  setMode();
 })();

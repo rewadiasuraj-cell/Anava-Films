@@ -3767,3 +3767,203 @@ html.hero-go .hero-cine .hl-1 em{
 .loc-top h3{text-transform:none;font-family:var(--font-body);font-weight:700;letter-spacing:-.03em}
 .loc-inner{padding:clamp(20px,2.4vw,34px)}
 .loc-link{min-height:44px}
+
+/* ==========================================================================
+   PROCESS — hero entrance and the scroll-driven journey (anava.js,
+   "Process journey"). data-mode="pin" (wide screens with motion): one
+   sticky composition; "flow" (phones, portrait tablets, reduced motion):
+   stacked stages under a sticky 01–07 indicator.
+   ========================================================================== */
+
+/* ---- Hero: label, headline, line, then the scroll cue ---- */
+@keyframes pjIn{from{opacity:0;transform:translate3d(0,18px,0);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+@keyframes pjMask{from{clip-path:inset(0 0 0 100%);opacity:.4}to{clip-path:inset(0 0 0 0);opacity:1}}
+.pj-hero .eyebrow{animation:pjIn .7s cubic-bezier(.22,1,.36,1) .1s backwards}
+.pj-hero .display{animation:pjIn .9s cubic-bezier(.22,1,.36,1) .28s backwards}
+.pj-hero .lead{animation:pjIn .8s cubic-bezier(.22,1,.36,1) .62s backwards}
+.pj-hero .hero-actions{animation:pjIn .7s cubic-bezier(.22,1,.36,1) .82s backwards}
+.pj-hero .hero-media{animation:pjMask 1.4s cubic-bezier(.22,1,.36,1) .35s backwards}
+.pj-cue{display:inline-flex;align-items:center;gap:14px;margin-top:34px;min-height:44px;
+  font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);
+  animation:pjIn .8s cubic-bezier(.22,1,.36,1) 1.25s backwards;transition:color .3s ease}
+.pj-cue:hover,.pj-cue:focus-visible{color:#fff}
+.pj-cue i{position:relative;display:block;width:1px;height:40px;background:rgba(255,255,255,.18);overflow:hidden;order:-1}
+.pj-cue i::after{content:"";position:absolute;left:0;top:0;width:1px;height:14px;background:var(--accent);animation:pjDrop 2.4s cubic-bezier(.45,0,.2,1) 2s infinite}
+@keyframes pjDrop{0%{transform:translateY(-14px)}60%,100%{transform:translateY(40px)}}
+
+/* ---- Shared stage type ---- */
+.pj{position:relative;background:#050505;color:#fff}
+.pj-num{display:flex;align-items:baseline;gap:14px;margin:0}
+.pj-num b{font-size:.95rem;font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums}
+.pj-num span{font-size:.7rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.pj-title{margin:14px 0 0;font-family:var(--font-body);font-weight:700;letter-spacing:-.04em;line-height:1;
+  font-size:clamp(2.2rem,3.6vw,4.2rem);color:#fff;text-wrap:balance}
+.pj-body{margin:18px 0 0;max-width:40ch;font-size:clamp(.95rem,1.05vw,1.1rem);line-height:1.65;color:rgba(255,255,255,.72)}
+.pj-items{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px}
+.pj-items li{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.pj-items li i{display:none}
+.pj-fig{position:relative;margin:0;overflow:hidden;border-radius:4px;background:#0b0b0b}
+.pj-fig img{width:100%;height:100%;object-fit:cover;display:block}
+.pj-fig::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.55),rgba(0,0,0,0) 40%)}
+.pj-cap{position:absolute;right:18px;bottom:16px;z-index:2;text-align:right;font-size:.58rem;letter-spacing:.2em;line-height:1.9;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.pj-refs,.pj-edge,.pj-rec{display:none}
+
+/* ---- Flow (default): stacked stages, sticky horizontal indicator ---- */
+.pj{padding:30px 0 90px}
+.pj-nav{position:sticky;top:calc(var(--header-h) - 4px);z-index:30;background:#050505;padding:6px 0 0}
+.pj-nav ol{list-style:none;margin:0 auto;padding:0 20px;max-width:var(--container);display:flex;justify-content:space-between}
+.pj-nav button{background:none;border:0;padding:0;cursor:pointer;color:rgba(255,255,255,.4);min-width:44px;min-height:44px;
+  font:inherit;font-size:.8rem;font-weight:600;font-variant-numeric:tabular-nums;transition:color .4s ease}
+.pj-nav button span{display:none}
+.pj-nav button.is-done{color:rgba(255,255,255,.72)}
+.pj-nav button.is-on{color:var(--accent)}
+.pj-nav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.pj-rail{display:block;height:1px;background:rgba(255,255,255,.12);max-width:var(--container);margin:0 auto}
+.pj-rail i{display:block;height:100%;background:var(--accent);transform-origin:0 50%;transform:scaleX(0)}
+.pj-stages{max-width:var(--container);margin:0 auto;padding:0 28px}
+.pj-stage{display:flex;flex-direction:column;padding-top:clamp(56px,9vw,90px)}
+.pj-fig{order:-1;aspect-ratio:16/10;margin-bottom:24px}
+.pj-stage .pj-text > *{transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.pj[data-mode="flow"] .pj-stage:not(.is-seen) .pj-text > *{opacity:0;transform:translate3d(0,16px,0)}
+.pj[data-mode="flow"] .pj-stage:not(.is-seen) .pj-fig{opacity:0;transform:scale(1.02)}
+.pj-fig{transition:opacity .9s cubic-bezier(.22,1,.36,1),transform 1.2s cubic-bezier(.22,1,.36,1)}
+.pj-stage .pj-title{transition-delay:.06s}.pj-stage .pj-body{transition-delay:.14s}.pj-stage .pj-items{transition-delay:.22s}
+@media (min-width:681px) and (max-width:1024px){
+  .pj-stages{padding:0 28px}
+  .pj-fig{aspect-ratio:16/9}
+}
+@media (max-width:760px){
+  .pj-stages{padding:0 20px}
+  .pj-title{font-size:2rem}
+  .pj-body{font-size:.9rem}
+}
+
+/* ---- Pin (wide screens with motion): one anchored composition ---- */
+.pj[data-mode="pin"]{height:var(--pj-h,640vh);padding:0}
+.pj[data-mode="pin"] .pj-pin{position:sticky;top:0;height:100vh;overflow:hidden;isolation:isolate}
+/* the room's light changes with the stage; orange stays the only colour */
+.pj[data-mode="pin"] .pj-pin::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0;
+  background:radial-gradient(60% 70% at 30% 60%,rgba(143,38,12,.22),rgba(18,6,4,.1) 55%,transparent);transition:opacity 1.4s ease}
+.pj[data-stage="idea"] .pj-pin::before{opacity:.45}
+.pj[data-stage="deck"] .pj-pin::before{opacity:1}
+.pj[data-stage="pre"] .pj-pin::before{opacity:.25}
+.pj[data-stage="shoot"] .pj-pin::before{opacity:.15}
+.pj[data-mode="pin"]{transition:background-color 1.4s ease}
+.pj[data-stage="post"]{background:#060606}
+.pj[data-stage="delivery"]{background:#030303}
+.pj[data-mode="pin"] .pj-stages{position:absolute;inset:0;max-width:none;padding:0}
+.pj[data-mode="pin"] .pj-stage{position:absolute;inset:0;display:block;padding:0;pointer-events:none;z-index:1}
+.pj[data-mode="pin"] .pj-stage.is-on{z-index:2}
+.pj[data-mode="pin"] .pj-text{
+  position:absolute;left:max(28px,calc((100vw - var(--container)) / 2 + 28px));top:50%;transform:translateY(-44%);
+  width:min(31vw,470px);
+}
+.pj[data-mode="pin"] .pj-fig{
+  position:absolute;left:39%;right:max(14vw,226px);top:15vh;bottom:13vh;margin:0;aspect-ratio:auto;
+  opacity:0;transform:scale(1.03);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform 1.1s cubic-bezier(.22,1,.36,1)
+}
+.pj[data-mode="pin"] .pj-stage.is-on .pj-fig{opacity:1;transform:none}
+/* slow push-in across the stage */
+.pj[data-mode="pin"] .pj-fig img{transform:scale(calc(1.06 - .06 * var(--t,0))) translate3d(0,calc((var(--t,0) - .5) * -10px),0);will-change:transform}
+/* text: out upward, in from below, each line only once the scroll reaches it */
+.pj[data-mode="pin"] .pj-text > .pj-num,.pj[data-mode="pin"] .pj-title,.pj[data-mode="pin"] .pj-body{
+  opacity:0;transform:translate3d(0,20px,0);filter:blur(6px);
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1),filter .6s ease;transition-delay:0s
+}
+.pj[data-mode="pin"] .pj-stage.is-past .pj-text > *{transform:translate3d(0,-20px,0)}
+.pj[data-mode="pin"] .pj-stage.is-on .pj-num,
+.pj[data-mode="pin"] .pj-stage.is-on:is([data-r="2"],[data-r="3"]) .pj-title,
+.pj[data-mode="pin"] .pj-stage.is-on[data-r="3"] .pj-body{opacity:1;transform:none;filter:none}
+.pj[data-mode="pin"] .pj-stage:not(.is-on) .pj-items li{opacity:0}
+.pj[data-mode="pin"] .pj-items li{opacity:0;transform:translate3d(0,10px,0);transition:opacity .5s ease,transform .6s cubic-bezier(.22,1,.36,1),color .5s ease}
+.pj[data-mode="pin"] .pj-items li.is-in{opacity:1;transform:none}
+
+/* Nav: numbers down the right edge, one rail that fills with the scroll */
+.pj[data-mode="pin"] .pj-nav{position:absolute;z-index:5;top:50%;right:clamp(16px,2.6vw,48px);left:auto;transform:translateY(-50%);background:none;padding:0}
+.pj[data-mode="pin"] .pj-nav ol{flex-direction:column;gap:clamp(14px,2.6vh,26px);padding:0 0 0 18px;max-width:none}
+.pj[data-mode="pin"] .pj-nav button{min-height:32px;min-width:32px;text-align:left;font-size:.74rem;display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.3)}
+.pj[data-mode="pin"] .pj-nav button span{display:inline;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;opacity:0;transform:translateX(-4px);transition:opacity .4s ease,transform .4s ease}
+.pj[data-mode="pin"] .pj-nav button.is-on span,.pj[data-mode="pin"] .pj-nav button:hover span,.pj[data-mode="pin"] .pj-nav button:focus-visible span{opacity:1;transform:none}
+.pj[data-mode="pin"] .pj-nav button.is-done{color:rgba(255,255,255,.62)}
+.pj[data-mode="pin"] .pj-nav button.is-on{color:var(--accent)}
+.pj[data-mode="pin"] .pj-rail{position:absolute;left:0;top:6px;bottom:6px;width:1px;height:auto;margin:0;background:rgba(255,255,255,.14)}
+.pj[data-mode="pin"] .pj-rail i{width:1px;height:100%;transform-origin:50% 0;transform:scaleY(0)}
+
+/* 02 Idea: pieces of a treatment deck settle around the frame */
+.pj[data-mode="pin"] .pj-refs{display:block;position:absolute;inset:0;pointer-events:none;z-index:3}
+.pj-ref{position:absolute;width:15%;aspect-ratio:4/3;overflow:hidden;border-radius:2px;box-shadow:0 18px 40px rgba(0,0,0,.6);
+  opacity:clamp(0,calc((var(--t,0) - var(--at)) * 4),1);
+  transform:translate3d(0,calc((1 - clamp(0,calc((var(--t,0) - var(--at)) * 4),1)) * 16px),0)}
+.pj-ref img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3) sepia(.2) brightness(.9)}
+.pj-ref-0{--at:.28;left:3%;top:6%}
+.pj-ref-1{--at:.42;right:4%;top:12%;width:13%}
+.pj-ref-2{--at:.56;left:8%;bottom:7%;width:12%}
+
+/* 03 Deck: the items turn like pages, latest one lit */
+.pj[data-mode="pin"] .pj-deck .pj-items{flex-direction:column;flex-wrap:nowrap;gap:2px;margin-top:26px}
+.pj[data-mode="pin"] .pj-deck .pj-items li{font-size:clamp(.95rem,1.2vw,1.2rem);letter-spacing:.06em;color:rgba(255,255,255,.34);transform:translate3d(0,14px,0)}
+.pj[data-mode="pin"] .pj-deck .pj-items li.is-in{transform:none}
+.pj[data-mode="pin"] .pj-deck .pj-items li.is-cur{color:#fff}
+.pj[data-mode="pin"] .pj-deck .pj-items li.is-cur::before{content:"";display:inline-block;width:18px;height:1px;background:var(--accent);vertical-align:middle;margin-right:12px}
+
+/* 04 Pre-production: planning notes pinned around the frame's edge */
+.pj[data-mode="pin"] .pj-pre .pj-items{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.pj[data-mode="pin"] .pj-edge{display:block;list-style:none;margin:0;padding:0;position:absolute;inset:0;pointer-events:none;z-index:3}
+.pj-edge li{position:absolute;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82);
+  display:flex;align-items:center;gap:10px;opacity:0;transition:opacity .6s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.pj-edge li::before{content:"";width:28px;height:1px;background:rgba(240,82,35,.8)}
+.pj-edge li.is-in{opacity:1}
+.pj-edge li:nth-child(odd){left:22px}
+.pj-edge li:nth-child(even){right:22px;flex-direction:row-reverse}
+.pj-edge li:nth-child(1){top:9%}.pj-edge li:nth-child(2){top:9%}
+.pj-edge li:nth-child(3){top:28%}.pj-edge li:nth-child(4){top:28%}
+.pj-edge li:nth-child(5){top:47%}.pj-edge li:nth-child(6){top:47%}
+.pj-edge li:nth-child(7){top:66%}.pj-edge li:nth-child(8){top:66%}
+.pj-edge li:nth-child(9){top:85%}
+.pj[data-mode="pin"] .pj-pre .pj-cap{display:none}
+
+/* 05 Shoot: the set takes the screen; less text, grain, a quiet REC */
+.pj[data-mode="pin"] .pj-shoot .pj-fig{left:29%;right:max(13vw,220px);top:9vh;bottom:9vh}
+.pj[data-mode="pin"] .pj-shoot .pj-text{width:min(22vw,340px)}
+.pj[data-mode="pin"] .pj-shoot .pj-items{display:none}
+.pj[data-mode="pin"] .pj-shoot .pj-fig::before{content:"";position:absolute;inset:-50%;z-index:2;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:pjGrain .9s steps(4) infinite}
+@keyframes pjGrain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}100%{transform:translate(0,0)}}
+.pj[data-mode="pin"] .pj-rec{display:flex;align-items:center;gap:8px;position:absolute;left:22px;top:18px;z-index:3;
+  font-size:.62rem;letter-spacing:.24em;color:rgba(255,255,255,.8);opacity:clamp(0,calc((var(--t,0) - .15) * 5),1)}
+.pj-rec i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pjRec 1.6s ease-in-out infinite}
+@keyframes pjRec{50%{opacity:.25}}
+
+/* 06 Post-production: an edit timeline, orange travelling down it */
+.pj[data-mode="pin"] .pj-post .pj-items{flex-direction:column;flex-wrap:nowrap;gap:12px;margin-top:26px;width:min(100%,360px)}
+.pj[data-mode="pin"] .pj-post .pj-items li{display:grid;gap:6px;color:rgba(255,255,255,.55)}
+.pj[data-mode="pin"] .pj-post .pj-items li i{display:block;height:2px;background:rgba(255,255,255,.12);position:relative;overflow:hidden}
+.pj[data-mode="pin"] .pj-post .pj-items li i::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.5);transform-origin:0 50%;transform:scaleX(0);transition:transform .5s ease}
+.pj[data-mode="pin"] .pj-post .pj-items li.is-in i::after{transform:scaleX(1)}
+.pj[data-mode="pin"] .pj-post .pj-items li.is-cur{color:#fff}
+.pj[data-mode="pin"] .pj-post .pj-items li.is-cur i::after{background:var(--accent);transform:scaleX(var(--f,0));transition:none}
+.pj[data-mode="pin"] .pj-post .pj-fig img{filter:saturate(.8) brightness(.9)}
+
+/* 07 Delivery: everything settles — no push-in */
+.pj[data-mode="pin"] .pj-delivery .pj-fig img{transform:none}
+.pj[data-mode="pin"] .pj-delivery .pj-fig{left:41%;right:max(16vw,240px);top:18vh;bottom:16vh}
+
+@media (min-width:1025px) and (max-width:1279px){
+  .pj[data-mode="pin"] .pj-nav button span{display:none}
+  .pj[data-mode="pin"] .pj-fig,.pj[data-mode="pin"] .pj-shoot .pj-fig,.pj[data-mode="pin"] .pj-delivery .pj-fig{right:88px}
+  .pj[data-mode="pin"] .pj-shoot .pj-fig{left:31%}
+  .pj[data-mode="pin"] .pj-text{width:min(32vw,400px)}
+  .pj[data-mode="pin"] .pj-fig{left:41%}
+  .pj-title{font-size:clamp(2rem,3.6vw,3rem)}
+}
+@media (prefers-reduced-motion:reduce){
+  .pj-hero *,.pj-cue,.pj-cue i::after{animation:none!important}
+  .pj *,.pj{transition:none!important;animation:none!important}
+}
+/* Reduced motion on a wide screen: the stages stack as copy-and-frame rows */
+@media (min-width:1025px){
+  .pj[data-mode="flow"] .pj-stage{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,5vw,90px);align-items:center}
+  .pj[data-mode="flow"] .pj-fig{order:0;margin:0}
+  .pj[data-mode="flow"] .pj-nav ol{max-width:640px}
+}

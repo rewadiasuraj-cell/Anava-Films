@@ -230,10 +230,55 @@
     aObs.observe(arc.parentNode);
   }
 
-  /* ---------- Home approach steps: tap/click reveals each step's image ---------- */
-  document.querySelectorAll('[data-reveal-steps] > li').forEach(function (li) {
-    li.addEventListener('click', function () { li.classList.toggle('is-open'); });
-  });
+  /* ---------- Home approach: three acts. On wide screens a sticky stage
+     (frame, stage word, orange rail) follows whichever act is centred in the
+     viewport; the page scrolls normally. Narrow screens stack the acts. ---------- */
+  (function () {
+    var root = document.querySelector('[data-acts]');
+    if (!root || !('IntersectionObserver' in window)) return;
+    var acts = root.querySelectorAll('.act');
+    var imgs = root.querySelectorAll('.act-img'), words = root.querySelectorAll('.act-word');
+    var rail = root.querySelector('.acts-rail i');
+    var cur = 0;
+    function set(i) {
+      if (i === cur) return;
+      cur = i;
+      [acts, imgs, words].forEach(function (list) {
+        for (var k = 0; k < list.length; k++) list[k].classList.toggle('is-on', k === i);
+      });
+      if (rail) rail.style.transform = 'scaleX(' + ((i + 1) / acts.length) + ')';
+    }
+    if (rail) rail.style.transform = 'scaleX(' + (1 / acts.length) + ')';
+    // the sticky stage rides at the viewport's middle, whatever its height
+    var stage = root.querySelector('.acts-stage');
+    function centre() {
+      if (!stage || !stage.offsetHeight) return;
+      var hh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 78;
+      stage.style.top = Math.max(hh + 16, (window.innerHeight - stage.offsetHeight) / 2 + hh / 3) + 'px';
+    }
+    centre();
+    window.addEventListener('resize', centre);
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) set(+e.target.getAttribute('data-act')); });
+    }, { rootMargin: '-45% 0px -45% 0px' });
+    acts.forEach(function (a) { io.observe(a); });
+  })();
+
+  /* ---------- Thinkers Who Make: the set still drifts a few px with the scroll ---------- */
+  (function () {
+    var band = document.querySelector('.phil2-band');
+    if (!band || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var img = band.querySelector('img'), on = false, raf = 0;
+    function tick() {
+      raf = 0;
+      var r = band.getBoundingClientRect(), vh = window.innerHeight;
+      var k = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2);   // -1..1 across the pass
+      img.style.setProperty('--py', (Math.max(-1, Math.min(1, k)) * -14).toFixed(1) + 'px');
+    }
+    function onScroll() { if (on && !raf) raf = requestAnimationFrame(tick); }
+    new IntersectionObserver(function (es) { on = es[0].isIntersecting; if (on) onScroll(); }).observe(band);
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
 
   /* ---------- Work hero stage: TVCs in turn, 5s thumbnail then muted play ---------- */
   (function () {
@@ -317,7 +362,7 @@
   (function () {
     var hero = document.querySelector('.work-hero');
     if (!hero) return;
-    var bar = hero.querySelector('.filter-bar'), ink = hero.querySelector('.pill-ink');
+    var bar = document.querySelector('.filter-bar'), ink = document.querySelector('.pill-ink');
     function moveInk() {
       if (!bar || !ink) return;
       var a = bar.querySelector('.pill.active');
@@ -375,6 +420,7 @@
     if (lbCap) lbCap.textContent = caption || '';
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
+    focusClose();
   }
   function fmtTime(t) {
     t = Math.max(0, Math.round(t || 0));
@@ -449,13 +495,22 @@
     lb.classList.add('open', 'is-case');
     lb.scrollTop = 0;
     document.body.style.overflow = 'hidden';
+    focusClose();
   }
 
+  // focus moves into the player on open and back to its trigger on close
+  var lbReturn = null;
+  function focusClose() {
+    var x = lb && lb.querySelector('.lightbox-close');
+    if (x) setTimeout(function () { x.focus({ preventScroll: true }); }, 30);
+  }
   function closeLightbox() {
-    if (!lb) return;
+    if (!lb || !lb.classList.contains('open')) return;
     lb.classList.remove('open', 'is-case');
     lbBody.innerHTML = '';
     document.body.style.overflow = '';
+    if (lbReturn && document.contains(lbReturn)) lbReturn.focus({ preventScroll: true });
+    lbReturn = null;
   }
   window.anavaOpenLightbox = openLightbox;
 
@@ -463,6 +518,7 @@
     var trigger = e.target.closest('[data-lightbox]');
     if (trigger) {
       e.preventDefault();
+      lbReturn = trigger;
       var caseData = trigger.getAttribute('data-case');
       if (caseData) {
         try { openCase(trigger.getAttribute('data-lightbox'), JSON.parse(caseData)); return; }
@@ -557,8 +613,26 @@
           if (host) { host.querySelector('.pill').classList.add('active'); host.classList.remove('open'); }
         }
         render();
+        settle();
       });
     });
+
+    // A switch is quick: the new set fades up a few px in a short stagger
+    function settle() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var n = 0;
+      cards.forEach(function (c) {
+        if (c.classList.contains('is-hidden') || c.offsetParent === null) return;
+        c.classList.remove('is-swap');
+        void c.offsetWidth;
+        c.style.setProperty('--sd', Math.min(n++, 8) * 35 + 'ms');
+        c.classList.add('is-swap');
+      });
+      // deep in a long list, return to the top of the new set
+      var list = grid.closest('.work-list');
+      var hh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 78;
+      if (list && list.getBoundingClientRect().top < -40) window.scrollTo(0, list.getBoundingClientRect().top + window.scrollY - hh);
+    }
 
     document.querySelectorAll('.pill-drop > .pill').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
@@ -567,8 +641,22 @@
         var wasOpen = host.classList.contains('open');
         document.querySelectorAll('.pill-drop').forEach(function (d) { d.classList.remove('open'); });
         host.classList.toggle('open', !wasOpen);
+        // Phones scroll the tabs sideways, which would clip the menu: there
+        // it is placed against the viewport under its tab instead
+        var menu = host.querySelector('.drop-menu');
+        if (menu && window.matchMedia('(max-width: 900px)').matches) {
+          var r = btn.getBoundingClientRect();
+          menu.style.top = (r.bottom + 8) + 'px';
+          menu.style.left = Math.max(12, Math.min(r.left, window.innerWidth - 212)) + 'px';
+        }
       });
     });
+    var tabScroller = document.querySelector('.work-filters .pills');
+    function closeDrops() { document.querySelectorAll('.pill-drop.open').forEach(function (d) { d.classList.remove('open'); }); }
+    if (tabScroller) tabScroller.addEventListener('scroll', closeDrops, { passive: true });
+    window.addEventListener('scroll', function () {
+      if (window.matchMedia('(max-width: 900px)').matches) closeDrops();
+    }, { passive: true });
     document.addEventListener('click', function () {
       document.querySelectorAll('.pill-drop').forEach(function (d) { d.classList.remove('open'); });
     });
@@ -1264,8 +1352,8 @@
     ' c=mix(c,uC1,smoothstep(.34,.66,e)*.85);',
     ' c=mix(c,uC0,smoothstep(.55,.9,e)*.7);',
     // edges fall away to black: radial vignette plus top and bottom fades
-    ' float vg=smoothstep(1.05,.2,length((v-.5)*vec2(asp*.78,1.))*1.2);',
-    ' c=mix(uBg,c,vg*smoothstep(0.,.3,v.y)*smoothstep(1.,.78,v.y));',
+    ' float vg=smoothstep(1.,.18,length((v-.5)*vec2(asp*.78,1.))*1.24);',
+    ' c=mix(uBg,c,vg*smoothstep(0.,.32,v.y)*smoothstep(1.,.76,v.y)*smoothstep(0.,.1,v.x)*smoothstep(1.,.9,v.x));',
     ' c+=(h(v*uRes+fract(t*61.))-.5)*uGrain*.045;',
     ' gl_FragColor=vec4(c,1.);',
     '}'
@@ -1322,7 +1410,7 @@
       var w = cv.clientWidth || 1, h = cv.clientHeight || 1, narrow = w < 768;
       var portrait = h > w;
       gl.uniform2f(U.uFocus, narrow ? 0.18 : (portrait ? 0.18 : 0.19), narrow ? 0.26 : (portrait ? 0.28 : 0.4));
-      gl.uniform1f(U.uGain, narrow ? 0.95 : 1.0);
+      gl.uniform1f(U.uGain, narrow ? 0.88 : 1.0);
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       var scale = Math.max(0.75, dpr * 0.5);             // the field is soft; half-res is plenty
       var W = Math.round(w * scale), H = Math.round(h * scale);

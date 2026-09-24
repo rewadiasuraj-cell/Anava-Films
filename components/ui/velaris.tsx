@@ -54,8 +54,8 @@ void main(){
  c=mix(c,uC2,smoothstep(.14,.42,e));
  c=mix(c,uC1,smoothstep(.34,.66,e)*.85);
  c=mix(c,uC0,smoothstep(.55,.9,e)*.7);
- float vg=smoothstep(1.05,.2,length((v-.5)*vec2(asp*.78,1.))*1.2);
- c=mix(uBg,c,vg*smoothstep(0.,.3,v.y)*smoothstep(1.,.78,v.y));
+ float vg=smoothstep(1.,.18,length((v-.5)*vec2(asp*.78,1.))*1.24);
+ c=mix(uBg,c,vg*smoothstep(0.,.32,v.y)*smoothstep(1.,.76,v.y)*smoothstep(0.,.1,v.x)*smoothstep(1.,.9,v.x));
  c+=(h(v*uRes+fract(t*61.))-.5)*uGrain*.045;
  gl_FragColor=vec4(c,1.);
 }`;
@@ -68,10 +68,10 @@ function hex(c: string): [number, number, number] {
 }
 
 export function Velaris({
-  bg = "#020202",
-  colors = ["#F05223", "#D94116", "#8F260C", "#120604"],
-  speed = 0.55,
-  grain = 0.14,
+  bg = "#000000",
+  colors = ["#F05223", "#D94318", "#7A210E", "#090301"],
+  speed = 0.5,
+  grain = 0.12,
   height = "100%",
   focus,
   className,

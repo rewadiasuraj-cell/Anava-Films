@@ -2922,3 +2922,9 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .m-sweep{transform:none;opacity:.25}
   .mw-i.is-glitch{animation:none}
 }
+
+/* Home hero: "Thought." carries the orange; the reply line is all white */
+.hero-cine-title .hl-1 em{font-style:normal;font-weight:inherit;color:var(--accent)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .hero-cine-title .hl-1 em{background-image:var(--accent-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+}

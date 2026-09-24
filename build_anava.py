@@ -473,8 +473,8 @@ def page_home():
 
   <div class="container hero-cine-inner">
     <h1 class="hero-cine-title">
-      <span class="hl-1">Give Us a Thought.</span>
-      <span class="hl-2">We&rsquo;ll Give You <em>Ideas to Shoot</em>.</span>
+      <span class="hl-1">Give Us a <em>Thought.</em></span>
+      <span class="hl-2">We&rsquo;ll Give You Ideas to Shoot.</span>
     </h1>
     <p class="hero-cine-lead">
       <span class="hero-line hero-line-1"><strong>Anava Films is an agency-cum-production house bringing ideas to life &mdash; from first thought to final frame.</strong></span>

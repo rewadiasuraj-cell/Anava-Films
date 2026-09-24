@@ -28,6 +28,7 @@ HEAD = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/anava.css?v={css_v}">
+<script>document.documentElement.classList.add('m-js')</script>
 <script defer src="assets/js/anava.js?v={js_v}"></script>
 </head>
 <body>
@@ -558,7 +559,7 @@ def page_home():
     <div class="approach-bg" aria-hidden="true"><img src="assets/images/approach-camera.jpg" alt="" loading="lazy"></div>
     <div class="container approach-copy reveal">
       <span class="approach-eyebrow">Our Approach</span>
-      <h2 class="approach-title">From idea<br>to <span class="o">Impact.</span></h2>
+      <h2 class="approach-title">From Idea<br>to <span class="o">Impact.</span></h2>
       <p class="approach-lead">Ideas are everywhere. Impact takes the right people, the right process and the courage to make it real.</p>
       <a href="process.html" class="btn btn-ghost approach-cta">Explore Our Process {DIAG}</a>
     </div>

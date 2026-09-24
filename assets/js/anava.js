@@ -626,3 +626,248 @@
     el.textContent = new Date().getFullYear();
   });
 })();
+
+/* ==========================================================================
+   Cinematic motion system (Home / Work / Process / About / Contact)
+   Layout, copy and colours are untouched: this only adds reveals, a word
+   mask for headings, a brief glitch on a few hero words, drawn lines,
+   quiet background graphics with parallax, and process-step activation.
+   ========================================================================== */
+(function () {
+  'use strict';
+  var html = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO = 'IntersectionObserver' in window;
+  if (!hasIO) { html.classList.remove('m-js'); return; }
+
+  function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+  function inside(el, sel) { return !!el.closest(sel); }
+
+  /* ---------- 1. split headings into masked words ---------- */
+  var HEADINGS = '.hero-cine-title, .phil2-title, .stays-title, .approach-title, .pb-title, .hero-split .display, .display-sm, .wwd-title, .phil-title';
+  var GLITCH = /^(Thought|Impact|Screen)[.?!]?$/;
+  function splitHeading(h) {
+    var idx = 0;
+    (function walk(node, accent) {
+      Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+        if (n.nodeType === 3) {
+          var parts = n.textContent.split(/(\s+)/);
+          if (!n.textContent.trim()) return;
+          var frag = document.createDocumentFragment();
+          parts.forEach(function (w) {
+            if (!w) return;
+            if (/^\s+$/.test(w)) { frag.appendChild(document.createTextNode(' ')); return; }
+            var o = document.createElement('span'); o.className = 'mw';
+            var i = document.createElement('span'); i.className = 'mw-i' + (accent ? ' mw-accent' : '');
+            i.textContent = w;
+            i.style.setProperty('--wi', idx++);
+            if (accent) i.style.setProperty('--wa', 1);
+            if (GLITCH.test(w)) i.classList.add('mw-glitch');
+            o.appendChild(i); frag.appendChild(o);
+          });
+          node.replaceChild(frag, n);
+        } else if (n.nodeType === 1 && n.tagName !== 'BR') {
+          walk(n, accent || n.classList.contains('o') || n.tagName === 'EM');
+        }
+      });
+    })(h, false);
+    h.classList.add('m-split');
+    h.style.setProperty('--wn', idx);
+    return idx;
+  }
+
+  /* ---------- 2. collect reveal items and give each section a sequence ---------- */
+  var SKIP = '.work-hero, .step, .intro, .site-header, .main-footer, .lightbox, .case';
+  var ROLES = [
+    ['label', '.eyebrow, .sec-name, .stays-label, .approach-eyebrow, .pb-eyebrow'],
+    ['heading', HEADINGS],
+    ['para', '.hero-cine-lead, p.lead, .standfirst, .approach-lead, .pb-text, .phil2-lead, .phil2-sub'],
+    ['cta', '.btn:not(.btn-talk), .stays-link, .sec-more'],
+    ['media', '.reel, .sw-media, .phil2-band, .pb-card, .hero-media, .person-img']
+  ];
+  var sections = new Map();
+  ROLES.forEach(function (r) {
+    $$(r[1]).forEach(function (el) {
+      if (inside(el, SKIP) || el.dataset.mRole) return;
+      if (r[0] !== 'media' && el.closest('.pb-card')) return;   // card copy rides with its card
+      var host = el.closest('section') || el.parentElement;
+      el.dataset.mRole = r[0];
+      if (!sections.has(host)) sections.set(host, []);
+      sections.get(host).push(el);
+    });
+  });
+
+  sections.forEach(function (items, host) {
+    items.sort(function (a, b) { return a.compareDocumentPosition(b) & 4 ? -1 : 1; });
+    var t = 0;
+    items.forEach(function (el) {
+      var role = el.dataset.mRole;
+      el.classList.add('m-item', 'm-' + role);
+      var wrap = el.closest('.reveal');
+      if (wrap) wrap.classList.add('m-host');
+      if (role === 'heading') {
+        var n = splitHeading(el);
+        el.style.setProperty('--md', t.toFixed(2) + 's');
+        t += Math.min(0.55, n * 0.08) + 0.25;
+      } else {
+        el.style.setProperty('--md', Math.min(t, 1.4).toFixed(2) + 's');
+        t += role === 'label' ? 0.12 : role === 'para' ? 0.14 : role === 'cta' ? 0.1 : 0.12;
+      }
+      if (role === 'label') {
+        var cs = getComputedStyle(el), fs = parseFloat(cs.fontSize) || 12;
+        var ls = cs.letterSpacing === 'normal' ? 0 : parseFloat(cs.letterSpacing);
+        el.style.setProperty('--ls-to', ls + 'px');
+        el.style.setProperty('--ls-from', (ls + fs * 0.17) + 'px');
+      }
+    });
+  });
+
+  function play(host) {
+    (sections.get(host) || []).forEach(function (el) {
+      if (el.classList.contains('m-on')) return;
+      el.classList.add('m-anim');
+      requestAnimationFrame(function () { el.classList.add('m-on'); });
+      var d = parseFloat(el.style.getPropertyValue('--md')) || 0;
+      setTimeout(function () { el.classList.remove('m-anim'); }, (d + 1.6) * 1000);
+      if (el.dataset.mRole === 'heading' && !reduce) {
+        $$('.mw-glitch', el).forEach(function (w) {
+          var wi = +w.style.getPropertyValue('--wi') || 0;
+          setTimeout(function () {
+            w.classList.add('is-glitch');
+            setTimeout(function () { w.classList.remove('is-glitch'); }, 150);
+          }, (d + wi * 0.08 + 0.75) * 1000);
+        });
+      }
+    });
+  }
+  var secObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      secObs.unobserve(en.target);
+      var go = function () { play(en.target); };
+      // The home hero waits for the clapperboard ident to clear
+      if (html.classList.contains('intro-on') && en.target.classList.contains('hero-cine')) {
+        var mo = new MutationObserver(function () {
+          if (!html.classList.contains('intro-on')) { mo.disconnect(); setTimeout(go, 150); }
+        });
+        mo.observe(html, { attributes: true, attributeFilter: ['class'] });
+      } else go();
+    });
+  }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+  sections.forEach(function (_, host) { secObs.observe(host); });
+
+  /* ---------- 3. Work grid: cards rise in sequence as they arrive ---------- */
+  var cards = $$('.wcard');
+  if (cards.length) {
+    var cardObs = new IntersectionObserver(function (entries) {
+      var k = 0;
+      entries.filter(function (e) { return e.isIntersecting; }).forEach(function (en) {
+        var c = en.target; cardObs.unobserve(c);
+        c.style.setProperty('--md', Math.min(k++ * 0.08, 0.48).toFixed(2) + 's');
+        c.classList.add('m-anim');
+        requestAnimationFrame(function () { c.classList.add('m-on'); });
+        setTimeout(function () { c.classList.remove('m-anim'); }, 1800);
+      });
+    }, { threshold: 0.12 });
+    cards.forEach(function (c) { c.classList.add('m-card'); cardObs.observe(c); });
+  }
+
+  /* ---------- 4. Process: steps light up in order, the rail follows the scroll ---------- */
+  var steps = document.querySelector('.steps');
+  if (steps) {
+    var rail = document.createElement('span'); rail.className = 'steps-progress'; rail.setAttribute('aria-hidden', 'true');
+    steps.appendChild(rail);
+    var stepObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-active'); stepObs.unobserve(en.target); }
+      });
+    }, { threshold: 0.35 });
+    $$('.step', steps).forEach(function (s) { s.classList.add('m-step'); stepObs.observe(s); });
+  }
+
+  /* ---------- 5. quiet background graphics in selected sections ---------- */
+  var DECO = [
+    ['.hero-cine', 'hero'], ['.phil2', 'grid'], ['.people-bridge', 'arc-r'],
+    ['.home-cta', null], ['.hero-split.centered', 'arc-l'], ['.steps', 'grid'],
+    ['.wwd-intro', 'arc-r'], ['#people', 'grid']
+  ];
+  var decos = [];
+  DECO.forEach(function (d) {
+    var el = document.querySelector(d[0]);
+    if (!el || !d[1]) return;
+    var host = el.tagName === 'SECTION' ? el : (el.closest('section') || el);
+    if (host.querySelector(':scope > .m-deco')) return;
+    var v = d[1], layer = document.createElement('div');
+    layer.className = 'm-deco m-deco-' + v; layer.setAttribute('aria-hidden', 'true');
+    var h = '<i class="m-glow"></i>';
+    if (v === 'hero') h += '<i class="m-vig"></i><i class="m-arc m-arc-a"><b></b></i><i class="m-arc m-arc-b"><b></b></i><i class="m-pt m-pt-1"></i><i class="m-pt m-pt-2"></i><i class="m-pt m-pt-3"></i>';
+    if (v === 'grid') h += '<i class="m-grid"></i><i class="m-cross"></i><i class="m-line"></i>';
+    if (v === 'arc-r' || v === 'arc-l') h += '<i class="m-arc m-arc-c"><b></b></i><i class="m-line"></i><i class="m-corner"></i>';
+    layer.innerHTML = h;
+    host.classList.add('m-deco-host');
+    host.insertBefore(layer, host.firstChild);
+    decos.push(layer);
+  });
+  var visDeco = new Set();
+  var decoObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      en.target.classList.toggle('m-vis', en.isIntersecting);
+      if (en.isIntersecting) visDeco.add(en.target); else visDeco.delete(en.target);
+    });
+  }, { threshold: 0 });
+  decos.forEach(function (d) { decoObs.observe(d); });
+
+  /* ---------- 6. section sweep lines ---------- */
+  $$('main section, body > section').forEach(function (s, i) {
+    if (i === 0 || i % 2 || s.classList.contains('work-hero') || s.classList.contains('hero-cine')) return;
+    var line = document.createElement('span');
+    line.className = 'm-sweep' + (i % 4 === 2 ? ' m-sweep-r' : ''); line.setAttribute('aria-hidden', 'true');
+    s.classList.add('m-sweep-host');
+    s.insertBefore(line, s.firstChild);
+    var o = new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting) { line.classList.add('m-on'); o.disconnect(); }
+    }, { threshold: 0.1 });
+    o.observe(s);
+  });
+
+  /* ---------- 7. scroll: parallax for the graphics, the process rail ---------- */
+  if (!reduce) {
+    var ticking = false;
+    var frame = function () {
+      ticking = false;
+      var vh = window.innerHeight;
+      visDeco.forEach(function (d) {
+        var r = d.parentElement.getBoundingClientRect();
+        var off = (r.top + r.height / 2 - vh / 2) * -0.06;
+        d.style.setProperty('--py', off.toFixed(1) + 'px');
+      });
+      if (steps) {
+        var sr = steps.getBoundingClientRect();
+        var p = (vh * 0.62 - sr.top) / sr.height;
+        steps.style.setProperty('--sp', Math.max(0, Math.min(1, p)).toFixed(3));
+      }
+    };
+    var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(frame); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    frame();
+  } else if (steps) steps.style.setProperty('--sp', 1);
+
+  /* ---------- 8. page change: nav eases down before same-site navigation ---------- */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    if (a.target === '_blank' || a.hasAttribute('download')) return;
+    var url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || url.protocol.indexOf('http') !== 0) return;
+    if (url.pathname === location.pathname && url.hash) return;
+    e.preventDefault();
+    html.classList.add('m-leave');
+    setTimeout(function () { location.href = url.href; }, reduce ? 0 : 170);
+  });
+  window.addEventListener('pageshow', function () { html.classList.remove('m-leave'); });
+
+  /* grain over everything (static, very faint) */
+  var g = document.createElement('div'); g.className = 'm-grain'; g.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(g);
+})();

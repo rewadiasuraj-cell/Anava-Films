@@ -511,35 +511,37 @@ def page_home():
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
+<section class="approach">
+  <div class="approach-top">
+    <div class="approach-bg" aria-hidden="true"><img src="assets/images/approach-camera.jpg" alt="" loading="lazy"></div>
+    <div class="container approach-copy reveal">
+      <span class="approach-eyebrow">Our Approach</span>
+      <h2 class="approach-title">From idea<br>to <span class="o">Impact.</span></h2>
+      <p class="approach-lead">Ideas are everywhere. Impact takes the right people, the right process and the courage to make it real.</p>
+      <a href="process.html" class="btn btn-ghost approach-cta">Explore Our Process {DIAG}</a>
+    </div>
+  </div>
   <div class="container">
-    <div class="sec-head" style="margin-bottom:26px">
-      <div class="sec-label"><span class="sec-num">03</span><span class="sec-name">What We Do</span></div>
-    </div>
-    <div class="wwd-teaser-head reveal">
-      <h2 class="display-sm oneline oneline-long">FROM IDEA TO <span class="o">IMPACT.</span></h2>
-      <p class="lead teaser-oneline">End-to-end creative solutions that turn ideas into powerful visual stories.</p>
-    </div>
-    <div class="tri reveal">
-      <article class="tri-item">
-        <span class="tri-n">01</span>
+    <ol class="approach-steps reveal">
+      <li>
+        <span class="approach-dot" aria-hidden="true"></span>
+        <p class="approach-num"><b>01</b> <span>/ Concept</span></p>
         <h3>Think</h3>
-        <p>Creative direction, ideation and scripting.</p>
-      </article>
-      <article class="tri-item">
-        <span class="tri-n">02</span>
+        <p>Creative Direction, Ideation &amp; Concept Development, Scripting, Creative Consulting.</p>
+      </li>
+      <li>
+        <span class="approach-dot" aria-hidden="true"></span>
+        <p class="approach-num"><b>02</b> <span>/ Shoot</span></p>
         <h3>Make</h3>
-        <p>Production, direction, casting and art direction.</p>
-      </article>
-      <article class="tri-item">
-        <span class="tri-n">03</span>
+        <p>Production, Direction, Casting (Domestic &amp; International), Art Direction &amp; Production Design.</p>
+      </li>
+      <li>
+        <span class="approach-dot" aria-hidden="true"></span>
+        <p class="approach-num"><b>03</b> <span>/ Post</span></p>
         <h3>Finish</h3>
-        <p>Edit, sound, colour, VFX and mastering.</p>
-      </article>
-    </div>
-    <div class="tri-foot reveal">
-      <a href="about.html#what-we-do" class="btn btn-ghost">See what we do {ARROW.replace('width="1em" height="1em"','width="15" height="15"')}</a>
-    </div>
+        <p>Editing, VFX, Sound Design, Color Grading, Motion Graphics &amp; Final Delivery.</p>
+      </li>
+    </ol>
   </div>
 </section>
 

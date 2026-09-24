@@ -1639,9 +1639,9 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
    hovering the header strip, focusing into it, or tapping it on a touch
    screen (.is-peek) opens it back out. Folded, it is a circle carrying the
    gold A mark in place of the wordmark, which read as clutter mid-page.
-   The circle folds to the LEFT, onto the wordmark's own spot, not the
-   centre: iPad Safari's compact address bar floats over the top centre of
-   the page while scrolling down and would hide a centred circle. Phones keep their own burger header.
+   The circle folds to the centre of the page. On touch screens it also
+   drops below iPad Safari's compact address pill, which floats over the
+   top centre of the page while scrolling and would otherwise hide it.
    Motion: the width glides with no overshoot (a spring on a 1400px change
    would dip the pill to half its size); the bounce is a small squash-and-
    rebound in scale, the same size whichever way the capsule moves.
@@ -1653,9 +1653,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
     :root{--spring:linear(0,.016 1.1%,.064 2.3%,.241 4.9%,.477 7.8%,.723 11.3%,.884 14.7%,.998 18.5%,1.049 21.9%,1.066 25.1%,1.061 28.6%,1.038 33.4%,1.012 38.9%,.996 45.4%,.992 52%,.999 66.4%,1)}
   }
   .header-inner{
-    /* Explicit left margin (equal to what auto-centring gave) so the fold
-       anchors on the left edge where the wordmark sits */
-    margin:0 auto 0 calc((100% - min(100%,var(--container)))/2);
+    margin:0 auto;
     transition:max-width .75s cubic-bezier(.22,1,.36,1),padding .75s cubic-bezier(.22,1,.36,1),gap .75s cubic-bezier(.22,1,.36,1),margin-top .5s cubic-bezier(.22,1,.36,1),
       background .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease);
   }
@@ -1675,9 +1673,10 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
     max-width:56px;height:56px;gap:0;padding:0;justify-content:center;cursor:pointer;
   }
 }
-/* Touch screens: drop the circle clear of Safari's floating toolbar */
+/* Touch screens: drop the circle below Safari's floating address pill
+   (circle top at ~52px instead of 11px) */
 @media (min-width:761px) and (hover:none){
-  .site-header.is-compact:not(:focus-within):not(.is-peek) .header-inner{margin-top:26px}
+  .site-header.is-compact:not(:focus-within):not(.is-peek) .header-inner{margin-top:82px}
 }
 @media (min-width:761px){
   .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .header-inner{

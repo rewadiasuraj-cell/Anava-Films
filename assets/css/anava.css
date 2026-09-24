@@ -2323,7 +2323,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   position:absolute;z-index:1;left:clamp(26px,4.5vw,80px);top:50%;transform:translateY(-50%);
   max-width:min(600px,48%);
 }
-.pb-label{margin:0 0 16px;font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+.pb-eyebrow{margin:0 0 16px;font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
 .pb-title{margin:0;font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,3vw,3.3rem);line-height:1.02;letter-spacing:-.035em}
 .pb-text{margin:18px 0 0;color:rgba(255,255,255,.72);font-size:clamp(.95rem,1.1vw,1.15rem);line-height:1.6}
 .pb-link{
@@ -2341,7 +2341,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .pb-card img{position:relative;height:auto;aspect-ratio:16/9;object-position:72% 85%}
   .pb-card::after{inset:0 0 auto 0;height:0}
   .pb-copy{position:relative;left:auto;top:auto;transform:none;max-width:none;padding:24px 22px 26px}
-  .pb-label{font-size:.62rem;margin-bottom:12px}
+  .pb-eyebrow{font-size:.62rem;margin-bottom:12px}
   .pb-title{font-size:clamp(1.7rem,6.6vw,2.4rem)}
   .pb-text{font-size:.9rem;margin-top:12px}
   .pb-link{margin-top:18px;font-size:.92rem}

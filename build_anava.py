@@ -535,7 +535,7 @@ def page_home():
     <a class="pb-card reveal" href="about.html#people">
       <img src="assets/images/people-onset.jpg" alt="The Anava Films crew setting up a shot on location" loading="lazy">
       <div class="pb-copy">
-        <p class="pb-label">The People Behind the Work</p>
+        <p class="pb-eyebrow">The People Behind the Work</p>
         <h2 class="pb-title">Thinkers and makers.<br><span class="o">One crew.</span></h2>
         <p class="pb-text">The same team that shapes the idea is on set to shoot it.</p>
         <span class="pb-link">Meet the team {DIAG}</span>

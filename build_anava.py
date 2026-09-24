@@ -516,6 +516,20 @@ def page_home():
   </div>
 </section>
 
+<section class="people-bridge">
+  <div class="container">
+    <a class="pb-card reveal" href="about.html#people">
+      <img src="assets/images/people-onset.jpg" alt="The Anava Films crew setting up a shot on location" loading="lazy">
+      <div class="pb-copy">
+        <p class="pb-label">The People Behind the Work</p>
+        <h2 class="pb-title">Thinkers and makers.<br><span class="o">One crew.</span></h2>
+        <p class="pb-text">The same team that shapes the idea is on set to shoot it.</p>
+        <span class="pb-link">Meet the team {DIAG}</span>
+      </div>
+    </a>
+  </div>
+</section>
+
 <section class="approach">
   <div class="approach-top">
     <div class="approach-bg" aria-hidden="true"><img src="assets/images/approach-camera.jpg" alt="" loading="lazy"></div>
@@ -990,7 +1004,7 @@ def page_about():
   </div>
 </section>
 {wwd_sections()}
-<section class="section" style="padding-top:20px">
+<section class="section" id="people" style="padding-top:20px">
   <div class="container">
     <div class="sec-head">
       <div class="sec-label"><span class="sec-name">Leadership</span></div>

@@ -3228,3 +3228,4 @@ html.hero-go .hero-cine .trusted{--ty:10px;--bl:0px;animation:hrIn .7s var(--hr-
   .hero-cine .hero-cine-title .hl-2{font-size:3.4vw}
 }
 .nobr{white-space:nowrap}
+@media (max-width:899px){.hero-cine .hero-cine-lead .hero-line{text-wrap:balance}}

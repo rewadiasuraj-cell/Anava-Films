@@ -2702,3 +2702,30 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .approach-steps li > .approach-desc{margin-top:10px;font-size:.81rem;line-height:1.55;color:rgba(255,255,255,.74)}
   .approach-media{top:-12px;bottom:-12px}
 }
+
+/* ---- People Behind the Work, overlay version ----
+   The key art sits to the right, shifted so its own "Making It Real" title
+   and the crew's faces both stay in view; its left edge dissolves into a
+   black gradient, and the card copy sits on that black on the left. */
+@media (min-width:901px){
+  .pb-card{display:block;aspect-ratio:2/.72;min-height:300px;background:#080808}
+  .pb-card img{
+    position:absolute;inset:0 0 0 auto;left:auto;width:70%;height:100%;aspect-ratio:auto;
+    object-fit:cover;object-position:0% 45%;transform-origin:70% 50%;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%);mask-image:linear-gradient(90deg,transparent 0,#000 16%);
+  }
+  .pb-card::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(90deg,#080808 0%,rgba(8,8,8,.96) 30%,rgba(8,8,8,.55) 40%,rgba(8,8,8,0) 52%);
+  }
+  .pb-copy{position:absolute;z-index:1;left:clamp(26px,4vw,72px);top:50%;transform:translateY(-50%);max-width:34%;padding:0}
+}
+@media (min-width:901px){
+  .pb-card img{width:63%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%);mask-image:linear-gradient(90deg,transparent 0,#000 6%)}
+  .pb-card::after{background:linear-gradient(90deg,#080808 0%,#080808 33%,rgba(8,8,8,.6) 36%,rgba(8,8,8,0) 39%)}
+  .pb-copy{max-width:29%}
+}
+@media (min-width:901px) and (max-width:1100px){
+  .pb-text{font-size:.86rem}
+  .pb-copy{left:28px}
+}

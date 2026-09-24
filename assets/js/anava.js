@@ -50,6 +50,20 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* Folded, the bar shrinks into its own Let's Talk circle rather than to
+     the page centre: --bar-gap pins the capsule's right edge where the open
+     bar ends, so only its width changes (CSS, 761px+). */
+  function setFoldX() {
+    if (!header) return;
+    var cs = getComputedStyle(header);
+    var room = header.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    var max = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--container')) || room;
+    var open = Math.min(max, room);
+    header.style.setProperty('--bar-gap', Math.max(0, (room - open) / 2) + 'px');
+  }
+  setFoldX();
+  window.addEventListener('resize', setFoldX);
+
   /* Touch screens have no hover: the first tap on the folded pill opens it
      (instead of following the wordmark link home), a tap elsewhere folds it. */
   if (header && window.matchMedia) {

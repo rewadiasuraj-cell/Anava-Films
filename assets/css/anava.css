@@ -3271,3 +3271,28 @@ html.hero-go .hero-cine .hl-1 em{
 }
 /* Selected Work: both films at the same size */
 .stays-films .sw-card-2{width:100%;align-self:stretch;margin-right:0}
+
+/* Home hero, owner's reference: "Thought." carries a copper-to-amber
+   gradient (the shine band still sweeps over it), and the CTA pill the
+   same warm ramp */
+.hero-cine .hero-cine-title .hl-1 em{
+  background-image:
+    linear-gradient(100deg,rgba(255,211,189,0) 0 38%,rgba(255,211,189,.95) 50%,rgba(255,211,189,0) 62% 100%),
+    linear-gradient(100deg,#e2572a 0%,#ee6a32 55%,#f58a4e 100%);
+  background-size:260% 100%,100% 100%;
+  background-position:100% 0,0 0;
+  background-repeat:no-repeat;
+}
+@keyframes thoughtSweep{from{background-position:100% 0,0 0}to{background-position:0 0,0 0}}
+html.hero-go .hero-cine .hl-1 em{
+  animation:hrFade .9s cubic-bezier(.22,1,.36,1) .35s backwards,thoughtSweep 1.5s ease-in-out 1.25s both;
+}
+@media (prefers-reduced-motion:reduce){
+  html.hero-go .hero-cine .hl-1 em{animation:hrFade .6s ease backwards}
+}
+.hero-cine .hero-cine-actions .hero-cta{
+  background:linear-gradient(100deg,#e2572a 0%,#ef6f36 55%,#f58a4e 100%);
+}
+.hero-cine .hero-cine-actions .hero-cta:hover,.hero-cine .hero-cine-actions .hero-cta:focus-visible{
+  background:linear-gradient(100deg,#ea6333 0%,#f47c42 55%,#f89960 100%);
+}

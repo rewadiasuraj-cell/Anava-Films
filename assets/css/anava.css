@@ -2995,3 +2995,16 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
 .phil2-lead{max-width:58ch;text-wrap:pretty}
 .phil2-sub{max-width:42ch;text-wrap:pretty}
 @media (max-width:760px){.phil2-band img{object-position:56% 30%}}
+
+/* ==========================================================================
+   HOME — one heading scale. Main section titles share the Thinkers Who
+   Make size in Inter; the People bridge card title sits one step down.
+   ========================================================================== */
+.stays-title,.approach-title,.pb-title{font-family:var(--font-body);font-weight:700;letter-spacing:-.035em}
+.stays-title,.approach-title{font-size:clamp(2.1rem,4.2vw,5rem);line-height:1.02}
+.pb-title{font-size:clamp(1.6rem,2.6vw,3rem);line-height:1.08}
+@media (max-width:760px){
+  .stays-title,.approach-title{font-size:2.1rem}
+  .pb-title{font-size:1.6rem}
+}
+.approach-steps h3{font-family:var(--font-body);font-weight:700;letter-spacing:-.03em}

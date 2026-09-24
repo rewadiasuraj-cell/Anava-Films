@@ -491,6 +491,9 @@ def page_home():
 <section class="hero-cine">
   <div class="hero-cine-bg">
     <img src="assets/images/home-hero-stage.jpg" alt="" fetchpriority="high" data-parallax>
+    <canvas class="velaris" aria-hidden="true" tabindex="-1" data-velaris
+      data-bg="#020202" data-colors="#F05223,#D94116,#8F260C,#120604"
+      data-speed="0.55" data-grain="0.14"></canvas>
     <i class="hero-haze" aria-hidden="true"></i>
   </div>
 

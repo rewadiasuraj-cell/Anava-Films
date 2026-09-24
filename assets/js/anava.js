@@ -1217,3 +1217,168 @@
 
   setMode();
 })();
+
+/* ==========================================================================
+   Velaris — slow tungsten light in deep black (WebGL)
+   A decorative film layer behind the home hero: domain-warped noise lit
+   only inside soft, off-centre pools, so most of the frame stays black and
+   the orange reads as light spilling through, not a gradient. The canvas
+   is screen-blended over the stage photograph (black adds nothing) and sits
+   under the hero's own dark overlays, so copy contrast is unchanged.
+   Draws at up to 30fps, at reduced resolution, only while the hero is on
+   screen and the tab is visible; reduced motion gets one still frame.
+   Usage: <canvas data-velaris data-bg data-colors data-speed data-grain>.
+   A React version with the same props lives in components/ui/velaris.tsx.
+   ========================================================================== */
+(function () {
+  'use strict';
+  var canvases = document.querySelectorAll('canvas[data-velaris]');
+  if (!canvases.length) return;
+
+  var VERT = 'attribute vec2 a;varying vec2 v;void main(){v=a*.5+.5;gl_Position=vec4(a,0.,1.);}';
+  var FRAG = [
+    'precision mediump float;',
+    'varying vec2 v;',
+    'uniform vec2 uRes;uniform float uTime;uniform vec3 uBg;',
+    'uniform vec3 uC0;uniform vec3 uC1;uniform vec3 uC2;uniform vec3 uC3;',
+    'uniform float uGrain;uniform vec2 uFocus;uniform float uGain;uniform vec2 uShift;',
+    'float h(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}',
+    'float n(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);',
+    ' return mix(mix(h(i),h(i+vec2(1.,0.)),u.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),u.x),u.y);}',
+    'float fbm(vec2 p){float s=0.,a=.5;mat2 m=mat2(1.6,1.2,-1.2,1.6);',
+    ' for(int i=0;i<4;i++){s+=a*n(p);p=m*p;a*=.5;}return s;}',
+    'void main(){',
+    ' float asp=uRes.x/uRes.y;',
+    ' vec2 p=vec2((v.x-.5)*asp,v.y-.5)*1.7+uShift;float t=uTime;',
+    ' vec2 q=vec2(fbm(p+vec2(0.,t*.9)),fbm(p+vec2(5.2,1.3)-t*.7));',
+    ' vec2 r=vec2(fbm(p+1.8*q+vec2(1.7,9.2)+t*.5),fbm(p+1.8*q+vec2(8.3,2.8)-t*.4));',
+    ' float f=fbm(p+1.6*r);',
+    // one main pool of light off-centre, one faint echo up and across
+    ' vec2 d=(v-uFocus)*vec2(asp,1.);',
+    ' vec2 d2=(v-uFocus-vec2(.42,.26))*vec2(asp,1.);',
+    ' float pool=exp(-dot(d,d)*2.4)+exp(-dot(d2,d2)*5.)*.32;',
+    ' float e=clamp(f*f*2.6*pool*uGain,0.,1.);',
+    ' vec3 c=uBg;',
+    ' c=mix(c,uC3,smoothstep(.04,.2,e));',
+    ' c=mix(c,uC2,smoothstep(.14,.42,e));',
+    ' c=mix(c,uC1,smoothstep(.34,.66,e)*.85);',
+    ' c=mix(c,uC0,smoothstep(.55,.9,e)*.7);',
+    // edges fall away to black: radial vignette plus top and bottom fades
+    ' float vg=smoothstep(1.05,.2,length((v-.5)*vec2(asp*.78,1.))*1.2);',
+    ' c=mix(uBg,c,vg*smoothstep(0.,.3,v.y)*smoothstep(1.,.78,v.y));',
+    ' c+=(h(v*uRes+fract(t*61.))-.5)*uGrain*.045;',
+    ' gl_FragColor=vec4(c,1.);',
+    '}'
+  ].join('\n');
+
+  function hex(c) {
+    var m = /^#?([0-9a-f]{6})$/i.exec((c || '').trim());
+    if (!m) return [0, 0, 0];
+    var x = parseInt(m[1], 16);
+    return [(x >> 16 & 255) / 255, (x >> 8 & 255) / 255, (x & 255) / 255];
+  }
+
+  var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  Array.prototype.forEach.call(canvases, function (cv) {
+    var gl = cv.getContext('webgl', { antialias: false, alpha: false, depth: false,
+      stencil: false, premultipliedAlpha: false, powerPreference: 'low-power' });
+    if (!gl) return;                                     // CSS haze stays as the fallback
+
+    function sh(type, src) {
+      var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+      return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
+    }
+    var vs = sh(gl.VERTEX_SHADER, VERT), fs = sh(gl.FRAGMENT_SHADER, FRAG);
+    if (!vs || !fs) return;
+    var prog = gl.createProgram();
+    gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return;
+    gl.useProgram(prog);
+    var buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    var aLoc = gl.getAttribLocation(prog, 'a');
+    gl.enableVertexAttribArray(aLoc);
+    gl.vertexAttribPointer(aLoc, 2, gl.FLOAT, false, 0, 0);
+    var U = {};
+    ['uRes', 'uTime', 'uBg', 'uC0', 'uC1', 'uC2', 'uC3', 'uGrain', 'uFocus', 'uGain', 'uShift']
+      .forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
+
+    // Colours are parsed once
+    var cols = (cv.getAttribute('data-colors') || '#F05223,#D94116,#8F260C,#120604').split(',');
+    gl.uniform3fv(U.uBg, hex(cv.getAttribute('data-bg') || '#020202'));
+    ['uC0', 'uC1', 'uC2', 'uC3'].forEach(function (k, i) { gl.uniform3fv(U[k], hex(cols[i] || cols[cols.length - 1])); });
+    gl.uniform1f(U.uGrain, parseFloat(cv.getAttribute('data-grain')) || 0.14);
+    var speed = parseFloat(cv.getAttribute('data-speed')) || 0.55;
+
+    var host = cv.closest('section') || cv.parentElement;
+    host.classList.add('has-velaris');
+
+    // Composition: the main pool sits lower-left of the centred copy; on a
+    // phone it drops lower and dims so body text keeps plain black behind it
+    function compose() {
+      var w = cv.clientWidth || 1, h = cv.clientHeight || 1, narrow = w < 768;
+      var portrait = h > w;
+      gl.uniform2f(U.uFocus, narrow ? 0.18 : (portrait ? 0.18 : 0.19), narrow ? 0.26 : (portrait ? 0.28 : 0.4));
+      gl.uniform1f(U.uGain, narrow ? 0.95 : 1.0);
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var scale = Math.max(0.75, dpr * 0.5);             // the field is soft; half-res is plenty
+      var W = Math.round(w * scale), H = Math.round(h * scale);
+      if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
+      gl.viewport(0, 0, W, H);
+      gl.uniform2f(U.uRes, W, H);
+    }
+
+    var t0 = performance.now(), last = 0, raf = 0, onScreen = true, lost = false;
+    var shift = [0, 0], aim = [0, 0];
+    function draw(now) {
+      var secs = calm ? 7.3 : (now - t0) / 1000;
+      gl.uniform1f(U.uTime, secs * speed * 0.05);
+      shift[0] += (aim[0] - shift[0]) * 0.04;
+      shift[1] += (aim[1] - shift[1]) * 0.04;
+      gl.uniform2f(U.uShift, shift[0], shift[1]);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      if (!cv.classList.contains('is-on')) cv.classList.add('is-on');
+    }
+    function loop(now) {
+      raf = 0;
+      if (lost || !onScreen || document.hidden) return;
+      if (now - last >= 33) { last = now; draw(now); }  // ~30fps is ample for this pace
+      raf = requestAnimationFrame(loop);
+    }
+    function start() { if (!calm && !raf && !lost) raf = requestAnimationFrame(loop); }
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+    compose();
+    draw(performance.now());
+    start();
+
+    var ro = 'ResizeObserver' in window ? new ResizeObserver(function () { compose(); draw(performance.now()); }) : null;
+    if (ro) ro.observe(cv); else window.addEventListener('resize', function () { compose(); draw(performance.now()); });
+    var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (en) {
+      onScreen = en[0].isIntersecting;
+      if (onScreen) start(); else stop();
+    }, { rootMargin: '100px 0px' }) : null;
+    if (io) io.observe(host);
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); else start(); });
+
+    // The faintest drift toward the pointer; never a blob that follows it
+    if (finePointer && !calm) {
+      host.addEventListener('pointermove', function (e) {
+        var r = host.getBoundingClientRect();
+        aim[0] = ((e.clientX - r.left) / r.width - 0.5) * 0.06;
+        aim[1] = -((e.clientY - r.top) / r.height - 0.5) * 0.04;
+      }, { passive: true });
+      host.addEventListener('pointerleave', function () { aim[0] = aim[1] = 0; });
+    }
+
+    cv.addEventListener('webglcontextlost', function (e) {
+      e.preventDefault(); lost = true; stop(); host.classList.remove('has-velaris');
+    });
+    window.addEventListener('pagehide', function () {
+      stop(); if (ro) ro.disconnect(); if (io) io.disconnect();
+    });
+  });
+})();

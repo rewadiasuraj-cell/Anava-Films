@@ -3194,37 +3194,38 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
 .hero-cine .trusted-logos li{padding-top:12px;padding-bottom:13px}
 
 /* ---- Load sequence ---- */
-@keyframes hrIn{
-  from{opacity:0;transform:translate3d(0,calc(var(--ty,20px) * var(--hr-k)),0);filter:blur(var(--bl,10px))}
-  to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}
-}
+/* Literal values only: iOS Safari can drop keyframes that read custom
+   properties, which made the whole sequence silently skip on iPhone. */
+@keyframes hrNav{from{opacity:0;transform:translate3d(0,-10px,0);filter:blur(8px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@keyframes hrEyebrow{from{opacity:0;transform:translate3d(0,12px,0);filter:blur(10px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@keyframes hrLine{from{opacity:0;transform:translate3d(0,28px,0);filter:blur(14px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@keyframes hrBody{from{opacity:0;transform:translate3d(0,18px,0);filter:blur(10px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@keyframes hrLabel{from{opacity:0;transform:translate3d(0,10px,0);filter:blur(8px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@keyframes hrLogo{from{opacity:0;transform:translate3d(0,14px,0);filter:blur(10px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
 @keyframes hrInScale{
-  from{opacity:0;transform:translate3d(0,calc(14px * var(--hr-k)),0) scale(.98);filter:blur(8px)}
+  from{opacity:0;transform:translate3d(0,14px,0) scale(.98);filter:blur(8px)}
   to{opacity:1;transform:none;filter:blur(0)}
 }
 @keyframes hrFade{from{opacity:0}to{opacity:1}}
 html.m-js:not(.hero-go) .hero-cine :is(.hero-cine-eyebrow,.hl-1,.hl-2,.hero-cine-lead,.hero-cine-actions,.trusted),
 html.m-js:not(.hero-go) body:has(.hero-cine) .site-header{opacity:0}
-html.hero-go body:has(.hero-cine) .site-header{--ty:-10px;--bl:8px;animation:hrIn .8s var(--hr-ease) 0s backwards}
-html.hero-go .hero-cine-eyebrow{--ty:12px;--bl:10px;animation:hrIn .7s var(--hr-ease) .15s backwards}
-html.hero-go .hero-cine .hl-1{--ty:28px;--bl:14px;animation:hrIn 1s var(--hr-ease) .3s backwards}
+html.hero-go body:has(.hero-cine) .site-header{animation:hrNav .8s cubic-bezier(.22,1,.36,1) 0s backwards}
+html.hero-go .hero-cine-eyebrow{animation:hrEyebrow .7s cubic-bezier(.22,1,.36,1) .15s backwards}
+html.hero-go .hero-cine .hl-1{animation:hrLine 1s cubic-bezier(.22,1,.36,1) .3s backwards}
 html.hero-go .hero-cine .hl-1 em{animation:hrFade .9s var(--hr-ease) .35s backwards}
-html.hero-go .hero-cine .hl-2{--ty:28px;--bl:14px;animation:hrIn 1s var(--hr-ease) .45s backwards}
-html.hero-go .hero-cine .hero-cine-lead{--ty:18px;--bl:10px;animation:hrIn .85s var(--hr-ease) 1s backwards}
-html.hero-go .hero-cine .hero-cine-actions{animation:hrInScale .7s var(--hr-ease) 1.2s backwards}
+html.hero-go .hero-cine .hl-2{animation:hrLine 1s cubic-bezier(.22,1,.36,1) .45s backwards}
+html.hero-go .hero-cine .hero-cine-lead{animation:hrBody .85s cubic-bezier(.22,1,.36,1) 1s backwards}
+html.hero-go .hero-cine .hero-cine-actions{animation:hrInScale .7s cubic-bezier(.22,1,.36,1) 1.2s backwards}
 /* Logo strip: the panel rises in, then the label, then each mark clears
    from a blur in turn (the marquee keeps running underneath) */
-html.hero-go .hero-cine .trusted{animation:hrPanel 1s var(--hr-ease) 1.3s backwards}
-html.hero-go .hero-cine .trusted-label{--ty:10px;--bl:8px;animation:hrIn .8s var(--hr-ease) 1.55s backwards}
-html.hero-go .hero-cine .trusted-logos li{
-  --ty:14px;--bl:10px;
-  animation:hrIn .9s var(--hr-ease) calc(1.7s + min(var(--li,12),12) * .07s) backwards;
-}
+html.hero-go .hero-cine .trusted{animation:hrPanel 1s cubic-bezier(.22,1,.36,1) 1.3s backwards}
+html.hero-go .hero-cine .trusted-label{animation:hrLabel .8s cubic-bezier(.22,1,.36,1) 1.55s backwards}
+html.hero-go .hero-cine .trusted-logos li{animation:hrLogo .9s cubic-bezier(.22,1,.36,1) 2.54s backwards}
 @keyframes hrPanel{
-  from{opacity:0;transform:translate3d(0,calc(22px * var(--hr-k)),0)}
+  from{opacity:0;transform:translate3d(0,22px,0)}
   to{opacity:1;transform:translate3d(0,0,0)}
 }
-.hero-cine .trusted-logos li:nth-child(1){--li:0}.hero-cine .trusted-logos li:nth-child(2){--li:1}.hero-cine .trusted-logos li:nth-child(3){--li:2}.hero-cine .trusted-logos li:nth-child(4){--li:3}.hero-cine .trusted-logos li:nth-child(5){--li:4}.hero-cine .trusted-logos li:nth-child(6){--li:5}.hero-cine .trusted-logos li:nth-child(7){--li:6}.hero-cine .trusted-logos li:nth-child(8){--li:7}.hero-cine .trusted-logos li:nth-child(9){--li:8}.hero-cine .trusted-logos li:nth-child(10){--li:9}.hero-cine .trusted-logos li:nth-child(11){--li:10}.hero-cine .trusted-logos li:nth-child(12){--li:11}.hero-cine .trusted-logos li:nth-child(13){--li:12}.hero-cine .trusted-logos li:nth-child(14){--li:13}.hero-cine .trusted-logos li:nth-child(15){--li:14}.hero-cine .trusted-logos li:nth-child(16){--li:15}.hero-cine .trusted-logos li:nth-child(17){--li:16}.hero-cine .trusted-logos li:nth-child(18){--li:17}.hero-cine .trusted-logos li:nth-child(19){--li:18}.hero-cine .trusted-logos li:nth-child(20){--li:19}.hero-cine .trusted-logos li:nth-child(21){--li:20}.hero-cine .trusted-logos li:nth-child(22){--li:21}.hero-cine .trusted-logos li:nth-child(23){--li:22}.hero-cine .trusted-logos li:nth-child(24){--li:23}
+html.hero-go .hero-cine .trusted-logos li:nth-child(1){animation-delay:1.70s}html.hero-go .hero-cine .trusted-logos li:nth-child(2){animation-delay:1.77s}html.hero-go .hero-cine .trusted-logos li:nth-child(3){animation-delay:1.84s}html.hero-go .hero-cine .trusted-logos li:nth-child(4){animation-delay:1.91s}html.hero-go .hero-cine .trusted-logos li:nth-child(5){animation-delay:1.98s}html.hero-go .hero-cine .trusted-logos li:nth-child(6){animation-delay:2.05s}html.hero-go .hero-cine .trusted-logos li:nth-child(7){animation-delay:2.12s}html.hero-go .hero-cine .trusted-logos li:nth-child(8){animation-delay:2.19s}html.hero-go .hero-cine .trusted-logos li:nth-child(9){animation-delay:2.26s}html.hero-go .hero-cine .trusted-logos li:nth-child(10){animation-delay:2.33s}html.hero-go .hero-cine .trusted-logos li:nth-child(11){animation-delay:2.40s}html.hero-go .hero-cine .trusted-logos li:nth-child(12){animation-delay:2.47s}
 
 
 @media (prefers-reduced-motion:reduce){
@@ -3246,3 +3247,10 @@ html.hero-go .hero-cine .trusted-logos li{
 .phil2-copy{grid-template-columns:1fr}
 .phil2-copy::before{content:none;display:none}
 .phil2-lead{max-width:62ch}
+
+/* Phones: shorter travel for the hero lines (after the base keyframes so
+   these win when the query matches) */
+@media (max-width:760px){
+  @keyframes hrLine{from{opacity:0;transform:translate3d(0,17px,0);filter:blur(12px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+  @keyframes hrBody{from{opacity:0;transform:translate3d(0,11px,0);filter:blur(9px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+}

@@ -456,7 +456,10 @@ def page_home():
 
     trusted_order = ["Lenskart", "Indus Valley", "Green LOTUS", "celio", "tira",
                      "godrej properties", "wow skin science", "fikn", "KFC", "Simpl ai"]
-    trusted = "".join(f"<li>{logo_img(l)}</li>" for l in trusted_order * 2)
+    # The list runs twice so the scroll loops seamlessly; the copy is hidden
+    # from screen readers so each brand is announced once.
+    trusted = ("".join(f"<li>{logo_img(l)}</li>" for l in trusted_order)
+               + "".join(f'<li aria-hidden="true">{logo_img(l)}</li>' for l in trusted_order))
 
     return HEAD.format(**ASSET_V,
         title="ANAVA FILMS — Give us a thought. We'll give you ideas to shoot.",
@@ -485,7 +488,7 @@ def page_home():
   <div class="trusted">
     <div class="trusted-inner">
       <p class="trusted-label">Trusted by brands who dare</p>
-      <div class="trusted-marquee">
+      <div class="trusted-marquee" tabindex="0" role="region" aria-label="Brands we have worked with. Hover or focus to pause.">
         <ul class="trusted-logos">{trusted}</ul>
       </div>
     </div>

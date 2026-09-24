@@ -9,10 +9,26 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/anava.css?v=5be042fb78">
-<script defer src="assets/js/anava.js?v=c4e95d7a70"></script>
+<link rel="stylesheet" href="assets/css/anava.css?v=93e9ec7bc1">
+<script defer src="assets/js/anava.js?v=7863e57ae3"></script>
 </head>
 <body>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <video class="intro-video" muted playsinline preload="auto"
+         data-land="intro/intro-3.mp4" data-port="intro/intro-3-vertical.mp4"></video>
+  <button class="intro-skip" type="button">Skip</button>
+</div>
+<script>
+(function () {
+  var el = document.getElementById('intro'), seen = false;
+  try { seen = sessionStorage.getItem('anavaIntro') === '1'; } catch (e) {}
+  var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saver = navigator.connection && navigator.connection.saveData;
+  if (seen || calm || saver) { el.parentNode.removeChild(el); return; }
+  document.documentElement.classList.add('intro-on');
+})();
+</script>
 
 <header class="site-header">
   <div class="header-inner">

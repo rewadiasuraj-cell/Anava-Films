@@ -3254,3 +3254,18 @@ html.hero-go .hero-cine .trusted-logos li:nth-child(1){animation-delay:1.70s}htm
   @keyframes hrLine{from{opacity:0;transform:translate3d(0,17px,0);filter:blur(12px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
   @keyframes hrBody{from{opacity:0;transform:translate3d(0,11px,0);filter:blur(9px)}to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
 }
+
+/* Home hero: "Thought." gets the same gradient shine as the Work page's
+   "Impact.": a light band sweeps across the word once it has landed */
+.hero-cine .hero-cine-title .hl-1 em{
+  color:var(--copper);
+  background:linear-gradient(100deg,var(--copper) 0 38%,#ffd3bd 50%,var(--copper) 62% 100%);
+  background-size:260% 100%;background-position:100% 0;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+html.hero-go .hero-cine .hl-1 em{
+  animation:hrFade .9s cubic-bezier(.22,1,.36,1) .35s backwards,whSweep 1.5s ease-in-out 1.25s both;
+}
+@media (prefers-reduced-motion:reduce){
+  html.hero-go .hero-cine .hl-1 em{animation:hrFade .6s ease backwards}
+}

@@ -534,7 +534,6 @@ def page_home():
         <h3>Think</h3>
         <p class="approach-desc">Creative Direction, Ideation &amp; Concept Development, Scripting, Creative Consulting.</p>
         <figure class="approach-media" aria-hidden="true">
-          <span class="approach-hint">View</span>
           <img src="assets/images/approach-think.jpg" alt="Writer sketching storyboards and a script at a desk" loading="lazy">
         </figure>
       </li>
@@ -544,7 +543,6 @@ def page_home():
         <h3>Make</h3>
         <p class="approach-desc">Production, Direction, Casting (Domestic &amp; International), Art Direction &amp; Production Design.</p>
         <figure class="approach-media" aria-hidden="true">
-          <span class="approach-hint">View</span>
           <img src="assets/images/approach-make.jpg" alt="Film crew and cameras on a lit set" loading="lazy">
         </figure>
       </li>
@@ -554,7 +552,6 @@ def page_home():
         <h3>Finish</h3>
         <p class="approach-desc">Editing, VFX, Sound Design, Color Grading, Motion Graphics &amp; Final Delivery.</p>
         <figure class="approach-media" aria-hidden="true">
-          <span class="approach-hint">View</span>
           <img src="assets/images/approach-finish.jpg" alt="Editor grading a film across three monitors" loading="lazy">
         </figure>
       </li>

@@ -3041,19 +3041,19 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
 .btn-talk:hover .circ-mark img,.btn-talk:focus-visible .circ-mark img{animation:none}
 .btn-talk .talk-label{display:inline-block;overflow:hidden;white-space:nowrap}
 @media (min-width:761px){
-  :root{--morph:1.2s cubic-bezier(.65,0,.35,1)}
+  :root{--morph:.6s cubic-bezier(.65,0,.35,1)}
   .site-header .header-inner{
     min-width:0;margin-left:auto;margin-right:var(--bar-gap,auto);
     transition:max-width var(--morph),padding var(--morph),gap var(--morph),
       margin-top var(--morph),background .5s var(--ease),box-shadow .5s var(--ease),border-color .5s var(--ease);
   }
-  .site-header .brand .brand-word{transition:max-width var(--morph),opacity .5s var(--ease) .35s}
-  .site-header .nav{min-width:0;transition:max-width var(--morph),opacity .45s var(--ease) .4s,transform var(--morph)}
+  .site-header .brand .brand-word{transition:max-width var(--morph),opacity .13s var(--ease) .18s}
+  .site-header .nav{min-width:0;transition:max-width var(--morph),opacity .22s var(--ease) .2s,transform var(--morph)}
   .site-header .brand{min-width:0}
   .site-header .header-actions{transition:max-width var(--morph);max-width:none;overflow:visible}
   .btn-talk{transition:padding var(--morph),gap var(--morph),min-width var(--morph),border-color var(--morph),background var(--morph)}
-  .btn-talk .talk-label{max-width:120px;transition:max-width var(--morph),opacity .45s var(--ease) .45s}
-  .btn-talk .circ-mark{transition:width var(--morph),height var(--morph),margin var(--morph),box-shadow .6s var(--ease),border-color .6s var(--ease)}
+  .btn-talk .talk-label{max-width:120px;transition:max-width var(--morph),opacity .22s var(--ease) .22s}
+  .btn-talk .circ-mark{transition:width var(--morph),height var(--morph),margin var(--morph),box-shadow .3s var(--ease),border-color .3s var(--ease)}
   .btn-talk .circ-mark img{transition:transform var(--morph)}
   .brand .brand-mark{display:none!important}
 
@@ -3062,10 +3062,10 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
     animation:none;
   }
   .site-header.is-compact:is(:hover,:focus-within,.is-peek) .header-inner{animation:none}
-  .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .brand-word{max-width:0;opacity:0;transition:max-width var(--morph),opacity .25s var(--ease)}
+  .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .brand-word{max-width:0;opacity:0;transition:max-width var(--morph),opacity .13s var(--ease)}
   .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .nav{
     max-width:0;opacity:0;pointer-events:none;transform:none;
-    transition:max-width var(--morph),opacity .25s var(--ease);
+    transition:max-width var(--morph),opacity .13s var(--ease);
   }
   .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .header-actions{
     max-width:none;opacity:1;pointer-events:auto;transform:none;
@@ -3074,7 +3074,7 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
     min-width:0;padding:0;gap:0;border-color:transparent;background:transparent;
   }
   .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .talk-label{
-    max-width:0;opacity:0;transition:max-width var(--morph),opacity .25s var(--ease);
+    max-width:0;opacity:0;transition:max-width var(--morph),opacity .13s var(--ease);
   }
   .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .circ-mark{width:44px;height:44px;margin:0}
   .site-header.is-compact:not(:hover):not(:focus-within):not(.is-peek) .circ-mark img{transform:rotate(0deg)}

@@ -3212,13 +3212,26 @@ html.hero-go .hero-cine .hl-1 em{animation:hrFade .9s var(--hr-ease) .35s backwa
 html.hero-go .hero-cine .hl-2{--ty:28px;--bl:14px;animation:hrIn 1s var(--hr-ease) .45s backwards}
 html.hero-go .hero-cine .hero-cine-lead{--ty:18px;--bl:10px;animation:hrIn .85s var(--hr-ease) 1s backwards}
 html.hero-go .hero-cine .hero-cine-actions{animation:hrInScale .7s var(--hr-ease) 1.2s backwards}
-html.hero-go .hero-cine .trusted{--ty:10px;--bl:0px;animation:hrIn .7s var(--hr-ease) 1.45s backwards}
+/* Logo strip: the panel rises in, then the label, then each mark clears
+   from a blur in turn (the marquee keeps running underneath) */
+html.hero-go .hero-cine .trusted{animation:hrPanel 1s var(--hr-ease) 1.3s backwards}
+html.hero-go .hero-cine .trusted-label{--ty:10px;--bl:8px;animation:hrIn .8s var(--hr-ease) 1.55s backwards}
+html.hero-go .hero-cine .trusted-logos li{
+  --ty:14px;--bl:10px;
+  animation:hrIn .9s var(--hr-ease) calc(1.7s + min(var(--li,12),12) * .07s) backwards;
+}
+@keyframes hrPanel{
+  from{opacity:0;transform:translate3d(0,calc(22px * var(--hr-k)),0)}
+  to{opacity:1;transform:translate3d(0,0,0)}
+}
+.hero-cine .trusted-logos li:nth-child(1){--li:0}.hero-cine .trusted-logos li:nth-child(2){--li:1}.hero-cine .trusted-logos li:nth-child(3){--li:2}.hero-cine .trusted-logos li:nth-child(4){--li:3}.hero-cine .trusted-logos li:nth-child(5){--li:4}.hero-cine .trusted-logos li:nth-child(6){--li:5}.hero-cine .trusted-logos li:nth-child(7){--li:6}.hero-cine .trusted-logos li:nth-child(8){--li:7}.hero-cine .trusted-logos li:nth-child(9){--li:8}.hero-cine .trusted-logos li:nth-child(10){--li:9}.hero-cine .trusted-logos li:nth-child(11){--li:10}.hero-cine .trusted-logos li:nth-child(12){--li:11}.hero-cine .trusted-logos li:nth-child(13){--li:12}.hero-cine .trusted-logos li:nth-child(14){--li:13}.hero-cine .trusted-logos li:nth-child(15){--li:14}.hero-cine .trusted-logos li:nth-child(16){--li:15}.hero-cine .trusted-logos li:nth-child(17){--li:16}.hero-cine .trusted-logos li:nth-child(18){--li:17}.hero-cine .trusted-logos li:nth-child(19){--li:18}.hero-cine .trusted-logos li:nth-child(20){--li:19}.hero-cine .trusted-logos li:nth-child(21){--li:20}.hero-cine .trusted-logos li:nth-child(22){--li:21}.hero-cine .trusted-logos li:nth-child(23){--li:22}.hero-cine .trusted-logos li:nth-child(24){--li:23}
+
 
 @media (prefers-reduced-motion:reduce){
   .hero-cine-bg img[data-parallax],.hero-haze{animation:none}
   .hero-cine-inner{transform:none;opacity:1}
   html.hero-go body:has(.hero-cine) .site-header,
-  html.hero-go .hero-cine :is(.hero-cine-eyebrow,.hl-1,.hl-1 em,.hl-2,.hero-cine-lead,.hero-cine-actions,.trusted){animation:hrFade .6s ease backwards}
+  html.hero-go .hero-cine :is(.hero-cine-eyebrow,.hl-1,.hl-1 em,.hl-2,.hero-cine-lead,.hero-cine-actions,.trusted,.trusted-label,.trusted-logos li){animation:hrFade .6s ease backwards}
   .hero-cta,.hero-cta-arrow{transition:background .3s ease}
   .hero-cine .hero-cine-actions .hero-cta:hover{transform:none}
   .hero-cta:hover .hero-cta-arrow{transform:none}

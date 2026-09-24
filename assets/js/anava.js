@@ -670,71 +670,125 @@
     window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(render, 150); });
   }
 
-  /* ---------- Contact form (AJAX with mailto fallback) ---------- */
+  /* ---------- Contact form (AJAX with mailto fallback) ----------
+     Posts to FormSubmit as before. Checks each field locally first and
+     explains the problem beside it; keeps everything typed on any failure;
+     one request at a time; on a network or service failure it offers the
+     same email fallback as a link instead of opening mail unasked. */
   var form = document.getElementById('contact-form');
   var feedback = document.getElementById('form-feedback');
   if (form) {
-    function openMailto(d) {
+    var done = document.getElementById('form-done');
+    var button = form.querySelector('button[type="submit"]');
+    var label = button && button.querySelector('.ct-submit-label');
+    var sending = false;
+    var RULES = {
+      name: function (v) { return v ? '' : 'Please add your name.'; },
+      email: function (v) {
+        if (!v) return 'Please add your email so we can reply.';
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? '' : 'That email doesn’t look complete — please check it.';
+      },
+      phone: function (v) { return !v || /^[+()\d\s-]{7,}$/.test(v) ? '' : 'Please use digits only, e.g. +91 98765 43210.'; },
+      message: function (v) { return v ? '' : 'Tell us a little about the project — even one line helps.'; }
+    };
+
+    function mailtoHref(d) {
       var body =
-        'Name / Brand: ' + (d.get('name') || '') + '\n' +
+        'Name: ' + (d.get('name') || '') + '\n' +
         'Email: ' + (d.get('email') || '') + '\n' +
+        'Phone: ' + (d.get('phone') || '') + '\n' +
         'Company / Brand: ' + (d.get('company') || '') + '\n' +
-        'Project Type: ' + (d.get('type') || '') + '\n\n' +
+        'Project Type: ' + (d.get('type') || '') + '\n' +
+        'Budget: ' + (d.get('budget') || '') + '\n\n' +
         'The Thought:\n' + (d.get('message') || '');
-      window.location.href =
-        'mailto:office@anavafilms.com?subject=' +
+      return 'mailto:office@anavafilms.com?subject=' +
         encodeURIComponent('New Thought from ' + (d.get('name') || 'Website')) +
         '&body=' + encodeURIComponent(body);
+    }
+    function check(name) {
+      var el = form.elements[name];
+      if (!el || !RULES[name]) return true;
+      var msg = RULES[name](el.value.trim());
+      var err = document.getElementById('e-' + name);
+      el.setAttribute('aria-invalid', msg ? 'true' : 'false');
+      el.closest('.ct-field').classList.toggle('is-bad', !!msg);
+      if (err) err.textContent = msg;
+      return !msg;
+    }
+    function checkAll() {
+      var first = null;
+      Object.keys(RULES).forEach(function (n) { if (!check(n) && !first) first = form.elements[n]; });
+      return first;
+    }
+    // Once a field has been left, it re-checks as it is corrected
+    Object.keys(RULES).forEach(function (n) {
+      var el = form.elements[n];
+      if (!el) return;
+      el.addEventListener('blur', function () { if (el.value.trim() || el.hasAttribute('aria-invalid')) check(n); });
+      el.addEventListener('input', function () { if (el.getAttribute('aria-invalid') === 'true') check(n); });
+    });
+    form.querySelectorAll('input, select, textarea').forEach(function (el) {
+      function mark() { el.closest('.ct-field') && el.closest('.ct-field').classList.toggle('is-filled', !!el.value); }
+      el.addEventListener('change', mark); el.addEventListener('input', mark);
+    });
+
+    function setBusy(on) {
+      sending = on;
+      form.classList.toggle('is-sending', on);
+      form.setAttribute('aria-busy', on ? 'true' : 'false');
+      if (button) button.disabled = on;
+      if (label) label.textContent = on ? 'Sending…' : 'Send Enquiry';
+    }
+    function fail(d) {
+      if (!feedback) return;
+      feedback.hidden = false;
+      feedback.className = 'ct-feedback is-error';
+      feedback.innerHTML = '';
+      var p = document.createElement('p');
+      p.textContent = 'We couldn’t send that just now. Your details are still here — try again, or send it by email.';
+      var a = document.createElement('a');
+      a.className = 'stays-link';
+      a.href = mailtoHref(d);
+      a.textContent = 'Send by Email Instead';
+      feedback.appendChild(p);
+      feedback.appendChild(a);
     }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (sending) return;
+      if (feedback) feedback.hidden = true;
+      var bad = checkAll();
+      if (bad) { bad.focus(); return; }
       var d = new FormData(form);
       var actionUrl = form.getAttribute('action');
-
-      if (!actionUrl || actionUrl.startsWith('mailto:')) {
-        openMailto(d);
-        return;
-      }
-
-      var button = form.querySelector('button[type="submit"]');
-      var originalText = button ? button.innerHTML : '';
-      if (button) {
-        button.disabled = true;
-        button.innerHTML = 'Sending...';
-      }
-
-      fetch(actionUrl, {
-        method: 'POST',
-        body: d,
-        headers: { 'Accept': 'application/json' }
-      }).then(function (res) {
-        if (res.ok) {
+      if (!actionUrl || actionUrl.indexOf('mailto:') === 0) { window.location.href = mailtoHref(d); return; }
+      setBusy(true);
+      fetch(actionUrl, { method: 'POST', body: d, headers: { 'Accept': 'application/json' } })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Submission returned ' + res.status);
+          return res.text().then(function (t) {
+            var j = null;
+            try { j = JSON.parse(t); } catch (err) { /* an HTML thank-you page is a success too */ }
+            if (j && (j.success === false || j.success === 'false')) throw new Error(j.message || 'Rejected');
+          });
+        })
+        .then(function () {
           form.reset();
-          if (feedback) {
-            feedback.hidden = false;
-            feedback.style.color = '#34d399';
-            feedback.textContent = 'Thank you! Your message has been sent. We’ll be in touch shortly.';
-          } else {
-            alert('Thank you! Your message has been sent. We’ll be in touch shortly.');
-          }
-        } else {
-          throw new Error('Submission returned error');
-        }
-      }).catch(function () {
-        // Fallback to mailto if fetch encounters issue or network error
-        if (feedback) {
-          feedback.hidden = false;
-          feedback.style.color = '#f59e0b';
-          feedback.textContent = 'Opening your email client to send message...';
-        }
-        openMailto(d);
-      }).finally(function () {
-        if (button) {
-          button.disabled = false;
-          button.innerHTML = originalText;
-        }
-      });
+          form.querySelectorAll('.ct-field').forEach(function (f) { f.classList.remove('is-filled', 'is-bad'); });
+          form.hidden = true;
+          if (done) { done.hidden = false; done.focus(); }
+        })
+        .catch(function () { fail(d); })
+        .then(function () { setBusy(false); });
+    });
+
+    var again = done && done.querySelector('.ct-again');
+    if (again) again.addEventListener('click', function () {
+      done.hidden = true;
+      form.hidden = false;
+      var first = form.elements.name;
+      if (first) first.focus();
     });
   }
 
@@ -807,7 +861,7 @@
   }
 
   /* ---------- 2. collect reveal items and give each section a sequence ---------- */
-  var SKIP = '.work-hero, .hero-cine, .ww, .step, .pj, .pj-hero, .cap, .intro, .site-header, .main-footer, .lightbox, .case';
+  var SKIP = '.work-hero, .hero-cine, .ww, .step, .pj, .pj-hero, .cap, .ct-hero, .ct-main, .intro, .site-header, .main-footer, .lightbox, .case';
   var ROLES = [
     ['label', '.eyebrow, .sec-name, .stays-label, .approach-eyebrow, .pb-eyebrow'],
     ['heading', HEADINGS],

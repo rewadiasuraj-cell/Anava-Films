@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/anava.css?v=d2e87916e7">
+<link rel="stylesheet" href="assets/css/anava.css?v=b017da0f5f">
 <script>document.documentElement.classList.add('m-js')</script>
-<script defer src="assets/js/anava.js?v=0f9aa2d545"></script>
+<script defer src="assets/js/anava.js?v=60e41573a0"></script>
 </head>
 <body>
 
@@ -26,83 +26,111 @@
   </div>
 </header>
 
-<section class="hero-split centered">
-  <div class="container">
-    <div class="hero-split-grid">
-      <div class="hero-copy reveal">
-        <span class="eyebrow">Contact</span>
-        <h1 class="display">Got a <span class="o">Thought?</span></h1>
-        <p class="lead">You don't need a finished brief. You don't need a script. You don't even need to know exactly what the film should look like. Just give us the thought — we'll bring the ideas.</p>
-        <div class="hero-actions">
-          <a href="#form" class="btn btn-light">Let's Make It <span class="circ"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-        </div>
-      </div>
-      <div class="hero-media reveal">
-        <img src="assets/images/director_chair_hero.jpg" alt="Anava Films director chair">
-        <div class="hero-script script">Ideas<br>People<br>Films</div>
-        <div class="hero-tag">A thought today. A story tomorrow.</div>
-      </div>
+<section class="ct-hero">
+  <div class="container ct-hero-grid">
+    <div class="ct-hero-copy">
+      <p class="ct-label">Contact</p>
+      <h1 class="ct-title">Have a <span class="o">Thought?</span><br>Let&rsquo;s Talk.</h1>
+      <p class="ct-lead">You don&rsquo;t need a finished brief, a script or a clear picture of the film. Just give us the thought &mdash; we&rsquo;ll bring the ideas.</p>
     </div>
+    <figure class="ct-hero-media" aria-hidden="true">
+      <img src="assets/images/director_chair_hero.jpg" alt="" fetchpriority="high">
+    </figure>
   </div>
 </section>
 
-<section style="padding-bottom:40px" id="form">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="card-panel reveal">
-        <span class="eyebrow">Send us a message</span>
-        <h2 style="font-size:1.75rem;margin-top:12px">Tell us about your project.</h2>
-        <form id="contact-form" action="https://formsubmit.co/office@anavafilms.com" method="POST">
-          <div class="form-grid">
-            <input class="field" name="name" placeholder="Your Name*" required>
-            <input class="field" name="email" type="email" placeholder="Your Email*" required>
-            <input class="field full" name="company" placeholder="Company / Brand">
-            <select class="field full" name="type">
-              <option value="">Project Type</option>
-              <option>Commercial TVC / Brand Film</option>
-              <option>Vertical Film / Viral Social Reel</option>
-              <option>Performance Ads / Conversion Suite</option>
-              <option>Product Shoot &amp; Catalogue Visuals</option>
-              <option>Podcast &amp; Studio Broadcast</option>
-              <option>Creative Consulting / Just Have A Thought</option>
+<section class="ct-main" id="form">
+  <div class="container ct-grid">
+    <div class="ct-form-wrap">
+      <h2 class="ct-h2" id="enquiry-title">Tell Us About the Project</h2>
+      <p class="ct-sub">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required. We usually respond within 24 hours.</p>
+      <form id="contact-form" class="ct-form" action="https://formsubmit.co/office@anavafilms.com" method="POST" novalidate aria-labelledby="enquiry-title">
+        <input type="hidden" name="_subject" value="New project enquiry — anavafilms.com">
+        <input type="text" name="_honey" class="ct-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="ct-fields">
+          <div class="ct-field">
+            <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name">
+            <p class="ct-err" id="e-name" aria-live="polite"></p>
+          </div>
+          <div class="ct-field">
+            <label for="f-company">Company / Brand</label>
+            <input id="f-company" name="company" type="text" autocomplete="organization">
+            <p class="ct-err" aria-hidden="true"></p>
+          </div>
+          <div class="ct-field">
+            <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="e-email">
+            <p class="ct-err" id="e-email" aria-live="polite"></p>
+          </div>
+          <div class="ct-field">
+            <label for="f-phone">Phone <span class="opt">Optional</span></label>
+            <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="e-phone">
+            <p class="ct-err" id="e-phone" aria-live="polite"></p>
+          </div>
+          <div class="ct-field">
+            <label for="f-type">Project Type</label>
+            <select id="f-type" name="type">
+              <option value="">Choose one</option>
+              <option>TVC / Brand Film</option>
+              <option>Digital Film</option>
+              <option>Vertical / Social Content</option>
+              <option>Performance Ads</option>
+              <option>Event Film</option>
+              <option>Photoshoot</option>
+              <option>Production</option>
+              <option>Post-Production</option>
+              <option>Creative Consulting / Just a Thought</option>
+              <option>Other</option>
             </select>
-            <textarea class="field full" name="message" placeholder="Tell us about your project..." required></textarea>
+            <p class="ct-err" aria-hidden="true"></p>
           </div>
-          <div class="form-foot">
-            <button class="btn btn-primary" type="submit">Send Message <span class="circ"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
-            <p class="form-note">We usually respond within 24 hours.</p>
+          <div class="ct-field">
+            <label for="f-budget">Budget <span class="opt">Optional</span></label>
+            <select id="f-budget" name="budget">
+              <option value="">Not sure yet</option>
+              <option>Under &#8377;5 Lakh</option>
+              <option>&#8377;5&ndash;15 Lakh</option>
+              <option>&#8377;15&ndash;40 Lakh</option>
+              <option>&#8377;40 Lakh+</option>
+            </select>
+            <p class="ct-err" aria-hidden="true"></p>
           </div>
-          <p id="form-feedback" role="status" aria-live="polite" hidden style="margin-top:14px;font-size:15px;"></p>
-        </form>
-      </div>
-
-      <div class="reveal">
-        <span class="eyebrow">Get in touch</span>
-        <h2 class="display-sm" style="margin:14px 0 4px">Let's <span class="o">Connect.</span></h2>
-        <div class="contact-rows">
-          <div class="crow">
-            <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
-            <div><div class="crow-label">Email</div><div class="crow-val"><a href="mailto:office@anavafilms.com">office@anavafilms.com</a></div></div>
-          </div>
-          <div class="crow">
-            <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v2.5a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.7 2 2 0 0 1 4.1 1.5h2.5a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.7 9.3a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
-            <div><div class="crow-label">Phone</div><div class="crow-val"><a href="tel:+918691924669">Jackson: +91 86919 24669</a><br><a href="tel:+919911111273">Anjan: +91 99111 11273</a></div></div>
-          </div>
-          <div class="crow">
-            <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
-            <div><div class="crow-label">Follow Us</div><div class="crow-val"><a href="https://www.instagram.com/anavafilms" target="_blank" rel="noopener">Instagram</a> | <a href="https://vimeo.com/anavafilms" target="_blank" rel="noopener">Vimeo</a> | <a href="https://www.youtube.com/@anavafilms" target="_blank" rel="noopener">YouTube</a></div></div>
+          <div class="ct-field full">
+            <label for="f-message">Tell Us About the Project <span class="req" aria-hidden="true">*</span></label>
+            <textarea id="f-message" name="message" rows="5" required aria-describedby="e-message" placeholder="The thought, the brief, the product or the problem &mdash; whatever you have."></textarea>
+            <p class="ct-err" id="e-message" aria-live="polite"></p>
           </div>
         </div>
-
+        <div class="ct-foot">
+          <button class="btn btn-primary ct-submit" type="submit"><span class="ct-submit-label">Send Enquiry</span> <span class="circ"><svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+          <span class="ct-progress" aria-hidden="true"><i></i></span>
+        </div>
+        <div id="form-feedback" class="ct-feedback" role="status" aria-live="polite" hidden></div>
+      </form>
+      <div class="ct-done" id="form-done" tabindex="-1" hidden>
+        <p class="ct-done-title">Thought received.</p>
+        <p class="ct-done-text">Thank you &mdash; we&rsquo;ll get back to you within 24 hours.</p>
+        <button type="button" class="stays-link ct-again">Send another enquiry</button>
       </div>
     </div>
+
+    <aside class="ct-direct" aria-labelledby="direct-title">
+      <h2 class="ct-h3" id="direct-title">Direct Contact</h2>
+      <dl class="ct-list">
+        <div><dt>Email</dt><dd><a href="mailto:office@anavafilms.com">office@anavafilms.com</a></dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+918691924669">Jackson &middot; +91 86919 24669</a><a href="tel:+919911111273">Anjan &middot; +91 99111 11273</a></dd></div>
+        <div><dt>Follow</dt><dd class="ct-social"><a href="https://www.instagram.com/anava_films" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://vimeo.com/zackdirect" target="_blank" rel="noopener noreferrer">Vimeo</a><a href="https://www.youtube.com/@anava-films" target="_blank" rel="noopener noreferrer">YouTube</a></dd></div>
+        <div><dt>Studios</dt><dd>Mumbai &middot; Delhi</dd></div>
+      </dl>
+    </aside>
   </div>
 </section>
 
 <section class="section-sm">
   <div class="container">
     <div class="loc-head reveal">
-      <span class="eyebrow">Visit us</span>
+      <span class="eyebrow">Visit Us</span>
       <h2 class="display-sm oneline">Our <span class="o">Locations.</span></h2>
       <p class="lead">Come say hello. We're in Mumbai and Delhi.</p>
     </div>
@@ -112,6 +140,7 @@
             <span class="script">Same<br>City<br>Bigger<br>Stories</span>
             <div class="loc-inner">
               <div class="loc-top"><h3>Mumbai</h3></div>
+              <p class="loc-detail">Linking Road, Bandra West</p>
               <a class="loc-link" href="https://maps.google.com/?q=Linking+Road+Bandra+West+Mumbai" target="_blank" rel="noopener">Get Directions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             </div>
           </div>
@@ -120,6 +149,7 @@
             <span class="script">More<br>Ideas<br>More<br>Films</span>
             <div class="loc-inner">
               <div class="loc-top"><h3>Delhi</h3></div>
+              <p class="loc-detail">Saket, New Delhi</p>
               <a class="loc-link" href="https://maps.google.com/?q=Saket+New+Delhi" target="_blank" rel="noopener">Get Directions <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
             </div>
           </div>
@@ -127,22 +157,10 @@
   </div>
 </section>
 
-<section class="section cta-quiet">
+<section class="ct-close">
   <div class="container">
-    <div class="cta-band warm reveal">
-      <div class="cta-band-bg"><img src="assets/images/hero_dark.jpg" alt="" loading="lazy"></div>
-      <div class="cta-band-inner">
-        <div>
-          <span class="eyebrow">Let's build together</span>
-          <h2 class="display-sm display-2line"><span>Great Ideas Start With</span><span>a <em class="o">Conversation.</em></span></h2>
-        </div>
-        <div>
-          <p class="lead">Have a thought? Let's talk. We'll give you ideas to shoot.</p>
-          <a href="mailto:office@anavafilms.com" class="stays-link cta-quiet-link">Let's Talk <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
-        </div>
-      </div>
-      <div class="script">Ideas<br>Into<br>Action</div>
-    </div>
+    <p class="ct-close-line">Great Ideas Start With a <span class="o">Conversation.</span></p>
+    <a class="stays-link ct-close-link" href="mailto:office@anavafilms.com">office@anavafilms.com <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
   </div>
 </section>
 

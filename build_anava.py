@@ -420,24 +420,46 @@ def page_home():
     # case study like any other card.
     REEL_V = "assets/media/tvc/Sunil Shetty AD Landscape.mp4"
     REEL_CASE = case_attr(card_for(REEL_V))
-    # Two landscape films with designed key art, one row side by side; the rest
-    # live on the Work page. (Sunil Shetty already fronts the featured film above.)
-    # Two films, staggered: the lead film large, the second smaller and set
-    # in from the left. Each opens its case study.
-    sel = [
-        ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/thumbnails/lenskart-hustler.jpg", "Lenskart", "Hustlr"),
-        ("assets/media/tvc/LK AQUALENS FILM.mp4", "assets/images/thumbnails/lk-aqualens-film.jpg", "Lenskart", "Aqualens"),
+    # Works Wheel: the homepage's selected films. Each entry points at an
+    # existing work.json film (video key), its existing thumbnail, and the
+    # short title / format / client shown while it is the active film. The
+    # ratio is the thumbnail's own frame so nothing is stretched or re-cut
+    # beyond the Work page's card crop.
+    WHEEL = [
+        ("assets/media/tvc/Sunil Shetty AD Landscape.mp4", "assets/images/thumbnails/sunil-shetty-film.jpg",
+         "Sunil Shetty", "Brand Film", "Green Lotus", "16/9"),
+        ("assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4", "assets/images/thumbnails/tira-beauty-kareena.jpg",
+         "Kareena Kapoor &times; Tira Beauty", "Brand Film", "Tira Beauty", "16/9"),
+        ("assets/media/event-films/LENSKART X SUPERMAN MOVIE.mp4", "assets/images/posters/lenskart-x-superman-movie.jpg",
+         "Lenskart &times; Superman", "Launch Film", "Lenskart &times; Warner Bros", "9/16"),
+        ("assets/media/event-films/Celio.mp4", "assets/images/thumbnails/celio-event.jpg",
+         "Celio", "Event Film", "Celio", "3/4"),
+        ("assets/media/tvc/LK AQUALENS FILM.mp4", "assets/images/thumbnails/lk-aqualens-film.jpg",
+         "Aqualens", "Digital TVC", "Lenskart", "16/9"),
+        ("assets/media/tvc/FIKN ELIXIR FILM 04.mp4", "assets/images/thumbnails/fikn-elixir-film.jpg",
+         "FIKN Elixir", "Perfume Brand Film", "FIKN Elixir", "3/4"),
+        ("assets/media/event-films/Godrej properties.mp4", "assets/images/thumbnails/godrej-properties-event.jpg",
+         "Godrej Properties", "Event Film", "Godrej Properties", "3/4"),
+        ("assets/media/vertical-films/KFC X JITESH SHARMA ( RCB).mp4", "assets/images/thumbnails/kfc-jitesh.jpg",
+         "KFC &times; Jitesh Sharma", "Sports Commercial", "KFC &times; RCB", "9/16"),
     ]
-    sel_html = "".join(f"""
-      <figure class="sw-card sw-card-{i + 1}">
-        <button class="sw-media" type="button" data-lightbox="{esc(v)}" data-caption="{esc(card_for(v)['title'])}" {case_attr(card_for(v))}>
-          <img src="{esc(p)}" alt="{esc(b)} &middot; {esc(t)}" loading="lazy">
-        </button>
-        <figcaption>
-          <span>{esc(b)} <i>&middot;</i> {esc(t)}</span>
-          <button class="sw-play" type="button" aria-label="Play {esc(b)} {esc(t)}" data-lightbox="{esc(v)}" data-caption="{esc(card_for(v)['title'])}" {case_attr(card_for(v))}>{PLAY}</button>
-        </figcaption>
-      </figure>""" for i, (v, p, b, t) in enumerate(sel))
+    WN = len(WHEEL)
+
+    def wheel_item(i, v, img, title, fmt, client, ratio):
+        c = card_for(v)
+        rw, rh = (int(n) for n in ratio.split("/"))
+        orient = "portrait" if rw < rh else "landscape"
+        load = 'loading="eager" fetchpriority="high"' if i == 0 else 'loading="lazy"'
+        plain = re.sub(r"&times;", "x", title)
+        return f"""
+        <a class="ww-item" href="work" style="--r:{ratio}" data-orient="{orient}" data-i="{i}"
+           data-title="{title}" data-meta="{fmt} &middot; {client}"
+           data-lightbox="{esc(v)}" data-caption="{esc(c['title'])}" {case_attr(c)}
+           aria-label="{plain}, {fmt}, {re.sub(r'&times;', 'x', client)}. Play film">
+          <img src="{esc(img)}" alt="{plain}: {fmt} by Anava Films" {load} decoding="async">
+        </a>"""
+
+    wheel_html = "".join(wheel_item(i, *w) for i, w in enumerate(WHEEL))
 
     # A knockout mark — a light shape sitting inside a coloured plate — cannot be
     # flattened to a silhouette: brightness(0) blacks out the light parts too and
@@ -528,15 +550,30 @@ def page_home():
   </div>
 </section>
 
-<section class="stays">
-  <div class="stays-arc" aria-hidden="true"></div>
-  <div class="container stays-grid">
-    <div class="stays-copy reveal">
-      <p class="stays-label"><b>02</b> Selected Work</p>
-      <h2 class="stays-title">Work<br>That Stays<br>With <span class="o">You.</span></h2>
-      <a href="work.html" class="stays-link">View All Work {DIAG}</a>
+<section class="ww" aria-labelledby="ww-title" data-mode="gallery">
+  <div class="ww-pin">
+    <div class="ww-frame container">
+      <div class="ww-side">
+        <div class="ww-head">
+          <p class="stays-label ww-label"><b>02</b> Selected Work</p>
+          <h2 class="ww-title" id="ww-title">Work That Stays<br>With <span class="o">You.</span></h2>
+          <a href="work" class="stays-link ww-all">All Work {DIAG}</a>
+        </div>
+        <div class="ww-info" aria-live="polite">
+          <p class="ww-count"><span class="ww-num">01</span> / {WN:02d}</p>
+          <h3 class="ww-name">{WHEEL[0][2]}</h3>
+          <p class="ww-meta">{WHEEL[0][3]} &middot; {WHEEL[0][4]}</p>
+          <a class="ww-view" href="work">View Project <span aria-hidden="true">&#8599;</span></a>
+          <span class="ww-bar" aria-hidden="true"><i></i></span>
+        </div>
+      </div>
+      <div class="ww-anchor" aria-hidden="true"></div>
     </div>
-    <div class="stays-films reveal">{sel_html}
+    <div class="ww-stage">{wheel_html}
+    </div>
+    <div class="ww-nav" aria-hidden="true">
+      <button type="button" class="ww-prev" tabindex="-1">&larr;</button>
+      <button type="button" class="ww-next" tabindex="-1">&rarr;</button>
     </div>
   </div>
 </section>

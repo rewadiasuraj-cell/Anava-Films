@@ -721,7 +721,7 @@
   }
 
   /* ---------- 2. collect reveal items and give each section a sequence ---------- */
-  var SKIP = '.work-hero, .hero-cine, .step, .intro, .site-header, .main-footer, .lightbox, .case';
+  var SKIP = '.work-hero, .hero-cine, .ww, .step, .intro, .site-header, .main-footer, .lightbox, .case';
   var ROLES = [
     ['label', '.eyebrow, .sec-name, .stays-label, .approach-eyebrow, .pb-eyebrow'],
     ['heading', HEADINGS],
@@ -905,4 +905,307 @@
   /* grain over everything (static, very faint) */
   var g = document.createElement('div'); g.className = 'm-grain'; g.setAttribute('aria-hidden', 'true');
   document.body.appendChild(g);
+})();
+
+/* ==========================================================================
+   Home — Works Wheel (02 Selected Work)
+   Wide screens with motion: the films start in a ring around the title and,
+   as the page scrolls through the pinned section, open into a 3D drum that
+   turns one film at a time. The page's own scroll drives it (wheel,
+   trackpad, touch, keyboard), so the section never traps scrolling; a mouse
+   drag is turned into page scroll. Values ease toward their targets, so
+   motion stays weighted rather than snapping. Phones and reduced motion
+   get a horizontal strip instead (CSS: .ww[data-mode="gallery"]).
+   ========================================================================== */
+(function () {
+  'use strict';
+  var root = document.querySelector('.ww');
+  if (!root || !window.matchMedia) return;
+  var pin = root.querySelector('.ww-pin');
+  var stage = root.querySelector('.ww-stage');
+  var head = root.querySelector('.ww-head');
+  var info = root.querySelector('.ww-info');
+  var anchor = root.querySelector('.ww-anchor');
+  var numEl = root.querySelector('.ww-num');
+  var nameEl = root.querySelector('.ww-name');
+  var metaEl = root.querySelector('.ww-meta');
+  var viewEl = root.querySelector('.ww-view');
+  var barEl = root.querySelector('.ww-bar');
+  var items = Array.prototype.slice.call(root.querySelectorAll('.ww-item'));
+  var N = items.length;
+  if (!N) return;
+
+  var wideMq = window.matchMedia('(min-width: 768px)');
+  var calmMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var ratios = items.map(function (el) {
+    var r = (el.style.getPropertyValue('--r') || '16/9').split('/');
+    return (parseFloat(r[0]) || 16) / (parseFloat(r[1]) || 9);
+  });
+
+  // Scroll budget, in viewport heights: opening the ring, one step per film,
+  // then a short hold on the last film before the section lets go.
+  var OPEN = 70, STEP = 42, HOLD = 24;
+  var SPAN = OPEN + STEP * (N - 1) + HOLD;
+  var ANG = 34;                       // degrees between films on the drum
+
+  var mode = '', active = -1, geo = null, raf = 0, visible = true;
+  var cur = { m: 0, p: 0 }, tgt = { m: 0, p: 0 };
+
+  function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function ease(t) { return t * t * (3 - 2 * t); }
+
+  /* ---- active film: text, link and markers (only when it changes) ---- */
+  function setActive(i) {
+    if (i === active) return;
+    active = i;
+    items.forEach(function (el, k) {
+      el.classList.toggle('is-active', k === i);
+      el.classList.toggle('is-dim', k !== i);
+    });
+    var el = items[i];
+    numEl.textContent = (i < 9 ? '0' : '') + (i + 1);
+    nameEl.textContent = el.getAttribute('data-title');
+    metaEl.textContent = el.getAttribute('data-meta');
+    ['data-lightbox', 'data-caption', 'data-case'].forEach(function (a) {
+      var v = el.getAttribute(a);
+      if (v !== null) viewEl.setAttribute(a, v); else viewEl.removeAttribute(a);
+    });
+    viewEl.setAttribute('aria-label', 'View project: ' + el.getAttribute('data-title'));
+    barEl.style.setProperty('--wwp', ((i + 1) / N * 100).toFixed(2) + '%');
+  }
+
+  /* ---- wheel geometry ---- */
+  function measure() {
+    var pr = pin.getBoundingClientRect();
+    var vw = pr.width, vh = pr.height;
+    var ar = anchor.getBoundingClientRect();
+    var H = Math.min(vh * 0.5, ar.width * 0.84 / (16 / 9));
+    var hr = clamp(vh * 0.14, 64, 128);             // film height in the ring
+    var cx = vw / 2, cy = vh / 2 + 28;
+    head.style.transform = 'none';
+    var hb = head.getBoundingClientRect();
+    geo = {
+      vh: vh, H: H, R: H * 1.25, hr: hr, cx: cx, cy: cy,
+      rx: Math.min(vw * 0.4, vw / 2 - hr * 1.05),
+      ry: Math.min(vh * 0.36, vh / 2 - hr * 0.62 - 34),
+      dx: ar.left - pr.left + ar.width / 2,
+      dy: ar.top - pr.top + ar.height / 2,
+      hx: cx - (hb.left - pr.left + hb.width / 2),
+      hy: cy - (hb.top - pr.top + hb.height / 2)
+    };
+    items.forEach(function (el, i) {
+      el.style.width = (H * ratios[i]).toFixed(1) + 'px';
+      el.style.height = H.toFixed(1) + 'px';
+    });
+  }
+
+  function render() {
+    var g = geo, mm = clamp(cur.m, 0, 1), m = ease(mm), p = cur.p;
+    var spin = mm * 50;                              // the ring turns as it opens
+    for (var i = 0; i < N; i++) {
+      var el = items[i], w = g.H * ratios[i];
+      var phi = (i / N * 360 - 90 + spin) * Math.PI / 180;
+      var rx = g.cx + g.rx * Math.cos(phi), ry = g.cy + g.ry * Math.sin(phi);
+      var d = i - p, th = d * ANG, t = th * Math.PI / 180, ad = Math.min(1, Math.abs(d));
+      var dy = g.dy + g.R * Math.sin(t), dz = g.R * (Math.cos(t) - 1);
+      var dO = Math.abs(th) >= 100 ? 0 : (1 - 0.58 * ad) * clamp((100 - Math.abs(th)) / 26, 0, 1);
+      var x = lerp(rx, g.dx, m), y = lerp(ry, dy, m), z = dz * m;
+      var s = lerp(g.hr / g.H, 1 - 0.1 * ad, m);
+      var o = lerp(0.82, dO, m);
+      el.style.transform = 'translate3d(' + (x - w / 2).toFixed(1) + 'px,' + (y - g.H / 2).toFixed(1) +
+        'px,' + z.toFixed(1) + 'px) rotateX(' + (-th * m).toFixed(2) + 'deg) scale(' + s.toFixed(4) + ')';
+      el.style.opacity = o.toFixed(3);
+      el.style.visibility = o < 0.01 ? 'hidden' : '';
+      el.style.zIndex = String(100 - Math.round(ad * 20 * m));
+    }
+    stage.style.perspectiveOrigin = lerp(g.cx, g.dx, m).toFixed(0) + 'px ' + lerp(g.cy, g.dy, m).toFixed(0) + 'px';
+    head.style.transform = 'translate3d(' + (g.hx * (1 - m)).toFixed(1) + 'px,' + (g.hy * (1 - m)).toFixed(1) + 'px,0)';
+    var io = clamp((mm - 0.55) / 0.45, 0, 1);
+    info.style.opacity = io.toFixed(3);
+    info.style.transform = 'translate3d(0,' + ((1 - io) * 16).toFixed(1) + 'px,0)';
+    info.style.visibility = io < 0.02 ? 'hidden' : '';
+    setActive(clamp(Math.round(p), 0, N - 1));
+  }
+
+  function frame() {
+    raf = 0;
+    cur.m += (tgt.m - cur.m) * 0.12;
+    cur.p += (tgt.p - cur.p) * 0.1;
+    if (Math.abs(tgt.m - cur.m) < 0.0005) cur.m = tgt.m;
+    if (Math.abs(tgt.p - cur.p) < 0.0005) cur.p = tgt.p;
+    render();
+    if (visible && (cur.m !== tgt.m || cur.p !== tgt.p)) raf = requestAnimationFrame(frame);
+  }
+  function kick() { if (!raf && visible && mode === 'wheel') raf = requestAnimationFrame(frame); }
+
+  function span() { return Math.max(1, root.offsetHeight - geo.vh); }
+  function readScroll() {
+    var s = clamp(-root.getBoundingClientRect().top / span(), 0, 1) * SPAN;
+    tgt.m = clamp(s / OPEN, 0, 1);
+    tgt.p = clamp((s - OPEN) / STEP, 0, N - 1);
+  }
+  function yFor(i) {
+    return root.getBoundingClientRect().top + window.pageYOffset + (OPEN + i * STEP) / SPAN * span();
+  }
+  function goTo(i) { window.scrollTo({ top: Math.round(yFor(i)), behavior: 'smooth' }); }
+
+  // After the reader stops, ease onto the nearest film (only mid-drum)
+  var settleT = 0, dragging = false;
+  function settle() {
+    if (mode !== 'wheel' || dragging || tgt.m < 1) return;
+    var near = Math.round(tgt.p);
+    if (tgt.p <= 0 || tgt.p >= N - 1 || Math.abs(tgt.p - near) < 0.02) return;
+    goTo(near);
+  }
+  function onScroll() {
+    if (mode !== 'wheel') return;
+    readScroll();
+    kick();
+    clearTimeout(settleT);
+    settleT = setTimeout(settle, 260);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ---- mouse drag: turned into page scroll, one film per film height ---- */
+  var drag = null, eatClick = false;
+  stage.addEventListener('pointerdown', function (e) {
+    if (mode !== 'wheel' || e.pointerType !== 'mouse' || e.button !== 0) return;
+    drag = { id: e.pointerId, x: e.clientX, y: e.clientY, moved: false };
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!drag || e.pointerId !== drag.id) return;
+    var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!drag.moved) {
+      if (Math.abs(dx) + Math.abs(dy) < 6) return;
+      drag.moved = dragging = true;
+      stage.classList.add('is-dragging');
+      document.documentElement.style.scrollBehavior = 'auto';
+    }
+    drag.x = e.clientX; drag.y = e.clientY;
+    var delta = Math.abs(dx) > Math.abs(dy) ? dx : dy;
+    var perFilm = STEP / 100 * geo.vh;
+    window.scrollTo(window.pageXOffset, window.pageYOffset - delta / geo.H * perFilm);
+  });
+  function endDrag(e) {
+    if (!drag || (e && e.pointerId !== drag.id)) return;
+    if (drag.moved) {
+      eatClick = true;
+      setTimeout(function () { eatClick = false; }, 0);
+      stage.classList.remove('is-dragging');
+      document.documentElement.style.scrollBehavior = '';
+      dragging = false;
+      clearTimeout(settleT);
+      settleT = setTimeout(settle, 120);
+    }
+    drag = null;
+  }
+  window.addEventListener('pointerup', endDrag);
+  window.addEventListener('pointercancel', endDrag);
+  stage.addEventListener('click', function (e) {
+    if (eatClick) { e.preventDefault(); e.stopPropagation(); eatClick = false; }
+  }, true);
+
+  /* ---- strip (phones / reduced motion) ---- */
+  function stripPad() {
+    var w = stage.getBoundingClientRect().width;
+    stage.style.paddingLeft = Math.max(16, (w - items[0].offsetWidth) / 2) + 'px';
+    stage.style.paddingRight = Math.max(16, (w - items[N - 1].offsetWidth) / 2) + 'px';
+  }
+  function stripRead() {
+    var r = stage.getBoundingClientRect(), c = r.left + r.width / 2, best = 0, bd = Infinity;
+    items.forEach(function (el, i) {
+      var b = el.getBoundingClientRect(), dd = Math.abs(b.left + b.width / 2 - c);
+      if (dd < bd) { bd = dd; best = i; }
+    });
+    setActive(best);
+  }
+  function stripTo(i, instant) {
+    i = clamp(i, 0, N - 1);
+    var r = stage.getBoundingClientRect(), b = items[i].getBoundingClientRect();
+    stage.scrollBy({ left: (b.left + b.width / 2) - (r.left + r.width / 2),
+      behavior: instant || calmMq.matches ? 'auto' : 'smooth' });
+  }
+  var stripTick = false;
+  stage.addEventListener('scroll', function () {
+    if (mode !== 'gallery' || stripTick) return;
+    stripTick = true;
+    requestAnimationFrame(function () { stripTick = false; stripRead(); });
+  }, { passive: true });
+  var prev = root.querySelector('.ww-prev'), next = root.querySelector('.ww-next');
+  if (prev) prev.addEventListener('click', function () { stripTo(active - 1); });
+  if (next) next.addEventListener('click', function () { stripTo(active + 1); });
+
+  /* ---- films: click, keyboard ---- */
+  items.forEach(function (el, i) {
+    el.addEventListener('click', function (e) {
+      if (e.detail === 0) return;                    // keyboard: open the film
+      var ready = mode === 'wheel' ? (cur.m > 0.97 && Math.abs(cur.p - i) < 0.35) : i === active;
+      if (ready) return;                             // the lightbox opens it
+      e.preventDefault();
+      e.stopPropagation();
+      if (mode === 'wheel') goTo(i); else stripTo(i);
+    });
+    el.addEventListener('keydown', function (e) {
+      if (e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); el.click(); }
+    });
+    el.addEventListener('focus', function () {
+      if (mode === 'wheel') { if (tgt.m < 1 || Math.round(tgt.p) !== i) goTo(i); }
+      else stripTo(i, true);
+    });
+  });
+
+  /* ---- mode, sizing, visibility ---- */
+  var WHEEL_PROPS = ['width', 'height', 'transform', 'opacity', 'visibility', 'z-index'];
+  function clearInline() {
+    items.forEach(function (el) { WHEEL_PROPS.forEach(function (p) { el.style.removeProperty(p); }); });
+    ['transform', 'opacity', 'visibility'].forEach(function (p) {
+      head.style.removeProperty(p); info.style.removeProperty(p);
+    });
+    stage.style.removeProperty('perspective-origin');
+    stage.style.removeProperty('padding-left');
+    stage.style.removeProperty('padding-right');
+    root.style.removeProperty('--ww-scroll');
+  }
+  function setMode() {
+    // The wheel needs a working sticky pin, which needs overflow-x:clip on
+    // the page (anava.css); older browsers get the strip instead.
+    var canPin = window.CSS && CSS.supports && CSS.supports('overflow-x', 'clip');
+    var want = wideMq.matches && !calmMq.matches && canPin ? 'wheel' : 'gallery';
+    if (want !== mode) {
+      mode = want;
+      clearInline();
+      root.setAttribute('data-mode', mode);
+      if (mode === 'wheel') root.style.setProperty('--ww-scroll', SPAN + 'vh');
+    }
+    if (mode === 'wheel') {
+      measure();
+      readScroll();
+      cur.m = tgt.m; cur.p = tgt.p;
+      render();
+    } else {
+      stripPad();
+      stripRead();
+    }
+  }
+  var rT = 0;
+  function onResize() { clearTimeout(rT); rT = setTimeout(setMode, 120); }
+  window.addEventListener('resize', onResize);
+  if (wideMq.addEventListener) {
+    wideMq.addEventListener('change', setMode);
+    calmMq.addEventListener('change', setMode);
+  }
+  window.addEventListener('load', setMode);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(setMode);
+
+  // Only animate while the section is on screen
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) {
+      visible = en[0].isIntersecting;
+      if (visible) { if (mode === 'wheel') { readScroll(); kick(); } }
+      else if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    }, { rootMargin: '200px 0px' }).observe(root);
+  }
+
+  setMode();
 })();

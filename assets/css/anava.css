@@ -3321,3 +3321,151 @@ html.hero-go .hero-cine .hl-1 em{
 .hero-cine .hero-cine-actions .hero-cta{box-shadow:inset 0 1px 0 rgba(255,255,255,.16)!important}
 .btn-talk .circ-mark,.btn-talk:hover .circ-mark,.btn-talk:focus-visible .circ-mark,
 .wh-stage .wh-film-play,.wh-stage:hover .wh-film-play{box-shadow:none!important}
+
+/* ==========================================================================
+   HOME — Works Wheel (02 Selected Work)
+   A film archive you turn through. Wide screens: the films sit in a ring
+   around the title, then open into a 3D drum as the page scrolls; the
+   section pins while it turns, driven by the page's own scroll so nothing
+   traps the wheel or trackpad. Phones and reduced motion: a horizontal
+   strip, one film forward, its neighbours partly in view. anava.js sets
+   data-mode and does the geometry.
+   ========================================================================== */
+.ww{position:relative;background:#000;color:#fff}
+.ww-pin{position:relative}
+.ww-label{margin:0}
+.ww-title{
+  margin:.45em 0 .7em;font-family:var(--font-body);font-weight:700;letter-spacing:-.035em;
+  font-size:clamp(2.1rem,4.2vw,5rem);line-height:1.02;color:#fff;
+}
+.ww-all{font-size:clamp(.95rem,1.05vw,1.15rem)}
+
+/* Films */
+.ww-item{
+  display:block;position:relative;overflow:hidden;border-radius:3px;background:#000;
+  color:#fff;-webkit-tap-highlight-color:transparent;
+}
+.ww-item img{display:block;width:100%;height:100%;object-fit:cover;transition:filter .6s ease}
+.ww-item.is-dim img{filter:grayscale(.5)}
+.ww-item::after{
+  content:"";position:absolute;left:14px;bottom:14px;width:0;height:2px;background:#f05223;
+  transition:width .5s cubic-bezier(.22,1,.36,1);
+}
+.ww-item.is-active::after{width:34px}
+.ww-item:focus{outline:none}
+.ww-item:focus-visible{outline:2px solid #f05223;outline-offset:4px}
+
+/* Active film */
+.ww-count{margin:0;font-size:.78rem;letter-spacing:.18em;color:rgba(255,255,255,.55);font-variant-numeric:tabular-nums}
+.ww-num{color:#f05223;font-weight:600}
+.ww-name{
+  margin:.45em 0 .2em;font-family:var(--font-body);font-weight:600;color:#fff;
+  font-size:clamp(1.35rem,1.8vw,2.1rem);line-height:1.15;letter-spacing:-.02em;
+}
+.ww-meta{margin:0;font-size:clamp(.88rem,.95vw,1rem);color:rgba(255,255,255,.55)}
+.ww-view{
+  display:inline-flex;align-items:center;gap:8px;margin-top:20px;padding-bottom:4px;
+  font-size:.9rem;letter-spacing:.02em;color:#fff;border-bottom:1px solid rgba(255,255,255,.3);
+  transition:color .3s ease,border-color .3s ease;
+}
+.ww-view span{transition:transform .3s ease}
+.ww-view:hover,.ww-view:focus-visible{color:#f05223;border-color:#f05223}
+.ww-view:hover span,.ww-view:focus-visible span{transform:translate(2px,-2px)}
+.ww-view:focus-visible{outline:2px solid #f05223;outline-offset:4px}
+.ww-bar{display:block;width:min(180px,60%);height:1px;margin-top:28px;background:rgba(255,255,255,.18)}
+.ww-bar i{display:block;height:100%;width:var(--wwp,12.5%);background:#f05223;transition:width .35s ease}
+.ww-nav{display:none}
+
+/* ---- Wheel (wide screens with motion) ---- */
+.ww[data-mode="wheel"]{height:calc(100vh + var(--ww-scroll,380vh))}
+.ww[data-mode="wheel"] .ww-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.ww[data-mode="wheel"] .ww-frame{
+  position:absolute;inset:0;margin:0 auto;z-index:3;
+  display:grid;grid-template-columns:minmax(0,.37fr) minmax(0,.63fr);align-items:center;
+  padding-top:70px;pointer-events:none;
+}
+.ww[data-mode="wheel"] .ww-side{position:relative;display:flex;flex-direction:column;gap:clamp(34px,6vh,70px)}
+.ww[data-mode="wheel"] .ww-side a{pointer-events:auto}
+.ww[data-mode="wheel"] .ww-head{will-change:transform}
+.ww[data-mode="wheel"] .ww-info{opacity:0}
+.ww[data-mode="wheel"] .ww-anchor{height:60vh}
+.ww[data-mode="wheel"] .ww-stage{position:absolute;inset:0;z-index:1;perspective:1700px;touch-action:pan-y;cursor:grab}
+.ww[data-mode="wheel"] .ww-stage.is-dragging{cursor:grabbing}
+.ww[data-mode="wheel"] .ww-item{
+  position:absolute;left:0;top:0;will-change:transform,opacity;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;transform-origin:50% 50%;
+}
+.ww[data-mode="wheel"] .ww-stage.is-dragging .ww-item{pointer-events:none}
+
+/* ---- Strip (phones, and anyone who prefers reduced motion) ---- */
+.ww[data-mode="gallery"]{padding:clamp(64px,10vw,120px) 0}
+.ww[data-mode="gallery"] .ww-pin{display:flex;flex-direction:column}
+.ww[data-mode="gallery"] .ww-frame,.ww[data-mode="gallery"] .ww-side{display:contents}
+.ww[data-mode="gallery"] .ww-anchor{display:none}
+.ww[data-mode="gallery"] .ww-head,.ww[data-mode="gallery"] .ww-info{
+  width:100%;max-width:var(--container);margin:0 auto;padding:0 28px;
+}
+.ww[data-mode="gallery"] .ww-head{order:1}
+.ww[data-mode="gallery"] .ww-title{margin-bottom:.5em}
+.ww[data-mode="gallery"] .ww-stage{
+  order:2;display:flex;align-items:center;gap:14px;margin-top:clamp(26px,4vw,44px);
+  overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;
+  overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;padding:6px 8vw;
+  --gh:47vw;
+}
+.ww[data-mode="gallery"] .ww-stage::-webkit-scrollbar{display:none}
+.ww[data-mode="gallery"] .ww-item{
+  flex:none;scroll-snap-align:center;height:var(--gh);aspect-ratio:var(--r);
+  opacity:.45;transform:scale(.92);
+  transition:opacity .45s ease,transform .5s cubic-bezier(.22,1,.36,1);
+}
+.ww[data-mode="gallery"] .ww-item[data-orient="portrait"]{height:calc(var(--gh) * 1.45)}
+.ww[data-mode="gallery"] .ww-item.is-active{opacity:1;transform:none}
+.ww[data-mode="gallery"] .ww-info{order:3;margin-top:clamp(20px,3vw,34px)}
+.ww[data-mode="gallery"] .ww-view{margin-top:14px}
+.ww[data-mode="gallery"] .ww-bar{margin-top:20px}
+.ww[data-mode="gallery"] .ww-nav{
+  order:4;display:flex;gap:10px;width:100%;max-width:var(--container);margin:18px auto 0;padding:0 28px;
+}
+.ww-nav button{
+  width:44px;height:44px;display:grid;place-items:center;cursor:pointer;
+  border:1px solid rgba(255,255,255,.25);border-radius:2px;background:none;color:#fff;font-size:1rem;
+  transition:border-color .3s ease,color .3s ease;
+}
+.ww-nav button:hover{border-color:#f05223;color:#f05223}
+@media (max-width:767px){
+  .ww[data-mode="gallery"] .ww-head,.ww[data-mode="gallery"] .ww-info{padding:0 20px}
+  .ww[data-mode="gallery"] .ww-nav{display:none}
+}
+/* Reduced motion on a wide screen: a still strip, bigger frames, no easing */
+@media (min-width:768px){
+  .ww[data-mode="gallery"] .ww-stage{--gh:34vh;gap:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ww[data-mode="gallery"] .ww-item{opacity:1;transform:none;transition:none}
+  .ww[data-mode="gallery"] .ww-stage{scroll-behavior:auto}
+  .ww-item img,.ww-item::after,.ww-bar i{transition:none}
+}
+/* Clip sideways overflow without making <html>/<body> scroll boxes, so the
+   Works Wheel's sticky pin sticks to the page (hidden stays as fallback) */
+@supports (overflow-x:clip){html,body{overflow-x:clip}}
+/* Wheel on a portrait tablet: title and film details share the top row,
+   the drum takes the full width underneath so the films stay large */
+@media (min-width:768px) and (orientation:portrait){
+  .ww[data-mode="wheel"] .ww-frame{
+    grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);align-items:stretch;
+    padding-top:110px;padding-bottom:40px;
+  }
+  .ww[data-mode="wheel"] .ww-side{flex-direction:row;justify-content:space-between;align-items:flex-end;gap:28px}
+  .ww[data-mode="wheel"] .ww-head .ww-title{margin-bottom:.5em}
+  .ww[data-mode="wheel"] .ww-info{min-width:240px}
+  .ww[data-mode="wheel"] .ww-anchor{height:auto}
+}
+/* Phones: a narrower lead frame so the next film peeks in, and portrait
+   frames only a little taller than the wide ones */
+@media (max-width:767px){
+  .ww[data-mode="gallery"] .ww-stage{--gh:43vw;gap:12px}
+  .ww[data-mode="gallery"] .ww-item[data-orient="portrait"]{height:calc(var(--gh) * 1.3)}
+}
+.ww .ww-all{margin-top:4px}
+.ww-item:hover::after{width:34px}

@@ -407,8 +407,6 @@ def page_home():
     # case study like any other card.
     REEL_V = "assets/media/tvc/Sunil Shetty AD Landscape.mp4"
     REEL_CASE = case_attr(card_for(REEL_V))
-    HERO_FILM_V = "assets/media/tvc/LENSKART HUSTLER AD FILM.mp4"
-    HERO_FILM_CASE = case_attr(card_for(HERO_FILM_V))
     # Two landscape films with designed key art, one row side by side; the rest
     # live on the Work page. (Sunil Shetty already fronts the featured film above.)
     # Two films, staggered: the lead film large, the second smaller and set
@@ -461,9 +459,10 @@ def page_home():
   </div>
 
   <div class="container hero-cine-inner">
+    <p class="hero-eyebrow">Independent thinking. Collective making.</p>
     <h1 class="hero-cine-title">
       <span class="hl-1">Give us a thought.</span>
-      <span class="hl-2">We&rsquo;ll give you <em>ideas to shoot.</em></span>
+      <span class="hl-2">We&rsquo;ll give you <em>ideas to shoot</em>.</span>
     </h1>
     <p class="hero-cine-lead">
       <span class="hero-line hero-line-1"><strong>Anava Films is an agency-cum-production house bringing ideas to life &mdash; from first thought to final frame.</strong></span>
@@ -472,7 +471,6 @@ def page_home():
     </p>
     <div class="hero-cine-actions">
       <a href="work.html" class="btn btn-primary btn-grad">View our work {ARROW}</a>
-      <button class="hero-watch" type="button" data-lightbox="{HERO_FILM_V}" data-caption="Lenskart &middot; Hustlr" {HERO_FILM_CASE}><span class="hero-watch-ic">{PLAY}</span>Watch Featured Film</button>
     </div>
   </div>
 

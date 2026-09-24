@@ -213,8 +213,17 @@ def build_work_cards():
     # BTS opens on its eight strongest cards: designed thumbnails before frame
     # grabs. Tabs filter by category, so moving the rest later changes no
     # other tab's order.
-    ordered = sorted(cards, key=lambda c: c["category"] == "bts"
-                     and "thumbnails/" not in c.get("poster", ""))
+    # Vertical opens on the owner's chosen three, in this order; the rest of
+    # the tab keeps its work.json order behind them.
+    VERTICAL_LEAD = ["assets/media/vertical-films/aqua-color-2.mp4",
+                     "assets/media/vertical-films/lenskart-performance-50.mp4",
+                     "assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4"]
+
+    def lead(c):
+        v = c.get("video", "").split("#")[0]
+        return VERTICAL_LEAD.index(v) if c["category"] == "vertical" and v in VERTICAL_LEAD else len(VERTICAL_LEAD)
+    ordered = sorted(cards, key=lambda c: (c["category"] == "bts"
+                     and "thumbnails/" not in c.get("poster", ""), lead(c)))
     for c in ordered:
         cat = c["category"]
         # The Podcasts tab is retired; its card stays in work.json, unlisted
@@ -557,7 +566,7 @@ def page_home():
     <div class="sec-label phil2-label"><span class="sec-num">01</span><span class="sec-name">Our Philosophy</span></div>
     <h2 class="phil2-title reveal">Thinkers Who <span class="o">Make.</span></h2>
     <figure class="phil2-band reveal">
-      <img src="assets/images/thinkers-band-4k.jpg" alt="Anava Films crew directing a scene on set" loading="lazy">
+      <div class="phil2-frame"><img src="assets/images/thinkers-band-4k.jpg" alt="Anava Films crew directing a scene on set" loading="lazy"></div>
       <figcaption class="phil2-quote">You bring<br>the thought.</figcaption>
     </figure>
     <div class="phil2-copy reveal">
@@ -1116,7 +1125,7 @@ def page_about():
       </div>
     </div>
     <div class="pull-quote reveal">
-      <p>&ldquo;Fewer layers. Faster thinking. Better communication.<br>Ideas that are actually made to work on screen.&rdquo;</p>
+      <p>&ldquo;Fewer layers. Faster thinking. Better communication. Ideas that are actually made to work on screen.&rdquo;</p>
     </div>
     <div class="stats reveal">{stat_html}</div>
     <div class="manifesto" aria-label="How we work">{val_html}</div>

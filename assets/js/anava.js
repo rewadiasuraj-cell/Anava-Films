@@ -264,7 +264,8 @@
     acts.forEach(function (a) { io.observe(a); });
   })();
 
-  /* ---------- Thinkers Who Make: the set still drifts a few px with the scroll ---------- */
+  /* ---------- Thinkers Who Make: a slow push-in (1.02 -> 1.00) as the set
+     rises to the middle of the screen, then it holds ---------- */
   (function () {
     var band = document.querySelector('.phil2-band');
     if (!band || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -273,7 +274,7 @@
       raf = 0;
       var r = band.getBoundingClientRect(), vh = window.innerHeight;
       var k = (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2);   // -1..1 across the pass
-      img.style.setProperty('--py', (Math.max(-1, Math.min(1, k)) * -14).toFixed(1) + 'px');
+      img.style.setProperty('--ps', (1 + 0.02 * Math.max(0, Math.min(1, k))).toFixed(4));
     }
     function onScroll() { if (on && !raf) raf = requestAnimationFrame(tick); }
     new IntersectionObserver(function (es) { on = es[0].isIntersecting; if (on) onScroll(); }).observe(band);
@@ -1137,7 +1138,7 @@
     var pr = pin.getBoundingClientRect();
     var vw = pr.width, vh = pr.height;
     var ar = anchor.getBoundingClientRect();
-    var H = Math.min(vh * 0.5, ar.width * 0.8 / (16 / 9));
+    var H = Math.min(vh * 0.5, ar.width * 0.84 / (16 / 9));
     var hr = clamp(Math.min(vh * 0.14, vw * 0.095), 60, 128); // film height in the ring
     var cx = vw / 2, cy = vh / 2 + 28;
     geo = {

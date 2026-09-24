@@ -2160,7 +2160,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
 @media (max-width:760px){
   .phil2-title{font-size:clamp(2.4rem,11.4vw,3.6rem)}
   .phil2-band{aspect-ratio:4/3;border-radius:14px}
-  .phil2-band img{object-position:62% 50%}
+  .phil2-band img{object-position:56% 50%}
   .phil2-band::after{background:linear-gradient(0deg,rgba(6,6,6,.78) 0%,rgba(6,6,6,.2) 42%,rgba(6,6,6,0) 60%)}
   .phil2-quote{top:auto;bottom:22px;left:20px;transform:none;padding-left:16px;border-left-width:3px;font-size:1.75rem}
   .phil2-copy{grid-template-columns:1fr;gap:16px}
@@ -2453,3 +2453,10 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
 }
 @media (min-width:1025px){.header-inner .nav{gap:52px}}
 @media (min-width:1600px){.header-inner .nav{gap:60px}}
+
+/* ==========================================================================
+   Headings in Title Case, not ALL CAPS (the owner's reference: "Work That
+   Stays With You."). The copy itself is written in Title Case in the
+   generator; these classes stop forcing uppercase and tighten a touch.
+   ========================================================================== */
+.display,.display-sm,.wwd-title,.phil-title{text-transform:none;letter-spacing:-.035em}

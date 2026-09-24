@@ -80,7 +80,7 @@ def footer(active):
           <a href="/"><img src="assets/images/anava_official_logo.png" alt="ANAVA FILMS Logo"></a>
         </div>
         <p class="footer-desc">
-          ANAVA FILMS &mdash; Give us a thought. We&rsquo;ll give you ideas to shoot.
+          ANAVA FILMS. Give us a thought. We&rsquo;ll give you ideas to shoot.
         </p>
       </div>
 
@@ -143,7 +143,7 @@ def footer(active):
 
     <div class="footer-bottom">
       <div>&copy; <span data-year></span> ANAVA FILMS. All rights reserved.</div>
-      <div>Mumbai &mdash; Delhi</div>
+      <div>Mumbai &middot; Delhi</div>
     </div>
   </div>
 </footer>
@@ -482,7 +482,7 @@ def page_home():
           <span class="reel-meta">Watch Showreel <em>01:45</em></span>
         </div>
       </div>
-      <div class="reel-credit">Sunil Shetty &mdash; Brand Film</div>
+      <div class="reel-credit">Sunil Shetty &middot; Brand Film</div>
       <div class="reel-mark">Anava Films</div>
     </div>
   </div>
@@ -530,19 +530,19 @@ def page_home():
     <ol class="approach-steps reveal">
       <li>
         <span class="approach-dot" aria-hidden="true"></span>
-        <p class="approach-num"><b>01</b> <span>/ Concept</span></p>
+        <p class="approach-num"><b>01</b> <span>Concept</span></p>
         <h3>Think</h3>
         <p>Creative Direction, Ideation &amp; Concept Development, Scripting, Creative Consulting.</p>
       </li>
       <li>
         <span class="approach-dot" aria-hidden="true"></span>
-        <p class="approach-num"><b>02</b> <span>/ Shoot</span></p>
+        <p class="approach-num"><b>02</b> <span>Shoot</span></p>
         <h3>Make</h3>
         <p>Production, Direction, Casting (Domestic &amp; International), Art Direction &amp; Production Design.</p>
       </li>
       <li>
         <span class="approach-dot" aria-hidden="true"></span>
-        <p class="approach-num"><b>03</b> <span>/ Post</span></p>
+        <p class="approach-num"><b>03</b> <span>Post</span></p>
         <h3>Finish</h3>
         <p>Editing, VFX, Sound Design, Color Grading, Motion Graphics &amp; Final Delivery.</p>
       </li>
@@ -760,7 +760,7 @@ def wwd_sections():
 <section class="wwd-block">
   <div class="container">
     <div class="wwd-head reveal">
-      <span class="eyebrow eyebrow-muted">01 /</span>
+      <span class="eyebrow eyebrow-muted">01</span>
       <h2 class="wwd-title">Think<span class="o">.</span></h2>
       <p class="lead">Before there's a shoot, there needs to be an idea worth shooting. This is where raw ideas turn into shootable stories.</p>
     </div>
@@ -773,7 +773,7 @@ def wwd_sections():
   <div class="wwd-side">People<br>Equipment<br>Locations<br>Stories</div>
   <div class="container">
     <div class="wwd-head reveal">
-      <span class="eyebrow eyebrow-muted">02 /</span>
+      <span class="eyebrow eyebrow-muted">02</span>
       <h2 class="wwd-title">Then we <span class="o">make it real.</span></h2>
       <p class="lead">From pre-production to the final shot, we bring together the right people, technology and craft to turn ideas into powerful visual experiences.</p>
     </div>
@@ -784,7 +784,7 @@ def wwd_sections():
 <section class="wwd-block">
   <div class="container">
     <div class="wwd-head reveal">
-      <span class="eyebrow eyebrow-muted">03 /</span>
+      <span class="eyebrow eyebrow-muted">03</span>
       <h2 class="wwd-title">The shoot ends.<br>The story <span class="o">doesn't.</span></h2>
       <p class="lead">Post is where everything comes together. We refine, enhance and elevate the film so it not only looks great, but feels right.</p>
     </div>
@@ -867,7 +867,7 @@ def page_contact():
           </div>
           <div class="crow">
             <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v2.5a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.7 2 2 0 0 1 4.1 1.5h2.5a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.7 9.3a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span>
-            <div><div class="crow-label">Phone</div><div class="crow-val"><a href="tel:+918691924669">Jackson — +91 86919 24669</a><br><a href="tel:+919911111273">Anjan — +91 99111 11273</a></div></div>
+            <div><div class="crow-label">Phone</div><div class="crow-val"><a href="tel:+918691924669">Jackson: +91 86919 24669</a><br><a href="tel:+919911111273">Anjan: +91 99111 11273</a></div></div>
           </div>
           <div class="crow">
             <span class="crow-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
@@ -957,7 +957,7 @@ def page_about():
       <div class="hero-media shift-right reveal">
         <img src="assets/images/about-director-onset.png" alt="Anava Films directing team on set">
         <div class="hero-script script">Thinkers<br>Who<br>Make</div>
-        <div class="hero-tag">Mumbai &mdash; Delhi</div>
+        <div class="hero-tag">Mumbai &middot; Delhi</div>
       </div>
     </div>
   </div>

@@ -323,6 +323,11 @@ def page_work():
       <button class="pill" data-filter="photoshoots">Photoshoots</button>
     </div>
     <span class="pill-ink" aria-hidden="true"></span>
+  </div>
+  <div class="sub-pills" role="group" aria-label="Vertical: filter by type" hidden>
+    <button type="button" class="sub-pill" data-filter="vertical">All Vertical</button>
+    <button type="button" class="sub-pill" data-filter="vertical" data-sub="performance">Performance Ads</button>
+    <button type="button" class="sub-pill" data-filter="vertical" data-sub="social|product">Social &amp; Product</button>
   </div>"""
 
     return HEAD.format(**ASSET_V,

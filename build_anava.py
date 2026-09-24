@@ -909,25 +909,6 @@ def page_about():
               ("Keep It Simple", "Fewer layers. Faster decisions. Stronger outcomes.")]
     val_html = "".join(f'<div class="value"><h4>{t}</h4><p>{d}</p></div>' for t, d in values)
 
-    tst = [
-        ("Lenskart &middot; Video Testimonial", "How Jackson and Anjan turn a one-line thought into a complete shoot deck.",
-         "What Lenskart leadership says about partnering with Anava",
-         "assets/media/testimonials/LENSKART TESTIMONIAL FILM.mp4", "assets/images/posters/lenskart-testimonial-film.jpg"),
-        ("WOW Skin Science &middot; Video Testimonial", "The level of preparation before shoot day makes directing seamless.",
-         "Directing with clarity and speed before roll camera",
-         "assets/media/testimonials/WOW TESTIMONIAL .mp4", "assets/images/posters/wow-testimonial.jpg"),
-        ("Lenskart &middot; Video Testimonial", "Organized logistics meets uncompromising creative direction on set.",
-         "Structured on-set execution &amp; creative collaboration",
-         "assets/media/testimonials/LENSKART TESTIMONIAL  (1).mp4", "assets/images/posters/lenskart-testimonial-1.jpg"),
-    ]
-    tst_html = "".join(f"""
-      <article class="tst" data-lightbox="{esc(v)}" data-caption="{src}">
-        <div class="tst-media">
-          <video data-src="{esc(v)}" poster="{esc(p)}" muted loop playsinline preload="none" class="hover-play"></video>
-          <span class="play-badge">{PLAY}</span>
-        </div>
-        <div class="tst-body"><div class="tst-src">{src}</div><p>&ldquo;{q}&rdquo;</p><span>{sub}</span></div>
-      </article>""" for src, q, sub, v, p in tst)
 
     return HEAD.format(**ASSET_V,
         title="About &amp; What We Do — ANAVA FILMS",
@@ -997,16 +978,6 @@ def page_about():
       </article>
     </div>
     <p class="lead" style="margin-top:26px">Together, Jackson and Anjan ensure that client ideas are both creatively groundbreaking and executively flawless.</p>
-  </div>
-</section>
-
-<section class="section" style="padding-top:0">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label"><span class="sec-name">Collaborators</span></div>
-    </div>
-    <h2 class="display-sm oneline">What <span class="o">brands</span> say.</h2>
-    <div class="tst-grid">{tst_html}</div>
   </div>
 </section>
 

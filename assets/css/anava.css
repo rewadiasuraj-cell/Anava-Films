@@ -2675,3 +2675,30 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
 .intro{top:0;left:0;right:auto;bottom:auto;width:100%;height:100vh;height:100dvh}
 .intro-video{position:absolute;inset:0;width:100%;height:100%}
 @media (orientation:portrait){.intro-video{object-fit:contain;object-position:50% 50%}}
+
+/* ---- People Behind the Work: the "Making It Real" BTS key art ----
+   The still carries its own title on the left, so nothing is laid over it:
+   on wide screens the copy sits in its own panel and the key art shows
+   whole (16:9, uncropped) beside it; phones stack art over copy. */
+@media (min-width:901px){
+  .pb-card{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);align-items:center;aspect-ratio:auto;min-height:0}
+  .pb-card::after{content:none}
+  .pb-card img{position:relative;inset:auto;order:2;height:auto;aspect-ratio:16/9;object-position:50% 50%;transform-origin:50% 50%}
+  .pb-card:hover img{transform:scale(1.03)}
+  .pb-copy{position:relative;left:auto;top:auto;transform:none;max-width:none;padding:clamp(28px,3.4vw,64px)}
+  .pb-title{font-size:clamp(1.6rem,2vw,2.4rem);white-space:nowrap}
+}
+@media (max-width:900px){.pb-card img{object-position:50% 50%}}
+
+/* ---- Home approach steps on a phone: calmer body copy ----
+   The step titles stay as they are; the description drops ~15% (15.2px ->
+   13px) with a slightly tighter measure and rhythm, and the number/label
+   row and gaps tighten to match. */
+@media (max-width:760px){
+  .approach-steps{gap:26px}
+  .approach-num b{font-size:1.9rem}
+  .approach-num span{font-size:.88rem}
+  .approach-steps h3{margin-top:8px}
+  .approach-steps li > .approach-desc{margin-top:10px;font-size:.81rem;line-height:1.55;color:rgba(255,255,255,.74)}
+  .approach-media{top:-12px;bottom:-12px}
+}

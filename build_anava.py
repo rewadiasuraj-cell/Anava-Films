@@ -542,7 +542,7 @@ def page_home():
 <section class="people-bridge">
   <div class="container">
     <a class="pb-card reveal" href="about.html#people">
-      <img src="assets/images/people-onset.jpg" alt="The Anava Films crew setting up a shot on location" loading="lazy">
+      <img src="assets/images/thumbnails/bts-making-it-real.jpg" alt="Making It Real: the Anava Films crew on set" loading="lazy">
       <div class="pb-copy">
         <p class="pb-eyebrow">The People Behind the Work</p>
         <h2 class="pb-title">Thinkers and Makers.<br><span class="o">One Crew.</span></h2>

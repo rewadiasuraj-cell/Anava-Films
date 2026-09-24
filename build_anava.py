@@ -301,7 +301,7 @@ def page_work():
         <img class="wh-poster" src="{esc(f0['p'])}" alt="" fetchpriority="high">
         <video class="wh-video" muted playsinline preload="none" aria-hidden="true"></video>
         <span class="wh-film-play" aria-hidden="true">{PLAY}</span>
-        <span class="wh-film-tag"><b>01</b> <span class="wh-film-name">{esc(f0['t'])}</span></span>
+        <span class="wh-film-tag"><b>01</b><i class="wh-sep">|</i><span class="wh-film-name">{esc(f0['t'])}</span></span>
         <span class="wh-progress" aria-hidden="true"><i></i></span>
       </button>
       <script type="application/json" id="wh-playlist">{playlist_json}</script>"""
@@ -322,6 +322,7 @@ def page_work():
       <button class="pill" data-filter="testimonials">Testimonials</button>
       <button class="pill" data-filter="photoshoots">Photoshoots</button>
     </div>
+    <span class="pill-ink" aria-hidden="true"></span>
   </div>"""
 
     return HEAD.format(**ASSET_V,
@@ -329,15 +330,26 @@ def page_work():
         desc="Selected films, TVCs, vertical content, performance campaigns and photoshoots by Anava Films."
     ) + header("work.html") + f"""
 <section class="work-hero">
+  <div class="wh-deco" aria-hidden="true">
+    <div class="wh-glow"></div>
+    <div class="wh-grid"></div>
+    <div class="wh-p" style="--d:-18"><i class="wh-ring wh-ring-l"></i></div>
+    <div class="wh-p" style="--d:22"><i class="wh-ring wh-ring-r"><b class="wh-orbit"></b></i></div>
+    <div class="wh-p" style="--d:10"><i class="wh-ring wh-ring-s"><b class="wh-orbit"></b></i></div>
+    <div class="wh-p" style="--d:30"><i class="wh-dot wh-dot-1"></i><i class="wh-dot wh-dot-2"></i></div>
+    <div class="wh-p" style="--d:14"><i class="wh-cross wh-cross-1"></i><i class="wh-cross wh-cross-2"></i></div>
+    <div class="wh-p" style="--d:8"><i class="wh-line wh-line-1"></i><i class="wh-line wh-line-2"></i><i class="wh-line wh-line-3"></i></div>
+    <div class="wh-p" style="--d:6"><i class="wh-corner wh-corner-tl"></i><i class="wh-corner wh-corner-tr"></i></div>
+  </div>
   <div class="container">
-    <div class="wh-head reveal">
+    <div class="wh-head">
       <span class="wh-eyebrow">Our Work</span>
-      <h1 class="wh-title">Ideas That Make An <span class="o">Impact.</span></h1>
+      <h1 class="wh-title"><span class="wm"><span>Ideas</span></span> <span class="wm"><span>That</span></span> <span class="wm"><span>Make</span></span> <span class="wm"><span>An</span></span> <span class="wm wm-impact"><span class="wh-impact">Impact.</span></span></h1>
       <p class="wh-lead">A selection of films, campaigns, content and collaborations we&rsquo;ve created with brands, artists and partners.</p>
       <button class="btn btn-primary wh-cta" type="button" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Lenskart &middot; Hustlr">{PLAY} Watch Featured Film</button>
     </div>
   </div>
-  <div class="wh-films reveal">{features}
+  <div class="wh-films">{features}
   </div>
   <div class="container">
     {filters}

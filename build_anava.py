@@ -488,20 +488,17 @@ def page_home():
   </div>
 </section>
 
-<section class="section">
+<section class="section phil2">
   <div class="container">
-    <div class="sec-label" style="margin-bottom:28px"><span class="sec-num">01</span><span class="sec-name">Our Philosophy</span></div>
-    <div class="phil-grid">
-      <div class="reveal">
-        <span class="eyebrow">Thinkers Who Make</span>
-        <h2 class="phil-title">Thinkers who <span class="o">make.</span></h2>
-        <p class="lead">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn't get lost between the people who think them and the people who make them.</p>
-        <p class="lead" style="margin-top:14px">So we bring both sides together. You bring the thought. We build the idea, make the film and deliver the final product.</p>
-      </div>
-      <div class="phil-media reveal">
-        <img src="assets/images/thinkers-who-make.jpg" alt="Anava Films director on set">
-        <div class="phil-side">Ideas<br>People<br>Films<br><br>A Creative<br>Production<br>House</div>
-      </div>
+    <div class="sec-label phil2-label"><span class="sec-num">01</span><span class="sec-name">Our Philosophy</span></div>
+    <h2 class="phil2-title reveal">Thinkers Who <span class="o">Make.</span></h2>
+    <figure class="phil2-band reveal">
+      <img src="assets/images/thinkers-band.jpg" alt="Anava Films crew directing a scene on set" loading="lazy">
+      <figcaption class="phil2-quote">You bring<br>the thought.</figcaption>
+    </figure>
+    <div class="phil2-copy reveal">
+      <p class="phil2-lead">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn&rsquo;t get lost between the people who think them and the people who make them.</p>
+      <p class="phil2-sub">So we bring both sides together. You bring the thought. We build the idea, make the film and deliver the final product.</p>
     </div>
   </div>
 </section>

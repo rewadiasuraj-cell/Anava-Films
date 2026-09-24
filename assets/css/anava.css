@@ -2087,3 +2087,58 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .sw-card-2{width:88%;margin-right:0}
   .sw-media{border-radius:12px}
 }
+
+/* ==========================================================================
+   HOME — 01 Our Philosophy: "Thinkers Who Make." headline, a wide on-set
+   film band carrying the pull line, then the copy split in two columns
+   ========================================================================== */
+.phil2-label{margin-bottom:clamp(14px,1.6vw,22px)}
+.phil2-label .sec-num{color:#fff}
+.phil2-label .sec-name{position:relative;padding-left:32px}
+.phil2-label .sec-name::before{content:"";position:absolute;left:0;top:50%;width:1px;height:26px;transform:translateY(-50%);background:rgba(255,255,255,.28)}
+.phil2-title{
+  margin:0;font-family:var(--font-display);font-weight:800;
+  font-size:clamp(2.6rem,6.2vw,7.2rem);line-height:.98;letter-spacing:-.045em;color:#fff;
+}
+.phil2-band{
+  position:relative;margin:clamp(18px,1.8vw,30px) 0 0;overflow:hidden;
+  border-radius:var(--radius-lg);aspect-ratio:1551/417;background:#0d0d0d;
+}
+.phil2-band img{
+  width:100%;height:100%;object-fit:cover;object-position:60% 50%;display:block;
+  transform:scale(1.02);transition:transform 1.6s var(--ease);
+}
+.phil2-band:hover img{transform:scale(1.06)}
+/* Soft left shade so the pull line always reads, whatever the crop */
+.phil2-band::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(6,6,6,.55) 0%,rgba(6,6,6,.15) 32%,rgba(6,6,6,0) 50%);
+}
+.phil2-quote{
+  position:absolute;z-index:2;left:clamp(28px,3.7vw,72px);top:50%;transform:translateY(-50%);
+  padding-left:clamp(20px,2.2vw,36px);border-left:4px solid var(--accent);
+  font-family:var(--font-display);font-weight:700;color:#fff;
+  font-size:clamp(1.8rem,3.4vw,4rem);line-height:1.08;letter-spacing:-.03em;
+  text-shadow:0 2px 24px rgba(0,0,0,.45);
+}
+.phil2-copy{
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:clamp(30px,8vw,180px);margin-top:clamp(28px,3.2vw,56px);align-items:start;
+}
+.phil2-lead{margin:0;font-size:clamp(1.05rem,1.45vw,1.6rem);line-height:1.6;color:rgba(255,255,255,.92);max-width:44ch}
+.phil2-sub{margin:0;padding-top:.5em;font-size:clamp(.95rem,1.15vw,1.25rem);line-height:1.75;color:rgba(255,255,255,.62);max-width:40ch}
+
+/* iPad portrait: band gets taller so the crew stays readable */
+@media (max-width:1024px){
+  .phil2-band{aspect-ratio:2.4/1}
+}
+@media (max-width:760px){
+  .phil2-title{font-size:clamp(2.4rem,11.4vw,3.6rem)}
+  .phil2-band{aspect-ratio:4/3;border-radius:14px}
+  .phil2-band img{object-position:62% 50%}
+  .phil2-band::after{background:linear-gradient(0deg,rgba(6,6,6,.78) 0%,rgba(6,6,6,.2) 42%,rgba(6,6,6,0) 60%)}
+  .phil2-quote{top:auto;bottom:22px;left:20px;transform:none;padding-left:16px;border-left-width:3px;font-size:1.75rem}
+  .phil2-copy{grid-template-columns:1fr;gap:16px}
+  .phil2-sub{padding-top:0}
+}
+@media (min-width:1025px){.phil2-label .sec-name{font-size:.82rem}}

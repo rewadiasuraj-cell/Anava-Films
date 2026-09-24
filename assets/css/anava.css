@@ -1584,12 +1584,15 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
    anava.js mirrors the active tab onto #work-grid[data-view]. Each tab's
    opening batch (PAGE in anava.js) is a whole number of these rows. */
 @media (min-width:1101px){
-  .work-grid[data-view="tvc"],.work-grid[data-view="bts"]{grid-template-columns:repeat(4,1fr)}
-  .work-grid[data-view="tvc"] .wcard-title,.work-grid[data-view="bts"] .wcard-title{font-size:.9rem}
+  .work-grid[data-view="bts"]{grid-template-columns:repeat(4,1fr)}
+  .work-grid[data-view="bts"] .wcard-title{font-size:.9rem}
+  /* TVCs: three large films a row on a desktop */
+  .work-grid[data-view="tvc"]{grid-template-columns:repeat(3,1fr);gap:22px}
+  .work-grid[data-view="tvc"] .wcard-title{font-size:1.05rem}
 }
-/* Vertical: 5 across on a desktop, 3 large on a tablet (either way up), 2 on a phone */
+/* Vertical: 4 large across on a desktop, 3 on a tablet (either way up), 2 on a phone */
 .work-grid[data-view="vertical"]{grid-template-columns:repeat(3,1fr)}
-@media (min-width:1101px){.work-grid[data-view="vertical"]{grid-template-columns:repeat(5,1fr)}}
+@media (min-width:1101px){.work-grid[data-view="vertical"]{grid-template-columns:repeat(4,1fr);gap:20px}}
 .work-grid[data-view="photoshoots"]{grid-template-columns:repeat(4,1fr)}
 @media (max-width:760px){
   /* Three or four across leaves a phone card too small to read; two holds */

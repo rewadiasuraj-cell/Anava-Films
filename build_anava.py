@@ -357,6 +357,30 @@ def page_work():
 """ + footer("work.html")
 
 
+# Clapperboard intro, home page only, once per browser session. The overlay
+# ships visible so the site never flashes before it; the inline script drops
+# it straight away for a repeat view, a reduced-motion visitor, or a data
+# saver, before anything paints. anava.js plays the right cut (landscape or
+# vertical), then fades it out; Skip, Esc or a stalled video end it early.
+INTRO = """
+<div class="intro" id="intro" aria-hidden="true">
+  <video class="intro-video" muted playsinline preload="auto"
+         data-land="intro/intro-3.mp4" data-port="intro/intro-3-vertical.mp4"></video>
+  <button class="intro-skip" type="button">Skip</button>
+</div>
+<script>
+(function () {
+  var el = document.getElementById('intro'), seen = false;
+  try { seen = sessionStorage.getItem('anavaIntro') === '1'; } catch (e) {}
+  var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saver = navigator.connection && navigator.connection.saveData;
+  if (seen || calm || saver) { el.parentNode.removeChild(el); return; }
+  document.documentElement.classList.add('intro-on');
+})();
+</script>
+"""
+
+
 def page_home():
     # Two landscape films with designed key art, one row side by side; the rest
     # live on the Work page. (Sunil Shetty already fronts the showreel above.)
@@ -411,7 +435,7 @@ def page_home():
     return HEAD.format(**ASSET_V,
         title="ANAVA FILMS — Give us a thought. We'll give you ideas to shoot.",
         desc="Anava Films is an agency-cum-production house in Mumbai and Delhi taking a thought all the way to the final frame."
-    ) + header("index.html") + f"""
+    ) + INTRO + header("index.html") + f"""
 <section class="hero-cine">
   <div class="hero-cine-bg">
     <img src="assets/images/home-hero-stage.jpg" alt="" fetchpriority="high" data-parallax>

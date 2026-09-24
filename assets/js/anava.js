@@ -2,6 +2,38 @@
 (function () {
   'use strict';
 
+  /* ---------- Home intro (clapperboard ident) ----------
+     The overlay and the once-per-session check live inline in index.html;
+     here it plays the cut that suits the screen and then fades away. */
+  var intro = document.getElementById('intro');
+  if (intro) {
+    var iv = intro.querySelector('video');
+    var ended = false;
+    var endIntro = function () {
+      if (ended) return;
+      ended = true;
+      try { sessionStorage.setItem('anavaIntro', '1'); } catch (e) {}
+      intro.classList.add('is-done');
+      document.documentElement.classList.remove('intro-on');
+      setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); }, 1000);
+    };
+    var tall = window.innerHeight > window.innerWidth;
+    iv.src = tall ? iv.dataset.port : iv.dataset.land;
+    // Start the fade just before the last frame, so the logo dissolves into the site
+    iv.addEventListener('timeupdate', function () {
+      if (iv.duration && iv.duration - iv.currentTime < 0.6) endIntro();
+    });
+    iv.addEventListener('ended', endIntro);
+    iv.addEventListener('error', endIntro);
+    intro.querySelector('.intro-skip').addEventListener('click', endIntro);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') endIntro(); });
+    var pr = iv.play();
+    if (pr && pr.catch) pr.catch(endIntro);
+    // Never hold the site hostage: a slow network or a blocked autoplay lets go
+    setTimeout(function () { if (!ended && iv.currentTime < 0.2) endIntro(); }, 3500);
+    setTimeout(endIntro, 11000);
+  }
+
   /* ---------- Header ---------- */
   var header = document.querySelector('.site-header');
   var lastPeekY = 0;

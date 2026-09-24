@@ -3296,3 +3296,13 @@ html.hero-go .hero-cine .hl-1 em{
 .hero-cine .hero-cine-actions .hero-cta:hover,.hero-cine .hero-cine-actions .hero-cta:focus-visible{
   background:linear-gradient(100deg,#ea6333 0%,#f47c42 55%,#f89960 100%);
 }
+
+/* Designed thumbnails carry their own title and client, so the card's
+   title label is hidden visually (still read by screen readers); only the
+   play button and duration stay, over a lighter bottom shade */
+.wcard.has-art .wcard-info > div{
+  position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
+}
+.wcard.has-art .wcard-info{justify-content:flex-end}
+.wcard.has-art::after{background:linear-gradient(0deg,rgba(6,6,6,.4) 0%,transparent 26%)}
+@media (max-width:760px){.wcard.has-art::after{background:linear-gradient(0deg,rgba(6,6,6,.45) 0%,transparent 28%)}}

@@ -1021,6 +1021,8 @@
   var viewEl = root.querySelector('.ww-view');
   var barEl = root.querySelector('.ww-bar');
   var items = Array.prototype.slice.call(root.querySelectorAll('.ww-item'));
+  var thumbRow = root.querySelector('.ww-strip');
+  var thumbs = Array.prototype.slice.call(root.querySelectorAll('.ww-thumb'));
   var N = items.length;
   if (!N) return;
 
@@ -1036,6 +1038,7 @@
   var OPEN = 45, STEP = 28, HOLD = 16;
   var SPAN = OPEN + STEP * (N - 1) + HOLD;
   var ANG = 34;                       // degrees between films on the drum
+  var DEPTH = [1, -0.4, 0.3, -1, 0.7, -0.6, 0.1, -0.2];   // ring: near/far per film
 
   var mode = '', active = -1, geo = null, raf = 0, visible = true;
   var cur = { m: 0, p: 0 }, tgt = { m: 0, p: 0 };
@@ -1062,6 +1065,19 @@
     });
     viewEl.setAttribute('aria-label', 'View project: ' + el.getAttribute('data-title'));
     barEl.style.setProperty('--wwp', ((i + 1) / N * 100).toFixed(2) + '%');
+    // the counter, title and meta ease in again for each new film
+    info.classList.remove('is-swap');
+    void info.offsetWidth;
+    info.classList.add('is-swap');
+    thumbs.forEach(function (t, k) { t.classList.toggle('is-on', k === i); });
+    var th = thumbs[i];
+    if (th && thumbRow && thumbRow.offsetParent) {
+      var rr = thumbRow.getBoundingClientRect(), tb = th.getBoundingClientRect();
+      if (tb.left < rr.left + 8 || tb.right > rr.right - 8) {
+        thumbRow.scrollTo({ left: thumbRow.scrollLeft + tb.left - rr.left - (rr.width - tb.width) / 2,
+          behavior: calmMq.matches ? 'auto' : 'smooth' });
+      }
+    }
   }
 
   /* ---- wheel geometry ---- */
@@ -1069,7 +1085,7 @@
     var pr = pin.getBoundingClientRect();
     var vw = pr.width, vh = pr.height;
     var ar = anchor.getBoundingClientRect();
-    var H = Math.min(vh * 0.5, ar.width * 0.84 / (16 / 9));
+    var H = Math.min(vh * 0.5, ar.width * 0.8 / (16 / 9));
     var hr = clamp(Math.min(vh * 0.14, vw * 0.095), 60, 128); // film height in the ring
     var cx = vw / 2, cy = vh / 2 + 28;
     geo = {
@@ -1095,10 +1111,11 @@
       var rx = g.cx + g.rx * Math.cos(phi), ry = g.cy + g.ry * Math.sin(phi);
       var d = i - p, th = d * ANG, t = th * Math.PI / 180, ad = Math.min(1, Math.abs(d));
       var dy = g.dy + g.R * Math.sin(t), dz = g.R * (Math.cos(t) - 1);
-      var dO = Math.abs(th) >= 100 ? 0 : (1 - 0.58 * ad) * clamp((100 - Math.abs(th)) / 26, 0, 1);
+      var dO = Math.abs(th) >= 100 ? 0 : (1 - 0.62 * ad) * clamp((100 - Math.abs(th)) / 26, 0, 1);
       var x = lerp(rx, g.dx, m), y = lerp(ry, dy, m), z = dz * m;
-      var s = lerp(g.hr / g.H, 1 - 0.1 * ad, m);
-      var o = lerp(0.82, dO, m);
+      var dep = DEPTH[i % DEPTH.length];
+      var s = lerp(g.hr / g.H * (1 + 0.1 * dep), 1 - 0.1 * ad, m);
+      var o = lerp(0.74 + 0.16 * dep, dO, m);
       el.style.transform = 'translate3d(' + (x - w / 2).toFixed(1) + 'px,' + (y - g.H / 2).toFixed(1) +
         'px,' + z.toFixed(1) + 'px) rotateX(' + (-th * m).toFixed(2) + 'deg) scale(' + s.toFixed(4) + ')';
       el.style.opacity = o.toFixed(3);
@@ -1225,6 +1242,9 @@
     requestAnimationFrame(function () { stripTick = false; stripRead(); });
   }, { passive: true });
   var prev = root.querySelector('.ww-prev'), next = root.querySelector('.ww-next');
+  thumbs.forEach(function (t, k) {
+    t.addEventListener('click', function () { if (mode === 'gallery') stripTo(k); else goTo(k); });
+  });
   if (prev) prev.addEventListener('click', function () { stripTo(active - 1); });
   if (next) next.addEventListener('click', function () { stripTo(active + 1); });
 

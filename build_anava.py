@@ -461,6 +461,13 @@ def page_home():
         </a>"""
 
     wheel_html = "".join(wheel_item(i, *w) for i, w in enumerate(WHEEL))
+    # Phone filmstrip: small frames under the active film that jump to it.
+    # The films above are the focusable, announced controls; this row is a
+    # visual shortcut only, so it stays out of the tab order and the a11y tree.
+    strip_html = "".join(
+        f'\n      <button type="button" class="ww-thumb{" is-on" if i == 0 else ""}" data-i="{i}" tabindex="-1">'
+        f'<img src="{esc(w[1])}" alt="" loading="lazy" decoding="async"></button>'
+        for i, w in enumerate(WHEEL))
 
     # A knockout mark — a light shape sitting inside a coloured plate — cannot be
     # flattened to a silhouette: brightness(0) blacks out the light parts too and
@@ -581,6 +588,8 @@ def page_home():
     </div>
     <div class="ww-stage">{wheel_html}
     </div>
+    <div class="ww-strip" aria-hidden="true">{strip_html}
+    </div>
     <div class="ww-nav" aria-hidden="true">
       <button type="button" class="ww-prev" tabindex="-1">&larr;</button>
       <button type="button" class="ww-next" tabindex="-1">&rarr;</button>
@@ -589,16 +598,31 @@ def page_home():
 </section>
 
 <section class="people-bridge">
-  <div class="container">
-    <a class="pb-card reveal" href="about.html#people">
-      <picture><source media="(min-width: 901px)" srcset="assets/images/people-making-it-real-wide.jpg"><img src="assets/images/thumbnails/bts-making-it-real.jpg" alt="Making It Real: the Anava Films crew on set" loading="lazy"></picture>
-      <div class="pb-copy">
-        <p class="pb-eyebrow">The People Behind the Work</p>
-        <h2 class="pb-title">Thinkers and Makers.<br><span class="o">One Crew.</span></h2>
-        <p class="pb-text">The same team that shapes the idea is on set to shoot it.</p>
-        <span class="pb-link">Meet the Team {DIAG}</span>
-      </div>
-    </a>
+  <div class="container pb-grid">
+    <div class="pb-copy reveal">
+      <p class="pb-eyebrow">The People Behind the Work</p>
+      <h2 class="pb-title">Thinkers and Makers.<br><span class="o">One Crew.</span></h2>
+      <p class="pb-text">The same team that shapes the idea is on set to shoot it.</p>
+      <a class="stays-link pb-link" href="about.html#people">Meet the Team {DIAG}</a>
+    </div>
+    <div class="pb-people">
+      <figure class="pb-person reveal">
+        <div class="pb-portrait"><img src="assets/images/jackson_khatri.jpg" alt="Jackson Khatri" loading="lazy" decoding="async"></div>
+        <figcaption>
+          <h3 class="pb-name">Jackson Khatri</h3>
+          <p class="pb-role">Founder &middot; Creative Director</p>
+          <p class="pb-line">Started Anava so ideas stop getting lost between the people who think them and the people who make them.</p>
+        </figcaption>
+      </figure>
+      <figure class="pb-person reveal">
+        <div class="pb-portrait"><img src="assets/images/anjan_khatri.jpg" alt="Anjan Khatri" loading="lazy" decoding="async"></div>
+        <figcaption>
+          <h3 class="pb-name">Anjan Khatri</h3>
+          <p class="pb-role">Producer &middot; Production Head</p>
+          <p class="pb-line">Runs the production backbone: multi-location shoots, crews, budgets and timelines.</p>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -609,6 +633,7 @@ def page_home():
       <span class="approach-eyebrow">Our Approach</span>
       <h2 class="approach-title">From Idea<br>to <span class="o">Impact.</span></h2>
       <p class="approach-lead">Ideas are everywhere. Impact takes the right people, the right process and the courage to make it real.</p>
+      <p class="approach-path"><span>Thought</span><i aria-hidden="true">&rarr;</i><span>Idea</span><i aria-hidden="true">&rarr;</i><span>Film</span></p>
       <a href="process.html" class="btn btn-ghost approach-cta">Explore Our Process {DIAG}</a>
     </div>
   </div>

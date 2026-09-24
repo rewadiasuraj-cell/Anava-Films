@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/anava.css?v=d3c36cd17a">
+<link rel="stylesheet" href="assets/css/anava.css?v=73ec224339">
 <script>document.documentElement.classList.add('m-js')</script>
-<script defer src="assets/js/anava.js?v=c0064e4c76"></script>
+<script defer src="assets/js/anava.js?v=04e46eeeac"></script>
 </head>
 <body>
 
@@ -182,6 +182,16 @@
           <img src="assets/images/thumbnails/lenskart-blue-ray.jpg" alt="Blue Ray Glasses: Digital TVC by Anava Films" loading="lazy" decoding="async">
         </a>
     </div>
+    <div class="ww-strip" aria-hidden="true">
+      <button type="button" class="ww-thumb is-on" data-i="0" tabindex="-1"><img src="assets/images/thumbnails/sunil-shetty-film.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button type="button" class="ww-thumb" data-i="1" tabindex="-1"><img src="assets/images/thumbnails/tira-beauty-kareena.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button type="button" class="ww-thumb" data-i="2" tabindex="-1"><img src="assets/images/thumbnails/lenskart-hustler.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button type="button" class="ww-thumb" data-i="3" tabindex="-1"><img src="assets/images/thumbnails/lk-aqualens-film.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button type="button" class="ww-thumb" data-i="4" tabindex="-1"><img src="assets/images/thumbnails/john-jacobs.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button type="button" class="ww-thumb" data-i="5" tabindex="-1"><img src="assets/images/thumbnails/boat-brand-film.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button type="button" class="ww-thumb" data-i="6" tabindex="-1"><img src="assets/images/thumbnails/maxima-watches.jpg" alt="" loading="lazy" decoding="async"></button>
+      <button type="button" class="ww-thumb" data-i="7" tabindex="-1"><img src="assets/images/thumbnails/lenskart-blue-ray.jpg" alt="" loading="lazy" decoding="async"></button>
+    </div>
     <div class="ww-nav" aria-hidden="true">
       <button type="button" class="ww-prev" tabindex="-1">&larr;</button>
       <button type="button" class="ww-next" tabindex="-1">&rarr;</button>
@@ -190,16 +200,31 @@
 </section>
 
 <section class="people-bridge">
-  <div class="container">
-    <a class="pb-card reveal" href="about#people">
-      <picture><source media="(min-width: 901px)" srcset="assets/images/people-making-it-real-wide.jpg"><img src="assets/images/thumbnails/bts-making-it-real.jpg" alt="Making It Real: the Anava Films crew on set" loading="lazy"></picture>
-      <div class="pb-copy">
-        <p class="pb-eyebrow">The People Behind the Work</p>
-        <h2 class="pb-title">Thinkers and Makers.<br><span class="o">One Crew.</span></h2>
-        <p class="pb-text">The same team that shapes the idea is on set to shoot it.</p>
-        <span class="pb-link">Meet the Team <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
-      </div>
-    </a>
+  <div class="container pb-grid">
+    <div class="pb-copy reveal">
+      <p class="pb-eyebrow">The People Behind the Work</p>
+      <h2 class="pb-title">Thinkers and Makers.<br><span class="o">One Crew.</span></h2>
+      <p class="pb-text">The same team that shapes the idea is on set to shoot it.</p>
+      <a class="stays-link pb-link" href="about#people">Meet the Team <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+    </div>
+    <div class="pb-people">
+      <figure class="pb-person reveal">
+        <div class="pb-portrait"><img src="assets/images/jackson_khatri.jpg" alt="Jackson Khatri" loading="lazy" decoding="async"></div>
+        <figcaption>
+          <h3 class="pb-name">Jackson Khatri</h3>
+          <p class="pb-role">Founder &middot; Creative Director</p>
+          <p class="pb-line">Started Anava so ideas stop getting lost between the people who think them and the people who make them.</p>
+        </figcaption>
+      </figure>
+      <figure class="pb-person reveal">
+        <div class="pb-portrait"><img src="assets/images/anjan_khatri.jpg" alt="Anjan Khatri" loading="lazy" decoding="async"></div>
+        <figcaption>
+          <h3 class="pb-name">Anjan Khatri</h3>
+          <p class="pb-role">Producer &middot; Production Head</p>
+          <p class="pb-line">Runs the production backbone: multi-location shoots, crews, budgets and timelines.</p>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -210,6 +235,7 @@
       <span class="approach-eyebrow">Our Approach</span>
       <h2 class="approach-title">From Idea<br>to <span class="o">Impact.</span></h2>
       <p class="approach-lead">Ideas are everywhere. Impact takes the right people, the right process and the courage to make it real.</p>
+      <p class="approach-path"><span>Thought</span><i aria-hidden="true">&rarr;</i><span>Idea</span><i aria-hidden="true">&rarr;</i><span>Film</span></p>
       <a href="process" class="btn btn-ghost approach-cta">Explore Our Process <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
     </div>
   </div>

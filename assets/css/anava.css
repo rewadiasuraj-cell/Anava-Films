@@ -4297,3 +4297,151 @@ html.hero-go .hero-cine .hl-1 em{
   .phil2-quote{z-index:3}
 }
 @media (prefers-reduced-motion:reduce){.phil2-band img{transform:none;transition:none}}
+
+/* ==========================================================================
+   Thinkers Who Make — full-bleed film-set section (.phx)
+   The photo fills the section; a left-weighted shade keeps the copy legible
+   while the crew and camera stay visible on the right.
+   ========================================================================== */
+.phx{position:relative;isolation:isolate;overflow:hidden;background:#050505;display:flex;align-items:flex-end;
+  min-height:clamp(640px,94vh,1040px)}
+.phx-media{position:absolute;inset:0;z-index:-2;display:block}
+.phx-media img{width:100%;height:100%;object-fit:cover;object-position:64% 38%;display:block;
+  transform:scale(var(--ps,1.03));transform-origin:68% 45%;will-change:transform}
+.phx::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
+  linear-gradient(90deg,rgba(5,5,5,.94) 0%,rgba(5,5,5,.8) 22%,rgba(5,5,5,.42) 44%,rgba(5,5,5,.08) 62%,rgba(5,5,5,0) 74%),
+  linear-gradient(180deg,rgba(5,5,5,.9) 0%,rgba(5,5,5,0) 16%,rgba(5,5,5,0) 78%,rgba(5,5,5,.7) 100%)}
+.phx-inner{position:relative;padding-top:clamp(120px,16vh,200px);padding-bottom:clamp(84px,13vh,150px)}
+.phx-copy{max-width:900px}
+.phx-eyebrow{display:flex;align-items:center;gap:18px;margin:0 0 clamp(26px,3vh,40px)}
+.phx-num{font-family:var(--font-body);font-weight:300;font-size:clamp(24px,1.7vw,32px);line-height:1;letter-spacing:-.02em;color:var(--accent)}
+.phx-rule{width:clamp(56px,4.4vw,84px);height:1px;background:rgba(240,82,35,.55)}
+.phx-name{font-family:var(--font-body);font-weight:500;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.phx-title{margin:0;font-family:var(--font-body);font-weight:600;text-transform:none;white-space:nowrap;
+  font-size:clamp(56px,5vw,88px);line-height:1;letter-spacing:-.035em;color:#f5f2ed}
+.phx-title .o{color:var(--accent)}
+.phx-br{display:none}
+.phx-lead{margin:clamp(24px,3vh,34px) 0 0;max-width:34em;font-size:clamp(16px,.95vw,18px);line-height:1.6;color:rgba(255,255,255,.74);text-wrap:pretty}
+.phx-cta{display:inline-flex;align-items:center;gap:14px;margin-top:clamp(30px,4vh,44px);min-height:52px;padding:0 26px 0 30px;
+  border:1px solid rgba(240,82,35,.72);border-radius:999px;color:#fff;font-family:var(--font-body);font-size:16px;font-weight:500;letter-spacing:-.005em;
+  text-decoration:none;background:transparent;transition:background-color .3s ease,border-color .3s ease,color .3s ease}
+.phx-arrow{display:inline-flex;color:var(--accent);font-size:18px;transition:transform .3s ease,color .3s ease}
+.phx-cta:hover,.phx-cta:focus-visible{background:var(--accent);border-color:var(--accent);color:#fff}
+.phx-cta:hover .phx-arrow,.phx-cta:focus-visible .phx-arrow{color:#fff;transform:translate(3px,-3px)}
+.phx-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* reveal: eyebrow -> heading -> body -> CTA */
+.phx-armed .phx-in{opacity:0}
+.phx-armed .phx-title{transform:translateY(24px);filter:blur(8px)}
+.phx-armed .phx-lead{transform:translateY(14px)}
+.phx-armed.is-in .phx-in{opacity:1;transform:none;filter:none;
+  transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1),filter .9s cubic-bezier(.22,1,.36,1)}
+.phx-armed.is-in .phx-title{transition-delay:.11s}
+.phx-armed.is-in .phx-lead{transition-delay:.23s}
+.phx-armed.is-in .phx-cta{transition:opacity .9s cubic-bezier(.22,1,.36,1) .35s,background-color .3s ease,border-color .3s ease,color .3s ease}
+
+/* tablet: iPad landscape + portrait */
+@media (min-width:761px) and (max-width:1024px){
+  .phx{min-height:clamp(600px,82vh,860px)}
+  .phx-media img{object-position:62% 36%}
+  .phx::before{background:
+    linear-gradient(90deg,rgba(5,5,5,.94) 0%,rgba(5,5,5,.78) 30%,rgba(5,5,5,.36) 56%,rgba(5,5,5,0) 78%),
+    linear-gradient(180deg,rgba(5,5,5,.9) 0%,rgba(5,5,5,0) 16%,rgba(5,5,5,0) 62%,rgba(5,5,5,.8) 100%)}
+  .phx-title{font-size:clamp(48px,6.4vw,64px)}
+  .phx-lead{max-width:32em;font-size:16px}
+}
+@media (min-width:761px) and (max-width:900px){
+  .phx-inner{padding-bottom:clamp(64px,8vh,96px)}
+}
+
+/* phone: photo on top, copy set low over a bottom shade */
+@media (max-width:760px){
+  .phx{min-height:100vh;min-height:100svh}
+  .phx-media img{object-position:50% 0%;transform-origin:50% 30%}
+  .phx::before{background:
+    linear-gradient(0deg,rgba(5,5,5,.97) 0%,rgba(5,5,5,.9) 30%,rgba(5,5,5,.5) 50%,rgba(5,5,5,0) 68%),
+    linear-gradient(180deg,rgba(5,5,5,.85) 0%,rgba(5,5,5,0) 14%)}
+  .phx-inner{padding:0 22px 64px}
+  .phx-eyebrow{gap:14px;margin-bottom:20px}
+  .phx-num{font-size:24px}
+  .phx-rule{width:52px}
+  .phx-name{font-size:11px;letter-spacing:.28em}
+  .phx-title{white-space:normal;font-size:clamp(42px,12vw,60px);line-height:1.02}
+  .phx-br{display:inline}
+  .phx-lead{margin-top:20px;font-size:15px;line-height:1.6;color:rgba(255,255,255,.78)}
+  .phx-cta{margin-top:28px;min-height:50px;font-size:15px}
+}
+@media (prefers-reduced-motion:reduce){
+  .phx-media img{transform:none;will-change:auto}
+  .phx-in{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
+}
+
+/* ==========================================================================
+   Global type + CTA system (after the Anava reference design)
+   Inter throughout. Big headings are medium weight, very tight and compact;
+   orange marks one word, flat, never a gradient. Eyebrows are small, widely
+   tracked capitals. Every .btn is the same minimal outlined pill with an
+   arrow on the right.
+   ========================================================================== */
+:root{--font-display:'Inter',system-ui,sans-serif}
+
+/* display headings: 500, -0.04em, line-height ~1 (sizes stay as tuned) */
+.hero-cine-title,.hero-cine-title .hl-1,.hero-cine-title .hl-2,
+.phx-title,.ww-title,.ww-intro-title,.pb-title,.approach-title,.act-title,
+.display,.display-sm,.phil-title,.wh-title,.pj-title,.ct-title,
+.people-ed .person-body h3{
+  font-family:var(--font-body);font-weight:500;letter-spacing:-.04em;line-height:1;text-transform:none
+}
+.hero-cine-title em,.ww-title em,.wh-title em{font-weight:inherit}
+
+/* secondary headings: 600, a touch looser */
+.wwd-title,.caps .wwd-title,.ct-h2,.loc-top h3,.ww-name,.person-body h3{
+  font-family:var(--font-body);font-weight:600;letter-spacing:-.03em;line-height:1.05;text-transform:none
+}
+.people-ed .person-body h3{font-weight:500;letter-spacing:-.04em}
+/* small titles on cards and lists */
+.wcard-title,.svc-body h4,.pb-name{font-family:var(--font-body);font-weight:600;letter-spacing:-.015em;line-height:1.2;text-transform:none}
+
+/* orange emphasis: flat accent, no gradient fill or shimmer */
+.o,.m-split .mw-accent,.hero-cine .hero-cine-title .hl-1 em,.hero-cine-title .hl-2 em,.wh-impact{
+  background:none!important;-webkit-background-clip:border-box;background-clip:border-box;
+  -webkit-text-fill-color:var(--accent);color:var(--accent)
+}
+
+/* eyebrows: 12px, 500, capitals tracked wide, muted white; numbers stay orange */
+.eyebrow:not(#_),.hero-cine-eyebrow:not(#_),.pb-eyebrow:not(#_),.approach-eyebrow:not(#_),.wh-eyebrow:not(#_),.phx-name:not(#_),
+.sec-label .sec-name:not(#_),.ct-h3:not(#_),.ct-label:not(#_),.footer-col-title:not(#_){
+  font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;line-height:1.4;
+  background:none;-webkit-text-fill-color:currentColor;color:rgba(255,255,255,.62)
+}
+.sec-label .sec-num,.ch-n,.phx-num{color:var(--accent);-webkit-text-fill-color:var(--accent)}
+
+/* ---- CTA pill ----
+   :not(#_) lifts these above the many older context rules (hero, CTA band,
+   form) without !important; nothing on the site uses that id. */
+.btn:not(#_){
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  min-height:48px;padding:0 24px 0 28px;border:1px solid var(--accent);border-radius:999px;
+  background:transparent;background-image:none;color:#fff;-webkit-text-fill-color:currentColor;
+  font-family:var(--font-body);font-size:15px;font-weight:500;letter-spacing:0;text-transform:none;line-height:1;
+  text-decoration:none;white-space:nowrap;box-shadow:none;transform:none;
+  transition:background-color .28s ease,border-color .28s ease,color .28s ease
+}
+.btn:not(#_):hover,.btn:not(#_):focus-visible{background:var(--accent);border-color:var(--accent);color:#fff;transform:none;box-shadow:none}
+.btn:not(#_):focus-visible{outline:2px solid #fff;outline-offset:3px}
+.btn:not(#_):active{transform:none}
+.btn:not(#_)::before,.btn:not(#_)::after{content:none}
+.btn .btn-ripple{display:none}
+.btn .btn-arrow{display:inline-flex;flex:none;color:var(--accent);transition:transform .28s ease,color .28s ease}
+.btn .btn-arrow svg{width:16px;height:16px;transform:none!important}
+.btn:not(#_):hover .btn-arrow,.btn:not(#_):focus-visible .btn-arrow{color:#fff;transform:translateX(4px)}
+.btn:not(#_) > svg:first-child{width:14px;height:14px;color:var(--accent);transition:color .28s ease}
+.btn:not(#_):hover > svg:first-child{color:#fff}
+.btn:not(#_)[disabled]{opacity:.7;cursor:progress}
+.ct-submit:not(#_){min-height:52px}
+.phx-cta:not(#_){margin-top:clamp(30px,4vh,44px)}
+@media (max-width:760px){
+  .btn:not(#_){font-size:14px;padding:0 22px 0 24px}
+  .ct-submit:not(#_){width:100%}
+}
+@media (prefers-reduced-motion:reduce){.btn .btn-arrow{transition:none}.btn:not(#_):hover .btn-arrow{transform:none}}

@@ -4375,3 +4375,73 @@ html.hero-go .hero-cine .hl-1 em{
   .phx-media img{transform:none;will-change:auto}
   .phx-in{opacity:1!important;transform:none!important;filter:none!important;transition:none!important}
 }
+
+/* ==========================================================================
+   Global type + CTA system (after the Anava reference design)
+   Inter throughout. Big headings are medium weight, very tight and compact;
+   orange marks one word, flat, never a gradient. Eyebrows are small, widely
+   tracked capitals. Every .btn is the same minimal outlined pill with an
+   arrow on the right.
+   ========================================================================== */
+:root{--font-display:'Inter',system-ui,sans-serif}
+
+/* display headings: 500, -0.04em, line-height ~1 (sizes stay as tuned) */
+.hero-cine-title,.hero-cine-title .hl-1,.hero-cine-title .hl-2,
+.phx-title,.ww-title,.ww-intro-title,.pb-title,.approach-title,.act-title,
+.display,.display-sm,.phil-title,.wh-title,.pj-title,.ct-title,
+.people-ed .person-body h3{
+  font-family:var(--font-body);font-weight:500;letter-spacing:-.04em;line-height:1;text-transform:none
+}
+.hero-cine-title em,.ww-title em,.wh-title em{font-weight:inherit}
+
+/* secondary headings: 600, a touch looser */
+.wwd-title,.caps .wwd-title,.ct-h2,.loc-top h3,.ww-name,.person-body h3{
+  font-family:var(--font-body);font-weight:600;letter-spacing:-.03em;line-height:1.05;text-transform:none
+}
+.people-ed .person-body h3{font-weight:500;letter-spacing:-.04em}
+/* small titles on cards and lists */
+.wcard-title,.svc-body h4,.pb-name{font-family:var(--font-body);font-weight:600;letter-spacing:-.015em;line-height:1.2;text-transform:none}
+
+/* orange emphasis: flat accent, no gradient fill or shimmer */
+.o,.m-split .mw-accent,.hero-cine .hero-cine-title .hl-1 em,.hero-cine-title .hl-2 em,.wh-impact{
+  background:none!important;-webkit-background-clip:border-box;background-clip:border-box;
+  -webkit-text-fill-color:var(--accent);color:var(--accent)
+}
+
+/* eyebrows: 12px, 500, capitals tracked wide, muted white; numbers stay orange */
+.eyebrow:not(#_),.hero-cine-eyebrow:not(#_),.pb-eyebrow:not(#_),.approach-eyebrow:not(#_),.wh-eyebrow:not(#_),.phx-name:not(#_),
+.sec-label .sec-name:not(#_),.ct-h3:not(#_),.footer-col-title:not(#_){
+  font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;line-height:1.4;
+  background:none;-webkit-text-fill-color:currentColor;color:rgba(255,255,255,.62)
+}
+.sec-label .sec-num,.ch-n,.phx-num{color:var(--accent);-webkit-text-fill-color:var(--accent)}
+
+/* ---- CTA pill ----
+   :not(#_) lifts these above the many older context rules (hero, CTA band,
+   form) without !important; nothing on the site uses that id. */
+.btn:not(#_){
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  min-height:48px;padding:0 24px 0 28px;border:1px solid var(--accent);border-radius:999px;
+  background:transparent;background-image:none;color:#fff;-webkit-text-fill-color:currentColor;
+  font-family:var(--font-body);font-size:15px;font-weight:500;letter-spacing:0;text-transform:none;line-height:1;
+  text-decoration:none;white-space:nowrap;box-shadow:none;transform:none;
+  transition:background-color .28s ease,border-color .28s ease,color .28s ease
+}
+.btn:not(#_):hover,.btn:not(#_):focus-visible{background:var(--accent);border-color:var(--accent);color:#fff;transform:none;box-shadow:none}
+.btn:not(#_):focus-visible{outline:2px solid #fff;outline-offset:3px}
+.btn:not(#_):active{transform:none}
+.btn:not(#_)::before,.btn:not(#_)::after{content:none}
+.btn .btn-ripple{display:none}
+.btn .btn-arrow{display:inline-flex;flex:none;color:var(--accent);transition:transform .28s ease,color .28s ease}
+.btn .btn-arrow svg{width:16px;height:16px;transform:none!important}
+.btn:not(#_):hover .btn-arrow,.btn:not(#_):focus-visible .btn-arrow{color:#fff;transform:translateX(4px)}
+.btn:not(#_) > svg:first-child{width:14px;height:14px;color:var(--accent);transition:color .28s ease}
+.btn:not(#_):hover > svg:first-child{color:#fff}
+.btn:not(#_)[disabled]{opacity:.7;cursor:progress}
+.ct-submit:not(#_){min-height:52px}
+.phx-cta:not(#_){margin-top:clamp(30px,4vh,44px)}
+@media (max-width:760px){
+  .btn:not(#_){font-size:14px;padding:0 22px 0 24px}
+  .ct-submit:not(#_){width:100%}
+}
+@media (prefers-reduced-motion:reduce){.btn .btn-arrow{transition:none}.btn:not(#_):hover .btn-arrow{transform:none}}

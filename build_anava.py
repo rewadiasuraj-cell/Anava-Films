@@ -34,6 +34,9 @@ HEAD = """<!DOCTYPE html>
 <body>
 """
 
+BTN_ARR_SVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M14 6l6 6-6 6"/></svg>'
+# the one arrow every pill CTA carries on its right
+BTN_ARR = '<span class="btn-arrow" aria-hidden="true">' + BTN_ARR_SVG + '</span>'
 ARROW = '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 PLAY = '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'
 CHEV = '<svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>'
@@ -419,7 +422,7 @@ def page_work():
         </div>
         <div>
           <p class="lead">Whether it's a thought, a product or a full brief, we're ready to turn it into something powerful.</p>
-          <a href="contact.html" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
+          <a href="contact.html" class="btn btn-primary">Let's Talk {BTN_ARR}</a>
         </div>
       </div>
       <div class="script">More<br>Ideas<br>More<br>Films</div>
@@ -555,7 +558,7 @@ def page_home():
       <span class="hero-line hero-line-3">turning brand briefs into compelling films, campaigns and content.</span>
     </p>
     <div class="hero-cine-actions">
-      <a href="work.html" class="btn btn-primary hero-cta">View Our Work <span class="hero-cta-arrow">{ARROW}</span></a>
+      <a href="work.html" class="btn btn-primary hero-cta">View Our Work {BTN_ARR}</a>
     </div>
   </div>
 
@@ -596,7 +599,7 @@ def page_home():
       <p class="phx-eyebrow phx-in"><span class="phx-num">01</span><span class="phx-rule" aria-hidden="true"></span><span class="phx-name">Our Philosophy</span></p>
       <h2 class="phx-title phx-in" id="phx-title">Thinkers<br class="phx-br"> Who <span class="o">Make.</span></h2>
       <p class="phx-lead phx-in">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn&rsquo;t get lost between the people who think them and the people who make them.</p>
-      <a href="about.html" class="phx-cta phx-in">About Anava <span class="phx-arrow">{DIAG}</span></a>
+      <a href="about.html" class="btn btn-ghost phx-cta phx-in">About Anava {BTN_ARR}</a>
     </div>
   </div>
 </section>
@@ -608,7 +611,7 @@ def page_home():
         <div class="ww-head">
           <p class="stays-label ww-label"><b>02</b> Selected Work</p>
           <h2 class="ww-title" id="ww-title">Work That Stays<br>With <span class="o">You.</span></h2>
-          <a href="work" class="stays-link ww-all">All Work {DIAG}</a>
+          <a href="work" class="btn btn-ghost ww-all">All Work {BTN_ARR}</a>
         </div>
         <div class="ww-info" aria-live="polite">
           <p class="ww-count"><span class="ww-num">01</span> / {WN:02d}</p>
@@ -623,7 +626,7 @@ def page_home():
     <div class="ww-intro" aria-hidden="true">
       <p class="stays-label ww-label"><b>02</b> Selected Work</p>
       <p class="ww-intro-title">Work That Stays With <span class="o">You.</span></p>
-      <a href="work" class="stays-link ww-all" tabindex="-1">All Work {DIAG}</a>
+      <a href="work" class="btn btn-ghost ww-all" tabindex="-1">All Work {BTN_ARR}</a>
     </div>
     <div class="ww-stage">{wheel_html}
     </div>
@@ -642,7 +645,7 @@ def page_home():
       <p class="pb-eyebrow">The People Behind the Work</p>
       <h2 class="pb-title">Thinkers and Makers.<br><span class="o">One Crew.</span></h2>
       <p class="pb-text">The same team that shapes the idea is on set to shoot it.</p>
-      <a class="stays-link pb-link" href="about.html#people">Meet the Team {DIAG}</a>
+      <a class="btn btn-ghost pb-link" href="about.html#people">Meet the Team {BTN_ARR}</a>
     </div>
     <div class="pb-people">
       <figure class="pb-person reveal">
@@ -673,7 +676,7 @@ def page_home():
       <h2 class="approach-title">From Idea<br>to <span class="o">Impact.</span></h2>
       <p class="approach-lead">Ideas are everywhere. Impact takes the right people, the right process and the courage to make it real.</p>
       <p class="approach-path"><span>Thought</span><i aria-hidden="true">&rarr;</i><span>Idea</span><i aria-hidden="true">&rarr;</i><span>Film</span></p>
-      <a href="process.html" class="btn btn-ghost approach-cta">Explore Our Process {DIAG}</a>
+      <a href="process.html" class="btn btn-ghost approach-cta">Explore Our Process {BTN_ARR}</a>
     </div>
   </div>
   <div class="container">
@@ -717,7 +720,7 @@ def page_home():
       <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt="" loading="lazy"></div>
       <div class="cta-band-inner">
         <h2 class="display-sm">Have a Thought Worth <span class="o">Shooting?</span></h2>
-        <a href="contact.html" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
+        <a href="contact.html" class="btn btn-primary">Let's Talk {BTN_ARR}</a>
       </div>
     </div>
   </div>
@@ -843,7 +846,7 @@ def page_process():
         </div>
         <div>
           <p class="lead">Whether it's a product, a problem or a simple thought, we take it all the way — from idea to execution, under one roof.</p>
-          <a href="contact.html" class="btn btn-primary">Let's Create Together <span class="circ">{ARROW}</span></a>
+          <a href="contact.html" class="btn btn-primary">Let's Create Together {BTN_ARR}</a>
         </div>
       </div>
       <div class="script">More<br>Ideas<br>More<br>Films</div>
@@ -1038,7 +1041,7 @@ def page_contact():
           </div>
         </div>
         <div class="ct-foot">
-          <button class="btn btn-primary ct-submit" type="submit"><span class="ct-submit-label">Send Enquiry</span> <span class="circ">{ARROW}</span></button>
+          <button class="btn btn-primary ct-submit" type="submit"><span class="ct-submit-label">Send Enquiry</span> {BTN_ARR}</button>
           <span class="ct-progress" aria-hidden="true"><i></i></span>
         </div>
         <div id="form-feedback" class="ct-feedback" role="status" aria-live="polite" hidden></div>
@@ -1199,7 +1202,7 @@ def page_about():
         </div>
         <div>
           <p class="lead">Give us a thought. We'll give you ideas to shoot.</p>
-          <a href="contact.html" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
+          <a href="contact.html" class="btn btn-primary">Let's Talk {BTN_ARR}</a>
         </div>
       </div>
       <div class="script">Ideas<br>Into<br>Action</div>

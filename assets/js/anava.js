@@ -541,6 +541,8 @@
     var cards = Array.prototype.slice.call(grid.querySelectorAll('.wcard'));
     var pills = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
     var loadMoreBtn = document.getElementById('load-more');
+    var subRow = document.querySelector('.sub-pills');
+    var phoneMq = window.matchMedia('(max-width: 900px)');
     var empty = document.getElementById('work-empty');
     // Batch size per tab, each a whole number of rows for that tab's grid
     // (see .work-grid[data-view] in anava.css): TVCs and BTS run four across
@@ -603,15 +605,20 @@
         state.filter = f;
         state.sub = sub;
         state.pages = 1;
-        document.querySelectorAll('.pill').forEach(function (x) { x.classList.remove('active'); });
-        document.querySelectorAll('.drop-menu button').forEach(function (x) { x.classList.remove('active'); });
-        if (p.classList.contains('pill')) {
-          p.classList.add('active');
-        } else {
-          p.classList.add('active');
-          var host = p.closest('.pill-drop');
-          if (host) { host.querySelector('.pill').classList.add('active'); host.classList.remove('open'); }
+        document.querySelectorAll('.pill, .drop-menu button, .sub-pill').forEach(function (x) { x.classList.remove('active'); });
+        p.classList.add('active');
+        var host = p.closest('.pill-drop');
+        if (host) { host.querySelector('.pill').classList.add('active'); host.classList.remove('open'); }
+        // Vertical's type choice lives in the desktop menu and, on phones,
+        // in a row under the tabs: keep both, and the tab, in step
+        if (f === 'vertical') {
+          var vt = document.querySelector('.pill-drop > .pill');
+          if (vt) vt.classList.add('active');
+          document.querySelectorAll('.drop-menu button, .sub-pill').forEach(function (x) {
+            if ((x.dataset.sub || '') === sub) x.classList.add('active');
+          });
         }
+        if (subRow) subRow.hidden = f !== 'vertical';
         render();
         settle();
       });
@@ -637,26 +644,20 @@
     document.querySelectorAll('.pill-drop > .pill').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
+        // Phones and tablets: no floating menu (iOS clips it inside the
+        // sideways tab row); the tab shows all vertical films and the
+        // type row appears beneath the tabs
+        if (phoneMq.matches) {
+          var all = btn.closest('.pill-drop').querySelector('.drop-menu button');
+          if (all) all.click();
+          return;
+        }
         var host = btn.closest('.pill-drop');
         var wasOpen = host.classList.contains('open');
         document.querySelectorAll('.pill-drop').forEach(function (d) { d.classList.remove('open'); });
         host.classList.toggle('open', !wasOpen);
-        // Phones scroll the tabs sideways, which would clip the menu: there
-        // it is placed against the viewport under its tab instead
-        var menu = host.querySelector('.drop-menu');
-        if (menu && window.matchMedia('(max-width: 900px)').matches) {
-          var r = btn.getBoundingClientRect();
-          menu.style.top = (r.bottom + 8) + 'px';
-          menu.style.left = Math.max(12, Math.min(r.left, window.innerWidth - 212)) + 'px';
-        }
       });
     });
-    var tabScroller = document.querySelector('.work-filters .pills');
-    function closeDrops() { document.querySelectorAll('.pill-drop.open').forEach(function (d) { d.classList.remove('open'); }); }
-    if (tabScroller) tabScroller.addEventListener('scroll', closeDrops, { passive: true });
-    window.addEventListener('scroll', function () {
-      if (window.matchMedia('(max-width: 900px)').matches) closeDrops();
-    }, { passive: true });
     document.addEventListener('click', function () {
       document.querySelectorAll('.pill-drop').forEach(function (d) { d.classList.remove('open'); });
     });

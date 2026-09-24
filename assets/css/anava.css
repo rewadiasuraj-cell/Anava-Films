@@ -2417,3 +2417,25 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .trusted-logos{animation:none}
   .trusted-marquee{overflow-x:auto}
 }
+
+/* ---- Home hero: a quieter second action beside the primary button ---- */
+.hero-watch{
+  display:inline-flex;align-items:center;gap:12px;padding:10px 6px;border:0;background:none;cursor:pointer;
+  font:inherit;font-size:clamp(.92rem,1vw,1.02rem);font-weight:500;color:rgba(255,255,255,.88);
+  transition:color .3s var(--ease);
+}
+.hero-watch-ic{
+  width:40px;height:40px;border-radius:50%;display:grid;place-items:center;flex:none;
+  border:1.5px solid rgba(255,255,255,.55);transition:border-color .3s var(--ease),background .3s var(--ease),transform .3s var(--ease);
+}
+.hero-watch-ic svg{width:13px;height:13px;margin-left:2px}
+.hero-watch:hover{color:#fff}
+.hero-watch:hover .hero-watch-ic{border-color:#fff;background:rgba(255,255,255,.1);transform:scale(1.06)}
+.hero-watch:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:999px}
+@media (max-width:760px){.hero-cine-actions{gap:10px 18px}.hero-watch-ic{width:36px;height:36px}}
+
+/* ---- Home closing band: one message, one action ---- */
+.home-cta .cta-band-inner{gap:24px}
+.home-cta .display-sm{max-width:18ch}
+.hero-cine-actions .btn,.hero-watch{white-space:nowrap}
+@media (max-width:760px){.hero-cine-actions{flex-direction:column;gap:6px}}

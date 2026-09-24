@@ -402,6 +402,8 @@ def page_home():
     # case study like any other card.
     REEL_V = "assets/media/tvc/Sunil Shetty AD Landscape.mp4"
     REEL_CASE = case_attr(card_for(REEL_V))
+    HERO_FILM_V = "assets/media/tvc/LENSKART HUSTLER AD FILM.mp4"
+    HERO_FILM_CASE = case_attr(card_for(HERO_FILM_V))
     # Two landscape films with designed key art, one row side by side; the rest
     # live on the Work page. (Sunil Shetty already fronts the featured film above.)
     # Two films, staggered: the lead film large, the second smaller and set
@@ -420,23 +422,6 @@ def page_home():
           <button class="sw-play" type="button" aria-label="Play {esc(b)} {esc(t)}" data-lightbox="{esc(v)}" data-caption="{esc(card_for(v)['title'])}" {case_attr(card_for(v))}>{PLAY}</button>
         </figcaption>
       </figure>""" for i, (v, p, b, t) in enumerate(sel))
-
-    steps = [
-        ("Thought", "A brief, a product, or a problem."),
-        ("Idea", "We find the strongest angle."),
-        ("Deck", "Concept, treatment, script, mood."),
-        ("Pre-production", "Crew, cast, locations, schedule."),
-        ("Shoot", "The deck becomes reality."),
-        ("Post", "Edit, sound, colour, VFX."),
-        ("Delivery", "The final film goes live."),
-    ]
-    rail = "".join(f"""
-        <article class="proc-step">
-          <span class="proc-num">0{i+1}</span>
-          <span class="proc-dot"></span>
-          <h4 class="proc-name">{name}</h4>
-          <p class="proc-note">{note}</p>
-        </article>""" for i, (name, note) in enumerate(steps))
 
     # A knockout mark — a light shape sitting inside a coloured plate — cannot be
     # flattened to a silhouette: brightness(0) blacks out the light parts too and
@@ -482,6 +467,7 @@ def page_home():
     </p>
     <div class="hero-cine-actions">
       <a href="work.html" class="btn btn-primary btn-grad">View our work {ARROW}</a>
+      <button class="hero-watch" type="button" data-lightbox="{HERO_FILM_V}" data-caption="Lenskart &middot; Hustlr" {HERO_FILM_CASE}><span class="hero-watch-ic">{PLAY}</span>Watch Featured Film</button>
     </div>
   </div>
 
@@ -596,35 +582,14 @@ def page_home():
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label"><span class="sec-num">04</span><span class="sec-name">Our Process</span></div>
-      <a href="process.html" class="sec-more">See The Process <span class="circ-arrow" style="width:40px;height:40px">{ARROW}</span></a>
-    </div>
-    <div class="proc-rail reveal">
-      <div class="proc-track">{rail}</div>
-    </div>
-    <p class="proc-hint" aria-hidden="true">Swipe to see all 7 steps {ARROW}</p>
-  </div>
-</section>
-
-
 <section class="section">
   <div class="container">
-    <div class="cta-band compact reveal">
-      <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt=""></div>
+    <div class="cta-band compact home-cta reveal">
+      <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt="" loading="lazy"></div>
       <div class="cta-band-inner">
-        <div>
-          <span class="eyebrow">Let's create together</span>
-          <h2 class="display-sm">Want to collaborate<br>with <span class="o">Anava?</span></h2>
-        </div>
-        <div>
-          <p class="lead">Give us a thought. We'll give you ideas to shoot.</p>
-          <a href="contact.html" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
-        </div>
+        <h2 class="display-sm">Have a thought worth <span class="o">shooting?</span></h2>
+        <a href="contact.html" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
       </div>
-      <div class="script">Ideas<br>Into<br>Action</div>
     </div>
   </div>
 </section>

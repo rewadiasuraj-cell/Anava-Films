@@ -219,6 +219,11 @@ def build_work_cards():
                      "assets/media/vertical-films/lenskart-performance-50.mp4",
                      "assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4"]
 
+    # TVCs / Digital opens on Aqualens, Maxima, then Lenskart Personality
+    TVC_LEAD = ["assets/media/tvc/AQUALENS CONTACT LENS FILM.mp4",
+                "assets/media/tvc/MAXIMA WATCHES FILM.mp4",
+                "assets/media/tvc/LENSKART PERSONALITY FILM.mp4"]
+
     # Photoshoots open on the green-top Aquacolor set (front-facing first)
     PHOTO_LEAD = ["shoot-08", "shoot-09", "shoot-10", "shoot-11"]
 
@@ -226,6 +231,8 @@ def build_work_cards():
         v = c.get("video", "").split("#")[0]
         if c["category"] == "vertical" and v in VERTICAL_LEAD:
             return VERTICAL_LEAD.index(v)
+        if c["category"] == "tvc" and v in TVC_LEAD:
+            return TVC_LEAD.index(v)
         if c["category"] == "photoshoots":
             n = c.get("img", "").rsplit("/", 1)[-1].replace("-560.webp", "")
             if n in PHOTO_LEAD:

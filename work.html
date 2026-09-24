@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Caveat:wght@500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/anava.css?v=48ba6eb2ae">
+<link rel="stylesheet" href="assets/css/anava.css?v=d2e87916e7">
 <script>document.documentElement.classList.add('m-js')</script>
-<script defer src="assets/js/anava.js?v=dfa45bb020"></script>
+<script defer src="assets/js/anava.js?v=0f9aa2d545"></script>
 </head>
 <body>
 
@@ -66,7 +66,7 @@
     <div class="pills" role="group" aria-label="Filter work by category">
       <button class="pill active" data-filter="tvc">TVCs / Digital</button>
       <div class="pill-drop">
-        <button class="pill" type="button">Vertical <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="pill" type="button" aria-controls="vertical-types">Vertical</button>
         <div class="drop-menu">
           <button data-filter="vertical">All Vertical</button>
           <button data-filter="vertical" data-sub="performance">Performance Ads</button>
@@ -80,10 +80,10 @@
     </div>
     <span class="pill-ink" aria-hidden="true"></span>
   </div>
-  <div class="sub-pills" role="group" aria-label="Vertical: filter by type" hidden>
+  <div class="sub-pills" id="vertical-types" role="group" aria-label="Vertical: filter by type" hidden>
     <button type="button" class="sub-pill" data-filter="vertical">All Vertical</button>
     <button type="button" class="sub-pill" data-filter="vertical" data-sub="performance">Performance Ads</button>
-    <button type="button" class="sub-pill" data-filter="vertical" data-sub="social|product">Social &amp; Product</button>
+    <button type="button" class="sub-pill" data-filter="vertical" data-sub="social|product">Social &amp; Product Content</button>
   </div>
     </div>
   </div>
@@ -866,7 +866,7 @@
       </div>
     </article>
     </div>
-    <p class="empty-state" id="work-empty" style="display:none">Nothing in this category yet.</p>
+    <p class="empty-state" id="work-empty" hidden>Nothing in this category yet.</p>
     <div class="load-more-wrap">
       <button class="btn btn-ghost" id="load-more">View more</button>
     </div>

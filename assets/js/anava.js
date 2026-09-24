@@ -542,7 +542,6 @@
     var pills = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
     var loadMoreBtn = document.getElementById('load-more');
     var subRow = document.querySelector('.sub-pills');
-    var phoneMq = window.matchMedia('(max-width: 900px)');
     var empty = document.getElementById('work-empty');
     // Batch size per tab, each a whole number of rows for that tab's grid
     // (see .work-grid[data-view] in anava.css): TVCs and BTS run four across
@@ -594,7 +593,7 @@
           c.classList.add('is-hidden');
         }
       });
-      if (empty) empty.style.display = count === 0 ? 'block' : 'none';
+      if (empty) empty.hidden = count !== 0;
       if (loadMoreBtn) loadMoreBtn.parentElement.style.display = count > state.shown ? 'flex' : 'none';
     }
 
@@ -619,6 +618,8 @@
           });
         }
         if (subRow) subRow.hidden = f !== 'vertical';
+        var vtab = document.querySelector('.pill-drop > .pill');
+        if (vtab) vtab.setAttribute('aria-expanded', f === 'vertical' ? 'true' : 'false');
         render();
         settle();
       });
@@ -644,14 +645,10 @@
     document.querySelectorAll('.pill-drop > .pill').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
-        // Phones and tablets: no floating menu (iOS clips it inside the
-        // sideways tab row); the tab shows all vertical films and the
-        // type row appears beneath the tabs
-        if (phoneMq.matches) {
-          var all = btn.closest('.pill-drop').querySelector('.drop-menu button');
-          if (all) all.click();
-          return;
-        }
+        // No floating menu: the tab shows all vertical films and the type
+        // row (secondary filters) appears beneath the tabs on every screen
+        var all = btn.closest('.pill-drop').querySelector('.drop-menu button');
+        if (all) { all.click(); return; }
         var host = btn.closest('.pill-drop');
         var wasOpen = host.classList.contains('open');
         document.querySelectorAll('.pill-drop').forEach(function (d) { d.classList.remove('open'); });
@@ -810,7 +807,7 @@
   }
 
   /* ---------- 2. collect reveal items and give each section a sequence ---------- */
-  var SKIP = '.work-hero, .hero-cine, .ww, .step, .pj, .pj-hero, .intro, .site-header, .main-footer, .lightbox, .case';
+  var SKIP = '.work-hero, .hero-cine, .ww, .step, .pj, .pj-hero, .cap, .intro, .site-header, .main-footer, .lightbox, .case';
   var ROLES = [
     ['label', '.eyebrow, .sec-name, .stays-label, .approach-eyebrow, .pb-eyebrow'],
     ['heading', HEADINGS],
@@ -1650,4 +1647,38 @@
       { rootMargin: '100px 0px' }).observe(root);
   }
   setMode();
+})();
+
+/* ==========================================================================
+   About capabilities — the stage word on the left follows whichever
+   chapter (Think, Make, Finish) is in the middle of the screen. A light
+   touch: no pinning of the content itself, just a sticky word and rail.
+   ========================================================================== */
+(function () {
+  'use strict';
+  var root = document.querySelector('[data-caps]');
+  if (!root || !('IntersectionObserver' in window)) return;
+  var caps = Array.prototype.slice.call(root.querySelectorAll('.cap'));
+  var words = Array.prototype.slice.call(root.querySelectorAll('.caps-word > span'));
+  var rail = root.querySelector('.caps-rail i');
+  var cur = 0;
+  function set(i) {
+    if (i === cur) return;
+    cur = i;
+    words.forEach(function (w, k) { w.classList.toggle('is-on', k === i); });
+    caps.forEach(function (c, k) { c.classList.toggle('is-on', k === i); });
+    if (rail) rail.style.transform = 'scaleY(' + ((i + 1) / caps.length) + ')';
+  }
+  if (rail) rail.style.transform = 'scaleY(' + (1 / caps.length) + ')';
+  if (caps[0]) caps[0].classList.add('is-on');
+  // the chapter whose top has passed the middle of the screen is current
+  var raf = 0, near = false;
+  function read() {
+    raf = 0;
+    var mid = window.innerHeight * 0.55, i = 0;
+    for (var k = 0; k < caps.length; k++) if (caps[k].getBoundingClientRect().top < mid) i = k;
+    set(i);
+  }
+  new IntersectionObserver(function (es) { near = es[0].isIntersecting; if (near) read(); }).observe(root);
+  window.addEventListener('scroll', function () { if (near && !raf) raf = requestAnimationFrame(read); }, { passive: true });
 })();

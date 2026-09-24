@@ -2212,9 +2212,12 @@ html.intro-on,html.intro-on body{overflow:hidden}
 @media (max-width:760px){
   .trusted-label{padding:12px 20px 2px}
   .reel .reel-cta .play-btn{width:56px;height:56px}
-  /* The key art's title block fills the left half on a phone crop, so the
-     call to action moves right, over the film rather than the type */
-  .reel-overlay{justify-content:flex-end;padding-right:22px}
   .reel-cta{gap:10px}
   .reel-cta .reel-meta{font-size:.85rem}
+  /* Centred on a phone crop the label sits over the key art's own title
+     type, so it gets a small glass pill to stay readable */
+  .reel-cta .reel-meta{
+    padding:6px 14px;border-radius:999px;background:rgba(8,8,8,.55);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  }
 }

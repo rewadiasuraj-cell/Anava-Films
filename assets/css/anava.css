@@ -3008,3 +3008,24 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .pb-title{font-size:1.6rem}
 }
 .approach-steps h3{font-family:var(--font-body);font-weight:700;letter-spacing:-.03em}
+
+/* Header Let's Talk: the gold Anava mark replaces the arrow. It makes one
+   slow, eased turn (1.5s) on load and on hover, with a soft gold glow. */
+.btn-talk .circ-mark{
+  background:#0c0c0c;border:1px solid rgba(214,172,72,.45);
+  box-shadow:0 0 0 0 rgba(214,172,72,0);
+  transition:box-shadow 1.5s cubic-bezier(.45,0,.2,1),border-color 1.5s cubic-bezier(.45,0,.2,1);
+}
+.btn-talk .circ-mark img{
+  width:70%;height:auto;display:block;
+  animation:talkMarkTurn 1.5s cubic-bezier(.45,0,.2,1) .6s both;
+}
+.btn-talk:hover .circ-mark,.btn-talk:focus-visible .circ-mark{
+  border-color:rgba(214,172,72,.9);box-shadow:0 0 14px 1px rgba(214,172,72,.35);
+}
+.btn-talk:hover .circ-mark img,.btn-talk:focus-visible .circ-mark img{animation:talkMarkHover 1.5s cubic-bezier(.45,0,.2,1) both}
+@keyframes talkMarkTurn{from{transform:rotate(-360deg) scale(.6);opacity:0}to{transform:none;opacity:1}}
+@keyframes talkMarkHover{0%{transform:none}50%{transform:rotate(180deg) scale(1.12)}100%{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){
+  .btn-talk .circ-mark img,.btn-talk:hover .circ-mark img{animation:none}
+}

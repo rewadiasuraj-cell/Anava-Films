@@ -2343,3 +2343,27 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .pb-text{font-size:.9rem;margin-top:12px}
   .pb-link{margin-top:18px;font-size:.92rem}
 }
+
+/* ==========================================================================
+   WORK hero stage: one wide screen that runs the horizontal TVCs in turn.
+   Each film's thumbnail holds for 5s (a thin bar counts it down), then the
+   film dissolves in and plays muted; when it ends the next thumbnail
+   dissolves back in. Click opens the current film's case study.
+   ========================================================================== */
+.wh-films{grid-template-columns:1fr}
+@media (min-width:901px){.wh-films{height:clamp(320px,min(30vw,52vh),580px)}}
+.wh-stage .wh-poster,.wh-stage .wh-video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+}
+.wh-stage .wh-poster{transition:opacity .9s var(--ease),transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.wh-stage .wh-poster.is-swapping{opacity:0}
+.wh-stage .wh-video{opacity:0;transition:opacity 1s var(--ease);pointer-events:none}
+.wh-stage.is-playing .wh-video{opacity:1}
+.wh-stage::after{z-index:1}
+.wh-film-tag{transition:opacity .4s var(--ease)}
+.wh-film-tag.is-swapping{opacity:0}
+/* Countdown (white) while the thumbnail holds, playback (orange) after */
+.wh-progress{position:absolute;left:0;right:0;bottom:0;height:3px;z-index:3;background:rgba(255,255,255,.12)}
+.wh-progress i{position:absolute;inset:0;transform-origin:left;transform:scaleX(0);background:rgba(255,255,255,.75)}
+.wh-stage.is-counting .wh-progress i{transform:scaleX(1);transition:transform 5s linear}
+.wh-stage.is-playing .wh-progress i{background:var(--accent)}

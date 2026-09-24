@@ -273,18 +273,33 @@ def build_work_cards():
 
 # ---------------------------------------------------------------- pages
 def page_work():
-    # Two headline films under the title, numbered like a reel; each opens
-    # its case study.
-    feature = [
-        ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/work-hero-hustlr.jpg", "Lenskart", "34% 30%"),
-        ("assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4", "assets/images/thumbnails/tira-beauty-kareena.jpg", "Tira Beauty", "82% 30%"),
-    ]
-    features = "".join(f"""
-      <button class="wh-film" type="button" data-lightbox="{esc(v)}" data-caption="{esc(card_for(v)['title'])}" {case_attr(card_for(v))}>
-        <img src="{esc(img)}" alt="{esc(card_for(v)['title'])}" style="object-position:{pos}" fetchpriority="high">
+    # One stage under the title that plays the horizontal TVCs in turn: each
+    # film's thumbnail holds for 5s, then it plays muted, then the next one.
+    # anava.js drives it from this list; the markup starts on the first film.
+    first = "assets/media/tvc/LENSKART HUSTLER AD FILM.mp4"
+    tvcs = [c for c in cards if c["category"] == "tvc" and c.get("video")]
+    tvcs.sort(key=lambda c: c["video"].split("#")[0] != first)
+    playlist = []
+    for c in tvcs:
+        v = c["video"].split("#")[0]
+        brand = re.sub(r"\s*\(.*?\)", "", c.get("client") or c["title"]).strip()
+        playlist.append({
+            "v": v,
+            "p": "assets/images/work-hero-hustlr.jpg" if v == first else c.get("poster", ""),
+            "t": brand, "cap": c["title"],
+            "case": {k: c[k] for k in CASE_KEYS if c.get(k)},
+        })
+    f0 = playlist[0]
+    playlist_json = json.dumps(playlist, ensure_ascii=False).replace("</", "<\\/")
+    features = f"""
+      <button class="wh-film wh-stage" type="button" data-lightbox="{esc(f0['v'])}" data-caption="{esc(f0['cap'])}" {case_attr(card_for(f0['v']))}>
+        <img class="wh-poster" src="{esc(f0['p'])}" alt="" fetchpriority="high">
+        <video class="wh-video" muted playsinline preload="none" aria-hidden="true"></video>
         <span class="wh-film-play" aria-hidden="true">{PLAY}</span>
-        <span class="wh-film-tag"><b>0{i + 1}</b> / {esc(brand)}</span>
-      </button>""" for i, (v, img, brand, pos) in enumerate(feature))
+        <span class="wh-film-tag"><b>01</b> <span class="wh-film-name">{esc(f0['t'])}</span></span>
+        <span class="wh-progress" aria-hidden="true"><i></i></span>
+      </button>
+      <script type="application/json" id="wh-playlist">{playlist_json}</script>"""
     filters = f"""
   <div class="filter-bar">
     <div class="pills">

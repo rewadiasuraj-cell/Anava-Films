@@ -189,6 +189,84 @@
     li.addEventListener('click', function () { li.classList.toggle('is-open'); });
   });
 
+  /* ---------- Work hero stage: TVCs in turn, 5s thumbnail then muted play ---------- */
+  (function () {
+    var stage = document.querySelector('.wh-stage');
+    var listEl = document.getElementById('wh-playlist');
+    if (!stage || !listEl) return;
+    var items; try { items = JSON.parse(listEl.textContent); } catch (e) { return; }
+    if (!items.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var poster = stage.querySelector('.wh-poster'), video = stage.querySelector('.wh-video');
+    var tag = stage.querySelector('.wh-film-tag'), num = tag.querySelector('b'), name = tag.querySelector('.wh-film-name');
+    var bar = stage.querySelector('.wh-progress i');
+    var i = 0, timer = null, visible = false, phase = 'hold';
+    var HOLD = 5000;
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    function setItem(it, n) {
+      stage.setAttribute('data-lightbox', it.v);
+      stage.setAttribute('data-caption', it.cap);
+      stage.setAttribute('data-case', JSON.stringify(it.case));
+      num.textContent = pad(n + 1);
+      name.textContent = it.t;
+    }
+    function resetBar() {
+      stage.classList.remove('is-counting');
+      bar.style.transition = 'none'; bar.style.transform = '';
+      void bar.offsetWidth; bar.style.transition = '';
+    }
+    function hold() {
+      phase = 'hold'; clearTimeout(timer); resetBar();
+      if (!visible) return;
+      stage.classList.add('is-counting');
+      timer = setTimeout(play, HOLD);
+    }
+    function play() {
+      phase = 'play'; stage.classList.remove('is-counting');
+      var it = items[i];
+      if (video.getAttribute('data-src') !== it.v) {
+        video.setAttribute('data-src', it.v); video.src = it.v;
+      }
+      video.muted = true;
+      var p = video.play();
+      if (p && p.catch) p.catch(function () { if (phase === 'play') next(); });
+    }
+    function next() {
+      if (phase === 'next') return;
+      phase = 'next'; clearTimeout(timer);
+      i = (i + 1) % items.length;
+      var it = items[i];
+      // swap the thumbnail underneath, then dissolve the film away onto it
+      var img = new Image();
+      img.onload = img.onerror = function () {
+        poster.classList.add('is-swapping'); tag.classList.add('is-swapping');
+        setTimeout(function () {
+          poster.src = it.p; setItem(it, i);
+          stage.classList.remove('is-playing');
+          poster.classList.remove('is-swapping'); tag.classList.remove('is-swapping');
+          try { video.pause(); } catch (e) {}
+          hold();
+        }, stage.classList.contains('is-playing') ? 0 : 450);
+      };
+      img.src = it.p;
+    }
+    video.addEventListener('playing', function () { stage.classList.add('is-playing'); });
+    video.addEventListener('timeupdate', function () {
+      if (video.duration) bar.style.transform = 'scaleX(' + (video.currentTime / video.duration) + ')';
+    });
+    video.addEventListener('ended', next);
+    video.addEventListener('error', function () { if (phase === 'play') next(); });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) {
+        visible = en[0].isIntersecting;
+        if (!visible) { clearTimeout(timer); resetBar(); if (phase === 'play') video.pause(); }
+        else if (phase === 'play') { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
+        else hold();
+      }, { threshold: 0.35 }).observe(stage);
+    } else { visible = true; hold(); }
+  })();
+
   /* ---------- Lightbox ---------- */
   var lb = document.getElementById('lightbox');
   var lbBody = document.getElementById('lightbox-body');

@@ -3242,3 +3242,7 @@ html.hero-go .hero-cine .trusted-logos li{
 }
 .nobr{white-space:nowrap}
 @media (max-width:899px){.hero-cine .hero-cine-lead .hero-line{text-wrap:balance}}
+/* Thinkers Who Make: one paragraph now, so no second column or divider */
+.phil2-copy{grid-template-columns:1fr}
+.phil2-copy::before{content:none;display:none}
+.phil2-lead{max-width:62ch}

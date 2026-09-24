@@ -2952,3 +2952,46 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
 /* Collaborate CTA: "Want to Collaborate With" on one line, "Anava?" below */
 .cta-collab .cc-1{white-space:nowrap}
 @media (max-width:760px){.cta-collab .cc-1{white-space:normal}}
+
+/* ==========================================================================
+   HOME — 01 Thinkers Who Make, refined to the owner's reference: calmer
+   Inter headline, smaller pull line, hairline label rule, framed band and
+   the copy split by a thin divider
+   ========================================================================== */
+.phil2-label{display:flex;align-items:center;gap:14px;margin-bottom:clamp(14px,1.4vw,22px)}
+.phil2-label .sec-num{font-size:.9rem;font-weight:600}
+.phil2-label .sec-name{display:inline-flex;align-items:center;gap:14px;padding-left:0;font-size:.72rem;letter-spacing:.06em;color:rgba(255,255,255,.62)}
+.phil2-label .sec-name::before{content:"";display:block;position:static;transform:none;width:44px;height:1px;background:rgba(255,255,255,.28)}
+.phil2-title{
+  font-family:var(--font-body);font-weight:700;letter-spacing:-.035em;line-height:1.02;
+  font-size:clamp(2.1rem,4.2vw,5rem);padding-left:clamp(0px,1.4vw,28px);
+}
+.phil2-band{border:1px solid rgba(255,255,255,.1);aspect-ratio:1568/355;margin-top:clamp(16px,1.6vw,28px)}
+.phil2-band::after{background:linear-gradient(90deg,rgba(4,4,4,.9) 0%,rgba(4,4,4,.6) 24%,rgba(4,4,4,0) 46%)}
+.phil2-quote{
+  left:clamp(28px,3.4vw,64px);padding-left:clamp(18px,2.2vw,42px);border-left-width:5px;
+  font-family:var(--font-body);font-weight:600;letter-spacing:-.02em;line-height:1.18;
+  font-size:clamp(1.3rem,2.25vw,2.5rem);
+}
+.phil2-copy{
+  position:relative;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,140px);
+  margin-top:clamp(24px,2.4vw,40px);
+}
+.phil2-copy::before{content:"";position:absolute;left:50%;top:-6px;bottom:-24px;width:1px;background:rgba(255,255,255,.1)}
+.phil2-lead{font-size:clamp(.95rem,1.08vw,1.2rem);line-height:1.7;color:rgba(255,255,255,.9);max-width:46ch}
+.phil2-sub{padding-top:0;font-size:clamp(.9rem,1vw,1.1rem);line-height:1.75;color:rgba(255,255,255,.6);max-width:44ch;margin-left:auto;margin-right:auto}
+@media (max-width:1024px){.phil2-band{aspect-ratio:2.9/1}}
+@media (max-width:760px){
+  .phil2-title{font-size:2.1rem;padding-left:0}
+  .phil2-band{aspect-ratio:4/3}
+  .phil2-band::after{background:linear-gradient(0deg,rgba(4,4,4,.85) 0%,rgba(4,4,4,.25) 45%,rgba(4,4,4,0) 62%)}
+  .phil2-quote{font-size:1.3rem;border-left-width:3px;padding-left:14px;left:18px;bottom:18px}
+  .phil2-copy{grid-template-columns:1fr;gap:14px}
+  .phil2-copy::before{left:0;right:auto;top:auto;bottom:auto;display:none}
+  .phil2-lead{font-size:.9rem;line-height:1.65}
+  .phil2-sub{font-size:.85rem;line-height:1.65;margin-left:0;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
+}
+.phil2-band img{object-position:60% 30%}
+.phil2-lead{max-width:58ch;text-wrap:pretty}
+.phil2-sub{max-width:42ch;text-wrap:pretty}
+@media (max-width:760px){.phil2-band img{object-position:56% 30%}}

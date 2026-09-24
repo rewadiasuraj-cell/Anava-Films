@@ -472,14 +472,14 @@ def page_home():
   </div>
 </section>
 
-<section class="section-sm">
+<section class="section-sm reel-band">
   <div class="container reel-wide">
     <div class="reel reveal" data-lightbox="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-caption="Anava Films &middot; Showreel">
       <video data-src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" poster="assets/images/thumbnails/sunil-shetty-film.jpg" muted loop playsinline preload="none"></video>
       <div class="reel-overlay">
-        <div class="reel-left">
+        <div class="reel-cta">
           <span class="play-btn">{PLAY}</span>
-          <span class="reel-meta">Showreel &middot; 01:45</span>
+          <span class="reel-meta">Watch Showreel <em>01:45</em></span>
         </div>
       </div>
       <div class="reel-credit">Sunil Shetty &mdash; Brand Film</div>

@@ -2164,3 +2164,57 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .phil2-sub{padding-top:0}
 }
 @media (min-width:1025px){.phil2-label .sec-name{font-size:.82rem}}
+
+/* ==========================================================================
+   HOME — trusted strip on white + full-bleed showreel (owner's reference)
+   ========================================================================== */
+/* White lane, black marks: the strip now reads as a clean break between the
+   dark hero and the film, and every logo gets maximum contrast. */
+.trusted{background:#fff;border-top:0;border-bottom:1px solid rgba(0,0,0,.08)}
+.trusted-label{color:#1a1a1a;border-bottom:0;padding:14px 24px 4px;font-weight:600}
+.trusted-logos li{border-left:1px solid rgba(0,0,0,.12);padding:16px 14px 18px}
+/* Every mark flattened to a pure black silhouette */
+.trusted-logos img{filter:brightness(0);opacity:.88}
+/* The knockout marks ship as white-on-transparent files: inverting turns
+   them into black shapes with the white lane showing through the holes */
+.trusted-logos img.logo-asis{filter:invert(1)}
+.trusted-logos li:hover img{opacity:1}
+
+/* Showreel: one centred call to action instead of the corner control */
+.reel-overlay{align-items:center;justify-content:center}
+.reel-cta{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+.reel .reel-cta .play-btn{
+  width:clamp(62px,5vw,88px);height:clamp(62px,5vw,88px);
+  background:rgba(255,255,255,.08);color:#fff;border:2px solid rgba(255,255,255,.92);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);
+  transition:transform .35s var(--ease),background .35s var(--ease),color .35s var(--ease);
+}
+.reel .reel-cta .play-btn svg{width:32%;height:32%;margin-left:6%}
+.reel:hover .reel-cta .play-btn{background:#fff;color:#0a0a0a;transform:scale(1.07)}
+.reel-cta .reel-meta{
+  display:flex;align-items:baseline;gap:10px;
+  font-size:clamp(.9rem,1vw,1.05rem);font-weight:600;letter-spacing:.02em;text-transform:none;
+  color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.6);
+}
+.reel-cta .reel-meta em{font-style:normal;font-weight:500;font-size:.8em;letter-spacing:.08em;color:rgba(255,255,255,.7)}
+
+/* Desktop and iPad: the film runs edge to edge, flush under the logo lane */
+@media (min-width:761px){
+  .reel-band{padding-top:0}
+  .reel-band .reel-wide{max-width:none;width:100%;padding:0}
+  .reel-band .reel{border-radius:0;border:0;aspect-ratio:21/8}
+  /* Wider than the key art: bias the crop upward so the client mark in the
+     poster's top-right corner is not cut */
+  .reel-band .reel video,.reel-band .reel img{object-position:50% 30%}
+  .reel-credit{left:clamp(24px,4vw,64px);bottom:22px}
+  .reel-mark{right:clamp(24px,4vw,64px);bottom:22px}
+}
+@media (max-width:760px){
+  .trusted-label{padding:12px 20px 2px}
+  .reel .reel-cta .play-btn{width:56px;height:56px}
+  /* The key art's title block fills the left half on a phone crop, so the
+     call to action moves right, over the film rather than the type */
+  .reel-overlay{justify-content:flex-end;padding-right:22px}
+  .reel-cta{gap:10px}
+  .reel-cta .reel-meta{font-size:.85rem}
+}

@@ -2014,10 +2014,23 @@ html.intro-on,html.intro-on body{overflow:hidden}
 .stays-arc{
   --al:calc(-38vw - 14px);--at:-30%;--aw:80vw;--ah:160%;
   position:absolute;inset:0;pointer-events:none;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%);
-  mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%);
+  /* Two masks, intersected: the fixed edge fade, and a top-to-bottom wipe
+     driven by --draw. The arc visible on screen is the right half of the
+     ellipse, so the wipe traces it from its start to its end point. */
+  -webkit-mask-image:
+    linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%),
+    linear-gradient(180deg,#000 calc(var(--draw) - 14%),transparent var(--draw));
+  mask-image:
+    linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%),
+    linear-gradient(180deg,#000 calc(var(--draw) - 14%),transparent var(--draw));
+  -webkit-mask-composite:source-in;mask-composite:intersect;
   animation:staysGlow 6s ease-in-out infinite;
 }
+/* Scroll-in draw: anava.js arms the ring (hidden) and adds .is-drawn once the
+   section is on screen. Without JS, or with reduced motion, it just shows. */
+@property --draw{syntax:'<percentage>';inherits:false;initial-value:114%}
+.stays-arc.arc-armed{--draw:12%}
+.stays-arc.arc-armed.is-drawn{--draw:114%;transition:--draw 3.2s cubic-bezier(.3,.1,.3,1)}
 .stays-arc::before,.stays-arc::after{content:"";position:absolute;border-radius:50%}
 .stays-arc::before{
   left:var(--al);top:var(--at);width:var(--aw);height:var(--ah);

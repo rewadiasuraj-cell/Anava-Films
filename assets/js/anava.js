@@ -581,8 +581,32 @@
       return true;
     }
 
+    // Some sub-filters keep their own running order (set in build_anava.py):
+    // the listed films are moved to their positions, the rest keep page order
+    var subOrders = {};
+    try { subOrders = JSON.parse(grid.getAttribute('data-orders') || '{}'); } catch (e) { subOrders = {}; }
+    var baseOrder = cards.slice();
+    function arrange() {
+      var rules = subOrders[state.filter + '|' + state.sub] || [];
+      var list = baseOrder.filter(matches);
+      if (rules.length) {
+        var pinned = [];
+        rules.forEach(function (r) {
+          var c = list.filter(function (x) { return x.getAttribute('data-lightbox') === r[0]; })[0];
+          if (c) { list.splice(list.indexOf(c), 1); pinned.push([c, r[1]]); }
+        });
+        pinned.sort(function (a, b) { return a[1] - b[1]; }).forEach(function (p) {
+          list.splice(Math.min(p[1] - 1, list.length), 0, p[0]);
+        });
+      }
+      var rest = baseOrder.filter(function (c) { return list.indexOf(c) === -1; });
+      cards = list.concat(rest);
+      cards.forEach(function (c) { grid.appendChild(c); });
+    }
+
     function render() {
       var count = 0;
+      arrange();
       grid.dataset.view = state.filter;
       var cols = columns();
       state.shown = Math.ceil(pageSize(state.filter) * state.pages / cols) * cols;

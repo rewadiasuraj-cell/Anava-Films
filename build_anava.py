@@ -219,9 +219,18 @@ def build_work_cards():
                      "assets/media/vertical-films/lenskart-performance-50.mp4",
                      "assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4"]
 
+    # Photoshoots open on the green-top Aquacolor set (front-facing first)
+    PHOTO_LEAD = ["shoot-08", "shoot-09", "shoot-10", "shoot-11"]
+
     def lead(c):
         v = c.get("video", "").split("#")[0]
-        return VERTICAL_LEAD.index(v) if c["category"] == "vertical" and v in VERTICAL_LEAD else len(VERTICAL_LEAD)
+        if c["category"] == "vertical" and v in VERTICAL_LEAD:
+            return VERTICAL_LEAD.index(v)
+        if c["category"] == "photoshoots":
+            n = c.get("img", "").rsplit("/", 1)[-1].replace("-560.webp", "")
+            if n in PHOTO_LEAD:
+                return PHOTO_LEAD.index(n)
+        return 99
     ordered = sorted(cards, key=lambda c: (c["category"] == "bts"
                      and "thumbnails/" not in c.get("poster", ""), lead(c)))
     for c in ordered:
@@ -287,6 +296,14 @@ def build_work_cards():
 
 # ---------------------------------------------------------------- pages
 def page_work():
+    # Sub-filters that need their own running order: [lightbox path, position].
+    # The page's JS moves these cards into place when that filter is chosen.
+    SUB_ORDERS = esc(json.dumps({
+        "vertical|performance": [["assets/media/vertical-films/lenskart-performance-50.mp4", 6]],
+        "vertical|social|product": [["assets/media/tvc/FIKN ELIXIR FILM 04.mp4", 1],
+                                    ["assets/media/vertical-films/THUMBS UP X ZAID DARBAR FILM.mp4", 2],
+                                    ["assets/media/tvc/FILN PERFUME FILM.mp4", 3]],
+    }))
     # One stage under the title that plays the horizontal TVCs in turn: each
     # film's thumbnail holds for 5s, then it plays muted, then the next one.
     # anava.js drives it from this list; the markup starts on the first film.
@@ -374,7 +391,7 @@ def page_work():
     </div>
   </div>
   <div class="container">
-    <div class="work-grid" id="work-grid" data-view="tvc">
+    <div class="work-grid" id="work-grid" data-view="tvc" data-orders='{SUB_ORDERS}'>
 {build_work_cards()}
     </div>
     <p class="empty-state" id="work-empty" hidden>Nothing in this category yet.</p>

@@ -329,7 +329,7 @@ def page_work():
       <span class="wh-eyebrow">Our Work</span>
       <h1 class="wh-title">Ideas That Make An <span class="o">Impact.</span></h1>
       <p class="wh-lead">A selection of films, campaigns, content and collaborations we&rsquo;ve created with brands, artists and partners.</p>
-      <button class="btn btn-primary wh-cta" type="button" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Anava Films &middot; Showreel">{PLAY} Watch Showreel</button>
+      <button class="btn btn-primary wh-cta" type="button" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Lenskart &middot; Hustlr">{PLAY} Watch Featured Film</button>
     </div>
   </div>
   <div class="wh-films reveal">{features}
@@ -397,8 +397,13 @@ INTRO = """
 
 
 def page_home():
+    # The wide film under the logo lane: the Sunil Shetty x Green Lotus brand
+    # film (not a showreel; there is no showreel cut yet). It opens with its
+    # case study like any other card.
+    REEL_V = "assets/media/tvc/Sunil Shetty AD Landscape.mp4"
+    REEL_CASE = case_attr(card_for(REEL_V))
     # Two landscape films with designed key art, one row side by side; the rest
-    # live on the Work page. (Sunil Shetty already fronts the showreel above.)
+    # live on the Work page. (Sunil Shetty already fronts the featured film above.)
     # Two films, staggered: the lead film large, the second smaller and set
     # in from the left. Each opens its case study.
     sel = [
@@ -489,17 +494,17 @@ def page_home():
 
 <section class="section-sm reel-band">
   <div class="container reel-wide">
-    <div class="reel reveal" data-lightbox="assets/media/tvc/Sunil Shetty AD Landscape.mp4" data-caption="Anava Films &middot; Showreel">
-      <video data-src="assets/media/tvc/Sunil Shetty AD Landscape.mp4" poster="assets/images/thumbnails/sunil-shetty-film.jpg" muted loop playsinline preload="none"></video>
-      <div class="reel-overlay">
-        <div class="reel-cta">
+    <button class="reel" type="button" data-lightbox="{REEL_V}" data-caption="Sunil Shetty &middot; Green Lotus Brand Film" {REEL_CASE}>
+      <img class="reel-poster" src="assets/images/thumbnails/sunil-shetty-film.jpg" alt="Sunil Shetty in the Green Lotus brand film" decoding="async">
+      <span class="reel-overlay">
+        <span class="reel-cta">
           <span class="play-btn">{PLAY}</span>
-          <span class="reel-meta">Watch Showreel <em>01:45</em></span>
-        </div>
-      </div>
-      <div class="reel-credit">Sunil Shetty &middot; Brand Film</div>
-      <div class="reel-mark">Anava Films</div>
-    </div>
+          <span class="reel-meta">Watch the Film <em>01:03</em></span>
+        </span>
+      </span>
+      <span class="reel-credit">Sunil Shetty &middot; Green Lotus Brand Film</span>
+      <span class="reel-mark">Anava Films</span>
+    </button>
   </div>
 </section>
 

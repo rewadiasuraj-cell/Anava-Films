@@ -2393,3 +2393,10 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .hero-cine-lead{max-width:78ch}
 }
 @media (min-width:1600px){.hero-cine-lead{max-width:76ch}}
+
+/* Home featured film: a real <button> now (keyboard reachable), with the
+   still as a plain <img> so a frame always shows. It no longer depends on a
+   <video> poster attribute or the scroll-reveal class to become visible. */
+button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-align:left;-webkit-appearance:none;appearance:none}
+.reel .reel-poster{display:block}
+.reel:focus-visible{outline:2px solid var(--accent);outline-offset:3px}

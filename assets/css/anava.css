@@ -90,7 +90,7 @@ p{margin:0}
 /* One step between the headline and the body copy: larger and brighter than
    the lead, lighter and quieter than the display type. */
 .standfirst{
-  font-family:'Playfair Display',Georgia,serif;font-weight:400;
+  font-family:var(--font-body);font-weight:500;letter-spacing:-.01em;
   font-size:clamp(1.05rem,1.9vw,1.55rem);line-height:1.45;
   color:rgba(255,255,255,.9);max-width:44ch;
 }
@@ -520,7 +520,7 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
   font-size:clamp(2.7rem,6.1vw,5.5rem);letter-spacing:-.032em;line-height:1.02;color:#fff;
 }
 .hero-cine-title .hl-2{
-  font-family:'Playfair Display',Georgia,serif;font-weight:400;font-style:italic;
+  font-family:var(--font-body);font-weight:500;font-style:normal;
   font-size:clamp(2.5rem,5.9vw,5.2rem);letter-spacing:-.016em;line-height:1.1;
   color:#fff;
 }

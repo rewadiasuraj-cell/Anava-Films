@@ -2000,3 +2000,70 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .approach-steps h3{margin-top:10px}
   .approach-steps li > p:last-child{margin-top:12px;max-width:none}
 }
+
+/* ==========================================================================
+   HOME — Selected Work: "Work That Stays With You." + two staggered films
+   ========================================================================== */
+.stays{position:relative;overflow:hidden;padding:clamp(60px,7vw,120px) 0 clamp(70px,7vw,120px)}
+/* A thin glowing arc sweeping behind the headline */
+.stays-arc{
+  position:absolute;left:-38vw;top:-30%;width:80vw;height:160%;border-radius:50%;pointer-events:none;
+  border:1px solid rgba(240,82,35,.38);
+  box-shadow:0 0 60px rgba(240,82,35,.16),inset 0 0 90px rgba(240,82,35,.08);
+  -webkit-mask-image:linear-gradient(90deg,transparent 40%,#000 75%);mask-image:linear-gradient(90deg,transparent 40%,#000 75%);
+}
+.stays-grid{position:relative;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,90px);align-items:stretch}
+.stays-copy{display:flex;flex-direction:column;justify-content:center;position:relative}
+.stays-label{display:flex;align-items:center;gap:18px;margin:0;font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.stays-label::before{content:"";width:48px;height:3px;border-radius:2px;background:var(--accent)}
+.stays-label b{font-weight:600;color:rgba(255,255,255,.8)}
+.stays-title{
+  margin:40px 0 0;font-family:var(--font-display);font-weight:800;
+  font-size:clamp(2.6rem,5.4vw,6.2rem);line-height:.98;letter-spacing:-.04em;
+}
+.stays-link{
+  position:relative;align-self:flex-start;margin-top:clamp(50px,8vw,150px);padding:0 0 12px;
+  display:inline-flex;align-items:center;gap:14px;font-size:clamp(1.05rem,1.4vw,1.4rem);color:#fff;
+}
+.stays-link svg{width:.9em;height:.9em;transition:transform .3s var(--ease)}
+.stays-link::before,.stays-link::after{content:"";position:absolute;left:0;bottom:0;height:2px}
+.stays-link::before{right:0;background:rgba(255,255,255,.25)}
+.stays-link::after{width:40%;background:var(--accent);transition:width .45s var(--ease)}
+.stays-link:hover::after{width:100%}
+.stays-link:hover svg{transform:translate(3px,-3px)}
+
+.stays-films{display:flex;flex-direction:column;gap:clamp(18px,2vw,28px)}
+.sw-card{margin:0}
+.sw-card-2{width:72%;align-self:flex-end;margin-right:5%}
+.sw-media{
+  display:block;width:100%;padding:0;border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;
+  aspect-ratio:2/1;cursor:pointer;background:#0d0d0d;box-shadow:0 24px 60px rgba(0,0,0,.45);
+}
+.sw-media img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.sw-card:hover .sw-media img{transform:scale(1.04)}
+.sw-card figcaption{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:14px;padding:0 4px 0 10px}
+.sw-card figcaption span{font-size:clamp(1rem,1.3vw,1.3rem);font-weight:600;color:#fff}
+.sw-card figcaption i{font-style:normal;color:rgba(255,255,255,.6);margin:0 4px}
+.sw-play{
+  flex:none;width:clamp(44px,3.4vw,58px);height:clamp(44px,3.4vw,58px);border-radius:50%;cursor:pointer;
+  display:grid;place-items:center;color:#fff;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.04);
+  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
+}
+.sw-play svg{width:38%;height:38%;margin-left:3px}
+.sw-card-1 .sw-play,.sw-play:hover{background:var(--accent);border-color:var(--accent)}
+.sw-play:hover{transform:scale(1.06)}
+
+/* iPad portrait and phones: headline first, then the films, then the link */
+@media (max-width:900px){
+  .stays-grid{grid-template-columns:1fr;gap:34px}
+  .stays-copy{display:contents}
+  .stays-label{order:1}
+  .stays-title{order:2;margin-top:18px;font-size:clamp(2.6rem,9vw,4.6rem)}
+  .stays-films{order:3}
+  .stays-link{order:4;margin-top:6px;justify-self:start}
+  .stays-arc{left:-60vw;width:130vw;height:70%;top:-10%}
+}
+@media (max-width:760px){
+  .sw-card-2{width:88%;margin-right:0}
+  .sw-media{border-radius:12px}
+}

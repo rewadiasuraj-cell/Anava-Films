@@ -384,16 +384,22 @@ INTRO = """
 def page_home():
     # Two landscape films with designed key art, one row side by side; the rest
     # live on the Work page. (Sunil Shetty already fronts the showreel above.)
+    # Two films, staggered: the lead film large, the second smaller and set
+    # in from the left. Each opens its case study.
     sel = [
-        ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/thumbnails/lenskart-hustler.jpg", "Lenskart", "Hustler — Keep Hustling"),
+        ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/thumbnails/lenskart-hustler.jpg", "Lenskart", "Hustlr"),
         ("assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4", "assets/images/thumbnails/tira-beauty-kareena.jpg", "Tira Beauty", "Kareena Kapoor"),
     ]
     sel_html = "".join(f"""
-      <article class="sel" data-lightbox="{esc(v)}" data-caption="{esc(b)} &middot; {esc(t)}">
-        <video data-src="{esc(v)}" poster="{esc(p)}" muted loop playsinline preload="none"
-               class="hover-play dwell-play"></video>
-        <span class="sel-play">{PLAY}</span>
-      </article>""" for v, p, b, t in sel)
+      <figure class="sw-card sw-card-{i + 1}">
+        <button class="sw-media" type="button" data-lightbox="{esc(v)}" data-caption="{esc(card_for(v)['title'])}" {case_attr(card_for(v))}>
+          <img src="{esc(p)}" alt="{esc(b)} &middot; {esc(t)}" loading="lazy">
+        </button>
+        <figcaption>
+          <span>{esc(b)} <i>&middot;</i> {esc(t)}</span>
+          <button class="sw-play" type="button" aria-label="Play {esc(b)} {esc(t)}" data-lightbox="{esc(v)}" data-caption="{esc(card_for(v)['title'])}" {case_attr(card_for(v))}>{PLAY}</button>
+        </figcaption>
+      </figure>""" for i, (v, p, b, t) in enumerate(sel))
 
     steps = [
         ("Thought", "A brief, a product, or a problem."),
@@ -500,14 +506,16 @@ def page_home():
   </div>
 </section>
 
-<section class="section" style="padding-top:0">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-label"><span class="sec-num">02</span><span class="sec-name">Selected Work</span></div>
-      <a href="work.html" class="sec-more">View All Work <span class="circ-arrow" style="width:40px;height:40px">{ARROW}</span></a>
+<section class="stays">
+  <div class="stays-arc" aria-hidden="true"></div>
+  <div class="container stays-grid">
+    <div class="stays-copy reveal">
+      <p class="stays-label"><b>02</b> Selected Work</p>
+      <h2 class="stays-title">Work<br>That Stays<br>With <span class="o">You.</span></h2>
+      <a href="work.html" class="stays-link">View All Work {DIAG}</a>
     </div>
-    <h2 class="display-sm oneline oneline-long" style="margin:-10px 0 34px">Work that stays with <span class="o">you.</span></h2>
-    <div class="sel-grid reveal">{sel_html}</div>
+    <div class="stays-films reveal">{sel_html}
+    </div>
   </div>
 </section>
 

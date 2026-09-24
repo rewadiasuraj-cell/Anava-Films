@@ -2439,3 +2439,14 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
 .home-cta .display-sm{max-width:18ch}
 .hero-cine-actions .btn,.hero-watch{white-space:nowrap}
 @media (max-width:760px){.hero-cine-actions{flex-direction:column;gap:6px}}
+
+/* ---- Header: one contact action ----
+   Where the Let's Talk button shows, the Contact link is dropped from the
+   nav and the four remaining links get more room. Phones keep Contact in
+   the burger menu (Let's Talk is hidden there). */
+@media (min-width:761px){
+  .nav .nav-contact{display:none}
+  .header-inner .nav{gap:28px}
+}
+@media (min-width:1025px){.header-inner .nav{gap:52px}}
+@media (min-width:1600px){.header-inner .nav{gap:60px}}

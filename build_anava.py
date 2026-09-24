@@ -43,9 +43,14 @@ NAV = [("index.html", "Home"), ("work.html", "Work"),
 
 
 def header(active):
-    links = "".join(
-        f'<li><a href="{"/" if h == "index.html" else h}" '
-        f'class="{"active" if h == active else ""}">{n}</a></li>' for h, n in NAV)
+    # Contact is reached through Let's Talk wherever that button shows;
+    # it stays in the burger menu on phones, where the button is hidden.
+    def nav_li(h, n):
+        li = ' class="nav-contact"' if h == "contact.html" else ""
+        href = "/" if h == "index.html" else h
+        cls = "active" if h == active else ""
+        return f'<li{li}><a href="{href}" class="{cls}">{n}</a></li>'
+    links = "".join(nav_li(h, n) for h, n in NAV)
     return f"""
 <header class="site-header">
   <div class="header-inner">

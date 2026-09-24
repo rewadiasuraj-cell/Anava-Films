@@ -924,6 +924,7 @@
   var pin = root.querySelector('.ww-pin');
   var stage = root.querySelector('.ww-stage');
   var head = root.querySelector('.ww-head');
+  var intro = root.querySelector('.ww-intro');
   var info = root.querySelector('.ww-info');
   var anchor = root.querySelector('.ww-anchor');
   var numEl = root.querySelector('.ww-num');
@@ -944,7 +945,7 @@
 
   // Scroll budget, in viewport heights: opening the ring, one step per film,
   // then a short hold on the last film before the section lets go.
-  var OPEN = 70, STEP = 42, HOLD = 24;
+  var OPEN = 45, STEP = 28, HOLD = 16;
   var SPAN = OPEN + STEP * (N - 1) + HOLD;
   var ANG = 34;                       // degrees between films on the drum
 
@@ -981,18 +982,14 @@
     var vw = pr.width, vh = pr.height;
     var ar = anchor.getBoundingClientRect();
     var H = Math.min(vh * 0.5, ar.width * 0.84 / (16 / 9));
-    var hr = clamp(vh * 0.14, 64, 128);             // film height in the ring
+    var hr = clamp(Math.min(vh * 0.14, vw * 0.095), 60, 128); // film height in the ring
     var cx = vw / 2, cy = vh / 2 + 28;
-    head.style.transform = 'none';
-    var hb = head.getBoundingClientRect();
     geo = {
       vh: vh, H: H, R: H * 1.25, hr: hr, cx: cx, cy: cy,
       rx: Math.min(vw * 0.4, vw / 2 - hr * 1.05),
       ry: Math.min(vh * 0.36, vh / 2 - hr * 0.62 - 34),
       dx: ar.left - pr.left + ar.width / 2,
-      dy: ar.top - pr.top + ar.height / 2,
-      hx: cx - (hb.left - pr.left + hb.width / 2),
-      hy: cy - (hb.top - pr.top + hb.height / 2)
+      dy: ar.top - pr.top + ar.height / 2
     };
     items.forEach(function (el, i) {
       el.style.width = (H * ratios[i]).toFixed(1) + 'px';
@@ -1005,7 +1002,8 @@
     var spin = mm * 50;                              // the ring turns as it opens
     for (var i = 0; i < N; i++) {
       var el = items[i], w = g.H * ratios[i];
-      var phi = (i / N * 360 - 90 + spin) * Math.PI / 180;
+      // start a half-step off vertical so no film sits level with the title
+      var phi = (i / N * 360 - 90 + 180 / N + spin) * Math.PI / 180;
       var rx = g.cx + g.rx * Math.cos(phi), ry = g.cy + g.ry * Math.sin(phi);
       var d = i - p, th = d * ANG, t = th * Math.PI / 180, ad = Math.min(1, Math.abs(d));
       var dy = g.dy + g.R * Math.sin(t), dz = g.R * (Math.cos(t) - 1);
@@ -1020,7 +1018,13 @@
       el.style.zIndex = String(100 - Math.round(ad * 20 * m));
     }
     stage.style.perspectiveOrigin = lerp(g.cx, g.dx, m).toFixed(0) + 'px ' + lerp(g.cy, g.dy, m).toFixed(0) + 'px';
-    head.style.transform = 'translate3d(' + (g.hx * (1 - m)).toFixed(1) + 'px,' + (g.hy * (1 - m)).toFixed(1) + 'px,0)';
+    // One-line title in the middle of the ring; it hands over to the
+    // stacked title at the side as the drum forms
+    var ho = clamp(mm / 0.4, 0, 1);
+    intro.style.opacity = (1 - ho).toFixed(3);
+    intro.style.transform = 'translate(-50%,-50%) scale(' + (1 - 0.05 * ho).toFixed(4) + ')';
+    intro.style.visibility = ho > 0.98 ? 'hidden' : '';
+    head.style.opacity = clamp((mm - 0.3) / 0.4, 0, 1).toFixed(3);
     var io = clamp((mm - 0.55) / 0.45, 0, 1);
     info.style.opacity = io.toFixed(3);
     info.style.transform = 'translate3d(0,' + ((1 - io) * 16).toFixed(1) + 'px,0)';
@@ -1030,8 +1034,8 @@
 
   function frame() {
     raf = 0;
-    cur.m += (tgt.m - cur.m) * 0.12;
-    cur.p += (tgt.p - cur.p) * 0.1;
+    cur.m += (tgt.m - cur.m) * 0.16;
+    cur.p += (tgt.p - cur.p) * 0.15;
     if (Math.abs(tgt.m - cur.m) < 0.0005) cur.m = tgt.m;
     if (Math.abs(tgt.p - cur.p) < 0.0005) cur.p = tgt.p;
     render();
@@ -1063,7 +1067,7 @@
     readScroll();
     kick();
     clearTimeout(settleT);
-    settleT = setTimeout(settle, 260);
+    settleT = setTimeout(settle, 200);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -1155,12 +1159,16 @@
     });
   });
 
+  head.addEventListener('focusin', function () {
+    if (mode === 'wheel' && tgt.m < 1) goTo(0);
+  });
+
   /* ---- mode, sizing, visibility ---- */
   var WHEEL_PROPS = ['width', 'height', 'transform', 'opacity', 'visibility', 'z-index'];
   function clearInline() {
     items.forEach(function (el) { WHEEL_PROPS.forEach(function (p) { el.style.removeProperty(p); }); });
     ['transform', 'opacity', 'visibility'].forEach(function (p) {
-      head.style.removeProperty(p); info.style.removeProperty(p);
+      head.style.removeProperty(p); info.style.removeProperty(p); intro.style.removeProperty(p);
     });
     stage.style.removeProperty('perspective-origin');
     stage.style.removeProperty('padding-left');

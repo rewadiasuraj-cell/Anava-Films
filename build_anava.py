@@ -569,6 +569,11 @@ def page_home():
       </div>
       <div class="ww-anchor" aria-hidden="true"></div>
     </div>
+    <div class="ww-intro" aria-hidden="true">
+      <p class="stays-label ww-label"><b>02</b> Selected Work</p>
+      <p class="ww-intro-title">Work That Stays With <span class="o">You.</span></p>
+      <a href="work" class="stays-link ww-all" tabindex="-1">All Work {DIAG}</a>
+    </div>
     <div class="ww-stage">{wheel_html}
     </div>
     <div class="ww-nav" aria-hidden="true">

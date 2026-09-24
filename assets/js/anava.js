@@ -154,6 +154,38 @@
     paraMove();
   }
 
+  /* ---------- Home hero: load sequence + scroll drift ----------
+     html.hero-go starts the staged soft-blur reveal in CSS (nav, eyebrow,
+     headline by line, copy, action, logo strip). It waits for the
+     clapperboard ident when that is playing. On scroll the copy lifts a
+     little and eases to 0.85 opacity while the plate drifts slower. */
+  (function () {
+    var hero = document.querySelector('.hero-cine');
+    if (!hero) return;
+    var root = document.documentElement;
+    function go() { root.classList.add('hero-go'); }
+    if (root.classList.contains('intro-on')) {
+      var mo = new MutationObserver(function () {
+        if (!root.classList.contains('intro-on')) { mo.disconnect(); setTimeout(go, 120); }
+      });
+      mo.observe(root, { attributes: true, attributeFilter: ['class'] });
+    } else {
+      requestAnimationFrame(go);
+    }
+    if (calm) return;
+    var tick = false;
+    function drift() {
+      tick = false;
+      var h = hero.offsetHeight || 1;
+      var p = Math.max(0, Math.min(1, window.scrollY / (h * 0.7)));
+      hero.style.setProperty('--hp', p.toFixed(3));
+    }
+    window.addEventListener('scroll', function () {
+      if (!tick) { tick = true; requestAnimationFrame(drift); }
+    }, { passive: true });
+    drift();
+  })();
+
   /* ---------- Work cards: colour reveal on touch ----------
      The grade only ever comes in at the reader's hand — hover with a mouse,
      a touch on a phone or tablet, never on its own while scrolling. The
@@ -689,7 +721,7 @@
   }
 
   /* ---------- 2. collect reveal items and give each section a sequence ---------- */
-  var SKIP = '.work-hero, .step, .intro, .site-header, .main-footer, .lightbox, .case';
+  var SKIP = '.work-hero, .hero-cine, .step, .intro, .site-header, .main-footer, .lightbox, .case';
   var ROLES = [
     ['label', '.eyebrow, .sec-name, .stays-label, .approach-eyebrow, .pb-eyebrow'],
     ['heading', HEADINGS],
@@ -790,7 +822,7 @@
 
   /* ---------- 5. quiet background graphics in selected sections ---------- */
   var DECO = [
-    ['.hero-cine', 'hero'], ['.phil2', 'grid'], ['.people-bridge', 'arc-r'],
+    ['.phil2', 'grid'], ['.people-bridge', 'arc-r'],
     ['.home-cta', null], ['.hero-split.centered', 'arc-l'], ['.steps', 'grid'],
     ['.wwd-intro', 'arc-r'], ['#people', 'grid']
   ];

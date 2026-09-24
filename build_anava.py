@@ -96,10 +96,9 @@ def footer(active):
           <ul class="footer-links">
             <li><a href="/" class="footer-link">Home</a></li>
             <li><a href="work.html" class="footer-link">Work</a></li>
-            <li><a href="about.html#what-we-do" class="footer-link">What We Do</a></li>
             <li><a href="process.html" class="footer-link">Process</a></li>
-            <li><a href="about.html" class="footer-link">About Us</a></li>
-            <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
           </ul>
         </div>
 
@@ -308,7 +307,7 @@ def page_work():
       <script type="application/json" id="wh-playlist">{playlist_json}</script>"""
     filters = f"""
   <div class="filter-bar">
-    <div class="pills">
+    <div class="pills" role="group" aria-label="Filter work by category">
       <button class="pill active" data-filter="tvc">TVCs / Digital</button>
       <div class="pill-drop">
         <button class="pill" type="button">Vertical {CHEV}</button>
@@ -352,12 +351,14 @@ def page_work():
   </div>
   <div class="wh-films">{features}
   </div>
-  <div class="container">
-    {filters}
-  </div>
 </section>
 
-<section style="padding-bottom:90px">
+<section class="work-list" style="padding-bottom:90px">
+  <div class="work-filters">
+    <div class="container">
+      {filters}
+    </div>
+  </div>
   <div class="container">
     <div class="work-grid" id="work-grid" data-view="tvc">
 {build_work_cards()}
@@ -492,8 +493,8 @@ def page_home():
   <div class="hero-cine-bg">
     <img src="assets/images/home-hero-stage.jpg" alt="" fetchpriority="high" data-parallax>
     <canvas class="velaris" aria-hidden="true" tabindex="-1" data-velaris
-      data-bg="#020202" data-colors="#F05223,#D94116,#8F260C,#120604"
-      data-speed="0.55" data-grain="0.14"></canvas>
+      data-bg="#000000" data-colors="#F05223,#D94318,#7A210E,#090301"
+      data-speed="0.5" data-grain="0.12"></canvas>
     <i class="hero-haze" aria-hidden="true"></i>
   </div>
 
@@ -549,6 +550,7 @@ def page_home():
     </figure>
     <div class="phil2-copy reveal">
       <p class="phil2-lead">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn&rsquo;t get lost between the people who think them and the people who make them.</p>
+      <a href="about.html" class="stays-link phil2-more">About Anava {DIAG}</a>
     </div>
   </div>
 </section>
@@ -594,7 +596,7 @@ def page_home():
         <p class="pb-eyebrow">The People Behind the Work</p>
         <h2 class="pb-title">Thinkers and Makers.<br><span class="o">One Crew.</span></h2>
         <p class="pb-text">The same team that shapes the idea is on set to shoot it.</p>
-        <span class="pb-link">Meet the team {DIAG}</span>
+        <span class="pb-link">Meet the Team {DIAG}</span>
       </div>
     </a>
   </div>
@@ -611,35 +613,37 @@ def page_home():
     </div>
   </div>
   <div class="container">
-    <ol class="approach-steps reveal" data-reveal-steps>
-      <li>
-        <span class="approach-dot" aria-hidden="true"></span>
-        <p class="approach-num"><b>01</b> <span>Concept</span></p>
-        <h3>Think</h3>
-        <p class="approach-desc">Creative Direction, Ideation &amp; Concept Development, Scripting, Creative Consulting.</p>
-        <figure class="approach-media" aria-hidden="true">
-          <img src="assets/images/approach-think.jpg" alt="Writer sketching storyboards and a script at a desk" loading="lazy">
-        </figure>
+    <div class="acts" data-acts>
+      <div class="acts-stage" aria-hidden="true">
+        <div class="acts-frame">
+          <img class="act-img is-on" src="assets/images/approach-think.jpg" alt="" loading="lazy" decoding="async">
+          <img class="act-img" src="assets/images/approach-make.jpg" alt="" loading="lazy" decoding="async">
+          <img class="act-img" src="assets/images/approach-finish.jpg" alt="" loading="lazy" decoding="async">
+          <span class="acts-words"><span class="act-word is-on">Think</span><span class="act-word">Make</span><span class="act-word">Finish</span></span>
+        </div>
+        <span class="acts-rail"><i></i></span>
+      </div>
+      <ol class="acts-list">
+      <li class="act is-on" data-act="0">
+        <p class="act-num"><b>01</b> <span>Concept</span></p>
+        <h3 class="act-title">Think</h3>
+        <p class="act-desc">Creative Direction, Ideation &amp; Concept Development, Scripting, Creative Consulting.</p>
+        <figure class="act-media"><img src="assets/images/approach-think.jpg" alt="Writer sketching storyboards and a script at a desk" loading="lazy" decoding="async"></figure>
       </li>
-      <li>
-        <span class="approach-dot" aria-hidden="true"></span>
-        <p class="approach-num"><b>02</b> <span>Shoot</span></p>
-        <h3>Make</h3>
-        <p class="approach-desc">Production, Direction, Casting (Domestic &amp; International), Art Direction &amp; Production Design.</p>
-        <figure class="approach-media" aria-hidden="true">
-          <img src="assets/images/approach-make.jpg" alt="Film crew and cameras on a lit set" loading="lazy">
-        </figure>
+      <li class="act" data-act="1">
+        <p class="act-num"><b>02</b> <span>Shoot</span></p>
+        <h3 class="act-title">Make</h3>
+        <p class="act-desc">Production, Direction, Casting (Domestic &amp; International), Art Direction &amp; Production Design.</p>
+        <figure class="act-media"><img src="assets/images/approach-make.jpg" alt="Film crew and cameras on a lit set" loading="lazy" decoding="async"></figure>
       </li>
-      <li>
-        <span class="approach-dot" aria-hidden="true"></span>
-        <p class="approach-num"><b>03</b> <span>Post</span></p>
-        <h3>Finish</h3>
-        <p class="approach-desc">Editing, VFX, Sound Design, Color Grading, Motion Graphics &amp; Final Delivery.</p>
-        <figure class="approach-media" aria-hidden="true">
-          <img src="assets/images/approach-finish.jpg" alt="Editor grading a film across three monitors" loading="lazy">
-        </figure>
+      <li class="act" data-act="2">
+        <p class="act-num"><b>03</b> <span>Post</span></p>
+        <h3 class="act-title">Finish</h3>
+        <p class="act-desc">Editing, VFX, Sound Design, Color Grading, Motion Graphics &amp; Final Delivery.</p>
+        <figure class="act-media"><img src="assets/images/approach-finish.jpg" alt="Editor grading a film across three monitors" loading="lazy" decoding="async"></figure>
       </li>
-    </ol>
+      </ol>
+    </div>
   </div>
 </section>
 
@@ -659,31 +663,31 @@ def page_home():
 
 def page_process():
     steps = [
-        ("01", "Thought", "Start with a thought.",
+        ("01", "Thought", "Start With a Thought.",
          "You bring a thought, brief, product or problem. It could be a single line or a fully detailed idea. We listen, understand and ask the right questions.",
          ["Brief", "Product", "Problem", "Listening", "The right questions"],
          "assets/images/process/process_step_1.jpg", "Your thought.<br>Our starting point."),
-        ("02", "Idea", "Turn it into an idea.",
+        ("02", "Idea", "Turn It Into an Idea.",
          "We explore creative territories, find the right angle and develop a strong, relevant and exciting idea.",
          ["Creative territories", "The right angle", "Idea development", "Relevance"],
          "assets/images/process/process_step_2.jpg", "Ideas<br>that make<br>sense."),
-        ("03", "Deck", "Shape the story.",
+        ("03", "Deck", "Shape the Story.",
          "The idea becomes a visual world — a clear creative deck with mood, references, tone, treatment and execution plan.",
          ["Concept", "Treatment", "Script", "Mood", "Visual references", "Casting", "Locations", "Execution approach"],
          "assets/images/process/process_step_3.jpg", "A clear vision<br>before we roll."),
-        ("04", "Pre-production", "Plan every detail.",
+        ("04", "Pre-production", "Plan Every Detail.",
          "We plan everything required to execute the idea, so shoot day runs smoothly.",
          ["Crew", "Casting", "Locations", "Art direction", "Styling", "Production design", "Schedule", "Equipment", "Logistics"],
          "assets/images/process/process_step_4.jpg", "Prepared<br>for a stronger<br>tomorrow."),
-        ("05", "Shoot", "Bring it to life.",
+        ("05", "Shoot", "Bring It to Life.",
          "The deck becomes reality. We direct, collaborate with talent and capture the moments that make the story real.",
          ["Direction", "Talent", "Camera", "Lighting", "Sound", "On-set art", "The moments"],
          "assets/images/process/process_step_5.jpg", "Ideas<br>in action."),
-        ("06", "Post-production", "Polish the story.",
+        ("06", "Post-production", "Polish the Story.",
          "Editing, sound design, music, colour grading, VFX and final finishing — where the film truly comes together.",
          ["Offline Edit", "Music", "Sound", "Colour", "Online", "VFX", "Mastering"],
          "assets/images/process/process_step_6.jpg", "Where<br>good gets<br>great."),
-        ("07", "Delivery", "A film that works.",
+        ("07", "Delivery", "A Film That Works.",
          "The final idea reaches the audience, ready to make an impact across screens, platforms and audiences.",
          ["The final film", "Formats", "Screens", "Platforms", "Audiences"],
          "assets/images/process/process_step_7.jpg", "From our screen<br>to the world."),
@@ -720,7 +724,6 @@ def page_process():
         <p class="lead">A clear, collaborative and creative process that takes you from a simple thought to a powerful final film.</p>
         <div class="hero-actions">
           <button class="play-btn" data-lightbox="assets/media/behind-the-scenes/BTS Think.mp4" data-caption="Our Process &middot; Anava Films">{PLAY}<span class="pb-label">Watch Our Process</span></button>
-          <span class="link-row"><span class="label">Watch Our Process</span></span>
         </div>
       </div>
       <div class="hero-media reveal">
@@ -822,7 +825,7 @@ def wwd_sections():
 <section class="section wwd-intro" id="what-we-do">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-label"><span class="sec-name">What We Do</span></div>
+      <div class="sec-label"><span class="sec-name"><b class="ch-n">02</b> Capabilities</span></div>
     </div>
     <h2 class="display-sm oneline oneline-long">From Idea to <span class="o">Impact.</span></h2>
     <p class="lead" style="margin-top:14px">End-to-end creative solutions that turn ideas into powerful visual stories &mdash; think, make and finish, all under one roof.</p>
@@ -1021,7 +1024,7 @@ def page_about():
   <div class="container">
     <div class="hero-split-grid">
       <div class="hero-copy reveal">
-        <span class="eyebrow">About &middot; Identity &amp; Ethos</span>
+        <span class="eyebrow"><b class="ch-n">01</b> Identity</span>
         <h1 class="display display-2line"><span>We Are Not Just a</span><span class="o">Production House.</span></h1>
         <p class="standfirst">A production house gets an idea and figures out how to make it.</p>
         <p class="lead">We like to get involved earlier &mdash; sometimes it's a complete brief, sometimes a problem, sometimes a product, and sometimes just a thought.</p>
@@ -1056,7 +1059,7 @@ def page_about():
 <section class="section" id="people" style="padding-top:20px">
   <div class="container">
     <div class="sec-head">
-      <div class="sec-label"><span class="sec-name">Leadership</span></div>
+      <div class="sec-label"><span class="sec-name"><b class="ch-n">03</b> People</span></div>
     </div>
     <h2 class="display-sm oneline oneline-long">The People Behind <span class="o">Anava.</span></h2>
     <p class="lead" style="margin-top:14px">Creative vision paired with structured production execution.</p>

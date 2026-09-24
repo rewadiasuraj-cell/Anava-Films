@@ -310,7 +310,7 @@ def page_work():
     <div class="pills" role="group" aria-label="Filter work by category">
       <button class="pill active" data-filter="tvc">TVCs / Digital</button>
       <div class="pill-drop">
-        <button class="pill" type="button">Vertical {CHEV}</button>
+        <button class="pill" type="button" aria-controls="vertical-types">Vertical</button>
         <div class="drop-menu">
           <button data-filter="vertical">All Vertical</button>
           <button data-filter="vertical" data-sub="performance">Performance Ads</button>
@@ -324,10 +324,10 @@ def page_work():
     </div>
     <span class="pill-ink" aria-hidden="true"></span>
   </div>
-  <div class="sub-pills" role="group" aria-label="Vertical: filter by type" hidden>
+  <div class="sub-pills" id="vertical-types" role="group" aria-label="Vertical: filter by type" hidden>
     <button type="button" class="sub-pill" data-filter="vertical">All Vertical</button>
     <button type="button" class="sub-pill" data-filter="vertical" data-sub="performance">Performance Ads</button>
-    <button type="button" class="sub-pill" data-filter="vertical" data-sub="social|product">Social &amp; Product</button>
+    <button type="button" class="sub-pill" data-filter="vertical" data-sub="social|product">Social &amp; Product Content</button>
   </div>"""
 
     return HEAD.format(**ASSET_V,
@@ -368,7 +368,7 @@ def page_work():
     <div class="work-grid" id="work-grid" data-view="tvc">
 {build_work_cards()}
     </div>
-    <p class="empty-state" id="work-empty" style="display:none">Nothing in this category yet.</p>
+    <p class="empty-state" id="work-empty" hidden>Nothing in this category yet.</p>
     <div class="load-more-wrap">
       <button class="btn btn-ghost" id="load-more">View more</button>
     </div>
@@ -743,7 +743,7 @@ def page_process():
                 for k, r in enumerate(REFS)) + "</div>"
         elif key == "pre":
             extra = '<ul class="pj-edge" aria-hidden="true">' + "".join(
-                f'<li style="--k:{k}">{c}</li>' for k, c in enumerate(chips)) + "</ul>"
+                f'<li style="--k:{k}" data-t="{c}"></li>' for k, c in enumerate(chips)) + "</ul>"
         elif key == "shoot":
             extra = '<span class="pj-rec" aria-hidden="true"><i></i>REC</span>'
         load = 'fetchpriority="high"' if i == 0 else 'loading="lazy"'
@@ -852,82 +852,70 @@ def wwd_sections():
          "assets/media/behind-the-scenes/BTS VFX Mastering.mp4", "assets/images/posters/bts-vfx-mastering.jpg"),
     ]
 
-    def svc_cards(items):
+    def cap_items(items):
         out = ""
         for t, d, v, p in items:
             media = (f'<video data-src="{esc(v)}" poster="{esc(p)}" muted loop playsinline preload="none" class="hover-play"></video>'
                      if v else f'<img src="{esc(p)}" alt="{t}" loading="lazy">')
             attrs = f'data-lightbox="{esc(v)}" data-caption="{t}"' if v else ""
             out += f"""
-        <article class="svc" {attrs}>
-          <div class="svc-media">{media}</div>
-          <div class="svc-body"><h4>{t}</h4><p>{d}</p></div>
-        </article>"""
+          <article class="svc cap-item" {attrs}>
+            <div class="svc-media">{media}</div>
+            <div class="svc-body"><h4>{t}</h4><p>{d}</p></div>
+          </article>"""
         return out
 
-    def list_cards(items):
-        out = ""
-        for t, d, v, p in items:
-            media = (f'<video data-src="{esc(v)}" poster="{esc(p)}" muted loop playsinline preload="none" class="hover-play"></video>'
-                     if v else f'<img src="{esc(p)}" alt="{t}" loading="lazy">')
-            attrs = f'data-lightbox="{esc(v)}" data-caption="{t}"' if v else ""
-            out += f"""
-        <article class="lcard" {attrs}>
-          <div class="lcard-media">{media}</div>
-          <div><h4>{t}</h4><p>{d}</p></div>
-        </article>"""
-        return out
-
+    # Capabilities: the stage word holds on the left while the three
+    # chapters scroll past on the right (anava.js, "About capabilities")
     return f"""
 <section class="section wwd-intro" id="what-we-do">
   <div class="container">
     <div class="sec-head">
       <div class="sec-label"><span class="sec-name"><b class="ch-n">02</b> Capabilities</span></div>
     </div>
-    <h2 class="display-sm oneline oneline-long">From Idea to <span class="o">Impact.</span></h2>
+    <h2 class="display-sm oneline oneline-long" id="caps-title">From Idea to <span class="o">Impact.</span></h2>
     <p class="lead" style="margin-top:14px">End-to-end creative solutions that turn ideas into powerful visual stories &mdash; think, make and finish, all under one roof.</p>
   </div>
 </section>
 
-<section class="wwd-block">
+<section class="caps" aria-labelledby="caps-title">
   <div class="container">
-    <div class="wwd-head reveal">
-      <span class="eyebrow eyebrow-muted">01</span>
-      <h2 class="wwd-title">Think<span class="o">.</span></h2>
-      <p class="lead">Before there's a shoot, there needs to be an idea worth shooting. This is where raw ideas turn into shootable stories.</p>
-    </div>
-    <div class="wwd-cards wwd-cards-4 reveal">{svc_cards(think)}</div>
-  </div>
-</section>
-
-<section class="wwd-block warm">
-  <div class="warm-bg"><video src="assets/media/what-we-do/MAKE.mp4" poster="assets/images/posters/make.jpg" autoplay muted loop playsinline></video></div>
-  <div class="wwd-side">People<br>Equipment<br>Locations<br>Stories</div>
-  <div class="container">
-    <div class="wwd-head reveal">
-      <span class="eyebrow eyebrow-muted">02</span>
-      <h2 class="wwd-title">Then We <span class="o">Make It Real.</span></h2>
-      <p class="lead">From pre-production to the final shot, we bring together the right people, technology and craft to turn ideas into powerful visual experiences.</p>
-    </div>
-    <div class="wwd-cards wwd-cards-4 reveal">{svc_cards(make)}</div>
-  </div>
-</section>
-
-<section class="wwd-block">
-  <div class="container">
-    <div class="wwd-head reveal">
-      <span class="eyebrow eyebrow-muted">03</span>
-      <h2 class="wwd-title">The Shoot Ends.<br>The Story <span class="o">Doesn't.</span></h2>
-      <p class="lead">Post is where everything comes together. We refine, enhance and elevate the film so it not only looks great, but feels right.</p>
-    </div>
-    <div class="wwd-grid">
-      <div class="reveal">
-        <div class="phil-media" style="aspect-ratio:16/10" data-lightbox="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-caption="From cut to craft">
-          <video data-src="assets/media/behind-the-scenes/BTS Colour Grading.mp4" poster="assets/images/posters/bts-colour-grading.jpg" muted loop playsinline preload="none" class="hover-play"></video>
-          <div class="phil-side">From Cut<br>To Craft</div>
-        </div>
+    <div class="caps-grid" data-caps>
+      <div class="caps-word" aria-hidden="true">
+        <span class="is-on">Think<i>.</i></span><span>Make<i>.</i></span><span>Finish<i>.</i></span>
+        <b class="caps-rail"><i></i></b>
       </div>
-      <div class="list-cards reveal">{list_cards(finish)}</div>
+      <div class="caps-body">
+        <article class="cap" data-cap="0">
+          <span class="cap-num">01</span>
+          <h3 class="wwd-title">Think<span class="o">.</span></h3>
+          <p class="lead">Before there's a shoot, there needs to be an idea worth shooting. This is where raw ideas turn into shootable stories.</p>
+          <div class="cap-list">{cap_items(think)}
+          </div>
+        </article>
+        <article class="cap" data-cap="1">
+          <span class="cap-num">02</span>
+          <h3 class="wwd-title">Then We <span class="o">Make It Real.</span></h3>
+          <p class="lead">From pre-production to the final shot, we bring together the right people, technology and craft to turn ideas into powerful visual experiences.</p>
+          <figure class="cap-visual">
+            <video src="assets/media/what-we-do/MAKE.mp4" poster="assets/images/posters/make.jpg" autoplay muted loop playsinline preload="metadata"></video>
+            <figcaption class="cap-side">People<br>Equipment<br>Locations<br>Stories</figcaption>
+          </figure>
+          <div class="cap-list">{cap_items(make)}
+          </div>
+        </article>
+        <article class="cap" data-cap="2">
+          <span class="cap-num">03</span>
+          <h3 class="wwd-title">The Shoot Ends.<br>The Story <span class="o">Doesn't.</span></h3>
+          <p class="lead">Post is where everything comes together. We refine, enhance and elevate the film so it not only looks great, but feels right.</p>
+          <div class="phil-media cap-visual" data-lightbox="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-caption="From cut to craft">
+            <video data-src="assets/media/behind-the-scenes/BTS Colour Grading.mp4" poster="assets/images/posters/bts-colour-grading.jpg" muted loop playsinline preload="none" class="hover-play"></video>
+            <div class="phil-side">From Cut<br>To Craft</div>
+          </div>
+          <div class="cap-list">{cap_items(finish)}
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </section>
@@ -1040,10 +1028,10 @@ def page_contact():
   </div>
 </section>
 
-<section class="section">
+<section class="section cta-quiet">
   <div class="container">
     <div class="cta-band warm reveal">
-      <div class="cta-band-bg"><img src="assets/images/hero_dark.jpg" alt=""></div>
+      <div class="cta-band-bg"><img src="assets/images/hero_dark.jpg" alt="" loading="lazy"></div>
       <div class="cta-band-inner">
         <div>
           <span class="eyebrow">Let's build together</span>
@@ -1051,7 +1039,7 @@ def page_contact():
         </div>
         <div>
           <p class="lead">Have a thought? Let's talk. We'll give you ideas to shoot.</p>
-          <a href="mailto:office@anavafilms.com" class="btn btn-primary">Let's Talk <span class="circ">{ARROW}</span></a>
+          <a href="mailto:office@anavafilms.com" class="stays-link cta-quiet-link">Let's Talk {DIAG}</a>
         </div>
       </div>
       <div class="script">Ideas<br>Into<br>Action</div>
@@ -1070,7 +1058,11 @@ def page_about():
               ("Work Together", "Thinkers and makers under one roof."),
               ("Make It Real", "From thought to screen, we own the journey."),
               ("Keep It Simple", "Fewer layers. Faster decisions. Stronger outcomes.")]
-    val_html = "".join(f'<div class="value"><h4>{t}</h4><p>{d}</p></div>' for t, d in values)
+    # One running line, read as a manifesto; the copy runs twice for a
+    # seamless loop and the second pass is hidden from assistive tech
+    man = "".join(f'<li><b>{t}.</b> <span>{d}</span></li>' for t, d in values)
+    val_html = (f'<ul class="manifesto-line">{man}</ul>'
+                f'<ul class="manifesto-line" aria-hidden="true">{man}</ul>')
 
 
     return HEAD.format(**ASSET_V,
@@ -1109,7 +1101,7 @@ def page_about():
       <p>&ldquo;Fewer layers. Faster thinking. Better communication.<br>Ideas that are actually made to work on screen.&rdquo;</p>
     </div>
     <div class="stats reveal">{stat_html}</div>
-    <div class="values reveal">{val_html}</div>
+    <div class="manifesto" aria-label="How we work">{val_html}</div>
   </div>
 </section>
 {wwd_sections()}
@@ -1120,8 +1112,8 @@ def page_about():
     </div>
     <h2 class="display-sm oneline oneline-long">The People Behind <span class="o">Anava.</span></h2>
     <p class="lead" style="margin-top:14px">Creative vision paired with structured production execution.</p>
-    <div class="people reveal">
-      <article class="person">
+    <div class="people people-ed">
+      <article class="person reveal">
         <div class="person-img"><img src="assets/images/jackson_khatri.jpg" alt="Jackson Khatri"></div>
         <div class="person-body">
           <div class="person-role">Founder &middot; Creative Director &middot; Producer &middot; Director</div>
@@ -1130,7 +1122,7 @@ def page_about():
           <p>Working across assistant direction, scripting, producing and directing, he identified a recurring fracture in the industry: great ideas getting lost in translation between agency thinkers and on-set makers.</p>
         </div>
       </article>
-      <article class="person">
+      <article class="person reveal">
         <div class="person-img"><img src="assets/images/anjan_khatri.jpg" alt="Anjan Khatri"></div>
         <div class="person-body">
           <div class="person-role">Producer &middot; Production Head</div>

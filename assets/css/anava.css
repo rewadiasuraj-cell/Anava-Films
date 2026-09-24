@@ -3660,3 +3660,110 @@ html.hero-go .hero-cine .hl-1 em{
   .work-filters .pill.active{box-shadow:inset 0 -2px 0 var(--accent)}
 }
 @media (max-width:760px){.work-filters .pills{margin:0 -20px;padding:0 20px;scroll-padding:0 20px}}
+
+/* ==========================================================================
+   HOMEPAGE AUDIT — second refinement pass
+   ========================================================================== */
+
+/* ---- Selected Work: ~33% text, ~50% active film, the rest negative space;
+   each new film's counter, title and meta ease in (0.6s) ---- */
+.ww[data-mode="wheel"] .ww-frame{grid-template-columns:minmax(0,.33fr) minmax(0,.67fr)}
+.ww-name{text-wrap:balance}
+.ww-info.is-swap :is(.ww-count,.ww-name,.ww-meta){animation:wwSwap .6s cubic-bezier(.22,1,.36,1) backwards}
+.ww-info.is-swap .ww-name{animation-delay:.05s}
+.ww-info.is-swap .ww-meta{animation-delay:.1s}
+@keyframes wwSwap{from{opacity:0;transform:translate3d(0,10px,0);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+.ww-item.is-dim img{filter:grayscale(.35) brightness(.85)}
+.ww-item img{transition:filter .7s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+@media (hover:hover){.ww-item.is-active:hover img{transform:scale(1.025)}}
+@media (min-width:768px) and (orientation:portrait){.ww[data-mode="wheel"] .ww-frame{grid-template-columns:1fr}}
+
+/* Phone / reduced-motion layout: one dominant film, swipe or tap the
+   filmstrip beneath to move through the set */
+.ww-strip{display:none}
+.ww[data-mode="gallery"] .ww-strip{
+  order:4;display:flex;gap:8px;width:100%;max-width:var(--container);margin:22px auto 0;padding:0 28px;
+  overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;
+}
+.ww[data-mode="gallery"] .ww-strip::-webkit-scrollbar{display:none}
+.ww-thumb{
+  flex:none;width:78px;height:44px;padding:0;border:0;border-radius:4px;overflow:hidden;cursor:pointer;
+  background:#111;opacity:.4;position:relative;transition:opacity .4s ease;-webkit-tap-highlight-color:transparent;
+}
+.ww-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.ww-thumb::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#f05223;transform:scaleX(0);transform-origin:0 50%;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.ww-thumb.is-on{opacity:1}
+.ww-thumb.is-on::after{transform:scaleX(1)}
+.ww[data-mode="gallery"] .ww-nav{order:5}
+@media (max-width:767px){
+  .ww[data-mode="gallery"]{padding:72px 0 64px}
+  .ww[data-mode="gallery"] .ww-stage{--gh:48vw;gap:10px;margin-top:22px}
+  .ww[data-mode="gallery"] .ww-item{opacity:.35;transform:scale(.9)}
+  .ww[data-mode="gallery"] .ww-item.is-active{opacity:1;transform:none}
+  .ww[data-mode="gallery"] .ww-info{margin-top:18px}
+  .ww[data-mode="gallery"] .ww-name{font-size:1.45rem}
+  .ww[data-mode="gallery"] .ww-view{min-height:44px;align-items:center;margin-top:6px}
+  .ww[data-mode="gallery"] .ww-bar{display:none}
+  .ww[data-mode="gallery"] .ww-strip{padding:0 20px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ww-info.is-swap :is(.ww-count,.ww-name,.ww-meta){animation:none}
+  .ww-thumb,.ww-thumb::after{transition:none}
+}
+
+/* ---- People: portrait-led teaser, no card ---- */
+.people-bridge{padding:clamp(80px,9vw,160px) 0}
+.pb-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,6vw,120px);align-items:center}
+.people-bridge .pb-copy{position:static;transform:none;max-width:none;padding:0;left:auto;top:auto}
+.people-bridge .pb-title{white-space:normal}
+.people-bridge .pb-text{max-width:34ch;margin-top:18px;color:rgba(255,255,255,.72)}
+.pb-link{margin-top:26px;display:inline-flex;min-height:44px;align-items:center}
+.pb-people{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.4vw,40px)}
+.pb-person{margin:0}
+.pb-person:nth-child(2){margin-top:clamp(40px,6vw,110px)}
+.pb-portrait{aspect-ratio:4/5;overflow:hidden;border-radius:4px;background:#0b0b0b}
+.pb-portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;filter:grayscale(1) contrast(1.05) brightness(.92);transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+@media (hover:hover){.pb-person:hover .pb-portrait img{transform:scale(1.03)}}
+.pb-person figcaption{padding-top:16px}
+.pb-name{margin:0;font-family:var(--font-body);font-weight:600;font-size:clamp(1.1rem,1.4vw,1.4rem);letter-spacing:-.02em;color:#fff}
+.pb-role{margin:4px 0 0;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.pb-line{margin:10px 0 0;max-width:36ch;font-size:.9rem;line-height:1.6;color:rgba(255,255,255,.62)}
+@media (max-width:900px){
+  .pb-grid{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:760px){
+  .people-bridge{padding:64px 0}
+  .pb-people{gap:14px}
+  .pb-person:nth-child(2){margin-top:36px}
+  .pb-line{font-size:.8rem}
+}
+
+/* ---- From Idea to Impact: the journey in one line ---- */
+.approach-path{display:flex;align-items:center;gap:14px;margin:26px 0 0;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.approach-path i{font-style:normal;color:var(--accent);letter-spacing:0}
+.approach-path + .approach-cta{margin-top:22px}
+
+/* ---- Logo lane: optically even marks; touch screens never pause it ---- */
+.trusted-logos img{max-height:none;height:calc(28px * var(--k,1))}
+@media (min-width:761px) and (max-width:1024px){.trusted-logos img{height:calc(25px * var(--k,1))}}
+@media (max-width:760px){.trusted-logos img{height:calc(19px * var(--k,1))}}
+.trusted-logos img[alt="Lenskart"]{--k:.78}
+.trusted-logos img[alt="celio"],.trusted-logos img[alt="godrej properties"]{--k:.86}
+.trusted-logos img[alt="Indus Valley"],.trusted-logos img[alt="Simpl ai"]{--k:.95}
+.trusted-logos img[alt="KFC"]{--k:1.02}
+.trusted-logos img[alt="tira"],.trusted-logos img[alt="fikn"]{--k:1.06}
+.trusted-logos img[alt="wow skin science"]{--k:1.18}
+.trusted-logos img[alt="Green LOTUS"]{--k:1.42}
+@media (hover:none){
+  .trusted-marquee:hover .trusted-logos,.trusted-marquee:focus-within .trusted-logos,
+  .trusted-marquee:active .trusted-logos{animation-play-state:running}
+}
+.people-bridge .pb-link{border-bottom:0;padding-bottom:0}
+
+/* ---- Contact locations: calmer exposure, legible titles ---- */
+.loc-bg img{filter:brightness(1.55) contrast(1.12) saturate(.85)}
+.loc-bg::after{background:linear-gradient(0deg,rgba(4,4,4,.88) 0%,rgba(4,4,4,.42) 38%,rgba(4,4,4,.05) 70%,rgba(4,4,4,0) 100%)}
+.loc{border-radius:4px}
+.loc-top h3{text-transform:none;font-family:var(--font-body);font-weight:700;letter-spacing:-.03em}
+.loc-inner{padding:clamp(20px,2.4vw,34px)}
+.loc-link{min-height:44px}

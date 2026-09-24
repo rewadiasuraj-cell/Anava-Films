@@ -58,7 +58,7 @@ def header(active):
     <a href="/" class="brand"><img class="brand-word" src="assets/images/anava_official_logo_white.png" alt="ANAVA FILMS"><img class="brand-mark" src="assets/images/anava-mark.png" alt="" aria-hidden="true" width="34" height="29"></a>
     <nav class="nav"><ul style="display:contents">{links}</ul></nav>
     <div class="header-actions" style="display:flex;align-items:center;gap:14px">
-      <a href="contact.html" class="btn-talk">Let's Talk <span class="circ">{DIAG}</span></a>
+      <a href="contact.html" class="btn-talk">Let's Talk <span class="circ circ-mark"><img src="assets/images/talk-mark.png" alt="" aria-hidden="true" width="18" height="15"></span></a>
       <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>

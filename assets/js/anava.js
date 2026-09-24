@@ -630,7 +630,7 @@
 /* ==========================================================================
    Cinematic motion system (Home / Work / Process / About / Contact)
    Layout, copy and colours are untouched: this only adds reveals, a word
-   mask for headings, a brief glitch on a few hero words, drawn lines,
+   mask for headings, drawn lines,
    quiet background graphics with parallax, and process-step activation.
    ========================================================================== */
 (function () {
@@ -645,7 +645,6 @@
 
   /* ---------- 1. split headings into masked words ---------- */
   var HEADINGS = '.hero-cine-title, .phil2-title, .stays-title, .approach-title, .pb-title, .hero-split .display, .display-sm, .wwd-title, .phil-title';
-  var GLITCH = /^(Thought|Impact|Screen)[.?!]?$/;
   function splitHeading(h) {
     var idx = 0;
     (function walk(node, accent) {
@@ -662,7 +661,6 @@
             i.textContent = w;
             i.style.setProperty('--wi', idx++);
             if (accent) i.style.setProperty('--wa', 1);
-            if (GLITCH.test(w)) i.classList.add('mw-glitch');
             o.appendChild(i); frag.appendChild(o);
           });
           node.replaceChild(frag, n);
@@ -729,15 +727,6 @@
       requestAnimationFrame(function () { el.classList.add('m-on'); });
       var d = parseFloat(el.style.getPropertyValue('--md')) || 0;
       setTimeout(function () { el.classList.remove('m-anim'); }, (d + 1.6) * 1000);
-      if (el.dataset.mRole === 'heading' && !reduce) {
-        $$('.mw-glitch', el).forEach(function (w) {
-          var wi = +w.style.getPropertyValue('--wi') || 0;
-          setTimeout(function () {
-            w.classList.add('is-glitch');
-            setTimeout(function () { w.classList.remove('is-glitch'); }, 150);
-          }, (d + wi * 0.08 + 0.75) * 1000);
-        });
-      }
     });
   }
   var secObs = new IntersectionObserver(function (entries) {

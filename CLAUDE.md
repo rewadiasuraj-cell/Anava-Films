@@ -16,6 +16,6 @@ The owner reviews every change on these three devices. Check all three
 
 Preview with `npm start` (http://localhost:3000). When screenshotting in a
 sandboxed Chromium, make sure Google Fonts actually load (Archivo, Inter,
-Playfair Display) or the type will not match the live site. That Chromium
+Caveat) or the type will not match the live site. That Chromium
 also has no H.264, so site videos will not play there even though they do
 in Safari and Chrome.

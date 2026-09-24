@@ -2517,3 +2517,8 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .hero-cine-actions{margin-top:28px}
   .hero-cine-actions .btn-grad{padding:14px 36px;font-size:.95rem}
 }
+
+/* Work hero stage: the letterboxed band crops a 16:9 poster hard. Anchor the
+   crop near the top so faces stay in frame for every film in the rotation
+   (the poster's title art sits low and matters less than the people). */
+.wh-stage .wh-poster,.wh-stage .wh-video{object-position:50% 22%}

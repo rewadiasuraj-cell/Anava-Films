@@ -2006,12 +2006,21 @@ html.intro-on,html.intro-on body{overflow:hidden}
    HOME — Selected Work: "Work That Stays With You." + two staggered films
    ========================================================================== */
 .stays{position:relative;overflow:hidden;padding:clamp(60px,7vw,120px) 0 clamp(70px,7vw,120px)}
-/* A glowing orange ring sweeping behind the headline. Bright enough to read
-   as a light source, not a hairline: a crisp core line, a warm bloom around
-   it, and a slow breathing pulse. No mask: a mask clips to the border box
-   and would cut the outer bloom off; the left half sits off-screen anyway. */
+/* A glowing orange ring sweeping behind the headline: a crisp core line, a
+   warm bloom and a slow breathing pulse. The ring is drawn on ::before and a
+   softer halo on ::after, inside a full-bleed layer whose mask fades the top
+   and bottom edges out — so the ring never meets the section edge as a hard
+   horizontal cut. (A mask on the ring itself would clip its outer bloom.) */
 .stays-arc{
-  position:absolute;left:-38vw;top:-30%;width:80vw;height:160%;border-radius:50%;pointer-events:none;
+  --al:calc(-38vw - 8px);--at:-30%;--aw:80vw;--ah:160%;
+  position:absolute;inset:0;pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%);
+  mask-image:linear-gradient(180deg,transparent 0%,#000 18%,#000 82%,transparent 100%);
+  animation:staysGlow 6s ease-in-out infinite;
+}
+.stays-arc::before,.stays-arc::after{content:"";position:absolute;border-radius:50%}
+.stays-arc::before{
+  left:var(--al);top:var(--at);width:var(--aw);height:var(--ah);
   border:2px solid rgba(255,110,50,.9);
   box-shadow:
     0 0 6px rgba(255,120,60,.9),
@@ -2019,11 +2028,11 @@ html.intro-on,html.intro-on body{overflow:hidden}
     0 0 90px rgba(240,82,35,.38),
     inset 0 0 14px rgba(255,110,50,.55),
     inset 0 0 120px rgba(240,82,35,.2);
-  animation:staysGlow 6s ease-in-out infinite;
 }
 /* Second, softer halo ring just outside the first for depth */
 .stays-arc::after{
-  content:"";position:absolute;inset:-18px;border-radius:50%;
+  left:calc(var(--al) - 18px);top:calc(var(--at) - 18px);
+  width:calc(var(--aw) + 36px);height:calc(var(--ah) + 36px);
   border:1px solid rgba(255,120,60,.35);
   box-shadow:0 0 40px rgba(240,82,35,.25);
 }
@@ -2081,7 +2090,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .stays-title{order:2;margin-top:18px;font-size:clamp(2.6rem,9vw,4.6rem)}
   .stays-films{order:3}
   .stays-link{order:4;margin-top:6px;justify-self:start}
-  .stays-arc{left:-60vw;width:130vw;height:70%;top:-10%}
+  .stays-arc{--al:calc(-60vw - 8px);--aw:130vw;--ah:70%;--at:-10%}
 }
 @media (max-width:760px){
   .sw-card-2{width:88%;margin-right:0}

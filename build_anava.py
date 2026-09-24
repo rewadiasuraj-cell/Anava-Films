@@ -290,7 +290,7 @@ def page_work():
         brand = re.sub(r"\s*\(.*?\)", "", c.get("client") or c["title"]).strip()
         playlist.append({
             "v": v,
-            "p": "assets/images/work-hero-hustlr.jpg" if v == first else c.get("poster", ""),
+            "p": c.get("poster", ""),
             "t": brand, "cap": c["title"],
             "case": {k: c[k] for k in CASE_KEYS if c.get(k)},
         })

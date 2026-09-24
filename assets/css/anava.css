@@ -2199,6 +2199,12 @@ html.intro-on,html.intro-on body{overflow:hidden}
 .reel-cta .reel-meta em{font-style:normal;font-weight:500;font-size:.8em;letter-spacing:.08em;color:rgba(255,255,255,.7)}
 
 /* Desktop and iPad: the film runs edge to edge, flush under the logo lane */
+/* iPad portrait: one step slimmer than desktop */
+@media (min-width:761px) and (max-width:1024px){
+  .trusted-label{padding:11px 20px 2px;font-size:.6rem}
+  .trusted-logos li{width:112px;padding:10px 12px 12px}
+  .trusted-logos img{max-height:26px}
+}
 @media (min-width:761px){
   .reel-band{padding-top:0}
   .reel-band .reel-wide{max-width:none;width:100%;padding:0}
@@ -2210,7 +2216,10 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .reel-mark{right:clamp(24px,4vw,64px);bottom:22px}
 }
 @media (max-width:760px){
-  .trusted-label{padding:12px 20px 2px}
+  /* Phone: a slim lane sized to the screen, not the desktop's 100px strip */
+  .trusted-label{padding:9px 16px 0;font-size:.56rem;letter-spacing:.18em}
+  .trusted-logos li{width:96px;padding:8px 10px 10px}
+  .trusted-logos img{max-height:20px}
   .reel .reel-cta .play-btn{width:56px;height:56px}
   .reel-cta{gap:10px}
   .reel-cta .reel-meta{font-size:.85rem}

@@ -4410,7 +4410,7 @@ html.hero-go .hero-cine .hl-1 em{
 
 /* eyebrows: 12px, 500, capitals tracked wide, muted white; numbers stay orange */
 .eyebrow:not(#_),.hero-cine-eyebrow:not(#_),.pb-eyebrow:not(#_),.approach-eyebrow:not(#_),.wh-eyebrow:not(#_),.phx-name:not(#_),
-.sec-label .sec-name:not(#_),.ct-h3:not(#_),.footer-col-title:not(#_){
+.sec-label .sec-name:not(#_),.ct-h3:not(#_),.ct-label:not(#_),.footer-col-title:not(#_){
   font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;line-height:1.4;
   background:none;-webkit-text-fill-color:currentColor;color:rgba(255,255,255,.62)
 }

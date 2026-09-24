@@ -2729,3 +2729,17 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .pb-text{font-size:.86rem}
   .pb-copy{left:28px}
 }
+
+/* Intro on phones: fill the visible screen (the overlay now tracks 100dvh,
+   so a centred cover crop trims a little top and bottom, never the sides,
+   and keeps the clapperboard and hand in frame). */
+@media (orientation:portrait){.intro-video{object-fit:cover;object-position:50% 45%}}
+
+/* Work hero: the cinematic pass clipped the hero (overflow:hidden) and gave
+   it an isolated stacking context, which cut off the Vertical dropdown and
+   let the first grid cards paint over it. Only the decorative layer is
+   clipped now, and the hero sits above the grid that follows. */
+.work-hero{overflow:visible;z-index:5}
+.wh-deco{overflow:hidden}
+.work-hero::before,.work-hero::after{overflow:hidden}
+.work-hero .drop-menu{z-index:20}

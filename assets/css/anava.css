@@ -3487,3 +3487,28 @@ html.hero-go .hero-cine .hl-1 em{
 @media (min-width:768px) and (orientation:portrait){.ww-intro-title{font-size:3.6vw}}
 .ww-intro .stays-label,.ww-intro .stays-link{order:0;align-self:center}
 .ww-intro .stays-link{margin-top:4px}
+
+/* ==========================================================================
+   Velaris hero light (anava.js): a screen-blended film layer between the
+   stage photograph and the hero's own dark overlays. Black adds nothing in
+   screen mode, so only the tungsten pools show; the overlays above keep the
+   copy contrast exactly as before. It fades up once its first frame draws.
+   ========================================================================== */
+.velaris{
+  position:absolute;inset:0;width:100%;height:100%;display:block;
+  pointer-events:none;mix-blend-mode:screen;opacity:0;
+  transition:opacity 2.4s cubic-bezier(.22,1,.36,1);
+}
+.velaris.is-on{opacity:.9}
+@media (max-width:767px){.velaris.is-on{opacity:.75}}
+/* Velaris replaces the CSS haze; the haze stays as the no-WebGL fallback */
+.has-velaris .hero-haze{display:none}
+@media (prefers-reduced-motion:reduce){.velaris{transition:none}}
+
+/* "From Idea to Impact": one restrained, local return of the same light */
+.approach{isolation:isolate}
+.approach::before{
+  content:"";position:absolute;pointer-events:none;z-index:-1;
+  left:-10%;top:10%;width:60%;height:70%;
+  background:radial-gradient(closest-side,rgba(143,38,12,.16),rgba(18,6,4,.08) 55%,transparent);
+}

@@ -3269,3 +3269,5 @@ html.hero-go .hero-cine .hl-1 em{
 @media (prefers-reduced-motion:reduce){
   html.hero-go .hero-cine .hl-1 em{animation:hrFade .6s ease backwards}
 }
+/* Selected Work: both films at the same size */
+.stays-films .sw-card-2{width:100%;align-self:stretch;margin-right:0}

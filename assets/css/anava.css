@@ -2473,3 +2473,47 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .approach-steps::before{left:calc((100% - 80px) / 6);right:calc((100% - 80px) / 6)}
   .approach-media{left:-14px;right:-14px}
 }
+
+/* ==========================================================================
+   HOME hero, to the owner's reference: a wide-tracked eyebrow, both headline
+   lines in the same size and weight (Inter semibold, the reply's key words
+   in orange with a white full stop), a bold white claim over a lighter
+   paragraph, and one large primary button. Everything centred.
+   ========================================================================== */
+.hero-cine-inner .hero-eyebrow{
+  display:block;margin:0 0 20px;text-align:center;
+  font-family:var(--font-body);font-size:clamp(.7rem,.85vw,.95rem);font-weight:500;
+  letter-spacing:.38em;text-transform:uppercase;color:rgba(255,255,255,.82);
+}
+.hero-cine-title{gap:.04em}
+.hero-cine-title .hl-1,.hero-cine-title .hl-2{
+  font-family:var(--font-body);font-weight:600;font-style:normal;
+  font-size:clamp(2.6rem,4.1vw,5rem);line-height:1.06;letter-spacing:-.035em;color:#fff;
+}
+.hero-cine-title .hl-2 em{font-style:normal;font-weight:600}
+.hero-cine-lead{margin-top:30px;max-width:64ch;font-size:clamp(1rem,1.05vw,1.25rem);line-height:1.6;color:rgba(255,255,255,.78)}
+.hero-cine-lead .hero-line-1{margin-bottom:.2em}
+.hero-cine-lead strong{font-weight:600;color:#fff}
+.hero-cine-actions{margin-top:40px}
+.hero-cine-actions .btn-grad{padding:18px 56px;font-size:1.05rem;gap:16px}
+/* The bold claim holds one line on a desktop, centred on the column even
+   though it is wider than the lighter paragraph under it. */
+@media (min-width:1101px){
+  .hero-cine-lead .hero-line-1{white-space:nowrap;width:max-content;position:relative;left:50%;transform:translateX(-50%)}
+}
+@media (min-width:1600px){
+  .hero-cine-title .hl-1,.hero-cine-title .hl-2{font-size:5rem}
+  .hero-cine-lead{font-size:1.25rem}
+}
+@media (max-width:1100px){
+  .hero-cine-title .hl-1,.hero-cine-title .hl-2{font-size:clamp(2.2rem,5.6vw,3.6rem)}
+  .hero-cine-lead{font-size:1rem;max-width:60ch}
+  .hero-cine-actions .btn-grad{padding:15px 44px;font-size:1rem}
+}
+@media (max-width:760px){
+  .hero-cine-inner .hero-eyebrow{font-size:.62rem;letter-spacing:.24em;margin-bottom:14px}
+  .hero-cine-title .hl-1,.hero-cine-title .hl-2{font-size:clamp(1.9rem,8.4vw,2.5rem);line-height:1.1}
+  .hero-cine-lead{margin-top:20px;font-size:.95rem}
+  .hero-cine-actions{margin-top:28px}
+  .hero-cine-actions .btn-grad{padding:14px 36px;font-size:.95rem}
+}

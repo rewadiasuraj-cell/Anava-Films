@@ -522,7 +522,6 @@ def page_home():
     </figure>
     <div class="phil2-copy reveal">
       <p class="phil2-lead">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn&rsquo;t get lost between the people who think them and the people who make them.</p>
-      <p class="phil2-sub">So we bring both sides together. You bring the thought. We build the idea, make the film and deliver the final product.</p>
     </div>
   </div>
 </section>

@@ -167,6 +167,23 @@
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
   }
 
+  /* ---------- Home: draw the orange ring when its section scrolls in ---------- */
+  var arc = document.querySelector('.stays-arc');
+  if (arc && 'IntersectionObserver' in window &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    arc.classList.add('arc-armed');
+    var aObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          // next frame, so the armed (hidden) state has painted first
+          requestAnimationFrame(function () { arc.classList.add('is-drawn'); });
+          aObs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    aObs.observe(arc.parentNode);
+  }
+
   /* ---------- Lightbox ---------- */
   var lb = document.getElementById('lightbox');
   var lbBody = document.getElementById('lightbox-body');

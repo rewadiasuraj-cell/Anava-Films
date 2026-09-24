@@ -479,9 +479,8 @@ def page_home():
       <span class="hl-2">We&rsquo;ll Give You Ideas to Shoot.</span>
     </h1>
     <p class="hero-cine-lead">
-      <span class="hero-line hero-line-1">Anava Films is an agency-cum-production house bringing ideas to life from first thought to final frame.</span>
-      <span class="hero-line hero-line-2">We work across creative direction, ideation, scripting, production and post-production,</span>
-      <span class="hero-line hero-line-3">turning brand briefs into compelling films, campaigns and content.</span>
+      <span class="hero-line hero-line-1">Anava Films is an <span class="nobr">agency-cum-production</span> house bringing ideas to life from first thought to final frame.</span>
+      <span class="hero-line hero-line-2">We work across creative, production and <span class="nobr">post-production</span> to create films, campaigns and content.</span>
     </p>
     <div class="hero-cine-actions">
       <a href="work.html" class="btn btn-primary hero-cta">View Our Work <span class="hero-cta-arrow">{ARROW}</span></a>

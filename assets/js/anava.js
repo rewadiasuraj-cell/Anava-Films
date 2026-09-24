@@ -1137,7 +1137,7 @@
     var pr = pin.getBoundingClientRect();
     var vw = pr.width, vh = pr.height;
     var ar = anchor.getBoundingClientRect();
-    var H = Math.min(vh * 0.5, ar.width * 0.8 / (16 / 9));
+    var H = Math.min(vh * 0.5, ar.width * 0.84 / (16 / 9));
     var hr = clamp(Math.min(vh * 0.14, vw * 0.095), 60, 128); // film height in the ring
     var cx = vw / 2, cy = vh / 2 + 28;
     geo = {

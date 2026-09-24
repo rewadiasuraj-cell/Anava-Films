@@ -1116,7 +1116,7 @@ def page_about():
       </div>
     </div>
     <div class="pull-quote reveal">
-      <p>&ldquo;Fewer layers. Faster thinking. Better communication.<br>Ideas that are actually made to work on screen.&rdquo;</p>
+      <p>&ldquo;Fewer layers. Faster thinking. Better communication. Ideas that are actually made to work on screen.&rdquo;</p>
     </div>
     <div class="stats reveal">{stat_html}</div>
     <div class="manifesto" aria-label="How we work">{val_html}</div>

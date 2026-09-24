@@ -3469,3 +3469,21 @@ html.hero-go .hero-cine .hl-1 em{
 }
 .ww .ww-all{margin-top:4px}
 .ww-item:hover::after{width:34px}
+
+/* Works Wheel refinements: rounded frames, one-line opening title */
+.ww-item{border-radius:14px}
+@media (max-width:767px){.ww-item{border-radius:10px}}
+.ww-intro{display:none}
+.ww[data-mode="wheel"] .ww-intro{
+  position:absolute;left:50%;top:calc(50% + 28px);z-index:4;transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;align-items:center;text-align:center;pointer-events:none;
+}
+.ww[data-mode="wheel"] .ww-intro a{pointer-events:auto}
+.ww-intro-title{
+  margin:.4em 0 .6em;font-family:var(--font-body);font-weight:700;letter-spacing:-.035em;
+  font-size:clamp(1.9rem,4.2vw,5rem);line-height:1.02;color:#fff;white-space:nowrap;
+}
+.ww[data-mode="wheel"] .ww-head{opacity:0}
+@media (min-width:768px) and (orientation:portrait){.ww-intro-title{font-size:3.6vw}}
+.ww-intro .stays-label,.ww-intro .stays-link{order:0;align-self:center}
+.ww-intro .stays-link{margin-top:4px}

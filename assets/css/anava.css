@@ -660,16 +660,17 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
   position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line-soft);
   aspect-ratio:21/8;background:#000;cursor:pointer;
 }
-.reel video,.reel img{width:100%;height:100%;object-fit:cover;opacity:.66;transition:opacity .4s var(--ease),transform .6s var(--ease)}
-.reel:hover video,.reel:hover img{opacity:.82;transform:scale(1.02)}
+.reel video,.reel img{width:100%;height:100%;object-fit:cover;opacity:1;transition:transform .6s var(--ease)}
+.reel:hover video,.reel:hover img{transform:scale(1.02)}
 /* The play control sits in the top-left so it clears the key art's own
    title block, which runs through the middle of the frame. */
 .reel-overlay{
   position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:space-between;
   padding:clamp(18px,3vw,30px) clamp(20px,4vw,52px);
   background:
-    linear-gradient(180deg,rgba(6,6,6,.72) 0%,rgba(6,6,6,.08) 38%,rgba(6,6,6,.5) 100%),
-    linear-gradient(90deg,rgba(6,6,6,.5),rgba(6,6,6,0) 45%,rgba(6,6,6,.45));
+    /* Full-strength film: only a thin shade at the top and bottom edges,
+       enough to keep the play control and credits legible */
+    linear-gradient(180deg,rgba(6,6,6,.38) 0%,rgba(6,6,6,0) 22%,rgba(6,6,6,0) 82%,rgba(6,6,6,.4) 100%);
 }
 .reel-left{display:flex;align-items:center;gap:18px}
 .reel-meta{display:flex;align-items:center;gap:20px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}

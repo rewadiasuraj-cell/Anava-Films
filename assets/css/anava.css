@@ -2311,7 +2311,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   aspect-ratio:2/.72;min-height:300px;background:#0b0b0b;
 }
 .pb-card img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 45%;
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 88%;transform-origin:50% 100%;
   transform:scale(1.02);transition:transform 1.4s cubic-bezier(.2,.7,.2,1);
 }
 .pb-card::after{
@@ -2338,7 +2338,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
 /* iPad portrait and phones: the frame on top, the copy under it */
 @media (max-width:900px){
   .pb-card{aspect-ratio:auto;min-height:0;display:flex;flex-direction:column}
-  .pb-card img{position:relative;height:auto;aspect-ratio:16/9;object-position:72% 45%}
+  .pb-card img{position:relative;height:auto;aspect-ratio:16/9;object-position:72% 85%}
   .pb-card::after{inset:0 0 auto 0;height:0}
   .pb-copy{position:relative;left:auto;top:auto;transform:none;max-width:none;padding:24px 22px 26px}
   .pb-label{font-size:.62rem;margin-bottom:12px}

@@ -426,7 +426,7 @@ def page_home():
     # in from the left. Each opens its case study.
     sel = [
         ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/thumbnails/lenskart-hustler.jpg", "Lenskart", "Hustlr"),
-        ("assets/media/tvc/LK AQUALENS FILM.mp4", "assets/images/thumbnails/lk-aqualens-film.jpg", "Lenskart Aqualens", "Digital TVC"),
+        ("assets/media/tvc/LK AQUALENS FILM.mp4", "assets/images/thumbnails/lk-aqualens-film.jpg", "Lenskart", "Aqualens"),
     ]
     sel_html = "".join(f"""
       <figure class="sw-card sw-card-{i + 1}">
@@ -543,7 +543,7 @@ def page_home():
 <section class="people-bridge">
   <div class="container">
     <a class="pb-card reveal" href="about.html#people">
-      <img src="assets/images/thumbnails/bts-making-it-real.jpg" alt="Making It Real: the Anava Films crew on set" loading="lazy">
+      <picture><source media="(min-width: 901px)" srcset="assets/images/people-making-it-real-wide.jpg"><img src="assets/images/thumbnails/bts-making-it-real.jpg" alt="Making It Real: the Anava Films crew on set" loading="lazy"></picture>
       <div class="pb-copy">
         <p class="pb-eyebrow">The People Behind the Work</p>
         <h2 class="pb-title">Thinkers and Makers.<br><span class="o">One Crew.</span></h2>

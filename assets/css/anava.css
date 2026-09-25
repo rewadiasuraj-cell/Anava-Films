@@ -4125,3 +4125,27 @@ html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){
 @media (max-width:760px){.approach-title:not(#_){font-size:clamp(1.9rem,8.7vw,2.4rem)}}
 /* Think / Make / Finish in capitals, with a little air between the letters */
 .act-word,.act-title{text-transform:uppercase!important;letter-spacing:.01em!important}
+/* off-screen headings: the shine waits (set by anava.js) */
+.sheen-off .o,.sheen-off .mw-accent,.sheen-off em,.sheen-off.act-title,.sheen-off .act-word,.sheen-off.wh-title .wh-impact,.sheen-off .wh-impact{animation-play-state:paused!important}
+
+/* Thinkers Who Make: the set sits ~15% further right in the frame */
+.phx-media img{object-position:49% 38%}
+@media (min-width:761px) and (max-width:1024px){.phx-media img{object-position:47% 36%}}
+@media (max-width:760px){.phx-media img{object-position:41% 0%}}
+
+/* About capability headings on one line from desktop up, a size larger */
+.br-mobile{display:none}
+@media (max-width:1024px){.br-mobile{display:inline}}
+@media (min-width:1025px){
+  .caps .wwd-title:not(#_){white-space:nowrap;font-size:clamp(40px,3.4vw,62px)}
+  #caps-title:not(#_){font-size:clamp(56px,4.6vw,84px)}
+}
+
+/* Home closing line on one line (desktop and tablet) */
+@media (min-width:761px){.home-cta .display-sm:not(#_){white-space:nowrap;max-width:none}}
+
+/* Work hero play button: frosted glass circle */
+.wh-film-play:not(#_),.wh-stage .wh-film-play:not(#_){
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.38);color:#fff;box-shadow:none;
+  -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4)}
+.wh-stage:hover .wh-film-play:not(#_),.wh-film:hover .wh-film-play:not(#_){background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.6)}

@@ -1,5 +1,23 @@
 const fs = require('fs');
 const path = require('path');
+const { spawnSync } = require('child_process');
+
+// Regenerate HTML from the source generator and portfolio data before
+// packaging. Fail early rather than deploy stale generated pages.
+const python = process.env.PYTHON || (process.platform === 'win32' ? 'python' : 'python3');
+const generate = spawnSync(python, ['build_anava.py'], {
+  cwd: __dirname,
+  stdio: 'inherit'
+});
+if (generate.error) {
+  console.error('Could not run page generator:', generate.error.message);
+  process.exit(1);
+}
+if (generate.status !== 0) {
+  console.error('Page generation failed; dist was not modified.');
+  process.exit(generate.status || 1);
+}
+
 
 const distDir = path.join(__dirname, 'dist');
 

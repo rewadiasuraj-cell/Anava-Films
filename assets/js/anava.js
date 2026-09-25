@@ -51,6 +51,29 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') endIntro(); else unmute();
     });
+    // Never hold the site hostage: a slow network or a blocked autoplay lets
+    // go (the film runs 12.5s, after up to 6s to start)
+    var stall = setTimeout(function () { if (!ended && iv.currentTime < 0.2) endIntro(); }, 6000);
+    var hardStop = setTimeout(endIntro, 18000);
+    // No autoplay at all (iPhone/iPad Low Power Mode blocks even muted
+    // video): a first visit just lets go, but a logo tap asked for the film,
+    // so it offers a Play button; that tap plays it, with sound.
+    var playBtn = intro.querySelector('.intro-play');
+    var offerPlay = function () {
+      if (ended) return;
+      if (intro.getAttribute('data-replay') !== '1' || !playBtn) { endIntro(); return; }
+      clearTimeout(stall); clearTimeout(hardStop);
+      soundBtn.hidden = true;
+      playBtn.hidden = false;
+      playBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        playBtn.hidden = true;
+        iv.muted = false;
+        hardStop = setTimeout(endIntro, 16000);
+        var pp = iv.play();
+        if (pp && pp.catch) pp.catch(endIntro);
+      });
+    };
     iv.muted = false;
     var pr = iv.play();
     if (pr && pr.catch) pr.catch(function () {
@@ -58,11 +81,8 @@
       iv.muted = true;
       soundBtn.hidden = false;
       var pm = iv.play();
-      if (pm && pm.catch) pm.catch(endIntro);
+      if (pm && pm.catch) pm.catch(offerPlay);
     });
-    // Never hold the site hostage: a slow network or a blocked autoplay lets go
-    setTimeout(function () { if (!ended && iv.currentTime < 0.2) endIntro(); }, 6000);
-    setTimeout(endIntro, 18000);   // the film runs 12.5s, after up to 6s to start
   }
 
   /* ---------- Header ---------- */

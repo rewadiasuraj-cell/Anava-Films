@@ -1,0 +1,46 @@
+name: Validate website build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: npm ci
+      - name: Generate and package website
+        run: npm run build
+      - name: Verify generated pages and deployment files
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path("dist")
+          expected = ["index.html", "work.html", "process.html", "about.html",
+                      "contact.html", "404.html", ".htaccess", "robots.txt",
+                      "sitemap.xml", "assets/css/anava.css", "assets/js/anava.js"]
+          missing = [path for path in expected if not (root / path).is_file()]
+          if missing:
+              raise SystemExit("Missing deployment files: " + ", ".join(missing))
+          for page in ["index", "work", "process", "about", "contact"]:
+              html = (root / f"{page}.html").read_text(encoding="utf-8")
+              for marker in ('<title>', 'assets/css/anava.css', 'assets/js/anava.js'):
+                  if marker not in html:
+                      raise SystemExit(f"{page}.html missing {marker}")
+          print("Build validation passed: all five pages and deployment files present.")
+          PY

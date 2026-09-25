@@ -1,6 +1,10 @@
 name: Responsive browser QA
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/responsive-qa.yml'
   workflow_dispatch:
 
 permissions:

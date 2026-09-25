@@ -4123,3 +4123,5 @@ html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){
 /* Home "From Idea to Impact.": one line, a touch larger */
 .approach-title:not(#_){white-space:nowrap;font-size:clamp(2.4rem,4.9vw,5.8rem)}
 @media (max-width:760px){.approach-title:not(#_){font-size:clamp(1.9rem,8.7vw,2.4rem)}}
+/* Think / Make / Finish in capitals, with a little air between the letters */
+.act-word,.act-title{text-transform:uppercase!important;letter-spacing:.01em!important}

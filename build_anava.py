@@ -543,7 +543,7 @@ def page_home():
   <div class="hero-cine-bg">
     <img src="assets/images/home-hero-stage.jpg" alt="" fetchpriority="high" data-parallax>
     <canvas class="velaris" aria-hidden="true" tabindex="-1" data-velaris
-      data-bg="#000000" data-colors="#F05223,#D94318,#7A210E,#090301"
+      data-bg="#000000" data-colors="#E4E7EB,#A9AFB7,#4E545C,#060607"
       data-speed="0.5" data-grain="0.12"></canvas>
     <i class="hero-haze" aria-hidden="true"></i>
   </div>

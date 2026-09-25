@@ -1583,7 +1583,7 @@
       .forEach(function (k) { U[k] = gl.getUniformLocation(prog, k); });
 
     // Colours are parsed once
-    var cols = (cv.getAttribute('data-colors') || '#F05223,#D94116,#8F260C,#120604').split(',');
+    var cols = (cv.getAttribute('data-colors') || '#E4E7EB,#A9AFB7,#4E545C,#060607').split(',');
     gl.uniform3fv(U.uBg, hex(cv.getAttribute('data-bg') || '#020202'));
     ['uC0', 'uC1', 'uC2', 'uC3'].forEach(function (k, i) { gl.uniform3fv(U[k], hex(cols[i] || cols[cols.length - 1])); });
     gl.uniform1f(U.uGrain, parseFloat(cv.getAttribute('data-grain')) || 0.14);

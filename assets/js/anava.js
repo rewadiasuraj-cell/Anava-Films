@@ -95,13 +95,15 @@
   setFoldX();
   window.addEventListener('resize', setFoldX);
 
-  /* Touch screens have no hover: the first tap on the folded pill opens it
-     (instead of following the wordmark link home), a tap elsewhere folds it. */
+  /* Touch screens have no hover: the first tap on the folded pill opens it,
+     a tap elsewhere folds it. The logo is the exception: it always goes
+     straight Home, where it replays the intro film. */
   if (header && window.matchMedia) {
     var noHover = window.matchMedia('(hover: none)');
     var wide = window.matchMedia('(min-width: 761px)');
     header.addEventListener('click', function (e) {
       if (!noHover.matches || !wide.matches) return;
+      if (e.target.closest && e.target.closest('.brand')) return;
       if (header.classList.contains('is-compact') && !header.classList.contains('is-peek')) {
         e.preventDefault();
         header.classList.add('is-peek');

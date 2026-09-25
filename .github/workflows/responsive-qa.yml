@@ -1,0 +1,90 @@
+name: Responsive browser QA
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Audit live pages across devices
+        env:
+          BASE_URL: https://anavafilms.com
+        run: |
+          node <<'JS'
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch({headless:true});
+            const devices = [
+              { name:'iPhone 15', width:393, height:852, deviceScaleFactor:3, isMobile:true, hasTouch:true },
+              { name:'iPad landscape', width:1080, height:810, deviceScaleFactor:2, isMobile:true, hasTouch:true },
+              { name:'Desktop 1080p', width:1920, height:1080, deviceScaleFactor:1, isMobile:false, hasTouch:false }
+            ];
+            const routes = ['/', '/work', '/process', '/about', '/contact'];
+            let issues = 0;
+            for(const device of devices) {
+              const context = await browser.newContext({ viewport:{width:device.width,height:device.height},
+                deviceScaleFactor:device.deviceScaleFactor, isMobile:device.isMobile,
+                hasTouch:device.hasTouch, reducedMotion:'reduce' });
+              const page = await context.newPage();
+              const errors = [];
+              page.on('pageerror',e=>errors.push(e.message));
+              for(const route of routes) {
+                try {
+                  const response = await page.goto(process.env.BASE_URL+route, {waitUntil:'domcontentloaded',timeout:35000});
+                  await page.waitForTimeout(800);
+                  const metrics = await page.evaluate(() => ({
+                    title:document.title, h1:document.querySelector('h1')?.textContent.trim().slice(0,90),
+                    viewport:document.documentElement.clientWidth,
+                    scrollWidth:document.documentElement.scrollWidth,
+                    navigation:!!document.querySelector('nav'),
+                    contactForm:!!document.querySelector('#contact-form')
+                  }));
+                  const overflow = metrics.scrollWidth>metrics.viewport+2;
+                  console.log(JSON.stringify({device:device.name,route,status:response?.status(),overflow,...metrics,errors:errors.splice(0)}));
+                  if(response?.status()!==200 || overflow || !metrics.h1) issues++;
+                  if(route==='/' || route==='/work') {
+                    await page.screenshot({path:`qa-${device.name.replaceAll(' ','-')}-${route==='/'?'home':'work'}.png`});
+                  }
+                  if(route==='/contact' && !metrics.contactForm) issues++;
+                } catch(e) {
+                  issues++; console.log(JSON.stringify({device:device.name,route,error:e.message}));
+                }
+              }
+              if(device.name==='iPhone 15'){
+                await page.goto(process.env.BASE_URL+'/',{waitUntil:'domcontentloaded'});
+                const burger=page.locator('.burger');
+                if(await burger.isVisible()){
+                  await burger.click();
+                  const opened=await page.locator('.nav').evaluate(el=>el.classList.contains('mobile-open'));
+                  await page.keyboard.press('Escape');
+                  const closed=await page.locator('.nav').evaluate(el=>!el.classList.contains('mobile-open'));
+                  console.log(JSON.stringify({test:'mobile menu open + Escape',opened,closed}));
+                  if(!opened||!closed)issues++;
+                }
+              }
+              await context.close();
+            }
+            await browser.close();
+            console.log('QA issue count:',issues);
+            if(issues)process.exitCode=1;
+          })().catch(e=>{console.error(e);process.exitCode=1});
+          JS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: responsive-qa-screenshots
+          path: qa-*.png
+          if-no-files-found: ignore

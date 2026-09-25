@@ -4316,3 +4316,94 @@ html.pt-out::after{animation:ptOut .38s cubic-bezier(.76,0,.24,1) both}
   }
   .work-filters .pill-drop > .pill { justify-content:center; }
 }
+
+/* ==========================================================================
+   2026-09-26 QA: cross-page hierarchy, legibility, and interaction finishing.
+   Changes are intentionally scoped: retain approved copy, images, visual
+   identity, section compositions, and the untouched intro film.
+   ========================================================================== */
+
+/* Keep section headings readable when a narrow tablet creates awkward
+   intermediate line lengths; give multi-column text room to shrink. */
+:where(.hero-split-grid,.ct-hero-grid,.ct-grid,.wwd-grid,.people-ed .person) > * {
+  min-width:0;
+}
+:where(.ct-lead,.ct-sub,.phx-lead,.pj-body,.people-ed .person-body p,.case-desc) {
+  overflow-wrap:break-word;
+  text-wrap:pretty;
+}
+
+/* Persistent header: larger desktop navigation type and a clearly visible
+   focus treatment. The compact tablet navigation remains unchanged. */
+@media (min-width:1025px) {
+  .site-header .nav a {font-size:clamp(12px,.74vw,14px);letter-spacing:.1em;}
+}
+.site-header .nav a:focus-visible,
+.site-header .brand:focus-visible,
+.header-actions .btn-talk:focus-visible,
+.ct-direct a:focus-visible,
+.main-footer a:focus-visible,
+.loc-link:focus-visible,
+.ww-view:focus-visible {
+  outline:2px solid var(--accent);
+  outline-offset:4px;
+  border-radius:3px;
+}
+
+/* Form labels, instructions and focus/error states must remain distinguishable
+   on black, even on dim mobile displays. Do not move any fields or alter the
+   recipient, submission handler or success/error flow. */
+.ct-sub{color:rgba(255,255,255,.76);line-height:1.6;}
+.ct-field label{color:rgba(255,255,255,.9);}
+.ct-field .opt{color:rgba(255,255,255,.72);}
+.ct-field ::placeholder{color:rgba(255,255,255,.55);}
+.ct-field input,.ct-field select,.ct-field textarea {
+  border-bottom-color:rgba(255,255,255,.37);
+}
+.ct-field.is-bad input,.ct-field.is-bad select,.ct-field.is-bad textarea {
+  border-bottom-color:#f2a090;
+}
+.ct-field.is-bad label,.ct-field.is-bad .ct-err {
+  color:#ffb7a8;
+}
+.ct-err:empty{min-height:.65em;}
+.ct-feedback a,.ct-close-link{
+  text-decoration-thickness:1px;
+  text-underline-offset:4px;
+}
+.ct-feedback a:hover,.ct-feedback a:focus-visible,
+.ct-close-link:hover,.ct-close-link:focus-visible {
+  text-decoration:underline;
+}
+
+/* About: keep bio paragraphs and two-column editorial copy on readable
+   measures without shrinking the founders' images or changing their crop. */
+.people-ed .person-body p{max-width:58ch;}
+.people-ed .person-body p+p{margin-top:clamp(12px,1.6vw,20px);}
+@media (min-width:1025px){
+  .ct-grid{gap:clamp(54px,6vw,116px);}
+}
+@media (min-width:761px) and (max-width:1024px){
+  .people-ed .person{gap:clamp(26px,3.5vw,46px);}
+}
+
+/* Phone: form rhythm, footer links and body copy are touch/readability
+   refinements; retain current heading sizes and cinematic hero composition. */
+@media (max-width:760px){
+  .ct-main{padding-top:clamp(32px,8vw,44px);}
+  .ct-fields{row-gap:clamp(16px,4.5vw,24px);}
+  .ct-form{margin-top:24px;}
+  .ct-sub{font-size:14px;max-width:38ch;}
+  .ct-err:not(:empty){margin-top:8px;}
+  .ct-direct{margin-top:clamp(28px,7vw,48px);}
+  .people-ed .person-body p{line-height:1.68;}
+  .work-filters .pills{gap:6px 8px;}
+  .work-filters .pill{min-height:48px;}
+}
+
+/* Layout stability and reduced-motion users should never pay for animations
+   whose content is already readable. Leave the intro video entirely alone. */
+@media (prefers-reduced-motion:reduce) {
+  .wcard.is-swap{animation:none;}
+  .ct-field{animation:none;}
+}

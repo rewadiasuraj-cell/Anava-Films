@@ -4089,3 +4089,24 @@ html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){
   font-family:var(--font-serif)!important;font-style:italic;font-weight:400!important;letter-spacing:-.01em!important;padding-right:.05em}
 .phx-num,.sec-label .sec-num,.pj-num b,.cap-num,.nf-code b{font-family:var(--font-serif)!important;font-weight:400!important;letter-spacing:0!important}
 .pull-quote p{font-family:var(--font-serif)!important;font-style:italic;font-weight:400!important;letter-spacing:-.005em!important}
+
+/* Shine pass: a clearer, narrower highlight that glides across the metal
+   in one direction (~1.3s), then rests before the next pass (3.2s cycle) */
+:root{--metal-shine:linear-gradient(105deg,#8f959d 0%,#b9bec5 30%,#dfe2e6 42%,#ffffff 48%,#dfe2e6 54%,#b9bec5 66%,#8f959d 100%)}
+@keyframes metalShine{0%{background-position:100% 50%}40%{background-position:0% 50%}100%{background-position:0% 50%}}
+.o,.m-split .mw-accent,.hero-cine .hero-cine-title .hl-1 em,.hero-cine-title .hl-2 em,.wh-impact,.phx-title .o{
+  background-image:var(--metal-shine)!important;background-size:320% 100%!important;
+  animation:metalShine 3.2s cubic-bezier(.45,.05,.35,1) infinite}
+.work-hero .wh-title .wh-impact:not(#_){
+  animation:whWord .9s cubic-bezier(.2,.75,.2,1) .7s both,metalShine 3.2s cubic-bezier(.45,.05,.35,1) 1.6s infinite!important}
+html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){
+  animation:hrFade .9s cubic-bezier(.22,1,.36,1) .35s backwards,metalShine 3.2s cubic-bezier(.45,.05,.35,1) 1.25s infinite}
+.btn:not(#_):hover,.btn:not(#_):focus-visible,
+.hero-split.centered .hero-actions .play-btn:not(#_):hover,
+.hero-split.centered .hero-actions .play-btn:not(#_):focus-visible{
+  background:var(--metal-shine);background-size:320% 100%;animation:metalShine 1.8s cubic-bezier(.45,.05,.35,1) infinite}
+@media (prefers-reduced-motion:reduce){
+  .o,.m-split .mw-accent,.hero-cine .hero-cine-title .hl-1 em,.hero-cine-title .hl-2 em,.wh-impact,.phx-title .o,
+  .work-hero .wh-title .wh-impact:not(#_),html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_),
+  .btn:not(#_):hover,.btn:not(#_):focus-visible{animation:none!important;background-position:50% 50%!important}
+}

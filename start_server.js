@@ -48,7 +48,8 @@ const server = http.createServer((req, res) => {
     if (err) {
       if (err.code === 'ENOENT') {
         res.writeHead(404, { 'Content-Type': 'text/html' });
-        res.end('<h1>404 Page Not Found</h1><p><a href="/">Return to Home</a></p>');
+        const nf = path.join(__dirname, '404.html');
+        res.end(fs.existsSync(nf) ? fs.readFileSync(nf) : '<h1>404 Page Not Found</h1><p><a href="/">Return to Home</a></p>');
       } else {
         res.writeHead(500);
         res.end(`Server Error: ${err.code}`);

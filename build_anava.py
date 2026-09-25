@@ -56,6 +56,7 @@ def header(active):
         return f'<li{li}><a href="{href}" class="{cls}">{n}</a></li>'
     links = "".join(nav_li(h, n) for h, n in NAV)
     return f"""
+<a class="skip-link" href="#main-start">Skip to content</a>
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="brand"><img class="brand-word" src="assets/images/anava_official_logo_white.png" alt="ANAVA FILMS"><img class="brand-mark" src="assets/images/anava-mark.png" alt="" aria-hidden="true" width="34" height="29"></a>
@@ -66,6 +67,7 @@ def header(active):
     </div>
   </div>
 </header>
+<span id="main-start" tabindex="-1"></span>
 """
 
 
@@ -1134,7 +1136,7 @@ def page_about():
         <p class="lead">We like to get involved earlier &mdash; sometimes it's a complete brief, sometimes a problem, sometimes a product, and sometimes just a thought.</p>
       </div>
       <div class="hero-media shift-right reveal">
-        <img src="assets/images/about-director-onset.png" alt="Anava Films directing team on set">
+        <img src="assets/images/about-director-onset.jpg" alt="Anava Films directing team on set">
         <div class="hero-script script">Thinkers<br>Who<br>Make</div>
         <div class="hero-tag">Mumbai &middot; Delhi</div>
       </div>
@@ -1212,6 +1214,30 @@ def page_about():
 """ + footer("about.html")
 
 
+def page_404():
+    return HEAD.format(**ASSET_V,
+        title="Page Not Found — ANAVA FILMS",
+        desc="This page doesn't exist on anavafilms.com."
+    ).replace('<meta name="description"', '<meta name="robots" content="noindex">\n<meta name="description"', 1) + header("") + f"""
+<section class="nf">
+  <div class="container">
+    <p class="nf-code"><b>404</b>Page Not Found</p>
+    <h1 class="nf-title">This Scene Didn&rsquo;t Make <span class="o">the Cut.</span></h1>
+    <p class="nf-lead">The link may be old or mistyped. Everything we make is a click away.</p>
+    <div class="nf-actions">
+      <a href="index.html" class="btn btn-primary">Back to Home {BTN_ARR}</a>
+      <a href="work.html" class="btn btn-ghost">See Our Work {BTN_ARR}</a>
+    </div>
+  </div>
+</section>
+""" + footer("")
+
+
+def absolute_paths(markup):
+    """The 404 page is served at any URL depth, so every local path starts at the root."""
+    return re.sub(r'(\s(?:src|href|poster|data-poster|data-src))="(?![a-z]+:|/|#)', r'\1="/', markup)
+
+
 PAGES = {
     "index.html": page_home,
     "work.html": page_work,
@@ -1258,3 +1284,7 @@ if __name__ == "__main__":
         with open(path, "w", encoding="utf-8") as f:
             f.write(social_meta(clean_urls(builder()), fn))
         print("wrote", fn, os.path.getsize(path) // 1024, "KB")
+    path = os.path.join(ROOT, "404.html")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(absolute_paths(clean_urls(page_404())))
+    print("wrote 404.html", os.path.getsize(path) // 1024, "KB")

@@ -86,16 +86,35 @@
   var burger = document.querySelector('.burger');
   var nav = document.querySelector('.nav');
   if (burger && nav) {
+    var closeMenu = function (refocus) {
+      nav.classList.remove('mobile-open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      if (refocus) burger.focus();
+    };
     burger.addEventListener('click', function () {
       var open = nav.classList.toggle('mobile-open');
       burger.classList.toggle('open', open);
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     nav.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') {
-        nav.classList.remove('mobile-open');
-        burger.classList.remove('open');
-      }
+      if (e.target.closest('a')) closeMenu(false);
+    });
+    // While the phone menu is open: Esc closes it, and Tab cycles through the
+    // header (logo, menu links, burger) instead of the page hidden behind it.
+    document.addEventListener('keydown', function (e) {
+      if (!nav.classList.contains('mobile-open')) return;
+      if (e.key === 'Escape') { closeMenu(true); return; }
+      if (e.key !== 'Tab') return;
+      var head = burger.closest('.site-header') || nav.parentNode;
+      var f = Array.prototype.filter.call(head.querySelectorAll('a[href], button'), function (x) {
+        return x.offsetWidth || x.offsetHeight;
+      });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (f.indexOf(document.activeElement) === -1) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     });
   }
 
@@ -103,7 +122,39 @@
   function hydrate(v) {
     if (v.dataset.poster && !v.poster) v.poster = v.dataset.poster;
   }
-  document.querySelectorAll('video[data-poster]').forEach(hydrate);
+  // Work and About cards carry data-poster; each poster loads as its card
+  // comes within ~one screen of view (hidden tabs load when they are shown).
+  if ('IntersectionObserver' in window) {
+    var pObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        hydrate(en.target);
+        pObs.unobserve(en.target);
+      });
+    }, { rootMargin: '600px 0px' });
+    document.querySelectorAll('video[data-poster]').forEach(function (v) { pObs.observe(v); });
+  } else {
+    document.querySelectorAll('video[data-poster]').forEach(hydrate);
+  }
+
+  /* In-view loops (About "Make"): the file loads and plays only while the
+     film is on screen; with reduced motion it stays on its poster. */
+  (function () {
+    var loops = document.querySelectorAll('video[data-inview-src]');
+    if (!loops.length || !('IntersectionObserver' in window)) return;
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (still) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (en.isIntersecting) {
+          if (!v.getAttribute('src')) { v.src = v.dataset.inviewSrc; v.preload = 'auto'; }
+          var p = v.play(); if (p && p.catch) p.catch(function () {});
+        } else if (!v.paused) v.pause();
+      });
+    }, { rootMargin: '200px 0px' });
+    loops.forEach(function (v) { io.observe(v); });
+  })();
 
   /* Video playback is on card click only (via lightbox) — no auto-play on hover or scroll */
   document.querySelectorAll('video').forEach(function (v) {
@@ -540,7 +591,20 @@
     }
     if (e.target.closest('.lightbox-close') || e.target.id === 'lightbox') closeLightbox();
   });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+  document.addEventListener('keydown', function (e) {
+    if (!lb || !lb.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeLightbox(); return; }
+    if (e.key !== 'Tab') return;
+    // modal: Tab and Shift+Tab cycle through the player's own controls
+    var f = Array.prototype.filter.call(lb.querySelectorAll('button, a[href], video[controls], [tabindex]:not([tabindex="-1"])'), function (x) {
+      return x.offsetWidth || x.offsetHeight;
+    });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (!lb.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   /* ---------- Work filters ---------- */
   var grid = document.getElementById('work-grid');
@@ -793,15 +857,19 @@
       if (bad) { bad.focus(); return; }
       var d = new FormData(form);
       var actionUrl = form.getAttribute('action');
+      // The page posts to FormSubmit's AJAX endpoint, which replies in JSON.
+      // The plain endpoint (kept in the markup for no-JS browsers) can answer
+      // with a captcha or activation page that is not a delivered message.
+      var ajaxUrl = actionUrl && actionUrl.replace('://formsubmit.co/', '://formsubmit.co/ajax/').replace('/ajax/ajax/', '/ajax/');
       if (!actionUrl || actionUrl.indexOf('mailto:') === 0) { window.location.href = mailtoHref(d); return; }
       setBusy(true);
-      fetch(actionUrl, { method: 'POST', body: d, headers: { 'Accept': 'application/json' } })
+      fetch(ajaxUrl, { method: 'POST', body: d, headers: { 'Accept': 'application/json' } })
         .then(function (res) {
           if (!res.ok) throw new Error('Submission returned ' + res.status);
           return res.text().then(function (t) {
             var j = null;
-            try { j = JSON.parse(t); } catch (err) { /* an HTML thank-you page is a success too */ }
-            if (j && (j.success === false || j.success === 'false')) throw new Error(j.message || 'Rejected');
+            try { j = JSON.parse(t); } catch (err) { throw new Error('Unexpected reply'); }
+            if (!j || j.success === false || j.success === 'false') throw new Error((j && j.message) || 'Rejected');
           });
         })
         .then(function () {
@@ -1570,6 +1638,12 @@
     });
     window.addEventListener('pagehide', function () {
       stop(); if (ro) ro.disconnect(); if (io) io.disconnect();
+    });
+    // back/forward cache: the page returns frozen, so pick the light back up
+    window.addEventListener('pageshow', function (e) {
+      if (!e.persisted || lost) return;
+      if (ro) ro.observe(cv);
+      if (io) io.observe(host); else start();
     });
   });
 })();

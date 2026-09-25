@@ -59,10 +59,10 @@ def header(active):
 <header class="site-header">
   <div class="header-inner">
     <a href="/" class="brand"><img class="brand-word" src="assets/images/anava_official_logo_white.png" alt="ANAVA FILMS"><img class="brand-mark" src="assets/images/anava-mark.png" alt="" aria-hidden="true" width="34" height="29"></a>
-    <nav class="nav"><ul style="display:contents">{links}</ul></nav>
+    <nav class="nav" id="site-nav" aria-label="Main"><ul style="display:contents">{links}</ul></nav>
     <div class="header-actions" style="display:flex;align-items:center;gap:14px">
       <a href="contact.html" class="btn-talk" aria-label="Let's Talk"><span class="talk-label">Let's Talk</span><span class="circ circ-mark"><img src="assets/images/talk-mark.png" alt="" aria-hidden="true" width="18" height="15"></span></a>
-      <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
@@ -156,7 +156,7 @@ def footer(active):
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Film player">
   <button class="lightbox-close" aria-label="Close">&times;</button>
   <div class="lightbox-inner">
     <div id="lightbox-body"></div>
@@ -267,7 +267,7 @@ def build_work_cards():
             title = c.get("title") or name
             fmt = c.get("format") or sub
             if video:
-                media = (f'<video data-src="{esc(video)}" poster="{esc(poster)}" muted loop '
+                media = (f'<video data-src="{esc(video)}" data-poster="{esc(poster)}" muted loop '
                          f'playsinline preload="none" class="hover-play"></video>')
                 # The project write-up rides on the card; anava.js lays it out
                 # as a case study around the film when the card is opened.
@@ -414,7 +414,7 @@ def page_work():
 <section style="padding-bottom:90px">
   <div class="container">
     <div class="cta-band compact reveal">
-      <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt=""></div>
+      <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt="" loading="lazy" decoding="async"></div>
       <div class="cta-band-inner">
         <div>
           <span class="eyebrow">Have a project in mind?</span>
@@ -438,10 +438,10 @@ def page_work():
 # saver, before anything paints. anava.js plays the right cut (landscape or
 # vertical), then fades it out; Skip, Esc or a stalled video end it early.
 INTRO = """
-<div class="intro" id="intro" aria-hidden="true">
-  <video class="intro-video" muted playsinline preload="auto"
+<div class="intro" id="intro">
+  <video class="intro-video" aria-hidden="true" muted playsinline preload="auto"
          data-land="intro/intro-3.mp4" data-port="intro/intro-3-vertical.mp4"></video>
-  <button class="intro-skip" type="button">Skip</button>
+  <button class="intro-skip" type="button" aria-label="Skip intro">Skip</button>
 </div>
 <script>
 (function () {
@@ -491,7 +491,7 @@ def page_home():
         c = card_for(v)
         rw, rh = (int(n) for n in ratio.split("/"))
         orient = "portrait" if rw < rh else "landscape"
-        load = 'loading="eager" fetchpriority="high"' if i == 0 else 'loading="lazy"'
+        load = 'loading="lazy"'   # below the fold: never compete with the hero image
         plain = re.sub(r"&times;", "x", title)
         return f"""
         <a class="ww-item" href="work" style="--r:{ratio}" data-orient="{orient}" data-i="{i}"
@@ -838,7 +838,7 @@ def page_process():
 <section style="padding-bottom:90px">
   <div class="container">
     <div class="cta-band warm reveal">
-      <div class="cta-band-bg"><img src="assets/images/hero_dark.jpg" alt=""></div>
+      <div class="cta-band-bg"><img src="assets/images/hero_dark.jpg" alt="" loading="lazy" decoding="async"></div>
       <div class="cta-band-inner">
         <div>
           <span class="eyebrow">The Result</span>
@@ -892,7 +892,7 @@ def wwd_sections():
     def cap_items(items):
         out = ""
         for t, d, v, p in items:
-            media = (f'<video data-src="{esc(v)}" poster="{esc(p)}" muted loop playsinline preload="none" class="hover-play"></video>'
+            media = (f'<video data-src="{esc(v)}" data-poster="{esc(p)}" muted loop playsinline preload="none" class="hover-play"></video>'
                      if v else f'<img src="{esc(p)}" alt="{t}" loading="lazy">')
             attrs = f'data-lightbox="{esc(v)}" data-caption="{t}"' if v else ""
             out += f"""
@@ -935,7 +935,7 @@ def wwd_sections():
           <h3 class="wwd-title">Then We <span class="o">Make It Real.</span></h3>
           <p class="lead">From pre-production to the final shot, we bring together the right people, technology and craft to turn ideas into powerful visual experiences.</p>
           <figure class="cap-visual">
-            <video src="assets/media/what-we-do/MAKE.mp4" poster="assets/images/posters/make.jpg" autoplay muted loop playsinline preload="metadata"></video>
+            <video data-inview-src="assets/media/what-we-do/MAKE.mp4" poster="assets/images/posters/make.jpg" muted loop playsinline preload="none"></video>
             <figcaption class="cap-side">People<br>Equipment<br>Locations<br>Stories</figcaption>
           </figure>
           <div class="cap-list">{cap_items(make)}
@@ -946,7 +946,7 @@ def wwd_sections():
           <h3 class="wwd-title">The Shoot Ends.<br>The Story <span class="o">Doesn't.</span></h3>
           <p class="lead">Post is where everything comes together. We refine, enhance and elevate the film so it not only looks great, but feels right.</p>
           <div class="phil-media cap-visual" data-lightbox="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-caption="From cut to craft">
-            <video data-src="assets/media/behind-the-scenes/BTS Colour Grading.mp4" poster="assets/images/posters/bts-colour-grading.jpg" muted loop playsinline preload="none" class="hover-play"></video>
+            <video data-src="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-poster="assets/images/posters/bts-colour-grading.jpg" muted loop playsinline preload="none" class="hover-play"></video>
             <div class="phil-side">From Cut<br>To Craft</div>
           </div>
           <div class="cap-list">{cap_items(finish)}
@@ -1194,7 +1194,7 @@ def page_about():
 <section class="section" style="padding-top:0">
   <div class="container">
     <div class="cta-band compact reveal">
-      <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt=""></div>
+      <div class="cta-band-bg"><img src="assets/images/hero_studio_bg.jpg" alt="" loading="lazy" decoding="async"></div>
       <div class="cta-band-inner">
         <div>
           <span class="eyebrow">Let's create together</span>
@@ -1231,9 +1231,30 @@ def clean_urls(markup):
     return markup
 
 
+SITE = "https://anavafilms.com"
+SHARE_IMAGE = SITE + "/assets/images/home-hero-stage.jpg"
+
+
+def social_meta(markup, fn):
+    """Canonical URL plus Open Graph / Twitter tags, from the page's own title and description."""
+    title = re.search(r"<title>(.*?)</title>", markup, re.S).group(1)
+    desc = re.search(r'<meta name="description" content="(.*?)">', markup, re.S).group(1)
+    url = SITE + ("/" if fn == "index.html" else "/" + fn[:-5])
+    tags = (f'\n<link rel="canonical" href="{url}">'
+            f'\n<meta property="og:type" content="website">'
+            f'\n<meta property="og:site_name" content="Anava Films">'
+            f'\n<meta property="og:title" content="{title}">'
+            f'\n<meta property="og:description" content="{desc}">'
+            f'\n<meta property="og:url" content="{url}">'
+            f'\n<meta property="og:image" content="{SHARE_IMAGE}">'
+            f'\n<meta name="twitter:card" content="summary_large_image">')
+    anchor = f'<meta name="description" content="{desc}">'
+    return markup.replace(anchor, anchor + tags, 1)
+
+
 if __name__ == "__main__":
     for fn, builder in PAGES.items():
         path = os.path.join(ROOT, fn)
         with open(path, "w", encoding="utf-8") as f:
-            f.write(clean_urls(builder()))
+            f.write(social_meta(clean_urls(builder()), fn))
         print("wrote", fn, os.path.getsize(path) // 1024, "KB")

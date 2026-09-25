@@ -44,3 +44,5 @@ jobs:
                       raise SystemExit(f"{page}.html missing {marker}")
           print("Build validation passed: all five pages and deployment files present.")
           PY
+      - name: Audit local assets and page semantics
+        run: python3 scripts/audit_site.py

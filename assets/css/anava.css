@@ -4461,3 +4461,40 @@ html,body{background:#000}
 
 /* Film cards opened from the keyboard get the same focus ring as the reel */
 [data-lightbox][role="button"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ==========================================================================
+   Accessibility pass: contrast (WCAG 1.4.3) and skip link (2.4.1)
+   ========================================================================== */
+/* footer copyright line: #6f6f6f was 4.2:1 on black */
+.footer-bottom{color:#8c8c8c}
+/* Process stage navigator: resting numbers were 3.7:1 */
+.pj-nav button{color:rgba(255,255,255,.62)}
+/* Contact "Optional" tags were 4.4:1 */
+.ct-field .opt{color:rgba(255,255,255,.6)}
+/* Process hero "Watch Our Process": white on the orange fill was 3.5:1, so it
+   joins the outlined pill used by every other CTA (white on black) */
+.hero-split.centered .hero-actions .play-btn:not(#_){
+  background:transparent;border:1px solid var(--accent);color:#fff;
+  transition:background-color .28s ease,color .28s ease
+}
+.hero-split.centered .hero-actions .play-btn:not(#_) svg{color:var(--accent);transition:color .28s ease}
+.hero-split.centered .hero-actions .play-btn:not(#_):hover,
+.hero-split.centered .hero-actions .play-btn:not(#_):focus-visible{background:var(--accent);color:#fff}
+.hero-split.centered .hero-actions .play-btn:not(#_):hover svg,
+.hero-split.centered .hero-actions .play-btn:not(#_):focus-visible svg{color:#fff}
+
+/* Skip link: off screen until a keyboard user tabs to it */
+.skip-link{position:fixed;left:16px;top:16px;z-index:10001;transform:translateY(-200%);
+  padding:12px 20px;border:1px solid var(--accent);border-radius:999px;background:#000;color:#fff;
+  font-family:var(--font-body);font-size:14px;font-weight:500;text-decoration:none;transition:transform .2s ease}
+.skip-link:focus,.skip-link:focus-visible{transform:none;outline:2px solid #fff;outline-offset:3px}
+#main-start{display:block;height:0;overflow:hidden;outline:none}
+
+/* 404 page */
+.nf{min-height:calc(100svh - 120px);display:flex;align-items:center;padding-block:160px 96px}
+.nf-code{margin:0 0 20px;font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.nf-code b{color:var(--accent);font-weight:500;margin-right:14px}
+.nf-title{margin:0;font-family:var(--font-body);font-weight:500;letter-spacing:-.04em;line-height:1;text-transform:none;font-size:clamp(40px,6vw,88px);max-width:14ch}
+.nf-lead{margin:24px 0 0;max-width:34em;font-size:clamp(16px,1vw,18px);line-height:1.6;color:rgba(255,255,255,.74)}
+.nf-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+@media (max-width:760px){.nf{padding-block:120px 72px}}

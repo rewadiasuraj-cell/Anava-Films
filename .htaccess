@@ -2,6 +2,9 @@
 
 RewriteEngine On
 
+# Custom not-found page (served at any URL depth; its asset paths are absolute)
+ErrorDocument 404 /404.html
+
 # Testimonials page retired — send any old links/bookmarks to Home
 RewriteRule ^testimonials(\.html)?/?$ / [R=301,L]
 

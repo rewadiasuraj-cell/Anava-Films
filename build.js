@@ -37,6 +37,7 @@ const filesToCopy = [
   'process.html',
   'testimonials.html',
   'contact.html',
+  '404.html',
   '.htaccess',
   'robots.txt',
   'sitemap.xml',

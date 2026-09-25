@@ -4458,3 +4458,6 @@ html,body{background:#000}
 .m-grain,.m-deco .m-glow,.m-deco .m-grid,
 .wh-glow,.wh-grid{display:none}
 .approach::before,.pj-pin::before,.work-hero::before{content:none!important}
+
+/* Film cards opened from the keyboard get the same focus ring as the reel */
+[data-lightbox][role="button"]:focus-visible{outline:2px solid var(--accent);outline-offset:3px}

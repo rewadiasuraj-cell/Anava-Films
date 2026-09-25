@@ -572,6 +572,23 @@
   }
   window.anavaOpenLightbox = openLightbox;
 
+  // Film cards that are plain elements (Work grid, About services) open from
+  // the keyboard too: each becomes a named button reached by Tab, and Enter
+  // or Space opens it exactly as a click does.
+  Array.prototype.forEach.call(document.querySelectorAll('[data-lightbox]'), function (el) {
+    if (el.matches('a[href], button, input, select, textarea, [tabindex]')) return;
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    var cap = el.getAttribute('data-caption');
+    var what = el.getAttribute('data-lightbox-type') === 'image' ? ', open photo' : ', play film';
+    if (cap && !el.getAttribute('aria-label')) el.setAttribute('aria-label', cap + what);
+    el.addEventListener('keydown', function (e) {
+      if (e.target !== el || (e.key !== 'Enter' && e.key !== ' ')) return;
+      e.preventDefault();
+      el.click();
+    });
+  });
+
   document.addEventListener('click', function (e) {
     var trigger = e.target.closest('[data-lightbox]');
     if (trigger) {

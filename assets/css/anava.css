@@ -3946,7 +3946,7 @@ html.hero-go .hero-cine .hl-1 em{
 
 /* orange emphasis: flat accent, no gradient fill or shimmer */
 .o,.m-split .mw-accent,.hero-cine .hero-cine-title .hl-1 em,.hero-cine-title .hl-2 em,.wh-impact{
-  background:none!important;-webkit-background-clip:border-box;background-clip:border-box;
+  background-image:none;-webkit-background-clip:border-box;background-clip:border-box;
   -webkit-text-fill-color:var(--accent);color:var(--accent)
 }
 
@@ -4047,10 +4047,34 @@ html,body{background:#000}
    buttons and pills take near-black text on the metal.
    ========================================================================== */
 .o,.m-split .mw-accent,.hero-cine .hero-cine-title .hl-1 em,.hero-cine-title .hl-2 em,.wh-impact,.phx-title .o{
-  background:var(--metal-grad)!important;background-size:100% 100%!important;
+  background-image:var(--metal-grad)!important;
   -webkit-background-clip:text!important;background-clip:text!important;
   -webkit-text-fill-color:transparent!important;color:#d7dade}
 .btn:not(#_):hover,.btn:not(#_):focus-visible,
 .hero-split.centered .hero-actions .play-btn:not(#_):hover,
 .hero-split.centered .hero-actions .play-btn:not(#_):focus-visible{background:var(--metal-grad);border-color:#dfe2e6;color:#0b0b0c}
 .hero-split.centered .hero-actions .play-btn:not(#_):hover svg{color:#0b0b0c}
+
+/* Moving reflection: a soft highlight band sweeps slowly across the
+   metallic words and the metal button fill, like light across brushed steel */
+:root{--metal-sheen:linear-gradient(105deg,#8f959d 0%,#c3c7cd 22%,#e9ebee 38%,#ffffff 46%,#e9ebee 54%,#c3c7cd 70%,#8f959d 100%)}
+@keyframes metalSheen{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+.o,.m-split .mw-accent,.hero-cine .hero-cine-title .hl-1 em,.hero-cine-title .hl-2 em,.wh-impact,.phx-title .o{
+  background-image:var(--metal-sheen)!important;background-size:260% 100%!important;background-repeat:no-repeat!important;
+  animation:metalSheen 5.5s ease-in-out infinite alternate}
+.btn:not(#_):hover,.btn:not(#_):focus-visible,
+.hero-split.centered .hero-actions .play-btn:not(#_):hover,
+.hero-split.centered .hero-actions .play-btn:not(#_):focus-visible{
+  background:var(--metal-sheen);background-size:260% 100%;animation:metalSheen 2.4s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){
+  .o,.m-split .mw-accent,.hero-cine .hero-cine-title .hl-1 em,.hero-cine-title .hl-2 em,.wh-impact,.phx-title .o,
+  .btn:not(#_):hover,.btn:not(#_):focus-visible{animation:none!important;background-position:50% 50%!important}
+}
+/* the two entrance animations keep their reveal and hand over to the sheen */
+.work-hero .wh-title .wh-impact:not(#_){
+  animation:whWord .9s cubic-bezier(.2,.75,.2,1) .7s both,metalSheen 5.5s ease-in-out 1.6s infinite alternate!important}
+html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){
+  animation:hrFade .9s cubic-bezier(.22,1,.36,1) .35s backwards,metalSheen 5.5s ease-in-out 1.25s infinite alternate}
+@media (prefers-reduced-motion:reduce){
+  .work-hero .wh-title .wh-impact:not(#_),html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){animation:none!important}
+}

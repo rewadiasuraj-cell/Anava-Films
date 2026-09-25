@@ -445,7 +445,7 @@ def page_work():
 INTRO = """
 <div class="intro" id="intro">
   <video class="intro-video" aria-hidden="true" playsinline preload="auto"
-         data-land="intro/intro-4.mp4" data-port="intro/intro-4-portrait.mp4"></video>
+         data-land="intro/intro-4.mp4?v=2" data-port="intro/intro-4-portrait.mp4?v=2"></video>
   <div class="intro-ctrl">
     <button class="intro-skip" type="button" aria-label="Skip intro">Skip</button>
     <button class="intro-sound" type="button" aria-pressed="false" hidden>Tap for sound</button>

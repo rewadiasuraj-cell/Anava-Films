@@ -448,7 +448,10 @@ INTRO = """
 <script>
 (function () {
   var el = document.getElementById('intro'), seen = false;
-  try { seen = sessionStorage.getItem('anavaIntro') === '1'; } catch (e) {}
+  try {
+    seen = sessionStorage.getItem('anavaIntro') === '1';
+    if (sessionStorage.getItem('anavaIntroReplay') === '1') { seen = false; sessionStorage.removeItem('anavaIntroReplay'); }
+  } catch (e) {}
   var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var saver = navigator.connection && navigator.connection.saveData;
   if (seen || calm || saver) { el.parentNode.removeChild(el); return; }
@@ -945,7 +948,7 @@ def wwd_sections():
         </article>
         <article class="cap" data-cap="2">
           <span class="cap-num">03</span>
-          <h3 class="wwd-title">The Shoot Ends.<br>The Story <span class="o">Doesn't.</span></h3>
+          <h3 class="wwd-title">The Shoot Ends.<br class="br-mobile"> The Story <span class="o">Doesn't.</span></h3>
           <p class="lead">Post is where everything comes together. We refine, enhance and elevate the film so it not only looks great, but feels right.</p>
           <div class="phil-media cap-visual" data-lightbox="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-caption="From cut to craft">
             <video data-src="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-poster="assets/images/posters/bts-colour-grading.jpg" muted loop playsinline preload="none" class="hover-play"></video>

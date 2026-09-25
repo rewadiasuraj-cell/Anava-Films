@@ -338,6 +338,30 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   })();
 
+  /* ---------- Logo: back to Home with the intro film ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.site-header .brand'), function (a) {
+    a.addEventListener('click', function () {
+      try { sessionStorage.setItem('anavaIntroReplay', '1'); } catch (e) {}
+    });
+  });
+
+  /* ---------- Silver shine: runs only on screen ----------
+     The sheen is an endless background animation; the headings carrying it
+     get .sheen-off while they are out of view, which pauses it. */
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var hosts = [];
+    Array.prototype.forEach.call(document.querySelectorAll('.o, .hero-cine-title em, .wh-impact, .act-word, .act-title'), function (el) {
+      var h = el.closest('h1, h2, h3, .acts-words, p') || el;
+      if (hosts.indexOf(h) === -1) hosts.push(h);
+    });
+    if (!hosts.length) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { en.target.classList.toggle('sheen-off', !en.isIntersecting); });
+    }, { rootMargin: '120px 0px' });
+    hosts.forEach(function (h) { io.observe(h); });
+  })();
+
   /* ---------- Work hero stage: TVCs in turn, 5s thumbnail then muted play ---------- */
   (function () {
     var stage = document.querySelector('.wh-stage');

@@ -8,6 +8,7 @@
   var intro = document.getElementById('intro');
   if (intro) {
     var iv = intro.querySelector('video');
+    var soundBtn = intro.querySelector('.intro-sound');
     var ended = false;
     var endIntro = function () {
       if (ended) return;
@@ -15,6 +16,13 @@
       try { sessionStorage.setItem('anavaIntro', '1'); } catch (e) {}
       intro.classList.add('is-done');
       document.documentElement.classList.remove('intro-on');
+      // Let the sound fall away with the fade instead of cutting off
+      var v0 = iv.volume, t0 = Date.now();
+      var dip = setInterval(function () {
+        var k = Math.min(1, (Date.now() - t0) / 700);
+        try { iv.volume = v0 * (1 - k); } catch (e) {}
+        if (k >= 1) { clearInterval(dip); iv.pause(); }
+      }, 40);
       setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); }, 1000);
     };
     var tall = window.innerHeight > window.innerWidth;
@@ -25,10 +33,33 @@
     });
     iv.addEventListener('ended', endIntro);
     iv.addEventListener('error', endIntro);
-    intro.querySelector('.intro-skip').addEventListener('click', endIntro);
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') endIntro(); });
+    intro.querySelector('.intro-skip').addEventListener('click', function (e) { e.stopPropagation(); endIntro(); });
+    // Sound: browsers only allow audible autoplay after the visitor has
+    // interacted with the site, so try with sound first; if that is refused,
+    // play muted and turn the sound on at the first tap, click or key.
+    var unmute = function () {
+      if (ended || !iv.muted) return;
+      iv.muted = false;
+      soundBtn.hidden = true;
+      soundBtn.setAttribute('aria-pressed', 'true');
+      var p = iv.play();
+      if (p && p.catch) p.catch(function () {});
+    };
+    intro.addEventListener('click', unmute);
+    intro.addEventListener('touchend', unmute, { passive: true });
+    soundBtn.addEventListener('click', function (e) { e.stopPropagation(); unmute(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') endIntro(); else unmute();
+    });
+    iv.muted = false;
     var pr = iv.play();
-    if (pr && pr.catch) pr.catch(endIntro);
+    if (pr && pr.catch) pr.catch(function () {
+      if (ended) return;
+      iv.muted = true;
+      soundBtn.hidden = false;
+      var pm = iv.play();
+      if (pm && pm.catch) pm.catch(endIntro);
+    });
     // Never hold the site hostage: a slow network or a blocked autoplay lets go
     setTimeout(function () { if (!ended && iv.currentTime < 0.2) endIntro(); }, 3500);
     setTimeout(endIntro, 15000);   // the film runs 12.5s

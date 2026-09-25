@@ -438,13 +438,18 @@ def page_work():
 # browser session. The overlay ships visible so the site never flashes before
 # it; the inline script drops it straight away for a repeat view, a
 # reduced-motion visitor, or a data saver, before anything paints. anava.js
-# plays the right cut (1080p landscape, or the lighter 720p file on portrait
-# screens), then fades it out; Skip, Esc or a stalled video end it early.
+# plays the right cut (1080p landscape, or a native 3:4 centre cut that fills
+# portrait screens) with sound where the browser allows it, otherwise muted
+# with a "Tap for sound" button; then it fades out. Skip, Esc or a stalled
+# video end it early.
 INTRO = """
 <div class="intro" id="intro">
-  <video class="intro-video" aria-hidden="true" muted playsinline preload="auto"
-         data-land="intro/intro-4.mp4" data-port="intro/intro-4-720.mp4"></video>
-  <button class="intro-skip" type="button" aria-label="Skip intro">Skip</button>
+  <video class="intro-video" aria-hidden="true" playsinline preload="auto"
+         data-land="intro/intro-4.mp4" data-port="intro/intro-4-portrait.mp4"></video>
+  <div class="intro-ctrl">
+    <button class="intro-skip" type="button" aria-label="Skip intro">Skip</button>
+    <button class="intro-sound" type="button" aria-pressed="false" hidden>Tap for sound</button>
+  </div>
 </div>
 <script>
 (function () {

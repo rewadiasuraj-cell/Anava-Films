@@ -4150,12 +4150,22 @@ html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){
   -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4)}
 .wh-stage:hover .wh-film-play:not(#_),.wh-film:hover .wh-film-play:not(#_){background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.6)}
 
-/* Intro film (intro-4): a 16:9 motion-type piece on a black ground whose
-   type runs right to the frame edges, so portrait screens show the whole
-   frame (contain, never a crop); the letterbox blends into the film's own
-   black. The film has a "sound on / off" graphic baked into its lower right
-   corner, so Skip moves to the lower left, clear of it. */
+/* Intro film (intro-4): 16:9 on landscape screens; portrait screens load a
+   native 3:4 centre cut and fill the whole screen with it (cover), trimming
+   the sides on phones. The controls sit lower left, clear of the "sound
+   on / off" graphic baked into the film's lower right corner: Skip, and a
+   "Tap for sound" pill shown only when the browser made the film start
+   muted. */
 @media (orientation:portrait){
-  .intro-video{object-fit:contain;object-position:50% 50%;transform:none}
+  .intro-video{object-fit:cover;object-position:50% 50%;transform:none}
 }
-.intro-skip{right:auto;left:24px;bottom:max(24px,env(safe-area-inset-bottom))}
+.intro-ctrl{position:absolute;left:24px;bottom:max(24px,env(safe-area-inset-bottom));z-index:2;display:flex;gap:10px;align-items:center}
+.intro-ctrl .intro-skip{position:static;right:auto;left:auto;bottom:auto}
+.intro-sound{
+  cursor:pointer;padding:9px 18px;border-radius:999px;font:600 .72rem/1 var(--font-body);
+  letter-spacing:.18em;text-transform:uppercase;color:#0b0b0c;border:0;
+  background:linear-gradient(105deg,#9aa0a8 0%,#d7dade 30%,#fff 48%,#dfe2e6 62%,#aeb3ba 100%);
+  box-shadow:0 8px 22px rgba(0,0,0,.45);
+  opacity:0;animation:introSkip .5s ease .6s forwards;
+}
+.intro-sound[hidden]{display:none}

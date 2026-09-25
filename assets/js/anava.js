@@ -849,6 +849,14 @@
 
     // A switch is quick: the new set fades up a few px in a short stagger
     function settle() {
+      // Deep in a long list, return to the new set even when the visitor
+      // prefers reduced motion. Previously the early return skipped this UX
+      // correction entirely for reduced-motion users.
+      var list = grid.closest('.work-list');
+      var hh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 78;
+      if (list && list.getBoundingClientRect().top < -40) {
+        window.scrollTo(0, list.getBoundingClientRect().top + window.scrollY - hh);
+      }
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       var n = 0;
       cards.forEach(function (c) {
@@ -858,10 +866,6 @@
         c.style.setProperty('--sd', Math.min(n++, 8) * 35 + 'ms');
         c.classList.add('is-swap');
       });
-      // deep in a long list, return to the top of the new set
-      var list = grid.closest('.work-list');
-      var hh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 78;
-      if (list && list.getBoundingClientRect().top < -40) window.scrollTo(0, list.getBoundingClientRect().top + window.scrollY - hh);
     }
 
     document.querySelectorAll('.pill-drop > .pill').forEach(function (btn) {

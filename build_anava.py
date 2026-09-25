@@ -607,7 +607,7 @@ def page_home():
   </picture>
   <div class="container phx-inner">
     <div class="phx-copy">
-      <p class="phx-eyebrow phx-in"><span class="phx-num">01</span><span class="phx-rule" aria-hidden="true"></span><span class="phx-name">Our Philosophy</span></p>
+      <p class="phx-eyebrow phx-in"><span class="phx-num">01</span><span class="phx-name">Our Philosophy</span></p>
       <h2 class="phx-title phx-in" id="phx-title">Thinkers<br class="phx-br"> Who <span class="o">Make.</span></h2>
       <p class="phx-lead phx-in">Anava Films sits somewhere between an agency and a production house. We believe great ideas shouldn&rsquo;t get lost between the people who think them and the people who make them.</p>
       <a href="about.html" class="btn btn-ghost phx-cta phx-in">About Anava {BTN_ARR}</a>

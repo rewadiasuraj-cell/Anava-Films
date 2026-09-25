@@ -434,15 +434,16 @@ def page_work():
 """ + footer("work.html")
 
 
-# Clapperboard intro, home page only, once per browser session. The overlay
-# ships visible so the site never flashes before it; the inline script drops
-# it straight away for a repeat view, a reduced-motion visitor, or a data
-# saver, before anything paints. anava.js plays the right cut (landscape or
-# vertical), then fades it out; Skip, Esc or a stalled video end it early.
+# Brand intro film ("From thought to final frame"), home page only, once per
+# browser session. The overlay ships visible so the site never flashes before
+# it; the inline script drops it straight away for a repeat view, a
+# reduced-motion visitor, or a data saver, before anything paints. anava.js
+# plays the right cut (1080p landscape, or the lighter 720p file on portrait
+# screens), then fades it out; Skip, Esc or a stalled video end it early.
 INTRO = """
 <div class="intro" id="intro">
   <video class="intro-video" aria-hidden="true" muted playsinline preload="auto"
-         data-land="intro/intro-3.mp4" data-port="intro/intro-3-vertical.mp4"></video>
+         data-land="intro/intro-4.mp4" data-port="intro/intro-4-720.mp4"></video>
   <button class="intro-skip" type="button" aria-label="Skip intro">Skip</button>
 </div>
 <script>

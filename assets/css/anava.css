@@ -174,7 +174,7 @@ p{margin:0}
 
 /* place-items is grid-only, so the flex column needs justify-content to centre */
 .burger{
-  display:none;width:40px;height:40px;padding:0;
+  display:none;width:44px;height:44px;min-width:44px;padding:0;
   border:1px solid rgba(255,255,255,.2);border-radius:999px;
   background:rgba(255,255,255,.08);cursor:pointer;
   flex-direction:column;align-items:center;justify-content:center;gap:5px;
@@ -4267,3 +4267,19 @@ html.pt-in::after{animation:ptIn .6s cubic-bezier(.76,0,.24,1) .08s both}
 html.pt-out::after{animation:ptOut .38s cubic-bezier(.76,0,.24,1) both}
 @keyframes ptIn{from{transform:translateY(0)}to{transform:translateY(-101%)}}
 @keyframes ptOut{from{transform:translateY(101%)}to{transform:translateY(0)}}
+
+/* Interaction QA: clear keyboard focus and touch targets on primary navigation.
+   These adjust usability without changing approved typography or section layout. */
+.burger:focus-visible,
+.work-filters .pill:focus-visible,
+.work-filters .sub-pill:focus-visible,
+.nav.mobile-open a:focus-visible {
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+}
+@media (max-width:900px) {
+  .work-filters .pill { min-height:44px; }
+}
+@media (max-width:760px) {
+  .nav.mobile-open a { min-height:44px; }
+}

@@ -1249,9 +1249,15 @@
     if (url.pathname === location.pathname && url.hash) return;
     e.preventDefault();
     html.classList.add('m-leave');
-    setTimeout(function () { location.href = url.href; }, reduce ? 0 : 170);
+    // The gold wipe (anava.css): pt-out covers this page, and the flag makes
+    // the next page open with pt-in, which uncovers it
+    if (!reduce) {
+      try { sessionStorage.setItem('anavaPT', '1'); } catch (err) {}
+      html.classList.add('pt-out');
+    }
+    setTimeout(function () { location.href = url.href; }, reduce ? 0 : 380);
   });
-  window.addEventListener('pageshow', function () { html.classList.remove('m-leave'); });
+  window.addEventListener('pageshow', function () { html.classList.remove('m-leave', 'pt-out'); });
 
   /* grain over everything (static, very faint) */
   var g = document.createElement('div'); g.className = 'm-grain'; g.setAttribute('aria-hidden', 'true');

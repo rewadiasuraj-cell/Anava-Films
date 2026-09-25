@@ -14,7 +14,8 @@ def asset_version(rel):
         return hashlib.sha1(f.read()).hexdigest()[:10]
 
 ASSET_V = {"css_v": asset_version("assets/css/anava.css"),
-           "js_v": asset_version("assets/js/anava.js")}
+           "js_v": asset_version("assets/js/anava.js"),
+           "mo_v": asset_version("assets/js/anava-motion.js")}
 
 HEAD = """<!DOCTYPE html>
 <html lang="en">
@@ -28,8 +29,12 @@ HEAD = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/anava.css?v={css_v}">
-<script>document.documentElement.classList.add('m-js')</script>
+<script>document.documentElement.classList.add('m-js');try{{if(sessionStorage.getItem('anavaPT')){{sessionStorage.removeItem('anavaPT');document.documentElement.classList.add('pt-in')}}}}catch(e){{}}</script>
 <script defer src="assets/js/anava.js?v={js_v}"></script>
+<script defer src="assets/js/vendor/gsap.min.js?v=3.12.5"></script>
+<script defer src="assets/js/vendor/ScrollTrigger.min.js?v=3.12.5"></script>
+<script defer src="assets/js/vendor/lenis.min.js?v=1.1.13"></script>
+<script defer src="assets/js/anava-motion.js?v={mo_v}"></script>
 </head>
 <body>
 """

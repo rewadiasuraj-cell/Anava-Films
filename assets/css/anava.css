@@ -4149,3 +4149,13 @@ html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){
   background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.38);color:#fff;box-shadow:none;
   -webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4)}
 .wh-stage:hover .wh-film-play:not(#_),.wh-film:hover .wh-film-play:not(#_){background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.6)}
+
+/* Intro film (intro-4): a 16:9 motion-type piece on a black ground whose
+   type runs right to the frame edges, so portrait screens show the whole
+   frame (contain, never a crop); the letterbox blends into the film's own
+   black. The film has a "sound on / off" graphic baked into its lower right
+   corner, so Skip moves to the lower left, clear of it. */
+@media (orientation:portrait){
+  .intro-video{object-fit:contain;object-position:50% 50%;transform:none}
+}
+.intro-skip{right:auto;left:24px;bottom:max(24px,env(safe-area-inset-bottom))}

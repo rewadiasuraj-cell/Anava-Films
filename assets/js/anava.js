@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  /* ---------- Home intro (clapperboard ident) ----------
+  /* ---------- Home intro (brand film) ----------
      The overlay and the once-per-session check live inline in index.html;
      here it plays the cut that suits the screen and then fades away. */
   var intro = document.getElementById('intro');
@@ -31,7 +31,7 @@
     if (pr && pr.catch) pr.catch(endIntro);
     // Never hold the site hostage: a slow network or a blocked autoplay lets go
     setTimeout(function () { if (!ended && iv.currentTime < 0.2) endIntro(); }, 3500);
-    setTimeout(endIntro, 11000);
+    setTimeout(endIntro, 15000);   // the film runs 12.5s
   }
 
   /* ---------- Header ---------- */

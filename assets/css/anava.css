@@ -4283,3 +4283,36 @@ html.pt-out::after{animation:ptOut .38s cubic-bezier(.76,0,.24,1) both}
 @media (max-width:760px) {
   .nav.mobile-open a { min-height:44px; }
 }
+
+/* Work filter discovery: on phones, display every primary category in a
+   deliberate 3 x 2 grid instead of hiding categories beyond a swipe.
+   Tablets retain the existing single-row navigation. */
+@media (max-width:760px) {
+  .work-filters .filter-bar { margin-bottom:18px; }
+  .work-filters .pills {
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:4px 8px;
+    margin:0;
+    padding:0;
+    width:100%;
+    overflow:visible;
+    scroll-padding:0;
+    align-items:stretch;
+  }
+  .work-filters .pill-drop { min-width:0; }
+  .work-filters .pill {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    height:100%;
+    min-height:48px;
+    padding:10px 3px;
+    white-space:normal;
+    line-height:1.25;
+    text-align:center;
+    font-size:clamp(.68rem,2.9vw,.86rem);
+  }
+  .work-filters .pill-drop > .pill { justify-content:center; }
+}

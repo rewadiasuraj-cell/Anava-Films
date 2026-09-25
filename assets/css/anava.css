@@ -4078,3 +4078,14 @@ html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){
 @media (prefers-reduced-motion:reduce){
   .work-hero .wh-title .wh-impact:not(#_),html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){animation:none!important}
 }
+
+/* ==========================================================================
+   DM Serif Display as the accent face: the silver emphasis word in each
+   heading (italic), section numbers, and the About pull quote. Everything
+   else stays Inter.
+   ========================================================================== */
+:root{--font-serif:'DM Serif Display',Georgia,'Times New Roman',serif}
+.o,.m-split .mw-accent,.hero-cine .hero-cine-title .hl-1 em,.hero-cine-title .hl-2 em,.wh-impact,.phx-title .o{
+  font-family:var(--font-serif)!important;font-style:italic;font-weight:400!important;letter-spacing:-.01em!important;padding-right:.05em}
+.phx-num,.sec-label .sec-num,.pj-num b,.cap-num,.nf-code b{font-family:var(--font-serif)!important;font-weight:400!important;letter-spacing:0!important}
+.pull-quote p{font-family:var(--font-serif)!important;font-style:italic;font-weight:400!important;letter-spacing:-.005em!important}

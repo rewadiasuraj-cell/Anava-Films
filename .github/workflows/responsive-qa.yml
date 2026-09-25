@@ -87,6 +87,17 @@ jobs:
                   });
                   console.log(JSON.stringify({test:'visual diagnostics',device:device.name,route,visual}));
                   if(route==='/contact' && !metrics.contactForm) issues++;
+                  if(route==='/about' && device.name==='iPhone 15') {
+                    const spacing=await page.evaluate(()=>{
+                      const el=sel=>{const e=document.querySelector(sel);if(!e)return null;const r=e.getBoundingClientRect();return {top:Math.round(r.top),bottom:Math.round(r.bottom),height:Math.round(r.height),opacity:getComputedStyle(e).opacity};};
+                      return {hero:el('.hero-split'),heroMedia:el('.hero-media'),nextSection:el('.hero-split + .section-sm'),nextCopy:el('.hero-split + .section-sm .reveal')};
+                    });
+                    console.log(JSON.stringify({test:'about phone vertical rhythm',spacing}));
+                    await page.locator('.hero-split + .section-sm').scrollIntoViewIfNeeded();
+                    await page.waitForTimeout(900);
+                    await page.screenshot({path:'qa-iPhone-15-about-belowfold.png'});
+                    await page.evaluate(()=>scrollTo(0,0));
+                  }
                   if(route==='/work' && device.name==='iPhone 15') {
                     const tabs = await page.locator('.work-filters .pills > .pill, .work-filters .pills > .pill-drop > .pill').evaluateAll(els => els.map(el => {
                       const r = el.getBoundingClientRect();

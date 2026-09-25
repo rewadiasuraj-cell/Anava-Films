@@ -23,7 +23,8 @@ def local_path(raw, from_file):
     if url.scheme or url.netloc:
         return None
     clean = unquote(url.path)
-    if not clean:
+    # CSS data-SVG fragment references may be percent encoded (url(%23n)).
+    if not clean or clean.startswith("#"):
         return None
     if clean == "/":
         return ROOT / "index.html"

@@ -61,8 +61,8 @@
       if (pm && pm.catch) pm.catch(endIntro);
     });
     // Never hold the site hostage: a slow network or a blocked autoplay lets go
-    setTimeout(function () { if (!ended && iv.currentTime < 0.2) endIntro(); }, 3500);
-    setTimeout(endIntro, 15000);   // the film runs 12.5s
+    setTimeout(function () { if (!ended && iv.currentTime < 0.2) endIntro(); }, 6000);
+    setTimeout(endIntro, 18000);   // the film runs 12.5s, after up to 6s to start
   }
 
   /* ---------- Header ---------- */
@@ -373,8 +373,26 @@
 
   /* ---------- Logo: back to Home with the intro film ---------- */
   Array.prototype.forEach.call(document.querySelectorAll('.site-header .brand'), function (a) {
-    a.addEventListener('click', function () {
+    var replay = function () {
       try { sessionStorage.setItem('anavaIntroReplay', '1'); } catch (e) {}
+    };
+    a.addEventListener('click', replay);
+    // iPad Safari spends a tap on :hover, and drops the click, whenever that
+    // hover changes what is shown (the folded header opening up). So a clean
+    // tap on the logo (not a scroll or drag) navigates by itself.
+    var sx = 0, sy = 0, moved = false;
+    a.addEventListener('touchstart', function (e) {
+      var t = e.touches[0]; sx = t.clientX; sy = t.clientY; moved = false;
+    }, { passive: true });
+    a.addEventListener('touchmove', function (e) {
+      var t = e.touches[0];
+      if (Math.abs(t.clientX - sx) > 10 || Math.abs(t.clientY - sy) > 10) moved = true;
+    }, { passive: true });
+    a.addEventListener('touchend', function (e) {
+      if (moved) return;
+      e.preventDefault();
+      replay();
+      window.location.href = a.href;
     });
   });
 

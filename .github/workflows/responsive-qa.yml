@@ -68,9 +68,21 @@ jobs:
                   const overflow = metrics.scrollWidth>metrics.viewport+2;
                   console.log(JSON.stringify({device:device.name,route,status:response?.status(),overflow,...metrics,errors:errors.splice(0)}));
                   if(response?.status()!==200 || overflow || !metrics.h1) issues++;
-                  if(route==='/' || route==='/work') {
-                    await page.screenshot({path:`qa-${device.name.replaceAll(' ','-')}-${route==='/'?'home':'work'}.png`});
-                  }
+                  // Capture every page for a proper visual review, not only Home and Work.
+                  // The intro remains untouched: bypass it in QA using session storage.
+                  await page.screenshot({path:`qa-${device.name.replaceAll(' ','-')}-${route==='/'?'home':route.slice(1)}.png`, fullPage:false});
+                  const visual = await page.evaluate(() => {
+                    const brokenImages = [...document.images].filter(x=>x.complete && x.naturalWidth===0 && x.getBoundingClientRect().width>0).map(x=>x.getAttribute('src')).slice(0,12);
+                    const clippedText = [...document.querySelectorAll('h1,h2,h3,p')].filter(x=>{
+                      const r=x.getBoundingClientRect(), cs=getComputedStyle(x);
+                      return r.width>0 && r.height>0 && cs.overflow==='hidden' && x.scrollWidth>x.clientWidth+3;
+                    }).map(x=>({tag:x.tagName,text:x.textContent.trim().slice(0,65)})).slice(0,12);
+                    const headings=[...document.querySelectorAll('h1,h2')].slice(0,10).map(x=>{
+                      const r=x.getBoundingClientRect();return {text:x.textContent.trim().replace(/\\s+/g,' ').slice(0,65),left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width),font:getComputedStyle(x).fontSize};
+                    });
+                    return {brokenImages,clippedText,headings};
+                  });
+                  console.log(JSON.stringify({test:'visual diagnostics',device:device.name,route,visual}));
                   if(route==='/contact' && !metrics.contactForm) issues++;
                   if(route==='/work' && device.name==='iPhone 15') {
                     const tabs = await page.locator('.work-filters .pills > .pill, .work-filters .pills > .pill-drop > .pill').evaluateAll(els => els.map(el => {

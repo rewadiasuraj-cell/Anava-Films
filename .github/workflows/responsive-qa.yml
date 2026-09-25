@@ -8,6 +8,7 @@ on:
       - 'assets/css/anava.css'
       - 'assets/js/anava.js'
       - 'build_anava.py'
+      - '*.html'
   workflow_dispatch:
 
 permissions:
@@ -32,7 +33,7 @@ jobs:
           node start_server.js > /tmp/anava-preview.log 2>&1 &
           for i in $(seq 1 20); do curl -fsS http://localhost:3000/work >/dev/null && break; sleep 1; done
           curl -fsS http://localhost:3000/work >/dev/null
-      - name: Audit generated pages across devices
+      - name: Audit generated pages and interactions across devices
         env:
           BASE_URL: http://localhost:3000
         run: |
@@ -41,7 +42,9 @@ jobs:
           (async () => {
             const browser = await chromium.launch({headless:true});
             const devices = [
+              { name:'Compact phone', width:360, height:780, deviceScaleFactor:2, isMobile:true, hasTouch:true },
               { name:'iPhone 15', width:393, height:852, deviceScaleFactor:3, isMobile:true, hasTouch:true },
+              { name:'iPad portrait', width:820, height:1180, deviceScaleFactor:2, isMobile:true, hasTouch:true },
               { name:'iPad landscape', width:1080, height:810, deviceScaleFactor:2, isMobile:true, hasTouch:true },
               { name:'Desktop 1080p', width:1920, height:1080, deviceScaleFactor:1, isMobile:false, hasTouch:false }
             ];
@@ -108,7 +111,32 @@ jobs:
                   const closed=await page.locator('.nav').evaluate(el=>!el.classList.contains('mobile-open'));
                   console.log(JSON.stringify({test:'mobile menu open + Escape',opened,closed}));
                   if(!opened||!closed)issues++;
+                  await burger.click();
+                  await page.locator('body').click({position:{x:5,y:Math.min(device.height-10,450)}});
+                  const outsideClosed=await page.locator('.nav').evaluate(el=>!el.classList.contains('mobile-open'));
+                  console.log(JSON.stringify({test:'mobile menu outside close',outsideClosed}));
+                  if(!outsideClosed)issues++;
                 }
+                await page.goto(process.env.BASE_URL+'/work',{waitUntil:'domcontentloaded'});
+                await page.locator('.work-filters').scrollIntoViewIfNeeded();
+                const testimonials=page.locator('.work-filters .pill[data-filter="testimonials"]');
+                await testimonials.click();
+                const filter=await page.evaluate(()=>{
+                  const shown=[...document.querySelectorAll('#work-grid .wcard:not(.is-hidden)')];
+                  return {shown:shown.length,categories:[...new Set(shown.map(x=>x.dataset.category))],
+                    pressed:document.querySelector('.pill[data-filter="testimonials"]')?.getAttribute('aria-pressed')};
+                });
+                console.log(JSON.stringify({test:'portfolio filtering',filter}));
+                if(!filter.shown||filter.categories.some(c=>c!=='testimonials')||filter.pressed!=='true')issues++;
+                await page.goto(process.env.BASE_URL+'/contact',{waitUntil:'domcontentloaded'});
+                await page.locator('#contact-form button[type="submit"]').click();
+                const validation=await page.evaluate(()=>({
+                  name:document.querySelector('#f-name')?.getAttribute('aria-invalid'),
+                  email:document.querySelector('#f-email')?.getAttribute('aria-invalid'),
+                  message:document.querySelector('#f-message')?.getAttribute('aria-invalid')
+                }));
+                console.log(JSON.stringify({test:'contact validation without submission',validation}));
+                if(Object.values(validation).some(v=>v!=='true'))issues++;
               }
               await context.close();
             }

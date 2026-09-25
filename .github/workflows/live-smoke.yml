@@ -1,0 +1,52 @@
+name: Live website smoke test
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Verify production routes and deployed version
+        env:
+          SITE: https://anavafilms.com
+        run: |
+          python3 - <<'PY'
+          import os
+          import ssl
+          import urllib.request
+          import urllib.error
+          from urllib.parse import urljoin
+
+          base = os.environ["SITE"].rstrip("/")
+          paths = ["/", "/work", "/process", "/about", "/contact"]
+          failed = False
+          for path in paths:
+              url = base + path
+              request = urllib.request.Request(url, headers={
+                  "User-Agent": "AnavaFilms-GitHub-Deployment-QA/1.0",
+                  "Accept": "text/html",
+              })
+              try:
+                  with urllib.request.urlopen(request, timeout=18) as response:
+                      body = response.read(1_000_000).decode("utf-8", "replace")
+                      status = response.status
+                      final_url = response.geturl()
+                      deployed = "assets/js/anava.js" in body and "assets/css/anava.css" in body
+                      print(f"{path} status={status} final={final_url} new_site_assets={deployed}", flush=True)
+                      if status != 200 or not deployed:
+                          failed = True
+                          print(f"::error::Route {path} missing current website assets or not HTTP 200")
+              except (urllib.error.URLError, TimeoutError) as exc:
+                  failed = True
+                  print(f"::error::Route {path} failed: {exc}")
+          if failed:
+              raise SystemExit("Live website checks failed. Inspect these diagnostics before editing redirects or changing deployment.")
+          print("All five production routes returned HTTP 200 with current website asset references.")
+          PY

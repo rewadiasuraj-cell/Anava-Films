@@ -153,6 +153,16 @@
     nav.addEventListener('click', function (e) {
       if (e.target.closest('a')) closeMenu(false);
     });
+    // Do not leave the mobile menu open when tapping the page behind it.
+    document.addEventListener('pointerdown', function (e) {
+      if (nav.classList.contains('mobile-open') &&
+          !nav.contains(e.target) && !burger.contains(e.target)) closeMenu(false);
+    });
+    // Switching to tablet/desktop navigation must reset the mobile state.
+    var desktopNav = window.matchMedia('(min-width: 761px)');
+    var resetMobileNav = function (e) { if (e.matches) closeMenu(false); };
+    if (desktopNav.addEventListener) desktopNav.addEventListener('change', resetMobileNav);
+    else if (desktopNav.addListener) desktopNav.addListener(resetMobileNav);
     // While the phone menu is open: Esc closes it, and Tab cycles through the
     // header (logo, menu links, burger) instead of the page hidden behind it.
     document.addEventListener('keydown', function (e) {
@@ -827,6 +837,11 @@
         if (subRow) subRow.hidden = f !== 'vertical';
         var vtab = document.querySelector('.pill-drop > .pill');
         if (vtab) vtab.setAttribute('aria-expanded', f === 'vertical' ? 'true' : 'false');
+        // Expose the selected work filters to assistive technology, including
+        // the matching desktop/mobile Vertical sub-filter buttons.
+        pills.forEach(function (x) {
+          x.setAttribute('aria-pressed', x.classList.contains('active') ? 'true' : 'false');
+        });
         render();
         settle();
       });
@@ -872,6 +887,9 @@
         render();
       });
     }
+    pills.forEach(function (x) {
+      x.setAttribute('aria-pressed', x.classList.contains('active') ? 'true' : 'false');
+    });
     render();
     var rt;
     window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(render, 150); });

@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/responsive-qa.yml'
+      - 'assets/css/anava.css'
+      - 'assets/js/anava.js'
+      - 'build_anava.py'
   workflow_dispatch:
 
 permissions:
@@ -23,9 +26,15 @@ jobs:
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
-      - name: Audit live pages across devices
+      - name: Generate pages and start local preview
+        run: |
+          python3 build_anava.py
+          node start_server.js > /tmp/anava-preview.log 2>&1 &
+          for i in $(seq 1 20); do curl -fsS http://localhost:3000/work >/dev/null && break; sleep 1; done
+          curl -fsS http://localhost:3000/work >/dev/null
+      - name: Audit generated pages across devices
         env:
-          BASE_URL: https://anavafilms.com
+          BASE_URL: http://localhost:3000
         run: |
           node <<'JS'
           const { chromium } = require('playwright');
@@ -63,6 +72,16 @@ jobs:
                     await page.screenshot({path:`qa-${device.name.replaceAll(' ','-')}-${route==='/'?'home':'work'}.png`});
                   }
                   if(route==='/contact' && !metrics.contactForm) issues++;
+                  if(route==='/work' && device.name==='iPhone 15') {
+                    const tabs = await page.locator('.work-filters .pills > .pill, .work-filters .pills > .pill-drop > .pill').evaluateAll(els => els.map(el => {
+                      const r = el.getBoundingClientRect();
+                      return {name:el.textContent.trim(),x:r.x,y:r.y,width:r.width,height:r.height,visible:r.width>0&&r.height>0&&r.x>=0&&r.right<=innerWidth+1};
+                    }));
+                    const rows = new Set(tabs.map(t=>Math.round(t.y/4)*4));
+                    const ok = tabs.length===6 && tabs.every(t=>t.visible&&t.height>=44) && rows.size===2;
+                    console.log(JSON.stringify({test:'mobile category discovery',ok,rows:rows.size,tabs}));
+                    if(!ok)issues++;
+                  }
                 } catch(e) {
                   issues++; console.log(JSON.stringify({device:device.name,route,error:e.message}));
                 }

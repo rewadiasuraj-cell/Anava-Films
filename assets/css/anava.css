@@ -62,12 +62,12 @@ p{margin:0}
 .eyebrow{
   font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
 }
-.eyebrow-muted{color:var(--muted-2)}
+
 .display{
   font-family:var(--font-display);font-weight:800;text-transform:uppercase;
   font-size:clamp(2.2rem,4.4vw,4rem);line-height:.98;letter-spacing:-.025em;
 }
-.hero-full .display{font-size:clamp(2.4rem,4.8vw,4.4rem)}
+
 .display-sm{
   font-family:var(--font-display);font-weight:800;text-transform:uppercase;
   font-size:clamp(2rem,4.2vw,3.5rem);line-height:1;letter-spacing:-.022em;
@@ -247,11 +247,7 @@ p{margin:0}
 }
 @media (prefers-reduced-motion:reduce){.btn-ripple{display:none}}
 .btn-ghost{background:transparent;color:#fff;border:1px solid var(--line);padding:8px 36px;min-width:170px;justify-content:center}
-.btn-dark{
-  background:rgba(0,0,0,.62);color:#fff;border:1px solid rgba(255,255,255,.3);
-  backdrop-filter:blur(6px);
-}
-.btn-dark:hover{border-color:rgba(255,255,255,.65);background:rgba(0,0,0,.85);transform:translateY(-2px)}
+
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
 .circ-arrow{
@@ -268,14 +264,10 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 .play-btn svg{width:18px;height:18px;margin-left:2px}
 .play-btn:hover{background:var(--accent);color:#fff;transform:scale(1.06)}
 
-.link-row{display:inline-flex;align-items:center;gap:18px;cursor:pointer}
-.link-row .label{font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
-.link-row .rule{width:88px;height:1px;background:rgba(255,255,255,.28)}
-
 /* ---------- Section head (numbered) ---------- */
 .sec-head{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:38px}
 .sec-label{display:flex;align-items:center;gap:16px}
-.sec-num{font-family:var(--font-display);font-size:.95rem;font-weight:700;color:var(--muted-2)}
+
 .sec-name{font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .sec-more{display:inline-flex;align-items:center;gap:14px;font-size:.82rem;font-weight:500;color:var(--muted)}
 .sec-more:hover{color:#fff}
@@ -309,9 +301,7 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
   margin-top:18px;max-width:58ch;font-size:.94rem;color:var(--muted-2);
 }
 /* A headline set as one line is sized off the viewport, not the ch cap */
-.hero-split.centered .hero-copy .display.display-1line{
-  white-space:normal;max-width:none;font-size:clamp(2.4rem,5.4vw,4.9rem);
-}
+
 /* Two lines, each unbreakable: the ch cap was splitting the first line in
    three, so this one is sized off the viewport like the one-line headings. */
 .hero-split.centered .hero-copy .display.display-2line{
@@ -330,30 +320,9 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 
 /* CTA band hierarchy: a quiet numbered stepper, then the headline, then the
    promise, then one clear action with the secondary route as a plain link. */
-.stepper{
-  display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap;
-  margin:0 0 20px;padding:0;list-style:none;
-}
-.stepper li{
-  display:flex;align-items:center;gap:8px;
-  font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.62);
-}
-.stepper-n{
-  font-family:var(--font-display);font-size:.62rem;font-weight:800;
-  color:var(--accent);letter-spacing:.06em;
-}
-.stepper li + li::before{
-  content:"";width:26px;height:1px;background:rgba(255,255,255,.28);margin-right:18px;
-}
+
 .cta-band .standfirst{max-width:36ch;margin:0 auto;color:rgba(255,255,255,.94)}
-.text-link{
-  display:inline-flex;align-items:center;gap:9px;
-  font-size:.82rem;font-weight:500;color:rgba(255,255,255,.72);
-  border-bottom:1px solid rgba(255,255,255,.28);padding-bottom:3px;
-}
-.text-link:hover{color:#fff;border-bottom-color:#fff}
-.cta-band .cta-actions{gap:28px;margin-top:6px}
+
 /* The headline carries the weight here, so the action stays small under it */
 /* One filled action, left on the same axis as everything above it. The
    only colour in the block, so it reads as the single next step. */
@@ -371,8 +340,7 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
   font-size:.78rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
   white-space:nowrap;
 }
-.hero-split.centered .hero-actions .link-row{display:none}
-.hero-split.centered .link-row{flex:none}
+
 .hero-split.centered .hero-media{max-width:none;margin:0 auto;width:100%}
 /* The copy rides on the footage instead of sitting above it: one frame, one
    block of type. Both children share a single grid cell — media beneath,
@@ -447,27 +415,6 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 /* ==========================================================================
    HOME — full-bleed hero
    ========================================================================== */
-.hero-full{
-  position:relative;min-height:100svh;display:flex;align-items:center;
-  padding-top:calc(var(--header-h) + 92px);padding-bottom:78px;overflow:hidden;
-}
-.hero-full-bg{position:absolute;inset:0;z-index:0}
-.hero-full-bg img,.hero-full-bg video{width:100%;height:100%;object-fit:cover}
-.hero-full-bg::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(95deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.72) 42%,rgba(0,0,0,.35) 100%),
-             linear-gradient(0deg,rgba(0,0,0,.9) 0%,transparent 40%);
-}
-.hero-full .container{position:relative;z-index:2}
-.hero-full .display{margin:18px 0 0;max-width:15ch}
-.hero-full .display .dim{color:rgba(255,255,255,.55)}
-.hero-foot{
-  position:absolute;left:0;right:0;bottom:42px;z-index:2;
-  display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
-}
-.hero-cities{display:flex;align-items:center;gap:16px;font-size:.74rem;letter-spacing:.24em;color:rgba(255,255,255,.7)}
-.hero-cities .dash{width:26px;height:1px;background:rgba(255,255,255,.4)}
-.hero-script-abs{position:absolute;right:38px;top:26%;z-index:2;text-align:right;line-height:1.3}
 
 /* ==========================================================================
    HOME — cinematic centered hero
@@ -504,10 +451,7 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
   /* Centred in the space between the header and the logo strip */
   margin:auto 0;padding:clamp(30px,5.2vh,62px) 0;
 }
-.hero-eyebrow{
-  font-size:.62rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;
-  color:rgba(255,255,255,.68);margin-bottom:22px;
-}
+
 /* Two voices, one statement: the ask is set in the display face, the promise
    answers it in the serif. The serif line is italic end to end — mixing roman
    and italic inside one line made the two halves read as different phrases. */
@@ -557,57 +501,15 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 .hero-cine-actions .btn svg{width:17px;height:17px;flex:none}
 /* The quieter second path, for visitors who want to see the work before talking */
 /* The hero's one action carries the brand ramp rather than the flat orange */
-.btn-primary.btn-grad{background:var(--accent-grad)}
-.btn-primary.btn-grad:hover{background:linear-gradient(100deg,#ff6234 0%,#ff8c52 100%)}
+
 .hero-cine-actions .btn svg{width:15px;height:15px}
 
 /* ---- Hero foot: place, scroll cue, and the four verbs ---- */
 /* The foot takes the slack so it hugs the logo strip, rather than the strip
    taking it and leaving a band of empty plate between the two. */
-.hero-foot{
-  position:relative;z-index:3;width:100%;max-width:var(--container);
-  margin:0 auto;padding:clamp(76px,11vh,132px) 28px 4px;
-  display:flex;justify-content:center;flex:none;
-  /* Decoration only (aria-hidden): it must never take a click meant for the
-     button above it, whatever the viewport height does to the layout. */
-  pointer-events:none;
-}
-.hero-foot-mid{display:flex;flex-direction:column;align-items:center;gap:12px}
-.hero-foot-scroll{
-  font-size:.68rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
-  color:rgba(255,255,255,.62);
-}
-.hero-foot-line{width:1px;height:62px;background:linear-gradient(180deg,rgba(255,255,255,.4),transparent)}
-
-.hero-reel-link{
-  display:inline-flex;align-items:center;gap:16px;background:none;border:none;cursor:pointer;padding:0;
-}
-.hero-reel-link .circ-arrow{width:48px;height:48px;border-color:rgba(255,255,255,.4)}
-.hero-reel-link .circ-arrow svg{width:15px;height:15px;margin-left:2px}
-.hero-reel-link .label{font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.9)}
-.hero-reel-link:hover .circ-arrow{background:var(--accent);border-color:var(--accent)}
 
 /* ---- side rails ---- */
-.hero-rail{
-  position:absolute;z-index:3;top:50%;transform:translateY(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:16px;
-  font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.62);
-}
-.hero-rail-left{left:34px}
-.hero-rail-right{right:34px;align-items:flex-end;text-align:right;gap:14px}
-.rail-tick{width:1px;height:62px;background:rgba(255,255,255,.28)}
-.rail-tick.short{width:1px;height:26px}
-.rail-statement{
-  font-size:.66rem;letter-spacing:.24em;line-height:2.1;text-transform:uppercase;
-  color:rgba(255,255,255,.8);margin:0;
-}
-.rail-underline{width:44px;height:2px;background:var(--accent);margin:6px 0 30px}
-.rail-scroll{font-size:.6rem;letter-spacing:.26em;color:rgba(255,255,255,.6)}
-.rail-mouse{
-  width:20px;height:32px;border:1px solid rgba(255,255,255,.4);border-radius:12px;
-  display:grid;justify-items:center;padding-top:6px;
-}
-.rail-mouse i{display:block;width:3px;height:6px;border-radius:2px;background:rgba(255,255,255,.85);animation:mouseDot 1.8s var(--ease) infinite}
+
 @keyframes mouseDot{0%,100%{transform:translateY(0);opacity:1}55%{transform:translateY(9px);opacity:.25}}
 
 /* ---- trusted-by strip ---- */
@@ -672,11 +574,9 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
        enough to keep the play control and credits legible */
     linear-gradient(180deg,rgba(0,0,0,.38) 0%,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 82%,rgba(0,0,0,.4) 100%);
 }
-.reel-left{display:flex;align-items:center;gap:18px}
+
 .reel-meta{display:flex;align-items:center;gap:20px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
-.reel-meta .rule{width:70px;height:1px;background:rgba(255,255,255,.3)}
-.reel-right{text-align:right;font-size:.7rem;letter-spacing:.2em;color:rgba(255,255,255,.72);line-height:2;text-transform:uppercase}
-.reel-right strong{display:block;font-size:.74rem;letter-spacing:.3em;color:#fff;margin-bottom:10px;font-weight:600}
+
 /* Scaled down with the control now that it sits in the corner, not centred */
 .reel .play-btn{width:46px;height:46px}
 .reel .play-btn svg{width:15px;height:15px}
@@ -696,10 +596,7 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 }
 
 /* ---------- Logo marquee ---------- */
-.marquee{overflow:hidden;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:26px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
-.marquee-track{display:flex;gap:70px;width:max-content;animation:marquee 22s linear infinite;align-items:center}
-.marquee img{height:30px;width:auto;max-width:130px;object-fit:contain;opacity:.55;filter:brightness(0) invert(1);transition:.3s var(--ease)}
-.marquee img:hover{opacity:.95}
+
 @keyframes marquee{to{transform:translateX(-50%)}}
 
 /* ==========================================================================
@@ -768,7 +665,7 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
   position:absolute;left:0;right:0;bottom:0;z-index:2;
   padding:20px 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;
 }
-.wcard-brand{font-size:.84rem;font-weight:600;color:#fff;margin-bottom:3px}
+
 .wcard-cat{font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:8px}
 .wcard-title{font-family:var(--font-display);font-size:1.02rem;font-weight:700;letter-spacing:-.01em;line-height:1.2}
 .wcard .circ-arrow{width:38px;height:38px;background:rgba(255,255,255,.1);backdrop-filter:blur(6px);border-color:rgba(255,255,255,.2)}
@@ -828,7 +725,7 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 .cta-band .btn{padding:8px 12px 8px 36px;font-size:.82rem;min-width:180px;justify-content:center}
 .cta-band .btn .circ{width:26px;height:26px}
 .cta-band .btn .circ svg{width:13px;height:13px}
-.cta-band .cta-actions{justify-content:center}
+
 .cta-band .script{display:none}
 /* Body copy over a warm plate needs to sit well clear of the background */
 .cta-band.warm .lead{color:rgba(255,255,255,.88)}
@@ -838,7 +735,7 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 .cta-band.warm .btn-primary .circ{background:rgba(255,255,255,.22);color:#fff}
 .cta-band.warm .btn-ghost{border-color:rgba(255,255,255,.55);color:#fff}
 .cta-band.warm .btn-ghost:hover{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
-.cta-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+
 /* Compact variant: half the height, and the plate reads as texture not photo.
    It stacks centred, so the copy and the CTA sit on one vertical axis and the
    overlay has to be symmetric rather than the left-weighted gradient above. */
@@ -858,43 +755,15 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 /* ==========================================================================
    WHAT WE DO — homepage teaser
    ========================================================================== */
-.wwd-teaser-head{text-align:left;max-width:none;margin:-6px 0 46px}
-.wwd-teaser-head .lead{margin:16px 0 0;text-align:left;max-width:none;text-wrap:balance}
+
 /* Sized off the viewport rather than wrapped, so the promise stays one line.
    `white-space` is a shorthand for white-space-collapse + text-wrap, so the
    `text-wrap:balance` on the rule above — one step more specific — was quietly
    overriding the nowrap half of it. Hence the matching specificity here and the
    explicit text-wrap. */
-.wwd-teaser-head .lead.teaser-oneline{
-  white-space:nowrap;text-wrap:nowrap;max-width:none;
-  font-size:clamp(.95rem,1.4vw,1.2rem);text-align:left;
-}
-.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line-soft)}
+
 /* Inside each stage the ramp is number (quietest, a marker) → name (loudest)
    → what it covers. The accent rule on top is what the eye lands on first. */
-.tri-item{
-  position:relative;padding:34px 30px 36px;border-left:1px solid var(--line-soft);
-  display:flex;flex-direction:column;gap:10px;transition:background .3s var(--ease);
-}
-.tri-item:first-child{border-left:none}
-.tri-item::before{
-  content:"";position:absolute;left:-1px;right:0;top:-1px;height:2px;
-  background:var(--accent);transform:scaleX(0);transform-origin:left;
-  transition:transform .4s var(--ease);
-}
-.tri-item:hover{background:rgba(255,255,255,.025)}
-.tri-item:hover::before{transform:scaleX(1)}
-.tri-n{
-  font-family:var(--font-display);font-size:.68rem;font-weight:800;
-  letter-spacing:.22em;color:var(--muted-2);
-}
-.tri-item h3{
-  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
-  font-size:clamp(1.6rem,2.8vw,2.5rem);letter-spacing:-.025em;line-height:1;
-}
-.tri-item p{color:var(--muted);font-size:.9rem;line-height:1.6;max-width:30ch}
-.tri-foot{display:flex;justify-content:center;margin-top:44px}
-.tri-foot .btn{padding:8px 36px;font-size:.8rem;gap:10px;min-width:180px;justify-content:center}
 
 /* ==========================================================================
    PROCESS — timeline
@@ -908,115 +777,41 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
   gap:26px;align-items:start;padding:30px 0;border-bottom:1px solid var(--line-soft);
 }
 .step:last-child{border-bottom:none}
-.step-num{font-family:var(--font-display);font-size:2.1rem;font-weight:800;color:rgba(255,255,255,.22);line-height:1}
-.step-dot{position:relative;padding-top:12px}
-.step-dot::before{content:"";position:absolute;left:-52px;top:12px;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(240,82,35,.16)}
-.step-label{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;line-height:1.5}
+
 /* Each stage title is one short line, so it can carry real display weight */
-.step-title{
-  font-family:var(--font-display);font-size:clamp(1.5rem,2.3vw,2.3rem);
-  font-weight:800;text-transform:uppercase;letter-spacing:-.025em;line-height:1.02;
-}
-.step-body{color:var(--muted);font-size:.9rem;line-height:1.65;padding-top:22px}
-.step-media{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/7;background:var(--surface)}
-.step-media img,.step-media video{width:100%;height:100%;object-fit:cover}
-.step-media .caption{
-  position:absolute;right:16px;bottom:14px;z-index:2;text-align:right;
-  font-size:.58rem;letter-spacing:.2em;line-height:1.9;text-transform:uppercase;color:rgba(255,255,255,.8);
-}
-.step-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 40%,rgba(0,0,0,.7))}
-.chip-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
-.chip{border:1px solid var(--line);border-radius:999px;padding:5px 13px;font-size:.7rem;color:var(--muted)}
 
 /* Process rail (home) — one compact track, a line of copy per step ---------
    The old version wrapped into a broken two-column grid on phones and said
    nothing beyond a number, so this trades that space for actual explanation. */
-.proc-rail{position:relative;border-top:1px solid var(--line-soft);padding-top:30px}
-.proc-track{
-  display:grid;grid-template-columns:repeat(7,1fr);gap:0;
-  position:relative;
-}
+
 /* Connector runs behind the dots and warms up left to right. On scroll it
    draws itself across the rail, so the line reads as the process advancing
    rather than as a static rule that happens to be orange. */
-.proc-track::before{
-  content:"";position:absolute;left:0;right:0;top:31px;height:1px;
-  background:linear-gradient(90deg,rgba(255,255,255,.14),var(--accent));
-  transform:scaleX(0);transform-origin:left center;
-  transition:transform 3s var(--ease);
-}
-.proc-rail.in .proc-track::before{transform:scaleX(1)}
+
 /* Each step rises in just behind the line as it reaches that dot — the stagger
    is what makes the seven read as one sequence instead of seven cards. */
-.proc-rail .proc-step{
-  opacity:0;transform:translateY(16px);
-  transition:opacity 1.2s var(--ease),transform 1.2s var(--ease);
-}
-.proc-rail.in .proc-step{opacity:1;transform:none}
-.proc-rail.in .proc-step:nth-child(1){transition-delay:.20s}
-.proc-rail.in .proc-step:nth-child(2){transition-delay:.56s}
-.proc-rail.in .proc-step:nth-child(3){transition-delay:.92s}
-.proc-rail.in .proc-step:nth-child(4){transition-delay:1.28s}
-.proc-rail.in .proc-step:nth-child(5){transition-delay:1.64s}
-.proc-rail.in .proc-step:nth-child(6){transition-delay:2.00s}
-.proc-rail.in .proc-step:nth-child(7){transition-delay:2.36s}
+
 /* The dot lands last and pops, so the eye is pulled along the line */
-.proc-rail .proc-dot{transform:scale(0);transition:transform .9s cubic-bezier(.34,1.56,.64,1)}
-.proc-rail.in .proc-dot{transform:scale(1)}
-.proc-rail.in .proc-step:nth-child(1) .proc-dot{transition-delay:.40s}
-.proc-rail.in .proc-step:nth-child(2) .proc-dot{transition-delay:.76s}
-.proc-rail.in .proc-step:nth-child(3) .proc-dot{transition-delay:1.12s}
-.proc-rail.in .proc-step:nth-child(4) .proc-dot{transition-delay:1.48s}
-.proc-rail.in .proc-step:nth-child(5) .proc-dot{transition-delay:1.84s}
-.proc-rail.in .proc-step:nth-child(6) .proc-dot{transition-delay:2.20s}
-.proc-rail.in .proc-step:nth-child(7) .proc-dot{transition-delay:2.56s}
-@media (prefers-reduced-motion:reduce){
-  .proc-track::before,.proc-rail .proc-step,.proc-rail .proc-dot{
-    opacity:1;transform:none;transition:none;
-  }
-  .proc-track::before{transform:scaleX(1)}
-}
-.proc-step{position:relative;padding:0 16px 0 0}
-.proc-num{
-  display:block;font-family:var(--font-display);font-size:1.15rem;font-weight:700;
-  color:var(--muted-2);line-height:1;margin-bottom:12px;
-}
-.proc-dot{
-  display:block;width:9px;height:9px;border-radius:50%;
-  background:var(--accent);position:relative;z-index:2;
-  box-shadow:0 0 0 4px var(--bg);
-}
-.proc-name{
-  font-family:var(--font-body);font-size:.82rem;font-weight:600;letter-spacing:.02em;
-  color:#fff;margin:16px 0 5px;
-}
-.proc-note{font-size:.74rem;line-height:1.45;color:var(--muted);padding-right:8px}
-.proc-step:hover .proc-num{color:var(--accent)}
+
 /* Only shown where the rail turns into a sideways scroller (phones) */
-.proc-hint{
-  display:none;align-items:center;gap:8px;margin:18px 0 0;
-  font-size:.66rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
-}
-.proc-hint svg{width:13px;height:13px;color:var(--accent);animation:hintNudge 1.6s var(--ease) infinite}
+
 @keyframes hintNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
-@media (prefers-reduced-motion:reduce){.proc-hint svg{animation:none}}
 
 /* ==========================================================================
    WHAT WE DO
    ========================================================================== */
-.wwd-block{padding:80px 0;border-bottom:1px solid var(--line-soft)}
+
 /* Each stage announces itself on a centred axis above its cards, so the three
    blocks share one rhythm: number, headline, promise, then the detail. */
-.wwd-head{max-width:860px;margin:0 auto 46px;text-align:center}
+
 .wwd-title{
   font-family:var(--font-display);font-weight:800;text-transform:uppercase;
   font-size:clamp(2.3rem,5vw,4.2rem);line-height:.98;letter-spacing:-.028em;
   margin:14px 0 18px;
 }
-.wwd-head .lead{margin-left:auto;margin-right:auto;max-width:58ch}
+
 .wwd-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:52px;align-items:start}
-.wwd-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.wwd-cards-4{grid-template-columns:repeat(4,1fr)}
+
 .wwd-grid-even{grid-template-columns:1fr 1fr;gap:40px}
 .svc{
   background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius);
@@ -1030,33 +825,16 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 .svc-body h4{font-size:1rem;font-weight:700;letter-spacing:-.01em;margin-bottom:7px}
 .svc-body p{color:var(--muted);font-size:.85rem;line-height:1.6}
 
-.wwd-block.warm{
-  border-bottom:none;position:relative;overflow:hidden;padding:96px 0;
-}
-.wwd-block.warm .warm-bg{position:absolute;inset:0;z-index:0}
-.wwd-block.warm .warm-bg img,.wwd-block.warm .warm-bg video{width:100%;height:100%;object-fit:cover}
-.wwd-block.warm .warm-bg::after{
-  content:"";position:absolute;inset:0;
-  background:rgba(0,0,0,.80);
-}
-.wwd-block.warm .container{position:relative;z-index:2}
-.wwd-side{position:absolute;right:30px;top:74px;z-index:3;text-align:right;font-size:.62rem;letter-spacing:.22em;line-height:2.2;color:rgba(255,255,255,.66);text-transform:uppercase}
-
-.list-cards{display:flex;flex-direction:column;gap:12px}
 .lcard{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:center;padding:10px;border:1px solid var(--line-soft);border-radius:12px;background:var(--surface);transition:.28s var(--ease)}
 .lcard:hover{border-color:rgba(240,82,35,.4)}
-.lcard-media{border-radius:9px;overflow:hidden;aspect-ratio:16/10;background:#000}
-.lcard-media img,.lcard-media video{width:100%;height:100%;object-fit:cover}
+
 .lcard h4{font-size:.96rem;font-weight:700;margin-bottom:5px}
 .lcard p{color:var(--muted);font-size:.82rem;line-height:1.55;padding-right:12px}
 
 /* ==========================================================================
    CONTACT
    ========================================================================== */
-.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:34px;align-items:start}
-.card-panel{background:var(--surface);border:1px solid var(--line-soft);border-radius:var(--radius-lg);padding:clamp(24px,3.4vw,40px)}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
-.form-grid .full{grid-column:1/-1}
+
 .field{
   width:100%;background:var(--surface-2);border:1px solid var(--line);border-radius:11px;
   padding:14px 17px;font-size:.88rem;outline:none;transition:.22s var(--ease);
@@ -1065,18 +843,9 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--accent);border-color:var(
 .field:focus{border-color:var(--accent)}
 textarea.field{min-height:132px;resize:vertical;font-family:var(--font-body)}
 select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239c9c9c' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");background-repeat:no-repeat;background-position:right 16px center;background-size:16px}
-.form-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
-.form-note{color:var(--muted);font-size:.8rem;line-height:1.5;max-width:20ch}
 
 /* Scaled up so this column carries the same weight as the form panel beside
    it, instead of reading as a caption next to it. */
-.contact-rows{display:flex;flex-direction:column;gap:26px;margin-top:34px}
-.crow{display:flex;align-items:flex-start;gap:20px}
-.crow-ic{width:54px;height:54px;border-radius:50%;background:var(--surface-2);border:1px solid var(--line);display:grid;place-items:center;flex:none;color:var(--accent)}
-.crow-ic svg{width:22px;height:22px}
-.crow-label{font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:6px}
-.crow-val{color:#fff;font-size:1.08rem;line-height:1.6;font-weight:500}
-.crow-val a:hover{color:var(--accent)}
 
 /* The locations moved out of the narrow contact column into a section of
    their own, so the plates get room to read as photographs again. */
@@ -1093,7 +862,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
 .loc-inner{position:relative;z-index:2;padding:22px 26px;width:100%}
 .loc-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .loc-top h3{font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,1.9rem);font-weight:800;text-transform:uppercase}
-.badge{font-size:.58rem;letter-spacing:.14em;border:1px solid var(--line);border-radius:5px;padding:3px 7px;color:rgba(255,255,255,.8)}
+
 .loc address{font-style:normal;color:rgba(255,255,255,.82);font-size:.86rem;line-height:1.6;margin-bottom:18px;max-width:22ch}
 .loc .script{position:absolute;right:16px;top:12px;font-size:.82rem;text-align:right;line-height:1.3;opacity:.62;z-index:3}
 .loc-link{display:inline-flex;align-items:center;gap:9px;font-size:.82rem;font-weight:500}
@@ -1106,7 +875,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
 .stat{border:1px solid var(--line-soft);border-radius:var(--radius);padding:26px 22px;background:var(--surface)}
 .stat-n{font-family:var(--font-display);font-size:2.3rem;font-weight:800;color:var(--accent);line-height:1}
 .stat-l{margin-top:8px;color:var(--muted);font-size:.84rem}
-.values{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+
 .value{border:1px solid var(--line-soft);border-radius:var(--radius);padding:24px 20px;background:var(--surface);transition:.28s var(--ease)}
 .value:hover{border-color:rgba(240,82,35,.4);transform:translateY(-3px)}
 .value h4{font-size:1rem;font-weight:700;margin-bottom:8px}
@@ -1122,7 +891,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
 .person-role{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
 .person-body h3{font-family:var(--font-display);font-size:1.5rem;font-weight:800;text-transform:uppercase;margin-bottom:14px}
 .person-body p{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:12px}
-.quote{border-left:2px solid var(--accent);padding-left:16px;margin-top:18px;font-size:.86rem;font-weight:600;color:rgba(255,255,255,.9);line-height:1.5}
+
 .pull-quote{
   border:1px solid var(--line-soft);border-radius:var(--radius-lg);background:var(--surface);
   padding:clamp(26px,4vw,46px);margin-top:44px;text-align:center;
@@ -1130,42 +899,25 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
 .pull-quote p{font-family:var(--font-display);font-size:clamp(1.2rem,2.3vw,1.85rem);font-weight:700;line-height:1.35;letter-spacing:-.01em}
 
 /* Testimonials */
-.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+
 .tst{border:1px solid var(--line-soft);border-radius:var(--radius);overflow:hidden;background:var(--surface);cursor:pointer;transition:.28s var(--ease)}
 .tst:hover{border-color:rgba(240,82,35,.4);transform:translateY(-3px)}
-.tst-media{position:relative;aspect-ratio:16/9;background:#000}
-.tst-media img,.tst-media video{width:100%;height:100%;object-fit:cover}
-.tst-media .play-badge{position:absolute;left:16px;bottom:14px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.92);color:#000;display:grid;place-items:center}
-.tst-media .play-badge svg{width:13px;height:13px;margin-left:2px}
-.tst-body{padding:20px}
-.tst-src{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
-.tst-body p{color:rgba(255,255,255,.88);font-size:.9rem;line-height:1.55;font-weight:500}
-.tst-body span{display:block;margin-top:10px;color:var(--muted);font-size:.8rem}
 
 /* Selected work row (home) */
 /* Two up, not four: at four the films were postage stamps on a 1320px page
    and the section reads as a contact sheet rather than a selection. */
-.sel-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+
 .sel{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;cursor:pointer;border:1px solid var(--line-soft)}
 .sel img,.sel video{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
 .sel:hover img,.sel:hover video{transform:scale(1.05)}
 .sel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.4),transparent 45%);pointer-events:none}
 /* The key art carries the title, so the card only needs a play affordance */
-.sel-play{
-  position:absolute;right:14px;bottom:14px;z-index:2;
-  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
-  background:rgba(255,255,255,.12);backdrop-filter:blur(6px);
-  border:1px solid rgba(255,255,255,.22);color:#fff;transition:.25s var(--ease);
-}
-.sel-play svg{width:14px;height:14px;margin-left:2px}
-.sel:hover .sel-play{background:var(--accent);border-color:var(--accent)}
 
 /* Philosophy split */
 /* The copy column carries a one-line headline now, so it takes the larger
    share; the lead loses its 52ch cap so it runs to the column edge instead
    of stopping short and leaving a ragged gutter. */
-.phil-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,1fr);gap:52px;align-items:center}
-.phil-grid .lead{max-width:none}
+
 .phil-media{position:relative;border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:16/10}
 .phil-media img,.phil-media video{width:100%;height:100%;object-fit:cover}
 .phil-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.75),transparent 55%)}
@@ -1174,30 +926,8 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
 /* Statement band — a framed panel, not text floating on a photo ------------
    The image now sits behind a hard scrim on the text side so the two halves
    of the line can carry real contrast against each other. */
-.statement{
-  position:relative;overflow:hidden;
-  min-height:300px;display:flex;align-items:center;
-}
-.statement-bg{position:absolute;inset:0;z-index:0}
-.statement-bg img,.statement-bg video{width:100%;height:100%;object-fit:cover}
+
 /* A soft wash rather than a slab, so the frame stays visible behind the words */
-.statement-bg::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.5) 38%,rgba(0,0,0,.28) 70%,rgba(0,0,0,.12) 100%);
-}
-.statement-inner{position:relative;z-index:2;width:100%;padding-top:34px;padding-bottom:34px}
-.statement .eyebrow{text-shadow:0 2px 12px rgba(0,0,0,.9)}
-.statement-title{
-  display:flex;flex-direction:column;gap:2px;margin:14px 0 0;
-  font-family:var(--font-display);text-transform:uppercase;letter-spacing:-.022em;line-height:1.02;
-  text-shadow:0 2px 18px rgba(0,0,0,.85);
-}
-.statement-title .st-a{font-weight:600;font-size:clamp(1.5rem,2.7vw,2.3rem);color:#fff}
-.statement-title .st-b{font-weight:800;font-size:clamp(1.7rem,3.2vw,2.8rem);color:var(--accent)}
-.statement .script{
-  position:absolute;right:28px;top:50%;transform:translateY(-50%);z-index:3;
-  text-align:right;opacity:.6;font-size:1.05rem;
-}
 
 /* ==========================================================================
    FOOTER — ported from the live anavafilms.com
@@ -1253,7 +983,6 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .reveal{opacity:1;transform:none}
 }
 
-
 /* ---------- Orange text carries the same ramp as the buttons ----------
    The gradient is painted as the element's background and then clipped to the
    glyphs. It is wrapped in @supports because without the clip the fill would
@@ -1287,10 +1016,10 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .hero-cine-title .hl-1{font-size:clamp(2.6rem,7.3vw,4.2rem)}
   .hero-cine-title .hl-2{font-size:clamp(1.9rem,5.7vw,3.3rem)}
   .hero-cine-lead{max-width:min(92ch,100%)}
-  .hero-foot{padding-bottom:20px}
+  
   .hero-cine-actions .btn{padding:12px 26px;font-size:.92rem}
   .work-grid{grid-template-columns:repeat(2,1fr)}
-  .tst-grid{grid-template-columns:1fr}
+  
   .stats,.values{grid-template-columns:repeat(2,1fr)}
 }
 /* ---- Tablet portrait (iPad ~820–1024) ----
@@ -1308,7 +1037,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
 
   .hero-cine-title .hl-1{font-size:clamp(2.1rem,6.3vw,3.5rem)}
   .hero-cine-title .hl-2{font-size:clamp(1.75rem,5.2vw,2.9rem)}
-  .hero-eyebrow{font-size:.58rem;letter-spacing:.2em;margin-bottom:18px}
+  
   .hero-cine-lead{font-size:.86rem;line-height:1.7;margin-top:20px;max-width:min(70ch,100%)}
   .hero-cine-actions{margin-top:32px}
   .hero-cine-actions .btn{padding:11px 24px;font-size:.88rem}
@@ -1330,14 +1059,14 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .display-sm,.cta-band .display-sm,.cta-band.compact .display-sm,
   .cta-band .display-sm.display-2line,.oneline,.oneline-long,
   .phil-title,.wwd-title,.statement-title{font-size:clamp(1.3rem,4.6vw,2.5rem)}
-  .tri-item h3,.step-title{font-size:1.45rem}
+  
   .standfirst,.cta-band .standfirst{font-size:1.1rem}
   .lead,.wwd-head .lead{font-size:.9rem;line-height:1.72}
 }
 @media (max-width:980px){
   .section{padding:64px 0}
   .section-sm{padding:40px 0}
-  .wwd-block{padding:58px 0}
+  
   /* A tablet has room for the links, so it keeps the real nav — the burger
      takes over only at phone widths. The links tighten up to fit. */
   .nav{gap:18px}
@@ -1348,14 +1077,14 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .hero-split-grid,.phil-grid,.contact-grid,.wwd-grid{grid-template-columns:1fr}
   .cta-band-inner{grid-template-columns:1fr;gap:26px}
   .cta-band .script,.statement .script,.hero-script-abs,.wwd-side{display:none}
-  .statement{min-height:230px}
+  
   /* Tablets keep the hero rails — without them the hero reads as an empty
      photograph. They just tuck in closer to the edges. */
-  .hero-rail{gap:12px;font-size:.58rem;letter-spacing:.2em}
-  .hero-rail-left{left:14px}
-  .hero-rail-right{right:14px;gap:10px}
-  .rail-tick{height:42px}
-  .rail-tick.short{height:18px}
+  
+  
+  
+  
+  
   /* A tall portrait tablet turns a svh-only hero into a long empty plate,
      so the height is also capped in px and the copy sits lower. */
   /* On a tall portrait tablet an svh-only hero leaves a long empty plate.
@@ -1367,12 +1096,12 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .trusted-logos li{width:120px;padding:12px 10px}
   .trusted-logos img{max-height:26px}
   .people,.loc-grid{grid-template-columns:1fr}
-  .tri{grid-template-columns:1fr}
-  .tri-item{border-left:none;border-bottom:1px solid var(--line-soft);padding:22px 0 24px}
-  .tri-item:last-child{border-bottom:none}
+  
+  
+  
   .loc{aspect-ratio:16/9}
   .loc-inner{padding:18px 20px}
-  .wwd-cards-4{grid-template-columns:repeat(2,1fr)}
+  
   .wwd-grid-even{grid-template-columns:1fr;gap:24px}
 
   /* The timeline rail and its four columns don't survive a narrow screen —
@@ -1380,13 +1109,13 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .steps{margin-top:36px}
   .steps::before{display:none}
   .step{display:block;padding:26px 0}
-  .step-num{display:inline-block;vertical-align:middle;font-size:1.7rem;margin-right:14px}
-  .step-dot{display:inline-block;vertical-align:middle;padding-top:0}
-  .step-dot::before{display:none}
-  .step-label{margin-bottom:0}
-  .step-title{margin-top:14px;font-size:1.35rem}
-  .step-body{padding-top:10px}
-  .step-media{margin-top:18px;aspect-ratio:16/9}
+  
+  
+  
+  
+  
+  
+  
 }
 @media (max-width:760px){
   /* ---- Phone type ramp ----
@@ -1413,7 +1142,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .display-sm,.oneline,.oneline-long,.phil-title,.wwd-title,
   .cta-band .display-sm,.cta-band.compact .display-sm,
   .cta-band .display-sm.display-2line{font-size:1.62rem;line-height:1.06}
-  .tri-item h3,.step-title{font-size:1.28rem}
+  
   .standfirst,.cta-band .standfirst{font-size:1.05rem;line-height:1.5}
   .lead,.hero-cine-lead,.wwd-head .lead{font-size:.94rem;line-height:1.62}
   .eyebrow,.sec-name{font-size:.68rem;letter-spacing:.14em}
@@ -1422,11 +1151,11 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .btn .circ{width:26px;height:26px}
   .btn .circ svg{width:12px;height:12px}
   .phil-title{margin:12px 0 16px}
-  .wwd-teaser-head{margin-bottom:30px}
+  
   /* One line here would drop under 10px — smaller than the body copy around
      it — so the promise wraps on a phone, like the one-line headings do. */
-  .wwd-teaser-head .lead.teaser-oneline{white-space:normal;text-wrap:balance;font-size:.94rem}
-  .tri-item{padding:22px 0 24px;gap:7px}
+  
+  
   /* A nowrap headline inside a grid column sets that column's min-content
      width, so on a phone it pushed the whole band wider than its own plate and
      every line spilled past the edge. Inside the bands the headings wrap. */
@@ -1438,11 +1167,11 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .cta-band-inner{padding-left:20px;padding-right:20px}
   /* The stepper's rules do not survive a wrap, so the steps read as a row of
      labels instead of a connected track. */
-  .stepper{gap:14px;margin-bottom:16px}
-  .stepper li{font-size:.6rem;letter-spacing:.14em;gap:6px}
-  .stepper li + li::before{display:none}
-  .cta-band .cta-actions{flex-direction:column;align-items:center;gap:16px}
-  .hero-rail{display:none}
+  
+  
+  
+  
+  
   .nav,.header-actions .btn-talk{display:none}
   .burger{display:flex}
   /* The panel is the same glass as the capsule it drops out of */
@@ -1469,36 +1198,33 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   }
   .section{padding:46px 0}
   .section-sm{padding:26px 0}
-  .wwd-block{padding:42px 0}
+  
   .container{padding:0 20px}
   .cta-band-inner{padding:34px 22px}
   .cta-band.compact .cta-band-inner{padding:24px 20px}
-  .proc-rail{padding-top:24px}
-  .proc-track{
-    display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;
-    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;
-  }
-  .proc-track::-webkit-scrollbar{display:none}
-  .proc-track::before{right:auto;width:max(100%,1200px)}
-  .proc-step{flex:0 0 46%;scroll-snap-align:start;padding-right:18px}
-  .proc-note{font-size:.72rem}
-  .proc-hint{display:flex}
+  
+  
+  
+  
+  
+  
+  
   .cta-band{min-height:auto}
-  .cta-actions{gap:10px}
-  .cta-actions .btn{width:auto;flex:0 0 auto}
+  
+  
   .wcard-info{padding:13px 13px;gap:8px}
-  .wcard-brand{font-size:.72rem;margin-bottom:2px}
+  
   .wcard-cat{font-size:.5rem;letter-spacing:.1em;margin-bottom:5px}
   .wcard-title{font-size:.8rem;line-height:1.15}
   .wcard .circ-arrow{width:28px;height:28px}
   .wcard .circ-arrow svg{width:11px;height:11px}
-  .hero-full{padding-top:calc(var(--header-h) + 54px);padding-bottom:60px}
+  
   /* Two columns leaves a 16:9 card ~95px tall — too small to read the key art.
      Landscape cards take the full width; only the tall ones pair up. */
   .work-grid{grid-template-columns:1fr;gap:14px}
   .wcard:not(.portrait):not(.photo){grid-column:span 2}
-  .wwd-cards,.wwd-cards-4{grid-template-columns:1fr}
-  .form-grid{grid-template-columns:1fr}
+  
+  
   .lcard{grid-template-columns:110px minmax(0,1fr);gap:14px}
   .search{width:100%}
   .reel-wide{max-width:100%;padding-left:20px;padding-right:20px}
@@ -1506,16 +1232,16 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .reel-credit{left:16px;bottom:12px;font-size:.66rem;letter-spacing:.1em}
   /* Credit and studio mark collide on a phone-width reel; keep the credit */
   .reel-mark{display:none}
-  .reel-right{display:none}
-  .hero-full{min-height:88svh}
-  .hero-foot{position:static;margin-top:36px}
+  
+  
+  
   /* On a phone the hero sizes to its copy instead of the screen, so the
      "Trusted by" logos land in the first view rather than a band of empty
      plate. The marquee peeking in is the scroll cue, so the mouse icon goes. */
   .hero-cine{min-height:0;padding-top:calc(var(--header-h) + 34px)}
   .hero-cine .hero-cine-inner{padding-top:clamp(20px,3.6vh,42px);padding-bottom:44px}
-  .hero-foot{display:none}
-  .hero-eyebrow{font-size:.54rem;letter-spacing:.18em;margin-bottom:16px}
+  
+  
   /* A full-width pill reads as a bar across the plate; keep it hugging its
      own label so it sits as a button under the headline. */
   .hero-cine-actions{margin-top:28px;gap:12px}
@@ -1535,7 +1261,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   .hero-cine-actions .btn svg{width:13px;height:13px}
   .hero-cine-actions .btn .circ{width:26px;height:26px}
   .hero-cine-actions .btn .circ svg{width:12px;height:12px}
-  .hero-reel-link{justify-content:center}
+  
   .main-footer{padding:3.5rem 0 2.2rem}
   .footer-top{display:flex;flex-direction:column;gap:2.5rem;margin-bottom:2.5rem}
   .footer-nav{grid-template-columns:1fr 1fr;gap:2rem 1.5rem}
@@ -1544,8 +1270,8 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
 @media (max-width:460px){
   .stats,.values,.sel-grid{grid-template-columns:1fr}
   .wcard-title{font-size:.9rem}
-  .step-num{font-size:1.45rem}
-  .step-title{font-size:1.2rem}
+  
+  
 }
 
 /* ==========================================================================
@@ -1557,19 +1283,19 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
 @media (min-width:1600px){
   .lead{font-size:1.14rem;max-width:56ch}
   .phil-title{font-size:3.6rem}
-  .phil-grid{gap:72px}
-  .hero-eyebrow{font-size:.7rem}
+  
+  
   .hero-cine-lead{font-size:1.1rem;max-width:1200px}
   .hero-cine-actions .btn{font-size:1.04rem}
-  .sec-num{font-size:1.05rem}
+  
   .sec-name{font-size:.82rem}
-  .tri-item h3{font-size:2.8rem}
-  .tri-item p{font-size:1.04rem}
+  
+  
   .tri-foot .btn,.cta-band.compact .btn{font-size:.9rem}
   .cta-band.compact .lead{font-size:1.02rem}
-  .proc-num{font-size:1.35rem}
-  .proc-name{font-size:.98rem}
-  .proc-note{font-size:.88rem}
+  
+  
+  
   .footer-desc{font-size:1.02rem}
   .footer-link{font-size:.98rem}
 }
@@ -1601,37 +1327,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
    Four key-art posters as one tilted wall. It fills the frame and is
    over-scaled so the tilt never shows a corner; the frame's own ::after
    gradient keeps the copy on the left readable. */
-.hero-collage{
-  position:absolute;inset:0;z-index:0;
-  display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;gap:14px;
-  transform:rotate(-5deg) scale(1.22);transform-origin:62% 50%;
-}
-.hero-collage img{
-  width:100%;height:100%;object-fit:cover;border-radius:12px;
-  box-shadow:0 18px 40px rgba(0,0,0,.45);
-}
-.hero-split.centered .hero-collage-frame::after{z-index:1}
-.hero-split.centered .hero-collage-frame .hero-script,
-.hero-split.centered .hero-collage-frame .hero-tag{z-index:2}
-@media (max-width:760px){
-  /* Tall phone frame: the posters stack in one column instead */
-  .hero-collage{grid-template-columns:1fr;gap:10px;transform:rotate(-4deg) scale(1.2);transform-origin:50% 50%;
-    /* Each poster carries its own title; soft focus keeps those words from
-       reading against the headline laid over them */
-    filter:blur(2.5px)}
-  /* The copy covers the whole phone frame, so the wall sits further back */
-  .hero-split.centered .hero-collage-frame::after{
-    background:
-      linear-gradient(180deg,rgba(0,0,0,.4) 0%,transparent 28%,transparent 70%,rgba(0,0,0,.6) 100%),
-      rgba(0,0,0,.74);
-  }
-}
-@media (prefers-reduced-motion:no-preference){
-  .hero-collage img{animation:collageIn .9s var(--ease) both}
-  .hero-collage img:nth-child(2){animation-delay:.08s}
-  .hero-collage img:nth-child(3){animation-delay:.16s}
-  .hero-collage img:nth-child(4){animation-delay:.24s}
-}
+
 @keyframes collageIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 
 /* ==========================================================================
@@ -1971,23 +1667,6 @@ html.intro-on,html.intro-on body{overflow:hidden}
 .approach-cta svg{width:17px;height:17px}
 
 /* Steps: one rule with a ring on it for each step */
-.approach-steps{
-  list-style:none;margin:0;padding:52px 0 0;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:40px;position:relative;
-}
-.approach-steps::before{content:"";position:absolute;left:10px;right:0;top:62px;height:1px;background:rgba(255,255,255,.2)}
-.approach-steps li{position:relative;padding-top:44px}
-.approach-dot{
-  position:absolute;left:0;top:0;width:21px;height:21px;border-radius:50%;
-  border:2px solid var(--accent);background:var(--bg,#000);
-}
-.approach-num{display:flex;align-items:baseline;gap:18px;margin:0}
-.approach-num b{font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,2.6vw,2.9rem);color:var(--accent);line-height:1}
-.approach-num span{color:var(--muted);font-size:1rem}
-.approach-steps h3{margin:18px 0 0;font-family:var(--font-display);font-weight:800;font-size:clamp(2rem,2.8vw,3.1rem);letter-spacing:-.03em;line-height:1}
-.approach-steps li > .approach-desc{margin:22px 0 0;max-width:30ch;color:rgba(255,255,255,.78);font-size:clamp(.95rem,1.1vw,1.15rem);line-height:1.6}
-.approach-steps li:hover .approach-dot{background:var(--accent)}
-.approach-dot{transition:background .3s var(--ease)}
 
 /* iPad portrait and phones: image above the copy, steps stacked */
 @media (max-width:900px){
@@ -1995,12 +1674,12 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .approach-bg{position:relative;inset:auto;width:100%;aspect-ratio:16/9}
   .approach-bg::after{background:linear-gradient(0deg,var(--bg,#000) 0%,rgba(0,0,0,.2) 45%,transparent 70%)}
   .approach-copy{padding-top:0;padding-bottom:44px;margin-top:-40px}
-  .approach-steps{grid-template-columns:1fr;gap:34px;padding-top:40px}
-  .approach-steps::before{left:10px;right:auto;top:50px;bottom:10px;width:1px;height:auto}
-  .approach-steps li{padding:0 0 0 46px}
-  .approach-steps li .approach-dot{top:1px}
-  .approach-steps h3{margin-top:10px}
-  .approach-steps li > .approach-desc{margin-top:12px;max-width:none}
+  
+  
+  
+  
+  
+  
 }
 
 /* ==========================================================================
@@ -2055,8 +1734,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   50%{opacity:1;filter:brightness(1.25)}
 }
 @media (prefers-reduced-motion:reduce){.stays-arc{animation:none;opacity:1}}
-.stays-grid{position:relative;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,90px);align-items:stretch}
-.stays-copy{display:flex;flex-direction:column;justify-content:center;position:relative}
+
 .stays-label{display:flex;align-items:center;gap:18px;margin:0;font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.72)}
 .stays-label::before{content:"";width:48px;height:3px;border-radius:2px;background:var(--accent)}
 .stays-label b{font-weight:600;color:rgba(255,255,255,.8)}
@@ -2075,39 +1753,24 @@ html.intro-on,html.intro-on body{overflow:hidden}
 .stays-link:hover::after{width:100%}
 .stays-link:hover svg{transform:translate(3px,-3px)}
 
-.stays-films{display:flex;flex-direction:column;gap:clamp(18px,2vw,28px)}
-.sw-card{margin:0}
-.sw-card-2{width:72%;align-self:flex-end;margin-right:5%}
 .sw-media{
   display:block;width:100%;padding:0;border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden;
   aspect-ratio:2/1;cursor:pointer;background:#000;box-shadow:0 24px 60px rgba(0,0,0,.45);
 }
 .sw-media img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
-.sw-card:hover .sw-media img{transform:scale(1.04)}
-.sw-card figcaption{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:14px;padding:0 4px 0 10px}
-.sw-card figcaption span{font-size:clamp(1rem,1.3vw,1.3rem);font-weight:600;color:#fff}
-.sw-card figcaption i{font-style:normal;color:rgba(255,255,255,.6);margin:0 4px}
-.sw-play{
-  flex:none;width:clamp(44px,3.4vw,58px);height:clamp(44px,3.4vw,58px);border-radius:50%;cursor:pointer;
-  display:grid;place-items:center;color:#fff;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.04);
-  transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease);
-}
-.sw-play svg{width:38%;height:38%;margin-left:3px}
-.sw-card-1 .sw-play,.sw-play:hover{background:var(--accent);border-color:var(--accent)}
-.sw-play:hover{transform:scale(1.06)}
 
 /* iPad portrait and phones: headline first, then the films, then the link */
 @media (max-width:900px){
-  .stays-grid{grid-template-columns:1fr;gap:34px}
-  .stays-copy{display:contents}
+  
+  
   .stays-label{order:1}
   .stays-title{order:2;margin-top:18px;font-size:clamp(2.6rem,9vw,4.6rem)}
-  .stays-films{order:3}
+  
   .stays-link{order:4;margin-top:6px;justify-self:start}
   .stays-arc{--al:calc(-60vw - 14px);--aw:130vw;--ah:70%;--at:-10%}
 }
 @media (max-width:760px){
-  .sw-card-2{width:88%;margin-right:0}
+  
   .sw-media{border-radius:12px}
 }
 
@@ -2115,10 +1778,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
    HOME — 01 Our Philosophy: "Thinkers Who Make." headline, a wide on-set
    film band carrying the pull line, then the copy split in two columns
    ========================================================================== */
-.phil2-label{margin-bottom:clamp(14px,1.6vw,22px)}
-.phil2-label .sec-num{color:#fff}
-.phil2-label .sec-name{position:relative;padding-left:32px}
-.phil2-label .sec-name::before{content:"";position:absolute;left:0;top:50%;width:1px;height:26px;transform:translateY(-50%);background:rgba(255,255,255,.28)}
+
 .phil2-title{
   margin:0;font-family:var(--font-display);font-weight:800;
   font-size:clamp(2.6rem,6.2vw,7.2rem);line-height:.98;letter-spacing:-.045em;color:#fff;
@@ -2137,17 +1797,7 @@ html.intro-on,html.intro-on body{overflow:hidden}
   content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.15) 32%,rgba(0,0,0,0) 50%);
 }
-.phil2-quote{
-  position:absolute;z-index:2;left:clamp(28px,3.7vw,72px);top:50%;transform:translateY(-50%);
-  padding-left:clamp(20px,2.2vw,36px);border-left:4px solid var(--accent);
-  font-family:var(--font-display);font-weight:700;color:#fff;
-  font-size:clamp(1.8rem,3.4vw,4rem);line-height:1.08;letter-spacing:-.03em;
-  text-shadow:0 2px 24px rgba(0,0,0,.45);
-}
-.phil2-copy{
-  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
-  gap:clamp(30px,8vw,180px);margin-top:clamp(28px,3.2vw,56px);align-items:start;
-}
+
 .phil2-lead{margin:0;font-size:clamp(1.05rem,1.45vw,1.6rem);line-height:1.6;color:rgba(255,255,255,.92);max-width:44ch}
 .phil2-sub{margin:0;padding-top:.5em;font-size:clamp(.95rem,1.15vw,1.25rem);line-height:1.75;color:rgba(255,255,255,.62);max-width:40ch}
 
@@ -2160,11 +1810,10 @@ html.intro-on,html.intro-on body{overflow:hidden}
   .phil2-band{aspect-ratio:4/3;border-radius:14px}
   .phil2-band img{object-position:56% 50%}
   .phil2-band::after{background:linear-gradient(0deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.2) 42%,rgba(0,0,0,0) 60%)}
-  .phil2-quote{top:auto;bottom:22px;left:20px;transform:none;padding-left:16px;border-left-width:3px;font-size:1.75rem}
-  .phil2-copy{grid-template-columns:1fr;gap:16px}
+  
+  
   .phil2-sub{padding-top:0}
 }
-@media (min-width:1025px){.phil2-label .sec-name{font-size:.82rem}}
 
 /* ==========================================================================
    HOME — trusted strip on white + full-bleed showreel (owner's reference)
@@ -2242,44 +1891,14 @@ html.intro-on,html.intro-on body{overflow:hidden}
 .approach-eyebrow::after,
 .stays-label::before,
 .phil2-label .sec-name::before{content:none;display:none}
-.phil2-label .sec-name{padding-left:0}
 
 /* ---- Approach steps: an image behind each step, revealed on hover / tap ----
    Nothing shows at first. On hover (mouse) or tap (touch; anava.js toggles
    .is-open) the step's still dissolves in behind its text: opacity and blur
    clear together while it settles from a slight zoom, under a dark wash so
    the copy stays readable, and the step's dot fills. */
-.approach-steps li{cursor:pointer;isolation:isolate}
-.approach-steps li > *:not(.approach-media){position:relative;z-index:1}
-.approach-steps li > .approach-dot{position:absolute}
-.approach-media{
-  position:absolute;z-index:0;margin:0;pointer-events:none;overflow:hidden;
-  top:24px;bottom:-26px;left:-22px;right:12px;border-radius:16px;
-}
-.approach-media img{
-  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:0;filter:blur(14px) saturate(.4);transform:scale(1.14);
-  transition:opacity .9s var(--ease),filter 1.1s var(--ease),transform 1.6s cubic-bezier(.2,.7,.2,1);
-}
+
 /* Dark wash over the still, heaviest where the text sits */
-.approach-media::after{
-  content:"";position:absolute;inset:0;opacity:0;transition:opacity .9s var(--ease);
-  background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.72) 55%,rgba(0,0,0,.86) 100%);
-}
-.approach-steps li.is-open .approach-media img{opacity:1;filter:none;transform:none}
-.approach-steps li.is-open .approach-media::after{opacity:1}
-.approach-steps li.is-open .approach-dot{background:var(--accent)}
-@media (hover:hover){
-  .approach-steps li:hover .approach-media img{opacity:1;filter:none;transform:none}
-  .approach-steps li:hover .approach-media::after{opacity:1}
-}
-@media (max-width:900px){
-  .approach-media{top:-16px;bottom:-16px;left:30px;right:-10px;border-radius:14px}
-  .approach-steps li{padding-right:14px}
-}
-@media (prefers-reduced-motion:reduce){
-  .approach-media img{transform:none;filter:none;transition:opacity .4s}
-}
 
 /* ---- Page heroes (About / Process / Contact) on a phone ----
    The display line was 33px and set nowrap, so "PRODUCTION HOUSE." ran past
@@ -2420,20 +2039,8 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
 }
 
 /* ---- Home hero: a quieter second action beside the primary button ---- */
-.hero-watch{
-  display:inline-flex;align-items:center;gap:12px;padding:10px 6px;border:0;background:none;cursor:pointer;
-  font:inherit;font-size:clamp(.92rem,1vw,1.02rem);font-weight:500;color:rgba(255,255,255,.88);
-  transition:color .3s var(--ease);
-}
-.hero-watch-ic{
-  width:40px;height:40px;border-radius:50%;display:grid;place-items:center;flex:none;
-  border:1.5px solid rgba(255,255,255,.55);transition:border-color .3s var(--ease),background .3s var(--ease),transform .3s var(--ease);
-}
-.hero-watch-ic svg{width:13px;height:13px;margin-left:2px}
-.hero-watch:hover{color:#fff}
-.hero-watch:hover .hero-watch-ic{border-color:#fff;background:rgba(255,255,255,.1);transform:scale(1.06)}
-.hero-watch:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:999px}
-@media (max-width:760px){.hero-cine-actions{gap:10px 18px}.hero-watch-ic{width:36px;height:36px}}
+
+@media (max-width:760px){.hero-cine-actions{gap:10px 18px}}
 
 /* ---- Home closing band: one message, one action ---- */
 .home-cta .cta-band-inner{gap:24px}
@@ -2463,14 +2070,6 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
    Each step's dot, number, title and text sit on the column's centre line,
    and the timeline runs from the first dot's centre to the last one's.
    Phones keep the left-aligned vertical timeline. */
-@media (min-width:901px){
-  .approach-steps li{text-align:center}
-  .approach-steps li > .approach-dot{left:50%;margin-left:-10.5px}
-  .approach-num{justify-content:center}
-  .approach-steps li > .approach-desc{margin-left:auto;margin-right:auto}
-  .approach-steps::before{left:calc((100% - 80px) / 6);right:calc((100% - 80px) / 6)}
-  .approach-media{left:-14px;right:-14px}
-}
 
 /* ==========================================================================
    HOME hero, to the owner's reference: a wide-tracked eyebrow, both headline
@@ -2478,11 +2077,7 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
    in orange with a white full stop), a bold white claim over a lighter
    paragraph, and one large primary button. Everything centred.
    ========================================================================== */
-.hero-cine-inner .hero-eyebrow{
-  display:block;margin:0 0 20px;text-align:center;
-  font-family:var(--font-body);font-size:clamp(.7rem,.85vw,.95rem);font-weight:500;
-  letter-spacing:.38em;text-transform:uppercase;color:rgba(255,255,255,.82);
-}
+
 .hero-cine-title{gap:.04em}
 .hero-cine-title .hl-1,.hero-cine-title .hl-2{
   font-family:var(--font-body);font-weight:600;font-style:normal;
@@ -2493,7 +2088,7 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
 .hero-cine-lead .hero-line-1{margin-bottom:.2em}
 .hero-cine-lead strong{font-weight:600;color:#fff}
 .hero-cine-actions{margin-top:40px}
-.hero-cine-actions .btn-grad{padding:18px 56px;font-size:1.05rem;gap:16px}
+
 /* The bold claim holds one line on a desktop, centred on the column even
    though it is wider than the lighter paragraph under it. */
 @media (min-width:1101px){
@@ -2506,14 +2101,14 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
 @media (max-width:1100px){
   .hero-cine-title .hl-1,.hero-cine-title .hl-2{font-size:clamp(2.2rem,5.6vw,3.6rem)}
   .hero-cine-lead{font-size:1rem;max-width:60ch}
-  .hero-cine-actions .btn-grad{padding:15px 44px;font-size:1rem}
+  
 }
 @media (max-width:760px){
-  .hero-cine-inner .hero-eyebrow{font-size:.62rem;letter-spacing:.24em;margin-bottom:14px}
+  
   .hero-cine-title .hl-1,.hero-cine-title .hl-2{font-size:clamp(1.9rem,8.4vw,2.5rem);line-height:1.1}
   .hero-cine-lead{margin-top:20px;font-size:.95rem}
   .hero-cine-actions{margin-top:28px}
-  .hero-cine-actions .btn-grad{padding:14px 36px;font-size:.95rem}
+  
 }
 
 /* Work hero stage: the letterboxed band crops a 16:9 poster hard. Anchor the
@@ -2694,14 +2289,6 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
    The step titles stay as they are; the description drops ~15% (15.2px ->
    13px) with a slightly tighter measure and rhythm, and the number/label
    row and gaps tighten to match. */
-@media (max-width:760px){
-  .approach-steps{gap:26px}
-  .approach-num b{font-size:1.9rem}
-  .approach-num span{font-size:.88rem}
-  .approach-steps h3{margin-top:8px}
-  .approach-steps li > .approach-desc{margin-top:10px;font-size:.81rem;line-height:1.55;color:rgba(255,255,255,.74)}
-  .approach-media{top:-12px;bottom:-12px}
-}
 
 /* ---- People Behind the Work, overlay version ----
    The key art sits to the right, shifted so its own "Making It Real" title
@@ -2819,15 +2406,7 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   background:linear-gradient(180deg,var(--accent),rgba(240,82,35,.4));
   transform-origin:top;transform:scaleY(var(--sp,0));
 }
-.m-step .step-num{transition:color .6s var(--m-ease)}
-.m-step.is-active .step-num{color:var(--accent)}
-.m-js .m-step .step-label{opacity:0;transform:translateY(8px);transition:opacity .6s var(--m-ease) .15s,transform .6s var(--m-ease) .15s}
-.m-js .m-step.is-active .step-label{opacity:1;transform:none}
-.m-step .step-dot::after{
-  content:"";position:absolute;left:-52px;top:12px;width:9px;height:9px;border-radius:50%;
-  border:1px solid var(--accent);opacity:0;pointer-events:none;
-}
-.m-step.is-active .step-dot::after{animation:mNode 1s ease-out .1s 1}
+
 @keyframes mNode{from{opacity:.9;transform:scale(1)}to{opacity:0;transform:scale(3)}}
 @media (max-width:760px){.steps-progress{display:none}}
 
@@ -2958,26 +2537,14 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
    Inter headline, smaller pull line, hairline label rule, framed band and
    the copy split by a thin divider
    ========================================================================== */
-.phil2-label{display:flex;align-items:center;gap:14px;margin-bottom:clamp(14px,1.4vw,22px)}
-.phil2-label .sec-num{font-size:.9rem;font-weight:600}
-.phil2-label .sec-name{display:inline-flex;align-items:center;gap:14px;padding-left:0;font-size:.72rem;letter-spacing:.06em;color:rgba(255,255,255,.62)}
-.phil2-label .sec-name::before{content:"";display:block;position:static;transform:none;width:44px;height:1px;background:rgba(255,255,255,.28)}
+
 .phil2-title{
   font-family:var(--font-body);font-weight:700;letter-spacing:-.035em;line-height:1.02;
   font-size:clamp(2.1rem,4.2vw,5rem);padding-left:clamp(0px,1.4vw,28px);
 }
 .phil2-band{border:1px solid rgba(255,255,255,.1);aspect-ratio:1568/355;margin-top:clamp(16px,1.6vw,28px)}
 .phil2-band::after{background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.6) 24%,rgba(0,0,0,0) 46%)}
-.phil2-quote{
-  left:clamp(28px,3.4vw,64px);padding-left:clamp(18px,2.2vw,42px);border-left-width:5px;
-  font-family:var(--font-body);font-weight:600;letter-spacing:-.02em;line-height:1.18;
-  font-size:clamp(1.3rem,2.25vw,2.5rem);
-}
-.phil2-copy{
-  position:relative;grid-template-columns:1fr 1fr;gap:clamp(40px,8vw,140px);
-  margin-top:clamp(24px,2.4vw,40px);
-}
-.phil2-copy::before{content:"";position:absolute;left:50%;top:-6px;bottom:-24px;width:1px;background:rgba(255,255,255,.1)}
+
 .phil2-lead{font-size:clamp(.95rem,1.08vw,1.2rem);line-height:1.7;color:rgba(255,255,255,.9);max-width:46ch}
 .phil2-sub{padding-top:0;font-size:clamp(.9rem,1vw,1.1rem);line-height:1.75;color:rgba(255,255,255,.6);max-width:44ch;margin-left:auto;margin-right:auto}
 @media (max-width:1024px){.phil2-band{aspect-ratio:2.9/1}}
@@ -2985,9 +2552,9 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .phil2-title{font-size:2.1rem;padding-left:0}
   .phil2-band{aspect-ratio:4/3}
   .phil2-band::after{background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.25) 45%,rgba(0,0,0,0) 62%)}
-  .phil2-quote{font-size:1.3rem;border-left-width:3px;padding-left:14px;left:18px;bottom:18px}
-  .phil2-copy{grid-template-columns:1fr;gap:14px}
-  .phil2-copy::before{left:0;right:auto;top:auto;bottom:auto;display:none}
+  
+  
+  
   .phil2-lead{font-size:.9rem;line-height:1.65}
   .phil2-sub{font-size:.85rem;line-height:1.65;margin-left:0;padding-top:14px;border-top:1px solid rgba(255,255,255,.1)}
 }
@@ -3007,7 +2574,6 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   .stays-title,.approach-title{font-size:2.1rem}
   .pb-title{font-size:1.6rem}
 }
-.approach-steps h3{font-family:var(--font-body);font-weight:700;letter-spacing:-.03em}
 
 /* Header Let's Talk: the gold Anava mark replaces the arrow. It makes one
    slow, eased turn (1.5s) on load and on hover, with a soft gold glow. */
@@ -3174,9 +2740,7 @@ button.reel{display:block;width:100%;padding:0;font:inherit;color:inherit;text-a
   background:color-mix(in oklab,var(--copper) 90%,#fff);transform:translateY(-2px);filter:none;
   border-color:rgba(255,255,255,.22);
 }
-.hero-cta-arrow{display:inline-flex;transition:transform .35s var(--hr-ease)}
-.hero-cta-arrow svg{width:15px;height:15px}
-.hero-cta:hover .hero-cta-arrow,.hero-cta:focus-visible .hero-cta-arrow{transform:translateX(4px)}
+
 @media (max-width:760px){.hero-cine .hero-cine-actions .hero-cta{padding:12px 26px;font-size:.9rem}}
 
 /* ---- Navbar: slimmer, lighter charcoal glass ---- */
@@ -3227,7 +2791,6 @@ html.hero-go .hero-cine .trusted-logos li{animation:hrLogo .9s cubic-bezier(.22,
 }
 html.hero-go .hero-cine .trusted-logos li:nth-child(1){animation-delay:1.70s}html.hero-go .hero-cine .trusted-logos li:nth-child(2){animation-delay:1.77s}html.hero-go .hero-cine .trusted-logos li:nth-child(3){animation-delay:1.84s}html.hero-go .hero-cine .trusted-logos li:nth-child(4){animation-delay:1.91s}html.hero-go .hero-cine .trusted-logos li:nth-child(5){animation-delay:1.98s}html.hero-go .hero-cine .trusted-logos li:nth-child(6){animation-delay:2.05s}html.hero-go .hero-cine .trusted-logos li:nth-child(7){animation-delay:2.12s}html.hero-go .hero-cine .trusted-logos li:nth-child(8){animation-delay:2.19s}html.hero-go .hero-cine .trusted-logos li:nth-child(9){animation-delay:2.26s}html.hero-go .hero-cine .trusted-logos li:nth-child(10){animation-delay:2.33s}html.hero-go .hero-cine .trusted-logos li:nth-child(11){animation-delay:2.40s}html.hero-go .hero-cine .trusted-logos li:nth-child(12){animation-delay:2.47s}
 
-
 @media (prefers-reduced-motion:reduce){
   .hero-cine-bg img[data-parallax],.hero-haze{animation:none}
   .hero-cine-inner{transform:none;opacity:1}
@@ -3235,7 +2798,7 @@ html.hero-go .hero-cine .trusted-logos li:nth-child(1){animation-delay:1.70s}htm
   html.hero-go .hero-cine :is(.hero-cine-eyebrow,.hl-1,.hl-1 em,.hl-2,.hero-cine-lead,.hero-cine-actions,.trusted,.trusted-label,.trusted-logos li){animation:hrFade .6s ease backwards}
   .hero-cta,.hero-cta-arrow{transition:background .3s ease}
   .hero-cine .hero-cine-actions .hero-cta:hover{transform:none}
-  .hero-cta:hover .hero-cta-arrow{transform:none}
+  
 }
 @media (min-width:761px) and (max-width:1024px){
   .hero-cine .hero-cine-title .hl-1{font-size:6.2vw}
@@ -3244,8 +2807,7 @@ html.hero-go .hero-cine .trusted-logos li:nth-child(1){animation-delay:1.70s}htm
 .nobr{white-space:nowrap}
 @media (max-width:899px){.hero-cine .hero-cine-lead .hero-line{text-wrap:balance}}
 /* Thinkers Who Make: one paragraph now, so no second column or divider */
-.phil2-copy{grid-template-columns:1fr}
-.phil2-copy::before{content:none;display:none}
+
 .phil2-lead{max-width:62ch}
 
 /* Phones: shorter travel for the hero lines (after the base keyframes so
@@ -3270,7 +2832,6 @@ html.hero-go .hero-cine .hl-1 em{
   html.hero-go .hero-cine .hl-1 em{animation:hrFade .6s ease backwards}
 }
 /* Selected Work: both films at the same size */
-.stays-films .sw-card-2{width:100%;align-self:stretch;margin-right:0}
 
 /* Home hero, owner's reference: "Thought." carries a copper-to-amber
    gradient (the shine band still sweeps over it), and the CTA pill the
@@ -3533,21 +3094,20 @@ html.hero-go .hero-cine .hl-1 em{
    still drifts a few px with the scroll; copy and link sit asymmetric ---- */
 .phil2{padding-top:clamp(90px,9vw,170px);padding-bottom:clamp(80px,8vw,150px)}
 .phil2-title{padding-left:0;margin-left:clamp(0px,8vw,160px)}
-.phil2-label{margin-left:clamp(0px,8vw,160px)}
+
 .phil2-band{border:0;border-radius:4px;aspect-ratio:3.1/1;margin-top:clamp(26px,2.6vw,46px)}
 .phil2-band img{transform:translate3d(0,var(--py,0px),0) scale(1.07);transition:transform .7s cubic-bezier(.22,1,.36,1)}
 .phil2-band:hover img{transform:translate3d(0,var(--py,0px),0) scale(1.09)}
-.phil2-copy{grid-template-columns:minmax(0,1fr) auto;align-items:end;margin-left:auto;max-width:min(100%,980px);gap:clamp(30px,6vw,110px);margin-top:clamp(30px,3vw,54px)}
-.phil2-copy::before{display:none}
+
 .phil2-lead{font-size:clamp(1rem,1.2vw,1.3rem);line-height:1.65;max-width:52ch;color:rgba(255,255,255,.86)}
-.phil2-more{justify-self:end;white-space:nowrap;padding:12px 0}
+
 @media (max-width:1024px){.phil2-band{aspect-ratio:2.5/1}}
 @media (max-width:760px){
   .phil2{padding-top:70px;padding-bottom:64px}
   .phil2-title,.phil2-label{margin-left:0}
   .phil2-band{aspect-ratio:4/3;border-radius:4px}
-  .phil2-copy{grid-template-columns:1fr;gap:6px}
-  .phil2-more{justify-self:start}
+  
+  
 }
 
 /* ---- 03 From Idea to Impact: three acts ---- */
@@ -3607,14 +3167,14 @@ html.hero-go .hero-cine .hl-1 em{
 }
 
 /* ---- Process: sentence-set Inter stage titles, alternating compositions ---- */
-.step-title{font-family:var(--font-body);font-weight:700;text-transform:none;letter-spacing:-.035em;line-height:1.05}
+
 @media (min-width:981px){
   .step:nth-child(even){grid-template-columns:70px 108px minmax(0,1.05fr) minmax(0,1fr)}
   .step:nth-child(even) > div:nth-child(3){order:4}
-  .step:nth-child(even) .step-media{order:3}
-  .step:nth-child(even) .step-media::after{background:linear-gradient(270deg,transparent 40%,rgba(0,0,0,.7))}
-  .step:nth-child(even) .step-media .caption{right:auto;left:16px;text-align:left}
-  .step-media{border-radius:4px}
+  
+  
+  
+  
 }
 
 /* ---- About: chapter numbers, stats and values set editorially ---- */
@@ -3626,7 +3186,7 @@ html.hero-go .hero-cine .hl-1 em{
 .stat + .stat{padding-left:20px;border-left:1px solid rgba(255,255,255,.08)}
 .stat-n{font-family:var(--font-body);font-weight:600;letter-spacing:-.04em;color:#fff;font-size:clamp(2.4rem,4vw,4rem)}
 .stat-l{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:12px}
-.values{gap:0;margin-top:clamp(30px,3vw,50px)}
+
 .value{border:0;border-radius:0;background:none;padding:18px 20px 0 0;border-top:1px solid rgba(255,255,255,.08)}
 .value:hover{transform:none;border-color:rgba(240,82,35,.5)}
 .person-body h3{text-transform:none;font-family:var(--font-body);letter-spacing:-.03em}
@@ -3638,7 +3198,7 @@ html.hero-go .hero-cine .hl-1 em{
   .stat{padding:20px 12px 14px 0}
   .stat + .stat{padding-left:14px}
   .stat:nth-child(odd){padding-left:0;border-left:0}
-  .values{grid-template-columns:1fr}
+  
 }
 
 /* ---- Work: the filter row stays within reach while the list scrolls ---- */
@@ -4078,11 +3638,7 @@ html.hero-go .hero-cine .hl-1 em{
 }
 
 /* ---- Contact: the form leads; the closing band is a quiet sign-off ---- */
-.cta-quiet .cta-band{padding:clamp(34px,4vw,56px) clamp(24px,4vw,56px)}
-.cta-quiet .cta-band-bg img{opacity:.45}
-.cta-quiet .display-sm{font-size:clamp(1.6rem,2.6vw,2.6rem)}
-.cta-quiet .script{display:none}
-.cta-quiet-link{margin-top:16px;display:inline-flex;min-height:44px;align-items:center}
+
 .caps{padding-top:clamp(36px,5vw,90px)}
 
 /* ==========================================================================
@@ -4199,7 +3755,6 @@ html.hero-go .hero-cine .hl-1 em{
 .ww .ww-all{font-size:15px}
 
 /* F2 · Thinkers Who Make: the link sits below the paragraph in weight */
-.phil2 .phil2-more{font-size:15px}
 
 /* F3 · People Behind the Work: a real section heading */
 @media (min-width:901px){
@@ -4271,31 +3826,17 @@ html.hero-go .hero-cine .hl-1 em{
 .phil2{padding-top:clamp(64px,6.4vw,122px);padding-bottom:clamp(58px,5.8vw,108px)}
 .phil2-band{border:0;border-radius:0;overflow:visible;background:none;aspect-ratio:auto;margin-top:clamp(22px,2vw,36px)}
 .phil2-band::after{content:none}
-.phil2-frame{position:relative;overflow:hidden;border-radius:4px;background:#000;aspect-ratio:2/1}
-.phil2-frame::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(90deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.22) 18%,rgba(0,0,0,0) 34%)}
+
 .phil2-band img,.phil2-band:hover img{width:100%;height:100%;object-fit:cover;object-position:88% 42%;
   transform:scale(var(--ps,1.02));transition:transform .5s linear}
-.phil2-copy{margin-top:clamp(22px,2.2vw,40px)}
+
 @media (min-width:1025px){
   .phil2-band{width:64%;margin-left:auto;position:relative}
-  .phil2-quote{left:calc(-1 * clamp(150px,12vw,240px));right:auto;top:auto;bottom:clamp(26px,3vw,52px);transform:none;
-    z-index:3;font-size:clamp(1.9rem,2.3vw,2.6rem);text-shadow:0 2px 18px rgba(0,0,0,.5)}
-  .phil2-copy{width:64%;margin-left:auto;margin-right:0;max-width:none;
-    display:grid;grid-template-columns:minmax(0,52ch) auto;justify-content:start;align-items:end;gap:clamp(28px,3.4vw,64px)}
-  .phil2-more{justify-self:start}
+  
+  
+  
 }
-@media (min-width:761px) and (max-width:1024px){
-  .phil2-frame{aspect-ratio:2.2/1}
-  .phil2-quote{left:clamp(22px,3vw,40px);top:auto;bottom:clamp(18px,3vw,32px);transform:none;z-index:3}
-  .phil2-copy{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:32px;max-width:none;margin-left:0}
-  .phil2-more{justify-self:start}
-}
-@media (max-width:760px){
-  .phil2-frame{aspect-ratio:4/3}
-  .phil2-frame::after{background:linear-gradient(0deg,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 45%,rgba(0,0,0,0) 62%)}
-  .phil2-quote{z-index:3}
-}
+
 @media (prefers-reduced-motion:reduce){.phil2-band img{transform:none;transition:none}}
 
 /* ==========================================================================
@@ -4325,9 +3866,9 @@ html.hero-go .hero-cine .hl-1 em{
 .phx-cta{display:inline-flex;align-items:center;gap:14px;margin-top:clamp(30px,4vh,44px);min-height:52px;padding:0 26px 0 30px;
   border:1px solid rgba(240,82,35,.72);border-radius:999px;color:#fff;font-family:var(--font-body);font-size:16px;font-weight:500;letter-spacing:-.005em;
   text-decoration:none;background:transparent;transition:background-color .3s ease,border-color .3s ease,color .3s ease}
-.phx-arrow{display:inline-flex;color:var(--accent);font-size:18px;transition:transform .3s ease,color .3s ease}
+
 .phx-cta:hover,.phx-cta:focus-visible{background:var(--accent);border-color:var(--accent);color:#fff}
-.phx-cta:hover .phx-arrow,.phx-cta:focus-visible .phx-arrow{color:#fff;transform:translate(3px,-3px)}
+
 .phx-cta:focus-visible{outline:2px solid #fff;outline-offset:3px}
 
 /* reveal: eyebrow -> heading -> body -> CTA */

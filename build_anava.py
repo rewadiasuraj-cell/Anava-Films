@@ -450,13 +450,14 @@ INTRO = """
     <button class="intro-skip" type="button" aria-label="Skip intro">Skip</button>
     <button class="intro-sound" type="button" aria-pressed="false" hidden>Tap for sound</button>
   </div>
+  <button class="intro-play" type="button" hidden>Play intro</button>
 </div>
 <script>
 (function () {
   var el = document.getElementById('intro'), seen = false;
   try {
     seen = sessionStorage.getItem('anavaIntro') === '1';
-    if (sessionStorage.getItem('anavaIntroReplay') === '1') { seen = false; sessionStorage.removeItem('anavaIntroReplay'); }
+    if (sessionStorage.getItem('anavaIntroReplay') === '1') { seen = false; el.setAttribute('data-replay', '1'); sessionStorage.removeItem('anavaIntroReplay'); }
   } catch (e) {}
   var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var saver = navigator.connection && navigator.connection.saveData;

@@ -4167,3 +4167,45 @@ html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){
   opacity:0;animation:introSkip .5s ease .6s forwards;
 }
 .intro-sound[hidden]{display:none}
+
+/* ---- About: People + stats, tightened (iPad review) ----
+   People: the 4:5 portraits ran ~2x the height of their text, and the text
+   sat at the foot of its column, leaving a tall empty block above it. The
+   portrait now keeps one size in both rows (mirrored columns instead of a
+   reorder into the wider track), is a little less tall, and the text sits
+   centred beside it; on tablets the portrait goes square.
+   Stats: the two-column grid starts at 1100px, but the rule that lines the
+   second row up with the first only started at 980px, so on iPad "30+" sat
+   indented under "50+". */
+@media (min-width:761px){
+  .people-ed{gap:clamp(56px,6vw,110px)}
+  .people-ed .person{align-items:center;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+  .people-ed .person:nth-child(2){grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+  .people-ed .person-img{aspect-ratio:4/4.6}
+  .people-ed .person-body{padding:0}
+}
+@media (min-width:761px) and (max-width:1180px){
+  .people-ed .person,
+  .people-ed .person:nth-child(2){grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,4vw,48px)}
+  .people-ed .person-img{aspect-ratio:1/1}
+}
+@media (min-width:761px) and (max-width:1100px){
+  .stats{row-gap:0}
+  .stat{padding:26px 20px 22px 0}
+  .stat:nth-child(odd){padding-left:0;border-left:0}
+  .stat:nth-child(even){padding-left:24px;border-left:1px solid rgba(255,255,255,.08)}
+  .stat:nth-child(n+3){border-top:1px solid rgba(255,255,255,.08)}
+}
+
+/* Intro "Play intro" button: shown only when a logo tap asked for the film
+   but the device blocks all autoplay (iPhone/iPad Low Power Mode). */
+.intro-play{
+  position:absolute;left:50%;top:50%;z-index:3;transform:translate(-50%,-50%);
+  display:inline-flex;align-items:center;gap:12px;cursor:pointer;
+  padding:16px 30px 16px 24px;border:0;border-radius:999px;
+  font:600 .82rem/1 var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#0b0b0c;
+  background:linear-gradient(105deg,#9aa0a8 0%,#d7dade 30%,#fff 48%,#dfe2e6 62%,#aeb3ba 100%);
+  box-shadow:0 14px 40px rgba(0,0,0,.6);
+}
+.intro-play::before{content:"";width:0;height:0;border-style:solid;border-width:7px 0 7px 12px;border-color:transparent transparent transparent currentColor}
+.intro-play[hidden]{display:none}

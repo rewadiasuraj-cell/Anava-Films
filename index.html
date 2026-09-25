@@ -17,9 +17,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/anava.css?v=ffd1d902e3">
+<link rel="stylesheet" href="assets/css/anava.css?v=d37c169427">
 <script>document.documentElement.classList.add('m-js')</script>
-<script defer src="assets/js/anava.js?v=9541f40f5e"></script>
+<script defer src="assets/js/anava.js?v=787ddc62d8"></script>
 </head>
 <body>
 
@@ -30,13 +30,14 @@
     <button class="intro-skip" type="button" aria-label="Skip intro">Skip</button>
     <button class="intro-sound" type="button" aria-pressed="false" hidden>Tap for sound</button>
   </div>
+  <button class="intro-play" type="button" hidden>Play intro</button>
 </div>
 <script>
 (function () {
   var el = document.getElementById('intro'), seen = false;
   try {
     seen = sessionStorage.getItem('anavaIntro') === '1';
-    if (sessionStorage.getItem('anavaIntroReplay') === '1') { seen = false; sessionStorage.removeItem('anavaIntroReplay'); }
+    if (sessionStorage.getItem('anavaIntroReplay') === '1') { seen = false; el.setAttribute('data-replay', '1'); sessionStorage.removeItem('anavaIntroReplay'); }
   } catch (e) {}
   var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var saver = navigator.connection && navigator.connection.saveData;

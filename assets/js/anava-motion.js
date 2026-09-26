@@ -3,10 +3,9 @@
    Sits on top of anava.js without touching what it animates:
    1. Lenis inertia scroll (mouse / trackpad only; touch keeps native momentum)
    2. gold scroll-progress line
-   3. gold cursor with a "Play" state over films (fine pointers only)
-   4. magnetic buttons (fine pointers only)
-   5. spring press feedback for taps and clicks (every device)
-   6. photo parallax inside their frames
+   3. magnetic buttons (fine pointers only)
+   4. spring press feedback for taps and clicks (every device)
+   5. photo parallax inside their frames
    Transforms go through the individual `translate` / `scale` properties or
    CSS variables, never `transform`, so hover zooms and the site's own
    motion keep working underneath.
@@ -78,41 +77,6 @@
     });
   }
 
-  /* ---------- 3. gold cursor ---------- */
-  var FILM = '[data-lightbox], .wcard, .ww-item';
-  var HOT = 'a, button, [role="button"], label, summary, select, .pill';
-  if (fine && !calm) {
-    var dot = document.createElement('div');
-    var ring = document.createElement('div');
-    dot.className = 'mo-dot'; ring.className = 'mo-ring';
-    ring.innerHTML = '<span class="mo-label">Play</span>';
-    dot.setAttribute('aria-hidden', 'true'); ring.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(ring); document.body.appendChild(dot);
-    html.classList.add('has-cursor');
-    var dx = gsap.quickTo(dot, 'x', { duration: 0.12, ease: 'power3.out' });
-    var dy = gsap.quickTo(dot, 'y', { duration: 0.12, ease: 'power3.out' });
-    var rx = gsap.quickTo(ring, 'x', { duration: 0.5, ease: 'power3.out' });
-    var ry = gsap.quickTo(ring, 'y', { duration: 0.5, ease: 'power3.out' });
-    var shown = false, lastT = null, lastS = -1;
-    window.addEventListener('pointermove', function (e) {
-      if (e.pointerType && e.pointerType !== 'mouse') return;
-      if (!shown) { shown = true; gsap.set([dot, ring], { x: e.clientX, y: e.clientY }); html.classList.add('cursor-on'); }
-      dx(e.clientX); dy(e.clientY); rx(e.clientX); ry(e.clientY);
-      if (e.target === lastT) return;
-      lastT = e.target;
-      var film = !!(lastT.closest && lastT.closest(FILM));
-      var hot = !film && !!(lastT.closest && lastT.closest(HOT));
-      var state = film ? 2 : hot ? 1 : 0;
-      if (state === lastS) return;
-      lastS = state;
-      ring.classList.toggle('is-film', film);
-      ring.classList.toggle('is-hot', hot);
-      dot.classList.toggle('is-hidden', film);
-    }, { passive: true });
-    document.addEventListener('mouseleave', function () { html.classList.remove('cursor-on'); shown = false; });
-    window.addEventListener('pointerdown', function () { ring.classList.add('is-down'); }, { passive: true });
-    window.addEventListener('pointerup', function () { ring.classList.remove('is-down'); }, { passive: true });
-  }
 
   /* ---------- 4. magnetic buttons ---------- */
   if (fine && !calm) {

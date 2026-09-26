@@ -4224,29 +4224,7 @@ html.lenis,html.lenis body{height:auto}
   background:var(--metal-grad);transform-origin:0 50%;transform:scaleX(var(--p,0));opacity:.9}
 html.intro-on .mo-progress{opacity:0}
 
-/* Gold cursor (mouse / trackpad only) */
-html.has-cursor.cursor-on,html.has-cursor.cursor-on *{cursor:none}
-html.has-cursor.cursor-on :is(input,textarea,select,[contenteditable]),
-html.has-cursor.cursor-on :is(input,textarea,select,[contenteditable]) *{cursor:auto}
-.mo-dot,.mo-ring{position:fixed;left:0;top:0;z-index:2147483600;pointer-events:none;opacity:0;
-  transition:opacity .25s ease}
-html.cursor-on .mo-dot,html.cursor-on .mo-ring{opacity:1}
-/* Site favicon replaces the cursor's central dot; ring and interaction states remain unchanged. */
-.mo-dot{width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:0;
-  background:transparent url('../../favicon.png') center/contain no-repeat;
-  box-shadow:none}
-.mo-dot.is-hidden{opacity:0!important}
-.mo-ring{width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;
-  border:1px solid rgba(240,196,88,.55);display:flex;align-items:center;justify-content:center;
-  transition:opacity .25s ease,width .35s cubic-bezier(.22,1,.36,1),height .35s cubic-bezier(.22,1,.36,1),
-    margin .35s cubic-bezier(.22,1,.36,1),background-color .3s ease,border-color .3s ease}
-.mo-ring.is-hot{width:54px;height:54px;margin:-27px 0 0 -27px;background:rgba(240,196,88,.12);border-color:rgba(240,196,88,.8)}
-.mo-ring.is-film{width:84px;height:84px;margin:-42px 0 0 -42px;border-color:transparent;background:var(--metal-grad)}
-.mo-ring.is-down{width:28px;height:28px;margin:-14px 0 0 -14px}
-.mo-ring.is-film.is-down{width:74px;height:74px;margin:-37px 0 0 -37px}
-.mo-label{font:600 10px/1 var(--font-body);letter-spacing:.2em;text-transform:uppercase;color:#0b0b0c;
-  opacity:0;transform:scale(.6);transition:opacity .25s ease,transform .35s cubic-bezier(.22,1,.36,1)}
-.mo-ring.is-film .mo-label{opacity:1;transform:none}
+
 
 /* Magnetic buttons and spring press ride the individual translate / scale
    properties, so the site's own hover transforms still apply on top */

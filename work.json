@@ -458,6 +458,21 @@
  },
  {
   "category": "vertical",
+  "subcategories": "performance,catalogue",
+  "open-case": "lenskart-inf-18",
+  "video": "assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 18.mp4#t=2.5",
+  "img": "",
+  "poster": "assets/images/thumbnails/lenskart-inf-18.jpg",
+  "brand": "∞ lenskart",
+  "name": "LENSKART INFLUENCERS CAMPAIGN #18",
+  "subcat": "Lenskart Influencer Campaign",
+  "duration": 15,
+  "title": "Lenskart Influencers Campaign #18",
+  "client": "Lenskart",
+  "format": "Vertical Campaign Film"
+ },
+ {
+  "category": "vertical",
   "subcategories": "social,product",
   "open-case": "karan-johar-kusha",
   "video": "assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4#t=2.5",

@@ -4230,22 +4230,39 @@ html.lenis,html.lenis body{height:auto}
   background:var(--metal-grad);transform-origin:0 50%;transform:scaleX(var(--p,0));opacity:.9}
 html.intro-on .mo-progress{opacity:0}
 
-/* Favicon Key Icon Cursor (fine pointers only — no circle outline) */
+/* Gold Favicon & Circle Outline Cursor (fine pointers only) */
 html.has-cursor.cursor-on,html.has-cursor.cursor-on *{cursor:none!important}
 html.has-cursor.cursor-on :is(input,textarea,select,[contenteditable]),
 html.has-cursor.cursor-on :is(input,textarea,select,[contenteditable]) *{cursor:auto!important}
 
+.mo-dot,.mo-ring{position:fixed;left:0;top:0;z-index:2147483600;pointer-events:none;opacity:0;
+  transition:opacity .25s ease}
+html.cursor-on .mo-dot,html.cursor-on .mo-ring{opacity:1}
+
 .mo-dot{
-  position:fixed;left:0;top:0;z-index:2147483600;pointer-events:none;opacity:0;
-  width:22px;height:22px;margin:-11px 0 0 -11px;
+  width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:0;
   background:transparent url('../../favicon.png') center/contain no-repeat;
+  box-shadow:none;
   transition:opacity .2s ease,transform .22s cubic-bezier(.22,1,.36,1),filter .22s ease;
   will-change:transform;
 }
-html.cursor-on .mo-dot{opacity:1}
-.mo-dot.is-hidden{opacity:0!important}
-.mo-dot.is-hover{transform:scale(1.25);filter:drop-shadow(0 0 6px rgba(240,196,88,.45))}
-.mo-dot.is-down{transform:scale(0.88)}
+.mo-dot.is-hidden,.mo-ring.is-hidden{opacity:0!important}
+.mo-dot.is-hover{transform:scale(1.15);filter:drop-shadow(0 0 6px rgba(240,196,88,.5))}
+.mo-dot.is-down{transform:scale(0.85)}
+
+.mo-ring{
+  width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;
+  border:1px solid rgba(240,196,88,.65);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 8px rgba(240,196,88,.15);
+  transition:opacity .25s ease,width .35s cubic-bezier(.22,1,.36,1),height .35s cubic-bezier(.22,1,.36,1),
+    margin .35s cubic-bezier(.22,1,.36,1),background-color .3s ease,border-color .3s ease,box-shadow .3s ease;
+}
+.mo-ring.is-hot{
+  width:52px;height:52px;margin:-26px 0 0 -26px;
+  background:rgba(240,196,88,.1);border-color:rgba(240,196,88,.85);
+  box-shadow:0 0 14px rgba(240,196,88,.3);
+}
+.mo-ring.is-down{width:26px;height:26px;margin:-13px 0 0 -13px}
 
 /* Magnetic buttons and spring press ride the individual translate / scale
    properties, so the site's own hover transforms still apply on top */

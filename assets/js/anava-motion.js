@@ -78,29 +78,37 @@
     });
   }
 
-  /* ---------- 3. favicon key icon cursor (no circle outline) ---------- */
+  /* ---------- 3. gold favicon cursor with ring outline ---------- */
   var HOT = 'a, button, [role="button"], label, summary, select, .pill, .wcard, .ww-item, .ww-thumb, .reel, [data-lightbox]';
   var TEXT_INPUT = 'input, textarea, select, [contenteditable]';
   if (fine && !calm) {
     var dot = document.createElement('div');
+    var ring = document.createElement('div');
     dot.className = 'mo-dot';
+    ring.className = 'mo-ring';
     dot.setAttribute('aria-hidden', 'true');
+    ring.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ring);
     document.body.appendChild(dot);
     html.classList.add('has-cursor');
 
     var dx = gsap.quickTo(dot, 'x', { duration: 0.08, ease: 'power3.out' });
     var dy = gsap.quickTo(dot, 'y', { duration: 0.08, ease: 'power3.out' });
+    var rx = gsap.quickTo(ring, 'x', { duration: 0.32, ease: 'power3.out' });
+    var ry = gsap.quickTo(ring, 'y', { duration: 0.32, ease: 'power3.out' });
     var shown = false, lastT = null;
 
     window.addEventListener('pointermove', function (e) {
       if (e.pointerType && e.pointerType !== 'mouse') return;
       if (!shown) {
         shown = true;
-        gsap.set(dot, { x: e.clientX, y: e.clientY });
+        gsap.set([dot, ring], { x: e.clientX, y: e.clientY });
         html.classList.add('cursor-on');
       }
       dx(e.clientX);
       dy(e.clientY);
+      rx(e.clientX);
+      ry(e.clientY);
 
       if (e.target === lastT) return;
       lastT = e.target;
@@ -109,6 +117,8 @@
       var isHot = !isInput && !!(lastT.closest && lastT.closest(HOT));
 
       dot.classList.toggle('is-hidden', isInput);
+      ring.classList.toggle('is-hidden', isInput);
+      ring.classList.toggle('is-hot', isHot);
       dot.classList.toggle('is-hover', isHot);
     }, { passive: true });
 
@@ -118,10 +128,12 @@
     });
 
     window.addEventListener('pointerdown', function () {
+      ring.classList.add('is-down');
       dot.classList.add('is-down');
     }, { passive: true });
 
     window.addEventListener('pointerup', function () {
+      ring.classList.remove('is-down');
       dot.classList.remove('is-down');
     }, { passive: true });
   }

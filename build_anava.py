@@ -847,7 +847,7 @@ def page_process():
         <a class="pj-cue" href="#process-journey"><span>Scroll to Follow the Process</span><i aria-hidden="true"></i></a>
       </div>
       <div class="hero-media">
-        <img src="assets/images/process/projector_banner.jpg" alt="Anava Films process">
+        <img src="assets/images/process/from-thought-to-screen.jpg" alt="Anava Films process — From Thought to Screen">
         <div class="hero-script script">Thoughts<br>Ideas<br>Plans<br>Action</div>
         <div class="hero-tag">Same thinking. Different perspective.</div>
       </div>

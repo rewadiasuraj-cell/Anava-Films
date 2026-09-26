@@ -3857,8 +3857,8 @@ html.hero-go .hero-cine .hl-1 em{
   transform:scale(var(--ps,1.03));transform-origin:68% 45%;will-change:transform}
 .phx::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:
   linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.8) 22%,rgba(0,0,0,.42) 44%,rgba(0,0,0,.08) 62%,rgba(0,0,0,0) 74%),
-  linear-gradient(180deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.4) 24%,rgba(0,0,0,0) 48%,rgba(0,0,0,0) 78%,rgba(0,0,0,.7) 100%)}
-.phx-inner{position:relative;padding-top:clamp(90px,12vh,140px);padding-bottom:clamp(60px,8vh,100px)}
+  linear-gradient(180deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.6) 18%,rgba(0,0,0,.25) 36%,rgba(0,0,0,0) 54%,rgba(0,0,0,0) 78%,rgba(0,0,0,.7) 100%)}
+.phx-inner{position:relative;padding-top:clamp(135px,17vh,190px);padding-bottom:clamp(60px,8vh,100px)}
 .phx-copy{max-width:900px}
 .phx-eyebrow{display:flex;align-items:center;gap:14px;margin:0 0 clamp(26px,3vh,40px)}
 .phx-num{font-family:var(--font-body);font-weight:300;font-size:clamp(24px,1.7vw,32px);line-height:1;letter-spacing:-.02em;color:var(--accent)}
@@ -3897,7 +3897,7 @@ html.hero-go .hero-cine .hl-1 em{
   .phx-lead{max-width:32em;font-size:16px}
 }
 @media (min-width:761px) and (max-width:900px){
-  .phx-inner{padding-top:clamp(70px,10vh,110px);padding-bottom:clamp(50px,7vh,80px)}
+  .phx-inner{padding-top:clamp(100px,14vh,140px);padding-bottom:clamp(50px,7vh,80px)}
 }
 
 /* phone: photo on top, copy set low over a bottom shade */

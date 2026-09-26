@@ -4409,3 +4409,9 @@ html.pt-out::after{animation:ptOut .38s cubic-bezier(.76,0,.24,1) both}
   .wcard.is-swap{animation:none;}
   .ct-field{animation:none;}
 }
+
+/* Home hero: neutral white copy; keep Thought's existing gold serif finish. */
+.hero-cine .hero-cine-title .hl-1,
+.hero-cine .hero-cine-title .hl-2 {
+  color:#fff;
+}

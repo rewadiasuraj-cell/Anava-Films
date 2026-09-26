@@ -4121,8 +4121,8 @@ html.hero-go .hero-cine .hero-cine-title .hl-1 em:not(#_){
 /* Home "From Idea to Impact.": one line, a touch larger */
 .approach-title:not(#_){white-space:nowrap;font-size:clamp(2.4rem,4.9vw,5.8rem)}
 @media (max-width:760px){.approach-title:not(#_){font-size:clamp(1.9rem,8.7vw,2.4rem)}}
-/* Think / Make / Finish in capitals, with a little air between the letters */
-.act-word,.act-title{text-transform:uppercase!important;letter-spacing:.01em!important}
+/* Preserve authored Title Case for Think, Make and Finish across stage and mobile titles. */
+.act-word,.act-title{text-transform:none!important;letter-spacing:-.01em!important}
 /* off-screen headings: the shine waits (set by anava.js) */
 .sheen-off .o,.sheen-off .mw-accent,.sheen-off em,.sheen-off.act-title,.sheen-off .act-word,.sheen-off.wh-title .wh-impact,.sheen-off .wh-impact{animation-play-state:paused!important}
 
@@ -4231,8 +4231,10 @@ html.has-cursor.cursor-on :is(input,textarea,select,[contenteditable]) *{cursor:
 .mo-dot,.mo-ring{position:fixed;left:0;top:0;z-index:2147483600;pointer-events:none;opacity:0;
   transition:opacity .25s ease}
 html.cursor-on .mo-dot,html.cursor-on .mo-ring{opacity:1}
-.mo-dot{width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:#f0c458;
-  box-shadow:0 0 12px rgba(240,196,88,.55)}
+/* Site favicon replaces the cursor's central dot; ring and interaction states remain unchanged. */
+.mo-dot{width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:0;
+  background:transparent url('../../favicon.png') center/contain no-repeat;
+  box-shadow:none}
 .mo-dot.is-hidden{opacity:0!important}
 .mo-ring{width:36px;height:36px;margin:-18px 0 0 -18px;border-radius:50%;
   border:1px solid rgba(240,196,88,.55);display:flex;align-items:center;justify-content:center;

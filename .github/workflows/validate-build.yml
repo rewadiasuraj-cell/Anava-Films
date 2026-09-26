@@ -44,5 +44,24 @@ jobs:
                       raise SystemExit(f"{page}.html missing {marker}")
           print("Build validation passed: all five pages and deployment files present.")
           PY
+      - name: Simulate Hostinger build without Python
+        env:
+          PYTHON: /usr/bin/python3-not-installed
+        run: |
+          npm run build
+          node <<'JS'
+          const fs = require('fs');
+          const crypto = require('crypto');
+          const pages = ['index','work','process','about','contact'];
+          const css = fs.readFileSync('assets/css/anava.css');
+          const expected = crypto.createHash('sha1').update(css).digest('hex').slice(0,10);
+          for (const page of pages) {
+            const html = fs.readFileSync('dist/' + page + '.html','utf8');
+            if (!html.includes('assets/css/anava.css?v=' + expected)) {
+              throw new Error(page + ': CSS cache version mismatch');
+            }
+          }
+          console.log('No-Python Hostinger build passed with fresh CSS versions.');
+          JS
       - name: Audit local assets and page semantics
         run: python3 scripts/audit_site.py

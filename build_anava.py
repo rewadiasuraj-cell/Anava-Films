@@ -237,6 +237,7 @@ def build_work_cards():
                  "assets/media/tvc/LENSKART BLUE RAY GLASSES FILM.mp4",
                  "assets/media/tvc/TIRA MAKEUP SHORTIES.mp4",
                  "assets/media/tvc/LENSKART PERSONALITY FILM.mp4",
+                 "assets/media/tvc/LENSKART PERSONALITY FILM 02.mp4",
                  "assets/media/tvc/CHANDAK FILM.mp4",
                  "assets/media/tvc/LK AQUALENS FILM.mp4",
                  "assets/media/tvc/LENSKART SHARK TANK FILM.mp4",

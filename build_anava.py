@@ -229,10 +229,23 @@ def build_work_cards():
                      "assets/media/vertical-films/lenskart-performance-50.mp4",
                      "assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4"]
 
-    # TVCs / Digital opens on Aqualens, Maxima, then Lenskart Personality
-    TVC_LEAD = ["assets/media/tvc/AQUALENS CONTACT LENS FILM.mp4",
-                "assets/media/tvc/MAXIMA WATCHES FILM.mp4",
-                "assets/media/tvc/LENSKART PERSONALITY FILM.mp4"]
+    # TVCs / Digital sequence
+    TVC_ORDER = ["assets/media/tvc/Sunil Shetty AD Landscape.mp4",
+                 "assets/media/tvc/LENSKART HUSTLER AD FILM.mp4",
+                 "assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4",
+                 "assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4",
+                 "assets/media/tvc/LENSKART BLUE RAY GLASSES FILM.mp4",
+                 "assets/media/tvc/TIRA MAKEUP SHORTIES.mp4",
+                 "assets/media/tvc/LENSKART PERSONALITY FILM.mp4",
+                 "assets/media/tvc/CHANDAK FILM.mp4",
+                 "assets/media/tvc/LK AQUALENS FILM.mp4",
+                 "assets/media/tvc/LENSKART SHARK TANK FILM.mp4",
+                 "assets/media/tvc/BOAT FILM.mp4",
+                 "assets/media/tvc/LENSKART BLUE RAY GLASSES FILM 02.mp4",
+                 "assets/media/tvc/INDUS VALLEY FILM.mp4",
+                 "assets/media/tvc/AQUALENS CONTACT LENS FILM.mp4",
+                 "assets/media/tvc/MAXIMA WATCHES FILM.mp4",
+                 "assets/media/testimonials/WOW TESTIMONIAL .mp4"]
 
     # Photoshoots open on the green-top Aquacolor set (front-facing first)
     PHOTO_LEAD = ["shoot-08", "shoot-09", "shoot-10", "shoot-11"]
@@ -241,8 +254,8 @@ def build_work_cards():
         v = c.get("video", "").split("#")[0]
         if c["category"] == "vertical" and v in VERTICAL_LEAD:
             return VERTICAL_LEAD.index(v)
-        if c["category"] == "tvc" and v in TVC_LEAD:
-            return TVC_LEAD.index(v)
+        if c["category"] == "tvc" and v in TVC_ORDER:
+            return TVC_ORDER.index(v)
         if c["category"] == "photoshoots":
             n = c.get("img", "").rsplit("/", 1)[-1].replace("-560.webp", "")
             if n in PHOTO_LEAD:
@@ -687,7 +700,7 @@ def page_home():
 
 <section class="approach">
   <div class="approach-top">
-    <div class="approach-bg" aria-hidden="true"><img src="assets/images/approach-camera.jpg" alt="" loading="lazy"></div>
+    <div class="approach-bg" aria-hidden="true"><img src="assets/images/idea-to-impact.jpg" alt="" loading="lazy" decoding="async"></div>
     <div class="container approach-copy reveal">
       <span class="approach-eyebrow">Our Approach</span>
       <h2 class="approach-title">From Idea to <span class="o">Impact.</span></h2>

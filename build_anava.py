@@ -301,7 +301,7 @@ def build_work_cards():
             # One ratio per orientation keeps every row the same height; only the
             # text overlay differs once a card carries designed key art.
             # Event films are shot 9:16, so they belong with the portrait cards.
-            shape = "portrait" if cat in ("vertical", "events") else ""
+            shape = "portrait" if cat in ("vertical", "events") or c.get("orientation") == "portrait" else ""
             if "thumbnails/" in poster:
                 shape = (shape + " has-art").strip()
             d = c.get("duration")

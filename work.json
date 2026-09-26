@@ -54,6 +54,30 @@
  },
  {
   "category": "tvc",
+  "subcategories": "social,product",
+  "open-case": "tira-beauty-kareena",
+  "video": "assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4#t=0.5",
+  "img": "",
+  "poster": "assets/images/thumbnails/tira-beauty-kareena.jpg",
+  "brand": "TIRA BEAUTY",
+  "name": "KAREENA KAPOOR x TIRA",
+  "subcat": "Brand Film (Director Role)",
+  "slogan": "FOR THE LOVE OF BEAUTY",
+  "duration": 12,
+  "title": "Kareena Kapoor x Tira Beauty",
+  "client": "Tira Beauty (Reliance Retail)",
+  "format": "Brand Film / Commercial (Director Collaboration)",
+  "roles": [
+   "Direction (Director)",
+   "Creative Execution"
+  ],
+  "shortDesc": "High-end beauty brand film featuring Bollywood superstar Kareena Kapoor Khan.",
+  "thought": "Capturing glamour, elegance, and beauty confidence in a high-profile celebrity collaboration.",
+  "idea": "“For the Love of Beauty” — An intimate, opulent visual celebration of skincare and makeup artistry with Kareena Kapoor.",
+  "making": "Directed in collaboration as Director — featuring high-key cinematic lighting, luxury beauty optics, and meticulous post-color grading."
+ },
+ {
+  "category": "tvc",
   "subcategories": "social",
   "open-case": "john-jacobs",
   "video": "assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4#t=2.5",
@@ -366,26 +390,21 @@
  {
   "category": "tvc",
   "subcategories": "social,product",
-  "open-case": "tira-beauty-kareena",
-  "video": "assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4#t=0.5",
+  "open-case": "wow-skin-finish",
+  "video": "assets/media/tvc/wow-skin-finish.mp4#t=0.5",
   "img": "",
-  "poster": "assets/images/thumbnails/tira-beauty-kareena.jpg",
-  "brand": "TIRA BEAUTY",
-  "name": "KAREENA KAPOOR x TIRA",
-  "subcat": "Brand Film (Director Role)",
-  "slogan": "FOR THE LOVE OF BEAUTY",
-  "duration": 12,
-  "title": "Kareena Kapoor x Tira Beauty",
-  "client": "Tira Beauty (Reliance Retail)",
-  "format": "Brand Film / Commercial (Director Collaboration)",
+  "poster": "assets/images/thumbnails/wow-skin-finish.jpg",
+  "brand": "WOW Skin Science",
+  "name": "WOW SKIN SCIENCE",
+  "subcat": "Sunscreen Product Film",
+  "title": "WOW Skin Science — Sunscreen Film",
+  "client": "WOW Skin Science",
+  "format": "Digital Product Film",
   "roles": [
-   "Direction (Director)",
-   "Creative Execution"
+   "Editing",
+   "Post-production"
   ],
-  "shortDesc": "High-end beauty brand film featuring Bollywood superstar Kareena Kapoor Khan.",
-  "thought": "Capturing glamour, elegance, and beauty confidence in a high-profile celebrity collaboration.",
-  "idea": "“For the Love of Beauty” — An intimate, opulent visual celebration of skincare and makeup artistry with Kareena Kapoor.",
-  "making": "Directed in collaboration as Director — featuring high-key cinematic lighting, luxury beauty optics, and meticulous post-color grading."
+  "shortDesc": "WOW Skin Science sunscreen product film."
  },
  {
   "category": "vertical",
@@ -1203,6 +1222,34 @@
   "title": "Godrej Properties — Event Film",
   "client": "Godrej Properties",
   "format": "Event Film"
+ },
+ {
+  "category": "events",
+  "subcategories": "social",
+  "open-case": "lenskart-influencers-03",
+  "video": "assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 03.mp4#t=0.5",
+  "img": "",
+  "poster": "assets/images/thumbnails/lenskart-inf-03.jpg",
+  "brand": "Lenskart",
+  "name": "LENSKART INFLUENCERS CAMPAIGN #03",
+  "subcat": "Influencer Campaign",
+  "title": "Lenskart Influencers Campaign #03",
+  "client": "Lenskart",
+  "format": "Event / Influencer Film"
+ },
+ {
+  "category": "events",
+  "subcategories": "social",
+  "open-case": "lenskart-influencers-05",
+  "video": "assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 05.mp4#t=0.5",
+  "img": "",
+  "poster": "assets/images/thumbnails/lenskart-inf-05.jpg",
+  "brand": "Lenskart",
+  "name": "LENSKART INFLUENCERS CAMPAIGN #05",
+  "subcat": "Influencer Campaign",
+  "title": "Lenskart Influencers Campaign #05",
+  "client": "Lenskart",
+  "format": "Event / Influencer Film"
  },
  {
   "category": "vertical",

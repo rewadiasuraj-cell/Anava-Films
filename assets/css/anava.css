@@ -1314,6 +1314,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg 
   /* TVCs and BTS: three large films a row on a desktop */
   .work-grid[data-view="tvc"],.work-grid[data-view="bts"]{grid-template-columns:repeat(3,1fr);gap:22px}
   .work-grid[data-view="tvc"] .wcard-title,.work-grid[data-view="bts"] .wcard-title{font-size:1.05rem}
+  .work-grid[data-view="bts"] .wcard{aspect-ratio:16/9}
 }
 /* Vertical: 4 large across on a desktop, 3 on a tablet (either way up), 2 on a phone */
 .work-grid[data-view="vertical"]{grid-template-columns:repeat(3,1fr)}

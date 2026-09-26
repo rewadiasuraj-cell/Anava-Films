@@ -3180,8 +3180,7 @@ html.hero-go .hero-cine .hl-1 em{
 .ch-n{color:var(--accent);font-weight:700;margin-right:.6em}
 .pull-quote{border:0;background:none;border-radius:0;text-align:left;padding:clamp(20px,3vw,40px) 0 clamp(20px,3vw,40px) clamp(20px,2.4vw,40px);border-left:2px solid var(--accent)}
 .pull-quote p{font-family:var(--font-body);letter-spacing:-.025em;font-size:clamp(1.3rem,2.5vw,2.3rem);line-height:1.25;max-width:32ch}
-.stats{gap:0;margin-top:clamp(40px,5vw,80px);margin-bottom:clamp(36px,5vw,72px);border-top:1px solid rgba(255,255,255,.12);
-  -webkit-box-reflect:below 2px linear-gradient(to bottom,transparent 50%,rgba(0,0,0,0.32) 100%)}
+.stats{gap:0;margin-top:clamp(40px,5vw,80px);margin-bottom:clamp(28px,4vw,52px);border-top:1px solid rgba(255,255,255,.12)}
 .stat{border:0;border-radius:0;background:none;padding:26px 20px 6px 0}
 .stat + .stat{padding-left:20px;border-left:1px solid rgba(255,255,255,.08)}
 .stat-n{font-family:var(--font-body);font-weight:600;letter-spacing:-.04em;font-size:clamp(2.4rem,4vw,4rem);

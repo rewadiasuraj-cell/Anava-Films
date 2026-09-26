@@ -1089,7 +1089,7 @@ def page_contact():
       <h2 class="ct-h3" id="direct-title">Direct Contact</h2>
       <dl class="ct-list">
         <div><dt>Email</dt><dd><a href="mailto:office@anavafilms.com">office@anavafilms.com</a></dd></div>
-        <div><dt>Phone</dt><dd><a href="tel:+918691924669">Jackson &middot; +91 86919 24669</a><a href="tel:+919911111273">Anjan &middot; +91 99111 11273</a></dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+918691924669">Jackson &middot; 86919 24669</a><a href="tel:+919911111273">Anjan &middot; 99111 11273</a></dd></div>
         <div><dt>Follow</dt><dd class="ct-social"><a href="https://www.instagram.com/anava_films" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://vimeo.com/zackdirect" target="_blank" rel="noopener noreferrer">Vimeo</a><a href="https://www.youtube.com/@anava-films" target="_blank" rel="noopener noreferrer">YouTube</a></dd></div>
         <div><dt>Studios</dt><dd>Mumbai &middot; Delhi</dd></div>
       </dl>

@@ -3,9 +3,10 @@
    Sits on top of anava.js without touching what it animates:
    1. Lenis inertia scroll (mouse / trackpad only; touch keeps native momentum)
    2. gold scroll-progress line
-   3. magnetic buttons (fine pointers only)
-   4. spring press feedback for taps and clicks (every device)
-   5. photo parallax inside their frames
+   3. favicon key icon cursor (fine pointers only, no circle outline)
+   4. magnetic buttons (fine pointers only)
+   5. spring press feedback for taps and clicks (every device)
+   6. photo parallax inside their frames
    Transforms go through the individual `translate` / `scale` properties or
    CSS variables, never `transform`, so hover zooms and the site's own
    motion keep working underneath.
@@ -77,6 +78,53 @@
     });
   }
 
+  /* ---------- 3. favicon key icon cursor (no circle outline) ---------- */
+  var HOT = 'a, button, [role="button"], label, summary, select, .pill, .wcard, .ww-item, .ww-thumb, .reel, [data-lightbox]';
+  var TEXT_INPUT = 'input, textarea, select, [contenteditable]';
+  if (fine && !calm) {
+    var dot = document.createElement('div');
+    dot.className = 'mo-dot';
+    dot.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(dot);
+    html.classList.add('has-cursor');
+
+    var dx = gsap.quickTo(dot, 'x', { duration: 0.08, ease: 'power3.out' });
+    var dy = gsap.quickTo(dot, 'y', { duration: 0.08, ease: 'power3.out' });
+    var shown = false, lastT = null;
+
+    window.addEventListener('pointermove', function (e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      if (!shown) {
+        shown = true;
+        gsap.set(dot, { x: e.clientX, y: e.clientY });
+        html.classList.add('cursor-on');
+      }
+      dx(e.clientX);
+      dy(e.clientY);
+
+      if (e.target === lastT) return;
+      lastT = e.target;
+
+      var isInput = !!(lastT.closest && lastT.closest(TEXT_INPUT));
+      var isHot = !isInput && !!(lastT.closest && lastT.closest(HOT));
+
+      dot.classList.toggle('is-hidden', isInput);
+      dot.classList.toggle('is-hover', isHot);
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', function () {
+      html.classList.remove('cursor-on');
+      shown = false;
+    });
+
+    window.addEventListener('pointerdown', function () {
+      dot.classList.add('is-down');
+    }, { passive: true });
+
+    window.addEventListener('pointerup', function () {
+      dot.classList.remove('is-down');
+    }, { passive: true });
+  }
 
   /* ---------- 4. magnetic buttons ---------- */
   if (fine && !calm) {

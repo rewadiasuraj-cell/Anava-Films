@@ -4224,7 +4224,22 @@ html.lenis,html.lenis body{height:auto}
   background:var(--metal-grad);transform-origin:0 50%;transform:scaleX(var(--p,0));opacity:.9}
 html.intro-on .mo-progress{opacity:0}
 
+/* Favicon Key Icon Cursor (fine pointers only — no circle outline) */
+html.has-cursor.cursor-on,html.has-cursor.cursor-on *{cursor:none!important}
+html.has-cursor.cursor-on :is(input,textarea,select,[contenteditable]),
+html.has-cursor.cursor-on :is(input,textarea,select,[contenteditable]) *{cursor:auto!important}
 
+.mo-dot{
+  position:fixed;left:0;top:0;z-index:2147483600;pointer-events:none;opacity:0;
+  width:22px;height:22px;margin:-11px 0 0 -11px;
+  background:transparent url('../../favicon.png') center/contain no-repeat;
+  transition:opacity .2s ease,transform .22s cubic-bezier(.22,1,.36,1),filter .22s ease;
+  will-change:transform;
+}
+html.cursor-on .mo-dot{opacity:1}
+.mo-dot.is-hidden{opacity:0!important}
+.mo-dot.is-hover{transform:scale(1.25);filter:drop-shadow(0 0 6px rgba(240,196,88,.45))}
+.mo-dot.is-down{transform:scale(0.88)}
 
 /* Magnetic buttons and spring press ride the individual translate / scale
    properties, so the site's own hover transforms still apply on top */

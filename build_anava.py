@@ -1017,10 +1017,6 @@ def wwd_sections():
           <span class="cap-num">02</span>
           <h3 class="wwd-title">Then We <span class="o">Make It Real.</span></h3>
           <p class="lead">From pre-production to the final shot, we bring together the right people, technology and craft to turn ideas into powerful visual experiences.</p>
-          <figure class="cap-visual">
-            <video data-inview-src="assets/media/what-we-do/MAKE.mp4" poster="assets/images/posters/make.jpg" muted loop playsinline preload="none"></video>
-            <figcaption class="cap-side">People<br>Equipment<br>Locations<br>Stories</figcaption>
-          </figure>
           <div class="cap-list">{cap_items(make)}
           </div>
         </article>
@@ -1028,10 +1024,6 @@ def wwd_sections():
           <span class="cap-num">03</span>
           <h3 class="wwd-title">The Shoot Ends.<br class="br-mobile"> The Story <span class="o">Doesn't.</span></h3>
           <p class="lead">Post is where everything comes together. We refine, enhance and elevate the film so it not only looks great, but feels right.</p>
-          <div class="phil-media cap-visual" data-lightbox="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-caption="From cut to craft">
-            <video data-src="assets/media/behind-the-scenes/BTS Colour Grading.mp4" data-poster="assets/images/posters/bts-colour-grading.jpg" muted loop playsinline preload="none" class="hover-play"></video>
-            <div class="phil-side">From Cut<br>To Craft</div>
-          </div>
           <div class="cap-list">{cap_items(finish)}
           </div>
         </article>

@@ -226,6 +226,7 @@ def build_work_cards():
     # Vertical opens on the owner's chosen three, in this order; the rest of
     # the tab keeps its work.json order behind them.
     VERTICAL_LEAD = ["assets/media/vertical-films/KFC X HARISH KALYAN.mp4",
+                     "assets/media/vertical-films/KUSHA KAPILA X AQUALENS.mp4",
                      "assets/media/vertical-films/aqua-color-2.mp4",
                      "assets/media/vertical-films/lenskart-performance-50.mp4",
                      "assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4"]
@@ -267,9 +268,6 @@ def build_work_cards():
                      and "thumbnails/" not in c.get("poster", ""), lead(c)))
     for c in ordered:
         cat = c["category"]
-        # The Podcasts tab is retired; its card stays in work.json, unlisted
-        if cat == "podcasts":
-            continue
         video = c.get("video", "").split("#")[0]
         poster = c.get("poster", "")
         img = c.get("img", "")
@@ -352,7 +350,7 @@ def page_work():
             "num": "02",
             "name": "Vertical",
             "sub": "9:16 Performance & Social Reels",
-            "count": "45 Films",
+            "count": "46 Films",
             "poster": "assets/images/thumbnails/kfc-harish-kalyan.jpg",
             "video": "assets/media/vertical-films/KFC X HARISH KALYAN.mp4",
         },
@@ -391,6 +389,15 @@ def page_work():
             "count": "28 Shoots",
             "poster": "assets/images/photoshoots/shoot-01-560.webp",
             "video": "",
+        },
+        {
+            "id": "podcasts",
+            "num": "07",
+            "name": "Podcasts",
+            "sub": "Conversations & Studio Shows",
+            "count": "1 Series",
+            "poster": "assets/images/thumbnails/podcast-simpl-ai.jpg",
+            "video": "assets/media/podcast/Podcast.mp4",
         },
     ]
 
@@ -434,6 +441,7 @@ def page_work():
       <button class="pill" data-filter="bts">BTS</button>
       <button class="pill" data-filter="testimonials">Testimonials</button>
       <button class="pill" data-filter="photoshoots">Photoshoots</button>
+      <button class="pill" data-filter="podcasts">Podcasts</button>
     </div>
     <span class="pill-ink" aria-hidden="true"></span>
   </div>
@@ -1153,8 +1161,6 @@ def page_contact():
             <span class="script">Same<br>City<br>Bigger<br>Stories</span>
             <div class="loc-inner">
               <div class="loc-top"><h3>Mumbai</h3></div>
-              <p class="loc-detail">Linking Road, Bandra West</p>
-              <a class="loc-link" href="https://maps.google.com/?q=Linking+Road+Bandra+West+Mumbai" target="_blank" rel="noopener">Get Directions {ARROW.replace('width="1em" height="1em"','width="14" height="14"')}</a>
             </div>
           </div>
           <div class="loc">
@@ -1162,8 +1168,6 @@ def page_contact():
             <span class="script">More<br>Ideas<br>More<br>Films</span>
             <div class="loc-inner">
               <div class="loc-top"><h3>Delhi</h3></div>
-              <p class="loc-detail">Saket, New Delhi</p>
-              <a class="loc-link" href="https://maps.google.com/?q=Saket+New+Delhi" target="_blank" rel="noopener">Get Directions {ARROW.replace('width="1em" height="1em"','width="14" height="14"')}</a>
             </div>
           </div>
     </div>

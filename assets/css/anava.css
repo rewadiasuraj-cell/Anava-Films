@@ -3609,7 +3609,7 @@ html.hero-go .hero-cine .hl-1 em{
 .caps .svc{background:none;border:0;border-radius:0;overflow:visible;cursor:default}
 .caps .svc[data-lightbox]{cursor:pointer}
 .caps .svc:hover{transform:none}
-.caps .svc-media{border-radius:4px;aspect-ratio:16/10}
+.caps .svc-media{border-radius:4px;aspect-ratio:16/9}
 .caps .svc-body{padding:14px 0 0;border-top:0}
 .caps .svc-body h4{font-size:1.02rem}
 .caps .svc-body p{font-size:.86rem;max-width:40ch}

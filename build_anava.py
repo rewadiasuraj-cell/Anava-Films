@@ -971,13 +971,13 @@ def wwd_sections():
     ]
     finish = [
         ("Offline Editing", "Shaping performance, pacing, structure and rhythm — where the shoot becomes a story.",
-         "assets/media/behind-the-scenes/BTS Finish 1.mp4", "assets/images/posters/bts-finish-1.jpg"),
+         "", "assets/images/posters/bts-finish-1.jpg"),
         ("Music &amp; Sound", "Music, sound design, ambience and final audio finishing.",
-         "assets/media/behind-the-scenes/BTS Finish 2.mp4", "assets/images/posters/bts-finish-2.jpg"),
+         "", "assets/images/posters/bts-finish-2.jpg"),
         ("Colour Grading &amp; Online", "Premium colour grading, online finishing and final picture polish.",
-         "assets/media/behind-the-scenes/BTS Colour Grading.mp4", "assets/images/posters/bts-colour-grading.jpg"),
+         "", "assets/images/posters/bts-colour-grading.jpg"),
         ("VFX &amp; Mastering", "Compositing &middot; Cleanup &middot; Animation &middot; VFX &middot; Motion &middot; Finishing &middot; Mastering.",
-         "assets/media/behind-the-scenes/BTS VFX Mastering.mp4", "assets/images/posters/bts-vfx-mastering.jpg"),
+         "", "assets/images/posters/bts-vfx-mastering.jpg"),
     ]
 
     def cap_items(items):

@@ -4797,3 +4797,51 @@ html.pt-out::after{animation:ptOut .38s cubic-bezier(.76,0,.24,1) both}
     outline-offset: -4px;
   }
 }
+
+/* Mobile filters stay in document flow so videos retain the full viewport. */
+@media (max-width: 760px) {
+  .work-filters {
+    position: static;
+    top: auto;
+    z-index: auto;
+  }
+  .work-filters .filter-bar {
+    min-width: 0;
+    margin-bottom: 16px;
+  }
+  .work-filters .pills {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 4px 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-padding-inline: 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  .work-filters .pills > .pill,
+  .work-filters .pill-drop {
+    flex: 0 0 auto;
+  }
+  .work-filters .pill {
+    width: auto;
+    height: auto;
+    min-height: 48px;
+    padding: 10px 14px;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  .work-filters .sub-pills:not([hidden]) {
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0 0 18px;
+    padding: 4px 0;
+    overscroll-behavior-x: contain;
+  }
+}

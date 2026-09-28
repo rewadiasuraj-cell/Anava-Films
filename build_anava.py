@@ -950,17 +950,17 @@ def wwd_sections():
         ("Scripting", "From a one-line thought to a complete film script, we develop stories built specifically for the screen.",
          "assets/media/behind-the-scenes/BTS Scripting.mp4", "assets/images/posters/bts-scripting.jpg"),
         ("Creative Consulting", "Brands can approach Anava even before they have a production brief. We help define what the idea could be before deciding how it should be made.",
-         "", "assets/images/posters/make.jpg"),
+         "", "assets/images/posters/bts-creative-consulting.jpg"),
     ]
     make = [
         ("Production", "End-to-end production, shoot management, crew, equipment and execution.",
          "assets/media/behind-the-scenes/BTS Make.mp4", "assets/images/posters/bts-make.jpg"),
         ("Direction", "Turning the idea into performances, frames, visuals and moments.",
-         "assets/media/what-we-do/MAKE.mp4", "assets/images/posters/make.jpg"),
+         "assets/media/what-we-do/MAKE.mp4", "assets/images/posters/bts-direction.jpg"),
         ("Casting", "Domestic and international casting — finding the right talent for the world of each project.",
          "assets/media/behind-the-scenes/BTS International Casting.mp4", "assets/images/posters/bts-international-casting.jpg"),
         ("Art Direction", "Production design, props, styling, colour, sets and the details inside every frame.",
-         "", "assets/images/posters/bts-finish-1.jpg"),
+         "", "assets/images/posters/bts-art-direction.jpg"),
     ]
     finish = [
         ("Offline Editing", "Shaping performance, pacing, structure and rhythm — where the shoot becomes a story.",

@@ -13,7 +13,7 @@ const generate = spawnSync(python, ['build_anava.py'], {
   cwd: __dirname,
   stdio: 'inherit'
 });
-if (generate.error && generate.error.code === 'ENOENT') {
+if (generate.error && generate.error.code === 'ENOENT' || generate.status === 9009) {
   usedCheckedInPages = true;
   console.warn(`Python is unavailable (${python}); packaging checked-in generated HTML.`);
 } else if (generate.error || generate.status !== 0) {

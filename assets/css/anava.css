@@ -4751,3 +4751,49 @@ html.pt-out::after{animation:ptOut .38s cubic-bezier(.76,0,.24,1) both}
   }
 }
 
+
+
+/* Mobile Work categories: one complete card per horizontal swipe.
+   Match the existing desktop hover specificity so touch hover cannot resize
+   a card or collapse its neighbours while the carousel is being scrolled. */
+@media (max-width: 760px) {
+  .wdeck {
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    padding: 4px 0 16px;
+    scrollbar-width: thin;
+  }
+
+  .wdeck .wdeck-item,
+  .wdeck .wdeck-item:hover,
+  .wdeck .wdeck-item.is-active,
+  .wdeck:hover .wdeck-item:not(:hover),
+  .wdeck:hover .wdeck-item:hover {
+    flex: 0 0 100% !important;
+    min-width: 0;
+    height: clamp(320px, 110vw, 440px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    transition: border-color 0.25s ease;
+  }
+
+  .wdeck .wdeck-action,
+  .wdeck:hover .wdeck-item:not(:hover) .wdeck-action {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .wdeck .wdeck-title,
+  .wdeck .wdeck-sub {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .wdeck .wdeck-item:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -4px;
+  }
+}

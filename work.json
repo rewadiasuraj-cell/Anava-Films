@@ -441,6 +441,32 @@
  },
  {
   "category": "vertical",
+  "subcategories": "social,performance",
+  "open-case": "kfc-harish-kalyan",
+  "video": "assets/media/vertical-films/KFC X HARISH KALYAN.mp4#t=2.5",
+  "img": "",
+  "poster": "assets/images/thumbnails/kfc-harish-kalyan.jpg",
+  "brand": "KFC INDIA",
+  "name": "HARISH KALYAN",
+  "subcat": "Celebrity Commercial",
+  "slogan": "TASTE THE CRUNCH",
+  "duration": 60,
+  "title": "KFC x Harish Kalyan Commercial",
+  "client": "KFC India",
+  "format": "Vertical Commercial / Brand Campaign",
+  "roles": [
+   "Creative Direction",
+   "Production",
+   "Direction",
+   "Post-Production"
+  ],
+  "shortDesc": "An energetic vertical commercial featuring actor Harish Kalyan exploring the authentic craft and crunch inside KFC.",
+  "thought": "Showcasing the transparency and quality of KFC's kitchen through a relatable celebrity discovery journey.",
+  "idea": "Harish Kalyan walks into KFC to witness freshly prepared, filler-free chicken, culminating in an irresistible first bite.",
+  "making": "High-energy handheld camera movement, vibrant warm restaurant tones, and dynamic kitchen action shots."
+ },
+ {
+  "category": "vertical",
   "subcategories": "performance,catalogue",
   "open-case": "lenskart-inf-03",
   "video": "assets/media/performance-films/LENSKART INFLUENCERS ( FILM) 03.mp4#t=2.5",

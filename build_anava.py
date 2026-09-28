@@ -225,7 +225,8 @@ def build_work_cards():
     # other tab's order.
     # Vertical opens on the owner's chosen three, in this order; the rest of
     # the tab keeps its work.json order behind them.
-    VERTICAL_LEAD = ["assets/media/vertical-films/aqua-color-2.mp4",
+    VERTICAL_LEAD = ["assets/media/vertical-films/KFC X HARISH KALYAN.mp4",
+                     "assets/media/vertical-films/aqua-color-2.mp4",
                      "assets/media/vertical-films/lenskart-performance-50.mp4",
                      "assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4"]
 
@@ -336,33 +337,88 @@ def page_work():
                                     ["assets/media/vertical-films/THUMBS UP X ZAID DARBAR FILM.mp4", 2],
                                     ["assets/media/tvc/FILN PERFUME FILM.mp4", 3]],
     }))
-    # One stage under the title that plays the horizontal TVCs in turn: each
-    # film's thumbnail holds for 5s, then it plays muted, then the next one.
-    # anava.js drives it from this list; the markup starts on the first film.
-    first = "assets/media/tvc/LENSKART HUSTLER AD FILM.mp4"
-    tvcs = [c for c in cards if c["category"] == "tvc" and c.get("video")]
-    tvcs.sort(key=lambda c: c["video"].split("#")[0] != first)
-    playlist = []
-    for c in tvcs:
-        v = c["video"].split("#")[0]
-        brand = re.sub(r"\s*\(.*?\)", "", c.get("client") or c["title"]).strip()
-        playlist.append({
-            "v": v,
-            "p": c.get("poster", ""),
-            "t": brand, "cap": c["title"],
-            "case": {k: c[k] for k in CASE_KEYS if c.get(k)},
-        })
-    f0 = playlist[0]
-    playlist_json = json.dumps(playlist, ensure_ascii=False).replace("</", "<\\/")
-    features = f"""
-      <button class="wh-film wh-stage" type="button" data-lightbox="{esc(f0['v'])}" data-caption="{esc(f0['cap'])}" {case_attr(card_for(f0['v']))}>
-        <img class="wh-poster" src="{esc(f0['p'])}" alt="" fetchpriority="high">
-        <video class="wh-video" muted playsinline preload="none" aria-hidden="true"></video>
-        <span class="wh-film-play" aria-hidden="true">{PLAY}</span>
-        <span class="wh-film-tag"><b>01</b><i class="wh-sep">|</i><span class="wh-film-name">{esc(f0['t'])}</span></span>
-        <span class="wh-progress" aria-hidden="true"><i></i></span>
-      </button>
-      <script type="application/json" id="wh-playlist">{playlist_json}</script>"""
+    CATEGORIES = [
+        {
+            "id": "tvc",
+            "num": "01",
+            "name": "TVCs / Digital",
+            "sub": "Commercials & Brand Campaigns",
+            "count": "17 Films",
+            "poster": "assets/images/thumbnails/sunil-shetty-film.jpg",
+            "video": "assets/media/tvc/Sunil Shetty AD Landscape.mp4",
+        },
+        {
+            "id": "vertical",
+            "num": "02",
+            "name": "Vertical",
+            "sub": "9:16 Performance & Social Reels",
+            "count": "45 Films",
+            "poster": "assets/images/thumbnails/kfc-harish-kalyan.jpg",
+            "video": "assets/media/vertical-films/KFC X HARISH KALYAN.mp4",
+        },
+        {
+            "id": "events",
+            "num": "03",
+            "name": "Events",
+            "sub": "Launches & Live Experiences",
+            "count": "4 Films",
+            "poster": "assets/images/thumbnails/lenskart-superman-launch.jpg",
+            "video": "assets/media/event-films/LENSKART X SUPERMAN MOVIE.mp4",
+        },
+        {
+            "id": "bts",
+            "num": "04",
+            "name": "BTS",
+            "sub": "On-Set Making & Craft",
+            "count": "27 Films",
+            "poster": "assets/images/thumbnails/bts-performance-film-on-set.jpg",
+            "video": "assets/media/behind-the-scenes/BEHIND THE SCENES SHOOT FOR LENSKART X PERFORMANCE FILM.mp4",
+        },
+        {
+            "id": "testimonials",
+            "num": "05",
+            "name": "Testimonials",
+            "sub": "Client & Partner Stories",
+            "count": "9 Films",
+            "poster": "assets/images/thumbnails/testimonial-partner-film.jpg",
+            "video": "assets/media/testimonials/lenskart-testimonial-film.mp4",
+        },
+        {
+            "id": "photoshoots",
+            "num": "06",
+            "name": "Photoshoots",
+            "sub": "Fashion & Product Stills",
+            "count": "28 Shoots",
+            "poster": "assets/images/photoshoots/shoot-01-560.webp",
+            "video": "",
+        },
+    ]
+
+    def cat_item(i, c):
+        active = " is-active" if i == 0 else ""
+        vid = f'<video class="wdeck-video" src="{esc(c["video"])}" muted loop playsinline preload="none" aria-hidden="true"></video>' if c.get("video") else ''
+        return f"""
+        <div class="wdeck-item{active}" data-filter="{c['id']}" role="tab" aria-selected="{'true' if i == 0 else 'false'}" tabindex="0">
+          <div class="wdeck-media">
+            <img class="wdeck-img" src="{esc(c['poster'])}" alt="{c['name']}" loading="lazy" decoding="async">
+            {vid}
+            <div class="wdeck-scrim" aria-hidden="true"></div>
+          </div>
+          <div class="wdeck-top">
+            <span class="wdeck-num">{c['num']}</span>
+            <span class="wdeck-badge">{c['count']}</span>
+          </div>
+          <div class="wdeck-bottom">
+            <span class="wdeck-sub">{c['sub']}</span>
+            <h3 class="wdeck-title">{c['name']}</h3>
+            <div class="wdeck-action">
+              <span class="wdeck-btn">Explore Category &rarr;</span>
+            </div>
+          </div>
+        </div>"""
+
+    deck_html = "".join(cat_item(i, c) for i, c in enumerate(CATEGORIES))
+
     filters = f"""
   <div class="filter-bar">
     <div class="pills" role="group" aria-label="Filter work by category">
@@ -392,27 +448,23 @@ def page_work():
         title="Our Work — ANAVA FILMS",
         desc="Selected films, TVCs, vertical content, performance campaigns and photoshoots by Anava Films."
     ) + header("work.html") + f"""
-<section class="work-hero">
+<section class="work-hero-deck">
   <div class="wh-deco" aria-hidden="true">
     <div class="wh-glow"></div>
-    <div class="wh-grid"></div>
-    <div class="wh-p" style="--d:-18"><i class="wh-ring wh-ring-l"></i></div>
-    <div class="wh-p" style="--d:22"><i class="wh-ring wh-ring-r"><b class="wh-orbit"></b></i></div>
-    <div class="wh-p" style="--d:10"><i class="wh-ring wh-ring-s"><b class="wh-orbit"></b></i></div>
-    <div class="wh-p" style="--d:30"><i class="wh-dot wh-dot-1"></i><i class="wh-dot wh-dot-2"></i></div>
-    <div class="wh-p" style="--d:14"><i class="wh-cross wh-cross-1"></i><i class="wh-cross wh-cross-2"></i></div>
-    <div class="wh-p" style="--d:8"><i class="wh-line wh-line-1"></i><i class="wh-line wh-line-2"></i><i class="wh-line wh-line-3"></i></div>
-    <div class="wh-p" style="--d:6"><i class="wh-corner wh-corner-tl"></i><i class="wh-corner wh-corner-tr"></i></div>
   </div>
   <div class="container">
-    <div class="wh-head">
-      <span class="wh-eyebrow">Our Work</span>
-      <h1 class="wh-title"><span class="wm"><span>Ideas</span></span> <span class="wm"><span>That</span></span> <span class="wm"><span>Make</span></span> <span class="wm"><span>An</span></span> <span class="wm wm-impact"><span class="wh-impact">Impact.</span></span></h1>
-      <p class="wh-lead">A selection of films, campaigns, content and collaborations we&rsquo;ve created with brands, artists and partners.</p>
-      <button class="btn btn-primary wh-cta" type="button" data-lightbox="assets/media/tvc/LENSKART HUSTLER AD FILM.mp4" data-caption="Lenskart &middot; Hustlr">{PLAY} Watch Featured Film</button>
+    <div class="wh-head-centered">
+      <span class="wh-eyebrow"><b>01</b> Our Portfolio</span>
+      <h1 class="wh-title">Ideas That Make<br>An <span class="o">Impact.</span></h1>
+      <p class="wh-lead">Explore our body of work across 6 specialized craft disciplines &mdash; hover or click any discipline below to view its featured film and complete gallery.</p>
     </div>
-  </div>
-  <div class="wh-films">{features}
+
+    <!-- Netflix-style Expanding Category Accordion Deck -->
+    <div class="wdeck-wrap">
+      <div class="wdeck" role="tablist" aria-label="Work craft disciplines">
+        {deck_html}
+      </div>
+    </div>
   </div>
 </section>
 

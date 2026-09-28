@@ -842,8 +842,53 @@
         pills.forEach(function (x) {
           x.setAttribute('aria-pressed', x.classList.contains('active') ? 'true' : 'false');
         });
+        // Update Netflix-style deck items
+        var deckItems = Array.prototype.slice.call(document.querySelectorAll('.wdeck-item'));
+        deckItems.forEach(function (di) {
+          var on = di.dataset.filter === f;
+          di.classList.toggle('is-active', on);
+          di.setAttribute('aria-selected', on ? 'true' : 'false');
+          var vid = di.querySelector('.wdeck-video');
+          if (vid) {
+            if (on) { var p = vid.play(); if (p && p.catch) p.catch(function () {}); }
+            else { vid.pause(); }
+          }
+        });
+
         render();
         settle();
+      });
+    });
+
+    // Wire up Netflix-style accordion deck items
+    var deckItems = Array.prototype.slice.call(document.querySelectorAll('.wdeck-item'));
+    deckItems.forEach(function (item) {
+      item.addEventListener('mouseenter', function () {
+        var vid = item.querySelector('.wdeck-video');
+        if (vid) {
+          var p = vid.play();
+          if (p && p.catch) p.catch(function () {});
+        }
+      });
+      item.addEventListener('mouseleave', function () {
+        if (!item.classList.contains('is-active')) {
+          var vid = item.querySelector('.wdeck-video');
+          if (vid) vid.pause();
+        }
+      });
+      item.addEventListener('click', function (e) {
+        e.preventDefault();
+        var f = item.dataset.filter;
+        var matchingPill = document.querySelector('.pill[data-filter="' + f + '"]');
+        if (matchingPill) {
+          matchingPill.click();
+        }
+      });
+      item.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          item.click();
+        }
       });
     });
 

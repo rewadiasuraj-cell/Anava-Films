@@ -2,7 +2,6 @@ node_modules/
 .vercel
 .env
 .env.local
-assets/media/podcast/Podcast.mp4
 dist/
 .backups/
 .update-staging/

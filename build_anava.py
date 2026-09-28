@@ -254,8 +254,26 @@ def build_work_cards():
     # Photoshoots open on the green-top Aquacolor set (front-facing first)
     PHOTO_LEAD = ["shoot-08", "shoot-09", "shoot-10", "shoot-11"]
 
+    # BTS sequence: custom designed typography thumbnails open first
+    BTS_LEAD = [
+        "assets/media/behind-the-scenes/bts-onset-01.mp4",
+        "assets/media/behind-the-scenes/bts-onset-02.mp4",
+        "assets/media/behind-the-scenes/BEHIND THE SCENES SHOOT FOR LENSKART X PERFORMANCE FILM.mp4",
+        "assets/media/behind-the-scenes/BTS ON LENSKART HUSTLR ..mp4",
+        "assets/media/behind-the-scenes/BTS Make.mp4",
+        "assets/media/behind-the-scenes/BTS Think.mp4",
+        "assets/media/behind-the-scenes/BTS Scripting.mp4",
+        "assets/media/behind-the-scenes/BTS International Casting.mp4",
+        "assets/media/behind-the-scenes/BTS Colour Grading.mp4",
+        "assets/media/behind-the-scenes/BTS VFX Mastering.mp4",
+        "assets/media/behind-the-scenes/BTS Finish 1.mp4",
+        "assets/media/behind-the-scenes/BTS Finish 2.mp4",
+    ]
+
     def lead(c):
         v = c.get("video", "").split("#")[0]
+        if c["category"] == "bts" and v in BTS_LEAD:
+            return BTS_LEAD.index(v)
         if c["category"] == "vertical" and v in VERTICAL_LEAD:
             return VERTICAL_LEAD.index(v)
         if c["category"] == "tvc" and v in TVC_ORDER:

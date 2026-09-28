@@ -227,9 +227,10 @@ def build_work_cards():
     # the tab keeps its work.json order behind them.
     VERTICAL_LEAD = ["assets/media/vertical-films/KFC X HARISH KALYAN.mp4",
                      "assets/media/vertical-films/KUSHA KAPILA X AQUALENS.mp4",
-                     "assets/media/vertical-films/aqua-color-2.mp4",
-                     "assets/media/vertical-films/lenskart-performance-50.mp4",
-                     "assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4"]
+                     "assets/media/vertical-films/KARAN JOHAR & KUSHA KAPILA X LENSKART FILM 03.mp4",
+                     "assets/media/vertical-films/ORRY & KFC.mp4",
+                     "assets/media/vertical-films/KFC X JITESH SHARMA ( RCB).mp4",
+                     "assets/media/vertical-films/THUMBS UP X ZAID DARBAR FILM.mp4"]
 
     # TVCs / Digital sequence
     TVC_ORDER = ["assets/media/tvc/Sunil Shetty AD Landscape.mp4",
@@ -350,7 +351,7 @@ def page_work():
             "num": "02",
             "name": "Vertical",
             "sub": "9:16 Performance & Social Reels",
-            "count": "46 Films",
+            "count": "43 Films",
             "poster": "assets/images/thumbnails/kfc-harish-kalyan.jpg",
             "video": "assets/media/vertical-films/KFC X HARISH KALYAN.mp4",
         },

@@ -382,22 +382,22 @@ def page_work():
             "video": "assets/media/testimonials/lenskart-testimonial-film.mp4",
         },
         {
-            "id": "photoshoots",
-            "num": "06",
-            "name": "Photoshoots",
-            "sub": "Fashion & Product Stills",
-            "count": "28 Shoots",
-            "poster": "assets/images/photoshoots/shoot-01-560.webp",
-            "video": "",
-        },
-        {
             "id": "podcasts",
-            "num": "07",
+            "num": "06",
             "name": "Podcasts",
             "sub": "Conversations & Studio Shows",
             "count": "1 Series",
             "poster": "assets/images/thumbnails/podcast-simpl-ai.jpg",
             "video": "assets/media/podcast/Podcast.mp4",
+        },
+        {
+            "id": "photoshoots",
+            "num": "07",
+            "name": "Photoshoots",
+            "sub": "Fashion & Product Stills",
+            "count": "28 Shoots",
+            "poster": "assets/images/photoshoots/shoot-01-560.webp",
+            "video": "",
         },
     ]
 
@@ -440,8 +440,8 @@ def page_work():
       <button class="pill" data-filter="events">Events</button>
       <button class="pill" data-filter="bts">BTS</button>
       <button class="pill" data-filter="testimonials">Testimonials</button>
-      <button class="pill" data-filter="photoshoots">Photoshoots</button>
       <button class="pill" data-filter="podcasts">Podcasts</button>
+      <button class="pill" data-filter="photoshoots">Photoshoots</button>
     </div>
     <span class="pill-ink" aria-hidden="true"></span>
   </div>

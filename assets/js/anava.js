@@ -864,6 +864,12 @@
     var deckItems = Array.prototype.slice.call(document.querySelectorAll('.wdeck-item'));
     deckItems.forEach(function (item) {
       item.addEventListener('mouseenter', function () {
+        deckItems.forEach(function (di) {
+          if (di !== item) {
+            var v = di.querySelector('.wdeck-video');
+            if (v && !v.paused) v.pause();
+          }
+        });
         var vid = item.querySelector('.wdeck-video');
         if (vid) {
           var p = vid.play();
@@ -871,10 +877,8 @@
         }
       });
       item.addEventListener('mouseleave', function () {
-        if (!item.classList.contains('is-active')) {
-          var vid = item.querySelector('.wdeck-video');
-          if (vid) vid.pause();
-        }
+        var vid = item.querySelector('.wdeck-video');
+        if (vid && !vid.paused) vid.pause();
       });
       item.addEventListener('click', function (e) {
         e.preventDefault();

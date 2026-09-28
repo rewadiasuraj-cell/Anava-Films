@@ -395,10 +395,9 @@ def page_work():
     ]
 
     def cat_item(i, c):
-        active = " is-active" if i == 0 else ""
         vid = f'<video class="wdeck-video" src="{esc(c["video"])}" muted loop playsinline preload="none" aria-hidden="true"></video>' if c.get("video") else ''
         return f"""
-        <div class="wdeck-item{active}" data-filter="{c['id']}" role="tab" aria-selected="{'true' if i == 0 else 'false'}" tabindex="0">
+        <div class="wdeck-item" data-filter="{c['id']}" role="tab" aria-selected="false" tabindex="0">
           <div class="wdeck-media">
             <img class="wdeck-img" src="{esc(c['poster'])}" alt="{c['name']}" loading="lazy" decoding="async">
             {vid}

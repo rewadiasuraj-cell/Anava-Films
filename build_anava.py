@@ -567,10 +567,9 @@ INTRO = """
 
 
 def page_home():
-    # The wide film under the logo lane: the Sunil Shetty x Green Lotus brand
-    # film (not a showreel; there is no showreel cut yet). It opens with its
-    # case study like any other card.
-    REEL_V = "assets/media/tvc/Sunil Shetty AD Landscape.mp4"
+    # The wide film under the logo lane: the Lenskart Hustler brand film.
+    # It opens with its case study like any other card.
+    REEL_V = "assets/media/tvc/LENSKART HUSTLER AD FILM.mp4"
     REEL_CASE = case_attr(card_for(REEL_V))
     # Works Wheel: the homepage's selected films. Each entry points at an
     # existing work.json film (video key), its existing thumbnail, and the
@@ -578,12 +577,12 @@ def page_home():
     # ratio is the thumbnail's own frame so nothing is stretched or re-cut
     # beyond the Work page's card crop.
     WHEEL = [
+        ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/thumbnails/lenskart-hustler.jpg",
+         "Hustlr", "Commercial Ad Film", "Lenskart", "16/9"),
         ("assets/media/tvc/Sunil Shetty AD Landscape.mp4", "assets/images/thumbnails/sunil-shetty-film.jpg",
          "Sunil Shetty", "Brand Film", "Green Lotus", "16/9"),
         ("assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4", "assets/images/thumbnails/tira-beauty-kareena.jpg",
          "Kareena Kapoor &times; Tira Beauty", "Brand Film", "Tira Beauty", "16/9"),
-        ("assets/media/tvc/LENSKART HUSTLER AD FILM.mp4", "assets/images/thumbnails/lenskart-hustler.jpg",
-         "Hustlr", "Commercial Ad Film", "Lenskart", "16/9"),
         ("assets/media/tvc/LK AQUALENS FILM.mp4", "assets/images/thumbnails/lk-aqualens-film.jpg",
          "Aqualens", "Digital TVC", "Lenskart", "16/9"),
         ("assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4", "assets/images/thumbnails/john-jacobs.jpg",
@@ -684,15 +683,15 @@ def page_home():
 
 <section class="section-sm reel-band">
   <div class="container reel-wide">
-    <button class="reel" type="button" data-lightbox="{REEL_V}" data-caption="Sunil Shetty &middot; Green Lotus Brand Film" {REEL_CASE}>
-      <img class="reel-poster" src="assets/images/thumbnails/sunil-shetty-film.jpg" alt="Sunil Shetty in the Green Lotus brand film" decoding="async">
+    <button class="reel" type="button" data-lightbox="{REEL_V}" data-caption="Lenskart Hustler &middot; Keep Hustling" {REEL_CASE}>
+      <img class="reel-poster" src="assets/images/thumbnails/lenskart-hustler.jpg" alt="Lenskart Hustler brand film" decoding="async">
       <span class="reel-overlay">
         <span class="reel-cta">
           <span class="play-btn">{PLAY}</span>
-          <span class="reel-meta">Watch the Film <em>01:03</em></span>
+          <span class="reel-meta">Watch the Film <em>00:45</em></span>
         </span>
       </span>
-      <span class="reel-credit">Sunil Shetty &middot; Green Lotus Brand Film</span>
+      <span class="reel-credit">Lenskart Hustler &middot; Keep Hustling</span>
       <span class="reel-mark">Anava Films</span>
     </button>
   </div>

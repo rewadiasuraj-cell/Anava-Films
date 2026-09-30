@@ -588,8 +588,6 @@ def page_home():
          "Hustlr", "Commercial Ad Film", "Lenskart", "16/9"),
         ("assets/media/tvc/Sunil Shetty AD Landscape.mp4", "assets/images/thumbnails/sunil-shetty-film.jpg",
          "Sunil Shetty", "Brand Film", "Green Lotus", "16/9"),
-        ("assets/media/tvc/TIRA X KAREENA KAPOOR FILM.mp4", "assets/images/thumbnails/tira-beauty-kareena.jpg",
-         "Kareena Kapoor &times; Tira Beauty", "Brand Film", "Tira Beauty", "16/9"),
         ("assets/media/tvc/LK AQUALENS FILM.mp4", "assets/images/thumbnails/lk-aqualens-film.jpg",
          "Aqualens", "Digital TVC", "Lenskart", "16/9"),
         ("assets/media/tvc/LENSKART JOHN JACBOS EYEWEAR (FILM ).mp4", "assets/images/thumbnails/john-jacobs.jpg",
@@ -638,11 +636,11 @@ def page_home():
         c = f' class="{cls}"' if cls else ""
         return f'<img{c} src="assets/Companies logo/{file}.png" alt="{name}" loading="lazy">'
 
-    logos = ["Lenskart", "KFC", "tira", "Indus Valley", "wow skin science", "celio",
+    logos = ["Lenskart", "Chandak Group", "KFC", "tira", "Indus Valley", "wow skin science", "celio",
              "fikn", "godrej properties", "Simpl ai", "Green LOTUS"]
     marquee = "".join(logo_img(l) for l in logos * 2)
 
-    trusted_order = ["Lenskart", "Indus Valley", "Green LOTUS", "celio", "tira",
+    trusted_order = ["Lenskart", "Chandak Group", "Indus Valley", "Green LOTUS", "celio", "tira",
                      "godrej properties", "wow skin science", "fikn", "KFC", "Simpl ai"]
     # The list runs twice so the scroll loops seamlessly; the copy is hidden
     # from screen readers so each brand is announced once.

@@ -349,10 +349,17 @@ def page_work():
     # Sub-filters that need their own running order: [lightbox path, position].
     # The page's JS moves these cards into place when that filter is chosen.
     SUB_ORDERS = esc(json.dumps({
-        "vertical|performance": [["assets/media/vertical-films/lenskart-performance-50.mp4", 6]],
-        "vertical|social|product": [["assets/media/tvc/FIKN ELIXIR FILM 04.mp4", 1],
-                                    ["assets/media/vertical-films/THUMBS UP X ZAID DARBAR FILM.mp4", 2],
-                                    ["assets/media/tvc/FILN PERFUME FILM.mp4", 3]],
+        "vertical|performance": [
+            ["assets/media/vertical-films/KFC X HARISH KALYAN.mp4", 5],
+            ["assets/media/vertical-films/KUSHA KAPILA X AQUALENS.mp4", 6],
+            ["assets/media/vertical-films/lenskart-performance-50.mp4", 7]
+        ],
+        "vertical|social|product": [
+            ["assets/media/tvc/FIKN ELIXIR FILM 04.mp4", 1],
+            ["assets/media/vertical-films/THUMBS UP X ZAID DARBAR FILM.mp4", 2],
+            ["assets/media/tvc/FILN PERFUME FILM.mp4", 3],
+            ["assets/media/vertical-films/KFC X HARISH KALYAN.mp4", 7]
+        ],
     }))
     CATEGORIES = [
         {

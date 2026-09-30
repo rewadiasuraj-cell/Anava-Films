@@ -924,9 +924,6 @@ def page_process():
         <span class="eyebrow">Our Process</span>
         <h1 class="display">From Thought<br>to <span class="o">Screen.</span></h1>
         <p class="lead">A clear, collaborative and creative process that takes you from a simple thought to a powerful final film.</p>
-        <div class="hero-actions">
-          <button class="play-btn" data-lightbox="assets/media/behind-the-scenes/BTS Think.mp4" data-caption="Our Process &middot; Anava Films">{PLAY}<span class="pb-label">Watch Our Process</span></button>
-        </div>
         <a class="pj-cue" href="#process-journey"><span>Scroll to Follow the Process</span><i aria-hidden="true"></i></a>
       </div>
       <div class="hero-media">

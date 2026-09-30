@@ -399,7 +399,9 @@ a:hover>.circ-arrow,.circ-arrow:hover{background:var(--metal-grad);border-color:
 }
 
 .hero-split.centered .hero-script{display:none}
-.pj-hero .hero-media img{object-position:center center}
+.pj-hero .hero-split-grid{grid-template-columns:minmax(0,.76fr) minmax(0,1.24fr);gap:42px;align-items:center}
+.pj-hero .hero-media{aspect-ratio:1618/840}
+.pj-hero .hero-media img{object-fit:cover;object-position:center center}
 .hero-media[data-lightbox]{cursor:pointer}
 .hero-media img,.hero-media video{width:100%;height:100%;object-fit:cover}
 .hero-media::after{

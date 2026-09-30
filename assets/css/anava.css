@@ -3259,7 +3259,7 @@ html.hero-go .hero-cine .hl-1 em{
 .ww-thumb.is-on::after{transform:scaleX(1)}
 .ww[data-mode="gallery"] .ww-nav{order:5}
 @media (max-width:767px){
-  .ww[data-mode="gallery"]{padding:72px 0 64px}
+  .ww[data-mode="gallery"]{padding:44px 0 54px}
   .ww[data-mode="gallery"] .ww-stage{--gh:48vw;gap:10px;margin-top:22px}
   .ww[data-mode="gallery"] .ww-item{opacity:.35;transform:scale(.9)}
   .ww[data-mode="gallery"] .ww-item.is-active{opacity:1;transform:none}
@@ -3902,12 +3902,12 @@ html.hero-go .hero-cine .hl-1 em{
 
 /* phone: photo on top, copy set low over a bottom shade */
 @media (max-width:760px){
-  .phx{min-height:100vh;min-height:100svh}
+  .phx{min-height:auto;min-height:unset}
   .phx-media img{object-position:50% 0%;transform-origin:50% 30%}
   .phx::before{background:
     linear-gradient(0deg,rgba(0,0,0,.97) 0%,rgba(0,0,0,.9) 30%,rgba(0,0,0,.5) 50%,rgba(0,0,0,0) 68%),
     linear-gradient(180deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,0) 14%)}
-  .phx-inner{padding:clamp(110px,15vh,150px) 22px 64px}
+  .phx-inner{padding:clamp(85px,11vh,110px) 22px 48px}
   .phx-eyebrow{gap:12px;margin-bottom:20px}
   .phx-num{font-size:24px}
   .phx-name{font-size:11px;letter-spacing:.28em}

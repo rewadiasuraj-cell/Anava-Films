@@ -917,7 +917,7 @@ def page_process():
         title="The Process — From Thought to Screen — ANAVA FILMS",
         desc="A clear, collaborative creative process that takes you from a simple thought to a powerful final film."
     ) + header("process.html") + f"""
-<section class="hero-split centered pj-hero">
+<section class="hero-split pj-hero">
   <div class="container">
     <div class="hero-split-grid">
       <div class="hero-copy">
